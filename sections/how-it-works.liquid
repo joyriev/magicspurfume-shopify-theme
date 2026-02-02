@@ -1,0 +1,146 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id="{{ section.id }}"
+  class="section-{{ section.id }}-padding bg-cover bg-center"
+  style="background-color: {{ section.settings.background_color }}; background-image: url('{{ section.settings.background_image | image_url }}');">
+  <div class="page-width">
+    <h2 class="text-3xl md:text-4xl font-black mt-0 !mb-6 md:!mb-12 text-center">{{ section.settings.title }}</h2>
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
+      {% for block in section.blocks %}
+        <div {{ block.shopify_attributes }}>
+          <a class="block mb-3" href="{{ block.settings.button_link }}">
+            <div class="ratio bg-light mb-2 ratio-5x4 shadow">
+              {% if block.settings.image %}
+                <img
+                  class="w-full rounded-lg h-auto"
+                  src="{{ block.settings.image |  image_url }}"
+                  alt="{{ block.settings.heading }}"
+                  height=""
+                  width="">
+              {% else %}
+                <video
+                  class="w-full rounded-lg h-auto"
+                  autoplay
+                  muted
+                  loop
+                  playsinline>
+                  <source src="{{ block.settings.video.sources[0].url }}" type="video/mp4">
+                </video>
+              {% endif %}
+            </div>
+          </a>
+          <h3 class="text-2xl mb-2 font-bold">{{ block.settings.heading }}</h3>
+          <div class="mb-4">
+            <div class="{%  if block.settings.mobile_description != "" %}[display:none] md:block{% endif %} [&>p:first-child]:mt-0 [&>p:last-child]:mb-0 [&>ul]:text-left [&>ul]:pl-6">
+              {{ block.settings.description }}
+            </div>
+            {% if block.settings.mobile_description != "" %}
+              <div class="md:hidden [&>p:first-child]:mt-0 [&>p:last-child]:mb-0 [&>ul]:text-left [&>ul]:pl-6">
+                {{ block.settings.mobile_description }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "How It Works",
+    "class": "how-it-works",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#fcfbf9"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "How It Works"
+      },
+      {
+        "type": "header",
+        "content": "Section Padding"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "item",
+        "name": "Item",
+        "settings": [
+          {
+            "type": "video",
+            "id": "video",
+            "label": "Video"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Content for the card.</p>"
+          }, {
+            "type": "richtext",
+            "id": "mobile_description",
+            "label": "Mobile Description"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "How It Works"
+      }
+    ]
+  }
+{% endschema %}

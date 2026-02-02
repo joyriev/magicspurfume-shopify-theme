@@ -16,7 +16,7 @@
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tailwind_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tailwind.css */ \"./src/tailwind.css\");\n\nconsole.log(\"Hello from index.jsx\");\n\n\n//# sourceURL=webpack://shopify-theme-development/./src/index.jsx?");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tailwind_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tailwind.css */ \"./src/tailwind.css\");\n\nconsole.log(\"Hello from index.jsx\");\n\n\n//# sourceURL=webpack://shopify-theme-development/./src/index.jsx?\n}");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _tai
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://shopify-theme-development/./src/tailwind.css?");
+eval("{__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://shopify-theme-development/./src/tailwind.css?\n}");
 
 /***/ })
 

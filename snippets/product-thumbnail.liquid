@@ -41,7 +41,7 @@
   endif
 
   if media.media_type == 'image'
-    assign image_class = 'image-magnify-' | append: section.settings.image_zoom
+    assign image_class = 'product_gallery_image image-magnify-' | append: section.settings.image_zoom
   endif
 -%}
 
@@ -61,20 +61,16 @@
       class="product__media-icon motion-reduce quick-add-hidden{% if media.media_type == 'image' %} product__media-icon--{{ section.settings.image_zoom }}{% endif %}"
       aria-hidden="true"
     >
-      {% case media.media_type %}
-        {% when 'video', 'external_video' %}
-          <span class="svg-wrapper">
-            {{- 'icon-play.svg' | inline_asset_content -}}
-          </span>
-        {% when 'model' %}
-          <span class="svg-wrapper">
-            {{- 'icon-3d-model.svg' | inline_asset_content -}}
-          </span>
-        {% else %}
-          <span class="svg-wrapper">
-            {{- 'icon-zoom.svg' | inline_asset_content -}}
-          </span>
-      {% endcase %}
+      {%- liquid
+        case media.media_type
+          when 'video', 'external_video'
+            render 'icon-play'
+          when 'model'
+            render 'icon-3d-model'
+          else
+            render 'icon-zoom'
+        endcase
+      -%}
     </span>
     {%- render 'loading-spinner' -%}
     <div class="product__media media media--transparent">
@@ -110,14 +106,10 @@
       <span class="deferred-media__poster-button motion-reduce">
         {%- if media.media_type == 'model' -%}
           <span class="visually-hidden">{{ 'products.product.media.play_model' | t }}</span>
-          <span class="svg-wrapper">
-            {{- 'icon-3d-model.svg' | inline_asset_content -}}
-          </span>
+          {%- render 'icon-3d-model' -%}
         {%- else -%}
           <span class="visually-hidden">{{ 'products.product.media.play_video' | t }}</span>
-          <span class="svg-wrapper">
-            {{- 'icon-play.svg' | inline_asset_content -}}
-          </span>
+          {%- render 'icon-play' -%}
         {%- endif -%}
       </span>
       {{
@@ -159,9 +151,7 @@
           data-shopify-title="{{ product.title | escape }}"
           data-shopify-xr-hidden
         >
-          <span class="svg-wrapper">
-            {{- 'icon-3d-model.svg' | inline_asset_content -}}
-          </span>
+          {% render 'icon-3d-model' %}
           {{ 'products.product.xr_button' | t }}
         </button>
       {%- endif -%}

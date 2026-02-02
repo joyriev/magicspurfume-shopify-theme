@@ -1,0 +1,371 @@
+{% assign chosen_product = all_products['birch'] %}
+
+<div class="py-20 bg-white font-sans">
+  <div class="max-w-3xl mx-auto px-4 text-center">
+
+    <h2 class="text-3xl md:text-4xl font-black mt-0">
+      Stop Paying The Razor Tax
+    </h2>
+
+    <!-- Slider -->
+    <div class="py-4 px-2 mb-8">
+      <div id="yearsLabel-{{ section.id }}" class="text-xl font-bold uppercase tracking-widest mb-4 font-mono">
+        10 YEARS
+      </div>
+      <div class="relative h-3 w-full md:w-1/2 mx-auto bg-gray-200 rounded-full border border-solid border-gray-300">
+        <div
+          id="trackFill-{{ section.id }}"
+          class="!block absolute top-0 left-0 h-full bg-slate-900 rounded-full"
+          style="width: 100%"></div>
+        <div
+          id="thumbVisual-{{ section.id }}"
+          class="!block absolute -top-full w-6 h-8 bg-white border-2 border-solid border-slate-900 rounded-sm shadow-md transition-all pointer-events-none"
+          style="left: calc(100% - 12px)"></div>
+        <input
+          id="years-{{ section.id }}"
+          type="range"
+          min="1"
+          max="10"
+          value="10"
+          class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" />
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-2 gap-4 mb-10">
+      <!-- Competitor Card -->
+      <div class="bg-red-50 border-2 border-solid border-red-500 rounded-xl p-4 shadow-[0_8px_30px_rgba(239,68,68,0.15)] flex flex-col items-center justify-between h-full">
+        <div class="w-24 h-24 mb-2 transition-transform hover:scale-105 duration-300">
+          <svg
+            viewBox="0 0 100 100"
+            class="w-full h-full drop-shadow-sm"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <rect
+              x="44"
+              y="45"
+              width="12"
+              height="45"
+              rx="2"
+              fill="#DC2626"
+              stroke="#1F2937"
+              stroke-width="2"></rect>
+            <line
+              x1="44"
+              y1="52"
+              x2="56"
+              y2="52"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.4"></line>
+            <line
+              x1="44"
+              y1="58"
+              x2="56"
+              y2="58"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.4"></line>
+            <line
+              x1="44"
+              y1="64"
+              x2="56"
+              y2="64"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.4"></line>
+            <line
+              x1="44"
+              y1="70"
+              x2="56"
+              y2="70"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.4"></line>
+            <line
+              x1="44"
+              y1="76"
+              x2="56"
+              y2="76"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.4"></line>
+            <line
+              x1="44"
+              y1="82"
+              x2="56"
+              y2="82"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.4"></line>
+            <path
+              d="M46 45 L 42 38 L 58 38 L 54 45 Z"
+              fill="#9CA3AF"
+              stroke="#1F2937"
+              stroke-width="2"
+              stroke-linejoin="round"></path>
+            <rect
+              x="28"
+              y="20"
+              width="44"
+              height="18"
+              rx="3"
+              fill="#E5E7EB"
+              stroke="#1F2937"
+              stroke-width="2"></rect>
+            <line
+              x1="32"
+              y1="29"
+              x2="68"
+              y2="29"
+              stroke="#4B5563"
+              stroke-width="2"></line>
+            <line
+              x1="32"
+              y1="33"
+              x2="68"
+              y2="33"
+              stroke="#4B5563"
+              stroke-width="2"></line>
+            <path
+              d="M32 24 H 68"
+              stroke="#EF4444"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="font-black uppercase text-sm mb-1 tracking-tight text-slate-900">
+            Gillette
+          </div>
+          <div class="text-3xl font-black text-red-600 tracking-tighter">
+            <span id="gilletteTotal-{{ section.id }}">
+              {{ cart.currency.symbol }} 2,200
+            </span>
+          </div>
+          <div id="competitorLabel-{{ section.id }}" class="text-sm uppercase font-bold text-red-400 mt-2">
+            Total cost over 10 years
+          </div>
+        </div>
+      </div>
+
+      <!-- Our Card -->
+      <div class="bg-green-50 border-2 border-solid border-green-500 rounded-xl p-4 shadow-[0_8px_30px_rgba(34,197,94,0.15)] transform scale-105 flex flex-col items-center justify-between h-full relative">
+        <div class="absolute -top-3 bg-green-500 text-white text-sm font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+          Best Value
+        </div>
+        <div class="w-24 h-24 mb-2 transition-transform hover:scale-105 duration-300">
+          <svg
+            viewBox="0 0 100 100"
+            class="w-full h-full drop-shadow-sm"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <rect
+              x="44"
+              y="35"
+              width="12"
+              height="55"
+              rx="2"
+              fill="#D1D5DB"
+              stroke="#1F2937"
+              stroke-width="2"></rect>
+            <line
+              x1="44"
+              y1="45"
+              x2="56"
+              y2="45"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.3"></line>
+            <line
+              x1="44"
+              y1="55"
+              x2="56"
+              y2="55"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.3"></line>
+            <line
+              x1="44"
+              y1="65"
+              x2="56"
+              y2="65"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.3"></line>
+            <line
+              x1="44"
+              y1="75"
+              x2="56"
+              y2="75"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.3"></line>
+            <line
+              x1="44"
+              y1="85"
+              x2="56"
+              y2="85"
+              stroke="#1F2937"
+              stroke-width="1"
+              stroke-opacity="0.3"></line>
+            <rect
+              x="46"
+              y="30"
+              width="8"
+              height="5"
+              fill="#9CA3AF"
+              stroke="#1F2937"
+              stroke-width="2"></rect>
+            <path
+              d="M30 30 H 70 V 34 H 30 Z"
+              fill="#9CA3AF"
+              stroke="#1F2937"
+              stroke-width="2"
+              stroke-linejoin="round"></path>
+            <path
+              d="M28 30 C 28 20, 72 20, 72 30 Z"
+              fill="#E5E7EB"
+              stroke="#1F2937"
+              stroke-width="2"
+              stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div>
+          <div class="font-black uppercase text-sm mb-1 tracking-tight text-slate-900">
+            Nordic Glade
+          </div>
+          <div class="text-3xl font-black text-green-600 tracking-tighter">
+            <span id="nordicTotal-{{ section.id }}">
+              {{ cart.currency.symbol }} 132</span>
+          </div>
+          <div id="ourLabel-{{ section.id }}" class="text-sm uppercase font-bold text-green-600 mt-2">
+            Total cost over 10 years
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Savings Text -->
+    <div class="mb-8">
+      <div class="text-3xl md:text-4xl font-black text-green-600 tracking-tighter leading-none drop-shadow-sm">
+        YOU SAVE:
+        <span id="youSave-{{ section.id }}">
+          {{ cart.currency.symbol }} 2,068</span>
+      </div>
+    </div>
+
+    <!-- Button -->
+    <a href="/collections/best-seller" class="button">
+      Get Yours - {{ chosen_product.price | money_with_currency }}
+    </a>
+
+  </div>
+</div>
+
+<style>
+  /* Custom styles for range input thumb */
+  .razor-tax-section input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 32px;
+    background: white;
+    border: 2px solid #0f172a;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .razor-tax-section input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 32px;
+    background: white;
+    border: 2px solid #0f172a;
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<script>
+  (function() {
+  // Tunable constants
+  const gilletteMonthlyCost = 10.35;
+  const nordicOneTimeCost = 44.99;
+  const nordicMonthlyBladeCost = 0.24;
+  const sectionId = "{{ section.id }}";
+
+  const yearsEl = document.getElementById(`years-${sectionId}`);
+  const yearsLabel = document.getElementById(`yearsLabel-${sectionId}`);
+  const trackFill = document.getElementById(`trackFill-${sectionId}`);
+  const thumbVisual = document.getElementById(`thumbVisual-${sectionId}`);
+  const gilletteOut = document.getElementById(`gilletteTotal-${sectionId}`);
+  const nordicOut = document.getElementById(`nordicTotal-${sectionId}`);
+  const saveOut = document.getElementById(`youSave-${sectionId}`);
+  const competitorLabel = document.getElementById(`competitorLabel-${sectionId}`);
+  const ourLabel = document.getElementById(`ourLabel-${sectionId}`);
+
+  function formatMoney(amount, withFraction = true) {
+    if (
+      !window.Shopify?.currency?.active ||
+      !window.Shopify?.currency?.rate
+    ) {
+      throw new Error("Shopify currency data not found");
+    }
+
+    const rate = Number(window.Shopify.currency.rate);
+    const currency = window.Shopify.currency.active;
+
+    if (Number.isNaN(rate)) {
+      throw new Error("Invalid currency rate");
+    }
+
+    const localAmount = amount * rate;
+
+    return new Intl.NumberFormat(undefined, {
+      style: "currency",
+      currency,
+      minimumFractionDigits: withFraction ? 2 : 0,
+      maximumFractionDigits: withFraction ? 2 : 0,
+    }).format(localAmount);
+  }
+
+  function recalc() {
+    const years = Number(yearsEl.value);
+    const maxYears = Number(yearsEl.max);
+    yearsLabel.textContent = `${years} YEAR${years === 1 ? '' : 'S'}`;
+
+    const gilletteTotal = gilletteMonthlyCost * 12 * years;
+    const nordicTotal = nordicOneTimeCost + (nordicMonthlyBladeCost * 12 * years);
+    const youSave = gilletteTotal - nordicTotal;
+
+    gilletteOut.textContent = formatMoney(gilletteTotal, false);
+    nordicOut.textContent = formatMoney(nordicTotal, false);
+    saveOut.textContent = formatMoney(youSave, false);
+
+    competitorLabel.textContent = `Total cost over ${years} year${years === 1 ? '' : 's'}`;
+    ourLabel.textContent = `Total cost over ${years} year${years === 1 ? '' : 's'}`;
+
+    const percentage = (years / maxYears) * 100;
+    trackFill.style.width = `${percentage}%`;
+    thumbVisual.style.left = `calc(${percentage}% - 12px)`;
+  }
+
+  yearsEl.addEventListener("input", recalc);
+
+  recalc();
+  })();
+</script>
+
+{% schema %}
+  {
+    "name": "Razor Tax Calculator",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Razor Tax Calculator"
+      }
+    ]
+  }
+{% endschema %}

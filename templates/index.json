@@ -1,1 +1,313 @@
-{"sections":{"homepage_hero_GDeBtq":{"type":"homepage-hero","blocks":{"button_n3kJeK":{"type":"button","settings":{"button_text":"Men's Perfume","button_link":"shopify:\/\/collections\/man"}},"button_iYJcNH":{"type":"button","settings":{"button_text":"Women's Perfume","button_link":"shopify:\/\/collections\/woman"}},"perks_aMQhFA":{"type":"perks","settings":{"perk_image":"shopify:\/\/shop_images\/shield-check.svg","perk_title":"100% SSL Secure Checkout"}},"perks_8ndbwA":{"type":"perks","settings":{"perk_image":"shopify:\/\/shop_images\/thumbs-up.svg","perk_title":"60 Days Money Back Guarantee"}},"perks_NaiKct":{"type":"perks","settings":{"perk_image":"shopify:\/\/shop_images\/smile.svg","perk_title":"10,000+ Happy Customers"}}},"block_order":["button_n3kJeK","button_iYJcNH","perks_aMQhFA","perks_8ndbwA","perks_NaiKct"],"name":"Homepage Hero","settings":{"background_color":"#fcfbf9","image":"shopify:\/\/shop_images\/tryscent-hero-image.jpg","title":"Why Pay $200? Get the Same Scent for 90% Less","subtitle":"Discover sophisticated scents that rival luxury brands – save up to 90% while enjoying the same elegance and lasting power.","padding_top":72,"padding_bottom":72}},"magazine_reviews_AeDF9g":{"type":"magazine-reviews","blocks":{"review_LM3NkM":{"type":"review","settings":{"review_image":"shopify:\/\/shop_images\/eloquent_1.png","review_content":"“Everything I’ve ordered smells amazing and the scent really lasts!”"}},"review_Lgzbga":{"type":"review","settings":{"review_image":"shopify:\/\/shop_images\/vogue.png","review_content":"“A lovely pick for holiday vibes or a quick, charming gift.”"}},"review_m4Wt3r":{"type":"review","settings":{"review_image":"shopify:\/\/shop_images\/cosmopolitan_1.png","review_content":"“This feels so authentic, we couldn’t tell it’s not the original.”"}}},"block_order":["review_LM3NkM","review_Lgzbga","review_m4Wt3r"],"disabled":true,"name":"Magazine Reviews","settings":{"background_color":"#ffffff","padding_top":60,"padding_bottom":60}},"homepage_products_tab_RwziwE":{"type":"homepage-products-tab","blocks":{"collection_UpHBjV":{"type":"collection","settings":{"tab_title":"Bestsellers","collection":"best-sellers"}},"collection_RN6cPc":{"type":"collection","settings":{"tab_title":"Men","collection":"man"}},"collection_GH6VcB":{"type":"collection","settings":{"tab_title":"Women","collection":"woman"}}},"block_order":["collection_UpHBjV","collection_RN6cPc","collection_GH6VcB"],"name":"Homepage Products Tab","settings":{"background_color":"#ffffff","button_text":"View All","button_link":"shopify:\/\/collections\/all","padding_top":52,"padding_bottom":100}},"feature_highlights_wfUacV":{"type":"feature-highlights","blocks":{"perks_Cj3EAR":{"type":"perks","settings":{"perk_image":"shopify:\/\/shop_images\/carrot.svg","perk_title":"Cruelty Free","perk_content":"Perk Content"}},"perks_Ynh4gw":{"type":"perks","settings":{"perk_image":"shopify:\/\/shop_images\/diamond.svg","perk_title":"High Quality","perk_content":"Perk Content"}},"perks_iX4iTY":{"type":"perks","settings":{"perk_image":"shopify:\/\/shop_images\/clock-check.svg","perk_title":"Long-Lasting","perk_content":"Perk Content"}},"perks_CBpKqp":{"type":"perks","settings":{"perk_image":"shopify:\/\/shop_images\/world-pin.svg","perk_title":"Made in Canada","perk_content":"Perk Content"}}},"block_order":["perks_Cj3EAR","perks_Ynh4gw","perks_iX4iTY","perks_CBpKqp"],"disabled":true,"name":"Feature Highlights","settings":{"background_color":"#ffffff","padding_top":32,"padding_bottom":32}},"our_story_eatfky":{"type":"our-story","blocks":{"statistic_Cxte6k":{"type":"statistic","settings":{"number":"115+","label":"Scents Crafted"}},"statistic_RM7Ent":{"type":"statistic","settings":{"number":"10K+","label":"Orders Fulfilled"}},"statistic_aFDY4K":{"type":"statistic","settings":{"number":"95K+","label":"Bottles Sold"}}},"block_order":["statistic_Cxte6k","statistic_RM7Ent","statistic_aFDY4K"],"name":"Our Story","settings":{"background_color":"#121212","text_color":"#ffffff","accent_color":"#c8202f","heading":"Our Story","subheading":"At TryScent, we believe everyone deserves a touch of everyday luxury. Driven by a love for fine fragrance and a commitment to cruelty-free beauty, we create long-lasting scents that feel indulgent, without the lavish price tag. Experience sophisticated perfumes crafted with care, because true luxury should be kind, accessible, and unforgettable.","button_text":"Shop now","button_url":"\/collections\/our-most-popular","padding_top":0,"padding_bottom":0,"image_1":"shopify:\/\/shop_images\/factory_image.png","image_2":"shopify:\/\/shop_images\/factory_image_2.png","image_3":"shopify:\/\/shop_images\/5987a67c28d68f71b5aef889d5aba722ae320d6d.jpg","image_4":"shopify:\/\/shop_images\/tryscent_factory.png"}},"17518720835c8ade0e":{"type":"apps","blocks":{"judge_me_reviews_featured_carousel_fJVaMR":{"type":"shopify:\/\/apps\/judge-me-reviews\/blocks\/featured_carousel\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{"maxwidth":1080}}},"block_order":["judge_me_reviews_featured_carousel_fJVaMR"],"custom_css":[".jdgm-rev-widg {padding: 60px 16px;}",".jdgm-rev-widg__title {font-weight: 600;}"],"settings":{"include_margins":true}}},"order":["homepage_hero_GDeBtq","magazine_reviews_AeDF9g","homepage_products_tab_RwziwE","feature_highlights_wfUacV","our_story_eatfky","17518720835c8ade0e"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_and_text_nj4mfM": {
+      "type": "image-and-text",
+      "blocks": {
+        "heading_c6chEf": {
+          "type": "heading",
+          "settings": {
+            "content": "A Better Way to Start the Day",
+            "heading_type": "h2",
+            "font_size": 28,
+            "mobile_font_size": 20,
+            "text_color": "#ffffff"
+          }
+        },
+        "text_VJRcpx": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Designed for those who want more from their morning, and a shave that improves with time.</p>",
+            "mobile_content": "",
+            "font_size": 18,
+            "text_color": "#eff0f5"
+          }
+        },
+        "button_rGwjWF": {
+          "type": "button",
+          "settings": {
+            "button_text": "Upgrade Your Shave",
+            "button_url": "",
+            "button_color": "#ffffff",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_c6chEf",
+        "text_VJRcpx",
+        "button_rGwjWF"
+      ],
+      "name": "Image and Text",
+      "settings": {
+        "background_color": "#000000",
+        "bg_image": "shopify://shop_images/keans-home-hero.png",
+        "bg_mobile_image": "shopify://shop_images/keans-home-mobile-bg.png",
+        "rounded_image": true,
+        "image_placement": "1",
+        "mobile_image_placement": "under_heading",
+        "button_text": "",
+        "button_url": "",
+        "columns_gap": 40,
+        "rows_gap": 20,
+        "content_alignment": "center",
+        "blocks_gap": 24,
+        "padding_top": 300,
+        "padding_bottom": 88,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 328
+      }
+    },
+    "popular_products_3gqnEi": {
+      "type": "popular-products",
+      "name": "Popular Products",
+      "settings": {
+        "background_color": "#f7f7f7",
+        "heading": "Popular Products",
+        "subheading": "Designed and formulated for quality.",
+        "collection": "home-page",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "image_and_text_TQajG3": {
+      "type": "image-and-text",
+      "blocks": {
+        "heading_CcxYji": {
+          "type": "heading",
+          "settings": {
+            "content": "Insane Precision on the Curve.",
+            "heading_type": "h2",
+            "font_size": 40,
+            "mobile_font_size": 24,
+            "text_color": "#000000"
+          }
+        },
+        "text_gHnd8C": {
+          "type": "text",
+          "settings": {
+            "content": "<p>We haven’t forgotten how they tried to redefine masculinity. Ranger Core was born to push back. We believe in strength, honor, and traditional values. No lectures, just a superior shave.<br/></p>",
+            "mobile_content": "",
+            "font_size": 18,
+            "text_color": "#000000"
+          }
+        },
+        "button_q4qttC": {
+          "type": "button",
+          "settings": {
+            "button_text": "GET YOUR KIT",
+            "button_url": "shopify://collections/best-sellers-1",
+            "button_color": "#000000",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_CcxYji",
+        "text_gHnd8C",
+        "button_q4qttC"
+      ],
+      "name": "Image and Text",
+      "settings": {
+        "background_color": "#ffffff",
+        "image": "shopify://shop_images/keans_01.png",
+        "rounded_image": true,
+        "image_placement": "0",
+        "mobile_image_placement": "under_heading",
+        "button_text": "",
+        "button_url": "",
+        "columns_gap": 40,
+        "rows_gap": 20,
+        "content_alignment": "center",
+        "blocks_gap": 24,
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
+    "bigger_then_a_shave_nJQJzw": {
+      "type": "bigger-then-a-shave",
+      "blocks": {
+        "feature_yMXGpx": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/donate-donation-svgrepo-com.png",
+            "title": "Buy 1, Donate 1",
+            "description": "For every kit sold, we donate a full grooming set to a veteran in transition."
+          }
+        },
+        "feature_qBQxUn": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/solidarity-ribbon-svgrepo-com.png",
+            "title": "40% to Boulder Crest",
+            "description": "We proudly support veteran post-traumatic growth and mental wellness initiatives."
+          }
+        },
+        "feature_gcBc9d": {
+          "type": "feature",
+          "settings": {
+            "icon_image": "shopify://shop_images/warranty-svgrepo-com.png",
+            "title": "Lifetime Warranty",
+            "description": "Our handles are built to survive the test of time. Guaranteed for life."
+          }
+        }
+      },
+      "block_order": [
+        "feature_yMXGpx",
+        "feature_qBQxUn",
+        "feature_gcBc9d"
+      ],
+      "disabled": true,
+      "name": "Bigger Than A Shave",
+      "settings": {
+        "heading": "Bigger Than A Shave"
+      }
+    },
+    "comparison_section_gw8bib": {
+      "type": "comparison-section",
+      "name": "Comparison Section",
+      "settings": {
+        "background_color": "#ffffff",
+        "image": "shopify://shop_images/keans_us_vs_them_4.png",
+        "title": "How We Compare",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "home_tabs_fcxFYG": {
+      "type": "home-tabs",
+      "blocks": {
+        "collection_gRbYPe": {
+          "type": "collection",
+          "settings": {
+            "tab_title": "⚡ Bestseller",
+            "collection": "home-page"
+          }
+        },
+        "collection_xgUpzQ": {
+          "type": "collection",
+          "settings": {
+            "tab_title": "🔥 Trending",
+            "collection": "home-page"
+          }
+        },
+        "collection_3WBTm3": {
+          "type": "collection",
+          "settings": {
+            "tab_title": "📥 New Arrivals",
+            "collection": "home-page"
+          }
+        }
+      },
+      "block_order": [
+        "collection_gRbYPe",
+        "collection_xgUpzQ",
+        "collection_3WBTm3"
+      ],
+      "name": "Homepage Products Tab",
+      "settings": {
+        "background_color": "#f7f7f7",
+        "heading": "Find the Right Tool for You",
+        "subheading": "Discover our curated selection of premium Shaving products.",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "ugc_slider_76fkYw": {
+      "type": "ugc-slider",
+      "blocks": {
+        "image_gNjqDT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/keans_review_06.png"
+          }
+        },
+        "image_Wiqb4h": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/keans_review_07.png"
+          }
+        },
+        "image_ywkG7j": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/keans_review_08.png"
+          }
+        },
+        "image_TXdQU7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/keans_review_09.png"
+          }
+        },
+        "image_gGB67M": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/keans_review_01.png"
+          }
+        },
+        "image_6LBjBb": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/keans_review_02.png"
+          }
+        },
+        "image_9ARAYp": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/keans_review_03.png"
+          }
+        },
+        "image_CFQK9D": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/keans_review_04.png"
+          }
+        },
+        "image_yFrK9n": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/keans_review_05.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_gNjqDT",
+        "image_Wiqb4h",
+        "image_ywkG7j",
+        "image_TXdQU7",
+        "image_gGB67M",
+        "image_6LBjBb",
+        "image_9ARAYp",
+        "image_CFQK9D",
+        "image_yFrK9n"
+      ],
+      "name": "UGC Slider",
+      "settings": {
+        "background_color": "#ffffff",
+        "heading": "1000+ Made Switch To Keans.co",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": [
+    "image_and_text_nj4mfM",
+    "popular_products_3gqnEi",
+    "image_and_text_TQajG3",
+    "bigger_then_a_shave_nJQJzw",
+    "comparison_section_gw8bib",
+    "home_tabs_fcxFYG",
+    "ugc_slider_76fkYw"
+  ]
+}

@@ -3,11 +3,13 @@
 
 {%- if pick_up_availabilities.size > 0 -%}
   <pickup-availability-preview class="pickup-availability-preview">
-    {% assign closest_location = pick_up_availabilities.first %}
+    {%- liquid
+      assign closest_location = pick_up_availabilities.first
 
-    {% if closest_location.available %}
-      <span class="svg-wrapper">{{ 'icon-tick.svg' | inline_asset_content }}</span>
-    {% endif %}
+      if closest_location.available
+        render 'icon-tick'
+      endif
+    -%}
 
     <div class="pickup-availability-info">
       {%- if closest_location.available -%}
@@ -61,7 +63,7 @@
         {{ product_variant.product.title | escape }}
       </h2>
       <button class="pickup-availability-drawer-button" type="button" aria-label="{{ 'accessibility.close' | t }}">
-        {{- 'icon-close.svg' | inline_asset_content -}}
+        {%- render 'icon-close' -%}
       </button>
     </div>
 
@@ -85,9 +87,7 @@
           <h3 class="h4">{{ availability.location.name | escape }}</h3>
           <p class="pickup-availability-preview caption-large">
             {%- if availability.available -%}
-              <span class="svg-wrapper">
-                {{- 'icon-tick.svg' | inline_asset_content -}}
-              </span>
+              {% render 'icon-tick' %}
               {{ 'products.product.pickup_availability.pick_up_available' | t }},
               {{ availability.pick_up_time | downcase }}
             {%- endif -%}

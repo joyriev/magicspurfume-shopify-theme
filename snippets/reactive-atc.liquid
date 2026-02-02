@@ -1,0 +1,221 @@
+{% liquid
+  assign selected_variant = product.selected_or_first_available_variant
+%}
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+{% assign selling_points = product.metafields.custom.selling_points.value %}
+
+{% if selling_points %}
+  <ul class="list-none pl-0">
+    {% for point in selling_points %}
+      <li>✅ {{ point }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+
+{% if product.variants.size > 1 %}
+  <div x-data>
+    <div class="mb-2">
+      Package:
+      <span x-html="$store.pdpExtra.variantTitle"></span>
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      {% for variant in product.variants %}
+        <button
+          @click="$store.pdpExtra.selectedVariant = '{{ variant.id }}'; $store.pdpExtra.variantPrice = '{{ variant.price | money }}'; $store.pdpExtra.variantCompareAtPrice = '{{ variant.compare_at_price | money }}'; $store.pdpExtra.variantTitle = '{{ variant.title }}';"
+          class="p-0 border-2 border-solid rounded-full py-2 px-3 flex items-center justify-center cursor-pointer font-semibold"
+          :class="$store.pdpExtra.selectedVariant === '{{ variant.id }}' ? 'bg-[#0F172A] text-white' : 'bg-white text-[#0F172A]'">
+          {{ variant.title }}
+        </button>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+<div x-data class="flex flex-col gap-2">
+  <button
+    @click="$store.pdpExtra.quantity = 1"
+    class="border-2 border-solid cursor-pointer p-3 flex gap-4 items-center bg-white"
+    :class="$store.pdpExtra.quantity === 1 ? 'border-[#0F172A]' : 'border-gray-300'">
+    <div class="shrink-0 size-6 flex items-center justify-center rounded-full border-2 border-solid border-[#0F172A]">
+      <span x-show="$store.pdpExtra.quantity === 1" class="block size-4 rounded-full bg-[#0F172A]"></span>
+    </div>
+    <div class="text-left space-y-1">
+      <h3 class="my-0 text-base font-semibold">Single Kit Package
+      </h3>
+      <p class="my-0 text-gray-600">
+        1 razor + 4 blades
+      </p>
+    </div>
+    <div class="ml-auto">
+      <div class="font-semibold text-base" x-text="$store.pdpExtra.getPrice('single')"></div>
+    </div>
+  </button>
+  <button
+    @click="$store.pdpExtra.quantity = 4"
+    class="border-2 border-solid cursor-pointer p-3 flex gap-4 items-center bg-white"
+    :class="$store.pdpExtra.quantity === 4 ? 'border-[#0F172A]' : 'border-gray-300'">
+    <div class="shrink-0 size-6 flex items-center justify-center rounded-full border-2 border-solid border-[#0F172A]">
+      <span x-show="$store.pdpExtra.quantity === 4" class="block size-4 rounded-full bg-[#0F172A]"></span>
+    </div>
+    <div class="text-left space-y-1">
+      <h3 class="my-0 text-base font-semibold">Buy 2 Get 2 Free
+        <span class="text-[#0F172A] text-sm bg-gray-200 font-normal inline-block px-1">
+          <span x-text="$store.pdpExtra.getPerKitPrice('buy2get2')"></span>
+          Per Kit
+        </span>
+      </h3>
+      <p class="my-0 text-gray-600">
+        4 razors + 16 blades
+      </p>
+    </div>
+    <div class="ml-auto">
+      <div class="font-semibold text-base" x-text="$store.pdpExtra.getPrice('buy2get2')"></div>
+      <div class="text-sm line-through">
+        <span x-text="$store.pdpExtra.getCompareAtPrice('buy2get2')"></span>
+      </div>
+    </div>
+  </button>
+  <div class="pt-6 relative">
+    <div class="absolute top-0 right-1 text-white text-xs leading-snug px-2 py-1 uppercase bg-[#0F172A]">Best Sellers</div>
+    <button
+      @click="$store.pdpExtra.quantity = 8"
+      class="border-2 border-solid cursor-pointer p-3 flex gap-4 items-center bg-white w-full"
+      :class="$store.pdpExtra.quantity === 8 ? 'border-[#0F172A]' : 'border-gray-300'">
+      <div class="shrink-0 size-6 flex items-center justify-center rounded-full border-2 border-solid border-[#0F172A]">
+        <span x-show="$store.pdpExtra.quantity === 8" class="block size-4 rounded-full bg-[#0F172A]"></span>
+      </div>
+      <div class="text-left space-y-1">
+        <h3 class="my-0 text-base font-semibold">Buy 4 Get 4 Free
+          <span class="text-[#0F172A] text-sm bg-gray-200 font-normal inline-block px-1">
+            <span x-text="$store.pdpExtra.getPerKitPrice('buy4get4')"></span>
+            Per Kit
+          </span>
+        </h3>
+        <p class="my-0 text-gray-600">
+          8 razors + 32 blades
+        </p>
+      </div>
+      <div class="ml-auto">
+        <div class="font-semibold text-base" x-text="$store.pdpExtra.getPrice('buy4get4')"></div>
+        <div class="text-sm line-through">
+          <span x-text="$store.pdpExtra.getCompareAtPrice('buy4get4')"></span>
+        </div>
+      </div>
+    </button>
+  </div>
+  <button
+    @click="$store.pdpExtra.quantity = 12"
+    class="border-2 border-solid cursor-pointer p-3 flex gap-4 items-center bg-white"
+    :class="$store.pdpExtra.quantity === 12 ? 'border-[#0F172A]' : 'border-gray-300'">
+    <div class="shrink-0 size-6 flex items-center justify-center rounded-full border-2 border-solid border-[#0F172A]">
+      <span x-show="$store.pdpExtra.quantity === 12" class="block size-4 rounded-full bg-[#0F172A]"></span>
+    </div>
+    <div class="text-left space-y-1">
+      <h3 class="my-0 text-base font-semibold">Buy 6 Get 6 Free
+        <span class="text-[#0F172A] text-sm bg-gray-200 font-normal inline-block px-1">
+          <span x-text="$store.pdpExtra.getPerKitPrice('buy6get6')"></span>
+          Per Kit
+        </span>
+      </h3>
+      <p class="my-0 text-gray-600">
+        12 razors + 72 blades
+      </p>
+    </div>
+    <div class="ml-auto">
+      <div class="font-semibold text-base" x-text="$store.pdpExtra.getPrice('buy6get6')"></div>
+      <div class="text-sm line-through">
+        <span x-text="$store.pdpExtra.getCompareAtPrice('buy6get6')"></span>
+      </div>
+    </div>
+  </button>
+</div>
+
+<product-form
+  class="product-form"
+  data-hide-errors="{{ gift_card_recipient_feature_active }}"
+  data-section-id="{{ section.id }}">
+  {%- form 'product'
+    , product
+    , id: ''
+    , class: 'form'
+    , novalidate: 'novalidate'
+    , data-type: 'add-to-cart-form'
+  -%}
+    <input
+      x-data
+      type="hidden"
+      name="id"
+      id="product-variant-id"
+      :value="$store.pdpExtra.selectedVariant"
+      class="product-variant-id">
+    <input
+      x-data
+      type="hidden"
+      name="quantity"
+      :value="$store.pdpExtra.quantity">
+    <button
+      type="submit"
+      name="add"
+      class="hidden_product_form_submit button button--full-width shadow-xl"
+      aria-label="Add to cart">
+      <span>ADD TO CART</span>
+      {%- render 'loading-spinner' -%}
+    </button>
+  {%- endform -%}
+</product-form>
+
+
+<script>
+
+  const offerPrices = {
+    {% for variant in product.variants %}
+      "{{ variant.id }}": {
+        single: {
+          price: "{{ variant.price | money }}"
+        },
+        buy2get2: {
+          price: "{{ variant.price | times: 2 | money }}",
+          compareAtPrice: "{{ variant.price | times: 4 | money }}",
+          perKit: "{{ variant.price | times: 2 | divided_by: 4 | money }}"
+        },
+        buy4get4: {
+          price: "{{ variant.price | times: 4 | money }}",
+          compareAtPrice: "{{ variant.price | times: 8 | money }}",
+          perKit: "{{ variant.price | times: 4 | divided_by: 8 | money }}"
+        },
+        buy6get6: {
+          price: "{{ variant.price | times: 6 | money }}",
+          compareAtPrice: "{{ variant.price | times: 12 | money }}",
+          perKit: "{{ variant.price | times: 6 | divided_by: 12 | money }}"
+        }
+      },
+    {% endfor %}
+  }
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.store('pdpExtra', {
+      selectedVariant: "{{ selected_variant.id }}",
+      variantPrice: "{{ selected_variant.price | money }}",
+      variantCompareAtPrice: "{{ selected_variant.compare_at_price | money }}",
+      variantTitle: "{{ selected_variant.title }}",
+      quantity: 8,
+      getPrice (package) {
+        return offerPrices[this.selectedVariant][package].price
+      },
+      getCompareAtPrice (package) {
+        return offerPrices[this.selectedVariant][package].compareAtPrice
+      },
+      getPerKitPrice (package) {
+        return offerPrices[this.selectedVariant][package].perKit
+      }
+    })
+  })
+</script>

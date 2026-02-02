@@ -1,0 +1,168 @@
+{% assign selected_variant = product.selected_or_first_available_variant %}
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+
+  .pulse {
+    position: relative;
+    animation: pulse 1.6s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(237, 39, 0, 0.65);
+    }
+    60% {
+      box-shadow: 0 0 0 10px rgba(237, 39, 0, 0);
+    }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+{% assign selling_points = product.metafields.custom.selling_points.value %}
+
+{% if selling_points %}
+  <ul class="list-none pl-0">
+    {% for point in selling_points %}
+      <li>✅ {{ point }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if product.variants.size > 1 %}
+  <div x-data>
+    <div class="flex gap-2 flex-wrap pt-2">
+      {% for value in product.options_with_values[0].values %}
+        <button
+          @click="$store.pdpExtra.option1 = '{{ value }}';"
+          class="p-0 border border-solid rounded-full py-2 px-4 text-base flex items-center justify-center cursor-pointer"
+          :class="$store.pdpExtra.option1 === '{{ value }}' ? 'bg-[#0F172A] text-white' : 'bg-white text-[#0F172A]'">
+          {{ value }}
+        </button>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+<div class="
+   price price--large price--on-sale price--show-badge">
+  <div class="price__container">
+    <div class="price__sale price__price-first" x-data>
+      <span class="visually-hidden visually-hidden--inline">Regular price</span>
+      <span>
+        <s class="price-item price-item--regular" x-text="$store.pdpExtra.getCompareAtPrice"></s>
+      </span>
+      <span class="visually-hidden visually-hidden--inline">Sale price</span>
+      <span class="price-item price-item--sale price-item--last" x-text="$store.pdpExtra.getPrice">
+        Tk 2,300.00
+      </span>
+    </div>
+  </div>
+</div>
+
+<product-form
+  class="product-form"
+  data-hide-errors="{{ gift_card_recipient_feature_active }}"
+  data-section-id="{{ section.id }}">
+  {%- form 'product'
+    , product
+    , id: product.id
+    , class: 'form'
+    , novalidate: 'novalidate'
+    , data-type: 'add-to-cart-form'
+  -%}
+    <input
+      x-data
+      type="hidden"
+      name="id"
+      id="product-variant-id"
+      :value="$store.pdpExtra.selectedVariant"
+      class="product-variant-id">
+    <input
+      type="hidden"
+      name="quantity"
+      value="1">
+    <button
+      type="submit"
+      name="add"
+      class="hidden_product_form_submit button button--full-width shadow-xl"
+      aria-label="Add to cart">
+      <span>ADD TO CART</span>
+      {%- render 'loading-spinner' -%}
+    </button>
+  {%- endform -%}
+</product-form>
+
+<ul class="list-none p-0 flex justify-center flex-wrap gap-x-4">
+  <li>
+    ✓ 100-Day Money-Back Guarantee</li>
+  <li>
+    ✓ Free Shipping
+  </li>
+  <li>
+    ✓ 4,800+ ranger cores Made the Switch
+  </li>
+</ul>
+
+<script>
+
+  const pdVariants = [
+    {% for variant in product.variants %}
+      {
+        id: "{{ variant.id }}",
+        name: "{{ variant.title }}",
+        image: "{% if variant.featured_image %}{{ variant.featured_image | image_url: width: 750 }}{% endif %}",
+        price: "{{ variant.price | money }}",
+        compareAtPrice: "{{ variant.compare_at_price | money }}"
+      },
+    {% endfor %}
+  ];
+
+  function prefetchVariantImages(variants) {
+    if (!Array.isArray(variants)) return;
+
+    const urls = new Set(
+      variants
+        .map(v => v?.image?.trim())
+        .filter(Boolean)
+    );
+
+    urls.forEach(url => {
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = url;
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    prefetchVariantImages(pdVariants);
+  });
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.store('pdpExtra', {
+      selectedVariant: "{{ selected_variant.id }}",
+      option1: "{{ selected_variant.option1 }}",
+      get getPrice () { 
+        const matchedVariant = pdVariants.find(variant => variant.name.includes(this.option1));
+        return matchedVariant.price
+      },
+      get getCompareAtPrice () {
+        const matchedVariant = pdVariants.find(variant => variant.name.includes(this.option1));
+        return matchedVariant.compareAtPrice
+      }
+    });
+    Alpine.effect(() => {
+      const store = Alpine.store('pdpExtra');
+      const matchedVariant = pdVariants.find(variant => variant.name.includes(store.option1));
+      store.selectedVariant = matchedVariant.id;
+
+      if (matchedVariant.image) {
+        const img = document.querySelector('.product_gallery_image');
+        img.setAttribute('src', matchedVariant.image);
+        img.setAttribute('srcset', `${matchedVariant.image} 1x`);
+      }
+    })
+  })
+</script>

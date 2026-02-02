@@ -46,7 +46,7 @@
 
 cart-drawer.is-empty .drawer__inner {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 1fr;
   align-items: center;
 }
 
@@ -98,7 +98,7 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
   right: 5px;
 }
 
-.drawer__close .svg-wrapper {
+.drawer__close svg {
   height: 2rem;
   width: 2rem;
 }
@@ -181,6 +181,11 @@ cart-drawer {
 .cart-drawer thead {
   display: inline-table;
   width: 100%;
+}
+
+cart-drawer-items {
+  overflow: auto;
+  flex: 1;
 }
 
 @media screen and (max-height: 650px) {

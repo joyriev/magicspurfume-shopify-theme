@@ -1,0 +1,236 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id="{{ section.id }}"
+  class="section-{{ section.id }}-padding"
+  style="background-color: {{ section.settings.background_color }}">
+  <div class="page-width">
+    <h2 class="text-center text-2xl md:text-4xl font-semibold mb-6 mt-0">{{ section.settings.heading }}</h2>
+    <div class="relative overflow-hidden">
+      <button
+        class="absolute left-2 top-1/2 -translate-y-1/2 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg z-10 hover:bg-gray-100 transition-colors cursor-pointer"
+        id="prev-{{ section.id }}"
+        aria-label="Previous">
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 20 20"
+          fill="none">
+          <path
+            d="M12.5 15L7.5 10L12.5 5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <div class="flex gap-4 transition-transform duration-300 ease-in-out" id="ugc-slider-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.image != blank -%}
+            <div class="flex-none w-[calc(50%-0.5rem)] md:w-[calc(25%-0.75rem)]" {{ block.shopify_attributes }}>
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+                class="w-full h-auto rounded-lg">
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <button
+        class="absolute right-2 top-1/2 -translate-y-1/2 bg-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg z-10 hover:bg-gray-100 transition-colors cursor-pointer"
+        id="next-{{ section.id }}"
+        aria-label="Next">
+        <svg
+          class="w-5 h-5"
+          viewBox="0 0 20 20"
+          fill="none">
+          <path
+            d="M7.5 15L12.5 10L7.5 5"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('ugc-slider-{{ section.id }}');
+    const prevBtn = document.getElementById('prev-{{ section.id }}');
+    const nextBtn = document.getElementById('next-{{ section.id }}');
+    
+    if (!slider) return;
+
+    const originalSlides = Array.from(slider.querySelectorAll('[class*="flex-none"]'));
+    const totalSlides = originalSlides.length;
+    
+    if (totalSlides === 0) return;
+
+    // Clone slides for infinite loop
+    function cloneSlides() {
+      // Remove existing clones
+      slider.querySelectorAll('[data-clone]').forEach(el => el.remove());
+      
+      // Clone slides at the beginning and end
+      originalSlides.forEach(slide => {
+        const cloneBefore = slide.cloneNode(true);
+        const cloneAfter = slide.cloneNode(true);
+        cloneBefore.setAttribute('data-clone', 'true');
+        cloneAfter.setAttribute('data-clone', 'true');
+        slider.insertBefore(cloneBefore, slider.firstChild);
+        slider.appendChild(cloneAfter);
+      });
+    }
+
+    cloneSlides();
+    
+    let currentIndex = totalSlides; // Start at first real slide
+    let isTransitioning = false;
+    
+    function getSlidesToShow() {
+      return window.innerWidth >= 768 ? 4 : 2;
+    }
+
+    function updateSlider(animate = true) {
+      if (!animate) {
+        slider.style.transition = 'none';
+      } else {
+        slider.style.transition = 'transform 0.3s ease-in-out';
+      }
+      
+      const allSlides = slider.querySelectorAll('[class*="flex-none"]');
+      const slideWidth = allSlides[0].offsetWidth;
+      const gap = 16; // gap-4 = 1rem = 16px
+      const offset = -(currentIndex * (slideWidth + gap));
+      slider.style.transform = `translateX(${offset}px)`;
+
+      if (!animate) {
+        // Force reflow
+        slider.offsetHeight;
+      }
+    }
+
+    function handleTransitionEnd() {
+      isTransitioning = false;
+      const allSlides = slider.querySelectorAll('[class*="flex-none"]');
+      
+      // If at cloned slides, jump to real slides
+      if (currentIndex >= totalSlides * 2) {
+        currentIndex = totalSlides;
+        updateSlider(false);
+      } else if (currentIndex < totalSlides) {
+        currentIndex = totalSlides * 2 - 1;
+        updateSlider(false);
+      }
+    }
+
+    slider.addEventListener('transitionend', handleTransitionEnd);
+
+    prevBtn.addEventListener('click', function() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex--;
+      updateSlider(true);
+    });
+
+    nextBtn.addEventListener('click', function() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex++;
+      updateSlider(true);
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        cloneSlides();
+        currentIndex = totalSlides;
+        updateSlider(false);
+      }, 250);
+    });
+
+    // Initial position
+    updateSlider(false);
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "UGC Slider",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#fcfbf9"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Selected for you"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "UGC Slider"
+      }
+    ]
+  }
+{% endschema %}

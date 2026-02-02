@@ -1,1 +1,63 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"our_bestsellers_7jXxQY":{"type":"our-bestsellers","disabled":true,"name":"Our Bestsellers","settings":{"background_color":"#226139","padding_top":36,"padding_bottom":36}},"footer":{"type":"footer","blocks":{"image_aEwGgP":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/catsoft-logo.svg","image_width":120,"alignment":""}},"link_list_VCpt9M":{"type":"link_list","settings":{"heading":"About Us","menu":"footer"}},"link_list_nemT7J":{"type":"link_list","settings":{"heading":"Information","menu":"information"}},"text_FEF8Xw":{"type":"text","settings":{"heading":"Contact","subtext":"<p><strong>Address:<\/strong>1231 Pacific Boulevard, Vancouver, Canada<\/p><p><strong>Phone:<\/strong><a href=\"tel:+18883736114\">+18883736114<\/a><\/p><p><strong>Email:<\/strong><a href=\"mailto:hello@tryscent.co\">hello@tryscent.co<\/a><\/p><p>TryScent is a subsidiary of the Search People Enterprises Canada<\/p>"}}},"block_order":["image_aEwGgP","link_list_VCpt9M","link_list_nemT7J","text_FEF8Xw"],"settings":{"color_scheme":"scheme-4","newsletter_enable":false,"newsletter_heading":"Newsletter","newsletter_description":"Subscribe to receive updates, access to exclusive deals, and more.","enable_follow_on_shop":true,"show_social":true,"enable_country_selector":false,"enable_language_selector":false,"payment_enable":true,"show_policy":false,"margin_top":0,"padding_top":56,"padding_bottom":36}}},"order":["our_bestsellers_7jXxQY","footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_qwPhpX": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Policies",
+            "menu": ""
+          }
+        },
+        "link_list_Fhdw8K": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Links",
+            "menu": "footer"
+          }
+        },
+        "text_RP9BNp": {
+          "type": "text",
+          "settings": {
+            "heading": "Contact",
+            "subtext": "<p>Email: hello@keans.co</p><p>Address: 1055 Veterans Dr,, Abilene, TX, United States, 79605<br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_qwPhpX",
+        "link_list_Fhdw8K",
+        "text_RP9BNp"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "newsletter_enable": false,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 44,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

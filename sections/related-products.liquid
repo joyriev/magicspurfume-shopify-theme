@@ -30,10 +30,7 @@
       <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
         {{ section.settings.heading }}
       </h2>
-      <ul
-        style="display: flex;"
-        class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-        role="list">
+      <ul class="grid_layout product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down" role="list">
         {% assign skip_card_product_styles = false %}
         {% for recommendation in recommendations.products %}
           <li class="grid__item">
@@ -53,7 +50,7 @@
     {% endif %}
   </product-recommendations>
   {% if section.settings.image_shape == 'arch' %}
-    {{ 'mask-arch.svg' | inline_asset_content }}
+    {% render 'mask-arch' %}
   {%- endif -%}
 </div>
 
@@ -117,20 +114,6 @@
         "default": 4,
         "label": "t:sections.related-products.settings.columns_desktop.label"
       }, {
-        "type": "select",
-        "id": "columns_mobile",
-        "default": "2",
-        "label": "t:sections.related-products.settings.columns_mobile.label",
-        "options": [
-          {
-            "value": "1",
-            "label": "t:sections.related-products.settings.columns_mobile.options__1.label"
-          }, {
-            "value": "2",
-            "label": "t:sections.related-products.settings.columns_mobile.options__2.label"
-          }
-        ]
-      }, {
         "type": "color_scheme",
         "id": "color_scheme",
         "label": "t:sections.all.colors.label",
@@ -190,7 +173,8 @@
           }
         ],
         "default": "default",
-        "label": "t:sections.all.image_shape.label"
+        "label": "t:sections.all.image_shape.label",
+        "info": "t:sections.all.image_shape.info"
       }, {
         "type": "checkbox",
         "id": "show_secondary_image",
@@ -207,6 +191,23 @@
         "default": false,
         "label": "t:sections.related-products.settings.show_rating.label",
         "info": "t:sections.related-products.settings.show_rating.info"
+      }, {
+        "type": "header",
+        "content": "t:sections.related-products.settings.header_mobile.content"
+      }, {
+        "type": "select",
+        "id": "columns_mobile",
+        "default": "2",
+        "label": "t:sections.related-products.settings.columns_mobile.label",
+        "options": [
+          {
+            "value": "1",
+            "label": "t:sections.related-products.settings.columns_mobile.options__1.label"
+          }, {
+            "value": "2",
+            "label": "t:sections.related-products.settings.columns_mobile.options__2.label"
+          }
+        ]
       }, {
         "type": "header",
         "content": "t:sections.all.padding.section_padding_heading"

@@ -1,0 +1,57 @@
+{% liquid
+  assign checkout_url = 'https://keans.co/cart/'
+  for item in product.metafields.custom.shaving_routine_products.value
+    assign checkout_url = checkout_url | append: item.selected_or_first_available_variant.id | append: ':1'
+    unless forloop.last
+      assign checkout_url = checkout_url | append: ','
+    endunless
+  endfor
+%}
+
+<div class="pt-14">
+  <div class="text-center">
+    <h2 class="font-bold my-0">Complete Your Shaving Routine</h2>
+    <p class="mt-2 mb-6">Everything you need for a close, comfortable shave.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 md:gap-x-4 gap-y-4 md:gap-y-0">
+    <div class="col-span-2 flex flex-col md:flex-row gap-3 md:gap-6">
+      {% for item in product.metafields.custom.shaving_routine_products.value %}
+        <div>
+          <p class="md:text-center my-0 font-semibold">Step: {{ forloop.index }}</p>
+          <div class="bg-white shadow-sm rounded-lg p-3 md:p-4 flex items-center md:flex-col gap-4">
+            <img
+              class="w-[80px] md:w-full h-auto"
+              src="{{ item.images.first.src | image_url: width: 350 }}"
+              alt="{{ item.title }}"
+              width="350"
+              height="350">
+            <div>
+              <h3 class="mt-0 mb-2 text-base leading-tight font-semibold">
+                <a class="no-underline text-black line-clamp-2" href="{{ item.url }}">{{ item.title }}</a>
+              </h3>
+              <p class="my-0 font-semibold text-base">{{ item.price | money }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="col-span-1 flex flex-col">
+      <p class="text-center my-0 font-semibold">Your Routine</p>
+      <div class="flex-grow bg-white shadow-sm rounded-lg p-4 md:p-6 flex flex-col gap-3">
+        <div class="flex-grow flex flex-col gap-2 pb-4">
+          {% for item in product.metafields.custom.shaving_routine_products.value %}
+            <div class="flex justify-between items-center gap-4">
+              <span class="text-sm text-black">{{ item.title }}</span>
+              <span>{{ item.price | money }}</span>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="px-4 py-2 rounded-lg bg-sky-50 flex justify-between items-center gap-4">
+          <span class="text-sm font-semibold">Subtotal</span>
+          <span>{{ product.price | money }}</span>
+        </div>
+        <a href="{{ checkout_url }}" class="bg-black text-white uppercase text-sm font-semibold tracking-[2px] py-3 px-4 rounded-lg no-underline w-full text-center block">SHOP NOW</a>
+      </div>
+    </div>
+  </div>
+</div></div></div>

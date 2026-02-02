@@ -81,8 +81,7 @@
 }
 
 .card--card .card__inner .card__media {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 10px;
 }
 
 .card--standard.card--text {
@@ -492,6 +491,10 @@
   + quantity-popover:not(.rating):not(.card__information-volume-pricing-note),
 .card-information .card__information-volume-pricing-note.card__information-volume-pricing-note--button {
   margin-top: 0;
+}
+
+.card-information > *:not(.visually-hidden:first-child) + *:not(.rating):not(.card__information-volume-pricing-note) {
+  margin-top: 0.7rem;
 }
 
 .card-information .caption {

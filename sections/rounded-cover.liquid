@@ -1,0 +1,98 @@
+{% assign chosen_product = all_products['birch'] %}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    background-color: {{ section.settings.background_color }};
+  }
+{%- endstyle -%}
+
+<div id="{{ section.id }}" class="section-{{ section.id }}-padding pt-10 pb-20">
+  <div class="page-width">
+    <div class="px-6 py-8 md:p-12 rounded-3xl grid grid-cols-1 md:grid-cols-2 gap-8 bg-cover bg-left md:bg-center" style="background-image: url('{{ section.settings.background_image | image_url }}')">
+      <div class="space-y-6 text-center md:text-left">
+        <h2 class="text-2xl md:text-4xl font-bold my-0">{{ section.settings.title }}</h2>
+        <p class="text-lg my-0">{{ section.settings.subtitle }}</p>
+        <a href="{{ section.settings.button_link }}" class="button">{{ section.settings.button_text }}</a>
+      </div>
+      <div class="md:hidden">
+        <img
+          class="h-auto w-full rounded-xl"
+          src="{{ section.settings.mobile_image | image_url }}"
+          alt="{{ section.settings.title }}"
+          height="auto"
+          width="auto">
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Rounded Cover",
+    "class": "rounded-cover",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#fcfbf9"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "MEET RANGER CORE - $21 for Everything You Need"
+      }, {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Our RANGER CORE safety razor curtis quality shaving shaves with crafts and a ritual of shaving shaving soap, and towels."
+      }, {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "SEE WHAT'S INCLUDED"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      }, {
+        "type": "header",
+        "content": "Section Padding"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 36
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rounded Cover"
+      }
+    ]
+  }
+{% endschema %}

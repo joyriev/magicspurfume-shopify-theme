@@ -1,0 +1,98 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: 300px;
+    padding-bottom: 40px;
+    background-image: url('{{ section.settings.mobile_background_image | image_url }}');
+    background-color: {{ section.settings.background_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: 80px;
+      padding-bottom: 80px;
+      background-image: url('{{ section.settings.background_image | image_url }}');
+    }
+  }
+{%- endstyle -%}
+
+<div id="{{ section.id }}" class="section-{{ section.id }}-padding bg-center bg-cover">
+  <div class="page-width">
+    <div class="ml-auto max-w-[600px] md:px-10 text-center md:text-left text-white md:text-black">
+      <h2 class="text-2xl md:text-4xl font-black mt-0 text-white md:text-black">{{ section.settings.title }}</h2>
+      <div class="{%  if section.settings.mobile_content != "" %}[display:none] md:block{% endif %} [&>p:first-child]:mt-0 [&>p:last-child]:mb-0 [&>ul]:text-left [&>ul]:pl-6">
+        {{ section.settings.content }}
+      </div>
+      {% if section.settings.mobile_content != "" %}
+        <div class="md:hidden [&>p:first-child]:mt-0 [&>p:last-child]:mb-0 [&>ul]:text-left [&>ul]:pl-6">
+          {{ section.settings.mobile_content }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "More than a Shave",
+    "class": "more-than-a-shave",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#fcfbf9"
+      },
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Background Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_background_image",
+        "label": "Mobile Background Image"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "MORE THAN A SHAVE. SUPPORTING VETERAN WELLNESS."
+      }, {
+        "type": "richtext",
+        "id": "content",
+        "label": "Content",
+        "default": "<p>Content for the section.</p>"
+      }, {
+        "type": "richtext",
+        "id": "mobile_content",
+        "label": "Mobile Content"
+      }, {
+        "type": "header",
+        "content": "Section Padding"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding Bottom",
+        "default": 36
+      }
+    ],
+    "presets": [
+      {
+        "name": "More than a shave"
+      }
+    ]
+  }
+{% endschema %}

@@ -36,11 +36,7 @@
 }
 
 .collection-hero__title {
-  margin-top: 4.5rem;
-  margin-bottom: 0;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
+  margin: 2.5rem 0;
 }
 
 .collection-hero__title + .collection-hero__description {

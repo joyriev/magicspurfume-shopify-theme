@@ -176,10 +176,6 @@
   z-index: 6;
 }
 
-.country-filter__input {
-  min-width: 200px;
-}
-
 .country-filter__reset-button,
 .country-filter__search-icon {
   right: calc(var(--inputs-border-width));
@@ -344,7 +340,7 @@
 }
 
 .header-localization .disclosure .localization-form__select {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   letter-spacing: 0.06rem;
   height: auto;
   min-height: initial;
@@ -444,8 +440,4 @@
 
 .menu-drawer__localization + .list-social {
   margin-top: 1rem;
-}
-
-.language-selector .disclosure__list {
-  min-width: 200px;
 }

@@ -1,10 +1,3 @@
-{% comment %} 
-TODO: Replace Sale text with the actual sale discount percentage.
-TODO: Only Show sale Badge and compare at price (Strikethrough and red color) if the product contains "onsale" tag.
-TODO: Show bestseller tag if the product contains "bestseller" tag.
-TODO: Get reviews ready from Cal and Karima.
-{% endcomment %}
-
 {% comment %}
   Renders a product card
 
@@ -103,7 +96,7 @@ TODO: Get reviews ready from Cal and Karima.
                   "
                   src="{{ card_product.media[1] | image_url: width: 533 }}"
                   sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                  alt="{{ card_product.media[1].alt | escape }}"
+                  alt=""
                   class="motion-reduce"
                   loading="lazy"
                   width="{{ card_product.media[1].width }}"
@@ -124,98 +117,34 @@ TODO: Get reviews ready from Cal and Karima.
               <a
                 href="{{ card_product.url }}"
                 id="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }}"
-                class="full-unstyled-link text-base"
+                class="full-unstyled-link"
                 aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
               >
                 {{ card_product.title | escape }}
               </a>
             </h3>
           </div>
-          {% if card_product.tags contains 'bestseller' %}
-            <div class="card__badge top left">
-              {%- if card_product.available == false -%}
-                <span
-                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-                >
-                  {{- 'products.product.sold_out' | t -}}
-                </span>
-              {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-                <span
-                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left font-semibold bg-[#137c44] text-white"
-                >
-                  BEST SELLER
-                </span>
-              {%- endif -%}
-            </div>
-          {% endif %}
-          {% if card_product.tags contains 'onsale' %}
-            <div class="card__badge {{ settings.badge_position }}">
-              {%- if card_product.available == false -%}
-                <span
-                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-                >
-                  {{- 'products.product.sold_out' | t -}}
-                </span>
-              {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-                <span
-                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                  class="badge badge--bottom-left font-semibold bg-[#c8202f] text-white"
-                >
-                  {%- assign discount = 0 -%}
-                  {%- if card_product.compare_at_price > card_product.price and card_product.compare_at_price > 0 -%}
-                    {%- assign discount = card_product.compare_at_price | minus: card_product.price | times: 100 | divided_by: card_product.compare_at_price | round -%}
-                  {%- endif -%}
-                  {%- if discount > 0 -%}
-                  SAVE {{ discount }}%
-                  {%- else -%}
-                    {{- 'products.product.on_sale' | t -}}
-                  {%- endif -%}
-                </span>
-              {%- endif -%}
-            </div>
-          {% endif %}
+          <div class="card__badge {{ settings.badge_position }}">
+            {%- if card_product.available == false -%}
+              <span
+                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
+                class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+              >
+                {{- 'products.product.sold_out' | t -}}
+              </span>
+            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+              <span
+                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
+                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+              >
+                {{- 'products.product.on_sale' | t -}}
+              </span>
+            {%- endif -%}
+          </div>
         </div>
       </div>
       <div class="card__content">
         <div class="card__information">
-          {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
-            {% liquid
-              assign rating_decimal = 0
-              assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
-              if decimal >= 0.3 and decimal <= 0.7
-                assign rating_decimal = 0.5
-              elsif decimal > 0.7
-                assign rating_decimal = 1
-              endif
-            %}
-            <div
-              class="rating"
-              role="img"
-              aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}"
-            >
-              <span
-                aria-hidden="true"
-                class="rating-star"
-                style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }}; --color-rating-star: #ffa500;"
-              ></span>
-            </div>
-            <p class="rating-text caption">
-              <span aria-hidden="true">
-                {{- card_product.metafields.reviews.rating.value }} /
-                {{ card_product.metafields.reviews.rating.value.scale_max -}}
-              </span>
-            </p>
-            <p class="rating-count caption">
-              <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
-              <span class="visually-hidden">
-                {{- card_product.metafields.reviews.rating_count }}
-                {{ 'accessibility.total_reviews' | t -}}
-              </span>
-            </p>
-          {%- endif -%}
           <h3
             class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
             {% if card_product.featured_media or settings.card_style == 'card' %}
@@ -225,36 +154,59 @@ TODO: Get reviews ready from Cal and Karima.
             <a
               href="{{ card_product.url }}"
               id="CardLink-{{ section_id }}-{{ card_product.id }}"
-              class="full-unstyled-link text-base font-semibold !no-underline hover:opacity-75"
+              class="full-unstyled-link"
               aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
             >
               {{ card_product.title | escape }}
             </a>
           </h3>
-
-          <div class="line-clamp-1 relative z-10">
-            <span class="italic text-sm tracking-tighter">Inspired by</span> <a href="/search?q={{ card_product.metafields.custom.forgaylawyers | url_encode }}" class="font-semibold text-base not-italic tracking-tight text-gray-900 ![text-decoration:none]">{{ card_product.metafields.custom.forgaylawyers }}</a>
-          </div>
-
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
             {%- endif -%}
+
             <span class="caption-large light">{{ block.settings.description | escape }}</span>
-            <div class="text-sm font-semibold tracking-tight">
-              {% unless card_product.tags contains 'onsale' %}
-                From
-              {% endunless %}
-              {{ card_product.price | money }}
-              {% if card_product.tags contains 'onsale' %}
-                <span class="line-through text-[#c8202f] font-normal">
-                  {{ cart.currency.symbol }}{{ card_product.compare_at_price | money_without_currency }}
+
+            {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
+              {% liquid
+                assign rating_decimal = 0
+                assign decimal = card_product.metafields.reviews.rating.value.rating | modulo: 1
+                if decimal >= 0.3 and decimal <= 0.7
+                  assign rating_decimal = 0.5
+                elsif decimal > 0.7
+                  assign rating_decimal = 1
+                endif
+              %}
+              <div
+                class="rating"
+                role="img"
+                aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: card_product.metafields.reviews.rating.value, rating_max: card_product.metafields.reviews.rating.value.scale_max }}"
+              >
+                <span
+                  aria-hidden="true"
+                  class="rating-star"
+                  style="--rating: {{ card_product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ card_product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
+                ></span>
+              </div>
+              <p class="rating-text caption">
+                <span aria-hidden="true">
+                  {{- card_product.metafields.reviews.rating.value }} /
+                  {{ card_product.metafields.reviews.rating.value.scale_max -}}
                 </span>
-              {% endif %}
-            </div>
+              </p>
+              <p class="rating-count caption">
+                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                <span class="visually-hidden">
+                  {{- card_product.metafields.reviews.rating_count }}
+                  {{ 'accessibility.total_reviews' | t -}}
+                </span>
+              </p>
+            {%- endif -%}
+
+            {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
             {%- if card_product.quantity_price_breaks_configured? -%}
-              {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
+              {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
                 {% liquid
                   assign quantity_rule = card_product.selected_or_first_available_variant.quantity_rule
                   assign has_qty_rules = false
@@ -274,7 +226,7 @@ TODO: Get reviews ready from Cal and Karima.
                   <span class="caption">{{ 'products.product.volume_pricing.note' | t }}</span>
                 </div>
               {% endif %}
-              {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
+              {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
                 <div
                   class="global-settings-popup quantity-popover__info"
                   tabindex="-1"
@@ -305,7 +257,7 @@ TODO: Get reviews ready from Cal and Karima.
                     type="button"
                     aria-label="{{ 'accessibility.close' | t }}"
                   >
-                    {{- 'icon-close.svg' | inline_asset_content -}}
+                    {%- render 'icon-close' -%}
                   </button>
                   {%- if card_product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
                     <volume-pricing class="parent-display">
@@ -345,7 +297,7 @@ TODO: Get reviews ready from Cal and Karima.
                 assign qty_rules = true
               endif
             -%}
-            {%- if card_product.variants_count > 1 or qty_rules -%}
+            {%- if card_product.variants.size > 1 or qty_rules -%}
               <modal-opener data-modal="#QuickAdd-{{ card_product.id }}">
                 <button
                   id="{{ product_form_id }}-submit"
@@ -358,9 +310,7 @@ TODO: Get reviews ready from Cal and Karima.
                 >
                   {{ 'products.product.choose_options' | t }}
                   {%- if horizontal_quick_add -%}
-                    <span class="icon-wrap">
-                      {{- 'icon-arrow.svg' | inline_asset_content -}}
-                    </span>
+                    <span class="icon-wrap">{% render 'icon-arrow' %}</span>
                   {%- endif -%}
                   {%- render 'loading-spinner' -%}
                 </button>
@@ -379,7 +329,7 @@ TODO: Get reviews ready from Cal and Karima.
                     class="quick-add-modal__toggle"
                     aria-label="{{ 'accessibility.close' | t }}"
                   >
-                    {{- 'icon-close.svg' | inline_asset_content -}}
+                    {% render 'icon-close' %}
                   </button>
                   <div id="QuickAddInfo-{{ card_product.id }}" class="quick-add-modal__content-info"></div>
                 </div>
@@ -426,9 +376,7 @@ TODO: Get reviews ready from Cal and Karima.
                       {{ 'products.product.sold_out' | t }}
                     </span>
                     {%- if horizontal_quick_add -%}
-                      <span class="icon-wrap">
-                        {{- 'icon-plus.svg' | inline_asset_content -}}
-                      </span>
+                      <span class="icon-wrap">{% render 'icon-plus' %}</span>
                     {%- endif -%}
                     {%- render 'loading-spinner' -%}
                   </button>
@@ -437,7 +385,7 @@ TODO: Get reviews ready from Cal and Karima.
             {%- endif -%}
           </div>
         {% elsif quick_add == 'bulk' %}
-          {% if card_product.variants_count == 1 %}
+          {% if card_product.variants.size == 1 %}
             <quick-add-bulk
               data-min="{{ card_product.selected_or_first_available_variant.quantity_rule.min }}"
               id="quick-add-bulk-{{ card_product.selected_or_first_available_variant.id }}-{{ section.id }}"
@@ -506,7 +454,7 @@ TODO: Get reviews ready from Cal and Karima.
                     class="quick-add-modal__toggle"
                     aria-label="{{ 'accessibility.close' | t }}"
                   >
-                    {{- 'icon-close.svg' | inline_asset_content -}}
+                    {% render 'icon-close' %}
                   </button>
                   <div
                     id="QuickAddInfo-{{ card_product.id }}"
@@ -553,7 +501,7 @@ TODO: Get reviews ready from Cal and Karima.
                           class="link product__view-details animate-arrow small-hide medium-hide"
                         >
                           {{ 'products.product.view_full_details' | t -}}
-                          {{- 'icon-arrow.svg' | inline_asset_content -}}
+                          {% render 'icon-arrow' %}
                         </a>
                       </div>
                       <div class="quick-add-modal__content-info--bulk-details large-up-hide">
@@ -609,15 +557,7 @@ TODO: Get reviews ready from Cal and Karima.
               id="Badge-{{ section_id }}-{{ card_product.id }}"
               class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
             >
-              {%- assign discount = 0 -%}
-              {%- if card_product.compare_at_price > card_product.price and card_product.compare_at_price > 0 -%}
-                {%- assign discount = card_product.compare_at_price | minus: card_product.price | times: 100 | divided_by: card_product.compare_at_price | round -%}
-              {%- endif -%}
-              {%- if discount > 0 -%}
-                {{ discount }}% OFF
-              {%- else -%}
-                {{- 'products.product.on_sale' | t -}}
-              {%- endif -%}
+              {{- 'products.product.on_sale' | t -}}
             </span>
           {%- endif -%}
         </div>
@@ -627,7 +567,6 @@ TODO: Get reviews ready from Cal and Karima.
 {%- else -%}
   {%- liquid
     assign ratio = 1
-    assign placeholder = true
     if media_aspect_ratio == 'portrait'
       assign ratio = 0.8
     endif
@@ -671,7 +610,7 @@ TODO: Get reviews ready from Cal and Karima.
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ 'products.product.vendor' | t }}</div>
             {%- endif -%}
-            {% render 'price', placeholder: placeholder, show_compare_at_price: true %}
+            {% render 'price', show_compare_at_price: true %}
           </div>
         </div>
       </div>

@@ -95,10 +95,6 @@
   transition: none;
 }
 
-.select .icon-caret {
-  width: 10px;
-}
-
 .facet-filters button {
   margin-left: 2.5rem;
 }
@@ -199,11 +195,6 @@
   margin-bottom: 1.5rem;
 }
 
-.facets__summary .svg-wrapper {
-  height: auto;
-  width: auto;
-}
-
 .facets__disclosure fieldset {
   padding: 0;
   margin: 0;
@@ -220,7 +211,7 @@
   animation: animateMenuOpen var(--duration-default) ease;
 }
 
-.facets__summary span:first-of-type {
+.facets__summary span {
   transition: text-decoration var(--duration-short) ease;
 }
 
@@ -495,8 +486,6 @@
   z-index: 1;
   margin: 0;
   opacity: 0;
-  width: 100%;
-  height: 100%;
 }
 
 .facets-layout-list--swatch .facets__label {
@@ -509,24 +498,21 @@
   display: flex;
 }
 
-.facet-checkbox > svg,
-.facet-checkbox > .svg-wrapper {
+.facet-checkbox > svg {
   background-color: rgb(var(--color-background));
   margin-right: 1.2rem;
   flex-shrink: 0;
 }
 
-.facet-checkbox .svg-wrapper {
+.facet-checkbox .icon-checkmark {
   visibility: hidden;
   position: absolute;
   left: 0.3rem;
   z-index: 5;
   top: 1.4rem;
-  width: 1.1rem;
-  height: 0.7rem;
 }
 
-.facet-checkbox > input[type='checkbox']:checked ~ .svg-wrapper > .icon-checkmark {
+.facet-checkbox > input[type='checkbox']:checked ~ .icon-checkmark {
   visibility: visible;
 }
 
@@ -536,7 +522,7 @@
     border: 0.1rem solid rgb(var(--color-background));
   }
 
-  .facet-checkbox > input[type='checkbox']:checked ~ .svg-wrapper > .icon-checkmark {
+  .facet-checkbox > input[type='checkbox']:checked ~ .icon-checkmark {
     border: none;
   }
 }
@@ -596,7 +582,7 @@ span.active-facets__button-inner {
   font-size: 1rem;
   min-height: 0;
   min-width: 0;
-  padding: 0.25rem 1.25rem;
+  padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
 }
@@ -640,8 +626,8 @@ span.active-facets__button-inner:after {
   }
 
   span.active-facets__button-inner {
-    padding-bottom: 0.1rem;
-    padding-top: 0.1rem;
+    padding-bottom: 0.3rem;
+    padding-top: 0.3rem;
   }
 
   .active-facets__button-wrapper {
@@ -690,7 +676,7 @@ a.active-facets__button.focused .active-facets__button-inner {
   outline: none;
 }
 
-.active-facets__button .svg-wrapper {
+.active-facets__button svg {
   align-self: center;
   flex-shrink: 0;
   margin-left: 0.6rem;
@@ -700,10 +686,10 @@ a.active-facets__button.focused .active-facets__button-inner {
 }
 
 @media all and (min-width: 990px) {
-  .active-facets__button .svg-wrapper {
+  .active-facets__button svg {
     margin-right: -0.4rem;
     margin-top: 0.1rem;
-    width: 1.2rem;
+    width: 1.4rem;
   }
 }
 
@@ -862,7 +848,7 @@ a.active-facets__button.focused .active-facets__button-inner {
   margin-left: 1rem;
 }
 
-.mobile-facets__open .svg-wrapper {
+.mobile-facets__open svg {
   width: 2rem;
 }
 
@@ -885,7 +871,7 @@ a.active-facets__button.focused .active-facets__button-inner {
   transition: opacity var(--duration-short) ease;
 }
 
-.mobile-facets__close .svg-wrapper {
+.mobile-facets__close svg {
   width: 2.2rem;
 }
 
@@ -894,7 +880,7 @@ details.menu-opening .mobile-facets__close {
   opacity: 1;
 }
 
-details.menu-opening .mobile-facets__close .svg-wrapper {
+details.menu-opening .mobile-facets__close svg {
   margin: 0;
 }
 
@@ -957,7 +943,7 @@ details.menu-opening .mobile-facets__close .svg-wrapper {
   padding: 1.3rem 2.5rem;
 }
 
-.mobile-facets__summary .svg-wrapper {
+.mobile-facets__summary svg {
   margin-left: auto;
 }
 
@@ -1034,8 +1020,6 @@ input.mobile-facets__checkbox {
   top: 1.9rem;
   left: 2.8rem;
   visibility: hidden;
-  width: 11px;
-  height: 9px;
 }
 
 .mobile-facets__label > input[type='checkbox']:checked ~ .icon-checkmark {

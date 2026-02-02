@@ -1,0 +1,288 @@
+{% assign selected_variant = product.selected_or_first_available_variant %}
+
+<style>
+  [x-cloak] {
+    display: none !important;
+  }
+
+  .pulse {
+    position: relative;
+    animation: pulse 1.6s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(237, 39, 0, 0.65);
+    }
+    60% {
+      box-shadow: 0 0 0 10px rgba(237, 39, 0, 0);
+    }
+  }
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+{% assign selling_points = product.metafields.custom.selling_points.value %}
+
+{% if selling_points %}
+  <ul class="list-none pl-0">
+    {% for point in selling_points %}
+      <li>✅ {{ point }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if product.variants.size > 1 %}
+  <div x-data>
+    <div>Color:
+      <span x-text="$store.pdpExtra.option1"></span>
+    </div>
+    <div class="flex gap-2 flex-wrap pt-2">
+      {% for value in product.options_with_values[0].values %}
+        {% assign bg_color = "#eed58b" %}
+        {% if value == "Black" %}
+          {% assign bg_color = "#0F172A" %}
+        {% endif %}
+        {% if value == "Silver" %}
+          {% assign bg_color = "#C0C0C0" %}
+        {% endif %}
+        <button
+          style="background-color: {{ bg_color }}"
+          @click="$store.pdpExtra.option1 = '{{ value }}';"
+          class="p-0 border-2 border-solid rounded-full size-12 flex items-center justify-center cursor-pointer"
+          :class="$store.pdpExtra.option1 === '{{ value }}' ? 'border-blue-500' : 'border-gray-200'">
+          <span class="sr-only">
+            {{ value }}
+          </span>
+        </button>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+<div x-data class="flex flex-col gap-2 [&_button]:font-['Oswald']">
+  <div class="pt-2">
+    MOST CUSTOMERS CHOOSE:
+  </div>
+  <div class="pt-6 relative -mt-4">
+    <div class="absolute top-0 right-3 text-base leading-none px-2 py-1 uppercase" :class="$store.pdpExtra.option2 === 'commander' ? 'bg-red-700 text-white' : 'bg-gray-300 text-[#0F172A]'">Best Seller</div>
+    <button
+      @click="$store.pdpExtra.option2 = 'commander'"
+      class="border-2 border-solid rounded-xl cursor-pointer p-3 flex gap-4 bg-sky-50 w-full pulse"
+      :class="$store.pdpExtra.option2 === 'commander' ? 'border-red-700' : 'border-gray-300'">
+      <div class="shrink-0 size-6 flex items-center justify-center rounded-full border-2 border-solid border-red-700">
+        <span x-show="$store.pdpExtra.option2 === 'commander'" class="block size-4 rounded-full bg-red-700"></span>
+      </div>
+      <div class="text-left space-y-1">
+        <h3 class="my-0 text-base font-semibold">THE COMMANDER
+          <span class="text-[#0F172A] text-sm bg-gray-200 font-normal inline-block px-1">
+            <span x-text="$store.pdpExtra.getPerShavePrice('commander')"></span>
+            Per Shave
+          </span>
+        </h3>
+        <div class="text-3xl font-bold text-sky-700 pt-2 flex items-center gap-8">
+          <span x-text="$store.pdpExtra.getPrice('commander')"></span>
+          <span class="text-xl bg-green-700 inline-block rounded-lg px-1 py-1 leading-none text-white">
+            <span x-text="$store.pdpExtra.getPercentOff('commander')"></span>% OFF</span>
+        </div>
+        <div class="text-gray-500 font-bold text-xl mt-0 pb-2">
+          Was:
+          <span class="line-through" x-text="$store.pdpExtra.getCompareAtPrice('commander')"></span>
+        </div>
+        <div class="text-red-700 font-bold text-lg">
+          ⚡︎ Only 15 left at this price
+        </div>
+        <div class="font-bold text-lg pb-2">
+          <span class="text-green-700">✓</span>
+          1,364 Veterans bought this month
+        </div>
+        <p class="my-0 text-gray-600">
+          1 razor + 18 blades
+          <i>(3 mo)</i>
+          + Leather case + Brush + Mixing Bowl
+        </p>
+      </div>
+    </button>
+  </div>
+
+  <div class="pt-2">
+    OTHER OPTIONS:
+  </div>
+  <button
+    @click="$store.pdpExtra.option2 = 'recruit'"
+    class="border-2 border-solid rounded-xl cursor-pointer p-3 flex gap-4 items-center bg-white w-full"
+    :class="$store.pdpExtra.option2 === 'recruit' ? 'border-[#0F172A]' : 'border-gray-300'">
+    <div class="shrink-0 size-6 flex items-center justify-center rounded-full border-2 border-solid border-[#0F172A]">
+      <span x-show="$store.pdpExtra.option2 === 'recruit'" class="block size-4 rounded-full bg-[#0F172A]"></span>
+    </div>
+    <div class="text-left space-y-1">
+      <h3 class="my-0 text-base font-semibold">THE RECRUIT
+        <span class="text-[#0F172A] text-sm bg-gray-200 font-normal inline-block px-1">
+          <span x-text="$store.pdpExtra.getPerShavePrice('recruit')"></span>
+          Per Shave
+        </span>
+      </h3>
+      <p class="my-0 text-gray-600">
+        1 Razor + 6 Blades
+        <i>(1 mo)</i>
+        + Brush + Mixing Bowl
+      </p>
+    </div>
+    <div class="ml-auto shrink-0">
+      <div class="font-semibold text-base" x-text="$store.pdpExtra.getPrice('recruit')"></div>
+      <div class="text-sm line-through">
+        <span x-text="$store.pdpExtra.getCompareAtPrice('recruit')"></span>
+      </div>
+    </div>
+  </button>
+  <button
+    @click="$store.pdpExtra.option2 = 'officer';"
+    class="border-2 border-solid rounded-xl cursor-pointer p-3 flex gap-4 items-center bg-white w-full"
+    :class="$store.pdpExtra.option2 === 'officer' ? 'border-[#0F172A]' : 'border-gray-300'">
+    <div class="shrink-0 size-6 flex items-center justify-center rounded-full border-2 border-solid border-[#0F172A]">
+      <span x-show="$store.pdpExtra.option2 === 'officer'" class="block size-4 rounded-full bg-[#0F172A]"></span>
+    </div>
+    <div class="text-left space-y-1">
+      <h3 class="my-0 text-base font-semibold">THE OFFICER
+        <span class="text-[#0F172A] text-sm bg-gray-200 font-normal inline-block px-1">
+          <span x-text="$store.pdpExtra.getPerShavePrice('officer')"></span>
+          Per Shave
+        </span>
+      </h3>
+      <p class="my-0 text-gray-600">
+        1 razor + 12 Blades
+        <i>(2 mo)</i>
+        + Leather case + Mixing Bowl
+      </p>
+    </div>
+    <div class="ml-auto shrink-0">
+      <div class="font-semibold text-base" x-text="$store.pdpExtra.getPrice('officer')"></div>
+      <div class="text-sm line-through">
+        <span x-text="$store.pdpExtra.getCompareAtPrice('officer')"></span>
+      </div>
+    </div>
+  </button>
+</div>
+
+<product-form
+  class="product-form"
+  data-hide-errors="{{ gift_card_recipient_feature_active }}"
+  data-section-id="{{ section.id }}">
+  {%- form 'product'
+    , product
+    , id: ''
+    , class: 'form'
+    , novalidate: 'novalidate'
+    , data-type: 'add-to-cart-form'
+  -%}
+    <input
+      x-data
+      type="hidden"
+      name="id"
+      id="product-variant-id"
+      :value="$store.pdpExtra.selectedVariant"
+      class="product-variant-id">
+    <input
+      type="hidden"
+      name="quantity"
+      value="1">
+    <button
+      type="submit"
+      name="add"
+      class="hidden_product_form_submit button button--full-width shadow-xl"
+      aria-label="Add to cart">
+      <span>ADD TO CART</span>
+      {%- render 'loading-spinner' -%}
+    </button>
+  {%- endform -%}
+</product-form>
+
+<ul class="list-none p-0 flex justify-center flex-wrap gap-x-4">
+  <li>
+    ✓ 100-Day Money-Back Guarantee</li>
+  <li>
+    ✓ Free Shipping
+  </li>
+  <li>
+    ✓ 4,800+ operators Made the Switch
+  </li>
+</ul>
+
+<script>
+
+  const pdVariants = [
+    {% for variant in product.variants %}
+      {
+        id: "{{ variant.id }}",
+        name: "{{ variant.title }}",
+        image: "{% if variant.featured_image %}{{ variant.featured_image | image_url: width: 750 }}{% endif %}",
+        price: "{{ variant.price | money }}",
+        compareAtPrice: "{{ variant.compare_at_price | money }}",
+        percentOff: "{{ variant.compare_at_price | minus: variant.price | times: 100.0 | divided_by: variant.compare_at_price | round }}",
+        "recruit": {
+          perShave: "{{ variant.price | divided_by: 40 | money }}"
+        },
+        "officer": {
+          perShave: "{{ variant.price | divided_by: 50 | money }}"
+        },
+        "commander": {
+          perShave: "{{ variant.price | divided_by: 100 | money }}"
+        }
+      },
+    {% endfor %}
+  ];
+
+  function prefetchVariantImages(variants) {
+    if (!Array.isArray(variants)) return;
+
+    const urls = new Set(
+      variants
+        .map(v => v?.image?.trim())
+        .filter(Boolean)
+    );
+
+    urls.forEach(url => {
+      const img = new Image();
+      img.decoding = 'async';
+      img.src = url;
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    prefetchVariantImages(pdVariants);
+  });
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.store('pdpExtra', {
+      selectedVariant: "{{ selected_variant.id }}",
+      option1: "{{ selected_variant.option1 }}",
+      option2: "commander",
+      getPrice (package) { 
+        const matchedVariant = pdVariants.find(variant => variant.name.includes(this.option1) && variant.name.toLowerCase().includes(package.toLowerCase()));
+        return matchedVariant.price;
+      },
+      getCompareAtPrice (package) {
+        const matchedVariant = pdVariants.find(variant => variant.name.includes(this.option1) && variant.name.toLowerCase().includes(package.toLowerCase()));
+        return matchedVariant.compareAtPrice;
+      },
+      getPerShavePrice (package) {
+        const matchedVariant = pdVariants.find(variant => variant.name.includes(this.option1) && variant.name.toLowerCase().includes(package.toLowerCase()));
+        return matchedVariant[package].perShave;
+      },
+      getPercentOff (package) {
+        const matchedVariant = pdVariants.find(variant => variant.name.includes(this.option1) && variant.name.toLowerCase().includes(package.toLowerCase()));
+        return matchedVariant.percentOff;
+      }
+    });
+    Alpine.effect(() => {
+      const store = Alpine.store('pdpExtra');
+      const matchedVariant = pdVariants.find(variant => variant.name.includes(store.option1) && variant.name.toLowerCase().includes(store.option2.toLowerCase()));
+      store.selectedVariant = matchedVariant.id;
+
+      if (matchedVariant.image) {
+        const img = document.querySelector('.product_gallery_image');
+        img.setAttribute('src', matchedVariant.image);
+        img.setAttribute('srcset', `${matchedVariant.image} 1x`);
+      }
+    })
+  })
+</script>

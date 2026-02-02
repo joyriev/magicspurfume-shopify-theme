@@ -182,8 +182,8 @@
         "title": "Stabilire preț per volum",
         "note": "Stabilirea prețului per volum este disponibilă",
         "minimum": "Peste {{ quantity }}",
-        "price_range": "{{ minimum }} - {{ maximum }}",
-        "price_at_each_html": "la {{ price }}/buc."
+        "price_at_each": "la {{ price }}/buc.",
+        "price_range": "{{ minimum }} - {{ maximum }}"
       },
       "taxes_included": "Taxe incluse.",
       "duties_included": "Taxe vamale incluse.",

@@ -1,0 +1,192 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div
+  id="{{ section.id }}"
+  class="section-{{ section.id }}-padding"
+  style="background-color: {{ section.settings.background_color }}">
+  <div class="page-width">
+    <h2 class="text-center text-2xl md:text-4xl font-semibold mb-6 mt-0">{{ section.settings.heading }}</h2>
+    <p class="text-center text-sm md:text-base text-gray-600 mb-8">{{ section.settings.subheading }}</p>
+    <div class="flex gap-3 justify-center [&>.active]:[border:2px_solid_#000000]">
+      {% for block in section.blocks %}
+        <button class="bg-white text-black border-2 border-gray-200 rounded-lg border-solid font-semibold text-sm md:text-lg px-4 py-2 cursor-pointer products-tab-btn">
+        {% if block.settings.tab_icon %}
+          <img src="{{ block.settings.tab_icon | image_url }}" alt="{{ block.settings.tab_title }}" class="w-6 h-6" width="24" height="24">
+        {% endif %}
+        <span>
+            {{ block.settings.tab_title }}
+          </span>
+        </button>
+      {% endfor %}
+    </div>
+    {% for block in section.blocks %}
+      <div class="tab-content pt-6 {% unless forloop.first %}[display:none]{% endunless %}">
+        {% assign collection = block.settings.collection %}
+        {% if collection and collection.products.size > 0 %}
+          <div class="grid grid-cols-2 gap-6 md:gap-8 md:grid-cols-4">
+            {%- for product in collection.products limit: 4 -%}
+              <div class="flex flex-col bg-white p-4 pt-11 shadow-sm rounded-lg relative">
+                {% if product.tags contains 'bestseller' or product.tags contains 'onsale' %}
+                    <div class="absolute top-3 left-4 flex gap-4">
+                    {% if product.tags contains 'bestseller' %}
+                        <div class="bg-blue-50 text-blue-600 px-2 py-1 text-xs rounded-full flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>  
+                        <span>Bestseller</span>
+                        </div>
+                    {% elsif product.tags contains 'onsale' %}
+                        <div class="bg-red-50 text-red-600 px-2 py-1 text-xs rounded-full">⚡ On Sale</div>
+                    {% endif %}
+                    </div>
+                {% endif %}
+                <a href="{{ product.url }}" class="flex">
+                    <img
+                    class="w-full h-auto"
+                    src="{{ product.images.first |  image_url: width: 300 }}"
+                    alt="{{ product.title }}"
+                    height="{{ product.images.first.height }}"
+                    width="{{ product.images.first.width }}">
+                </a>
+                <h3 class="mb-0 text-base">
+                    <a class="no-underline text-black font-semibold" href="{{product.url}}">
+                    {{ product.title }}
+                    </a>
+                </h3>
+                <div class="line-clamp-3 text-sm [&_br]:hidden">
+                    {{ product.metafields.custom.short_description | metafield_tag }}
+                </div>
+                <div class="my-3">
+                    {%- render 'price'
+                    , product: product
+                    , use_variant: true
+                    , show_badges: false
+                    , price_class: 'price--small'
+                    -%}
+                </div>
+                <div class="mt-auto">
+                    <a class="bg-black text-white uppercase text-sm font-semibold tracking-[2px] py-3 px-4 rounded-lg no-underline w-full text-center block" href="{{ product.url }}">
+                    Buy Now
+                    </a>
+                </div>
+                </div>
+            {%- endfor -%}
+          </div>
+        {% else %}
+          <p class="text-gray-500">No products found in this collection.</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('#{{ section.id }} .products-tab-btn');
+        const tabContents = document.querySelectorAll('#{{ section.id }} .tab-content');
+
+        buttons.forEach((button, index) => {
+            // Add click event listener to each button
+            button.addEventListener('click', (event) => {
+                // Hide all tab contents
+                tabContents.forEach(content => content.style.display = 'none');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                
+                // Show the clicked tab's content
+                button.classList.add('active');
+                tabContents[index].style.display = 'block';
+            });
+        });
+    
+        // Show the first tab content by default
+        if (tabContents.length > 0) {
+            buttons[0].classList.add('active');
+            tabContents[0].style.display = 'block';
+        }
+    });
+</script>
+
+{% schema %}
+  {
+    "name": "Homepage Products Tab",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#fcfbf9"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Selected for you"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Discover our curated selection of premium Shaving products."
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "tab_icon",
+                "label": "Tab Icon"
+            },
+            {
+            "type": "text",
+            "id": "tab_title",
+            "label": "Tab Title"
+          }, {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage Products Tab"
+      }
+    ]
+  }
+{% endschema %}

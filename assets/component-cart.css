@@ -45,10 +45,6 @@ cart-items.is-empty .title-wrapper-with-link,
   .cart__warnings {
     padding: 7rem 0 1rem;
   }
-
-  .cart__empty-text {
-    margin: 0 0 3rem;
-  }
 }
 
 cart-items {
@@ -170,6 +166,10 @@ cart-items {
 
 .cart__dynamic-checkout-buttons:has(.dynamic-checkout__content:empty) {
   margin: 0;
+}
+
+.cart__dynamic-checkout-buttons div[role='button'] {
+  border-radius: var(--buttons-radius-outset) !important;
 }
 
 .cart__blocks > * + * {

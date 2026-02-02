@@ -183,8 +183,8 @@
         "title": "Kiekybinė kainodara",
         "note": "Galima kiekybinė kainodara",
         "minimum": "{{ quantity }}+",
-        "price_range": "{{ minimum }}–{{ maximum }}",
-        "price_at_each_html": "po {{ price }}/vnt."
+        "price_at_each": "po {{ price }}/vnt.",
+        "price_range": "{{ minimum }}–{{ maximum }}"
       },
       "taxes_included": "Mokesčiai įtraukti.",
       "duties_included": "Muito mokesčiai įtraukti.",

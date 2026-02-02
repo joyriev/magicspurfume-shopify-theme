@@ -180,8 +180,8 @@
         "title": "Volumprissetting",
         "note": "Volumprissetting er tilgjengelig",
         "minimum": "{{ quantity }}+",
-        "price_range": "{{ minimum }}–{{ maximum }}",
-        "price_at_each_html": "til {{ price }}/pr. stk"
+        "price_at_each": "til {{ price }}/pr. stk",
+        "price_range": "{{ minimum }}–{{ maximum }}"
       },
       "product_variants": "Produktvarianter",
       "taxes_included": "Inkludert avgifter.",
