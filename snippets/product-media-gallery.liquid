@@ -1,0 +1,92 @@
+<div class="sticky top-6">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <div id="productSwiper" class="swiper">
+    <div class="swiper-wrapper">
+      {% for image in product.images %}
+        <img
+          src="{{ image.src | img_url: 'master' }}"
+          alt="{{ image.alt }}"
+          height="{{ image.height }}"
+          width="{{ image.width }}"
+          class="productSwiperImage swiper-slide rounded-lg">
+      {% endfor %}
+    </div>
+    <div
+      data-text="text"
+      id="productSwiperPrev"
+      class="swiper-button-prev !flex bg-white !w-10 [&]:after:!text-xl [&]:after:text-gray-900"></div>
+    <div
+      data-text="text"
+      id="productSwiperNext"
+      class="swiper-button-next !flex bg-white !w-10 [&]:after:!text-xl [&]:after:text-gray-900"></div>
+  </div>
+  <div id="productThumbnails" class="swiper mt-4">
+    <div class="swiper-wrapper [&>.swiper-slide-thumb-active]:border-[#226139] [&>.swiper-slide-thumb-active]:opacity-100">
+      {% for image in product.images %}
+        <img
+          id="slider-thumbnail-{{ forloop.index0 }}"
+          src="{{ image | image_url: width: 150, height: 150 }}"
+          alt="{{ image.alt }}"
+          height="150"
+          width="150"
+          class="productThumbnail swiper-slide slide max-w-20 md:max-w-28 opacity-70 border-2 border-solid border-gray-200 rounded-lg cursor-pointer" />
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+      // Swiper Slider For product images with thumbnail sync
+      window.addEventListener("DOMContentLoaded", function () {
+    var productThumbnails = new Swiper('#productThumbnails', {
+      slidesPerView: 5,
+      spaceBetween: 8,
+      freeMode: true,
+      watchSlidesProgress: true,
+      watchOverflow: true,
+      direction: 'horizontal',
+      slideToClickedSlide: true,
+      breakpoints: {
+        320: {
+          slidesPerView: 4,
+        },
+        600: {
+          slidesPerView: 4,
+        },
+        900: {
+          slidesPerView: 5,
+        }
+      }
+    });
+
+    var productImages = new Swiper('#productSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      observer: true,
+      observeParents: true,
+      navigation: {
+        prevEl: "#productSwiperPrev",
+        nextEl: "#productSwiperNext",
+      },
+      thumbs: {
+        swiper: productThumbnails
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        600: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        800: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+      },
+    });
+      });
+  </script>
+</div>

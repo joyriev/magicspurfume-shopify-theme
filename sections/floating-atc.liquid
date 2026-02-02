@@ -1,0 +1,66 @@
+<div id="floatingAtc" class="fixed bottom-0 left-0 right-0 bg-white z-10 [transform:translateY(100%)] [&.active]:[transform:translateY(0)] py-4 shadow-[0_0_20px_5px_rgba(0,0,0,0.1)] transition-transform duration-500">
+  <div class="page-width">
+    <div class="flex items-center justify-between">
+      <h2 class="text-2xl font-semibold m-0 [display:none] md:block">
+        {{ product.title }}
+      </h2>
+      <button class="bg-[#226139] text-white px-6 py-3 rounded-md border-0 tracking-wide text-2xl shadow cursor-pointer hover:bg-[#1c522f] transition-colors w-full md:w-auto">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const atcBtn = document.querySelector('.cta_product_from_submit_btn');
+        const floatingAtc = document.getElementById('floatingAtc');
+        const floatingAtcBtn = document.querySelector('#floatingAtc button');
+
+        if(!atcBtn || !floatingAtc || !floatingAtcBtn) return;
+
+        // Observe the scrollToTarget's bottom crossing the viewport top
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                if (entry.boundingClientRect.bottom < 0) {
+                    // scrolled past (above viewport)
+                    floatingAtc.classList.add('active');
+                } else {
+                    // partially or fully visible in viewport
+                    floatingAtc.classList.remove('active');
+                }
+                });
+            },
+            {
+                threshold: [0],
+                root: null,
+                rootMargin: '0px',
+            }
+        );
+
+        observer.observe(atcBtn);
+
+        floatingAtcBtn.addEventListener('click', () => {
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            // Bind ATC click event
+            atcBtn.click();
+        });
+    });
+
+</script>
+
+{% schema %}
+  {
+    "name": "Floating ATC",
+    "tag": "section",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Floating ATC"
+      }
+    ]
+  }
+{% endschema %}

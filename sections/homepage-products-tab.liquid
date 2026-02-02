@@ -1,0 +1,175 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id="{{ section.id }}"
+  class="section-{{ section.id }}-padding"
+  style="background-color: {{ section.settings.background_color }}">
+  <div class="page-width">
+    <div class="flex justify-center border-0 border-b border-b-gray-100 border-solid [&>.active]:[border-bottom:3px_solid_#c8202f]">
+      {% for block in section.blocks %}
+        <button class="bg-transparent border-0 font-semibold text-sm md:text-lg px-4 py-3 cursor-pointer products-tab-btn">
+          {{ block.settings.tab_title }}
+        </button>
+      {% endfor %}
+    </div>
+    {% for block in section.blocks %}
+      <div class="tab-content pt-6 [display:none]">
+        {% assign collection = block.settings.collection %}
+        {% if collection and collection.products.size > 0 %}
+          <ul
+            id="product-grid"
+            data-id="{{ section.id }}"
+            style="display: flex !important;"
+            class="grid product-grid grid--2-col-tablet-down grid--4-col-desktop">
+            {% assign skip_card_product_styles = false %}
+            {%- for product in collection.products limit: 8 -%}
+              {% assign lazy_load = false %}
+              {%- if forloop.index > 2 -%}
+                {%- assign lazy_load = true -%}
+              {%- endif -%}
+              <li
+                class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+                {% endif %}>
+                {% render 'card-product'
+                  , card_product: product
+                  , media_aspect_ratio: section.settings.image_ratio
+                  , image_shape: section.settings.image_shape
+                  , show_secondary_image: section.settings.show_secondary_image
+                  , show_vendor: section.settings.show_vendor
+                  , show_rating: true
+                  , lazy_load: lazy_load
+                  , skip_styles: skip_card_product_styles
+                  , quick_add: section.settings.quick_add
+                  , section_id: section.id
+                %}
+              </li>
+              {%- assign skip_card_product_styles = true -%}
+            {%- endfor -%}
+          </ul>
+        {% else %}
+          <p class="text-gray-500">No products found in this collection.</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+    {% comment %} Tabs CTA button {% endcomment %}
+    <div class="text-center mt-14">
+      <a
+        href="{{ section.settings.button_link }}"
+        class="no-underline text-white font-semibold px-8 py-3 bg-[#137c44] hover:bg-[#02491c] rounded-full tracking-widest text-lg transition-colors tabs-cta-ripple-animation"
+        aria-label="{{ section.settings.button_text }}">
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('#{{ section.id }} .products-tab-btn');
+        const tabContents = document.querySelectorAll('#{{ section.id }} .tab-content');
+
+        buttons.forEach((button, index) => {
+            // Add click event listener to each button
+            button.addEventListener('click', (event) => {
+                // Hide all tab contents
+                tabContents.forEach(content => content.style.display = 'none');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                
+                // Show the clicked tab's content
+                button.classList.add('active');
+                tabContents[index].style.display = 'block';
+            });
+        });
+    
+        // Show the first tab content by default
+        if (tabContents.length > 0) {
+            buttons[0].classList.add('active');
+            tabContents[0].style.display = 'block';
+        }
+    });
+</script>
+
+{% schema %}
+  {
+    "name": "Homepage Products Tab",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#fcfbf9"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "View All"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link",
+        "default": "/collections/all"
+      },
+      {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      }, {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 36
+      }, {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 36
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tab_title",
+            "label": "Tab Title"
+          }, {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage Products Tab"
+      }
+    ]
+  }
+{% endschema %}
