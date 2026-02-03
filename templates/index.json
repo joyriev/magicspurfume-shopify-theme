@@ -50,6 +50,7 @@
       "settings": {
         "background_color": "#000000",
         "bg_image": "shopify://shop_images/ChatGPT_Image_Feb_3_2026_04_24_58_PM.png",
+        "bg_mobile_image": "shopify://shop_images/ChatGPT_Image_Feb_3_2026_04_34_48_PM.png",
         "rounded_image": true,
         "image_placement": "1",
         "mobile_image_placement": "under_heading",
