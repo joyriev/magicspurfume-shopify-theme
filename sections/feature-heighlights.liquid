@@ -21,7 +21,7 @@
       {% for block in section.blocks %}
         <div class="flex flex-col items-center gap-1" {{ block.shopify_attributes }}>
           <img
-            class="size-7 md:size-10"
+            class="h-7 md:h-10 w-auto"
             src="{{ block.settings.perk_image | image_url: width: 150 }}"
             loading="lazy"
             height="{{ block.settings.perk_image.height }}"

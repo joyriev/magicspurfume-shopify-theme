@@ -334,6 +334,10 @@
     height: 100%
 }
 
+.h-7 {
+    height: 28px
+}
+
 .min-h-\[200px\] {
     min-height: 200px
 }
@@ -1340,6 +1344,10 @@
 
     .md\:size-10 {
         width: 40px;
+        height: 40px
+    }
+
+    .md\:h-10 {
         height: 40px
     }
 
