@@ -283,6 +283,11 @@
     height: 24px
 }
 
+.size-7 {
+    width: 28px;
+    height: 28px
+}
+
 .size-8 {
     width: 32px;
     height: 32px
@@ -1131,6 +1136,11 @@
     color: rgb(3 105 161 / var(--tw-text-opacity, 1))
 }
 
+.text-slate-700 {
+    --tw-text-opacity: 1;
+    color: rgb(51 65 85 / var(--tw-text-opacity, 1))
+}
+
 .text-slate-900 {
     --tw-text-opacity: 1;
     color: rgb(15 23 42 / var(--tw-text-opacity, 1))
@@ -1326,6 +1336,11 @@
 
     .md\:hidden {
         display: none
+    }
+
+    .md\:size-10 {
+        width: 40px;
+        height: 40px
     }
 
     .md\:w-1\/2 {

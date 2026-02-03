@@ -237,7 +237,7 @@
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
-                <div class="product__accordion accordion quick-add-hidden bg-white px-4 md:hidden" {{ block.shopify_attributes }}>
+                <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                   <details id="Details-{{ block.id }}-{{ section.id }}">
                     <summary>
                       <div class="summary__title">
@@ -931,8 +931,6 @@
       {{ product | structured_data }}
     </script>
 
-    {% comment %} Shaving routine upsell {% endcomment %}
-    {% render 'shaving-routine' %}
   </div>
 </product-info>
 
