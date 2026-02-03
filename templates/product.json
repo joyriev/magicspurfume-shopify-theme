@@ -276,67 +276,50 @@
         "padding_bottom": 72
       }
     },
-    "collapsible_content_xgLkqk": {
-      "type": "collapsible-content",
+    "image_and_text_EFE4gB": {
+      "type": "image-and-text",
       "blocks": {
-        "collapsible_row_XYjgey": {
-          "type": "collapsible_row",
+        "heading_PJdXGz": {
+          "type": "heading",
           "settings": {
-            "heading": "Is this suitable for beginners?",
-            "icon": "none",
-            "row_content": "<p><br/>Yes. The Ranger Core Kit is designed to be straightforward and forgiving, even if you’ve never used a safety razor before. The weight, balance, and blade exposure help guide the shave naturally, without forcing pressure. Most customers find they adapt within a few shaves.</p>",
-            "page": ""
+            "content": "Polnische Produktion",
+            "heading_type": "h2",
+            "font_size": 40,
+            "mobile_font_size": 24,
+            "text_color": "#000000"
           }
         },
-        "collapsible_row_a6CNmq": {
-          "type": "collapsible_row",
+        "text_Mhwr3T": {
+          "type": "text",
           "settings": {
-            "heading": "How often should I change the blade?",
-            "icon": "none",
-            "row_content": "<p>On average, every <strong>5–7 shaves</strong>, depending on your beard type and shaving frequency. If the shave starts to feel rough or tuggy, it’s time to swap the blade. Fresh blades are inexpensive, and changing them regularly keeps the shave comfortable and clean.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_XL39iJ": {
-          "type": "collapsible_row",
-          "disabled": true,
-          "settings": {
-            "heading": "Can I cancel my subscription easily?",
-            "icon": "none",
-            "row_content": "<p><br/>Yes. There’s no lock-in and no runaround. You can pause, change, or cancel your blade subscription anytime from your account. No phone calls. No hoops.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_ktrjFp": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "What is the Boulder Crest Foundation?",
-            "icon": "none",
-            "row_content": "<p>The Boulder Crest Foundation is a nonprofit organization that supports veterans, service members, and first responders through programs focused on mental health, personal growth, and post-service well-being. We support their work because we believe real strength includes taking care of the men who’ve carried the weight.</p>",
-            "page": ""
+            "content": "<p>Unsere polnische Produktion garantiert höchste Qualitätsstandards und ermöglicht es uns, jeden Schritt des Herstellungsprozesses zu überwachen und zu kontrollieren. </p><p>Von der Auswahl der hochwertigen Rohstoffe bis zur sorgfältigen Abfüllung jeder Flasche stellen wir sicher, dass jedes Produkt unseren hohen Ansprüchen an Qualität und Handwerkskunst gerecht wird.</p>",
+            "mobile_content": "",
+            "font_size": 18,
+            "text_color": "#000000"
           }
         }
       },
       "block_order": [
-        "collapsible_row_XYjgey",
-        "collapsible_row_a6CNmq",
-        "collapsible_row_XL39iJ",
-        "collapsible_row_ktrjFp"
+        "heading_PJdXGz",
+        "text_Mhwr3T"
       ],
-      "name": "t:sections.collapsible_content.presets.name",
+      "name": "Image and Text",
       "settings": {
-        "caption": "",
-        "heading": "FAQ",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "none",
-        "color_scheme": "",
-        "container_color_scheme": "",
-        "open_first_collapsible_row": false,
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
+        "background_color": "#ffffff",
+        "image": "shopify://shop_images/WhatsApp_Image_2026-01-17_at_10.59.01.jpg",
+        "rounded_image": true,
+        "image_placement": "0",
+        "mobile_image_placement": "under_heading",
+        "button_text": "",
+        "button_url": "",
+        "columns_gap": 40,
+        "rows_gap": 20,
+        "content_alignment": "center",
+        "blocks_gap": 24,
         "padding_top": 72,
-        "padding_bottom": 72
+        "padding_bottom": 72,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
       }
     },
     "popular_products_BptEUV": {
@@ -356,7 +339,7 @@
     "main",
     "feature_heighlights_fCUG3E",
     "comparison_section_adhb8j",
-    "collapsible_content_xgLkqk",
+    "image_and_text_EFE4gB",
     "popular_products_BptEUV"
   ]
 }
