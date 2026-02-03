@@ -248,61 +248,34 @@
         "padding_bottom": 72
       }
     },
-    "ugc_slider_76fkYw": {
-      "type": "ugc-slider",
+    "collapsible_content_JWRDn8": {
+      "type": "collapsible-content",
       "blocks": {
-        "image_gNjqDT": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_Wiqb4h": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_ywkG7j": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_TXdQU7": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_gGB67M": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_6LBjBb": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_9ARAYp": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_CFQK9D": {
-          "type": "image",
-          "settings": {}
-        },
-        "image_yFrK9n": {
-          "type": "image",
-          "settings": {}
+        "collapsible_row_b44n9F": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Warum sind Ihre Parfüms so billig?",
+            "icon": "none",
+            "row_content": "<p>Wir konzentrieren uns auf den Duftinhalt.<strong>Kein</strong>luxuriöses Flakon,<strong>keine</strong>besondere Verpackung,<strong>keine</strong>teuren Läden &<strong>keine</strong>teuren Influencerdeals ermöglichen dir luxuriös zu riechen, ohne das Budget zu sprengen.</p>",
+            "page": ""
+          }
         }
       },
       "block_order": [
-        "image_gNjqDT",
-        "image_Wiqb4h",
-        "image_ywkG7j",
-        "image_TXdQU7",
-        "image_gGB67M",
-        "image_6LBjBb",
-        "image_9ARAYp",
-        "image_CFQK9D",
-        "image_yFrK9n"
+        "collapsible_row_b44n9F"
       ],
-      "name": "UGC Slider",
+      "name": "t:sections.collapsible_content.presets.name",
       "settings": {
-        "background_color": "#ffffff",
-        "heading": "1000+ Made Switch To Keans.co",
+        "caption": "",
+        "heading": "FAQ",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
         "padding_top": 72,
         "padding_bottom": 72
       }
@@ -315,6 +288,6 @@
     "image_and_text_TQajG3",
     "bigger_then_a_shave_nJQJzw",
     "home_tabs_fcxFYG",
-    "ugc_slider_76fkYw"
+    "collapsible_content_JWRDn8"
   ]
 }
