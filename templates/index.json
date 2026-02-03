@@ -119,8 +119,8 @@
       "settings": {
         "background_color": "#f7f7f7",
         "heading": "BESTSELLERS",
-        "subheading": "Designed and formulated for quality.",
-        "collection": "home-page",
+        "subheading": "",
+        "collection": "best-sellers",
         "padding_top": 72,
         "padding_bottom": 72
       }
