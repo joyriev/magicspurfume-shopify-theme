@@ -103,7 +103,7 @@
         "collapsible_tab_FAAFhb": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "🔍 Product Details",
+            "heading": "Beschreibung",
             "icon": "none",
             "content": "{{ product.description }}",
             "page": ""
@@ -112,18 +112,45 @@
         "collapsible_tab_bKn87j": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "🚚 Shipping & Delivery",
+            "heading": "Warum sind Ihre Parfüms so billig?",
             "icon": "none",
-            "content": "<p>Orders are typically processed within <strong>1–2 business days</strong> and shipped from the U.S. Once your order ships, you’ll receive a tracking number so you can follow it every step of the way.</p><p>Delivery times vary by location, but most customers receive their order within <strong>3–7 business days</strong>.</p><p>We don’t play games with shipping costs or surprise fees. What you see at checkout is what you pay.</p><p>If you ever have a question about your order, our support team is easy to reach and happy to help.</p>",
+            "content": "<p>Wir konzentrieren uns auf den Duftinhalt.<strong>Kein</strong>luxuriöses Flakon,<strong>keine</strong>besondere Verpackung,<strong>keine</strong>teuren Läden &<strong>keine</strong>teuren Influencerdeals ermöglichen dir luxuriös zu riechen, ohne das Budget zu sprengen.</p>",
             "page": ""
           }
         },
         "collapsible_tab_T6Fk9z": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "🔄 Return & Refund Policy",
+            "heading": "Ist es ein parfümiertes Wasser?",
             "icon": "none",
-            "content": "<p>Not satisfied? No problem. We provide a hassle-free 100-day return policy and a full refund if you’re not completely happy with your shave. Just reach out to our support team to start the process.</p>",
+            "content": "<p>Ja, es ist ein parfümiertes Wasser – es enthält bis zu 19 % Essenz. Eau de Toilette zum Beispiel hat zwischen 5 und 8 % und die Essenz liegt bei 41 % aufwärts.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_GUrz86": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Wie lange hält das Parfüm?",
+            "icon": "none",
+            "content": "<p>Das Parfüm hält je nach Person unterschiedlich lange an, von 3 bis 8 Stunden für einen ruhigen, intensiven Duft. Nach einer längeren Zeitspanne verblasst der Duft.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_TKfWP3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Unterscheidet sich der inspirierte Duft?",
+            "icon": "none",
+            "content": "<p>Nein, dieser Duft ist eine perfekte Ergänzung mit dem gleichen Duft.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_HiNKBa": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Was bedeutet 19% Parfüm?",
+            "icon": "none",
+            "content": "<p>Es bedeutet, dass der Inhalt des Flakons bis zu 19 % Parfümöl enthält. Originalflakons enthalten zwischen 16 und 21 % Parfüm für Eau de Parfum.</p>",
             "page": ""
           }
         },
@@ -169,6 +196,9 @@
         "collapsible_tab_FAAFhb",
         "collapsible_tab_bKn87j",
         "collapsible_tab_T6Fk9z",
+        "collapsible_tab_GUrz86",
+        "collapsible_tab_TKfWP3",
+        "collapsible_tab_HiNKBa",
         "product_reviews_W3CkbE"
       ],
       "settings": {
