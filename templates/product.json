@@ -59,16 +59,16 @@
             "text_style": "body"
           }
         },
+        "price_MG94AW": {
+          "type": "price",
+          "settings": {}
+        },
         "variant_picker_hH3Diz": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
           }
-        },
-        "price_MG94AW": {
-          "type": "price",
-          "settings": {}
         },
         "quantity_selector_WT7P8d": {
           "type": "quantity_selector",
@@ -161,8 +161,8 @@
         "payment_badges_FkCwVc",
         "delivery_deadline_CQHJwz",
         "text_XCCWH9",
-        "variant_picker_hH3Diz",
         "price_MG94AW",
+        "variant_picker_hH3Diz",
         "quantity_selector_WT7P8d",
         "buy_buttons_eXWBwX",
         "icon_with_text_ytpGUH",
