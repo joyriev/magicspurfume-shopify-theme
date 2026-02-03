@@ -14,11 +14,11 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "link_list_qwPhpX": {
-          "type": "link_list",
+        "text_x89MfR": {
+          "type": "text",
           "settings": {
-            "heading": "Policies",
-            "menu": ""
+            "heading": "Magic Perfume",
+            "subtext": "<p>Teile Kontaktinformationen, Shop-Details und Markeninhalte mit deinen Kunden.</p>"
           }
         },
         "link_list_Fhdw8K": {
@@ -37,7 +37,7 @@
         }
       },
       "block_order": [
-        "link_list_qwPhpX",
+        "text_x89MfR",
         "link_list_Fhdw8K",
         "text_RP9BNp"
       ],
