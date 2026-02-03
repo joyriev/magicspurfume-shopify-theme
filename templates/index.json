@@ -49,8 +49,6 @@
       "name": "Image and Text",
       "settings": {
         "background_color": "#000000",
-        "bg_image": "shopify://shop_images/keans-home-hero.png",
-        "bg_mobile_image": "shopify://shop_images/keans-home-mobile-bg.png",
         "rounded_image": true,
         "image_placement": "1",
         "mobile_image_placement": "under_heading",
@@ -118,7 +116,6 @@
       "name": "Image and Text",
       "settings": {
         "background_color": "#ffffff",
-        "image": "shopify://shop_images/keans_01.png",
         "rounded_image": true,
         "image_placement": "0",
         "mobile_image_placement": "under_heading",
@@ -140,7 +137,6 @@
         "feature_yMXGpx": {
           "type": "feature",
           "settings": {
-            "icon_image": "shopify://shop_images/donate-donation-svgrepo-com.png",
             "title": "Buy 1, Donate 1",
             "description": "For every kit sold, we donate a full grooming set to a veteran in transition."
           }
@@ -148,7 +144,6 @@
         "feature_qBQxUn": {
           "type": "feature",
           "settings": {
-            "icon_image": "shopify://shop_images/solidarity-ribbon-svgrepo-com.png",
             "title": "40% to Boulder Crest",
             "description": "We proudly support veteran post-traumatic growth and mental wellness initiatives."
           }
@@ -156,7 +151,6 @@
         "feature_gcBc9d": {
           "type": "feature",
           "settings": {
-            "icon_image": "shopify://shop_images/warranty-svgrepo-com.png",
             "title": "Lifetime Warranty",
             "description": "Our handles are built to survive the test of time. Guaranteed for life."
           }
@@ -178,7 +172,6 @@
       "name": "Comparison Section",
       "settings": {
         "background_color": "#ffffff",
-        "image": "shopify://shop_images/keans_us_vs_them_4.png",
         "title": "How We Compare",
         "padding_top": 72,
         "padding_bottom": 72
@@ -228,57 +221,39 @@
       "blocks": {
         "image_gNjqDT": {
           "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/keans_review_06.png"
-          }
+          "settings": {}
         },
         "image_Wiqb4h": {
           "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/keans_review_07.png"
-          }
+          "settings": {}
         },
         "image_ywkG7j": {
           "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/keans_review_08.png"
-          }
+          "settings": {}
         },
         "image_TXdQU7": {
           "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/keans_review_09.png"
-          }
+          "settings": {}
         },
         "image_gGB67M": {
           "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/keans_review_01.png"
-          }
+          "settings": {}
         },
         "image_6LBjBb": {
           "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/keans_review_02.png"
-          }
+          "settings": {}
         },
         "image_9ARAYp": {
           "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/keans_review_03.png"
-          }
+          "settings": {}
         },
         "image_CFQK9D": {
           "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/keans_review_04.png"
-          }
+          "settings": {}
         },
         "image_yFrK9n": {
           "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/keans_review_05.png"
-          }
+          "settings": {}
         }
       },
       "block_order": [
