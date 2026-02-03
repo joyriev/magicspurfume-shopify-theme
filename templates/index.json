@@ -259,10 +259,50 @@
             "row_content": "<p>Wir konzentrieren uns auf den Duftinhalt.<strong>Kein</strong>luxuriöses Flakon,<strong>keine</strong>besondere Verpackung,<strong>keine</strong>teuren Läden &<strong>keine</strong>teuren Influencerdeals ermöglichen dir luxuriös zu riechen, ohne das Budget zu sprengen.</p>",
             "page": ""
           }
+        },
+        "collapsible_row_rCVDnP": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Ist es ein parfümiertes Wasser?",
+            "icon": "none",
+            "row_content": "<p>Ja, es ist ein parfümiertes Wasser – es enthält bis zu 19 % Essenz. Eau de Toilette zum Beispiel hat zwischen 5 und 8 % und die Essenz liegt bei 41 % aufwärts.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_rNbx6p": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Wie lange hält das Parfüm?",
+            "icon": "none",
+            "row_content": "<p>Das Parfüm hält je nach Person unterschiedlich lange an, von 3 bis 8 Stunden für einen ruhigen, intensiven Duft. Nach einer längeren Zeitspanne verblasst der Duft.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_irweNa": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Unterscheidet sich der inspirierte Duft?",
+            "icon": "none",
+            "row_content": "<p>Nein, dieser Duft ist eine perfekte Ergänzung mit dem gleichen Duft.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_gJVQkB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Was bedeutet 19% Parfüm?",
+            "icon": "none",
+            "row_content": "<p>Es bedeutet, dass der Inhalt des Flakons bis zu 19 % Parfümöl enthält. Originalflakons enthalten zwischen 16 und 21 % Parfüm für Eau de Parfum.</p>",
+            "page": ""
+          }
         }
       },
       "block_order": [
-        "collapsible_row_b44n9F"
+        "collapsible_row_b44n9F",
+        "collapsible_row_rCVDnP",
+        "collapsible_row_rNbx6p",
+        "collapsible_row_irweNa",
+        "collapsible_row_gJVQkB"
       ],
       "name": "t:sections.collapsible_content.presets.name",
       "settings": {
