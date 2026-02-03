@@ -72,6 +72,7 @@
         },
         "quantity_selector_WT7P8d": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {}
         },
         "buy_buttons_eXWBwX": {
@@ -84,7 +85,7 @@
         "icon_with_text_ytpGUH": {
           "type": "icon-with-text",
           "settings": {
-            "layout": "vertical",
+            "layout": "horizontal_2",
             "desktop_icon_size": 24,
             "desktop_font_size": 16,
             "mobile_icon_size": 24,
@@ -225,7 +226,6 @@
       "name": "Comparison Section",
       "settings": {
         "background_color": "#f7f7f7",
-        "image": "shopify://shop_images/keans_us_vs_them_4.png",
         "title": "How We Compare",
         "padding_top": 72,
         "padding_bottom": 72
