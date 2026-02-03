@@ -215,22 +215,22 @@
         "collection_gRbYPe": {
           "type": "collection",
           "settings": {
-            "tab_title": "⚡ Bestseller",
-            "collection": "home-page"
+            "tab_title": "🔥 BESTSELLERS",
+            "collection": "best-sellers"
           }
         },
         "collection_xgUpzQ": {
           "type": "collection",
           "settings": {
-            "tab_title": "🔥 Trending",
-            "collection": "home-page"
+            "tab_title": "FÜR FRAUEN",
+            "collection": "fuer-frauen"
           }
         },
         "collection_3WBTm3": {
           "type": "collection",
           "settings": {
-            "tab_title": "📥 New Arrivals",
-            "collection": "home-page"
+            "tab_title": "FÜR MÄNNER",
+            "collection": "fuer-maenner"
           }
         }
       },
