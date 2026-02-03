@@ -22,14 +22,14 @@
   style="background-color: {{ section.settings.background_color }}; background-image: url('{{ section.settings.background_image | image_url }}');">
   <div class="page-width">
     {% if section.settings.heading != blank %}
-      <h2 class="text-3xl md:text-4xl font-black text-center mb-0 mt-0">{{ section.settings.heading }}</h2>
+      <h2 class="text-3xl md:text-4xl font-black mt-0">{{ section.settings.heading }}</h2>
     {% endif %}
     {% if section.settings.subheading != blank %}
       <p class="text-center mb-12">{{ section.settings.subheading }}</p>
     {% endif %}
     <div class="grid grid-cols-2 gap-6 md:gap-8 md:grid-cols-4">
       {% for product in section.settings.collection.products limit: 4 %}
-        <div class="flex flex-col bg-white p-4 pt-11 shadow-sm rounded-lg relative">
+        <div class="flex flex-col bg-white p-4 shadow-sm rounded-lg relative">
           {% if product.tags contains 'bestseller' or product.tags contains 'onsale' %}
             <div class="absolute top-3 left-4 flex gap-4">
               {% if product.tags contains 'bestseller' %}
@@ -50,20 +50,20 @@
               height="{{ product.images.first.height }}"
               width="{{ product.images.first.width }}">
           </a>
+          {% comment %} <div class="line-clamp-3 text-sm [&_br]:hidden mt-2">
+            {{ product.metafields.custom.short_description | metafield_tag }}
+          </div> {% endcomment %}
           <h3 class="mb-0 text-base">
             <a class="no-underline text-black font-semibold" href="{{product.url}}">
               {{ product.title }}
             </a>
           </h3>
-          <div class="line-clamp-3 text-sm [&_br]:hidden">
-            {{ product.metafields.custom.short_description | metafield_tag }}
-          </div>
           <div class="my-3">
             {%- render 'price'
               , product: product
               , use_variant: true
               , show_badges: false
-              , price_class: 'price--small'
+              , price_class: 'price--large'
             -%}
           </div>
           <div class="mt-auto">
