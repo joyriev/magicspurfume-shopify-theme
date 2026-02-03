@@ -78,6 +78,7 @@
         "perks_x8n9DF": {
           "type": "perks",
           "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.04.49_PM.png",
             "perk_title": "Spezielle Rabatte für Stammkunden",
             "perk_content": "Gutscheine bis zu 100€"
           }
@@ -85,6 +86,7 @@
         "perks_yTdgqz": {
           "type": "perks",
           "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.05.39_PM.png",
             "perk_title": "Kostenlose Geschenkverpackung",
             "perk_content": "Mit 100 Buchstaben benutzerdefinierte Notiz"
           }
@@ -92,6 +94,7 @@
         "perks_7zj6gB": {
           "type": "perks",
           "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.07.45_PM.png",
             "perk_title": "Experten-Kundenservice",
             "perk_content": "8:00 - 20:00, 7 Tage/Woche"
           }
