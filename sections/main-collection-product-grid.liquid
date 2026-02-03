@@ -155,7 +155,7 @@
                   data-cascade
                   style="--animation-order: {{ forloop.index }};"
                   {% endif %}>
-                  {% render 'card-product'
+                  {% comment %} {% render 'card-product'
                     , card_product: product
                     , media_aspect_ratio: section.settings.image_ratio
                     , image_shape: section.settings.image_shape
@@ -166,7 +166,50 @@
                     , skip_styles: skip_card_product_styles
                     , quick_add: section.settings.quick_add
                     , section_id: section.id
-                  %}
+                  %} {% endcomment %}
+                   <div class="flex flex-col bg-white p-4 shadow-sm rounded-lg relative">
+                    {% if product.tags contains 'bestseller' or product.tags contains 'onsale' %}
+                      <div class="absolute top-3 left-4 flex gap-4">
+                        {% if product.tags contains 'bestseller' %}
+                          <div class="bg-blue-50 text-blue-600 px-2 py-1 text-xs rounded-full flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>  
+                            <span>Bestseller</span>
+                          </div>
+                        {% elsif product.tags contains 'onsale' %}
+                          <div class="bg-red-50 text-red-600 px-2 py-1 text-xs rounded-full">⚡ On Sale</div>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                    <a href="{{ product.url }}" class="flex">
+                      <img
+                        class="w-full h-auto"
+                        src="{{ product.images.first |  image_url: width: 300 }}"
+                        alt="{{ product.title }}"
+                        height="{{ product.images.first.height }}"
+                        width="{{ product.images.first.width }}">
+                    </a>
+                    {% comment %} <div class="line-clamp-3 text-sm [&_br]:hidden mt-2">
+                      {{ product.metafields.custom.short_description | metafield_tag }}
+                    </div> {% endcomment %}
+                    <h3 class="mb-0 text-base">
+                      <a class="no-underline text-black font-semibold" href="{{product.url}}">
+                        {{ product.title }}
+                      </a>
+                    </h3>
+                    <div class="my-3">
+                      {%- render 'price'
+                        , product: product
+                        , use_variant: true
+                        , show_badges: false
+                        , price_class: 'price--large'
+                      -%}
+                    </div>
+                    <div class="mt-auto">
+                      <a class="bg-black text-white uppercase text-sm font-semibold tracking-[2px] py-3 px-4 rounded-lg no-underline w-full text-center block" href="{{ product.url }}">
+                        Jetzt kaufen
+                      </a>
+                    </div>
+                  </div>
                 </li>
                 {%- assign skip_card_product_styles = true -%}
               {%- endfor -%}
