@@ -209,16 +209,6 @@
         "heading": "Bigger Than A Shave"
       }
     },
-    "comparison_section_gw8bib": {
-      "type": "comparison-section",
-      "name": "Comparison Section",
-      "settings": {
-        "background_color": "#ffffff",
-        "title": "How We Compare",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
     "home_tabs_fcxFYG": {
       "type": "home-tabs",
       "blocks": {
@@ -324,7 +314,6 @@
     "popular_products_3gqnEi",
     "image_and_text_TQajG3",
     "bigger_then_a_shave_nJQJzw",
-    "comparison_section_gw8bib",
     "home_tabs_fcxFYG",
     "ugc_slider_76fkYw"
   ]
