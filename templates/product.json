@@ -70,13 +70,6 @@
             "text_alignment": "center"
           }
         },
-        "text_XCCWH9": {
-          "type": "text",
-          "settings": {
-            "text": "💬 Was sagen unsere Kunden? Lesen Sie die Bewertungen unserer zufriedenen Kunden und bestellen Sie noch heute! ✨",
-            "text_style": "body"
-          }
-        },
         "quantity_selector_WT7P8d": {
           "type": "quantity_selector",
           "disabled": true,
@@ -99,6 +92,12 @@
             "heading_3": "",
             "icon_4": "truck",
             "heading_4": ""
+          }
+        },
+        "custom_liquid_QcxgR4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<img \nstyle=\"width: 100%;\" \nsrc=\"https://cdn.shopify.com/s/files/1/0086/7932/5753/files/Zrzut-ekranu-2025-03-19-095755-1024x294.png?v=1770100462\" alt=\"Benefits\">"
           }
         },
         "collapsible_tab_FAAFhb": {
@@ -191,9 +190,9 @@
         "reactive_atc_LBDQE9",
         "payment_badges_FkCwVc",
         "delivery_deadline_CQHJwz",
-        "text_XCCWH9",
         "quantity_selector_WT7P8d",
         "icon_with_text_ytpGUH",
+        "custom_liquid_QcxgR4",
         "collapsible_tab_FAAFhb",
         "collapsible_tab_bKn87j",
         "collapsible_tab_T6Fk9z",
