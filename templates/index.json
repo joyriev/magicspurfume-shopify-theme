@@ -131,7 +131,7 @@
         "heading_CcxYji": {
           "type": "heading",
           "settings": {
-            "content": "Insane Precision on the Curve.",
+            "content": "Polnische Produktion",
             "heading_type": "h2",
             "font_size": 40,
             "mobile_font_size": 24,
@@ -141,30 +141,21 @@
         "text_gHnd8C": {
           "type": "text",
           "settings": {
-            "content": "<p>We haven’t forgotten how they tried to redefine masculinity. Ranger Core was born to push back. We believe in strength, honor, and traditional values. No lectures, just a superior shave.<br/></p>",
+            "content": "<p>Unsere polnische Produktion garantiert höchste Qualitätsstandards und ermöglicht es uns, jeden Schritt des Herstellungsprozesses zu überwachen und zu kontrollieren. </p><p>Von der Auswahl der hochwertigen Rohstoffe bis zur sorgfältigen Abfüllung jeder Flasche stellen wir sicher, dass jedes Produkt unseren hohen Ansprüchen an Qualität und Handwerkskunst gerecht wird.</p>",
             "mobile_content": "",
             "font_size": 18,
             "text_color": "#000000"
-          }
-        },
-        "button_q4qttC": {
-          "type": "button",
-          "settings": {
-            "button_text": "GET YOUR KIT",
-            "button_url": "shopify://collections/best-sellers-1",
-            "button_color": "#000000",
-            "text_color": "#ffffff"
           }
         }
       },
       "block_order": [
         "heading_CcxYji",
-        "text_gHnd8C",
-        "button_q4qttC"
+        "text_gHnd8C"
       ],
       "name": "Image and Text",
       "settings": {
         "background_color": "#ffffff",
+        "image": "shopify://shop_images/WhatsApp_Image_2026-01-17_at_10.59.01.jpg",
         "rounded_image": true,
         "image_placement": "0",
         "mobile_image_placement": "under_heading",
