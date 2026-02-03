@@ -64,6 +64,52 @@
         "mobile_padding_bottom": 328
       }
     },
+    "feature_heighlights_EpJcyT": {
+      "type": "feature-heighlights",
+      "blocks": {
+        "perks_dXcKFz": {
+          "type": "perks",
+          "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.00.15_PM.png",
+            "perk_title": "Kostenloser Versand für alle Bestellungen über 50 €!",
+            "perk_content": "Nur in dieser Woche"
+          }
+        },
+        "perks_x8n9DF": {
+          "type": "perks",
+          "settings": {
+            "perk_title": "Spezielle Rabatte für Stammkunden",
+            "perk_content": "Gutscheine bis zu 100€"
+          }
+        },
+        "perks_yTdgqz": {
+          "type": "perks",
+          "settings": {
+            "perk_title": "Kostenlose Geschenkverpackung",
+            "perk_content": "Mit 100 Buchstaben benutzerdefinierte Notiz"
+          }
+        },
+        "perks_7zj6gB": {
+          "type": "perks",
+          "settings": {
+            "perk_title": "Experten-Kundenservice",
+            "perk_content": "8:00 - 20:00, 7 Tage/Woche"
+          }
+        }
+      },
+      "block_order": [
+        "perks_dXcKFz",
+        "perks_x8n9DF",
+        "perks_yTdgqz",
+        "perks_7zj6gB"
+      ],
+      "name": "Feature Highlights",
+      "settings": {
+        "background_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "popular_products_3gqnEi": {
       "type": "popular-products",
       "name": "Popular Products",
@@ -278,6 +324,7 @@
   },
   "order": [
     "image_and_text_nj4mfM",
+    "feature_heighlights_EpJcyT",
     "popular_products_3gqnEi",
     "image_and_text_TQajG3",
     "bigger_then_a_shave_nJQJzw",
