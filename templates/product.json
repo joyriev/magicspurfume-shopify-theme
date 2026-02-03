@@ -186,41 +186,6 @@
         "padding_bottom": 72
       }
     },
-    "what_included_4m9LU7": {
-      "type": "what-included",
-      "blocks": {
-        "feature_cHGKPw": {
-          "type": "feature",
-          "settings": {
-            "title": "Precision Safety Razor",
-            "description": "Engineered for a close, comfortable shave, built to last."
-          }
-        },
-        "feature_qYJ3q7": {
-          "type": "feature",
-          "settings": {
-            "title": "Satisfaction Guarantee",
-            "description": "If it’s not a better shave, we’ll make it right."
-          }
-        },
-        "feature_xJQxhW": {
-          "type": "feature",
-          "settings": {
-            "title": "10x Platinum Blades",
-            "description": "Sharp, durable double-edge blades for months of shaving."
-          }
-        }
-      },
-      "block_order": [
-        "feature_cHGKPw",
-        "feature_qYJ3q7",
-        "feature_xJQxhW"
-      ],
-      "name": "What's Included",
-      "settings": {
-        "heading": "WHAT'S INCLUDED"
-      }
-    },
     "comparison_section_adhb8j": {
       "type": "comparison-section",
       "name": "Comparison Section",
@@ -309,7 +274,6 @@
   },
   "order": [
     "main",
-    "what_included_4m9LU7",
     "comparison_section_adhb8j",
     "collapsible_content_xgLkqk",
     "popular_products_BptEUV"
