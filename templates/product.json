@@ -216,6 +216,55 @@
         "padding_bottom": 72
       }
     },
+    "feature_heighlights_fCUG3E": {
+      "type": "feature-heighlights",
+      "blocks": {
+        "perks_MLz9YK": {
+          "type": "perks",
+          "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.00.15_PM.png",
+            "perk_title": "Kostenloser Versand für alle Bestellungen über 50 €!",
+            "perk_content": "Nur in dieser Woche"
+          }
+        },
+        "perks_NV4H3P": {
+          "type": "perks",
+          "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.04.49_PM.png",
+            "perk_title": "Spezielle Rabatte für Stammkunden",
+            "perk_content": "Gutscheine bis zu 100€"
+          }
+        },
+        "perks_qWY7Uy": {
+          "type": "perks",
+          "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.05.39_PM.png",
+            "perk_title": "Kostenlose Geschenkverpackung",
+            "perk_content": "Mit 100 Buchstaben benutzerdefinierte Notiz"
+          }
+        },
+        "perks_HKnHJ8": {
+          "type": "perks",
+          "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.07.45_PM.png",
+            "perk_title": "Experten-Kundenservice",
+            "perk_content": "8:00 - 20:00, 7 Tage/Woche"
+          }
+        }
+      },
+      "block_order": [
+        "perks_MLz9YK",
+        "perks_NV4H3P",
+        "perks_qWY7Uy",
+        "perks_HKnHJ8"
+      ],
+      "name": "Feature Highlights",
+      "settings": {
+        "background_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "comparison_section_adhb8j": {
       "type": "comparison-section",
       "name": "Comparison Section",
@@ -304,6 +353,7 @@
   },
   "order": [
     "main",
+    "feature_heighlights_fCUG3E",
     "comparison_section_adhb8j",
     "collapsible_content_xgLkqk",
     "popular_products_BptEUV"
