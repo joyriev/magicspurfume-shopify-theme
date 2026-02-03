@@ -32,7 +32,7 @@
           "type": "text",
           "settings": {
             "heading": "Kontakt",
-            "subtext": "<p>Impressum<br/><br/>Magic Perufme Sp. z o.o.<br/>Kurfürstendamm 11<br/>10719 Berlin<br/>Germany<br/><br/>VAT Number: PL8571940901<br/>Amtsgericht Stettin (Szczecin)<br/>KRS: 0001138079<br/><br/>Phone: +1 888 373 6114<br/>Email: hello@magicperfume.co</p>"
+            "subtext": "<p>Impressum<br/><br/>Magic Perufme Sp. z o.o.<br/>Kurfürstendamm 11<br/>10719 Berlin, Germany<br/><br/>VAT Number: PL8571940901<br/>Amtsgericht Stettin (Szczecin)<br/>KRS: 0001138079<br/><br/>Phone: +1 888 373 6114<br/>Email: hello@magicperfume.co</p>"
           }
         }
       },
