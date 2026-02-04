@@ -82,10 +82,36 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "announcement_bar_qHhPhe": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_apnpHc": {
+          "type": "announcement",
+          "settings": {
+            "text": "VALENTINSAKTION 3+1 GRATIS",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_apnpHc"
+      ],
+      "name": "t:sections.announcement-bar.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "show_line_separator": true,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
     }
   },
   "order": [
     "blocky_lys_scrolling_text_bar_GLkKNr",
-    "header"
+    "header",
+    "announcement_bar_qHhPhe"
   ]
 }
