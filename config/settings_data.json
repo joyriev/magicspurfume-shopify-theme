@@ -144,6 +144,18 @@
       }
     },
     "content_for_index": [],
+    "blocks": {
+      "4642963702922203831": {
+        "type": "shopify://apps/multipixels-social-pixels/blocks/clients/ddddad6e-c586-4e00-a40d-3671ba4790fd",
+        "disabled": false,
+        "settings": {}
+      },
+      "1513253815146976218": {
+        "type": "shopify://apps/omnisend-email-marketing-sms/blocks/app-embed/44704aa2-794f-4c5d-8c8e-039c841158e9",
+        "disabled": false,
+        "settings": {}
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
