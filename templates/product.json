@@ -47,7 +47,6 @@
         },
         "payment_badges_FkCwVc": {
           "type": "payment_badges",
-          "disabled": true,
           "settings": {}
         },
         "delivery_deadline_CQHJwz": {
