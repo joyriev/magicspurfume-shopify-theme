@@ -447,6 +447,10 @@
     width: 100%
 }
 
+.w-28 {
+    width: 112px
+}
+
 .min-w-0 {
     min-width: 0px
 }
@@ -536,6 +540,10 @@
 
 .grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr))
+}
+
+.grid-rows-3 {
+    grid-template-rows: repeat(3, minmax(0, 1fr))
 }
 
 .flex-col {
@@ -883,6 +891,16 @@
 
 .bg-white\/50 {
     background-color: rgb(255 255 255 / 0.5)
+}
+
+.bg-\[\#EBF4EF\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(235 244 239 / var(--tw-bg-opacity, 1))
+}
+
+.bg-\[\#f2f2f2\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(242 242 242 / var(--tw-bg-opacity, 1))
 }
 
 .bg-opacity-20 {
@@ -1307,6 +1325,11 @@
     color: rgb(255 255 255 / 0.5)
 }
 
+.text-\[\#226139\] {
+    --tw-text-opacity: 1;
+    color: rgb(34 97 57 / var(--tw-text-opacity, 1))
+}
+
 .line-through {
     text-decoration-line: line-through
 }
@@ -1499,6 +1522,10 @@
         display: block
     }
 
+    .md\:grid {
+        display: grid
+    }
+
     .md\:hidden {
         display: none
     }
@@ -1521,6 +1548,10 @@
 
     .md\:w-full {
         width: 100%
+    }
+
+    .md\:w-\[calc\(100\%-144px\)\] {
+        width: calc(100% - 144px)
     }
 
     .md\:grid-cols-2 {
@@ -1651,6 +1682,20 @@
 
     .lg\:w-5\/12 {
         width: 41.666667%
+    }
+
+    .lg\:w-36 {
+        width: 144px
+    }
+
+    .lg\:px-4 {
+        padding-left: 16px;
+        padding-right: 16px
+    }
+
+    .lg\:text-sm {
+        font-size: 14px;
+        line-height: 20px
     }
 }
 
