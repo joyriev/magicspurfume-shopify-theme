@@ -45,7 +45,6 @@
         },
         "reactive_atc_LBDQE9": {
           "type": "reactive_atc",
-          "disabled": false,
           "settings": {}
         },
         "custom_liquid_QcxgR4": {
@@ -280,6 +279,15 @@
         "padding_bottom": 72
       }
     },
+    "scent_breakdown_pqKDL9": {
+      "type": "scent-breakdown",
+      "name": "Scent Breakdown",
+      "settings": {
+        "background_color": "#f7f7f7",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
     "image_and_text_EFE4gB": {
       "type": "image-and-text",
       "blocks": {
@@ -358,6 +366,7 @@
     "main",
     "feature_heighlights_fCUG3E",
     "comparison_section_adhb8j",
+    "scent_breakdown_pqKDL9",
     "image_and_text_EFE4gB",
     "popular_products_BptEUV",
     "1770288371f70b6dc1"
