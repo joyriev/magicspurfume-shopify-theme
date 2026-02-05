@@ -337,6 +337,21 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
+    },
+    "1770288371f70b6dc1": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_preview_badge_KPQ8JA": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_KPQ8JA"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -344,6 +359,7 @@
     "feature_heighlights_fCUG3E",
     "comparison_section_adhb8j",
     "image_and_text_EFE4gB",
-    "popular_products_BptEUV"
+    "popular_products_BptEUV",
+    "1770288371f70b6dc1"
   ]
 }
