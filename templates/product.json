@@ -45,8 +45,16 @@
           "disabled": true,
           "settings": {}
         },
+        "custom_liquid_QcxgR4": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<img \nstyle=\"width: 100%;\" \nsrc=\"https://cdn.shopify.com/s/files/1/0086/7932/5753/files/Zrzut-ekranu-2025-03-19-095755-1024x294.png?v=1770100462\" alt=\"Benefits\">"
+          }
+        },
         "payment_badges_FkCwVc": {
           "type": "payment_badges",
+          "disabled": true,
           "settings": {}
         },
         "delivery_deadline_CQHJwz": {
@@ -91,12 +99,6 @@
             "heading_3": "",
             "icon_4": "truck",
             "heading_4": ""
-          }
-        },
-        "custom_liquid_QcxgR4": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<img \nstyle=\"width: 100%;\" \nsrc=\"https://cdn.shopify.com/s/files/1/0086/7932/5753/files/Zrzut-ekranu-2025-03-19-095755-1024x294.png?v=1770100462\" alt=\"Benefits\">"
           }
         },
         "collapsible_tab_FAAFhb": {
@@ -187,11 +189,11 @@
         "variant_picker_hH3Diz",
         "buy_buttons_eXWBwX",
         "reactive_atc_LBDQE9",
+        "custom_liquid_QcxgR4",
         "payment_badges_FkCwVc",
         "delivery_deadline_CQHJwz",
         "quantity_selector_WT7P8d",
         "icon_with_text_ytpGUH",
-        "custom_liquid_QcxgR4",
         "collapsible_tab_FAAFhb",
         "collapsible_tab_bKn87j",
         "collapsible_tab_T6Fk9z",
