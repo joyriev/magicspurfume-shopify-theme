@@ -268,17 +268,6 @@
         "padding_bottom": 36
       }
     },
-    "comparison_section_adhb8j": {
-      "type": "comparison-section",
-      "name": "Comparison Section",
-      "settings": {
-        "background_color": "#f7f7f7",
-        "image": "shopify://shop_images/Screenshot_2026-02-03_at_12.37.57_PM.png",
-        "title": "+200 TAGE DES GUTEN GERUCHS",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
     "scent_breakdown_pqKDL9": {
       "type": "scent-breakdown",
       "name": "Scent Breakdown",
@@ -365,7 +354,6 @@
   "order": [
     "main",
     "feature_heighlights_fCUG3E",
-    "comparison_section_adhb8j",
     "scent_breakdown_pqKDL9",
     "image_and_text_EFE4gB",
     "popular_products_BptEUV",
