@@ -19,15 +19,17 @@
   <div class="page-width">
     <div class="grid md:grid-cols-2 gap-8">
       <div>
-        <img
-          class="w-full h-full rounded-lg object-cover"
-          src="{{ product.images[1].src | image_url }}"
-          alt="{{ product.title }}"
-          height="{{ product.images[1].height }}"
-          width="{{ product.images[1].width }}">
+        {% if section.settings.image != blank %}
+          <img
+            class="w-full h-full rounded-lg object-cover"
+            src="{{ section.settings.image | image_url }}"
+            alt="Scent Breakdown"
+            height="{{ section.settings.image.height }}"
+            width="{{ section.settings.image.width }}">
+        {% endif %}
       </div>
       <div>
-        <div class="bg-[#f0f2ec] px-4 py-6 rounded-lg !mb-4">
+        <div class="bg-[#f2f2f2] px-4 py-6 rounded-lg !mb-4">
           <h2 class="m-0 mb-3 text-2xl tracking-normal font-semibold text-center">Scent Breakdown</h2>
           <div class="[&_p]:last:mb-0 [&_p]:leading-snug [&_p]:tracking-normal text-center">
             {{ product.metafields.custom.scent_breakdown | metafield_tag }}
@@ -80,10 +82,17 @@
         "id": "background_color",
         "label": "Background Color",
         "default": "#fcfbf9"
-      }, {
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Section Image"
+      },
+      {
         "type": "header",
         "content": "t:sections.all.padding.section_padding_heading"
-      }, {
+      },
+      {
         "type": "range",
         "id": "padding_top",
         "min": 0,
