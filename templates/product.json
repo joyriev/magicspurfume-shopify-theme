@@ -24,10 +24,12 @@
         },
         "price_MG94AW": {
           "type": "price",
+          "disabled": true,
           "settings": {}
         },
         "variant_picker_hH3Diz": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
@@ -35,6 +37,7 @@
         },
         "buy_buttons_eXWBwX": {
           "type": "buy_buttons",
+          "disabled": true,
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
@@ -42,7 +45,7 @@
         },
         "reactive_atc_LBDQE9": {
           "type": "reactive_atc",
-          "disabled": true,
+          "disabled": false,
           "settings": {}
         },
         "custom_liquid_QcxgR4": {
