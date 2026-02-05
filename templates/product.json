@@ -273,6 +273,7 @@
       "name": "Scent Breakdown",
       "settings": {
         "background_color": "#f7f7f7",
+        "image": "shopify://shop_images/23729_482_f560cff9-0b8f-4356-a8d5-c212222d8106-scaled.jpg",
         "padding_top": 72,
         "padding_bottom": 72
       }
