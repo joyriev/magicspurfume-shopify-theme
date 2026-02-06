@@ -16,6 +16,18 @@
           "type": "title",
           "settings": {}
         },
+        "review_stars_ajrWDt": {
+          "type": "review-stars",
+          "settings": {
+            "rating": 5,
+            "star_color": "#ffcc00",
+            "review_text_color": "#000000",
+            "empty_stars_style": "hidden",
+            "review_text": "4,7/5 Sterne (10.000+ Bewertungen)",
+            "review_font_size": 16,
+            "review_alignment": "flex-start"
+          }
+        },
         "custom_liquid_yLNzLq": {
           "type": "custom_liquid",
           "settings": {
@@ -186,6 +198,7 @@
       },
       "block_order": [
         "title_DkyBTh",
+        "review_stars_ajrWDt",
         "custom_liquid_yLNzLq",
         "price_MG94AW",
         "variant_picker_hH3Diz",
