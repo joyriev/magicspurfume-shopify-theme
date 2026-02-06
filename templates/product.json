@@ -339,6 +339,7 @@
     },
     "popular_products_BptEUV": {
       "type": "popular-products",
+      "disabled": true,
       "name": "Popular Products",
       "settings": {
         "background_color": "#f7f7f7",
