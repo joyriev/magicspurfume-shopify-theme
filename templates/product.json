@@ -278,6 +278,19 @@
         "padding_bottom": 72
       }
     },
+    "stacks_up_fd9fNW": {
+      "type": "stacks-up",
+      "disabled": true,
+      "name": "Stacks Up",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "title": "How TryScent Stacks Up",
+        "btn_text": "View All",
+        "btn_url": "shopify://collections/all",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "image_and_text_EFE4gB": {
       "type": "image-and-text",
       "blocks": {
@@ -356,6 +369,7 @@
     "main",
     "feature_heighlights_fCUG3E",
     "scent_breakdown_pqKDL9",
+    "stacks_up_fd9fNW",
     "image_and_text_EFE4gB",
     "popular_products_BptEUV",
     "1770288371f70b6dc1"
