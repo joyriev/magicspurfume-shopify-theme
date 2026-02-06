@@ -172,7 +172,7 @@
 
     <div id="load-more-container-{{ section.id }}" class="mt-12 text-center {% if section.blocks.size <= 20 %}hidden{% endif %}">
       <button id="load-more-btn-{{ section.id }}" class="px-5 py-2 border border-solid border-gray-400 rounded-lg text-slate-900 font-bold text-sm uppercase tracking-wide bg-white hover:bg-slate-900 hover:text-white transition-colors cursor-pointer">
-        Show More Reviews
+        {{ section.settings.button_text }}
       </button>
       <div id="loading-spinner-{{ section.id }}" class="hidden flex items-center justify-center gap-2 mt-4">
         <div class="loading-spinner"></div>
