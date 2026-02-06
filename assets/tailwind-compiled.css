@@ -268,6 +268,10 @@
     margin-right: 8px
 }
 
+.mt-8 {
+    margin-top: 32px
+}
+
 .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
@@ -307,6 +311,10 @@
 
 .flex {
     display: flex
+}
+
+.\!flex {
+    display: flex !important
 }
 
 .inline-flex {
@@ -459,6 +467,10 @@
     width: 100%
 }
 
+.w-\[900px\] {
+    width: 900px
+}
+
 .min-w-0 {
     min-width: 0px
 }
@@ -481,6 +493,22 @@
 
 .max-w-\[780px\] {
     max-width: 780px
+}
+
+.max-w-16 {
+    max-width: 64px
+}
+
+.max-w-24 {
+    max-width: 96px
+}
+
+.max-w-\[100\%\] {
+    max-width: 100%
+}
+
+.max-w-\[400px\] {
+    max-width: 400px
 }
 
 .flex-1 {
@@ -562,6 +590,10 @@
     flex-wrap: wrap
 }
 
+.items-end {
+    align-items: flex-end
+}
+
 .items-center {
     align-items: center
 }
@@ -610,6 +642,14 @@
     gap: 5px
 }
 
+.gap-0 {
+    gap: 0px
+}
+
+.gap-1\.5 {
+    gap: 6px
+}
+
 .gap-x-4 {
     -moz-column-gap: 16px;
          column-gap: 16px
@@ -617,6 +657,15 @@
 
 .gap-y-4 {
     row-gap: 16px
+}
+
+.gap-x-6 {
+    -moz-column-gap: 24px;
+         column-gap: 24px
+}
+
+.gap-y-3 {
+    row-gap: 12px
 }
 
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
@@ -671,6 +720,16 @@
 
 .rounded-xl {
     border-radius: 12px
+}
+
+.rounded-b-xl {
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px
+}
+
+.rounded-t-xl {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px
 }
 
 .border {
@@ -776,6 +835,10 @@
 
 .border-transparent {
     border-color: transparent
+}
+
+.border-\[\#12121233\] {
+    border-color: #12121233
 }
 
 .bg-\[\#0F172A\] {
@@ -914,6 +977,16 @@
     background-color: rgb(21 128 61 / 0.85)
 }
 
+.bg-\[\#137c44\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(19 124 68 / var(--tw-bg-opacity, 1))
+}
+
+.bg-\[\#f0f2ec\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(240 242 236 / var(--tw-bg-opacity, 1))
+}
+
 .bg-opacity-20 {
     --tw-bg-opacity: 0.2
 }
@@ -1049,6 +1122,11 @@
     padding-bottom: 32px
 }
 
+.px-8 {
+    padding-left: 32px;
+    padding-right: 32px
+}
+
 .\!pb-3 {
     padding-bottom: 12px !important
 }
@@ -1111,6 +1189,10 @@
 
 .pt-12 {
     padding-top: 48px
+}
+
+.pr-4 {
+    padding-right: 16px
 }
 
 .text-left {
@@ -1475,6 +1557,10 @@
     transform: translateX(-50%)
 }
 
+.\[word-break\:break-word\] {
+    word-break: break-word
+}
+
 .animate-move-left {
     animation: move-left 50s linear infinite
 }
@@ -1498,6 +1584,11 @@
 .hover\:bg-gray-100:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1))
+}
+
+.hover\:bg-\[\#02491c\]:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(2 73 28 / var(--tw-bg-opacity, 1))
 }
 
 .hover\:underline:hover {
