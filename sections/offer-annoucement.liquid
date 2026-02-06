@@ -1,14 +1,14 @@
-<div class="py-2" style="background-color: {{ section.settings.background_color }};">
+<div class="py-4" style="background-color: {{ section.settings.background_color }};">
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-center">
       {% if section.settings.link != blank %}
-        <a href="{{ section.settings.link }}" class="text-white font-medium no-underline flex items-center text-nowrap text-sm md:text-base">
+        <a href="{{ section.settings.link }}" class="text-white font-medium no-underline flex items-center text-nowrap text-base md:text-lg">
           {{ section.settings.prepend_text }}
           <span class="text-white inline-block mx-2 font-bold bg-green-700 px-2 py-0.5 rounded [transform:rotate(-3deg)]" style="background-color: {{ section.settings.background_color_2 }};">{{ section.settings.link_text }}</span>
           {{ section.settings.append_text }}
         </a>
       {% else %}
-        <div class="text-white font-medium flex items-center text-nowrap text-sm md:text-base">
+        <div class="text-white font-medium flex items-center text-nowrap text-base md:text-lg">
           {{ section.settings.prepend_text }}
           <span class="text-white inline-block mx-2 font-bold bg-green-700 px-2 py-0.5 rounded [transform:rotate(-3deg)]" style="background-color: {{ section.settings.background_color_2 }};">{{ section.settings.link_text }}</span>
           {{ section.settings.append_text }}
