@@ -153,6 +153,13 @@
                 >
                   {{- block.settings.text -}}
                 </p>
+              {%-  when 'custom_rating_text' -%}
+                <div class="flex gap-1 items-center" {{ block.shopify_attributes }}>
+                  <img src="{{ 'rating-stars.svg' |  asset_url }}" alt="*****" height="16" width="80">
+                  <div class="leading-snug tracking-normal">
+                    {{ block.settings.text }}
+                  </div>
+                </div>
               {%- when 'title' -%}
                 <div class="product__title relative" {{ block.shopify_attributes }}>
                   {%- if product.tags contains 'bestseller' or product.tags contains 'onsale' -%}
@@ -1245,6 +1252,19 @@
         {
           "type": "paragraph",
           "content": "t:sections.main-product.blocks.share.settings.title_info.content"
+        }
+      ]
+    },
+    {
+      "type": "custom_rating_text",
+      "name": "Custom Rating Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "4.9/5 Rated (3,926 Reviews)",
+          "label": "Custom Rating Text"
         }
       ]
     },
