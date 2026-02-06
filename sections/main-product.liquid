@@ -154,12 +154,12 @@
                   {{- block.settings.text -}}
                 </p>
               {%-  when 'custom_rating_text' -%}
-                <div class="flex gap-1 items-center" {{ block.shopify_attributes }}>
+                <a href="#reviews" class="flex gap-1 items-center no-underline text-black" {{ block.shopify_attributes }}>
                   <img src="{{ 'rating-stars.svg' |  asset_url }}" alt="*****" height="16" width="80">
                   <div class="leading-snug tracking-normal">
                     {{ block.settings.text }}
                   </div>
-                </div>
+                </a>
               {%- when 'title' -%}
                 <div class="product__title relative" {{ block.shopify_attributes }}>
                   {%- if product.tags contains 'bestseller' or product.tags contains 'onsale' -%}
