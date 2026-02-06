@@ -358,7 +358,7 @@
         "heading": "Customer Reviews",
         "review_text": "4.9/5 based on 2,400+ reviews",
         "button_text": "Read all reviews",
-        "button_link": "shopify://collections/all",
+        "button_link": "",
         "padding_top": 72,
         "padding_bottom": 72
       }
