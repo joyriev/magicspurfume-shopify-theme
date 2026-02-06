@@ -16,6 +16,12 @@
           "type": "title",
           "settings": {}
         },
+        "custom_rating_text_ehyqmQ": {
+          "type": "custom_rating_text",
+          "settings": {
+            "text": "4,7/5 Sterne (10.000 Bewertungen)"
+          }
+        },
         "price_MG94AW": {
           "type": "price",
           "disabled": true,
@@ -180,6 +186,7 @@
       },
       "block_order": [
         "title_DkyBTh",
+        "custom_rating_text_ehyqmQ",
         "price_MG94AW",
         "variant_picker_hH3Diz",
         "buy_buttons_eXWBwX",
