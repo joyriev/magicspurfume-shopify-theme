@@ -155,6 +155,11 @@
     margin-bottom: 24px
 }
 
+.mx-2 {
+    margin-left: 8px;
+    margin-right: 8px
+}
+
 .\!mb-0 {
     margin-bottom: 0px !important
 }
@@ -636,6 +641,10 @@
     white-space: nowrap
 }
 
+.text-nowrap {
+    text-wrap: nowrap
+}
+
 .rounded {
     border-radius: 4px
 }
@@ -899,6 +908,10 @@
 .bg-red-600 {
     --tw-bg-opacity: 1;
     background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1))
+}
+
+.bg-green-700\/85 {
+    background-color: rgb(21 128 61 / 0.85)
 }
 
 .bg-opacity-20 {
@@ -1448,6 +1461,10 @@
 
 .\[display\:none\] {
     display: none
+}
+
+.\[transform\:rotate\(-3deg\)\] {
+    transform: rotate(-3deg)
 }
 
 .\[transform\:translate\(0\2c -50\%\)\] {
