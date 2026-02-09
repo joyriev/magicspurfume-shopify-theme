@@ -278,16 +278,58 @@
         "padding_bottom": 72
       }
     },
-    "stacks_up_fd9fNW": {
+    "stacks_up_WR4y4d": {
       "type": "stacks-up",
-      "disabled": false,
+      "blocks": {
+        "stack_LGQprc": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Ewige Haltbarkeit",
+            "other_brands": "Hoher Preis durch Branding"
+          }
+        },
+        "stack_EkfTtL": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Tägliche Komplimente ab 10€",
+            "other_brands": "Oft Massenproduktion"
+          }
+        },
+        "stack_EwWwij": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Keine Tierversuche",
+            "other_brands": "Teilweise Tierversuche"
+          }
+        },
+        "stack_w3Jyyc": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Du zahlst für Qualität – nicht für Marketing",
+            "other_brands": "Du zahlst für den Namen"
+          }
+        },
+        "stack_dXbqXq": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Handgemacht in kleiner Manufaktur",
+            "other_brands": "Hoher Marketingaufschlag"
+          }
+        }
+      },
+      "block_order": [
+        "stack_LGQprc",
+        "stack_EkfTtL",
+        "stack_EwWwij",
+        "stack_w3Jyyc",
+        "stack_dXbqXq"
+      ],
       "name": "Stacks Up",
       "settings": {
         "background_color": "#f7f7f7",
-        "title": "Wie sich Magic Perfume behauptet",
-        "btn_text": "",
-        "btn_url": "",
-        "padding_top": 4,
+        "title": "Warum Magisches Parfum?",
+        "subtitle": "Die clevere Alternative zu überteuerten Luxusmarken.",
+        "padding_top": 12,
         "padding_bottom": 72
       }
     },
@@ -786,7 +828,7 @@
     "main",
     "feature_heighlights_fCUG3E",
     "scent_breakdown_pqKDL9",
-    "stacks_up_fd9fNW",
+    "stacks_up_WR4y4d",
     "image_and_text_EFE4gB",
     "popular_products_BptEUV",
     "massive_review_xQhDkP",
