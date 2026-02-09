@@ -283,12 +283,12 @@
       "disabled": true,
       "name": "Stacks Up",
       "settings": {
-        "background_color": "#fcfbf9",
-        "title": "How Magic Perfume Stacks Up",
-        "btn_text": "View All",
-        "btn_url": "shopify://collections/all",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "background_color": "#f7f7f7",
+        "title": "Wie sich Magic Perfume behauptet",
+        "btn_text": "",
+        "btn_url": "",
+        "padding_top": 4,
+        "padding_bottom": 72
       }
     },
     "image_and_text_EFE4gB": {
