@@ -49,7 +49,7 @@
 
 {% assign selling_points = product.metafields.custom.bullets.value %}
 {% if selling_points %}
-  <ul class="list-none pl-0">
+  <ul id="atc_scroll_target" class="list-none pl-0">
     {% for point in selling_points %}
       <li>✅ {{ point }}</li>
     {% endfor %}
