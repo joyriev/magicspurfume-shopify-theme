@@ -20,10 +20,10 @@
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
-          Warum Magisches Parfum?
+          {{ section.settings.title }}
         </h2>
         <p class="mt-4 text-gray-600 text-lg">
-          Die clevere Alternative zu überteuerten Luxusmarken.
+          {{ section.settings.subtitle }}
         </p>
       </div>
       <div class="grid md:grid-cols-2 gap-8 items-stretch">
@@ -35,26 +35,12 @@
             Magisches Parfum
           </h3>
           <ul class="space-y-5 text-gray-700 p-0 m-0">
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 text-xl">✔</span>
-              Ewige Haltbarkeit
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 text-xl">✔</span>
-              Tägliche Komplimente ab 10€
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 text-xl">✔</span>
-              Keine Tierversuche
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 text-xl">✔</span>
-              Du zahlst für Qualität – nicht für Marketing
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-green-500 text-xl">✔</span>
-              Handgemacht in kleiner Manufaktur
-            </li>
+            {% for block in section.blocks %}
+              <li class="flex items-start gap-3">
+                <span class="text-green-500 text-xl">✔</span>
+                {{ block.settings.our_stack }}
+              </li>
+            {% endfor %}
           </ul>
           <div class="mt-10 text-center">
             <a href="#atc_scroll_target" class="inline-block bg-black text-white px-6 py-3 rounded-xl font-medium hover:bg-gray-800 transition no-underline scroll-smooth">
@@ -67,26 +53,12 @@
             Teure Luxusmarken
           </h3>
           <ul class="space-y-5 text-gray-600 p-0 m-0">
-            <li class="flex items-start gap-3">
-              <span class="text-gray-400 text-xl">✖</span>
-              Hoher Preis durch Branding
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-gray-400 text-xl">✖</span>
-              Oft Massenproduktion
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-gray-400 text-xl">✖</span>
-              Teilweise Tierversuche
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-gray-400 text-xl">✖</span>
-              Du zahlst für den Namen
-            </li>
-            <li class="flex items-start gap-3">
-              <span class="text-gray-400 text-xl">✖</span>
-              Hoher Marketingaufschlag
-            </li>
+            {% for block in section.blocks %}
+              <li class="flex items-start gap-3">
+                <span class="text-gray-400 text-xl">✖</span>
+                {{ block.settings.other_brands }}
+              </li>
+            {% endfor %}
           </ul>
         </div>
       </div>
@@ -109,13 +81,18 @@
         "type": "text",
         "id": "title",
         "label": "Title",
-        "default": "How TryScent Stacks Up"
+        "default": "Warum Magisches Parfum?"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Die clevere Alternative zu überteuerten Luxusmarken."
       },
       {
         "type": "header",
         "content": "t:sections.all.padding.section_padding_heading"
-      },
-      {
+      }, {
         "type": "range",
         "id": "padding_top",
         "min": 0,
@@ -137,15 +114,10 @@
     ],
     "blocks": [
       {
-        "type": "product",
-        "name": "Product",
+        "type": "stack",
+        "name": "Stack",
         "settings": [
           {
-            "type": "text",
-            "id": "name",
-            "label": "Name",
-            "default": "Product Name"
-          }, {
             "type": "text",
             "id": "our_stack",
             "label": "Our Stack"
@@ -159,7 +131,43 @@
     ],
     "presets": [
       {
-        "name": "Stacks Up"
+        "name": "Stacks Up",
+        "blocks": [
+          {
+            "type": "stack",
+            "settings": {
+              "our_stack": "Ewige Haltbarkeit",
+              "other_brands": "Hoher Preis durch Branding"
+            }
+          },
+          {
+            "type": "stack",
+            "settings": {
+              "our_stack": "Tägliche Komplimente ab 10€",
+              "other_brands": "Oft Massenproduktion"
+            }
+          },
+          {
+            "type": "stack",
+            "settings": {
+              "our_stack": "Keine Tierversuche",
+              "other_brands": "Teilweise Tierversuche"
+            }
+          },
+          {
+            "type": "stack",
+            "settings": {
+              "our_stack": "Du zahlst für Qualität – nicht für Marketing",
+              "other_brands": "Du zahlst für den Namen"
+            }
+          }, {
+            "type": "stack",
+            "settings": {
+              "our_stack": "Handgemacht in kleiner Manufaktur",
+              "other_brands": "Hoher Marketingaufschlag"
+            }
+          }
+        ]
       }
     ]
   }
