@@ -157,6 +157,15 @@
             "page": ""
           }
         },
+        "collapsible_tab_Qn8c4p": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "HINWEIS ZU VERGLEICHSWERBUNG",
+            "icon": "none",
+            "content": "<p>Bitte beachten Sie, dass die auf unserer Website genannten Produkte lediglich der Orientierung dienen und keinesfalls mit tatsächlichen Marken aus Kaufhäusern, Designermarken oder Nischenmarken verwechselt werden sollten. Namen und Urheberrechte, ob verwendet oder nicht, gehören den jeweiligen Herstellern und/oder Designern.<br/><br/>Es handelt sich hierbei lediglich um Inspirationen. Die Produkte sind nicht mit anderen Düften oder Originalen identisch.<br/><br/>Magic-Parfums sind nicht mit Originalen zu verwechseln, und wir stehen in keiner Verbindung zu den Herstellern dieser unbekannten Designermarken.<br/><br/></p>",
+            "page": ""
+          }
+        },
         "product_reviews_W3CkbE": {
           "type": "product_reviews",
           "disabled": true,
@@ -202,6 +211,7 @@
         "collapsible_tab_GUrz86",
         "collapsible_tab_TKfWP3",
         "collapsible_tab_HiNKBa",
+        "collapsible_tab_Qn8c4p",
         "product_reviews_W3CkbE"
       ],
       "settings": {
