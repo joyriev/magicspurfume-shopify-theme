@@ -9,6 +9,14 @@
  */
 {
   "sections": {
+    "home_hero_section_HrzbpH": {
+      "type": "home-hero-section",
+      "disabled": true,
+      "name": "Home Hero Banner",
+      "settings": {
+        "link": ""
+      }
+    },
     "image_and_text_nj4mfM": {
       "type": "image-and-text",
       "blocks": {
@@ -747,6 +755,7 @@
     }
   },
   "order": [
+    "home_hero_section_HrzbpH",
     "image_and_text_nj4mfM",
     "feature_heighlights_EpJcyT",
     "popular_products_3gqnEi",
