@@ -3,23 +3,30 @@
   assign selected_variant = product.selected_or_first_available_variant
 %}
 
-{% if product.metafields.custom.inspiration != blank %}
-  <div class="flex items-center gap-2 mb-3">
-    <img
-      class="object-contain object-center bg-white"
-      src="{{ product.metafields.custom.inspiration.value.image |  image_url }}"
-      alt="{{ product.metafields.custom.inspiration.value.image.alt | escape }}"
-      width="45"
-      height="45">
-    <div>
-      <p class="text-sm my-0">Inspiriert von:</p>
-      <h4 class="font-semibold my-0 line-clamp-1">{{ product.metafields.custom.inspiration.value.name }}</h4>
+{% if product.handle != 'magic-perfume-no-053w-m' %}
+  {% if product.metafields.custom.inspiration != blank %}
+    <div class="flex items-center gap-2 mb-3">
+      <img
+        class="object-contain object-center bg-white"
+        src="{{ product.metafields.custom.inspiration.value.image |  image_url }}"
+        alt="{{ product.metafields.custom.inspiration.value.image.alt | escape }}"
+        width="45"
+        height="45">
+      <div>
+        <p class="text-sm my-0">Inspiriert von:</p>
+        <h4 class="font-semibold my-0 line-clamp-1">{{ product.metafields.custom.inspiration.value.name }}</h4>
+      </div>
     </div>
+  {% endif %}
+{% else %}
+  <div class="p-3 border border-solid border-green-700 rounded-lg bg-green-50">
+    <h4 class="text-highlight font-semibold !my-0">WARM & SMOKY FAMILY</h4>
+    <p class="!my-0 text-sm">Rich, addictive, and deeply seductive — inspired by Tom Ford Vanille Fatale.</p>
   </div>
 {% endif %}
 <div>
   {% if product.metafields.custom.original_retail_price != blank %}
-    <div>(RRP: {{ product.metafields.custom.original_retail_price.value | money }})</div>
+    <div>(UVP: {{ product.metafields.custom.original_retail_price.value | money }})</div>
   {% endif %}
   {% if product.metafields.custom.scent_intensity != blank %}
     <div class="flex items-center gap-[5px]">
