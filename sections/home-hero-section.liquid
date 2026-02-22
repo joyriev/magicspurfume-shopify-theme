@@ -1,0 +1,65 @@
+<style>
+  .flex {
+    display: flex;
+  }
+  .mobile_banner,
+  .desktop_banner {
+    width: 100%;
+    height: auto;
+  }
+
+  .desktop_banner {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .desktop_banner {
+      display: block;
+    }
+    .mobile_banner {
+      display: none;
+    }
+  }
+</style>
+
+<div>
+  <a class="flex" href="{{ section.settings.link }}">
+    <img
+      class="desktop_banner"
+      src="{{ section.settings.image | image_url: width: 1920 }}"
+      alt="Home banner"
+      width="1920"
+      height="1080">
+    <img
+      class="mobile_banner"
+      src="{{ section.settings.mobile_image | image_url: width: 800 }}"
+      alt="Home banner"
+      width="800"
+      height="800">
+  </a>
+</div>
+{% schema %}
+  {
+    "name": "Home Hero Banner",
+    "settings": [
+      {
+        "id": "image",
+        "type": "image_picker",
+        "label": "Image"
+      }, {
+        "id": "mobile_image",
+        "type": "image_picker",
+        "label": "Mobile Image"
+      }, {
+        "id": "link",
+        "type": "url",
+        "label": "Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home Hero Banner"
+      }
+    ]
+  }
+{% endschema %}
