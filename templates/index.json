@@ -11,9 +11,10 @@
   "sections": {
     "home_hero_section_HrzbpH": {
       "type": "home-hero-section",
-      "disabled": true,
       "name": "Home Hero Banner",
       "settings": {
+        "image": "shopify://shop_images/banner_desktop_v1_final.png",
+        "mobile_image": "shopify://shop_images/banner_mobile_v1_final.png",
         "link": ""
       }
     },
@@ -54,6 +55,7 @@
         "text_VJRcpx",
         "button_rGwjWF"
       ],
+      "disabled": true,
       "name": "Image and Text",
       "settings": {
         "background_color": "#000000",
