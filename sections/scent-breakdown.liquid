@@ -19,13 +19,13 @@
   <div class="page-width">
     <div class="grid md:grid-cols-2 gap-8">
       <div>
-        {% if section.settings.image != blank %}
+        {% if product.images.size > 1 %}
           <img
             class="w-full h-full rounded-lg object-cover"
-            src="{{ section.settings.image | image_url }}"
+            src="{{ product.images[1] | image_url }}"
             alt="Scent Breakdown"
-            height="{{ section.settings.image.height }}"
-            width="{{ section.settings.image.width }}">
+            height="{{ product.images[1].height }}"
+            width="{{ product.images[1].width }}">
         {% endif %}
       </div>
       <div>
