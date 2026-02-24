@@ -74,6 +74,13 @@
         </div>
       {% endfor %}
     </div>
+    {% if section.settings.show_all_button_text != blank %}
+      <div class="text-center pt-14">
+        <a class="bg-black text-white uppercase font-semibold tracking-wider py-4 px-6 shadow-lg rounded-full no-underline" href="{{ section.settings.show_all_button_url }}">
+          {{ section.settings.show_all_button_text }}
+        </a>
+      </div>
+    {% endif %}
   </div>
 </div>
 
@@ -108,7 +115,19 @@
         "type": "collection",
         "id": "collection",
         "label": "Collection"
-      }, {
+      },
+      {
+        "type": "text",
+        "id": "show_all_button_text",
+        "label": "Show Button Text",
+        "default": "Alle Bestseller ansehen"
+      },
+      {
+        "type": "url",
+        "id": "show_all_button_url",
+        "label": "Show Button URL"
+      },
+      {
         "type": "header",
         "content": "Section Padding"
       }, {
