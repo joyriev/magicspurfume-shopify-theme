@@ -549,6 +549,10 @@
     cursor: pointer
 }
 
+.cursor-not-allowed {
+    cursor: not-allowed
+}
+
 .resize {
     resize: both
 }
@@ -1471,6 +1475,10 @@
 
 .opacity-0 {
     opacity: 0
+}
+
+.opacity-50 {
+    opacity: 0.5
 }
 
 .shadow {

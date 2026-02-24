@@ -84,13 +84,6 @@
         {% else %}
           <p class="text-gray-500">No products found in this collection.</p>
         {% endif %}
-        {% if block.settings.show_all_button_text != blank %}
-          <div class="text-center pt-14">
-            <a class="bg-black text-white uppercase font-semibold tracking-wider py-4 px-6 shadow-lg rounded-full no-underline" href="{{ block.settings.show_all_button_url }}">
-              {{ block.settings.show_all_button_text }}
-            </a>
-          </div>
-        {% endif %}
       </div>
     {% endfor %}
   </div>
