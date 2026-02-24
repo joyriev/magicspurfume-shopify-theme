@@ -133,6 +133,8 @@
         "heading": "BESTSELLERS",
         "subheading": "",
         "collection": "best-sellers",
+        "show_all_button_text": "Alle Bestseller ansehen",
+        "show_all_button_url": "shopify://collections/best-sellers",
         "padding_top": 72,
         "padding_bottom": 72
       }
@@ -226,21 +228,27 @@
           "type": "collection",
           "settings": {
             "tab_title": "🔥 BESTSELLERS",
-            "collection": "best-sellers"
+            "collection": "best-sellers",
+            "show_all_button_text": "Alle Bestseller ansehen",
+            "show_all_button_url": ""
           }
         },
         "collection_xgUpzQ": {
           "type": "collection",
           "settings": {
             "tab_title": "FÜR FRAUEN",
-            "collection": "fuer-frauen"
+            "collection": "fuer-frauen",
+            "show_all_button_text": "Alle Bestseller ansehen",
+            "show_all_button_url": ""
           }
         },
         "collection_3WBTm3": {
           "type": "collection",
           "settings": {
             "tab_title": "FÜR MÄNNER",
-            "collection": "fuer-maenner"
+            "collection": "fuer-maenner",
+            "show_all_button_text": "Alle Bestseller ansehen",
+            "show_all_button_url": ""
           }
         }
       },
