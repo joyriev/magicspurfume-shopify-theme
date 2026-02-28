@@ -1,31 +1,40 @@
-{% assign chosen_product = all_products['birch'] %}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
-    padding-top: 250px;
-    padding-bottom: 80px;
-    background-image: url('{{ section.settings.background_image | image_url }}');
-    background-color: {{ section.settings.background_color }};
+    padding-top: 450px;
+    padding-bottom: 60px;
+    {% if section.settings.mobile_background_image != blank %}
+      background-image: url('{{ section.settings.mobile_background_image | image_url }}');
+    {% endif %}
+    {% if section.settings.background_color != blank %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
   }
 
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
-      padding-top: 250px;
-      padding-bottom: 80px;
+      padding-top: 120px;
+      padding-bottom: 120px;
+      {% if section.settings.background_image != blank %}
+        background-image: url('{{ section.settings.background_image | image_url }}');
+      {% endif %}
     }
   }
 {%- endstyle -%}
 
 <div id="{{ section.id }}" class="section-{{ section.id }}-padding bg-cover bg-center">
   <div class="page-width">
-    <div class="mx-auto max-w-[780px] md:px-10 text-center">
+    <div class="max-w-[700px] text-center md:text-left">
       {% comment %} <h1 class="text-3xl !leading-tight md:text-6xl font-black text-white mt-0">{{ section.settings.title }}</h1> {% endcomment %}
       <h1 class="text-3xl !leading-tight md:text-6xl font-black text-white mt-0">
-        THEY LECTURED YOU. <br>WE RESPECT YOU.
+        Luxurious Fragrances. <br>Without Luxury Price Tag.
       </h1>
-      <p class="text-lg font-medium text-white mb-8">{{ section.settings.subtitle }}</p>
-      {% comment %} <p class="text-lg font-medium">Save {{ chosen_product.price | times: 25.85323165 | round | money_without_trailing_zeros }} over 10 years. No subscriptions. No cartridge</p> {% endcomment %}
-      <a href="{{ section.settings.button_link }}" class="button bg-[#a23225]">{{ section.settings.button_text }}</a>
+      <div class="text-3xl !leading-tight md:text-6xl font-black text-[#e2a351] pt-8 mb-8 border-0 border-t-2 border-solid border-[#e2a351]">{{ section.settings.subtitle }}</div>
+      <div class="flex gap-4 items-center justify-center md:justify-start">
+        <a href="{{ section.settings.button_link }}" class="py-4 px-6 no-underline leading-tight bg-white text-black rounded-full">{{ section.settings.button_text }}</a>
+        {% if section.settings.second_button_text != blank %}
+          <a href="{{ section.settings.second_button_link }}" class="py-4 px-6 no-underline leading-tight bg-white text-black rounded-full">{{ section.settings.second_button_text }}</a>
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>
@@ -70,6 +79,15 @@
         "type": "url",
         "id": "button_link",
         "label": "Button Link"
+      }, {
+        "type": "text",
+        "id": "second_button_text",
+        "label": "Second Button Text",
+        "default": "GET NORDIC GLADE"
+      }, {
+        "type": "url",
+        "id": "second_button_link",
+        "label": "Second Button Link"
       }, {
         "type": "header",
         "content": "Section Padding"
