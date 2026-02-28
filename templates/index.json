@@ -27,10 +27,10 @@
         "mobile_background_image": "shopify://shop_images/Gemini_Generated_Image_5jbsc75jbsc75jbs.png",
         "title": "Homepage Hero",
         "subtitle": "Kaufe 3 und erhalte 1 gratis!",
-        "button_text": "GET NORDIC GLADE",
-        "button_link": "",
-        "second_button_text": "GET NORDIC GLADE",
-        "second_button_link": "",
+        "button_text": "FÜR MÄNNER",
+        "button_link": "shopify://collections/fuer-maenner",
+        "second_button_text": "FÜR FRAUEN",
+        "second_button_link": "shopify://collections/fuer-frauen",
         "padding_top": 36,
         "padding_bottom": 36
       }
