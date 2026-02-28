@@ -18,6 +18,23 @@
         "link": "shopify://collections/best-sellers"
       }
     },
+    "home_hero_XQyQrf": {
+      "type": "home-hero",
+      "name": "Homepage Hero",
+      "settings": {
+        "background_color": "#000000",
+        "background_image": "shopify://shop_images/Gemini_Generated_Image_kxe5abkxe5abkxe5.png",
+        "mobile_background_image": "shopify://shop_images/Gemini_Generated_Image_5jbsc75jbsc75jbs.png",
+        "title": "Homepage Hero",
+        "subtitle": "Kaufe 3 und erhalte 1 gratis!",
+        "button_text": "GET NORDIC GLADE",
+        "button_link": "",
+        "second_button_text": "GET NORDIC GLADE",
+        "second_button_link": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "image_and_text_nj4mfM": {
       "type": "image-and-text",
       "blocks": {
@@ -766,6 +783,7 @@
   },
   "order": [
     "home_hero_section_HrzbpH",
+    "home_hero_XQyQrf",
     "image_and_text_nj4mfM",
     "feature_heighlights_EpJcyT",
     "popular_products_3gqnEi",
