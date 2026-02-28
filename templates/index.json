@@ -11,6 +11,7 @@
   "sections": {
     "home_hero_section_HrzbpH": {
       "type": "home-hero-section",
+      "disabled": true,
       "name": "Home Hero Banner",
       "settings": {
         "image": "shopify://shop_images/banner_desktop_v1_final.png",
