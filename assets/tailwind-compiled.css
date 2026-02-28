@@ -1855,6 +1855,11 @@
         line-height: 28px
     }
 
+    .md\:text-5xl {
+        font-size: 48px;
+        line-height: 1
+    }
+
     .md\:text-black {
         --tw-text-opacity: 1;
         color: rgb(0 0 0 / var(--tw-text-opacity, 1))
