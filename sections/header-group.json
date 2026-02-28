@@ -17,8 +17,8 @@
       "settings": {
         "background_color": "#000000",
         "background_color_2": "#e32402",
-        "prepend_text": "Im Set sparen",
-        "link_text": "3+1 GRATIS",
+        "prepend_text": "Nur zum Weltfrauentag",
+        "link_text": "3 kaufen – 1 gratis",
         "append_text": "",
         "link": "shopify://collections/best-sellers"
       }

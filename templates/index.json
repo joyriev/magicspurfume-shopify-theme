@@ -27,7 +27,7 @@
         "background_image": "shopify://shop_images/Gemini_Generated_Image_kxe5abkxe5abkxe5.png",
         "mobile_background_image": "shopify://shop_images/Gemini_Generated_Image_5jbsc75jbsc75jbs.png",
         "title": "Homepage Hero",
-        "subtitle": "Kaufe 3 und erhalte 1 gratis!",
+        "subtitle": "3 kaufen – 1 gratis",
         "button_text": "FÜR MÄNNER",
         "button_link": "shopify://collections/fuer-maenner",
         "second_button_text": "FÜR FRAUEN",
@@ -152,7 +152,6 @@
         "subheading": "",
         "collection": "best-sellers",
         "show_all_button_text": "Alle Bestseller ansehen",
-        "show_all_button_url": "shopify://collections/best-sellers",
         "padding_top": 72,
         "padding_bottom": 72
       }
@@ -247,8 +246,7 @@
           "settings": {
             "tab_title": "🔥 BESTSELLERS",
             "collection": "best-sellers",
-            "show_all_button_text": "Alle Bestseller ansehen",
-            "show_all_button_url": "shopify://collections/best-sellers"
+            "button_text": "Alle anzeigen"
           }
         },
         "collection_xgUpzQ": {
@@ -256,8 +254,7 @@
           "settings": {
             "tab_title": "FÜR FRAUEN",
             "collection": "fuer-frauen",
-            "show_all_button_text": "Alle FÜR FRAUEN ansehen",
-            "show_all_button_url": "shopify://collections/fuer-frauen"
+            "button_text": "Alle anzeigen"
           }
         },
         "collection_3WBTm3": {
@@ -265,8 +262,7 @@
           "settings": {
             "tab_title": "FÜR MÄNNER",
             "collection": "fuer-maenner",
-            "show_all_button_text": "Alle FÜR MÄNNER ansehen",
-            "show_all_button_url": "shopify://collections/fuer-maenner"
+            "button_text": "Alle anzeigen"
           }
         }
       },
