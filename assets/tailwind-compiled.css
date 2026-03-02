@@ -496,10 +496,6 @@
     max-width: 60px
 }
 
-.max-w-\[780px\] {
-    max-width: 780px
-}
-
 .max-w-\[700px\] {
     max-width: 700px
 }
@@ -777,6 +773,11 @@
     border-color: rgb(21 32 49 / var(--tw-border-opacity, 1))
 }
 
+.border-\[\#683d0e\] {
+    --tw-border-opacity: 1;
+    border-color: rgb(104 61 14 / var(--tw-border-opacity, 1))
+}
+
 .border-black {
     --tw-border-opacity: 1;
     border-color: rgb(0 0 0 / var(--tw-border-opacity, 1))
@@ -850,11 +851,6 @@
     border-color: transparent
 }
 
-.border-\[\#e2a351\] {
-    --tw-border-opacity: 1;
-    border-color: rgb(226 163 81 / var(--tw-border-opacity, 1))
-}
-
 .bg-\[\#0F172A\] {
     --tw-bg-opacity: 1;
     background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1))
@@ -868,11 +864,6 @@
 .bg-\[\#22613a\] {
     --tw-bg-opacity: 1;
     background-color: rgb(34 97 58 / var(--tw-bg-opacity, 1))
-}
-
-.bg-\[\#a23225\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(162 50 37 / var(--tw-bg-opacity, 1))
 }
 
 .bg-\[\#c8202f\] {
@@ -1369,6 +1360,11 @@
     color: rgb(41 122 244 / var(--tw-text-opacity, 1))
 }
 
+.text-\[\#683d0e\] {
+    --tw-text-opacity: 1;
+    color: rgb(104 61 14 / var(--tw-text-opacity, 1))
+}
+
 .text-\[\#888888\] {
     --tw-text-opacity: 1;
     color: rgb(136 136 136 / var(--tw-text-opacity, 1))
@@ -1476,11 +1472,6 @@
 
 .text-white\/50 {
     color: rgb(255 255 255 / 0.5)
-}
-
-.text-\[\#e2a351\] {
-    --tw-text-opacity: 1;
-    color: rgb(226 163 81 / var(--tw-text-opacity, 1))
 }
 
 .line-through {
@@ -1634,6 +1625,11 @@
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
 }
 
+.hover\:bg-black:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1))
+}
+
 .hover\:bg-gray-100:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1))
@@ -1647,11 +1643,6 @@
 .hover\:bg-slate-900:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1))
-}
-
-.hover\:bg-black:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1))
 }
 
 .hover\:text-white:hover {
@@ -1840,6 +1831,11 @@
         line-height: 40px
     }
 
+    .md\:text-5xl {
+        font-size: 48px;
+        line-height: 1
+    }
+
     .md\:text-6xl {
         font-size: 60px;
         line-height: 1
@@ -1858,11 +1854,6 @@
     .md\:text-xl {
         font-size: 20px;
         line-height: 28px
-    }
-
-    .md\:text-5xl {
-        font-size: 48px;
-        line-height: 1
     }
 
     .md\:text-black {
