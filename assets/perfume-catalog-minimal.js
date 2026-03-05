@@ -1,0 +1,1523 @@
+// ===== GERMAN PERFUME CATALOG - COMPLETE WITH ALL PRODUCTS =====
+// Save this as: assets/perfume-catalog-minimal.js
+
+window.PerfumeCatalog = {
+  // ===== VALENTINO =====
+  valentino: [
+    {
+      id: "valentino_born_in_roma",
+      name: "Born in Roma Valentino",
+      brand: "Valentino",
+      image: "https://magicperfume.co/cdn/shop/files/Valentino_Donna_Born_In_Roma.png?v=1770224306",
+      top_notes: ["Schwarze Johannisbeere", "Bergamotte", "Jasmin"],
+      heart_notes: ["Rose", "Jasmin", "Zeder"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein moderner und kantiger Duft, der den Geist der römischen Jugendkultur einfängt.",
+      year: "2019",
+      gender: "Female",
+      productNumbers: ["469"],
+      shopifyProduct: {
+        title: "Riecht wie... Born in Roma - No. 469",
+        url: "https://magicperfume.co/products/riecht-wie-born-in-roma-no-469",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Valentino_Donna_Born_In_Roma.png?v=1770224306"
+      }
+    },
+    {
+      id: "valentino_uomo_born_in_roma",
+      name: "Uomo Born in Roma Valentino",
+      brand: "Valentino",
+      image: "https://magicperfume.co/cdn/shop/files/Valentino_Uomo_Born_in_Roma.png?v=1770289172",
+      top_notes: ["Mandarine", "Salz", "Minze"],
+      heart_notes: ["Lavendel", "Salbei", "Zeder"],
+      base_notes: ["Vanille", "Tonkabohne", "Moschus"],
+      description: "Ein frischer und aromatischer Duft für den modernen Mann.",
+      year: "2019",
+      gender: "Male",
+      productNumbers: ["360"],
+      shopifyProduct: {
+        title: "Riecht wie... Uomo Born in Roma - No. 360",
+        url: "https://magicperfume.co/products/riecht-wie-uomo-born-in-roma-no-360",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Valentino_Uomo_Born_in_Roma.png?v=1770289172"
+      }
+    }
+  ],
+
+  // ===== PRADA =====
+  prada: [
+    {
+      id: "prada_paradoxe",
+      name: "Paradoxe Prada",
+      brand: "Prada",
+      image: "https://magicperfume.co/cdn/shop/files/Prada_Paradoxe.jpg?v=1771894273",
+      top_notes: ["Birne", "Bergamotte", "Mandarine"],
+      heart_notes: ["Orangenblüte", "Jasmin", "Rose"],
+      base_notes: ["Vanille", "Amber", "Zeder"],
+      description: "Ein moderner und paradoxer Duft, der mit Kontrasten spielt.",
+      year: "2022",
+      gender: "Female",
+      productNumbers: ["437"],
+      shopifyProduct: {
+        title: "Riecht wie... Paradoxe - No. 437",
+        url: "https://magicperfume.co/products/riecht-wie-paradoxe-no-437",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Prada_Paradoxe.jpg?v=1771894273"
+      }
+    },
+    {
+      id: "prada_candy",
+      name: "Candy Prada",
+      brand: "Prada",
+      image: "https://magicperfume.co/cdn/shop/files/Prada_Candy.avif?v=1770581340",
+      top_notes: ["Karamell", "Moschus", "Vanille"],
+      heart_notes: ["Benzoin", "Moschus"],
+      base_notes: ["Vanille", "Moschus", "Karamell"],
+      description: "Ein verspielter und genüsslicher Gourmand-Duft, der den Geist von Spaß und Weiblichkeit einfängt.",
+      year: "2011",
+      gender: "Female",
+      productNumbers: ["182"],
+      shopifyProduct: {
+        title: "Riecht wie... Candy - No. 182",
+        url: "https://magicperfume.co/products/riecht-wie-candy-no-182",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Prada_Candy.avif?v=1770581340"
+      }
+    }
+  ],
+
+  // ===== LANCOME =====
+  lancome: [
+    {
+      id: "lancome_la_vie_est_belle",
+      name: "La Vie Est Belle Lancôme",
+      brand: "Lancôme",
+      image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle.png?v=1770220684",
+      top_notes: ["Schwarze Johannisbeere", "Birne", "Orangenblüte"],
+      heart_notes: ["Iris", "Jasmin", "Orangenblüte"],
+      base_notes: ["Praliné", "Vanille", "Patschuli", "Tonkabohne"],
+      description: "Ein strahlender und freudiger Duft, der die Schönheit des Lebens feiert.",
+      year: "2012",
+      gender: "Female",
+      productNumbers: ["101"],
+      shopifyProduct: {
+        title: "Riecht wie... La Vie Est Belle - No. 101",
+        url: "https://magicperfume.co/products/riecht-wie-la-vie-est-belle-no-101",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle.png?v=1770220684"
+      }
+    },
+    {
+      id: "lancome_la_vie_est_belle_intensement",
+      name: "La Vie Est Belle Intensément Lancôme",
+      brand: "Lancôme",
+      image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle_Intensement.png?v=1772101772", // Placeholder
+      top_notes: ["Mandarine", "Schwarze Johannisbeere", "Bergamotte"],
+      heart_notes: ["Tuberose", "Jasmin", "Orangenblüte"],
+      base_notes: ["Praliné", "Vanille", "Patschuli", "Tonkabohne"],
+      description: "Eine intensivere und üppigere Interpretation von La Vie Est Belle.",
+      year: "2017",
+      gender: "Female",
+      productNumbers: ["109"],
+      shopifyProduct: {
+        title: "Riecht wie... La Vie Est Belle Intensement - No. 109",
+        url: "https://magicperfume.co/products/riecht-wie-la-vie-est-belle-intensement-no-109",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle_Intensement.png?v=1772101772"
+      }
+    },
+    {
+      id: "lancome_tresor",
+      name: "Trésor Lancôme",
+      brand: "Lancôme",
+      image: "https://magicperfume.co/cdn/shop/files/Lancome_Tresor.png?v=1770285746",
+      top_notes: ["Pfirsich", "Aprikose", "Rose"],
+      heart_notes: ["Maiglöckchen", "Jasmin", "Iris"],
+      base_notes: ["Vanille", "Sandelholz", "Moschus"],
+      description: "Ein romantischer und zeitloser Duft, der die Essenz der Liebe einfängt.",
+      year: "1990",
+      gender: "Female",
+      productNumbers: ["141"],
+      shopifyProduct: {
+        title: "Riecht wie... Trésor - No. 141",
+        url: "https://magicperfume.co/products/riecht-wie-tresor-no-141",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Lancome_Tresor.png?v=1770285746"
+      }
+    },
+    {
+      id: "lancome_idole",
+      name: "Idôle Lancôme",
+      brand: "Lancôme",
+      image: "https://magicperfume.co/cdn/shop/files/Idole.webp?v=1772097147", // Placeholder
+      top_notes: ["Birne", "Bergamotte", "Zitrone"],
+      heart_notes: ["Rose", "Jasmin", "Magnolie"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein moderner und eleganter Duft für die neue Generation von Frauen.",
+      year: "2019",
+      gender: "Female",
+      productNumbers: ["55"],
+      shopifyProduct: {
+        title: "Riecht wie... Idole - No. 55",
+        url: "https://magicperfume.co/products/riecht-wie-idole-no-55",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Idole.webp?v=1772097147"
+      }
+    }
+  ],
+
+  // ===== YVES SAINT LAURENT =====
+  ysl: [
+    {
+      id: "ysl_black_opium",
+      name: "Black Opium Yves Saint Laurent",
+      brand: "Yves Saint Laurent",
+      image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Black_Opium.png?v=1770217557",
+      top_notes: ["Kaffee", "Rosa Pfeffer", "Orangenblüte"],
+      heart_notes: ["Jasmin", "Bittermandel", "Lakritze"],
+      base_notes: ["Vanille", "Zeder", "Patschuli"],
+      description: "Ein kühner und kantiger Duft, der den Geist der Rockkultur einfängt.",
+      year: "2014",
+      gender: "Female",
+      productNumbers: ["132"],
+      shopifyProduct: {
+        title: "Riecht wie... Black Opium - No. 132",
+        url: "https://magicperfume.co/products/riecht-wie-black-opium-no-132",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Black_Opium.png?v=1770217557"
+      }
+    },
+    {
+      id: "ysl_opium",
+      name: "Opium Yves Saint Laurent",
+      brand: "Yves Saint Laurent",
+      image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Opium.jpg?v=1770580952",
+      top_notes: ["Mandarine", "Pflaume", "Nelke", "Koriander"],
+      heart_notes: ["Nelke", "Rose", "Jasmin", "Maiglöckchen"],
+      base_notes: ["Opium", "Myrrhe", "Amber", "Sandelholz"],
+      description: "Ein legendärer orientalischer Duft, der sowohl würzig als auch sinnlich ist.",
+      year: "1977",
+      gender: "Female",
+      productNumbers: ["083"],
+      shopifyProduct: {
+        title: "Riecht wie... Laurent Opium - No. 083",
+        url: "https://magicperfume.co/products/riecht-wie-laurent-opium-no-083",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Opium.jpg?v=1770580952"
+      }
+    },
+    {
+      id: "ysl_y",
+      name: "Y Yves Saint Laurent",
+      brand: "Yves Saint Laurent",
+      image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Y.png?v=1771482466",
+      top_notes: ["Bergamotte", "Ingwer", "Aldehyde"],
+      heart_notes: ["Salbei", "Wacholder", "Geranie"],
+      base_notes: ["Amber", "Zeder", "Moschus"],
+      description: "Ein frischer und holziger Duft, der eine neue Generation repräsentiert.",
+      year: "2017",
+      gender: "Male",
+      productNumbers: ["283"],
+      shopifyProduct: {
+        title: "Riecht wie... Y - No. 283",
+        url: "https://magicperfume.co/products/riecht-wie-y-no-283",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Y.png?v=1771482466"
+      }
+    }
+  ],
+
+  // ===== CAROLINA HERRERA =====
+  carolinaHerrera: [
+    {
+      id: "carolina_good_girl",
+      name: "Good Girl Carolina Herrera",
+      brand: "Carolina Herrera",
+      image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Good_Girl_Velvet_Fatale.png?v=1770218974",
+      top_notes: ["Pflaume", "Safran", "Bergamotte"],
+      heart_notes: ["Tuberose", "Jasmin", "Orangenblüte"],
+      base_notes: ["Leder", "Vanille", "Patschuli", "Tonkabohne"],
+      description: "Eine dunklere, geheimnisvollere Interpretation von Good Girl.",
+      year: "2022",
+      gender: "Female",
+      productNumbers: ["461"],
+      shopifyProduct: {
+        title: "Riecht wie... Good Girl - No. 461",
+        url: "https://magicperfume.co/products/riecht-wie-good-girl-no-461",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Good_Girl_Velvet_Fatale.png?v=1770218974"
+      }
+    },
+    {
+      id: "carolina_very_good_girl",
+      name: "Very Good Girl Carolina Herrera",
+      brand: "Carolina Herrera",
+      image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Very_Good_Girl.png?v=1770292680",
+      top_notes: ["Rote Johannisbeere", "Litschi", "Bergamotte"],
+      heart_notes: ["Rose", "Jasmin", "Orangenblüte"],
+      base_notes: ["Vanille", "Tonkabohne", "Zeder", "Patschuli"],
+      description: "Eine kühne und glamouröse Interpretation von Good Girl.",
+      year: "2021",
+      gender: "Female",
+      productNumbers: ["404"],
+      shopifyProduct: {
+        title: "Riecht wie... Very Good Girl - No. 404",
+        url: "https://magicperfume.co/products/riecht-wie-very-good-girl-no-404",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Very_Good_Girl.png?v=1770292680"
+      }
+    }
+  ],
+
+  // ===== PACO RABANNE =====
+  pacoRabanne: [
+    {
+      id: "paco_one_million",
+      name: "1 Million Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million.png?v=1770217929",
+      top_notes: ["Grapefruit", "Minze", "Mandarine"],
+      heart_notes: ["Zimt", "Rose", "Gewürze"],
+      base_notes: ["Leder", "Amber", "Patschuli"],
+      description: "Ein kühner und verführerischer Duft für den Mann, der seinen Wert kennt.",
+      year: "2008",
+      gender: "Male",
+      productNumbers: ["275"],
+      shopifyProduct: {
+        title: "Riecht wie… One Million - No. 275",
+        url: "https://magicperfume.co/products/riecht-wie-one-million-no-275",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million.png?v=1770217929"
+      }
+    },
+    {
+      id: "paco_one_million_elixir",
+      name: "1 Million Elixir Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million_Elixir.png?v=1770579856",
+      top_notes: ["Grapefruit", "Mandarine", "Minze"],
+      heart_notes: ["Zimt", "Rose", "Safran"],
+      base_notes: ["Leder", "Amber", "Vanille", "Patschuli"],
+      description: "Eine intensivere und konzentriertere Version des ikonischen 1 Million.",
+      year: "2020",
+      gender: "Male",
+      productNumbers: ["334"],
+      shopifyProduct: {
+        title: "Riecht wie... One Million Elixir - No. 334",
+        url: "https://magicperfume.co/products/riecht-wie-one-million-elixir-no-334",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million_Elixir.png?v=1770579856"
+      }
+    },
+    {
+      id: "paco_lady_million",
+      name: "Lady Million Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Lady_Million.png?v=1770218839",
+      top_notes: ["Himbeere", "Neroli", "Zitrone"],
+      heart_notes: ["Orangenblüte", "Jasmin", "Honig"],
+      base_notes: ["Patschuli", "Amber", "Zeder"],
+      description: "Ein schillernder und glamouröser Duft für die moderne Frau.",
+      year: "2010",
+      gender: "Female",
+      productNumbers: ["023"],
+      shopifyProduct: {
+        title: "Riecht wie... LADY MILION - No. 023",
+        url: "https://magicperfume.co/products/riecht-wie-lady-milion-no-023",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Lady_Million.png?v=1770218839"
+      }
+    },
+    {
+      id: "paco_fame",
+      name: "Fame Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Fame.png?v=1770285610",
+      top_notes: ["Mango", "Bergamotte", "Mandarine"],
+      heart_notes: ["Jasmin", "Rose", "Weihrauch"],
+      base_notes: ["Sandelholz", "Vanille", "Moschus"],
+      description: "Ein lebendiger und moderner Duft, der die Selbstverwirklichung feiert.",
+      year: "2022",
+      gender: "Female",
+      productNumbers: ["498"],
+      shopifyProduct: {
+        title: "Riecht wie... Fame - No. 498",
+        url: "https://magicperfume.co/products/riecht-wie-fame-no-498",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Fame.png?v=1770285610"
+      }
+    },
+    {
+      id: "paco_invictus",
+      name: "Invictus Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Invictus.png?v=1770286917",
+      top_notes: ["Grapefruit", "Mandarine", "Meeresnoten"],
+      heart_notes: ["Lorbeerblatt", "Jasmin", "Zeder"],
+      base_notes: ["Eichenmoos", "Amber", "Patschuli"],
+      description: "Ein frischer und kraftvoller Duft für den siegreichen Mann.",
+      year: "2013",
+      gender: "Male",
+      productNumbers: ["228"],
+      shopifyProduct: {
+        title: "Riecht wie... Invictus - No. 228",
+        url: "https://magicperfume.co/products/riecht-wie-invictus-no-228",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Invictus.png?v=1770286917"
+      }
+    },
+    {
+      id: "paco_phantom",
+      name: "Phantom Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078",
+      top_notes: ["Zitrone", "Bergamotte", "Lavendel"],
+      heart_notes: ["Salbei", "Vetiver", "Patschuli"],
+      base_notes: ["Vanille", "Amber", "Zeder"],
+      description: "Ein futuristischer und vernetzter Duft für eine neue Generation.",
+      year: "2021",
+      gender: "Male",
+      productNumbers: ["399"],
+      shopifyProduct: {
+        title: "Riecht wie... Phantom - No. 399",
+        url: "https://magicperfume.co/products/riecht-wie-phantom-no-399",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078"
+      }
+    }
+  ],
+
+  // ===== JEAN PAUL GAULTIER =====
+  jpg: [
+    {
+      id: "jpg_scandal",
+      name: "Scandal Jean Paul Gaultier",
+      brand: "Jean Paul Gaultier",
+      image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_SCANDAL.png?v=1770223879",
+      top_notes: ["Mandarine", "Gardenie", "Blutorange"],
+      heart_notes: ["Honig", "Jasmin", "Rose"],
+      base_notes: ["Patschuli", "Tonkabohne", "Zeder"],
+      description: "Ein kühner und verspielter Duft mit einem gourmandigen Herzen.",
+      year: "2017",
+      gender: "Female",
+      productNumbers: ["192"],
+      shopifyProduct: {
+        title: "Riecht wie... SCANDAL - No. 192",
+        url: "https://magicperfume.co/products/riecht-wie-scandal-no-192",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_SCANDAL.png?v=1770223879"
+      }
+    },
+    {
+      id: "jpg_la_belle",
+      name: "La Belle Jean Paul Gaultier",
+      brand: "Jean Paul Gaultier",
+      image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_La_Belle.png?v=1770286342",
+      top_notes: ["Birne", "Bergamotte"],
+      heart_notes: ["Jasmin", "Orangenblüte"],
+      base_notes: ["Vanille", "Tonkabohne", "Zeder"],
+      description: "Ein verführerischer und süchtig machender Gourmand-Duft.",
+      year: "2019",
+      gender: "Female",
+      productNumbers: ["412"],
+      shopifyProduct: {
+        title: "Riecht wie... La Belle - No. 412",
+        url: "https://magicperfume.co/products/riecht-wie-la-belle-no-412",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_La_Belle.png?v=1770286342"
+      }
+    },
+    {
+      id: "jpg_ultra_male",
+      name: "Ultra Male Jean Paul Gaultier",
+      brand: "Jean Paul Gaultier",
+      image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Ultra_Male.png?v=1770285911",
+      top_notes: ["Birne", "Minze", "Lavendel"],
+      heart_notes: ["Zimt", "Salbei", "Muskatellersalbei"],
+      base_notes: ["Vanille", "Amber", "Holzige Noten"],
+      description: "Ein kraftvoller und verführerischer Duft, der die Grenzen der Männlichkeit erweitert.",
+      year: "2015",
+      gender: "Male",
+      productNumbers: ["349"],
+      shopifyProduct: {
+        title: "Riecht wie... Ultra Male - No. 349",
+        url: "https://magicperfume.co/products/riecht-wie-ultra-male-no-349",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Ultra_Male.png?v=1770285911"
+      }
+    },
+    {
+      id: "jpg_classique_essence",
+      name: "Classique Essence de Parfum Jean Paul Gaultier",
+      brand: "Jean Paul Gaultier",
+      image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Classique_Essence_de_Parfum.png?v=1770290311",
+      top_notes: ["Rose", "Ingwer", "Bergamotte"],
+      heart_notes: ["Tuberose", "Jasmin", "Orangenblüte"],
+      base_notes: ["Vanille", "Amber", "Moschus"],
+      description: "Eine intensivere und sinnlichere Interpretation des ikonischen Classique.",
+      year: "2013",
+      gender: "Female",
+      productNumbers: ["442"],
+      shopifyProduct: {
+        title: "Riecht wie... Classique Essence de Parfum - No. 442",
+        url: "https://magicperfume.co/products/riecht-wie-classique-essence-de-parfum-no-442",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Classique_Essence_de_Parfum.png?v=1770290311"
+      }
+    },
+    {
+      id: "jpg_le_male",
+      name: "Le Male Jean Paul Gaultier",
+      brand: "Jean Paul Gaultier",
+      image: "https://magicperfume.co/cdn/shop/files/J.P._Gaultier_Le_Male.png?v=1770217089",
+      top_notes: ["Minze", "Lavendel", "Bergamotte", "Kardamom"],
+      heart_notes: ["Zimt", "Orangenblüte", "Kümmel"],
+      base_notes: ["Vanille", "Tonkabohne", "Amber", "Zeder"],
+      description: "Ein ikonischer und verführerischer Duft für den modernen Mann.",
+      year: "1995",
+      gender: "Male",
+      productNumbers: ["247"],
+      shopifyProduct: {
+        title: "Riecht wie... Le Male - No. 247",
+        url: "https://magicperfume.co/products/riecht-wie-le-male-no-247",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/J.P._Gaultier_Le_Male.png?v=1770217089"
+      }
+    }
+  ],
+
+  // ===== MUGLER =====
+  mugler: [
+    {
+      id: "mugler_angel",
+      name: "Angel Mugler",
+      brand: "Mugler",
+      image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_1992.png?v=1770293282",
+      top_notes: ["Zuckerwatte", "Bergamotte", "Ananas", "Kokosnuss"],
+      heart_notes: ["Honig", "Rote Beeren", "Pfirsich", "Pflaume", "Aprikose"],
+      base_notes: ["Patschuli", "Vanille", "Schokolade", "Karamell"],
+      description: "Ein revolutionärer Gourmand-Duft, der die Parfümerie für immer verändert hat.",
+      year: "1992",
+      gender: "Female",
+      productNumbers: ["113"],
+      shopifyProduct: {
+        title: "Riecht wie... Angel - No. 113",
+        url: "https://magicperfume.co/products/riecht-wie-angel-no-113",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_1992.png?v=1770293282"
+      }
+    },
+    {
+      id: "mugler_angel_nova",
+      name: "Angel Nova Mugler",
+      brand: "Mugler",
+      image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_Nova.webp?v=1771649097",
+      top_notes: ["Himbeere", "Litschi", "Bergamotte"],
+      heart_notes: ["Rose", "Damascus-Rose", "Jasmin"],
+      base_notes: ["Akigalawood", "Benzoin", "Vanille"],
+      description: "Eine strahlende und fruchtige Interpretation des ikonischen Angel.",
+      year: "2020",
+      gender: "Female",
+      productNumbers: ["166"],
+      shopifyProduct: {
+        title: "Riecht wie... Angel Nova - No. 166",
+        url: "https://magicperfume.co/products/riecht-wie-angel-nova-no-166",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_Nova.webp?v=1771649097"
+      }
+    }
+  ],
+
+  // ===== TOM FORD =====
+  tomFord: [
+    {
+      id: "tomford_vanille_fatale",
+      name: "Vanille Fatale Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/vanille_fatale.png?v=1772096768",
+      top_notes: ["Safran", "Neroli", "Bergamotte"],
+      heart_notes: ["Vanille", "Kaffee", "Leder"],
+      base_notes: ["Amber", "Myrrhe", "Benzoin"],
+      description: "Ein dunkler und berauschender Vanilleduft.",
+      year: "2017",
+      gender: "Unisex",
+      productNumbers: ["053"],
+      shopifyProduct: {
+        title: "Riecht wie... Vanille Fatale - No. 053",
+        url: "https://magicperfume.co/products/riecht-wie-vanille-fatale-no-053",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/vanille_fatale.png?v=1772096768"
+      }
+    },
+    {
+      id: "tomford_lost_cherry",
+      name: "Lost Cherry Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Lost_Cherry.png?v=1770283537",
+      top_notes: ["Kirsche", "Mandel", "Likör"],
+      heart_notes: ["Kirsche", "Rose", "Jasmin"],
+      base_notes: ["Perubalsam", "Benzoin", "Vanille", "Zeder"],
+      description: "Ein verführerischer und verspielter Duft, der die Essenz einer verbotenen Frucht einfängt.",
+      year: "2018",
+      gender: "Unisex",
+      productNumbers: ["438"],
+      shopifyProduct: {
+        title: "Riecht wie... Lost Cherry - No. 438",
+        url: "https://magicperfume.co/products/riecht-wie-lost-cherry-no-438",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Lost_Cherry.png?v=1770283537"
+      }
+    },
+    {
+      id: "tomford_fucking_fabulous",
+      name: "Fucking Fabulous Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Fucking_Fabulous_EDP.png?v=1770283980",
+      top_notes: ["Salbei", "Lavendel"],
+      heart_notes: ["Leder", "Mandel", "Vanille"],
+      base_notes: ["Tonka", "Amber", "Holzige Noten"],
+      description: "Ein kühner, provokativer Duft mit Leder- und Mandelnoten.",
+      year: "2017",
+      gender: "Unisex",
+      productNumbers: ["232"],
+      shopifyProduct: {
+        title: "Riecht wie... Fucking Fabulous - No. 232",
+        url: "https://magicperfume.co/products/riecht-wie-fucking-fabulous-no-232",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Fucking_Fabulous_EDP.png?v=1770283980"
+      }
+    },
+    {
+      id: "tomford_tobacco_vanille",
+      name: "Tobacco Vanille Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Tobacco_Vanille.png?v=1770290664",
+      top_notes: ["Tabakblatt", "Würzige Noten"],
+      heart_notes: ["Vanille", "Kakao", "Tonka", "Tabakblüte"],
+      base_notes: ["Trockenfrüchte", "Holzige Noten"],
+      description: "Ein warmer und würziger Duft mit Tabak- und Vanillenoten.",
+      year: "2007",
+      gender: "Unisex",
+      productNumbers: ["193"],
+      shopifyProduct: {
+        title: "Riecht wie... Tobacco Vanille - No. 193",
+        url: "https://magicperfume.co/products/riecht-wie-tobacco-vanille-no-193",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Tobacco_Vanille.png?v=1770290664"
+      }
+    },
+    {
+      id: "tomford_oud_wood",
+      name: "Oud Wood Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Oud_Wood.png?v=1770289479",
+      top_notes: ["Rosenholz", "Kardamom", "Chinesischer Pfeffer"],
+      heart_notes: ["Sandelholz", "Vetiver", "Oud"],
+      base_notes: ["Tonka", "Amber", "Vanille"],
+      description: "Eine geheimnisvolle und exotische Mischung aus seltenem Oud-Holz mit rauchigen Noten.",
+      year: "2007",
+      gender: "Unisex",
+      productNumbers: ["287"],
+      shopifyProduct: {
+        title: "Riecht wie... Oud Wood - No. 287",
+        url: "https://magicperfume.co/products/riecht-wie-oud-wood-no-287",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Oud_Wood.png?v=1770289479"
+      }
+    }
+  ],
+
+  // ===== GIORGIO ARMANI =====
+  armani: [
+    {
+      id: "armani_si",
+      name: "Si Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_S.jpg?v=1770285117",
+      top_notes: ["Schwarze Johannisbeere", "Birne", "Mandarine"],
+      heart_notes: ["Rose", "Freesie", "Maiglöckchen"],
+      base_notes: ["Vanille", "Patschuli", "Benzoin"],
+      description: "Ein anspruchsvoller und moderner Chypre-Duft, der feminine Stärke feiert.",
+      year: "2013",
+      gender: "Female",
+      productNumbers: ["129"],
+      shopifyProduct: {
+        title: "Riecht wie...Si - No. 129",
+        url: "https://magicperfume.co/products/riecht-wie-si-no-129",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_S.jpg?v=1770285117"
+      }
+    },
+    {
+      id: "armani_emporio_she",
+      name: "Emporio Armani She Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_She.jpg?v=1770284423",
+      top_notes: ["Zitrone", "Bergamotte", "Rose"],
+      heart_notes: ["Jasmin", "Pfingstrose", "Maiglöckchen"],
+      base_notes: ["Sandelholz", "Moschus", "Vanille"],
+      description: "Ein frischer und femininer Duft, der den Geist der modernen Jugend einfängt.",
+      year: "1998",
+      gender: "Female",
+      productNumbers: ["150"],
+      shopifyProduct: {
+        title: "Riecht wie... Emporio She - No. 150",
+        url: "https://magicperfume.co/products/riecht-wie-emporio-she-no-150",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_She.jpg?v=1770284423"
+      }
+    },
+    {
+      id: "armani_my_way",
+      name: "My Way Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_MY_WAY.jpg?v=1770291090",
+      top_notes: ["Orangenblüte", "Bergamotte"],
+      heart_notes: ["Tuberose", "Jasmin"],
+      base_notes: ["Vanille", "Zeder", "Weißer Moschus"],
+      description: "Ein strahlender und ethischer Duft, der Authentizität und Verbundenheit feiert.",
+      year: "2020",
+      gender: "Female",
+      productNumbers: ["140"],
+      shopifyProduct: {
+        title: "Riecht wie... MY WAY - No. 140",
+        url: "https://magicperfume.co/products/riecht-wie-my-way-no-140",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_MY_WAY.jpg?v=1770291090"
+      }
+    },
+    {
+      id: "armani_code",
+      name: "Code Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Armani_Code.png?v=1770220395",
+      top_notes: ["Bergamotte", "Zitrone", "Grüne Noten"],
+      heart_notes: ["Olivenblüte", "Jasmin", "Orangenblüte"],
+      base_notes: ["Leder", "Zeder", "Tonkabohne"],
+      description: "Ein anspruchsvoller und verführerischer Duft für den modernen Mann.",
+      year: "2004",
+      gender: "Male",
+      productNumbers: ["260"],
+      shopifyProduct: {
+        title: "Riecht wie... Armani Code - No. 260",
+        url: "https://magicperfume.co/products/riecht-wie-armani-code-no-260",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Armani_Code.png?v=1770220395"
+      }
+    },
+    {
+      id: "armani_acqua_di_gio",
+      name: "Acqua Di Gio Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Acqua_Di_Gio.png?v=1770290000",
+      top_notes: ["Bergamotte", "Neroli", "Grüne Mandarine"],
+      heart_notes: ["Jasmin", "Rosmarin", "Salbei"],
+      base_notes: ["Zeder", "Patschuli", "Moschus"],
+      description: "Ein zeitloser aquatischer Klassiker, der die Essenz des Mittelmeers einfängt.",
+      year: "1996",
+      gender: "Male",
+      productNumbers: ["221"],
+      shopifyProduct: {
+        title: "Riecht wie... Acqua di Gio - No. 221",
+        url: "https://magicperfume.co/products/riecht-wie-acqua-di-gio-no-221",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Acqua_Di_Gio.png?v=1770290000"
+      }
+    },
+    {
+      id: "armani_stronger_with_you_intensely",
+      name: "Stronger With You Intensely Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Emporio_Armani_Stronger_With_You_Intensely.png?v=1770287057",
+      top_notes: ["Rosa Pfeffer", "Kardamom", "Veilchenblatt"],
+      heart_notes: ["Salbei", "Lavendel", "Zimt"],
+      base_notes: ["Vanille", "Kastanie", "Tonkabohne", "Amber"],
+      description: "Eine intensivere und kraftvollere Interpretation von Stronger With You.",
+      year: "2019",
+      gender: "Male",
+      productNumbers: ["318"],
+      shopifyProduct: {
+        title: "Riecht wie... Stronger With You Intensely - No. 318",
+        url: "https://magicperfume.co/products/riecht-wie-stronger-with-you-intensely-no-318",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Emporio_Armani_Stronger_With_You_Intensely.png?v=1770287057"
+      }
+    },
+    {
+      id: "armani_diamonds",
+      name: "Armani Diamonds Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_Armani_Diamonds.png?v=1770924117",
+      top_notes: ["Mandarine", "Bergamotte", "Orange"],
+      heart_notes: ["Rose", "Jasmin", "Ylang-Ylang"],
+      base_notes: ["Sandelholz", "Moschus", "Amber"],
+      description: "Ein funkelnder und eleganter Duft, der die Brillanz von Diamanten einfängt.",
+      year: "2000",
+      gender: "Female",
+      productNumbers: ["040"],
+      shopifyProduct: {
+        title: "Riecht wie... Armani Diamonds - No. 040",
+        url: "https://magicperfume.co/products/riecht-wie-armani-diamonds-no-040",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_Armani_Diamonds.png?v=1770924117"
+      }
+    }
+  ],
+
+  // ===== DIOR =====
+  dior: [
+    {
+      id: "dior_sauvage_parfum",
+      name: "Sauvage Parfum Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage.png?v=1770220271",
+      top_notes: ["Bergamotte", "Mandarine"],
+      heart_notes: ["Lavendel", "Sternanis", "Muskatnuss"],
+      base_notes: ["Sandelholz", "Vanille", "Amber"],
+      description: "Eine tiefere, intensivere Interpretation von Sauvage.",
+      year: "2018",
+      gender: "Male",
+      productNumbers: ["338"],
+      shopifyProduct: {
+        title: "Riecht wie... Sauvage Parfum - No. 338",
+        url: "https://magicperfume.co/products/riecht-wie-sauvage-parfum-no-338",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage.png?v=1770220271"
+      }
+    },
+    {
+      id: "dior_sauvage_elixir",
+      name: "Sauvage Elixir Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage_Elixir.png?v=1770218137",
+      top_notes: ["Grapefruit", "Muskatnuss", "Zimt"],
+      heart_notes: ["Lavendel", "Sternanis", "Koriander"],
+      base_notes: ["Lakritze", "Patschuli", "Sandelholz"],
+      description: "Eine kühne und intensive Neuinterpretation von Sauvage.",
+      year: "2021",
+      gender: "Male",
+      productNumbers: ["366"],
+      shopifyProduct: {
+        title: "Riecht wie... Sauvage Elixir - No. 366",
+        url: "https://magicperfume.co/products/riecht-wie-sauvage-elixir-no-366",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage_Elixir.png?v=1770218137"
+      }
+    },
+    {
+      id: "dior_hypnotic_poison",
+      name: "Hypnotic Poison Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Hypnotic_Poison.png?v=1771366694",
+      top_notes: ["Aprikose", "Pflaume", "Kokosnuss", "Bittermandel"],
+      heart_notes: ["Rose", "Jasmin", "Maiglöckchen"],
+      base_notes: ["Vanille", "Mandel", "Moschus"],
+      description: "Ein geheimnisvoller und sinnlicher Duft, der einen Zauber der Verführung webt.",
+      year: "1998",
+      gender: "Female",
+      productNumbers: ["145"],
+      shopifyProduct: {
+        title: "Riecht wie... Hypnotic Poison - No. 145",
+        url: "https://magicperfume.co/products/riecht-wie-hypnotic-poison-no-145",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hypnotic_Poison.png?v=1771366694"
+      }
+    },
+    {
+      id: "dior_jadore",
+      name: "J'adore Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_J_adore.jpg?v=1770220853",
+      top_notes: ["Birne", "Melone", "Pfirsich", "Magnolie"],
+      heart_notes: ["Jasmin", "Rose", "Maiglöckchen", "Ylang-Ylang"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein blumiger Strauß von außergewöhnlicher Fülle.",
+      year: "1999",
+      gender: "Female",
+      productNumbers: ["159"],
+      shopifyProduct: {
+        title: "Riecht wie... J'Adore - No. 159",
+        url: "https://magicperfume.co/products/riecht-wie-jadore-no-159",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_J_adore.jpg?v=1770220853"
+      }
+    },
+    {
+      id: "dior_miss_dior_le_parfum",
+      name: "Miss Dior Le Parfum Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Le_Parfum.jpg?v=1770293457",
+      top_notes: ["Lavendel", "Bergamotte", "Salbei"],
+      heart_notes: ["Iris", "Moschus", "Ambrette", "Birne"],
+      base_notes: ["Virginische Zeder", "Vetiver", "Leder", "Amber Accord"],
+      description: "Die konzentrierteste und luxuriöseste Version von Dior Homme.",
+      year: "2025",
+      gender: "Female",
+      productNumbers: ["196"],
+      shopifyProduct: {
+        title: "Riecht wie... Miss Dior Le Parfum - No. 196",
+        url: "https://magicperfume.co/products/riecht-wie-miss-dior-le-parfum-no-196",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Le_Parfum.jpg?v=1770293457"
+      }
+    },
+    {
+      id: "dior_fahrenheit",
+      name: "Fahrenheit Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Fahrenheit.png?v=1770289652",
+      top_notes: ["Weißdorn", "Zeder", "Beifuß", "Muskatnuss", "Mandarine"],
+      heart_notes: ["Leder", "Veilchen", "Geißblatt"],
+      base_notes: ["Leder", "Vetiver", "Amber"],
+      description: "Ein revolutionärer Duft, der blumige, holzige und ledrige Noten vereint.",
+      year: "1988",
+      gender: "Male",
+      productNumbers: ["206"],
+      shopifyProduct: {
+        title: "Riecht wie... Fahrenheit - No. 206",
+        url: "https://magicperfume.co/products/riecht-wie-fahrenheit-no-206",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Fahrenheit.png?v=1770289652"
+      }
+    },
+    {
+      id: "dior_fahrenheit_le_parfum",
+      name: "Fahrenheit Le Parfum Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Dior_Fahrenheit_Le_Parfum.jpg?v=1770284765",
+      top_notes: ["Veilchen", "Leder", "Weihrauch"],
+      heart_notes: ["Leder", "Veilchen", "Geißblatt"],
+      base_notes: ["Leder", "Vetiver", "Amber", "Myrrhe"],
+      description: "Eine tiefere, intensivere Interpretation des ikonischen Fahrenheit.",
+      year: "2015",
+      gender: "Male",
+      productNumbers: ["350"],
+      shopifyProduct: {
+        title: "Riecht wie... Fahrenheit Le Parfum - No. 350",
+        url: "https://magicperfume.co/products/riecht-wie-fahrenheit-le-parfum-no-350",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dior_Fahrenheit_Le_Parfum.jpg?v=1770284765"
+      }
+    },
+    {
+      id: "dior_homme_intense",
+      name: "Dior Homme Intense Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Dior_Homme_Intense.png?v=1770290129",
+      top_notes: ["Lavendel"],
+      heart_notes: ["Toskanische Iris", "Ambrettasamen", "Birne"],
+      base_notes: ["Virginische Zeder", "Vetiver"],
+      description: "Ein intensiver und sinnlicher Duft, der die Männlichkeit betont.",
+      year: "2011",
+      gender: "Male",
+      productNumbers: ["277"],
+      shopifyProduct: {
+        title: "Riecht wie... Homme Intense - No. 277",
+        url: "https://magicperfume.co/products/riecht-wie-homme-intense-no-277",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dior_Homme_Intense.png?v=1770290129"
+      }
+    },
+    {
+      id: "dior_miss_cherie",
+      name: "Miss Chérie Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Cherie.jpg?v=1770963606",
+      top_notes: ["Erdbeere", "Mandarine", "Rosa Pfeffer"],
+      heart_notes: ["Jasmin", "Rose", "Karamell", "Popcorn"],
+      base_notes: ["Patschuli", "Moschus", "Zeder"],
+      description: "Ein verspielter und romantischer Duft, der den Geist einer jungen Frau in Liebe einfängt.",
+      year: "2005",
+      gender: "Female",
+      productNumbers: ["082"],
+      shopifyProduct: {
+        title: "Riecht wie... Miss Cherie - No. 082",
+        url: "https://magicperfume.co/products/riecht-wie-miss-cherie-no-082",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Cherie.jpg?v=1770963606"
+      }
+    }
+  ],
+
+  // ===== CHANEL =====
+  chanel: [
+    {
+      id: "chanel_bleu",
+      name: "Bleu de Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838",
+      top_notes: ["Grapefruit", "Zitrone", "Minze", "Rosa Pfeffer"],
+      heart_notes: ["Ingwer", "Muskatnuss", "Jasmin"],
+      base_notes: ["Weihrauch", "Vetiver", "Zeder", "Sandelholz"],
+      description: "Ein zeitloser und anspruchsvoller Duft für Männer, der den Geist der Freiheit verkörpert.",
+      year: "2010",
+      gender: "Male",
+      productNumbers: ["252"],
+      shopifyProduct: {
+        title: "Riecht wie... Bleu - No. 252",
+        url: "https://magicperfume.co/products/riecht-wie-bleu-no-252",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838"
+      }
+    },
+    {
+      id: "chanel_coco",
+      name: "Coco Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco.jpg?v=1770285282",
+      top_notes: ["Koriander", "Mandarine", "Pfirsich", "Jasmin"],
+      heart_notes: ["Rose", "Nelke", "Mimose", "Nelke"],
+      base_notes: ["Sandelholz", "Amber", "Opium", "Benzoin"],
+      description: "Ein üppiger und sinnlicher orientalischer Duft, der den Geist von Mademoiselle Chanel verkörpert.",
+      year: "1984",
+      gender: "Female",
+      productNumbers: ["079"],
+      shopifyProduct: {
+        title: "Riecht wie... Cocoe - No. 079",
+        url: "https://magicperfume.co/products/riecht-wie-cocoe-no-079",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco.jpg?v=1770285282"
+      }
+    },
+    {
+      id: "chanel_coco_mademoiselle_intense",
+      name: "Coco Mademoiselle Intense Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco_Mademoiselle_Intense.png?v=1770291316",
+      top_notes: ["Orange", "Bergamotte", "Grapefruit"],
+      heart_notes: ["Rose", "Jasmin", "Litschi"],
+      base_notes: ["Patschuli", "Vanille", "Moschus", "Vetiver"],
+      description: "Eine intensivere Interpretation des ikonischen Coco Mademoiselle.",
+      year: "2018",
+      gender: "Female",
+      productNumbers: ["067", "139"],
+      shopifyProduct: {
+        title: "Riecht wie... Mademoiselle Intense - No. 067",
+        url: "https://magicperfume.co/products/riecht-wie-mademoiselle-intense-no-067",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco_Mademoiselle_Intense.png?v=1770291316"
+      }
+    },
+    {
+      id: "chanel_mademoiselle",
+      name: "Coco Mademoiselle Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/0a78ac2c2769df411731eaba9cb8c230.jpg_720x720q80.jpg?v=1772090593", // Placeholder
+      top_notes: ["Orange", "Bergamotte", "Grapefruit"],
+      heart_notes: ["Rose", "Jasmin", "Litschi"],
+      base_notes: ["Patschuli", "Vanille", "Moschus", "Vetiver"],
+      description: "Ein frischer und moderner orientalischer Duft, der den Geist einer jungen, selbstbewussten Frau einfängt.",
+      year: "2001",
+      gender: "Female",
+      productNumbers: ["139"],
+      shopifyProduct: {
+        title: "Riecht wie... Mademoiselle - No. 139",
+        url: "https://magicperfume.co/products/riecht-wie-mademoiselle-no-139",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/0a78ac2c2769df411731eaba9cb8c230.jpg_720x720q80.jpg?v=1772090593"
+      }
+    },
+    {
+      id: "chanel_chance",
+      name: "Chance Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel_Chance.png?v=1770923697",
+      top_notes: ["Rosa Pfeffer", "Quitte", "Zitrusfrüchte"],
+      heart_notes: ["Hyazinthe", "Jasmin", "Iris"],
+      base_notes: ["Moschus", "Patschuli", "Vetiver", "Zeder"],
+      description: "Ein lebendiger und unerwarteter Blumenduft.",
+      year: "2003",
+      gender: "Female",
+      productNumbers: ["006"],
+      shopifyProduct: {
+        title: "Riecht wie... Chance - No. 006",
+        url: "https://magicperfume.co/products/riecht-wie-chance-no-006",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chanel_Chance.png?v=1770923697"
+      }
+    },
+    {
+      id: "chanel_no5",
+      name: "No. 5 Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018",
+      top_notes: ["Aldehyde", "Ylang-Ylang", "Neroli", "Bergamotte"],
+      heart_notes: ["Iris", "Jasmin", "Rose", "Maiglöckchen"],
+      base_notes: ["Vanille", "Amber", "Sandelholz", "Vetiver", "Moschus"],
+      description: "Der legendärste Duft der Welt, Chanel No 5 ist ein abstrakter blumiger Aldehyd, der die Parfümerie revolutionierte.",
+      year: "1921",
+      gender: "Female",
+      productNumbers: ["077"],
+      shopifyProduct: {
+        title: "Riecht wie... No.5 - No. 077",
+        url: "https://magicperfume.co/products/riecht-wie-no5-no-077",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018"
+      }
+    }
+  ],
+
+  // ===== HUGO BOSS =====
+  hugoBoss: [
+    {
+      id: "boss_woman",
+      name: "Boss Woman Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Boss_Woman.jpg?v=1770925272",
+      top_notes: ["Mandarine", "Apfel", "Pfirsich"],
+      heart_notes: ["Rose", "Jasmin", "Lilie"],
+      base_notes: ["Sandelholz", "Moschus", "Vanille"],
+      description: "Ein klassischer und eleganter Duft für die erfolgreiche moderne Frau.",
+      year: "2000",
+      gender: "Female",
+      productNumbers: ["60"],
+      shopifyProduct: {
+        title: "Riecht wie... Boss Woman - No. 60",
+        url: "https://magicperfume.co/products/riecht-wie-boss-woman-no-60",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Boss_Woman.jpg?v=1770925272"
+      }
+    },
+    {
+      id: "boss_bottled",
+      name: "Boss Bottled Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Bottled.png?v=1770223505",
+      top_notes: ["Apfel", "Zitrusfrüchte", "Geranie"],
+      heart_notes: ["Zeder", "Sandelholz", "Patschuli"],
+      base_notes: ["Vanille", "Moschus", "Amber"],
+      description: "Ein klassischer und anspruchsvoller Duft für den erfolgreichen modernen Mann.",
+      year: "1998",
+      gender: "Male",
+      productNumbers: ["234"],
+      shopifyProduct: {
+        title: "Riecht wie... Bottled - No. 234",
+        url: "https://magicperfume.co/products/riecht-wie-bottled-no-234",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Bottled.png?v=1770223505"
+      }
+    },
+    {
+      id: "boss_hugo",
+      name: "Hugo Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Hugo.png?v=1770292811",
+      top_notes: ["Grüne Noten", "Basilikum", "Minze"],
+      heart_notes: ["Lavendel", "Geranie", "Muskatellersalbei"],
+      base_notes: ["Zeder", "Sandelholz", "Moschus"],
+      description: "Ein frischer und energetischer Duft für den jungen und dynamischen Mann.",
+      year: "1995",
+      gender: "Male",
+      productNumbers: ["223"],
+      shopifyProduct: {
+        title: "Riecht wie... Hugo - No. 223",
+        url: "https://magicperfume.co/products/riecht-wie-hugo-no-223",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Hugo.png?v=1770292811"
+      }
+    },
+    {
+      id: "boss_orange",
+      name: "Boss Orange Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Boss_Orange.jpg?v=1770293717",
+      top_notes: ["Apfel", "Weiße Blüten", "Zitrusfrüchte"],
+      heart_notes: ["Rose", "Jasmin", "Pfingstrose"],
+      base_notes: ["Sandelholz", "Moschus", "Vanille"],
+      description: "Ein frischer und unbeschwerter Duft für die moderne Frau.",
+      year: "2003",
+      gender: "Female",
+      productNumbers: ["148"],
+      shopifyProduct: {
+        title: "Riecht wie... Boss Orange - No. 148",
+        url: "https://magicperfume.co/products/riecht-wie-boss-orange-no-148",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Boss_Orange.jpg?v=1770293717"
+      }
+    },
+    {
+      id: "boss_the_scent",
+      name: "The Scent Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_The_Scent.png?v=1770292543",
+      top_notes: ["Ingwer", "Bergamotte", "Mandarine"],
+      heart_notes: ["Lavendel", "Maninka", "Fruchtnoten"],
+      base_notes: ["Leder", "Patschuli", "Zeder"],
+      description: "Ein verführerischer und magnetischer Duft, der die Essenz der Anziehung einfängt.",
+      year: "2015",
+      gender: "Male",
+      productNumbers: ["270"],
+      shopifyProduct: {
+        title: "Riecht wie... The Scent - No. 270",
+        url: "https://magicperfume.co/products/riecht-wie-the-scent-no-270",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_The_Scent.png?v=1770292543"
+      }
+    },
+    {
+      id: "boss_alive",
+      name: "Boss Alive Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/alive.png?v=1772098782", // Placeholder
+      top_notes: ["Apfel", "Schwarze Johannisbeere", "Pflaume"],
+      heart_notes: ["Rose", "Jasmin", "Zimt"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein lebendiger und energetischer Duft, der die Freude am Leben feiert.",
+      year: "2019",
+      gender: "Female",
+      productNumbers: ["098"],
+      shopifyProduct: {
+        title: "Riecht wie... ALIVE - No. 098",
+        url: "https://magicperfume.co/products/riecht-wie-alive-no-098",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/alive.png?v=1772098782"
+      }
+    },
+    {
+      id: "boss_ma_vie",
+      name: "Ma Vie Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Ma_Vie.jpg?v=1770924802",
+      top_notes: ["Zitrusfrüchte", "Fruchtnoten", "Bergamotte"],
+      heart_notes: ["Rose", "Jasmin", "Maiglöckchen"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein frischer und eleganter Duft, der die Schönheit des Lebens feiert.",
+      year: "2010",
+      gender: "Female",
+      productNumbers: ["058"],
+      shopifyProduct: {
+        title: "Riecht wie... Ma Vie - No. 058",
+        url: "https://magicperfume.co/products/riecht-wie-ma-vie-no-058",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Ma_Vie.jpg?v=1770924802"
+      }
+    }
+  ],
+
+  // ===== CALVIN KLEIN =====
+  calvinKlein: [
+    {
+      id: "ck_eternity",
+      name: "Eternity Calvin Klein",
+      brand: "Calvin Klein",
+      image: "https://magicperfume.co/cdn/shop/files/Calvin_Klein_Eternity.png?v=1770287215",
+      top_notes: ["Mandarine", "Bergamotte", "Zitrone"],
+      heart_notes: ["Maiglöckchen", "Rose", "Jasmin"],
+      base_notes: ["Sandelholz", "Moschus", "Amber"],
+      description: "Ein zeitloser und romantischer Duft, der die dauerhafte Liebe feiert.",
+      year: "1988",
+      gender: "Female",
+      productNumbers: ["106"],
+      shopifyProduct: {
+        title: "Riecht wie... Eternity - No. 106",
+        url: "https://magicperfume.co/products/riecht-wie-eternity-no-106",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Calvin_Klein_Eternity.png?v=1770287215"
+      }
+    }
+  ],
+
+  // ===== NARCISO RODRIGUEZ =====
+  narciso: [
+    {
+      id: "narciso_musc_noir",
+      name: "Musc Noir Narciso Rodriguez",
+      brand: "Narciso Rodriguez",
+      image: "https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273",
+      top_notes: ["Pflaume", "Bergamotte", "Mandarine"],
+      heart_notes: ["Tuberose", "Jasmin", "Moschus"],
+      base_notes: ["Patschuli", "Vanille", "Zeder"],
+      description: "Ein sinnlicher und geheimnisvoller Duft, der die Kraft von Moschus feiert.",
+      year: "2018",
+      gender: "Female",
+      productNumbers: ["457"],
+      shopifyProduct: {
+        title: "Riecht wie... Musc Noir For Her - No. 457",
+        url: "https://magicperfume.co/products/riecht-wie-musc-noir-for-her-no-457",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273"
+      }
+    }
+  ],
+
+  // ===== DOLCE & GABBANA =====
+  dolce: [
+    {
+      id: "dolce_light_blue",
+      name: "Light Blue Dolce & Gabbana",
+      brand: "Dolce & Gabbana",
+      image: "https://magicperfume.co/cdn/shop/files/Dolce_Gabbana_Light_Blue.jpg?v=1770290817",
+      top_notes: ["Sizilianische Zitrone", "Apfel", "Zeder"],
+      heart_notes: ["Jasmin", "Weiße Rose", "Bambus"],
+      base_notes: ["Zeder", "Amber", "Moschus"],
+      description: "Ein frischer und sonniger Duft, der die Essenz des Mittelmeers einfängt.",
+      year: "2001",
+      gender: "Female",
+      productNumbers: ["017"],
+      shopifyProduct: {
+        title: "Riecht wie... Light Blue - No. 017",
+        url: "https://magicperfume.co/products/riecht-wie-light-blue-no-017",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dolce_Gabbana_Light_Blue.jpg?v=1770290817"
+      }
+    },
+    {
+      id: "dolce_the_one",
+      name: "The One Dolce & Gabbana",
+      brand: "Dolce & Gabbana",
+      image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987",
+      top_notes: ["Pfirsich", "Litschi", "Mandarine"],
+      heart_notes: ["Rose", "Jasmin", "Lilie"],
+      base_notes: ["Vanille", "Amber", "Moschus"],
+      description: "Ein anspruchsvoller und sinnlicher Duft, der die Essenz einer zeitlosen Frau einfängt.",
+      year: "2006",
+      gender: "Female",
+      productNumbers: ["094"],
+      shopifyProduct: {
+        title: "Riecht wie... The One - No. 094",
+        url: "https://magicperfume.co/products/riecht-wie-the-one-no-094",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987"
+      }
+    }
+  ],
+
+  // ===== KENZO =====
+  kenzo: [
+    {
+      id: "kenzo_flower",
+      name: "Flower by Kenzo",
+      brand: "Kenzo",
+      image: "https://magicperfume.co/cdn/shop/files/KENZO_FLOWER.jpg?v=1770925860",
+      top_notes: ["Weißdorn", "Schwarze Johannisbeere", "Mandarine"],
+      heart_notes: ["Rose", "Jasmin", "Veilchen"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein poetischer und zarter Duft, der die Schönheit der Mohnblume feiert.",
+      year: "2000",
+      gender: "Female",
+      productNumbers: ["074"],
+      shopifyProduct: {
+        title: "Riecht wie... Flower - No. 074",
+        url: "https://magicperfume.co/products/riecht-wie-flower-no-074",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/KENZO_FLOWER.jpg?v=1770925860"
+      }
+    }
+  ],
+
+  // ===== CHLOE =====
+  chloe: [
+    {
+      id: "chloe_chloe",
+      name: "Chloé",
+      brand: "Chloé",
+      image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143",
+      top_notes: ["Pfingstrose", "Litschi", "Freesie"],
+      heart_notes: ["Magnolie", "Rose", "Maiglöckchen"],
+      base_notes: ["Zeder", "Amber", "Moschus"],
+      description: "Ein frischer und eleganter Rosenduft, der den Geist der modernen Frau einfängt.",
+      year: "2008",
+      gender: "Female",
+      productNumbers: ["024"],
+      shopifyProduct: {
+        title: "Riecht wie... ÄQUIVALENT - No. 024",
+        url: "https://magicperfume.co/products/riecht-wie-aequivalent-no-024",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143"
+      }
+    }
+  ],
+
+  // ===== HERMÈS =====
+  hermes: [
+    {
+      id: "hermes_terre",
+      name: "Terre d'Hermès",
+      brand: "Hermès",
+      image: "https://magicperfume.co/cdn/shop/files/Hermes_Terre_D_Hermes.png?v=1770292407",
+      top_notes: ["Orange", "Grapefruit", "Feuerstein"],
+      heart_notes: ["Pfeffer", "Geranie", "Zeder"],
+      base_notes: ["Vetiver", "Benzoin", "Zeder", "Eichenmoos"],
+      description: "Ein kraftvoller und origineller Duft, der die Verbindung zwischen Mensch und Erde feiert.",
+      year: "2006",
+      gender: "Male",
+      productNumbers: ["227"],
+      shopifyProduct: {
+        title: "Riecht wie... Terre - No. 227",
+        url: "https://magicperfume.co/products/riecht-wie-terre-no-227",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hermes_Terre_D_Hermes.png?v=1770292407"
+      }
+    }
+  ],
+
+  // ===== GUCCI =====
+  gucci: [
+    {
+      id: "gucci_rush",
+      name: "Rush Gucci",
+      brand: "Gucci",
+      image: "https://magicperfume.co/cdn/shop/files/gucci_rush_8034ec32-d523-4890-b475-fc7c34e77c9e.webp?v=1771658050",
+      top_notes: ["Freesie", "Seerose", "Koriander"],
+      heart_notes: ["Rose", "Jasmin", "Maiglöckchen"],
+      base_notes: ["Sandelholz", "Moschus", "Amber"],
+      description: "Ein kühner und moderner Blumenduft, der die Energie des urbanen Lebens einfängt.",
+      year: "1999",
+      gender: "Female",
+      productNumbers: ["163"],
+      shopifyProduct: {
+        title: "Riecht wie... Rush 2 - No. 163",
+        url: "https://magicperfume.co/products/riecht-wie-rush-2-no-163",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/gucci_rush_8034ec32-d523-4890-b475-fc7c34e77c9e.webp?v=1771658050"
+      }
+    }
+  ],
+
+  // ===== SALVATORE FERRAGAMO =====
+  ferragamo: [
+    {
+      id: "ferragamo_deep_red",
+      name: "Deep Red Salvatore Ferragamo",
+      brand: "Salvatore Ferragamo",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Deep_Red.jpg?v=1770922424",
+      top_notes: ["Schwarze Johannisbeere", "Mandarine", "Rosa Pfeffer"],
+      heart_notes: ["Rose", "Jasmin", "Orangenblüte"],
+      base_notes: ["Patschuli", "Vanille", "Zeder"],
+      description: "Ein lebendiger und leidenschaftlicher Duft, der die Intensität von Rot einfängt.",
+      year: "2006",
+      gender: "Female",
+      productNumbers: ["022"],
+      shopifyProduct: {
+        title: "Riecht wie... Deep Red - No. 022",
+        url: "https://magicperfume.co/products/riecht-wie-deep-red-no-022",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Deep_Red.jpg?v=1770922424"
+      }
+    }
+  ],
+
+  // ===== DAVIDOFF =====
+  davidoff: [
+    {
+      id: "davidoff_cool_water",
+      name: "Cool Water Davidoff",
+      brand: "Davidoff",
+      image: "https://magicperfume.co/cdn/shop/files/Davidoff_Cool_Water.png?v=1770292092",
+      top_notes: ["Meerwasser", "Minze", "Lavendel", "Rosmarin"],
+      heart_notes: ["Jasmin", "Geranie", "Sandelholz"],
+      base_notes: ["Moschus", "Amber", "Zeder"],
+      description: "Ein frischer und aquatischer Duft, der die Kraft und Frische des Ozeans einfängt.",
+      year: "1988",
+      gender: "Male",
+      productNumbers: ["200"],
+      shopifyProduct: {
+        title: "Riecht wie... Cool Water - No. 200",
+        url: "https://magicperfume.co/products/riecht-wie-cool-water-no-200",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Davidoff_Cool_Water.png?v=1770292092"
+      }
+    }
+  ],
+
+  // ===== JOOP! =====
+  joop: [
+    {
+      id: "joop_homme",
+      name: "Joop! Homme",
+      brand: "Joop!",
+      image: "https://magicperfume.co/cdn/shop/files/Joop_Homme.png?v=1770286089",
+      top_notes: ["Zimt", "Bergamotte", "Mandarine"],
+      heart_notes: ["Maiglöckchen", "Jasmin", "Geranie"],
+      base_notes: ["Sandelholz", "Vanille", "Tonkabohne", "Zeder"],
+      description: "Ein kühner und unverwechselbarer Duft, der sowohl süß als auch würzig ist.",
+      year: "1989",
+      gender: "Male",
+      productNumbers: ["211"],
+      shopifyProduct: {
+        title: "Riecht wie... Joop Homme - No. 211",
+        url: "https://magicperfume.co/products/riecht-wie-joop-homme-no-211",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Joop_Homme.png?v=1770286089"
+      }
+    }
+  ]
+};
+
+// ===== HELPER FUNCTION TO FIND SHOPIFY PRODUCT BY CATALOG PERFUME ID =====
+window.PerfumeCatalog.getShopifyProductByPerfumeId = function(perfumeId) {
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      const perfume = this[brandKey].find(p => p.id === perfumeId);
+      if (perfume && perfume.shopifyProduct) {
+        return perfume.shopifyProduct;
+      }
+    }
+  }
+  return null;
+};
+
+// ===== HELPER FUNCTION TO FIND SHOPIFY PRODUCT BY CATALOG PERFUME NAME =====
+window.PerfumeCatalog.getShopifyProductByPerfumeName = function(perfumeName) {
+  const searchName = perfumeName.toLowerCase().trim();
+  
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      const perfume = this[brandKey].find(p => 
+        p.name.toLowerCase().includes(searchName) || 
+        searchName.includes(p.name.toLowerCase())
+      );
+      if (perfume && perfume.shopifyProduct) {
+        return perfume.shopifyProduct;
+      }
+    }
+  }
+  return null;
+};
+
+// ===== ENHANCED SEARCH FUNCTION =====
+window.PerfumeCatalog.search = function(query) {
+  if (!query || query.length < 2) return [];
+  
+  const results = [];
+  const queryLower = query.toLowerCase().trim();
+  
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      this[brandKey].forEach(perfume => {
+        // Create comprehensive searchable text
+        const searchableText = [
+          perfume.name,
+          perfume.brand,
+          perfume.year,
+          ...(perfume.top_notes || []),
+          ...(perfume.heart_notes || []),
+          ...(perfume.base_notes || []),
+          ...(perfume.productNumbers || [])
+        ].join(' ').toLowerCase();
+        
+        // Check if query matches ANY part of the perfume
+        if (searchableText.includes(queryLower)) {
+          results.push(perfume);
+        }
+      });
+    }
+  }
+  
+  return results.sort((a, b) => a.name.localeCompare(b.name));
+};
+
+// ===== FIND BY ID =====
+window.PerfumeCatalog.findById = function(id) {
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      const found = this[brandKey].find(p => p.id === id);
+      if (found) return found;
+    }
+  }
+  return null;
+};
+
+console.log('✓ German PerfumeCatalog loaded with', 
+  Object.keys(window.PerfumeCatalog).filter(key => Array.isArray(window.PerfumeCatalog[key])).length, 
+  'brand categories');
