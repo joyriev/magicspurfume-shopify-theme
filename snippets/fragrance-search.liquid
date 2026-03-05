@@ -1271,4 +1271,652 @@
     const results = [];
     const addedIds = new Set();
     
-    console.log('🔍 Erweiterte Katalogs
+    console.log('🔍 Erweiterte Katalogs​​suche für:', queryLower);
+    
+    // Create variations of the search query
+    const queryVariations = generateQueryVariations(queryLower);
+    console.log('Katalog-Suchvariationen:', queryVariations);
+    
+    // Check ALL perfumes with advanced fuzzy matching
+    allPerfumes.forEach(perfume => {
+      if (addedIds.has(perfume.id)) return;
+      
+      const searchableText = [
+        perfume.name || '',
+        perfume.brand || '',
+        perfume.gender || '',
+        ...(perfume.top_notes || []),
+        ...(perfume.heart_notes || []),
+        ...(perfume.base_notes || []),
+        ...(perfume.productNumbers || [])
+      ].join(' ').toLowerCase();
+      
+      let bestScore = 0;
+      let matchReasons = [];
+      
+      // Check each variation against the searchable text
+      for (const variation of queryVariations) {
+        // Direct contains match (highest score)
+        if (searchableText.includes(variation)) {
+          bestScore = Math.max(bestScore, 100);
+          matchReasons.push(`direkt:${variation}`);
+        }
+      }
+      
+      // If no direct match, try advanced similarity on name and brand
+      if (bestScore < 50) {
+        const nameScore = calculateAdvancedSimilarity(queryLower, perfume.name || '');
+        const brandScore = calculateAdvancedSimilarity(queryLower, perfume.brand || '');
+        
+        const combinedScore = Math.max(nameScore, brandScore);
+        if (combinedScore > 40) {
+          bestScore = Math.max(bestScore, combinedScore);
+          if (nameScore > brandScore) {
+            matchReasons.push(`name:${Math.round(nameScore)}%`);
+          } else {
+            matchReasons.push(`marke:${Math.round(brandScore)}%`);
+          }
+        }
+      }
+      
+      // Check product numbers
+      if (perfume.productNumbers) {
+        for (const num of perfume.productNumbers) {
+          if (queryLower.includes(num)) {
+            bestScore = Math.max(bestScore, 150);
+            matchReasons.push(`nummer:${num}`);
+          }
+        }
+      }
+      
+      if (bestScore > 30) {
+        results.push({ 
+          perfume, 
+          score: Math.round(bestScore),
+          matchReasons 
+        });
+        addedIds.add(perfume.id);
+        console.log(`✅ Katalog-Treffer: ${perfume.name} (Punktzahl: ${Math.round(bestScore)})`, matchReasons);
+      }
+    });
+    
+    // Sort by score (highest first)
+    results.sort((a, b) => b.score - a.score);
+    
+    console.log(`📊 ${results.length} Katalog-Ergebnisse für "${query}" gefunden`);
+    
+    return results.map(r => r.perfume);
+  }
+
+  // ===== GET POPULAR PRODUCTS FOR SUGGESTIONS =====
+  function getPopularSuggestions() {
+    if (!fcProducts || fcProducts.length === 0) return [];
+    
+    // Return top products as suggestions
+    return fcProducts.slice(0, 8);
+  }
+
+  // ===== RENDER SUGGESTIONS =====
+  function renderSuggestions() {
+    const suggestions = getPopularSuggestions();
+    
+    if (suggestions.length === 0) return '';
+    
+    let html = `<div class="fc-suggestions-title">✨ Beliebte Düfte</div>`;
+    
+    suggestions.forEach(product => {
+      const priceFormatted = product.price ? '€' + (product.price / 100).toFixed(2) : '€11.99';
+      
+      html += `
+        <div class="fc-suggestion-item" onclick="window.fcViewDetails('${product.url}')">
+          <img class="fc-suggestion-image" src="${product.image}" alt="${product.title}" loading="lazy">
+          <div class="fc-suggestion-info">
+            <div class="fc-suggestion-name">${product.title}</div>
+            <div class="fc-suggestion-price">${priceFormatted}</div>
+          </div>
+        </div>
+      `;
+    });
+    
+    return html;
+  }
+
+  // ===== RENDER CATALOG PERFUME LIST =====
+  function renderCatalogPerfumes(perfumes, query) {
+    if (!perfumes || perfumes.length === 0) return '';
+    
+    const sortedPerfumes = [...perfumes].sort((a, b) => a.name.localeCompare(b.name));
+    
+    let html = `<div class="fc-section-title">Echte Parfums (${perfumes.length})</div>`;
+    
+    sortedPerfumes.slice(0, 8).forEach(perfume => {
+      html += `
+        <div class="fc-real-perfume-item" onclick="window.fcShowPerfumeDetail('${perfume.id}')">
+          <img class="fc-real-perfume-image" src="${perfume.image}" 
+               alt="${perfume.name}" 
+               loading="lazy"
+               onerror="this.src='https://via.placeholder.com/60x60?text=Parfum'">
+          <div class="fc-real-perfume-info">
+            <div class="fc-real-perfume-name">${perfume.name}</div>
+            <div class="fc-real-perfume-brand">${perfume.brand}</div>
+            ${perfume.year ? `<div class="fc-real-perfume-year">${perfume.year}</div>` : ''}
+          </div>
+        </div>
+      `;
+    });
+    
+    return html;
+  }
+
+  // ===== SHOW PERFUME DETAIL WITH HARDCODED MAPPINGS =====
+  window.fcShowPerfumeDetail = function(perfumeId) {
+    const perfume = findPerfumeById(perfumeId);
+    if (!perfume) return;
+    
+    currentView = 'detail';
+    steps.style.display = 'none';
+    
+    // Find matching Shopify product using hardcoded mappings
+    const shopifyProduct = findShopifyProductByCatalogPerfume(perfume);
+    
+    let html = `
+      <button class="fc-back-btn" onclick="window.fcGoBack()">Zurück</button>
+    `;
+    
+    if (shopifyProduct) {
+      html += `<div class="fc-subsection-title">Unsere inspirierte Version</div>`;
+      html += '<div class="fc-grid-2col">';
+      
+      // RECOMMENDED: The found Shopify product
+      html += renderProductCard(shopifyProduct, 'Empfohlen');
+      
+      // YOU MIGHT LIKE IT: Random product from your collection
+      const otherProducts = fcProducts.filter(p => p.id !== shopifyProduct.id);
+      if (otherProducts.length > 0) {
+        const randomProduct = otherProducts[Math.floor(Math.random() * otherProducts.length)];
+        html += renderProductCard(randomProduct, 'Das könnte dir auch gefallen');
+      }
+      
+      html += '</div>';
+    } else {
+      // Fallback - show random products
+      html += `<div class="fc-subsection-title">Das könnte dir gefallen</div>`;
+      html += '<div class="fc-grid-2col">';
+      
+      const randomProducts = [...fcProducts].sort(() => 0.5 - Math.random()).slice(0, 2);
+      if (randomProducts.length >= 1) {
+        html += renderProductCard(randomProducts[0], 'Empfohlen');
+      }
+      if (randomProducts.length >= 2) {
+        html += renderProductCard(randomProducts[1], 'Das könnte dir auch gefallen');
+      }
+      
+      html += '</div>';
+    }
+    
+    // Show catalog perfume details
+    html += `
+      <div class="fc-detailed-view">
+        <div class="fc-detailed-header">
+          <img class="fc-detailed-image" src="${perfume.image}" 
+               alt="${perfume.name}"
+               loading="lazy"
+               onerror="this.src='https://via.placeholder.com/110x110?text=Parfum'">
+          <div>
+            <div class="fc-detailed-name">${perfume.name}</div>
+            <div class="fc-detailed-brand">${perfume.brand}</div>
+            ${perfume.year ? `<div class="fc-detailed-meta">${perfume.year}</div>` : ''}
+            ${perfume.gender ? `<div class="fc-detailed-meta">${perfume.gender}</div>` : ''}
+          </div>
+        </div>
+
+        <div class="fc-notes-section">
+          ${perfume.top_notes ? `
+            <div class="fc-note-category">
+              <h4>KOPFNOTEN</h4>
+              <div class="fc-note-tags">
+                ${perfume.top_notes.map(note => `<span class="fc-note-tag">${note}</span>`).join('')}
+              </div>
+            </div>
+          ` : ''}
+          
+          ${perfume.heart_notes ? `
+            <div class="fc-note-category">
+              <h4>HERZNOTEN</h4>
+              <div class="fc-note-tags">
+                ${perfume.heart_notes.map(note => `<span class="fc-note-tag">${note}</span>`).join('')}
+              </div>
+            </div>
+          ` : ''}
+          
+          ${perfume.base_notes ? `
+            <div class="fc-note-category">
+              <h4>BASISNOTEN</h4>
+              <div class="fc-note-tags">
+                ${perfume.base_notes.map(note => `<span class="fc-note-tag">${note}</span>`).join('')}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+        
+        <div class="fc-description">
+          ${perfume.description}
+        </div>
+      </div>
+    `;
+    
+    content.innerHTML = html;
+  };
+
+  // ===== FIND SHOPIFY PRODUCT BY CATALOG PERFUME - WITH HARDCODED MAPPINGS =====
+  function findShopifyProductByCatalogPerfume(perfume) {
+    if (!perfume || !fcProducts.length) return null;
+    
+    console.log('🔍 Finde Shopify-Produkt für Katalog-Parfum:', perfume.name);
+    
+    // ===== HARDCODED DIRECT MAPPINGS FOR KNOWN PRODUCTS =====
+    const hardcodedMappings = [
+      {
+        catalogNames: ['musc noir', 'narciso rodriguez musc noir', 'musc noir narciso rodriguez'],
+        productNumber: '457',
+        variantId: 47306571829506, // 30ml variant for German store
+        expectedTitle: 'Riecht wie... Musc Noir For Her - No. 457',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273',
+        url: 'https://magicperfume.co/products/riecht-wie-musc-noir-for-her-no-457',
+        price: 1199
+      },
+      {
+        catalogNames: ['no. 5', 'chanel no. 5', 'no 5 chanel'],
+        productNumber: '077',
+        variantId: 47306570944770, // 30ml variant
+        expectedTitle: 'Riecht wie... No.5 - No. 077',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018',
+        url: 'https://magicperfume.co/products/riecht-wie-no5-no-077',
+        price: 1199
+      },
+      {
+        catalogNames: ['bleu de chanel', 'bleu', 'chanel bleu', 'blue chanel'],
+        productNumber: '252',
+        variantId: 47306572321026, // 30ml variant
+        expectedTitle: 'Riecht wie... Bleu - No. 252',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838',
+        url: 'https://magicperfume.co/products/riecht-wie-bleu-no-252',
+        price: 1199
+      }
+    ];
+    
+    const perfumeLower = perfume.name.toLowerCase();
+    
+    // Check hardcoded mappings first
+    for (const mapping of hardcodedMappings) {
+      for (const catalogName of mapping.catalogNames) {
+        if (perfumeLower.includes(catalogName)) {
+          console.log(`🎯 Feste Zuordnung für "${catalogName}" -> Produkt #${mapping.productNumber}`);
+          
+          // First try to find existing product
+          let match = fcProducts.find(p => {
+            const pNumber = extractProductNumber(p.title);
+            return pNumber === mapping.productNumber;
+          });
+          
+          if (match) {
+            console.log(`✅ Vorhandenes Produkt gefunden:`, match.title);
+            return match;
+          }
+          
+          // If not found, create a temporary product with the correct data
+          console.log(`⚠️ Erstelle temporäres Produkt für #${mapping.productNumber}`);
+          
+          return {
+            id: `temp-${mapping.productNumber}`,
+            title: mapping.expectedTitle,
+            image: mapping.imageUrl,
+            url: mapping.url,
+            variant: mapping.variantId,
+            variantSKU: `${mapping.productNumber}${mapping.productNumber === '252' ? 'm' : 'w'}03`,
+            price: mapping.price,
+            description: mapping.expectedTitle
+          };
+        }
+      }
+    }
+    
+    // If no hardcoded match, try number-based search
+    if (perfume.productNumbers && perfume.productNumbers.length > 0) {
+      for (const num of perfume.productNumbers) {
+        const match = fcProducts.find(p => {
+          const pNumber = extractProductNumber(p.title);
+          return pNumber === num;
+        });
+        if (match) {
+          console.log(`✅ Gefunden über Produktnummer ${num}:`, match.title);
+          return match;
+        }
+      }
+    }
+    
+    console.log('❌ Keine Übereinstimmung gefunden für:', perfume.name);
+    return null;
+  }
+
+  // ===== RENDER PRODUCT CARD WITH NUMERIC VARIANT ID =====
+  function renderProductCard(product, badge) {
+    const priceFormatted = product.price ? '€' + (product.price / 100).toFixed(2) : '€11.99';
+    
+    let displayNumber = '';
+    let displayName = product.title;
+    
+    const numberMatch = product.title.match(/No\.?\s*(\d+)/i);
+    if (numberMatch) {
+      displayNumber = numberMatch[0];
+    }
+    
+    const inspiredMatch = product.title.match(/Riecht wie\.\.\. (.*)/i);
+    if (inspiredMatch) {
+      displayName = inspiredMatch[1];
+    }
+    
+    // Use the numeric variant ID (NOT the SKU)
+    const variantId = product.variant;
+    
+    return `
+      <div class="fc-product-card">
+        <div class="fc-badge">${badge}</div>
+        <div class="fc-product-inner">
+          <img class="fc-product-image" src="${product.image}" alt="${product.title}" loading="lazy">
+          <div class="fc-product-title">${displayNumber ? displayNumber + ' - ' : ''}${displayName}</div>
+          <div class="fc-product-price">${priceFormatted}</div>
+          <button class="fc-add-to-cart" onclick="event.stopPropagation(); window.fcAddToCart(${variantId})">In den Warenkorb</button>
+          <div>
+            <span class="fc-view-link" onclick="event.stopPropagation(); window.fcViewDetails('${product.url}')">Details ansehen</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ===== RENDER YOUR PRODUCT CARD (ALIAS) =====
+  function renderYourProductCard(product, badge) {
+    return renderProductCard(product, badge);
+  }
+
+  // ===== INITIALIZE YOUR SHOPIFY PRODUCTS WITH CORRECT VARIANT IDS AND IMAGES =====
+  function fcInitProducts() {
+    fcProducts = [
+      {% for product in collections.all.products %}
+        {
+          id: {{ product.id | json }},
+          title: {{ product.title | json }},
+          image: {{ product.featured_image | img_url: '400x' | json }},
+          url: {{ product.url | json }},
+          variant: {{ product.variants.first.id | json }},
+          variantSKU: {{ product.variants.first.sku | json }},
+          price: {{ product.price | json }},
+          comparePrice: {{ product.compare_at_price | json }},
+          description: {{ product.description | strip_html | json }},
+          metafields: {
+            perfume: {
+              top_notes: {{ product.metafields.perfume.top_notes | default: '' | json }},
+              middle_notes: {{ product.metafields.perfume.middle_notes | default: '' | json }},
+              base_notes: {{ product.metafields.perfume.base_notes | default: '' | json }}
+            },
+            custom: {
+              top_notes: {{ product.metafields.custom.top_notes | default: '' | json }},
+              middle_notes: {{ product.metafields.custom.middle_notes | default: '' | json }},
+              base_notes: {{ product.metafields.custom.base_notes | default: '' | json }},
+              nuta: {{ product.metafields.custom.nuta | default: '' | json }}
+            }
+          }
+        }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+    
+    console.log('✓ Geladen', fcProducts.length, 'Produkte von Shopify');
+    
+    // Log all product numbers for debugging
+    console.log('📋 Produktnummern in fcProducts:');
+    fcProducts.forEach(p => {
+      const number = extractProductNumber(p.title);
+      console.log(`   ${p.title} -> Nummer: ${number}, Variant ID: ${p.variant}`);
+    });
+  }
+
+  // ===== SHOW NOTIFICATION =====
+  function showNotification(message) {
+    let notification = document.querySelector('.fc-notification');
+    if (!notification) {
+      notification = document.createElement('div');
+      notification.className = 'fc-notification';
+      document.body.appendChild(notification);
+    }
+    
+    notification.textContent = message;
+    notification.classList.add('show');
+    
+    setTimeout(() => {
+      notification.classList.remove('show');
+    }, 2000);
+  }
+
+  // ===== UPDATE OFFER DISPLAY =====
+  function updateOfferDisplay(itemCount) {
+    if (!offerStatus || !offerProgress || !offerMessage || !offerSubtext) return;
+    
+    const percentage = Math.min((itemCount / 3) * 100, 100);
+    offerProgress.style.width = percentage + '%';
+    
+    if (itemCount >= 3) {
+      offerStatus.textContent = '🎉 GRATIS!';
+      offerSubtext.textContent = 'Du qualifizierst dich für ein gratis Geschenk!';
+      offerMessage.textContent = '🎉 Du qualifizierst dich für ein GRATIS Geschenk!';
+      offerBanner.classList.add('qualified');
+    } else {
+      const needed = 3 - itemCount;
+      offerStatus.textContent = `${itemCount}/3`;
+      offerSubtext.textContent = `Füge ${needed} mehr hinzu für ein gratis Geschenk`;
+      offerMessage.textContent = `Füge ${needed} mehr Artikel hinzu für ein gratis Geschenk`;
+      offerBanner.classList.remove('qualified');
+    }
+  }
+
+  // ===== TOGGLE POPUP =====
+  window.fcToggleSearch = function() {
+    if (searchPopup.classList.contains('active')) {
+      searchPopup.classList.remove('active');
+    } else {
+      searchPopup.classList.add('active');
+      searchInput.focus();
+      fetchCartAndUpdate();
+    }
+  };
+
+  // ===== FETCH CART AND UPDATE COUNT =====
+  function fetchCartAndUpdate() {
+    return fetch('/cart.js')
+      .then(response => response.json())
+      .then(cart => {
+        document.querySelectorAll('.cart-count, [data-cart-count]').forEach(el => {
+          if (el) el.textContent = cart.item_count;
+        });
+        updateOfferDisplay(cart.item_count);
+        return cart;
+      })
+      .catch(error => {
+        console.error('Fehler beim Abrufen des Warenkorbs:', error);
+        return { item_count: 0 };
+      });
+  }
+
+  // ===== ADD TO CART - MODIFIED TO NOT CLOSE POPUP =====
+  window.fcAddToCart = function(variantId) {
+    const btn = event.target;
+    const originalText = btn.innerText;
+    const originalBackground = btn.style.background;
+    
+    btn.innerText = 'Wird hinzugefügt...';
+    btn.disabled = true;
+    
+    console.log('Füge zum Warenkorb hinzu mit Variante:', variantId);
+    
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      body: JSON.stringify({ 
+        id: variantId, 
+        quantity: 1 
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      btn.innerText = '✓ Hinzugefügt!';
+      btn.style.background = '#2E7D32';
+      
+      fetchCartAndUpdate().then(cart => {
+        showNotification(`✓ Hinzugefügt! ${cart.item_count}/3 Artikel für gratis Geschenk`);
+      });
+      
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.background = originalBackground || '#C41E3A';
+        btn.disabled = false;
+      }, 2000);
+    })
+    .catch(error => {
+      console.error('Fehler beim Hinzufügen zum Warenkorb:', error);
+      btn.innerText = 'Fehler';
+      btn.style.background = '#c62828';
+      
+      setTimeout(() => {
+        btn.innerText = originalText;
+        btn.style.background = originalBackground || '#C41E3A';
+        btn.disabled = false;
+      }, 1500);
+    });
+    
+    // IMPORTANT: Prevent event propagation to keep popup open
+    event.stopPropagation();
+    return false;
+  };
+
+  // ===== VIEW DETAILS =====
+  window.fcViewDetails = function(url) {
+    window.location.href = url;
+  };
+
+  // ===== GO BACK =====
+  window.fcGoBack = function() {
+    currentView = 'search';
+    if (currentSearchQuery.length >= 1) {
+      performSearch(currentSearchQuery);
+    } else {
+      steps.style.display = 'block';
+      content.innerHTML = '';
+    }
+  };
+
+  // ===== PERFORM SEARCH =====
+  function performSearch(query) {
+    currentSearchQuery = query;
+    content.innerHTML = '<div class="fc-loading">Suche läuft...</div>';
+    
+    setTimeout(() => {
+      // Search in catalog with fuzzy matching
+      const catalogResults = advancedCatalogSearch(query);
+      
+      // Search in your products with advanced fuzzy matching
+      const yourResults = searchProducts(query);
+      
+      let html = '';
+      
+      // Show catalog results
+      if (catalogResults.length > 0) {
+        html += renderCatalogPerfumes(catalogResults, query);
+      }
+      
+      // Show your products
+      if (yourResults.length > 0) {
+        html += `<div class="fc-section-title">Unsere Produkte (${yourResults.length})</div>`;
+        
+        yourResults.slice(0, 6).forEach(match => {
+          const p = match.product;
+          const priceFormatted = p.price ? '€' + (p.price / 100).toFixed(2) : '€11.99';
+          
+          html += `
+            <div class="fc-real-perfume-item" onclick="window.fcViewDetails('${p.url}')">
+              <img class="fc-real-perfume-image" src="${p.image}" alt="${p.title}" loading="lazy">
+              <div class="fc-real-perfume-info">
+                <div class="fc-real-perfume-name">${p.title}</div>
+                <div class="fc-real-perfume-year">${priceFormatted}</div>
+              </div>
+            </div>
+          `;
+        });
+      }
+      
+      // If no results, show suggestions
+      if (catalogResults.length === 0 && yourResults.length === 0) {
+        html = '<div class="fc-no-results">Keine Produkte gefunden für "' + query + '"</div>';
+        html += renderSuggestions();
+      }
+      
+      content.innerHTML = html;
+    }, 300);
+  }
+
+  // ===== SEARCH HANDLER =====
+  function fcHandleSearch() {
+    const query = searchInput.value.trim();
+    
+    if (query.length < 1) {
+      if (currentView !== 'detail') {
+        steps.style.display = 'block';
+        content.innerHTML = '';
+      }
+      return;
+    }
+    
+    steps.style.display = 'none';
+    currentView = 'search';
+    
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => performSearch(query), 300);
+  }
+
+  // ===== INITIALIZE =====
+  document.addEventListener('DOMContentLoaded', function() {
+    fcInitProducts();
+    combineCatalogs();
+    searchInput.addEventListener('keyup', fcHandleSearch);
+    
+    clearSearch.addEventListener('click', function() {
+      searchInput.value = '';
+      searchInput.focus();
+      steps.style.display = 'block';
+      content.innerHTML = '';
+      currentView = 'search';
+    });
+    
+    setTimeout(fetchCartAndUpdate, 500);
+    
+    document.addEventListener('click', function(event) {
+      if (!searchPopup.contains(event.target) && !stickyButton.contains(event.target) && searchPopup.classList.contains('active')) {
+        searchPopup.classList.remove('active');
+      }
+    });
+    
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && searchPopup.classList.contains('active')) {
+        searchPopup.classList.remove('active');
+      }
+    });
+    
+    searchPopup.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  });
+
+})(); 
+</script>
