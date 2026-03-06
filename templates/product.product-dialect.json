@@ -1,0 +1,848 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title_DkyBTh": {
+          "type": "title",
+          "settings": {}
+        },
+        "custom_rating_text_ehyqmQ": {
+          "type": "custom_rating_text",
+          "settings": {
+            "text": "4,7/5 Sterne (10.000+ Bewertungen)"
+          }
+        },
+        "price_MG94AW": {
+          "type": "price",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker_hH3Diz": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons_eXWBwX": {
+          "type": "buy_buttons",
+          "disabled": true,
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "reactive_atc_LBDQE9": {
+          "type": "reactive_atc",
+          "settings": {}
+        },
+        "custom_liquid_QcxgR4": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<img \nstyle=\"width: 100%;\" \nsrc=\"https://cdn.shopify.com/s/files/1/0086/7932/5753/files/Zrzut-ekranu-2025-03-19-095755-1024x294.png?v=1770100462\" alt=\"Benefits\">"
+          }
+        },
+        "payment_badges_FkCwVc": {
+          "type": "payment_badges",
+          "disabled": true,
+          "settings": {}
+        },
+        "delivery_deadline_CQHJwz": {
+          "type": "delivery_deadline",
+          "disabled": true,
+          "settings": {
+            "date_text": "Want it by [DATE]?",
+            "days": 2,
+            "date_format": "day, %e. month",
+            "day_label": "%A",
+            "month_label": "%b",
+            "date_size": 16,
+            "date_color": "#000000",
+            "timer_text": "ORDER WITHIN <strong>[HOURS] HOURS [MINUTES] MINUTES?</strong>",
+            "hours": 1,
+            "minutes": 30,
+            "timer_size": 16,
+            "timer_color": "#000000",
+            "text_layout": "col",
+            "text_alignment": "center"
+          }
+        },
+        "quantity_selector_WT7P8d": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "icon_with_text_ytpGUH": {
+          "type": "icon-with-text",
+          "disabled": true,
+          "settings": {
+            "layout": "horizontal_2",
+            "desktop_icon_size": 24,
+            "desktop_font_size": 16,
+            "mobile_icon_size": 24,
+            "mobile_font_size": 12,
+            "icon_1": "truck",
+            "heading_1": "Free shipping for orders over $50",
+            "icon_2": "star",
+            "heading_2": "Quality Guarantee",
+            "icon_3": "truck",
+            "heading_3": "",
+            "icon_4": "truck",
+            "heading_4": ""
+          }
+        },
+        "collapsible_tab_FAAFhb": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Beschreibung",
+            "icon": "none",
+            "content": "{{ product.description }}",
+            "page": ""
+          }
+        },
+        "collapsible_tab_bKn87j": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Warum sind Ihre Parfüms so billig?",
+            "icon": "none",
+            "content": "<p>Wir konzentrieren uns auf den Duftinhalt.<strong>Kein</strong>luxuriöses Flakon,<strong>keine</strong>besondere Verpackung,<strong>keine</strong>teuren Läden &<strong>keine</strong>teuren Influencerdeals ermöglichen dir luxuriös zu riechen, ohne das Budget zu sprengen.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_T6Fk9z": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ist es ein parfümiertes Wasser?",
+            "icon": "none",
+            "content": "<p>Ja, es ist ein parfümiertes Wasser – es enthält bis zu 19 % Essenz. Eau de Toilette zum Beispiel hat zwischen 5 und 8 % und die Essenz liegt bei 41 % aufwärts.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_GUrz86": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Wie lange hält das Parfüm?",
+            "icon": "none",
+            "content": "<p>Das Parfüm hält je nach Person unterschiedlich lange an, von 3 bis 8 Stunden für einen ruhigen, intensiven Duft. Nach einer längeren Zeitspanne verblasst der Duft.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_TKfWP3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Unterscheidet sich der inspirierte Duft?",
+            "icon": "none",
+            "content": "<p>Nein, dieser Duft ist von ähnlichen Duftnoten inspiriert und gehört zur gleichen Duftfamilie.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_HiNKBa": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Was bedeutet 19% Parfüm?",
+            "icon": "none",
+            "content": "<p><br/>Die meisten Eau de Parfums im Handel enthalten zwischen 16 % und 21 % Duftöl. Unsere Kreationen enthalten 19 % und gehören damit zur höheren Kategorie hochwertiger Duftkompositionen.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_Qn8c4p": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "HINWEIS ZU VERGLEICHSWERBUNG",
+            "icon": "none",
+            "content": "<p>Olfaktorische Zubereitungen sind an sich nicht durch geistige Eigentumsrechte geschützt und können daher rechtlich frei reproduziert und als Inspirationsquelle genutzt werden. Dies erklärt, warum viele Markenparfums sich sehr ähnlich sind und manchmal kaum voneinander zu unterscheiden sind.</p><p>Ebenso können Magyx Parfums von anderen Düften inspiriert sein und als Düfte derselben olfaktorischen Kategorie wie andere Parfums beschrieben werden.</p><p>Bitte beachten Sie, dass alle auf unserer Website genannten Duftnamen Dritter ausschließlich den jeweiligen Rechteinhabern gehören und lediglich zur Orientierung der Kunden dienen. Sie dürfen unter keinen Umständen mit Produkten verwechselt werden, die unter diesen Namen im Handel verkauft werden.</p><p>Magyx Parfums steht in keiner Verbindung zu den genannten Drittmarken und wird in keiner Weise von diesen unterstützt oder empfohlen.</p>",
+            "page": ""
+          }
+        },
+        "product_reviews_W3CkbE": {
+          "type": "product_reviews",
+          "disabled": true,
+          "settings": {
+            "show_placeholder_image": true,
+            "reviewer_1": "Mark H.",
+            "text_1": "<p>I switched because I was tired of cheap handles and overpriced refills. The shave is smooth, controlled, and comfortable. No irritation, no nonsense. It just works.</p>",
+            "reviewer_2": "James R.",
+            "text_2": "<p>Everything in the kit feels well made. Took a couple shaves to get used to it, but once I did, it’s been consistently good.</p>",
+            "reviewer_3": "David M.",
+            "text_3": "<p>I like that this brand focuses on the product instead of hype. Clean shave, easy routine, no pressure to</p>",
+            "text_color": "#000000",
+            "text_alignment": "center",
+            "text_size": 18,
+            "display_stars": true,
+            "star_color": "#ffcc00",
+            "star_size": 16,
+            "star_placement": "below",
+            "image_shape": "circle",
+            "image_size": 100,
+            "show_card": true,
+            "background_color": "#ffffff",
+            "auto_scroll": true,
+            "side": "right"
+          }
+        }
+      },
+      "block_order": [
+        "title_DkyBTh",
+        "custom_rating_text_ehyqmQ",
+        "price_MG94AW",
+        "variant_picker_hH3Diz",
+        "buy_buttons_eXWBwX",
+        "reactive_atc_LBDQE9",
+        "custom_liquid_QcxgR4",
+        "payment_badges_FkCwVc",
+        "delivery_deadline_CQHJwz",
+        "quantity_selector_WT7P8d",
+        "icon_with_text_ytpGUH",
+        "collapsible_tab_FAAFhb",
+        "collapsible_tab_bKn87j",
+        "collapsible_tab_T6Fk9z",
+        "collapsible_tab_GUrz86",
+        "collapsible_tab_TKfWP3",
+        "collapsible_tab_HiNKBa",
+        "collapsible_tab_Qn8c4p",
+        "product_reviews_W3CkbE"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-2",
+        "media_size": "large",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "none",
+        "mobile_thumbnails": "show",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "product_info_padding": 5,
+        "padding_top": 36,
+        "padding_bottom": 72
+      }
+    },
+    "feature_heighlights_fCUG3E": {
+      "type": "feature-heighlights",
+      "blocks": {
+        "perks_MLz9YK": {
+          "type": "perks",
+          "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.00.15_PM.png",
+            "perk_title": "Kostenloser Versand für alle Bestellungen über 50 €!",
+            "perk_content": "Nur in dieser Woche"
+          }
+        },
+        "perks_NV4H3P": {
+          "type": "perks",
+          "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.04.49_PM.png",
+            "perk_title": "Spezielle Rabatte für Stammkunden",
+            "perk_content": "Gutscheine bis zu 100€"
+          }
+        },
+        "perks_qWY7Uy": {
+          "type": "perks",
+          "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.05.39_PM.png",
+            "perk_title": "Kostenlose Geschenkverpackung",
+            "perk_content": "Mit 100 Buchstaben benutzerdefinierte Notiz"
+          }
+        },
+        "perks_HKnHJ8": {
+          "type": "perks",
+          "settings": {
+            "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.07.45_PM.png",
+            "perk_title": "Experten-Kundenservice",
+            "perk_content": "8:00 - 20:00, 7 Tage/Woche"
+          }
+        }
+      },
+      "block_order": [
+        "perks_MLz9YK",
+        "perks_NV4H3P",
+        "perks_qWY7Uy",
+        "perks_HKnHJ8"
+      ],
+      "name": "Feature Highlights",
+      "settings": {
+        "background_color": "#ffffff",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "scent_breakdown_pqKDL9": {
+      "type": "scent-breakdown",
+      "name": "Scent Breakdown",
+      "settings": {
+        "background_color": "#f7f7f7",
+        "image": "shopify://shop_images/23729_482_f560cff9-0b8f-4356-a8d5-c212222d8106-scaled.jpg",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "stacks_up_WR4y4d": {
+      "type": "stacks-up",
+      "blocks": {
+        "stack_LGQprc": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Ewige Haltbarkeit",
+            "other_brands": "Hoher Preis durch Branding"
+          }
+        },
+        "stack_EkfTtL": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Tägliche Komplimente ab 10€",
+            "other_brands": "Oft Massenproduktion"
+          }
+        },
+        "stack_EwWwij": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Keine Tierversuche",
+            "other_brands": "Teilweise Tierversuche"
+          }
+        },
+        "stack_w3Jyyc": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Du zahlst für Qualität – nicht für Marketing",
+            "other_brands": "Du zahlst für den Namen"
+          }
+        },
+        "stack_dXbqXq": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Handgemacht in kleiner Manufaktur",
+            "other_brands": "Hoher Marketingaufschlag"
+          }
+        }
+      },
+      "block_order": [
+        "stack_LGQprc",
+        "stack_EkfTtL",
+        "stack_EwWwij",
+        "stack_w3Jyyc",
+        "stack_dXbqXq"
+      ],
+      "name": "Stacks Up",
+      "settings": {
+        "background_color": "#f7f7f7",
+        "title": "Warum Magisches Parfum?",
+        "subtitle": "Die clevere Alternative zu überteuerten Luxusmarken.",
+        "padding_top": 12,
+        "padding_bottom": 72
+      }
+    },
+    "image_and_text_EFE4gB": {
+      "type": "image-and-text",
+      "blocks": {
+        "heading_PJdXGz": {
+          "type": "heading",
+          "settings": {
+            "content": "EU Produktion",
+            "heading_type": "h2",
+            "font_size": 40,
+            "mobile_font_size": 24,
+            "text_color": "#000000"
+          }
+        },
+        "text_Mhwr3T": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Unsere EU Produktion garantiert höchste Qualitätsstandards und ermöglicht es uns, jeden Schritt des Herstellungsprozesses zu überwachen und zu kontrollieren. </p><p>Von der Auswahl der hochwertigen Rohstoffe bis zur sorgfältigen Abfüllung jeder Flasche stellen wir sicher, dass jedes Produkt unseren hohen Ansprüchen an Qualität und Handwerkskunst gerecht wird.</p>",
+            "mobile_content": "",
+            "font_size": 18,
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PJdXGz",
+        "text_Mhwr3T"
+      ],
+      "name": "Image and Text",
+      "settings": {
+        "background_color": "#ffffff",
+        "image": "shopify://shop_images/WhatsApp_Image_2026-01-17_at_10.59.01.jpg",
+        "rounded_image": true,
+        "image_placement": "0",
+        "mobile_image_placement": "under_heading",
+        "button_text": "",
+        "button_url": "",
+        "columns_gap": 40,
+        "rows_gap": 20,
+        "content_alignment": "center",
+        "blocks_gap": 24,
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
+    "popular_products_BptEUV": {
+      "type": "popular-products",
+      "disabled": true,
+      "name": "Popular Products",
+      "settings": {
+        "background_color": "#f7f7f7",
+        "heading": "BESTSELERS",
+        "subheading": "",
+        "collection": "best-sellers",
+        "show_all_button_text": "Alle anzeigen",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "massive_review_xQhDkP": {
+      "type": "massive-review",
+      "blocks": {
+        "review_CGhLzh": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Dies ist mein erster Einkauf und ich bin begeistert. Ich werde nie wieder woanders Parfüm kaufen. Ich konnte nie einen Duft-Dupe finden, der wirklich authentisch und konsistent roch.\"</p>",
+            "author": "Killian P.",
+            "date": "1 day ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_QzzUUA": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Das ist der beste Duft, den ich seit sehr langer Zeit gerochen habe, die Noten machen mich wahnsinnig vor Glück. Ich werde diesen für immer in meiner Rotation behalten.\"</p>",
+            "author": "Jenniffer W.",
+            "date": "2 days ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_Beinew": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Alle drei Düfte, die ich erhalten habe, sind sehr gut. Halten lange und riechen so wie sie sollten. Ich war nur mit der Zeit unzufrieden, die es dauerte, sie zu erhalten. Aber ehrlich gesagt habe ich eine zweite Bestellung aufgegeben, also erwarte einfach eine Wartezeit. Haha!<br/>\"</p>",
+            "author": "Clara P.",
+            "date": "2 days ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_dfTye7": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ich habe vergeblich versucht, Düfte zu finden, die teuer riechen und lange halten. Die Passform ist genau das, wonach ich gesucht habe.\"</p>",
+            "author": "Tiana N.",
+            "date": "2 days ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_PNtt4z": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ich war mir nicht sicher, was ich erwarten sollte, aber das hat mich wirklich beeindruckt. Riecht super frisch und ehrlich ziemlich nah an Aventus. Es hält gut und der Preis ist viel besser.\"</p>",
+            "author": "Michael T.",
+            "date": "2 days ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_wkAn4L": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Einer meiner Lieblingsdüfte. Kam wirklich schnell zu mir. Riecht so schön.\"</p>",
+            "author": "Alex W.",
+            "date": "2 days ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_VPVPkT": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ich liiiebe diese Parfüms!!! Jedes einzelne, das ich bekommen habe, riecht göttlich. Einige würde ich sagen sind besser als das Original.\"</p>",
+            "author": "Christine N.",
+            "date": "5 days ago",
+            "rating": 4,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_NTbFJi": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Zuerst war ich besorgt, dass sich die Lieferung etwas verzögert hat, aber als ich sie erhalten habe, war ich erstaunt über den Geruch, sobald er sich gesetzt hat, meine Güte, es ist einfach fantastisch.\"</p>",
+            "author": "Lionel M.",
+            "date": "7 days ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_EYCLJq": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Es riecht sehr schön, aber hält nicht so lange wie es sollte\"</p>",
+            "author": "Terence M.",
+            "date": "2 Months ago",
+            "rating": 5,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_Qbcx4t": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ist perfekt und wunderschön 🥰🥰🥰\"</p>",
+            "author": "Lidis A.",
+            "date": "2 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_3rR47r": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Riecht sehr gut, es hat mich fasziniert\"</p>",
+            "author": "Castillo B.",
+            "date": "3 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_ma3gjJ": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Perfekt duftende Parfüms, die Düfte halten sehr lange, hervorragende Qualität\"</p>",
+            "author": "Kamila G.",
+            "date": "3 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_9PDCrG": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Riecht genau wie Luna Rossa Carbon, aber viel günstiger. Kann nicht glauben, wie nah es dran ist.\"</p>",
+            "author": "Robinson D.",
+            "date": "4 Months ago",
+            "rating": 4,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_7Q4gpj": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Das ist die Art von Duft, die einen gepflegt fühlen lässt. Nicht überwältigend, genau richtig. 👌\"</p>",
+            "author": "Michael R.",
+            "date": "4 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_nVGFJd": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ich trage Creed Aventus seit Jahren, aber das ist der nächste Dupe, den ich gefunden habe – und das zu einem Bruchteil des Preises. Die Ananas-Vanille-Kombination ist perfekt getroffen.\"</p>",
+            "author": "Alvarez P.",
+            "date": "4 Months ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_9VQhEG": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Das Produkt kam schön verpackt an. Das Parfüm war nicht kaputt, ist nicht ausgelaufen und war in gutem Zustand. Der Duft ist perfekt und roch nicht schlecht. Ich liebe es, hohe Qualität\"</p>",
+            "author": "Anne E.",
+            "date": "4 Months ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_teUz9h": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Wunderschöner Duft. Langanhaltend. <br/>Süß und warm. Gute schnelle Lieferung. <br/>Werde wieder kaufen.\"</p>",
+            "author": "Lucy R",
+            "date": "4 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_f7Bgf8": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ich bin zufrieden mit Magic Perfume. Der Duft riecht dem Original sehr ähnlich und hält gut. Die Verpackung ist ordentlich und die Flasche sieht schön aus. Insgesamt ist es eine großartige Option, wenn man einen Qualitätsduft zu einem vernünftigen Preis möchte.\"</p>",
+            "author": "Alina M",
+            "date": "5 Months ago",
+            "rating": 5,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_nghmHV": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ihre Produkte sind von guter Qualität zu einem sehr erschwinglichen Preis.\"</p>",
+            "author": "Amanda G",
+            "date": "5 Months ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_cTa3jE": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Tolle Düfte, tolle Produkte, keine Probleme.\"</p>",
+            "author": "Alex S.",
+            "date": "6 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_HFDJke": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Das Produkt kam schön verpackt an. Das Parfüm war nicht kaputt, ist nicht ausgelaufen und war in gutem Zustand. Der Duft ist perfekt und roch nicht schlecht. Ich liebe es, hohe Qualität\"</p>",
+            "author": "Roxanne S",
+            "date": "5 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_qFgGCb": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Vom Service bis zum Produkt war die Erfahrung phänomenal. Kaufe gerne jederzeit wieder.\"</p>",
+            "author": "Benjamin M",
+            "date": "5 Months ago",
+            "rating": 5,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_q7tMe4": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Großartiges Produkt! Super erschwingliche Alternative zu den Markenparfüms. Der Duft hält lange und man bekommt viel für sein Geld\"</p>",
+            "author": "EM",
+            "date": "4 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_fYfUH6": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Omg ich liebte es Wow! Genau wie das Original und es hält den ganzen Tag!❤️‍🔥❤️‍🔥\"</p>",
+            "author": "شيطانة YT",
+            "date": "4 Months ago",
+            "rating": 4,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_D8Kihj": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Der Duft dieses Parfüms ist super reichhaltig und ich liebe wie schön die Flasche und ihr Design ist.. Ich würde es wirklich wieder verwenden.\"</p>",
+            "author": "Eliannys Y",
+            "date": "7 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_nJkdHr": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ich mag es! Mag diesen Duft. Guter Duft\"</p>",
+            "author": "Aleksandra M",
+            "date": "7 Months ago",
+            "rating": 5,
+            "show_verified_badge": false,
+            "product": ""
+          }
+        },
+        "review_bwPbWf": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Tolles Produkt, riecht fantastisch. Ich bekomme immer Leute, die mir Fragen zu meinem Duft stellen und was ich benutze\"</p>",
+            "author": "Damario R",
+            "date": "7 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_hgkJM8": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Tolle Marke und tolle Produkte!\"</p>",
+            "author": "Juliana B",
+            "date": "4 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_nBaidA": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Nach einer kleinen Verzögerung habe ich endlich meine Magic Perfume-Parfüms und sie sind genau richtig! Ich kann fast nicht glauben, wie genau sie den Originalen entsprechen, zur Referenz habe ich \"Ylang Ylang Rose Jasmine\" und \"Aldehydes Rose Sandalwood\" bekommen, es sind wirklich schöne Düfte\"</p>",
+            "author": "Gabriella K",
+            "date": "7 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_n6hGqN": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Sehr gute Marke, ich liebe die Verpackung und das Aroma\"</p>",
+            "author": "Rosa B",
+            "date": "7 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_NdggfY": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ich bin ein großer Kölnisch-Wasser-Fan, also bin ich ein wählerischer Typ, wenn es um Klone geht, aber Magic Perfume hat mich komplett überzeugt. Ich habe ursprünglich den Sauvage-Klon auf der Homepage bestellt und den Duft beim Sprühen sofort erkannt. Ich besitze jetzt insgesamt 4 Magic Perfume-Düfte und ich liebe sie alle. Habe dank ihrer Bundle-Angebote 3 weitere auf dem Weg. Wenn du etwas willst, das mit kleinem Budget funktioniert und Designer-Leistung liefert, könnte ich sie nicht mehr empfehlen.\"</p>",
+            "author": "Sean P",
+            "date": "4 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_DLNcRK": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ich bin sehr zufrieden mit dem Parfüm von dieser Marke, sie haben einen so schönen Duft wie das Original und günstiger, ich werde es definitiv wieder kaufen\"</p>",
+            "author": "Angel",
+            "date": "8 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_itaFnE": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Diesen Sommer bekam ich eine Probe von Creed Aventus als Geschenk und ich mochte es wirklich, aber ich konnte das Original nicht kaufen, also suchte ich nach Dupes. Ich fand Magic Perfume und bestellte \"Pineapple Smoke Vanilla\", es kam in etwa einer Woche zu mir und es riecht wirklich gut, auch nah an meiner Originalprobe, sehr zufrieden mit dem Produkt, besonders für den Preis\"</p>",
+            "author": "Hwan H",
+            "date": "8 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        },
+        "review_qLtLjT": {
+          "type": "review",
+          "settings": {
+            "content": "<p>\"Ich habe ihre 7,5ml Proben-Düfte ausprobiert und zu meiner Überraschung mochte ich sie. Habe eine 2. Bestellung aufgegeben, aber dieses Mal habe ich die größeren Flaschen genommen. Ich muss sagen, ich bekam meine Bestellungen pünktlich und sie lieferten die Düfte, die ich mag!\"</p>",
+            "author": "Lauri E",
+            "date": "8 Months ago",
+            "rating": 5,
+            "show_verified_badge": true,
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_CGhLzh",
+        "review_QzzUUA",
+        "review_Beinew",
+        "review_dfTye7",
+        "review_PNtt4z",
+        "review_wkAn4L",
+        "review_VPVPkT",
+        "review_NTbFJi",
+        "review_EYCLJq",
+        "review_Qbcx4t",
+        "review_3rR47r",
+        "review_ma3gjJ",
+        "review_9PDCrG",
+        "review_7Q4gpj",
+        "review_nVGFJd",
+        "review_9VQhEG",
+        "review_teUz9h",
+        "review_f7Bgf8",
+        "review_nghmHV",
+        "review_cTa3jE",
+        "review_HFDJke",
+        "review_qFgGCb",
+        "review_q7tMe4",
+        "review_fYfUH6",
+        "review_D8Kihj",
+        "review_nJkdHr",
+        "review_bwPbWf",
+        "review_hgkJM8",
+        "review_nBaidA",
+        "review_n6hGqN",
+        "review_NdggfY",
+        "review_DLNcRK",
+        "review_itaFnE",
+        "review_qLtLjT"
+      ],
+      "name": "Massive Review",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "heading": "Kundenrezensionen",
+        "review_text": "4,7/5 Sternen basierend auf über 10.400 Bewertungen",
+        "button_text": "Weitere Bewertungen anzeigen",
+        "button_link": "",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "1770288371f70b6dc1": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "feature_heighlights_fCUG3E",
+    "scent_breakdown_pqKDL9",
+    "stacks_up_WR4y4d",
+    "image_and_text_EFE4gB",
+    "popular_products_BptEUV",
+    "massive_review_xQhDkP",
+    "1770288371f70b6dc1"
+  ]
+}
