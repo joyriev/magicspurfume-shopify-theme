@@ -369,8 +369,10 @@
         "review_UPwGBF": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/magic_ugc_female_01.webp",
             "content": "<p>\"Das ist der beste Duft, den ich seit sehr langer Zeit gerochen habe, die Noten machen mich wahnsinnig vor Glück. Ich werde diesen für immer in meiner Rotation behalten.\"</p>",
             "author": "Jenniffer W.",
+            "author_image": "shopify://shop_images/magic_ugc_female_01.webp",
             "date": "2 days ago",
             "rating": 4,
             "show_verified_badge": true,
@@ -402,8 +404,10 @@
         "review_RnXXg9": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/magic_ugc_male_02.webp",
             "content": "<p>\"Ich war mir nicht sicher, was ich erwarten sollte, aber das hat mich wirklich beeindruckt. Riecht super frisch und ehrlich ziemlich nah an Aventus. Es hält gut und der Preis ist viel besser.\"</p>",
             "author": "Michael T.",
+            "author_image": "shopify://shop_images/magic_ugc_male_02.webp",
             "date": "2 days ago",
             "rating": 4,
             "show_verified_badge": true,
@@ -446,8 +450,10 @@
         "review_wbXdLy": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/magic_ugc_male_01.webp",
             "content": "<p>\"Es riecht sehr schön, aber hält nicht so lange wie es sollte\"</p>",
             "author": "Terence M.",
+            "author_image": "shopify://shop_images/magic_ugc_male_01.webp",
             "date": "2 Months ago",
             "rating": 5,
             "show_verified_badge": false,
@@ -523,8 +529,10 @@
         "review_6Bhttk": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/magic_ugc_female_02.webp",
             "content": "<p>\"Das Produkt kam schön verpackt an. Das Parfüm war nicht kaputt, ist nicht ausgelaufen und war in gutem Zustand. Der Duft ist perfekt und roch nicht schlecht. Ich liebe es, hohe Qualität\"</p>",
             "author": "Anne E.",
+            "author_image": "shopify://shop_images/magic_ugc_female_02.webp",
             "date": "4 Months ago",
             "rating": 4,
             "show_verified_badge": true,
