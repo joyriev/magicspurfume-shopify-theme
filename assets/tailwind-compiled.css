@@ -21,6 +21,10 @@
     visibility: visible
 }
 
+.fixed {
+    position: fixed
+}
+
 .absolute {
     position: absolute
 }
@@ -99,6 +103,18 @@
 
 .top-3 {
     top: 12px
+}
+
+.right-0 {
+    right: 0px
+}
+
+.\!left-0 {
+    left: 0px !important
+}
+
+.\!right-0 {
+    right: 0px !important
 }
 
 .isolate {
@@ -276,6 +292,10 @@
     margin-top: auto
 }
 
+.mt-3 {
+    margin-top: 12px
+}
+
 .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
@@ -376,6 +396,16 @@
     height: 60px
 }
 
+.\!size-8 {
+    width: 32px !important;
+    height: 32px !important
+}
+
+.\!size-7 {
+    width: 28px !important;
+    height: 28px !important
+}
+
 .\!h-8 {
     height: 32px !important
 }
@@ -418,6 +448,10 @@
 
 .h-full {
     height: 100%
+}
+
+.h-20 {
+    height: 80px
 }
 
 .min-h-\[200px\] {
@@ -472,6 +506,10 @@
     width: 100%
 }
 
+.w-20 {
+    width: 80px
+}
+
 .min-w-0 {
     min-width: 0px
 }
@@ -498,6 +536,10 @@
 
 .max-w-\[700px\] {
     max-width: 700px
+}
+
+.max-w-xl {
+    max-width: 576px
 }
 
 .flex-1 {
@@ -851,6 +893,11 @@
     border-color: transparent
 }
 
+.\!border-gray-200 {
+    --tw-border-opacity: 1 !important;
+    border-color: rgb(229 231 235 / var(--tw-border-opacity, 1)) !important
+}
+
 .bg-\[\#0F172A\] {
     --tw-bg-opacity: 1;
     background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1))
@@ -981,6 +1028,10 @@
 
 .bg-white\/50 {
     background-color: rgb(255 255 255 / 0.5)
+}
+
+.bg-white\/60 {
+    background-color: rgb(255 255 255 / 0.6)
 }
 
 .bg-opacity-20 {
@@ -1191,6 +1242,10 @@
     padding-top: 32px
 }
 
+.pt-4 {
+    padding-top: 16px
+}
+
 .text-left {
     text-align: left
 }
@@ -1213,6 +1268,10 @@
 
 .font-sans {
     font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+}
+
+.font-serif {
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif
 }
 
 .text-2xl {
@@ -1248,6 +1307,10 @@
 .text-xs {
     font-size: 12px;
     line-height: 16px
+}
+
+.text-\[10px\] {
+    font-size: 10px
 }
 
 .font-\[700\] {
@@ -1474,6 +1537,15 @@
     color: rgb(255 255 255 / 0.5)
 }
 
+.text-yellow-600 {
+    --tw-text-opacity: 1;
+    color: rgb(202 138 4 / var(--tw-text-opacity, 1))
+}
+
+.underline {
+    text-decoration-line: underline
+}
+
 .line-through {
     text-decoration-line: line-through
 }
@@ -1532,6 +1604,11 @@
     outline-style: solid
 }
 
+.drop-shadow {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
 .drop-shadow-sm {
     --tw-drop-shadow: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
@@ -1539,6 +1616,11 @@
 
 .filter {
     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.backdrop-blur-sm {
+    --tw-backdrop-blur: blur(4px);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
 }
 
 .transition {
@@ -1617,6 +1699,24 @@
     to {
         transform: translateX(-50%)
     }
+}
+
+.after\:text-sm::after {
+    content: var(--tw-content);
+    font-size: 14px;
+    line-height: 20px
+}
+
+.after\:\!text-xs::after {
+    content: var(--tw-content);
+    font-size: 12px !important;
+    line-height: 16px !important
+}
+
+.after\:text-black::after {
+    content: var(--tw-content);
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity, 1))
 }
 
 .hover\:scale-105:hover {
@@ -1819,6 +1919,10 @@
 
     .md\:text-center {
         text-align: center
+    }
+
+    .md\:text-right {
+        text-align: right
     }
 
     .md\:text-2xl {

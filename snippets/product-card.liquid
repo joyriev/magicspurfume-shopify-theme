@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<div class="flex flex-col bg-white p-4 shadow-sm rounded-lg relative">
+    {% if product.tags contains 'bestseller' or product.tags contains 'onsale' %}
+    <div class="absolute top-3 left-4 flex gap-4">
+        {% if product.tags contains 'bestseller' %}
+        <div class="bg-blue-50 text-blue-600 px-2 py-1 text-xs rounded-full flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>  
+            <span>Bestseller</span>
+        </div>
+        {% elsif product.tags contains 'onsale' %}
+        <div class="bg-red-50 text-red-600 px-2 py-1 text-xs rounded-full">⚡ Angebot</div>
+        {% endif %}
+    </div>
+    {% endif %}
+    <a href="{{ product.url }}" class="flex">
+    <img
+        class="w-full h-auto"
+        src="{{ product.images.first |  image_url: width: 300 }}"
+        alt="{{ product.title }}"
+        height="{{ product.images.first.height }}"
+        width="{{ product.images.first.width }}">
+    </a>
+    {% comment %} <div class="line-clamp-3 text-sm [&_br]:hidden mt-2">
+    {{ product.metafields.custom.short_description | metafield_tag }}
+    </div> {% endcomment %}
+    {% liquid
+        assign title = product.title | split: '-'
+    %}
+    <a href="{{ product.url }}" class="no-underline text-black flex flex-col md:flex-row gap-4 justify-between">
+        <div>
+            <h3 class="my-0 text-2xl">
+                {{ title | last }}
+            </h3>
+            <div class="text-[10px] uppercase tracking-wide font-serif">Magico Parfums</div>
+        </div>
+        <div class="md:text-right">
+            {%- render 'price'
+                , product: product
+                , use_variant: true
+                , show_badges: false
+                , price_class: 'price--large'
+            -%}
+            <div class="text-[10px]">
+                {% assign variant_titles = '' %}
+                {% for variant in product.variants %}
+                    {% assign variant_titles = variant_titles | append: variant.title %}
+                    {% unless forloop.last %}{% assign variant_titles = variant_titles | append: ', ' %}{% endunless %}
+                {% endfor %}
+                {{ variant_titles }}
+            </div>
+        </div>
+    </a>
+    {% comment %} <div class="mt-3">
+        <a class="bg-black text-white uppercase text-sm font-semibold tracking-[2px] py-3 px-4 rounded-lg no-underline w-full text-center block" href="{{ product.url }}">
+            Jetzt kaufen
+        </a>
+    </div> {% endcomment %}
+    {% if product.metafields.custom.similar_scents != blank %}
+        <div class="mt-4 pt-4 border-0 border-t border-solid border-gray-200">
+            <p class="mt-0 text-[10px] font-serif text-center">Parfums mit ähnlichen Duftnoten</p>
+            {% assign similar_scents = product.metafields.custom.similar_scents.value %}
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {% for similar_scent in similar_scents %}
+                        <div class="swiper-slide">
+                            <div class="flex gap-2 items-center">
+                                <img class="object-cover border border-solid border-gray-200" height="60" width="60" src="{{ similar_scent.image | image_url: width: 100 }}" alt="{{ similar_scent.title }}">
+                                <div>
+                                    <div class="text-sm font-semibold text-black line-clamp-1">
+                                        {{ similar_scent.title }}
+                                    </div>
+                                    <div class="text-sm font-bold text-gray-600">
+                                        {{ similar_scent.price.value | money }}
+                                    </div>
+                                    <div class="text-[10px] {% if similar_scent.similarity == 'High' %}text-green-600{% else %} text-yellow-600 {% endif %}">
+                                        {{ similar_scent.similarity }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="swiper-button-next p-0 !size-7 !right-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
+                <button class="swiper-button-prev p-0 !size-7 !left-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                new Swiper('.swiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    loop: true,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+            });
+        </script>
+    {% endif %}
+</div>
