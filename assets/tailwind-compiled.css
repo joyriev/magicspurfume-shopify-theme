@@ -180,6 +180,11 @@
     margin-bottom: 24px
 }
 
+.my-1 {
+    margin-top: 4px;
+    margin-bottom: 4px
+}
+
 .\!mb-0 {
     margin-bottom: 0px !important
 }
