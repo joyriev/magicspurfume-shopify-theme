@@ -61,7 +61,7 @@
         <div class="mt-4 pt-4 border-0 border-t border-solid border-gray-200">
             <p class="mt-0 text-[10px] font-serif text-center leading-tight">Parfums mit ähnlichen Duftnoten</p>
             {% assign similar_scents = product.metafields.custom.similar_scents.value %}
-            <div class="swiper">
+            <div class="swiper slider-{{ section.id }}-{{ forloop.index }}">
                 <div class="swiper-wrapper">
                     {% for similar_scent in similar_scents %}
                         <div class="swiper-slide">
@@ -88,7 +88,7 @@
         </div>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                new Swiper('.swiper', {
+                new Swiper('.slider-{{ section.id }}-{{ forloop.index }}', {
                     slidesPerView: 1,
                     spaceBetween: 10,
                     loop: true,

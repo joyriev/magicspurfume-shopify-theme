@@ -1,76 +1,92 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-<script defer="" src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{% if product.metafields.custom.similar_scents != blank %}
 
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script defer="" src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
 
-  @media screen and (min-width: 750px) {
+  {%- style -%}
     .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
     }
-  }
-{%- endstyle -%}
 
-<div
-  id="{{ section.id }}"
-  class="section-{{ section.id }}-padding"
-  style="background-color: {{ section.settings.background_color }}">
-  <div class="page-width">
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
 
-    {% if product.metafields.custom.similar_scents != blank %}
-      <div class="mt-4 pt-4 border-0 border-t border-solid border-gray-200">
-        <p class="mt-0 text-[10px] font-serif text-center leading-tight">Parfums mit ähnlichen Duftnoten</p>
-        {% assign similar_scents = product.metafields.custom.similar_scents.value %}
-        <div class="swiper">
-          <div class="swiper-wrapper">
-            {% for similar_scent in similar_scents %}
-              <div class="swiper-slide">
-                <div class="flex flex-col md:flex-row gap-2 items-center">
-                  <img
-                    class="object-cover border border-solid border-gray-200"
-                    height="60"
-                    width="60"
-                    src="{{ similar_scent.image | image_url: width: 100 }}"
-                    alt="{{ similar_scent.title }}">
-                  <div class="text-center md:text-left">
-                    <div class="text-sm font-semibold text-black line-clamp-1">
-                      {{ similar_scent.title }}
-                    </div>
-                    <div class="text-sm font-bold text-gray-600 my-1">
-                      {{ similar_scent.price.value | money }}
-                    </div>
-                    <div class="text-[10px] leading-none {% if similar_scent.similarity == 'Perfekte Übereinstimmung' %}text-green-600{% else %} text-yellow-600 {% endif %}">
-                      {{ similar_scent.similarity }}
-                    </div>
+  <div
+    id="{{ section.id }}"
+    class="section-{{ section.id }}-padding"
+    style="background-color: {{ section.settings.background_color }}">
+    <div class="page-width">
+      <h2 class="text-3xl md:text-4xl font-black mt-0 text-center">{{ section.settings.title }}</h2>
+      {% assign similar_scents = product.metafields.custom.similar_scents.value %}
+      <div class="swiper slider-{{ section.id }}">
+        <div class="swiper-wrapper">
+          {% for similar_scent in similar_scents %}
+            <div class="swiper-slide">
+              <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-center">
+                <img
+                  class="object-cover border border-solid border-gray-200 max-w-full aspect-square"
+                  height="180"
+                  width="180"
+                  src="{{ similar_scent.image | image_url: width: 200 }}"
+                  alt="{{ similar_scent.title }}">
+                <div class="text-center md:text-left">
+                  <div class="text-sm md:text-xl font-semibold text-black line-clamp-1">
+                    {{ similar_scent.title }}
                   </div>
+                  <div class="text-lg my-2">
+                    {{ similar_scent.price.value | money }}
+                  </div>
+                  <div class="inline-block text-xs leading-tight bg-white py-1 px-3 rounded-full mb-2 {% if similar_scent.similarity == 'Perfekte Übereinstimmung' %}text-green-600{% else %} text-yellow-600 {% endif %}">
+                    {{ similar_scent.similarity }}
+                  </div>
+                  <p class="my-0 text-sm underline cursor-pointer" data-tippy-content="{{ similar_scent.common_notes }}">Gemeinsame Noten ansehen</p>
                 </div>
               </div>
-            {% endfor %}
-          </div>
-          <button class="swiper-button-next p-0 !size-7 !right-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
-          <button class="swiper-button-prev p-0 !size-7 !left-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
+            </div>
+          {% endfor %}
         </div>
+        <button class="swiper-button-next p-0 !size-8 !right-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-sm"></button>
+        <button class="swiper-button-prev p-0 !size-8 !left-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-sm"></button>
       </div>
-      <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                new Swiper('.swiper', {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
-                    loop: true,
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                });
-            });
-      </script>
-    {% endif %}
+    </div>
   </div>
-</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper('.slider-{{ section.id }}', {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1.6,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                }
+            }
+        });
+
+        tippy('[data-tippy-content]');
+    });
+  </script>
+
+{% endif %}
+
 
 {% schema %}
   {

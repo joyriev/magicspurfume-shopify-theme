@@ -185,6 +185,11 @@
     margin-bottom: 4px
 }
 
+.my-4 {
+    margin-top: 16px;
+    margin-bottom: 16px
+}
+
 .\!mb-0 {
     margin-bottom: 0px !important
 }
@@ -545,6 +550,10 @@
 
 .max-w-xl {
     max-width: 576px
+}
+
+.max-w-full {
+    max-width: 100%
 }
 
 .flex-1 {
@@ -1716,6 +1725,12 @@
     content: var(--tw-content);
     font-size: 12px !important;
     line-height: 16px !important
+}
+
+.after\:\!text-sm::after {
+    content: var(--tw-content);
+    font-size: 14px !important;
+    line-height: 20px !important
 }
 
 .after\:text-black::after {
