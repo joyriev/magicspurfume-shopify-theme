@@ -703,6 +703,11 @@
     row-gap: 16px
 }
 
+.gap-x-2 {
+    -moz-column-gap: 8px;
+         column-gap: 8px
+}
+
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(4px * calc(1 - var(--tw-space-y-reverse)));
