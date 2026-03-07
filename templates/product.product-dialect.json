@@ -226,7 +226,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-2",
-        "media_size": "large",
+        "media_size": "medium",
         "gallery_layout": "thumbnail_slider",
         "media_position": "left",
         "image_zoom": "none",
