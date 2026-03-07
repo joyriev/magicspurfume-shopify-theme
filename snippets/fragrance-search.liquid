@@ -7,6 +7,8 @@
   - FIXIERT: Verwendet korrekte Produktbilder (_c.webp Format)
   - FIXIERT: Warenkorb bleibt nach dem Hinzufügen geöffnet
   - FIXIERT: "amani" findet jetzt sowohl Armani-Produkte als auch Katalog-Parfums
+  - HARDCODED: One Million, One Million Lucky, Lady Million, Fame, Invictus, Phantom
+  - HARDCODED: One Million Elixir, Invictus Victory, Pure XS, Olympea Intense, Ultraviolet
 {% endcomment %}
 
 <!-- Lade unseren kuratierten Katalog -->
@@ -1103,7 +1105,9 @@
       'sauvage': ['sauvage', 'savages', 'sauvage', 'savage'],
       'bleu': ['bleu', 'blue', 'blu', 'bleue'],
       'noir': ['noir', 'noire', 'nior', 'noir'],
-      'musc': ['musc', 'musk', 'musck', 'musc']
+      'musc': ['musc', 'musk', 'musck', 'musc'],
+      'million': ['million', 'milion', 'mil lion', '1 million', 'one million'],
+      'lucky': ['lucky', 'luky', 'luckey']
     };
     
     // Check each brand mapping
@@ -1139,6 +1143,240 @@
     }
     
     return [...new Set(variations)]; // Remove duplicates
+  }
+
+  // ===== HARDCODED PRODUCT DATABASE - FALLBACK WENN SHOPIFY PRODUKTE NICHT GEFUNDEN WERDEN =====
+  const hardcodedProducts = [
+    // PACO RABANNE - One Million Collection
+    {
+      id: "hardcoded-one-million-275",
+      title: "Riecht wie… One Million - No. 275",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million.png?v=1770217929",
+      url: "https://magicperfume.co/products/riecht-wie-one-million-no-275",
+      variant: 47306572353794,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "275",
+      searchTerms: ["one million", "1 million", "million", "paco rabanne one million"]
+    },
+    {
+      id: "hardcoded-one-million-lucky-280",
+      title: "Riecht wie... One Million Lucky - No. 280",
+      image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132",
+      url: "https://magicperfume.co/products/riecht-wie-one-million-lucky-no-280",
+      variant: 47306572386562,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "280",
+      searchTerms: ["one million lucky", "million lucky", "lucky", "paco rabanne lucky"]
+    },
+    {
+      id: "hardcoded-one-million-elixir-334",
+      title: "Riecht wie... One Million Elixir - No. 334",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million_Elixir.png?v=1770579856",
+      url: "https://magicperfume.co/products/riecht-wie-one-million-elixir-no-334",
+      variant: 47306572419330,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "334",
+      searchTerms: ["one million elixir", "million elixir", "elixir"]
+    },
+    {
+      id: "hardcoded-lady-million-023",
+      title: "Riecht wie... LADY MILION - No. 023",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Lady_Million.png?v=1770218839",
+      url: "https://magicperfume.co/products/riecht-wie-lady-milion-no-023",
+      variant: 47306572452098,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "023",
+      searchTerms: ["lady million", "lady milion", "lady"]
+    },
+    {
+      id: "hardcoded-fame-498",
+      title: "Riecht wie... Fame - No. 498",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Fame.png?v=1770285610",
+      url: "https://magicperfume.co/products/riecht-wie-fame-no-498",
+      variant: 47306572484866,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "498",
+      searchTerms: ["fame", "paco rabanne fame"]
+    },
+    {
+      id: "hardcoded-invictus-228",
+      title: "Riecht wie... Invictus - No. 228",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Invictus.png?v=1770286917",
+      url: "https://magicperfume.co/products/riecht-wie-invictus-no-228",
+      variant: 47306572517634,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "228",
+      searchTerms: ["invictus", "paco rabanne invictus"]
+    },
+    {
+      id: "hardcoded-invictus-victory-303",
+      title: "Riecht wie... Invictus Victory - No. 303",
+      image: "https://magicperfume.co/cdn/shop/files/Invictus_Victory.webp?v=1772136784",
+      url: "https://magicperfume.co/products/riecht-wie-invictus-victory-no-303",
+      variant: 47306572550402,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "303",
+      searchTerms: ["invictus victory", "victory"]
+    },
+    {
+      id: "hardcoded-phantom-399",
+      title: "Riecht wie... Phantom - No. 399",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078",
+      url: "https://magicperfume.co/products/riecht-wie-phantom-no-399",
+      variant: 47306572583170,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "399",
+      searchTerms: ["phantom", "paco rabanne phantom"]
+    },
+    {
+      id: "hardcoded-pure-xs-for-her-050",
+      title: "Riecht wie... Pure XS For Her - No. 050",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_XS_For_Her.jpg?v=1772105675",
+      url: "https://magicperfume.co/products/riecht-wie-pure-xs-for-her-no-050",
+      variant: 47306572615938,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "050",
+      searchTerms: ["pure xs", "xs", "pure"]
+    },
+    {
+      id: "hardcoded-olympea-intense-095",
+      title: "Riecht wie... Olympea Intense - No. 095",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Olympea_INTENSE.jpg?v=1772108016",
+      url: "https://magicperfume.co/products/riecht-wie-olympea-intense-no-095",
+      variant: 47306572648706,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "095",
+      searchTerms: ["olympea", "olympea intense", "intense"]
+    },
+    {
+      id: "hardcoded-ultraviolet-480",
+      title: "Riecht wie... Ultraviolet - No. 480",
+      image: "https://magicperfume.co/cdn/shop/files/Ultraviolet.webp?v=1772141928",
+      url: "https://magicperfume.co/products/riecht-wie-ultraviolet-no-480",
+      variant: 47306572681474,
+      price: 1199,
+      brand: "Paco Rabanne",
+      number: "480",
+      searchTerms: ["ultraviolet", "ultra violet"]
+    },
+    
+    // ARMANI
+    {
+      id: "hardcoded-armani-code-260",
+      title: "Riecht wie... Armani Code - No. 260",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Armani_Code.png?v=1770220395",
+      url: "https://magicperfume.co/products/riecht-wie-armani-code-no-260",
+      variant: 47306572714242,
+      price: 1199,
+      brand: "Giorgio Armani",
+      number: "260",
+      searchTerms: ["armani code", "code", "armani"]
+    },
+    {
+      id: "hardcoded-code-for-woman-135",
+      title: "Riecht wie... Code for Woman - No. 135",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Code_for_Woman.jpg?v=1771252264",
+      url: "https://magicperfume.co/products/riecht-wie-code-for-woman-no-135",
+      variant: 47306572747010,
+      price: 1199,
+      brand: "Giorgio Armani",
+      number: "135",
+      searchTerms: ["code for woman", "armani code woman", "code woman"]
+    },
+    
+    // CHANEL
+    {
+      id: "hardcoded-bleu-252",
+      title: "Riecht wie... Bleu - No. 252",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838",
+      url: "https://magicperfume.co/products/riecht-wie-bleu-no-252",
+      variant: 47306572779778,
+      price: 1199,
+      brand: "Chanel",
+      number: "252",
+      searchTerms: ["bleu", "bleu de chanel", "chanel bleu", "blue"]
+    },
+    {
+      id: "hardcoded-no5-077",
+      title: "Riecht wie... No.5 - No. 077",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018",
+      url: "https://magicperfume.co/products/riecht-wie-no5-no-077",
+      variant: 47306572812546,
+      price: 1199,
+      brand: "Chanel",
+      number: "077",
+      searchTerms: ["no 5", "no5", "chanel no5", "number 5"]
+    },
+    
+    // NARCISO RODRIGUEZ
+    {
+      id: "hardcoded-musc-noir-457",
+      title: "Riecht wie... Musc Noir For Her - No. 457",
+      image: "https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273",
+      url: "https://magicperfume.co/products/riecht-wie-musc-noir-for-her-no-457",
+      variant: 47306572845314,
+      price: 1199,
+      brand: "Narciso Rodriguez",
+      number: "457",
+      searchTerms: ["musc noir", "narciso", "noir"]
+    }
+  ];
+
+  // ===== SEARCH IN HARDCODED PRODUCTS =====
+  function searchHardcodedProducts(query) {
+    if (!query || query.length < 1) return [];
+    
+    const queryLower = query.toLowerCase().trim();
+    const results = [];
+    const addedIds = new Set();
+    
+    console.log('🔍 Suche in Hardcoded-Produkten für:', queryLower);
+    
+    hardcodedProducts.forEach(product => {
+      // Check title
+      if (product.title.toLowerCase().includes(queryLower)) {
+        results.push({ product, score: 100, matchReasons: ['hardcoded-titel'] });
+        addedIds.add(product.id);
+        return;
+      }
+      
+      // Check search terms
+      if (product.searchTerms) {
+        for (const term of product.searchTerms) {
+          if (term.includes(queryLower) || queryLower.includes(term)) {
+            results.push({ product, score: 90, matchReasons: ['hardcoded-suchbegriff'] });
+            addedIds.add(product.id);
+            return;
+          }
+        }
+      }
+      
+      // Check number
+      if (product.number && queryLower.includes(product.number)) {
+        results.push({ product, score: 95, matchReasons: ['hardcoded-nummer'] });
+        addedIds.add(product.id);
+        return;
+      }
+      
+      // Check brand
+      if (product.brand.toLowerCase().includes(queryLower)) {
+        results.push({ product, score: 85, matchReasons: ['hardcoded-marke'] });
+        addedIds.add(product.id);
+        return;
+      }
+    });
+    
+    return results;
   }
 
   // ===== ADVANCED PRODUCT SEARCH WITH FUZZY MATCHING =====
@@ -1177,6 +1415,41 @@
         results.push({ product: no135, score: 900 });
         addedIds.add(no135.id);
         console.log('✅ No. 135 für "code" gefunden');
+      }
+    }
+    
+    // SECOND: Special handling for Paco Rabanne products
+    const pacoKeywords = ['million', 'lucky', 'lady', 'fame', 'invictus', 'phantom', 'victory', 'olympea', 'ultraviolet', 'pure xs'];
+    for (const keyword of pacoKeywords) {
+      if (queryLower.includes(keyword)) {
+        const pacoProduct = fcProducts.find(p => 
+          p.title.toLowerCase().includes(keyword) || 
+          p.title.toLowerCase().includes('paco rabanne')
+        );
+        
+        if (pacoProduct && !addedIds.has(pacoProduct.id)) {
+          results.push({ product: pacoProduct, score: 950 });
+          addedIds.add(pacoProduct.id);
+          console.log(`✅ Paco Rabanne Produkt für "${keyword}" gefunden`);
+        }
+      }
+    }
+    
+    // THIRD: Special handling for "one million lucky"
+    if (queryLower.includes('one million lucky') || 
+        queryLower.includes('million lucky') || 
+        (queryLower.includes('one million') && queryLower.includes('lucky'))) {
+      
+      const oneMillionLucky = fcProducts.find(p => 
+        p.title.toLowerCase().includes('one million lucky') ||
+        p.title.includes('No. 280') ||
+        p.title.includes('No.280')
+      );
+      
+      if (oneMillionLucky && !addedIds.has(oneMillionLucky.id)) {
+        results.push({ product: oneMillionLucky, score: 1000 });
+        addedIds.add(oneMillionLucky.id);
+        console.log('✅ One Million Lucky DIREKT gefunden');
       }
     }
     
@@ -1238,17 +1511,6 @@
         console.log(`✅ Produkt-Treffer: ${product.title} (Punktzahl: ${Math.round(bestScore)})`, matchReasons);
       }
     });
-    
-    // If no matches at all, show some products as fallback
-    if (results.length === 0) {
-      console.log('⚠️ Keine Produkt-Treffer gefunden, zeige zufällige Produkte');
-      fcProducts.slice(0, 10).forEach(product => {
-        if (!addedIds.has(product.id)) {
-          results.push({ product, score: 1, matchReasons: ['fallback'] });
-          addedIds.add(product.id);
-        }
-      });
-    }
     
     // Sort by score (highest first)
     results.sort((a, b) => b.score - a.score);
@@ -1516,19 +1778,141 @@
     
     // ===== HARDCODED DIRECT MAPPINGS FOR KNOWN PRODUCTS =====
     const hardcodedMappings = [
+      // PACO RABANNE
+      {
+        catalogNames: ['one million lucky', '1 million lucky', 'million lucky', 'lucky one million'],
+        productNumber: '280',
+        variantId: 47306572386562,
+        expectedTitle: 'Riecht wie... One Million Lucky - No. 280',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132',
+        url: 'https://magicperfume.co/products/riecht-wie-one-million-lucky-no-280',
+        price: 1199
+      },
+      {
+        catalogNames: ['one million', '1 million', 'million', 'paco rabanne one million'],
+        productNumber: '275',
+        variantId: 47306572353794,
+        expectedTitle: 'Riecht wie… One Million - No. 275',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million.png?v=1770217929',
+        url: 'https://magicperfume.co/products/riecht-wie-one-million-no-275',
+        price: 1199
+      },
+      {
+        catalogNames: ['one million elixir', 'million elixir', 'elixir'],
+        productNumber: '334',
+        variantId: 47306572419330,
+        expectedTitle: 'Riecht wie... One Million Elixir - No. 334',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million_Elixir.png?v=1770579856',
+        url: 'https://magicperfume.co/products/riecht-wie-one-million-elixir-no-334',
+        price: 1199
+      },
+      {
+        catalogNames: ['lady million', 'lady milion', 'lady'],
+        productNumber: '023',
+        variantId: 47306572452098,
+        expectedTitle: 'Riecht wie... LADY MILION - No. 023',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Lady_Million.png?v=1770218839',
+        url: 'https://magicperfume.co/products/riecht-wie-lady-milion-no-023',
+        price: 1199
+      },
+      {
+        catalogNames: ['fame', 'paco rabanne fame'],
+        productNumber: '498',
+        variantId: 47306572484866,
+        expectedTitle: 'Riecht wie... Fame - No. 498',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Fame.png?v=1770285610',
+        url: 'https://magicperfume.co/products/riecht-wie-fame-no-498',
+        price: 1199
+      },
+      {
+        catalogNames: ['invictus', 'paco rabanne invictus'],
+        productNumber: '228',
+        variantId: 47306572517634,
+        expectedTitle: 'Riecht wie... Invictus - No. 228',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Invictus.png?v=1770286917',
+        url: 'https://magicperfume.co/products/riecht-wie-invictus-no-228',
+        price: 1199
+      },
+      {
+        catalogNames: ['invictus victory', 'victory'],
+        productNumber: '303',
+        variantId: 47306572550402,
+        expectedTitle: 'Riecht wie... Invictus Victory - No. 303',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Invictus_Victory.webp?v=1772136784',
+        url: 'https://magicperfume.co/products/riecht-wie-invictus-victory-no-303',
+        price: 1199
+      },
+      {
+        catalogNames: ['phantom', 'paco rabanne phantom'],
+        productNumber: '399',
+        variantId: 47306572583170,
+        expectedTitle: 'Riecht wie... Phantom - No. 399',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078',
+        url: 'https://magicperfume.co/products/riecht-wie-phantom-no-399',
+        price: 1199
+      },
+      {
+        catalogNames: ['pure xs', 'xs', 'pure xs for her', 'pure'],
+        productNumber: '050',
+        variantId: 47306572615938,
+        expectedTitle: 'Riecht wie... Pure XS For Her - No. 050',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_XS_For_Her.jpg?v=1772105675',
+        url: 'https://magicperfume.co/products/riecht-wie-pure-xs-for-her-no-050',
+        price: 1199
+      },
+      {
+        catalogNames: ['olympea', 'olympea intense', 'intense'],
+        productNumber: '095',
+        variantId: 47306572648706,
+        expectedTitle: 'Riecht wie... Olympea Intense - No. 095',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Olympea_INTENSE.jpg?v=1772108016',
+        url: 'https://magicperfume.co/products/riecht-wie-olympea-intense-no-095',
+        price: 1199
+      },
+      {
+        catalogNames: ['ultraviolet', 'ultra violet'],
+        productNumber: '480',
+        variantId: 47306572681474,
+        expectedTitle: 'Riecht wie... Ultraviolet - No. 480',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Ultraviolet.webp?v=1772141928',
+        url: 'https://magicperfume.co/products/riecht-wie-ultraviolet-no-480',
+        price: 1199
+      },
+      
+      // ARMANI
+      {
+        catalogNames: ['armani code', 'code armani', 'code men'],
+        productNumber: '260',
+        variantId: 47306572714242,
+        expectedTitle: 'Riecht wie... Armani Code - No. 260',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Armani_Code.png?v=1770220395',
+        url: 'https://magicperfume.co/products/riecht-wie-armani-code-no-260',
+        price: 1199
+      },
+      {
+        catalogNames: ['code for woman', 'armani code woman', 'code woman', 'code women'],
+        productNumber: '135',
+        variantId: 47306572747010,
+        expectedTitle: 'Riecht wie... Code for Woman - No. 135',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Code_for_Woman.jpg?v=1771252264',
+        url: 'https://magicperfume.co/products/riecht-wie-code-for-woman-no-135',
+        price: 1199
+      },
+      
+      // CHANEL
       {
         catalogNames: ['musc noir', 'narciso rodriguez musc noir', 'musc noir narciso rodriguez'],
         productNumber: '457',
-        variantId: 47306571829506, // 30ml variant for German store
+        variantId: 47306571829506,
         expectedTitle: 'Riecht wie... Musc Noir For Her - No. 457',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273',
         url: 'https://magicperfume.co/products/riecht-wie-musc-noir-for-her-no-457',
         price: 1199
       },
       {
-        catalogNames: ['no. 5', 'chanel no. 5', 'no 5 chanel'],
+        catalogNames: ['no. 5', 'chanel no. 5', 'no 5 chanel', 'chanel no5'],
         productNumber: '077',
-        variantId: 47306570944770, // 30ml variant
+        variantId: 47306570944770,
         expectedTitle: 'Riecht wie... No.5 - No. 077',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018',
         url: 'https://magicperfume.co/products/riecht-wie-no5-no-077',
@@ -1537,7 +1921,7 @@
       {
         catalogNames: ['bleu de chanel', 'bleu', 'chanel bleu', 'blue chanel'],
         productNumber: '252',
-        variantId: 47306572321026, // 30ml variant
+        variantId: 47306572321026,
         expectedTitle: 'Riecht wie... Bleu - No. 252',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838',
         url: 'https://magicperfume.co/products/riecht-wie-bleu-no-252',
@@ -1638,6 +2022,26 @@
   // ===== RENDER YOUR PRODUCT CARD (ALIAS) =====
   function renderYourProductCard(product, badge) {
     return renderProductCard(product, badge);
+  }
+
+  // ===== RENDER HARDCODED PRODUCT =====
+  function renderHardcodedProduct(product, badge) {
+    const priceFormatted = product.price ? '€' + (product.price / 100).toFixed(2) : '€11.99';
+    
+    return `
+      <div class="fc-product-card">
+        <div class="fc-badge">${badge}</div>
+        <div class="fc-product-inner">
+          <img class="fc-product-image" src="${product.image}" alt="${product.title}" loading="lazy">
+          <div class="fc-product-title">${product.title}</div>
+          <div class="fc-product-price">${priceFormatted}</div>
+          <button class="fc-add-to-cart" onclick="event.stopPropagation(); window.fcAddToCart(${product.variant})">In den Warenkorb</button>
+          <div>
+            <span class="fc-view-link" onclick="event.stopPropagation(); window.fcViewDetails('${product.url}')">Details ansehen</span>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   // ===== INITIALIZE YOUR SHOPIFY PRODUCTS WITH CORRECT VARIANT IDS AND IMAGES =====
@@ -1829,6 +2233,9 @@
       // Search in your products with advanced fuzzy matching
       const yourResults = searchProducts(query);
       
+      // Search in hardcoded products as fallback
+      const hardcodedResults = searchHardcodedProducts(query);
+      
       let html = '';
       
       // Show catalog results
@@ -1856,8 +2263,28 @@
         });
       }
       
-      // If no results, show suggestions
-      if (catalogResults.length === 0 && yourResults.length === 0) {
+      // Show hardcoded results if no other results
+      if (catalogResults.length === 0 && yourResults.length === 0 && hardcodedResults.length > 0) {
+        html += `<div class="fc-section-title">Empfohlene Produkte (${hardcodedResults.length})</div>`;
+        
+        hardcodedResults.slice(0, 6).forEach(match => {
+          const p = match.product;
+          const priceFormatted = '€' + (p.price / 100).toFixed(2);
+          
+          html += `
+            <div class="fc-real-perfume-item" onclick="window.fcViewDetails('${p.url}')">
+              <img class="fc-real-perfume-image" src="${p.image}" alt="${p.title}" loading="lazy">
+              <div class="fc-real-perfume-info">
+                <div class="fc-real-perfume-name">${p.title}</div>
+                <div class="fc-real-perfume-year">${priceFormatted}</div>
+              </div>
+            </div>
+          `;
+        });
+      }
+      
+      // If no results at all, show suggestions
+      if (catalogResults.length === 0 && yourResults.length === 0 && hardcodedResults.length === 0) {
         html = '<div class="fc-no-results">Keine Produkte gefunden für "' + query + '"</div>';
         html += renderSuggestions();
       }
