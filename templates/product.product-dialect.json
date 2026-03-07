@@ -391,25 +391,11 @@
     },
     "popular_products_BptEUV": {
       "type": "popular-products",
-      "disabled": true,
       "name": "Popular Products",
       "settings": {
         "background_color": "#f7f7f7",
-        "heading": "BESTSELERS",
+        "heading": "Das könnte Ihnen auch gefallen",
         "subheading": "",
-        "collection": "best-sellers",
-        "show_all_button_text": "Alle anzeigen",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
-    "popular_products_7dTKyG": {
-      "type": "popular-products",
-      "name": "Popular Products",
-      "settings": {
-        "background_color": "#f2f4fa",
-        "heading": "Beliebte Produkte",
-        "subheading": "Entworfen und formuliert für Qualität.",
         "collection": "best-sellers",
         "show_all_button_text": "Alle anzeigen",
         "padding_top": 72,
@@ -855,7 +841,6 @@
     "stacks_up_WR4y4d",
     "image_and_text_EFE4gB",
     "popular_products_BptEUV",
-    "popular_products_7dTKyG",
     "massive_review_xQhDkP",
     "1770288371f70b6dc1"
   ]
