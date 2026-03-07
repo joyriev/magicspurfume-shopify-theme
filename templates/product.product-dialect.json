@@ -14,6 +14,11 @@
       "blocks": {
         "title_DkyBTh": {
           "type": "title",
+          "disabled": true,
+          "settings": {}
+        },
+        "dialect_title_69H3aR": {
+          "type": "dialect_title",
           "settings": {}
         },
         "custom_rating_text_ehyqmQ": {
@@ -202,6 +207,7 @@
       },
       "block_order": [
         "title_DkyBTh",
+        "dialect_title_69H3aR",
         "custom_rating_text_ehyqmQ",
         "price_MG94AW",
         "variant_picker_hH3Diz",
