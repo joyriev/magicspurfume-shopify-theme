@@ -132,6 +132,10 @@
             "side": "right"
           }
         },
+        "dialect_notes_jJiCPK": {
+          "type": "dialect_notes",
+          "settings": {}
+        },
         "collapsible_tab_FAAFhb": {
           "type": "collapsible_tab",
           "settings": {
@@ -210,6 +214,7 @@
         "dialect_atc_amUKEh",
         "icon_with_text_ytpGUH",
         "product_reviews_W3CkbE",
+        "dialect_notes_jJiCPK",
         "collapsible_tab_FAAFhb",
         "collapsible_tab_bKn87j",
         "collapsible_tab_T6Fk9z",
