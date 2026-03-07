@@ -1595,7 +1595,7 @@ window.PerfumeCatalog = {
       productNumbers: ["457"],
       shopifyProduct: {
         title: "Riecht wie... Musc Noir For Her - No. 457",
-        url: "https://magicperfume.co/products/riecht-wie-musc-noir-for-her-no-457",
+        url: "https://magicperfume.co/products/magic-perfume-no-457w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273"
       }
