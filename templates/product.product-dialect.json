@@ -159,15 +159,6 @@
             "page": ""
           }
         },
-        "collapsible_tab_TKfWP3": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Unterscheidet sich der inspirierte Duft?",
-            "icon": "none",
-            "content": "<p>Nein, dieser Duft ist eine perfekte Ergänzung mit dem gleichen Duft.</p>",
-            "page": ""
-          }
-        },
         "collapsible_tab_HiNKBa": {
           "type": "collapsible_tab",
           "settings": {
@@ -206,7 +197,6 @@
         "collapsible_tab_bKn87j",
         "collapsible_tab_T6Fk9z",
         "collapsible_tab_GUrz86",
-        "collapsible_tab_TKfWP3",
         "collapsible_tab_HiNKBa",
         "collapsible_tab_Qn8c4p"
       ],
