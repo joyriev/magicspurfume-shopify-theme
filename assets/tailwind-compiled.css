@@ -186,6 +186,16 @@
     margin-bottom: 4px
 }
 
+.\!my-8 {
+    margin-top: 32px !important;
+    margin-bottom: 32px !important
+}
+
+.\!my-10 {
+    margin-top: 40px !important;
+    margin-bottom: 40px !important
+}
+
 .\!mb-0 {
     margin-bottom: 0px !important
 }
