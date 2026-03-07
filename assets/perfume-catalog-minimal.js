@@ -442,6 +442,26 @@ window.PerfumeCatalog = {
         image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132"
       }
     },
+    // Add to the pacoRabanne array in your catalog:
+{
+  id: "paco_one_million_lucky",
+  name: "One Million Lucky Paco Rabanne",
+  brand: "Paco Rabanne",
+  image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132",
+  top_notes: ["Pflaume", "Grapefruit", "Mandarine"],
+  heart_notes: ["Honig", "Zeder", "Eichenmoos"],
+  base_notes: ["Leder", "Amber", "Patschuli"],
+  description: "Eine frische und holzige Interpretation des ikonischen One Million.",
+  year: "2018",
+  gender: "Male",
+  productNumbers: ["280"],
+  shopifyProduct: {
+    title: "Riecht wie... One Million Lucky - No. 280",
+    url: "https://magicperfume.co/products/riecht-wie-one-million-lucky-no-280",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132"
+  }
+},
     {
       id: "paco_invictus_victory",
       name: "Invictus Victory Paco Rabanne",
