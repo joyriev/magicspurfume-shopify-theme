@@ -187,7 +187,7 @@
                 </div>
               {% when 'dialect_title' %}
                 {% assign title_list = product.title |  split: '-' %}
-                <h1 class="font-[700] leading-tight capitalize !tracking-normal flex flex-col {% if product.tags contains 'bestseller' or product.tags contains 'onsale' and product.compare_at_price != blank and product.compare_at_price > product.price %}pt-12{% endif %}">
+                <h1 class="font-[700] leading-tight capitalize !tracking-normal flex flex-col">
                   {{ title_list.last }}
                 </h1>
               {%- when 'price' -%}

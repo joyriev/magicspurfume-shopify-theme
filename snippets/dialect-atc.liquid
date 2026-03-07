@@ -29,16 +29,13 @@
       {% assign per_ml = price_in_dollars | divided_by: size_int | round: 2 %}
       <button
         type="button"
-        class="variant-button flex-grow flex md:flex-col items-center gap-2 rounded-lg p-2 pt-3 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative {% if variant.id == selected_variant.id %}border-black{% else %}border-gray-200{% endif %}"
+        class="variant-button flex md:flex-col items-center gap-2 rounded-lg py-3 px-8 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative {% if variant.id == selected_variant.id %}border-black{% else %}border-gray-200{% endif %}"
         data-variant-id="{{ variant.id }}"
         data-variant-title="{{ variant.title }}"
         data-original-price="{{ variant.price | money }}"
         data-compare-price="{{ variant.compare_at_price | money }}">
         <div class="text-center">
           <div class="text-base font-semibold">{{ variant.title }}</div>
-          <div class="text-xs text-gray-600">
-            {{- cart.currency.symbol -}}
-            {{- per_ml }} Pro Sprühstoß</div>
         </div>
         {% if variant.title == '50ml' %}
           <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#c8202f] px-2 py-0.5">Beliebt</span>
@@ -51,9 +48,14 @@
   </div>
 {% endif %}
 
+<div class="text-[0.9em] text-[#262626] text-center bg-white p-4 rounded-[10px] mt-8 border-2 border-solid border-[#e5e5e5]">
+  <strong>Heute zwei kaufen, eins gratis!</strong>
+  <p class="mb-0 mt-1">Legen Sie einfach 3, 6 oder 9+ Flaschen (50 ml oder 100 ml) in Ihren Warenkorb.</p>
+</div>
+
 {% comment %} Add to cart form {% endcomment %}
 <product-form
-  class="product-form !m-0"
+  class="product-form"
   data-hide-errors="{{ gift_card_recipient_feature_active }}"
   data-section-id="{{ section.id }}">
   {%- form 'product'
