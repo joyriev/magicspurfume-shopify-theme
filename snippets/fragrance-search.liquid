@@ -1017,81 +1017,6 @@
               .trim();
   }
 
-  // ===== ADVANCED SIMILARITY SCORE WITH KEYWORD EXTRACTION =====
-  function calculateAdvancedSimilarity(query, target) {
-    if (!query || !target) return 0;
-    
-    const normalizedQuery = normalizeString(query);
-    const normalizedTarget = normalizeString(target);
-    
-    // Exact match after normalization
-    if (normalizedQuery === normalizedTarget) return 100;
-    
-    // One contains the other
-    if (normalizedTarget.includes(normalizedQuery) || normalizedQuery.includes(normalizedTarget)) {
-      return 80;
-    }
-    
-    // Split into words
-    const queryWords = normalizedQuery.split(' ');
-    const targetWords = normalizedTarget.split(' ');
-    
-    let totalScore = 0;
-    let matchedWords = 0;
-    
-    for (const qWord of queryWords) {
-      if (qWord.length < 2) continue;
-      
-      let bestWordScore = 0;
-      let bestWord = '';
-      
-      for (const tWord of targetWords) {
-        if (tWord.length < 2) continue;
-        
-        // Check if one word contains the other
-        if (tWord.includes(qWord) || qWord.includes(tWord)) {
-          const lengthRatio = Math.min(qWord.length, tWord.length) / Math.max(qWord.length, tWord.length);
-          const score = 60 * lengthRatio;
-          if (score > bestWordScore) {
-            bestWordScore = score;
-            bestWord = tWord;
-          }
-          continue;
-        }
-        
-        // Calculate Levenshtein distance for fuzzy matching
-        const distance = levenshteinDistance(qWord, tWord);
-        const maxLength = Math.max(qWord.length, tWord.length);
-        
-        if (maxLength > 0) {
-          // Convert distance to similarity (0-100)
-          // More forgiving for shorter words
-          const threshold = qWord.length < 4 ? 0.4 : 0.3;
-          const similarity = ((maxLength - distance) / maxLength) * 100;
-          
-          if (similarity > (100 * threshold)) {
-            if (similarity > bestWordScore) {
-              bestWordScore = similarity;
-              bestWord = tWord;
-            }
-          }
-        }
-      }
-      
-      if (bestWordScore > 0) {
-        totalScore += bestWordScore;
-        matchedWords++;
-      }
-    }
-    
-    // Calculate average score
-    if (matchedWords > 0) {
-      return totalScore / matchedWords;
-    }
-    
-    return 0;
-  }
-
   // ===== GENERATE QUERY VARIATIONS FOR BETTER MATCHING =====
   function generateQueryVariations(query) {
     const variations = [query];
@@ -1152,7 +1077,7 @@
       id: "hardcoded-one-million-275",
       title: "Riecht wie… One Million - No. 275",
       image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million.png?v=1770217929",
-      url: "https://magicperfume.co/products/riecht-wie-one-million-no-275",
+      url: "https://magicperfume.co/products/magic-perfume-no-275m",
       variant: 47306572353794,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1163,7 +1088,7 @@
       id: "hardcoded-one-million-lucky-280",
       title: "Riecht wie... One Million Lucky - No. 280",
       image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132",
-      url: "https://magicperfume.co/products/riecht-wie-one-million-lucky-no-280",
+      url: "https://magicperfume.co/products/magic-perfume-no-280m",
       variant: 47306572386562,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1174,7 +1099,7 @@
       id: "hardcoded-one-million-elixir-334",
       title: "Riecht wie... One Million Elixir - No. 334",
       image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million_Elixir.png?v=1770579856",
-      url: "https://magicperfume.co/products/riecht-wie-one-million-elixir-no-334",
+      url: "https://magicperfume.co/products/magic-perfume-no-334m",
       variant: 47306572419330,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1185,7 +1110,7 @@
       id: "hardcoded-lady-million-023",
       title: "Riecht wie... LADY MILION - No. 023",
       image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Lady_Million.png?v=1770218839",
-      url: "https://magicperfume.co/products/riecht-wie-lady-milion-no-023",
+      url: "https://magicperfume.co/products/magic-perfume-no-023w",
       variant: 47306572452098,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1196,7 +1121,7 @@
       id: "hardcoded-fame-498",
       title: "Riecht wie... Fame - No. 498",
       image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Fame.png?v=1770285610",
-      url: "https://magicperfume.co/products/riecht-wie-fame-no-498",
+      url: "https://magicperfume.co/products/magic-perfume-no-498w",
       variant: 47306572484866,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1207,7 +1132,7 @@
       id: "hardcoded-invictus-228",
       title: "Riecht wie... Invictus - No. 228",
       image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Invictus.png?v=1770286917",
-      url: "https://magicperfume.co/products/riecht-wie-invictus-no-228",
+      url: "https://magicperfume.co/products/magic-perfume-no-228m",
       variant: 47306572517634,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1218,7 +1143,7 @@
       id: "hardcoded-invictus-victory-303",
       title: "Riecht wie... Invictus Victory - No. 303",
       image: "https://magicperfume.co/cdn/shop/files/Invictus_Victory.webp?v=1772136784",
-      url: "https://magicperfume.co/products/riecht-wie-invictus-victory-no-303",
+      url: "https://magicperfume.co/products/magic-perfume-no-303m",
       variant: 47306572550402,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1229,7 +1154,7 @@
       id: "hardcoded-phantom-399",
       title: "Riecht wie... Phantom - No. 399",
       image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078",
-      url: "https://magicperfume.co/products/riecht-wie-phantom-no-399",
+      url: "https://magicperfume.co/products/magic-perfume-no-399m",
       variant: 47306572583170,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1240,7 +1165,7 @@
       id: "hardcoded-pure-xs-for-her-050",
       title: "Riecht wie... Pure XS For Her - No. 050",
       image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_XS_For_Her.jpg?v=1772105675",
-      url: "https://magicperfume.co/products/riecht-wie-pure-xs-for-her-no-050",
+      url: "https://magicperfume.co/products/magic-perfume-no-050w",
       variant: 47306572615938,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1251,7 +1176,7 @@
       id: "hardcoded-olympea-intense-095",
       title: "Riecht wie... Olympea Intense - No. 095",
       image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Olympea_INTENSE.jpg?v=1772108016",
-      url: "https://magicperfume.co/products/riecht-wie-olympea-intense-no-095",
+      url: "https://magicperfume.co/products/magic-perfume-no-095w",
       variant: 47306572648706,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1262,7 +1187,7 @@
       id: "hardcoded-ultraviolet-480",
       title: "Riecht wie... Ultraviolet - No. 480",
       image: "https://magicperfume.co/cdn/shop/files/Ultraviolet.webp?v=1772141928",
-      url: "https://magicperfume.co/products/riecht-wie-ultraviolet-no-480",
+      url: "https://magicperfume.co/products/magic-perfume-no-480w",
       variant: 47306572681474,
       price: 1199,
       brand: "Paco Rabanne",
@@ -1275,7 +1200,7 @@
       id: "hardcoded-armani-code-260",
       title: "Riecht wie... Armani Code - No. 260",
       image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Armani_Code.png?v=1770220395",
-      url: "https://magicperfume.co/products/riecht-wie-armani-code-no-260",
+      url: "https://magicperfume.co/products/magic-perfume-no-260m",
       variant: 47306572714242,
       price: 1199,
       brand: "Giorgio Armani",
@@ -1286,7 +1211,7 @@
       id: "hardcoded-code-for-woman-135",
       title: "Riecht wie... Code for Woman - No. 135",
       image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Code_for_Woman.jpg?v=1771252264",
-      url: "https://magicperfume.co/products/riecht-wie-code-for-woman-no-135",
+      url: "https://magicperfume.co/products/magic-perfume-no-135w",
       variant: 47306572747010,
       price: 1199,
       brand: "Giorgio Armani",
@@ -1299,7 +1224,7 @@
       id: "hardcoded-bleu-252",
       title: "Riecht wie... Bleu - No. 252",
       image: "https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838",
-      url: "https://magicperfume.co/products/riecht-wie-bleu-no-252",
+      url: "https://magicperfume.co/products/magic-perfume-no-252m",
       variant: 47306572779778,
       price: 1199,
       brand: "Chanel",
@@ -1310,7 +1235,7 @@
       id: "hardcoded-no5-077",
       title: "Riecht wie... No.5 - No. 077",
       image: "https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018",
-      url: "https://magicperfume.co/products/riecht-wie-no5-no-077",
+      url: "https://magicperfume.co/products/magic-perfume-no-077w",
       variant: 47306572812546,
       price: 1199,
       brand: "Chanel",
@@ -1323,7 +1248,7 @@
       id: "hardcoded-musc-noir-457",
       title: "Riecht wie... Musc Noir For Her - No. 457",
       image: "https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273",
-      url: "https://magicperfume.co/products/riecht-wie-musc-noir-for-her-no-457",
+      url: "https://magicperfume.co/products/magic-perfume-no-457w",
       variant: 47306572845314,
       price: 1199,
       brand: "Narciso Rodriguez",
@@ -1375,6 +1300,775 @@
         return;
       }
     });
+    
+    return results;
+  }
+
+  // ===== FIXED CATALOG SEARCH - HARDCODED MATCHING ONLY =====
+  function advancedCatalogSearch(query) {
+    if (!query || query.length < 1 || !allPerfumes || allPerfumes.length === 0) {
+      return [];
+    }
+    
+    const queryLower = query.toLowerCase().trim();
+    const results = [];
+    const addedIds = new Set();
+    
+    console.log('🔍 Katalogsuche für:', queryLower);
+    
+    // ===== STEP 1: CHECK FOR EXACT PRODUCT NUMBER =====
+    const numberMatches = queryLower.match(/\d+/g);
+    if (numberMatches) {
+      for (const num of numberMatches) {
+        const exactMatch = allPerfumes.find(p => 
+          p.productNumbers && p.productNumbers.includes(num)
+        );
+        
+        if (exactMatch && !addedIds.has(exactMatch.id)) {
+          results.push(exactMatch);
+          addedIds.add(exactMatch.id);
+          console.log(`✅ Katalog-Treffer über Nummer ${num}:`, exactMatch.name);
+        }
+      }
+    }
+    
+    // ===== STEP 2: HARDCODED BRAND MAPPINGS =====
+    
+    // DIOR Products
+    if (queryLower.includes('miss dior')) {
+      const missDior = allPerfumes.find(p => p.id === 'dior_miss_dior_le_parfum');
+      if (missDior && !addedIds.has(missDior.id)) {
+        results.push(missDior);
+        addedIds.add(missDior.id);
+        console.log('✅ Miss Dior Le Parfum gefunden');
+      }
+    }
+    
+    if (queryLower.includes('sauvage')) {
+      const sauvageParfum = allPerfumes.find(p => p.id === 'dior_sauvage_parfum');
+      const sauvageElixir = allPerfumes.find(p => p.id === 'dior_sauvage_elixir');
+      
+      if (sauvageParfum && !addedIds.has(sauvageParfum.id)) {
+        results.push(sauvageParfum);
+        addedIds.add(sauvageParfum.id);
+      }
+      if (sauvageElixir && !addedIds.has(sauvageElixir.id)) {
+        results.push(sauvageElixir);
+        addedIds.add(sauvageElixir.id);
+      }
+    }
+    
+    if (queryLower.includes('jadore') || queryLower.includes('j\'adore')) {
+      const jadore = allPerfumes.find(p => p.id === 'dior_jadore');
+      if (jadore && !addedIds.has(jadore.id)) {
+        results.push(jadore);
+        addedIds.add(jadore.id);
+      }
+    }
+    
+    if (queryLower.includes('hypnotic poison')) {
+      const hypnotic = allPerfumes.find(p => p.id === 'dior_hypnotic_poison');
+      if (hypnotic && !addedIds.has(hypnotic.id)) {
+        results.push(hypnotic);
+        addedIds.add(hypnotic.id);
+      }
+    }
+    
+    if (queryLower.includes('fahrenheit')) {
+      const fahrenheit = allPerfumes.find(p => p.id === 'dior_fahrenheit');
+      const fahrenheitLeParfum = allPerfumes.find(p => p.id === 'dior_fahrenheit_le_parfum');
+      const fahrenheit32 = allPerfumes.find(p => p.id === 'dior_fahrenheit_32');
+      
+      if (fahrenheit && !addedIds.has(fahrenheit.id)) results.push(fahrenheit);
+      if (fahrenheitLeParfum && !addedIds.has(fahrenheitLeParfum.id)) results.push(fahrenheitLeParfum);
+      if (fahrenheit32 && !addedIds.has(fahrenheit32.id)) results.push(fahrenheit32);
+    }
+    
+    if (queryLower.includes('homme intense')) {
+      const hommeIntense = allPerfumes.find(p => p.id === 'dior_homme_intense');
+      if (hommeIntense && !addedIds.has(hommeIntense.id)) {
+        results.push(hommeIntense);
+        addedIds.add(hommeIntense.id);
+      }
+    }
+    
+    if (queryLower.includes('miss cherie')) {
+      const missCherie = allPerfumes.find(p => p.id === 'dior_miss_cherie');
+      if (missCherie && !addedIds.has(missCherie.id)) {
+        results.push(missCherie);
+        addedIds.add(missCherie.id);
+      }
+    }
+    
+    // CHANEL Products
+    if (queryLower.includes('bleu') || queryLower.includes('blue')) {
+      const bleu = allPerfumes.find(p => p.id === 'chanel_bleu');
+      if (bleu && !addedIds.has(bleu.id)) {
+        results.push(bleu);
+        addedIds.add(bleu.id);
+      }
+    }
+    
+    if (queryLower.includes('coco') && !queryLower.includes('mademoiselle')) {
+      const coco = allPerfumes.find(p => p.id === 'chanel_coco');
+      if (coco && !addedIds.has(coco.id)) {
+        results.push(coco);
+        addedIds.add(coco.id);
+      }
+    }
+    
+    if (queryLower.includes('mademoiselle')) {
+      const mademoiselle = allPerfumes.find(p => p.id === 'chanel_mademoiselle');
+      const mademoiselleIntense = allPerfumes.find(p => p.id === 'chanel_coco_mademoiselle_intense');
+      
+      if (mademoiselle && !addedIds.has(mademoiselle.id)) results.push(mademoiselle);
+      if (mademoiselleIntense && !addedIds.has(mademoiselleIntense.id)) results.push(mademoiselleIntense);
+    }
+    
+    if (queryLower.includes('chance')) {
+      const chance = allPerfumes.find(p => p.id === 'chanel_chance');
+      if (chance && !addedIds.has(chance.id)) {
+        results.push(chance);
+        addedIds.add(chance.id);
+      }
+    }
+    
+    if (queryLower.includes('no. 5') || queryLower.includes('no 5') || queryLower.includes('chanel no5')) {
+      const no5 = allPerfumes.find(p => p.id === 'chanel_no5');
+      if (no5 && !addedIds.has(no5.id)) {
+        results.push(no5);
+        addedIds.add(no5.id);
+      }
+    }
+    
+    if (queryLower.includes('allure homme')) {
+      const allure = allPerfumes.find(p => p.id === 'chanel_allure_homme');
+      if (allure && !addedIds.has(allure.id)) {
+        results.push(allure);
+        addedIds.add(allure.id);
+      }
+    }
+    
+    // ARMANI Products
+    if (queryLower.includes('si')) {
+      const si = allPerfumes.find(p => p.id === 'armani_si');
+      const siPassione = allPerfumes.find(p => p.id === 'armani_si_passione');
+      
+      if (si && !addedIds.has(si.id)) results.push(si);
+      if (siPassione && !addedIds.has(siPassione.id)) results.push(siPassione);
+    }
+    
+    if (queryLower.includes('emporio she')) {
+      const emporioShe = allPerfumes.find(p => p.id === 'armani_emporio_she');
+      if (emporioShe && !addedIds.has(emporioShe.id)) {
+        results.push(emporioShe);
+        addedIds.add(emporioShe.id);
+      }
+    }
+    
+    if (queryLower.includes('my way')) {
+      const myWay = allPerfumes.find(p => p.id === 'armani_my_way');
+      if (myWay && !addedIds.has(myWay.id)) {
+        results.push(myWay);
+        addedIds.add(myWay.id);
+      }
+    }
+    
+    if (queryLower.includes('code') && !queryLower.includes('woman')) {
+      const code = allPerfumes.find(p => p.id === 'armani_code');
+      if (code && !addedIds.has(code.id)) {
+        results.push(code);
+        addedIds.add(code.id);
+      }
+    }
+    
+    if (queryLower.includes('code for woman') || (queryLower.includes('code') && queryLower.includes('woman'))) {
+      const codeWoman = allPerfumes.find(p => p.id === 'armani_code_for_woman');
+      if (codeWoman && !addedIds.has(codeWoman.id)) {
+        results.push(codeWoman);
+        addedIds.add(codeWoman.id);
+      }
+    }
+    
+    if (queryLower.includes('acqua di gio')) {
+      const acqua = allPerfumes.find(p => p.id === 'armani_acqua_di_gio');
+      const acquaGioia = allPerfumes.find(p => p.id === 'armani_acqua_di_gioia');
+      
+      if (acqua && !addedIds.has(acqua.id)) results.push(acqua);
+      if (acquaGioia && !addedIds.has(acquaGioia.id)) results.push(acquaGioia);
+    }
+    
+    if (queryLower.includes('stronger with you')) {
+      const swy = allPerfumes.find(p => p.id === 'armani_stronger_with_you_intensely');
+      if (swy && !addedIds.has(swy.id)) {
+        results.push(swy);
+        addedIds.add(swy.id);
+      }
+    }
+    
+    if (queryLower.includes('armani diamonds')) {
+      const diamonds = allPerfumes.find(p => p.id === 'armani_diamonds');
+      if (diamonds && !addedIds.has(diamonds.id)) {
+        results.push(diamonds);
+        addedIds.add(diamonds.id);
+      }
+    }
+    
+    if (queryLower.includes('code sport')) {
+      const sport = allPerfumes.find(p => p.id === 'armani_code_sport');
+      if (sport && !addedIds.has(sport.id)) {
+        results.push(sport);
+        addedIds.add(sport.id);
+      }
+    }
+    
+    if (queryLower.includes('terra di gioia')) {
+      const terra = allPerfumes.find(p => p.id === 'armani_terra_di_gioia');
+      if (terra && !addedIds.has(terra.id)) {
+        results.push(terra);
+        addedIds.add(terra.id);
+      }
+    }
+    
+    // PACO RABANNE Products
+    if (queryLower.includes('one million lucky')) {
+      const lucky = allPerfumes.find(p => p.id === 'paco_one_million_lucky');
+      if (lucky && !addedIds.has(lucky.id)) {
+        results.push(lucky);
+        addedIds.add(lucky.id);
+      }
+    }
+    
+    if (queryLower.includes('one million') && !queryLower.includes('lucky') && !queryLower.includes('elixir')) {
+      const oneMillion = allPerfumes.find(p => p.id === 'paco_one_million');
+      if (oneMillion && !addedIds.has(oneMillion.id)) {
+        results.push(oneMillion);
+        addedIds.add(oneMillion.id);
+      }
+    }
+    
+    if (queryLower.includes('one million elixir')) {
+      const elixir = allPerfumes.find(p => p.id === 'paco_one_million_elixir');
+      if (elixir && !addedIds.has(elixir.id)) {
+        results.push(elixir);
+        addedIds.add(elixir.id);
+      }
+    }
+    
+    if (queryLower.includes('lady million')) {
+      const lady = allPerfumes.find(p => p.id === 'paco_lady_million');
+      if (lady && !addedIds.has(lady.id)) {
+        results.push(lady);
+        addedIds.add(lady.id);
+      }
+    }
+    
+    if (queryLower.includes('fame')) {
+      const fame = allPerfumes.find(p => p.id === 'paco_fame');
+      if (fame && !addedIds.has(fame.id)) {
+        results.push(fame);
+        addedIds.add(fame.id);
+      }
+    }
+    
+    if (queryLower.includes('invictus') && !queryLower.includes('victory')) {
+      const invictus = allPerfumes.find(p => p.id === 'paco_invictus');
+      if (invictus && !addedIds.has(invictus.id)) {
+        results.push(invictus);
+        addedIds.add(invictus.id);
+      }
+    }
+    
+    if (queryLower.includes('invictus victory')) {
+      const victory = allPerfumes.find(p => p.id === 'paco_invictus_victory');
+      if (victory && !addedIds.has(victory.id)) {
+        results.push(victory);
+        addedIds.add(victory.id);
+      }
+    }
+    
+    if (queryLower.includes('phantom')) {
+      const phantom = allPerfumes.find(p => p.id === 'paco_phantom');
+      if (phantom && !addedIds.has(phantom.id)) {
+        results.push(phantom);
+        addedIds.add(phantom.id);
+      }
+    }
+    
+    if (queryLower.includes('pure xs')) {
+      const pureXs = allPerfumes.find(p => p.id === 'paco_pure_xs_for_her');
+      if (pureXs && !addedIds.has(pureXs.id)) {
+        results.push(pureXs);
+        addedIds.add(pureXs.id);
+      }
+    }
+    
+    if (queryLower.includes('olympea')) {
+      const olympea = allPerfumes.find(p => p.id === 'paco_olympea_intense');
+      if (olympea && !addedIds.has(olympea.id)) {
+        results.push(olympea);
+        addedIds.add(olympea.id);
+      }
+    }
+    
+    if (queryLower.includes('ultraviolet')) {
+      const ultra = allPerfumes.find(p => p.id === 'paco_ultraviolet');
+      if (ultra && !addedIds.has(ultra.id)) {
+        results.push(ultra);
+        addedIds.add(ultra.id);
+      }
+    }
+    
+    // YSL Products
+    if (queryLower.includes('libre')) {
+      const libre = allPerfumes.find(p => p.id === 'ysl_libre');
+      if (libre && !addedIds.has(libre.id)) {
+        results.push(libre);
+        addedIds.add(libre.id);
+      }
+    }
+    
+    if (queryLower.includes('black opium')) {
+      const blackOpium = allPerfumes.find(p => p.id === 'ysl_black_opium');
+      if (blackOpium && !addedIds.has(blackOpium.id)) {
+        results.push(blackOpium);
+        addedIds.add(blackOpium.id);
+      }
+    }
+    
+    if (queryLower.includes('opium') && !queryLower.includes('black')) {
+      const opium = allPerfumes.find(p => p.id === 'ysl_opium');
+      if (opium && !addedIds.has(opium.id)) {
+        results.push(opium);
+        addedIds.add(opium.id);
+      }
+    }
+    
+    if (queryLower.includes('y') && queryLower.length < 3) {
+      const y = allPerfumes.find(p => p.id === 'ysl_y');
+      if (y && !addedIds.has(y.id)) {
+        results.push(y);
+        addedIds.add(y.id);
+      }
+    }
+    
+    // VALENTINO
+    if (queryLower.includes('born in roma')) {
+      const born = allPerfumes.find(p => p.id === 'valentino_born_in_roma');
+      const uomo = allPerfumes.find(p => p.id === 'valentino_uomo_born_in_roma');
+      
+      if (born && !addedIds.has(born.id)) results.push(born);
+      if (uomo && !addedIds.has(uomo.id)) results.push(uomo);
+    }
+    
+    // PRADA
+    if (queryLower.includes('paradoxe')) {
+      const paradoxe = allPerfumes.find(p => p.id === 'prada_paradoxe');
+      if (paradoxe && !addedIds.has(paradoxe.id)) {
+        results.push(paradoxe);
+        addedIds.add(paradoxe.id);
+      }
+    }
+    
+    if (queryLower.includes('candy')) {
+      const candy = allPerfumes.find(p => p.id === 'prada_candy');
+      if (candy && !addedIds.has(candy.id)) {
+        results.push(candy);
+        addedIds.add(candy.id);
+      }
+    }
+    
+    // LANCOME
+    if (queryLower.includes('la vie est belle')) {
+      const lveb = allPerfumes.find(p => p.id === 'lancome_la_vie_est_belle');
+      const intensement = allPerfumes.find(p => p.id === 'lancome_la_vie_est_belle_intensement');
+      
+      if (lveb && !addedIds.has(lveb.id)) results.push(lveb);
+      if (intensement && !addedIds.has(intensement.id)) results.push(intensement);
+    }
+    
+    if (queryLower.includes('tresor')) {
+      const tresor = allPerfumes.find(p => p.id === 'lancome_tresor');
+      if (tresor && !addedIds.has(tresor.id)) {
+        results.push(tresor);
+        addedIds.add(tresor.id);
+      }
+    }
+    
+    if (queryLower.includes('idole')) {
+      const idole = allPerfumes.find(p => p.id === 'lancome_idole');
+      if (idole && !addedIds.has(idole.id)) {
+        results.push(idole);
+        addedIds.add(idole.id);
+      }
+    }
+    
+    // CAROLINA HERRERA
+    if (queryLower.includes('good girl')) {
+      const goodGirl = allPerfumes.find(p => p.id === 'carolina_good_girl');
+      const veryGoodGirl = allPerfumes.find(p => p.id === 'carolina_very_good_girl');
+      
+      if (goodGirl && !addedIds.has(goodGirl.id)) results.push(goodGirl);
+      if (veryGoodGirl && !addedIds.has(veryGoodGirl.id)) results.push(veryGoodGirl);
+    }
+    
+    // JEAN PAUL GAULTIER
+    if (queryLower.includes('scandal')) {
+      const scandal = allPerfumes.find(p => p.id === 'jpg_scandal');
+      if (scandal && !addedIds.has(scandal.id)) {
+        results.push(scandal);
+        addedIds.add(scandal.id);
+      }
+    }
+    
+    if (queryLower.includes('la belle')) {
+      const laBelle = allPerfumes.find(p => p.id === 'jpg_la_belle');
+      if (laBelle && !addedIds.has(laBelle.id)) {
+        results.push(laBelle);
+        addedIds.add(laBelle.id);
+      }
+    }
+    
+    if (queryLower.includes('ultra male')) {
+      const ultraMale = allPerfumes.find(p => p.id === 'jpg_ultra_male');
+      if (ultraMale && !addedIds.has(ultraMale.id)) {
+        results.push(ultraMale);
+        addedIds.add(ultraMale.id);
+      }
+    }
+    
+    if (queryLower.includes('classique')) {
+      const classique = allPerfumes.find(p => p.id === 'jpg_classique_essence');
+      if (classique && !addedIds.has(classique.id)) {
+        results.push(classique);
+        addedIds.add(classique.id);
+      }
+    }
+    
+    if (queryLower.includes('le male')) {
+      const leMale = allPerfumes.find(p => p.id === 'jpg_le_male');
+      if (leMale && !addedIds.has(leMale.id)) {
+        results.push(leMale);
+        addedIds.add(leMale.id);
+      }
+    }
+    
+    // MUGLER
+    if (queryLower.includes('angel') && !queryLower.includes('nova')) {
+      const angel = allPerfumes.find(p => p.id === 'mugler_angel');
+      if (angel && !addedIds.has(angel.id)) {
+        results.push(angel);
+        addedIds.add(angel.id);
+      }
+    }
+    
+    if (queryLower.includes('angel nova')) {
+      const nova = allPerfumes.find(p => p.id === 'mugler_angel_nova');
+      if (nova && !addedIds.has(nova.id)) {
+        results.push(nova);
+        addedIds.add(nova.id);
+      }
+    }
+    
+    if (queryLower.includes('a*men') || queryLower.includes('amen')) {
+      const amen = allPerfumes.find(p => p.id === 'mugler_a_men');
+      if (amen && !addedIds.has(amen.id)) {
+        results.push(amen);
+        addedIds.add(amen.id);
+      }
+    }
+    
+    // TOM FORD
+    if (queryLower.includes('vanille fatale')) {
+      const vf = allPerfumes.find(p => p.id === 'tomford_vanille_fatale');
+      if (vf && !addedIds.has(vf.id)) {
+        results.push(vf);
+        addedIds.add(vf.id);
+      }
+    }
+    
+    if (queryLower.includes('lost cherry')) {
+      const lc = allPerfumes.find(p => p.id === 'tomford_lost_cherry');
+      if (lc && !addedIds.has(lc.id)) {
+        results.push(lc);
+        addedIds.add(lc.id);
+      }
+    }
+    
+    if (queryLower.includes('fucking fabulous')) {
+      const ff = allPerfumes.find(p => p.id === 'tomford_fucking_fabulous');
+      if (ff && !addedIds.has(ff.id)) {
+        results.push(ff);
+        addedIds.add(ff.id);
+      }
+    }
+    
+    if (queryLower.includes('tobacco vanille')) {
+      const tv = allPerfumes.find(p => p.id === 'tomford_tobacco_vanille');
+      if (tv && !addedIds.has(tv.id)) {
+        results.push(tv);
+        addedIds.add(tv.id);
+      }
+    }
+    
+    if (queryLower.includes('oud wood')) {
+      const ow = allPerfumes.find(p => p.id === 'tomford_oud_wood');
+      if (ow && !addedIds.has(ow.id)) {
+        results.push(ow);
+        addedIds.add(ow.id);
+      }
+    }
+    
+    // HUGO BOSS
+    if (queryLower.includes('boss woman')) {
+      const bw = allPerfumes.find(p => p.id === 'boss_woman');
+      if (bw && !addedIds.has(bw.id)) {
+        results.push(bw);
+        addedIds.add(bw.id);
+      }
+    }
+    
+    if (queryLower.includes('boss bottled')) {
+      const bb = allPerfumes.find(p => p.id === 'boss_bottled');
+      const bbi = allPerfumes.find(p => p.id === 'boss_bottled_intense');
+      
+      if (bb && !addedIds.has(bb.id)) results.push(bb);
+      if (bbi && !addedIds.has(bbi.id)) results.push(bbi);
+    }
+    
+    if (queryLower.includes('hugo')) {
+      const hugo = allPerfumes.find(p => p.id === 'boss_hugo');
+      if (hugo && !addedIds.has(hugo.id)) {
+        results.push(hugo);
+        addedIds.add(hugo.id);
+      }
+    }
+    
+    if (queryLower.includes('boss orange')) {
+      const orange = allPerfumes.find(p => p.id === 'boss_orange');
+      if (orange && !addedIds.has(orange.id)) {
+        results.push(orange);
+        addedIds.add(orange.id);
+      }
+    }
+    
+    if (queryLower.includes('the scent')) {
+      const scent = allPerfumes.find(p => p.id === 'boss_the_scent');
+      if (scent && !addedIds.has(scent.id)) {
+        results.push(scent);
+        addedIds.add(scent.id);
+      }
+    }
+    
+    if (queryLower.includes('alive')) {
+      const alive = allPerfumes.find(p => p.id === 'boss_alive');
+      if (alive && !addedIds.has(alive.id)) {
+        results.push(alive);
+        addedIds.add(alive.id);
+      }
+    }
+    
+    if (queryLower.includes('ma vie')) {
+      const maVie = allPerfumes.find(p => p.id === 'boss_ma_vie');
+      if (maVie && !addedIds.has(maVie.id)) {
+        results.push(maVie);
+        addedIds.add(maVie.id);
+      }
+    }
+    
+    // CALVIN KLEIN
+    if (queryLower.includes('eternity')) {
+      const eternity = allPerfumes.find(p => p.id === 'ck_eternity');
+      const moment = allPerfumes.find(p => p.id === 'ck_eternity_moment');
+      
+      if (eternity && !addedIds.has(eternity.id)) results.push(eternity);
+      if (moment && !addedIds.has(moment.id)) results.push(moment);
+    }
+    
+    if (queryLower.includes('euphoria')) {
+      const euphoria = allPerfumes.find(p => p.id === 'ck_euphoria_blossom');
+      if (euphoria && !addedIds.has(euphoria.id)) {
+        results.push(euphoria);
+        addedIds.add(euphoria.id);
+      }
+    }
+    
+    if (queryLower.includes('ck one')) {
+      const ckOne = allPerfumes.find(p => p.id === 'ck_one');
+      if (ckOne && !addedIds.has(ckOne.id)) {
+        results.push(ckOne);
+        addedIds.add(ckOne.id);
+      }
+    }
+    
+    if (queryLower.includes('glow')) {
+      const glow = allPerfumes.find(p => p.id === 'ck_glow');
+      if (glow && !addedIds.has(glow.id)) {
+        results.push(glow);
+        addedIds.add(glow.id);
+      }
+    }
+    
+    // NARCISO
+    if (queryLower.includes('musc noir')) {
+      const muscNoir = allPerfumes.find(p => p.id === 'narciso_musc_noir');
+      if (muscNoir && !addedIds.has(muscNoir.id)) {
+        results.push(muscNoir);
+        addedIds.add(muscNoir.id);
+      }
+    }
+    
+    // DOLCE & GABBANA
+    if (queryLower.includes('light blue')) {
+      const lightBlue = allPerfumes.find(p => p.id === 'dolce_light_blue');
+      if (lightBlue && !addedIds.has(lightBlue.id)) {
+        results.push(lightBlue);
+        addedIds.add(lightBlue.id);
+      }
+    }
+    
+    if (queryLower.includes('the one')) {
+      const theOne = allPerfumes.find(p => p.id === 'dolce_the_one');
+      if (theOne && !addedIds.has(theOne.id)) {
+        results.push(theOne);
+        addedIds.add(theOne.id);
+      }
+    }
+    
+    if (queryLower.includes('dolci')) {
+      const dolci = allPerfumes.find(p => p.id === 'dolce_dolci');
+      if (dolci && !addedIds.has(dolci.id)) {
+        results.push(dolci);
+        addedIds.add(dolci.id);
+      }
+    }
+    
+    // KENZO
+    if (queryLower.includes('flower')) {
+      const flower = allPerfumes.find(p => p.id === 'kenzo_flower');
+      if (flower && !addedIds.has(flower.id)) {
+        results.push(flower);
+        addedIds.add(flower.id);
+      }
+    }
+    
+    // CHLOE
+    if (queryLower.includes('chloe') || queryLower.includes('äquivalent')) {
+      const chloe = allPerfumes.find(p => p.id === 'chloe_chloe');
+      if (chloe && !addedIds.has(chloe.id)) {
+        results.push(chloe);
+        addedIds.add(chloe.id);
+      }
+    }
+    
+    // HERMES
+    if (queryLower.includes('terre')) {
+      const terre = allPerfumes.find(p => p.id === 'hermes_terre');
+      if (terre && !addedIds.has(terre.id)) {
+        results.push(terre);
+        addedIds.add(terre.id);
+      }
+    }
+    
+    // GUCCI
+    if (queryLower.includes('rush')) {
+      const rush = allPerfumes.find(p => p.id === 'gucci_rush');
+      if (rush && !addedIds.has(rush.id)) {
+        results.push(rush);
+        addedIds.add(rush.id);
+      }
+    }
+    
+    if (queryLower.includes('envy me')) {
+      const envy = allPerfumes.find(p => p.id === 'gucci_envy_me');
+      if (envy && !addedIds.has(envy.id)) {
+        results.push(envy);
+        addedIds.add(envy.id);
+      }
+    }
+    
+    // FERRAGAMO
+    if (queryLower.includes('deep red')) {
+      const deepRed = allPerfumes.find(p => p.id === 'ferragamo_deep_red');
+      if (deepRed && !addedIds.has(deepRed.id)) {
+        results.push(deepRed);
+        addedIds.add(deepRed.id);
+      }
+    }
+    
+    // DAVIDOFF
+    if (queryLower.includes('cool water')) {
+      const coolWater = allPerfumes.find(p => p.id === 'davidoff_cool_water');
+      if (coolWater && !addedIds.has(coolWater.id)) {
+        results.push(coolWater);
+        addedIds.add(coolWater.id);
+      }
+    }
+    
+    // ADIDAS
+    if (queryLower.includes('adventure')) {
+      const adventure = allPerfumes.find(p => p.id === 'adidas_adventure');
+      if (adventure && !addedIds.has(adventure.id)) {
+        results.push(adventure);
+        addedIds.add(adventure.id);
+      }
+    }
+    
+    // DOLCE VITA
+    if (queryLower.includes('vita')) {
+      const vita = allPerfumes.find(p => p.id === 'dolce_vita_vita');
+      if (vita && !addedIds.has(vita.id)) {
+        results.push(vita);
+        addedIds.add(vita.id);
+      }
+    }
+    
+    // DIESEL
+    if (queryLower.includes('only the brave')) {
+      const brave = allPerfumes.find(p => p.id === 'diesel_only_the_brave');
+      if (brave && !addedIds.has(brave.id)) {
+        results.push(brave);
+        addedIds.add(brave.id);
+      }
+    }
+    
+    // CAMPBELL
+    if (queryLower.includes('campbell')) {
+      const campbell = allPerfumes.find(p => p.id === 'campbell_campbell');
+      if (campbell && !addedIds.has(campbell.id)) {
+        results.push(campbell);
+        addedIds.add(campbell.id);
+      }
+    }
+    
+    // CACHAREL
+    if (queryLower.includes('amor amor')) {
+      const amor = allPerfumes.find(p => p.id === 'cacharel_amor_amor');
+      if (amor && !addedIds.has(amor.id)) {
+        results.push(amor);
+        addedIds.add(amor.id);
+      }
+    }
+    
+    // CARTIER
+    if (queryLower.includes('la panthere')) {
+      const panthere = allPerfumes.find(p => p.id === 'cartier_la_panthere');
+      if (panthere && !addedIds.has(panthere.id)) {
+        results.push(panthere);
+        addedIds.add(panthere.id);
+      }
+    }
+    
+    // JOOP
+    if (queryLower.includes('joop')) {
+      const joop = allPerfumes.find(p => p.id === 'joop_homme');
+      if (joop && !addedIds.has(joop.id)) {
+        results.push(joop);
+        addedIds.add(joop.id);
+      }
+    }
+    
+    console.log(`📊 ${results.length} Katalog-Ergebnisse für "${query}" gefunden`);
     
     return results;
   }
@@ -1521,93 +2215,6 @@
     }
     
     return results;
-  }
-
-  // ===== ADVANCED CATALOG SEARCH WITH FUZZY MATCHING =====
-  function advancedCatalogSearch(query) {
-    if (!query || query.length < 1 || !allPerfumes || allPerfumes.length === 0) {
-      return [];
-    }
-    
-    const queryLower = query.toLowerCase().trim();
-    const results = [];
-    const addedIds = new Set();
-    
-    console.log('🔍 Erweiterte Katalogs​​suche für:', queryLower);
-    
-    // Create variations of the search query
-    const queryVariations = generateQueryVariations(queryLower);
-    console.log('Katalog-Suchvariationen:', queryVariations);
-    
-    // Check ALL perfumes with advanced fuzzy matching
-    allPerfumes.forEach(perfume => {
-      if (addedIds.has(perfume.id)) return;
-      
-      const searchableText = [
-        perfume.name || '',
-        perfume.brand || '',
-        perfume.gender || '',
-        ...(perfume.top_notes || []),
-        ...(perfume.heart_notes || []),
-        ...(perfume.base_notes || []),
-        ...(perfume.productNumbers || [])
-      ].join(' ').toLowerCase();
-      
-      let bestScore = 0;
-      let matchReasons = [];
-      
-      // Check each variation against the searchable text
-      for (const variation of queryVariations) {
-        // Direct contains match (highest score)
-        if (searchableText.includes(variation)) {
-          bestScore = Math.max(bestScore, 100);
-          matchReasons.push(`direkt:${variation}`);
-        }
-      }
-      
-      // If no direct match, try advanced similarity on name and brand
-      if (bestScore < 50) {
-        const nameScore = calculateAdvancedSimilarity(queryLower, perfume.name || '');
-        const brandScore = calculateAdvancedSimilarity(queryLower, perfume.brand || '');
-        
-        const combinedScore = Math.max(nameScore, brandScore);
-        if (combinedScore > 40) {
-          bestScore = Math.max(bestScore, combinedScore);
-          if (nameScore > brandScore) {
-            matchReasons.push(`name:${Math.round(nameScore)}%`);
-          } else {
-            matchReasons.push(`marke:${Math.round(brandScore)}%`);
-          }
-        }
-      }
-      
-      // Check product numbers
-      if (perfume.productNumbers) {
-        for (const num of perfume.productNumbers) {
-          if (queryLower.includes(num)) {
-            bestScore = Math.max(bestScore, 150);
-            matchReasons.push(`nummer:${num}`);
-          }
-        }
-      }
-      
-      if (bestScore > 30) {
-        results.push({ 
-          perfume, 
-          score: Math.round(bestScore),
-          matchReasons 
-        });
-        addedIds.add(perfume.id);
-        console.log(`✅ Katalog-Treffer: ${perfume.name} (Punktzahl: ${Math.round(bestScore)})`, matchReasons);
-      }
-    });
-    
-    // Sort by score (highest first)
-    results.sort((a, b) => b.score - a.score);
-    
-    console.log(`📊 ${results.length} Katalog-Ergebnisse für "${query}" gefunden`);
-    
-    return results.map(r => r.perfume);
   }
 
   // ===== GET POPULAR PRODUCTS FOR SUGGESTIONS =====
@@ -1778,6 +2385,16 @@
     
     // ===== HARDCODED DIRECT MAPPINGS FOR KNOWN PRODUCTS =====
     const hardcodedMappings = [
+      // DIOR
+      {
+        catalogNames: ['miss dior le parfum', 'miss dior'],
+        productNumber: '196',
+        variantId: 47306572714242, // Replace with actual variant ID
+        expectedTitle: 'Riecht wie... Miss Dior Le Parfum - No. 196',
+        imageUrl: 'https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Le_Parfum.jpg?v=1770293457',
+        url: 'https://magicperfume.co/products/magic-perfume-no-196w',
+        price: 1199
+      },
       // PACO RABANNE
       {
         catalogNames: ['one million lucky', '1 million lucky', 'million lucky', 'lucky one million'],
@@ -1785,7 +2402,7 @@
         variantId: 47306572386562,
         expectedTitle: 'Riecht wie... One Million Lucky - No. 280',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132',
-        url: 'https://magicperfume.co/products/riecht-wie-one-million-lucky-no-280',
+        url: 'https://magicperfume.co/products/magic-perfume-no-280m',
         price: 1199
       },
       {
@@ -1794,7 +2411,7 @@
         variantId: 47306572353794,
         expectedTitle: 'Riecht wie… One Million - No. 275',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million.png?v=1770217929',
-        url: 'https://magicperfume.co/products/riecht-wie-one-million-no-275',
+        url: 'https://magicperfume.co/products/magic-perfume-no-275m',
         price: 1199
       },
       {
@@ -1803,7 +2420,7 @@
         variantId: 47306572419330,
         expectedTitle: 'Riecht wie... One Million Elixir - No. 334',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million_Elixir.png?v=1770579856',
-        url: 'https://magicperfume.co/products/riecht-wie-one-million-elixir-no-334',
+        url: 'https://magicperfume.co/products/magic-perfume-no-334m',
         price: 1199
       },
       {
@@ -1812,7 +2429,7 @@
         variantId: 47306572452098,
         expectedTitle: 'Riecht wie... LADY MILION - No. 023',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Lady_Million.png?v=1770218839',
-        url: 'https://magicperfume.co/products/riecht-wie-lady-milion-no-023',
+        url: 'https://magicperfume.co/products/magic-perfume-no-023w',
         price: 1199
       },
       {
@@ -1821,7 +2438,7 @@
         variantId: 47306572484866,
         expectedTitle: 'Riecht wie... Fame - No. 498',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Fame.png?v=1770285610',
-        url: 'https://magicperfume.co/products/riecht-wie-fame-no-498',
+        url: 'https://magicperfume.co/products/magic-perfume-no-498w',
         price: 1199
       },
       {
@@ -1830,7 +2447,7 @@
         variantId: 47306572517634,
         expectedTitle: 'Riecht wie... Invictus - No. 228',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Invictus.png?v=1770286917',
-        url: 'https://magicperfume.co/products/riecht-wie-invictus-no-228',
+        url: 'https://magicperfume.co/products/magic-perfume-no-228m',
         price: 1199
       },
       {
@@ -1839,7 +2456,7 @@
         variantId: 47306572550402,
         expectedTitle: 'Riecht wie... Invictus Victory - No. 303',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Invictus_Victory.webp?v=1772136784',
-        url: 'https://magicperfume.co/products/riecht-wie-invictus-victory-no-303',
+        url: 'https://magicperfume.co/products/magic-perfume-no-303m',
         price: 1199
       },
       {
@@ -1848,7 +2465,7 @@
         variantId: 47306572583170,
         expectedTitle: 'Riecht wie... Phantom - No. 399',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078',
-        url: 'https://magicperfume.co/products/riecht-wie-phantom-no-399',
+        url: 'https://magicperfume.co/products/magic-perfume-no-399m',
         price: 1199
       },
       {
@@ -1857,7 +2474,7 @@
         variantId: 47306572615938,
         expectedTitle: 'Riecht wie... Pure XS For Her - No. 050',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_XS_For_Her.jpg?v=1772105675',
-        url: 'https://magicperfume.co/products/riecht-wie-pure-xs-for-her-no-050',
+        url: 'https://magicperfume.co/products/magic-perfume-no-050w',
         price: 1199
       },
       {
@@ -1866,7 +2483,7 @@
         variantId: 47306572648706,
         expectedTitle: 'Riecht wie... Olympea Intense - No. 095',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Olympea_INTENSE.jpg?v=1772108016',
-        url: 'https://magicperfume.co/products/riecht-wie-olympea-intense-no-095',
+        url: 'https://magicperfume.co/products/magic-perfume-no-095w',
         price: 1199
       },
       {
@@ -1875,7 +2492,7 @@
         variantId: 47306572681474,
         expectedTitle: 'Riecht wie... Ultraviolet - No. 480',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Ultraviolet.webp?v=1772141928',
-        url: 'https://magicperfume.co/products/riecht-wie-ultraviolet-no-480',
+        url: 'https://magicperfume.co/products/magic-perfume-no-480w',
         price: 1199
       },
       
@@ -1886,7 +2503,7 @@
         variantId: 47306572714242,
         expectedTitle: 'Riecht wie... Armani Code - No. 260',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Armani_Code.png?v=1770220395',
-        url: 'https://magicperfume.co/products/riecht-wie-armani-code-no-260',
+        url: 'https://magicperfume.co/products/magic-perfume-no-260m',
         price: 1199
       },
       {
@@ -1895,7 +2512,7 @@
         variantId: 47306572747010,
         expectedTitle: 'Riecht wie... Code for Woman - No. 135',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Code_for_Woman.jpg?v=1771252264',
-        url: 'https://magicperfume.co/products/riecht-wie-code-for-woman-no-135',
+        url: 'https://magicperfume.co/products/magic-perfume-no-135w',
         price: 1199
       },
       
@@ -1906,7 +2523,7 @@
         variantId: 47306571829506,
         expectedTitle: 'Riecht wie... Musc Noir For Her - No. 457',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273',
-        url: 'https://magicperfume.co/products/riecht-wie-musc-noir-for-her-no-457',
+        url: 'https://magicperfume.co/products/magic-perfume-no-457w',
         price: 1199
       },
       {
@@ -1915,7 +2532,7 @@
         variantId: 47306570944770,
         expectedTitle: 'Riecht wie... No.5 - No. 077',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018',
-        url: 'https://magicperfume.co/products/riecht-wie-no5-no-077',
+        url: 'https://magicperfume.co/products/magic-perfume-no-077w',
         price: 1199
       },
       {
@@ -1924,7 +2541,7 @@
         variantId: 47306572321026,
         expectedTitle: 'Riecht wie... Bleu - No. 252',
         imageUrl: 'https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838',
-        url: 'https://magicperfume.co/products/riecht-wie-bleu-no-252',
+        url: 'https://magicperfume.co/products/magic-perfume-no-252m',
         price: 1199
       }
     ];
@@ -2227,7 +2844,7 @@
     content.innerHTML = '<div class="fc-loading">Suche läuft...</div>';
     
     setTimeout(() => {
-      // Search in catalog with fuzzy matching
+      // Search in catalog with hardcoded matching (NO FUZZY MATCHING)
       const catalogResults = advancedCatalogSearch(query);
       
       // Search in your products with advanced fuzzy matching
@@ -2238,7 +2855,7 @@
       
       let html = '';
       
-      // Show catalog results
+      // Show catalog results (these are now hardcoded and accurate)
       if (catalogResults.length > 0) {
         html += renderCatalogPerfumes(catalogResults, query);
       }
