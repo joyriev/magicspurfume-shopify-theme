@@ -928,6 +928,78 @@
                   {% render 'reactive-atc' %}
                 {% when 'dialect_atc' %}
                   {% render 'dialect-atc' %}
+                {% when 'dialect_notes' %}
+                  <div class="mt-12 space-y-6">
+                    <div class="flex gap-3 flex-wrap">
+                      <div class="flex gap-2 items-center">
+                        <img
+                          src="{{ 'top-notes.png' | asset_url }}"
+                          alt="Top Notes"
+                          width="24"
+                          height="24">
+                        <h3 class="font-semibold tracking-widest">TOP</h3>
+                      </div>
+                      <div class="flex flex-wrap items-center gap-2">
+                        {% for note in product.metafields.custom.top_notes.value %}
+                          <div class="bg-gray-100 rounded-full flex items-center gap-3 px-3 py-1">
+                            <img
+                              src="{{ note.image | image_url: width: 64, height: 64 }}"
+                              alt="{{ note.name }}"
+                              width="30"
+                              height="30"
+                              loading="lazy">
+                            <p>{{ note.name }}</p>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                    <div class="flex gap-3 flex-wrap">
+                      <div class="flex gap-2 items-center">
+                        <img
+                          src="{{ 'middle-notes.png' | asset_url }}"
+                          alt="Middle Notes"
+                          width="24"
+                          height="24">
+                        <h3 class="font-semibold tracking-widest">MIDDLE</h3>
+                      </div>
+                      <div class="flex flex-wrap items-center gap-2">
+                        {% for note in product.metafields.custom.middle_notes.value %}
+                          <div class="bg-gray-100 rounded-full flex items-center gap-3 px-3 py-1">
+                            <img
+                              src="{{ note.image | image_url: width: 64, height: 64 }}"
+                              alt="{{ note.name }}"
+                              width="30"
+                              height="30"
+                              loading="lazy">
+                            <p>{{ note.name }}</p>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                    <div class="flex gap-3 flex-wrap">
+                      <div class="flex gap-2 items-center">
+                        <img
+                          src="{{ 'base-notes.png' | asset_url }}"
+                          alt="Base Notes"
+                          width="24"
+                          height="24">
+                        <h3 class="font-semibold tracking-widest">BASE</h3>
+                      </div>
+                      <div class="flex flex-wrap items-center gap-2">
+                        {% for note in product.metafields.custom.base_notes.value %}
+                          <div class="bg-gray-100 rounded-full flex items-center gap-3 px-3 py-1">
+                            <img
+                              src="{{ note.image | image_url: width: 64, height: 64 }}"
+                              alt="{{ note.name }}"
+                              width="30"
+                              height="30"
+                              loading="lazy">
+                            <p>{{ note.name }}</p>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -1014,6 +1086,10 @@
     {
       "type": "dialect_atc",
       "name": "Dialect ATC"
+    },
+    {
+      "type": "dialect_notes",
+      "name": "Dialect Notes"
     },
     {
       "type": "text",
