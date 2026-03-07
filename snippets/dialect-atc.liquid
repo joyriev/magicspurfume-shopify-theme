@@ -3,31 +3,24 @@
   assign selected_variant = product.selected_or_first_available_variant
 %}
 
-<div>
-  {% if product.metafields.custom.original_retail_price != blank %}
-    <div>(UVP: {{ product.metafields.custom.original_retail_price.value | money }})</div>
+<p class="text-base">
+  Eine leuchtende Mischung aus Rosa und Orange. Romantisch und verführerisch.
+</p>
+
+
+<div
+  class="inline-block text-3xl px-3 rounded"
+  id="product-price"
+  role="status"
+  {{ block.shopify_attributes }}>
+  {% if selected_variant.compare_at_price > selected_variant.price %}
+    <span class="compare-price line-through text-base">{{ selected_variant.compare_at_price | money }}</span>
   {% endif %}
-  {% if product.metafields.custom.scent_intensity != blank %}
-    <div class="flex items-center gap-[5px]">
-      Duftintensität:
-      <span class="text-highlight leading-4">Statement</span>
-      {% assign intensity = product.metafields.custom.scent_intensity.value | times: 1 %}
-      <div class="flex gap-[5px] items-center justify-center ml-1">
-        {% for i in (1..3) %}
-          <div class="w-[8px] h-[8px] rounded-full {% if i <= intensity %}bg-black{% else %}bg-gray-300{% endif %} !inline-block"></div>
-        {% endfor %}
-      </div>
-    </div>
-  {% endif %}
+  <span class="current-price text-black">{{ selected_variant.price | money }}</span>
 </div>
 
 {% if product.variants.size > 1 %}
   {% comment %} Variant Selector {% endcomment %}
-  <div class="flex justify-between items-center mb-3 !mt-6">
-    <h2 class="m-0 text-base font-semibold">Größe auswählen:</h2>
-    <div class="text-sm italic text-gray-500">80 % unserer Kunden kaufen 50 ml oder mehr</div>
-  </div>
-
   <div class="flex gap-3" id="variant-selector">
     {% for variant in product.variants %}
       {% assign size = variant.title | remove: 'ml' %}
@@ -86,18 +79,6 @@
       disabled="disabled"
       {% endif %}>
       <span>In den Warenkorb</span>
-      <div class="ml-2 pl-2 border-0 border-l flex items-center border-solid border-gray-200/20">
-        <div
-          class="inline-block text-lg bg-gray-800 px-3 rounded"
-          id="product-price"
-          role="status"
-          {{ block.shopify_attributes }}>
-          {% if selected_variant.compare_at_price > selected_variant.price %}
-            <span class="compare-price line-through text-white/50 text-base">{{ selected_variant.compare_at_price | money }}</span>
-          {% endif %}
-          <span class="current-price">{{ selected_variant.price | money }}</span>
-        </div>
-      </div>
       {%- render 'loading-spinner' -%}
     </button>
   {%- endform -%}
@@ -174,18 +155,3 @@
     });
   })();
 </script>
-
-<div class="my-6">
-  <div class="flex items-center gap-3 text-base">
-    <img
-      src="https://cdn.shopify.com/s/files/1/0623/0691/0402/files/thimbs_up.png?v=1751372431"
-      alt="Thumbs up badge"
-      class="w-10 h-10 flex-shrink-0"
-      width="40"
-      height="40" />
-    <div class="text-slate-900">
-      <strong class="font-semibold">Teste es 60 Tage lang – völlig risikofrei.</strong>
-      <div class="[display:none] md:block">Sollten Sie nicht absolut begeistert sein, erstatten wir Ihnen den vollen Betrag zurück!</div>
-    </div>
-  </div>
-</div>
