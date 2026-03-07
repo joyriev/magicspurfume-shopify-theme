@@ -416,6 +416,11 @@
     height: 28px !important
 }
 
+.size-32 {
+    width: 128px;
+    height: 128px
+}
+
 .\!h-8 {
     height: 32px !important
 }
