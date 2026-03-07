@@ -44,7 +44,7 @@
                   <div class="text-lg my-2">
                     {{ similar_scent.price.value | money }}
                   </div>
-                  <div class="inline-block text-xs leading-tight bg-white py-1 px-3 rounded-full mb-2 {% if similar_scent.similarity == 'Perfekte Übereinstimmung' %}text-green-600{% else %} text-yellow-600 {% endif %}">
+                  <div class="inline-block text-xs leading-tight bg-white py-1 px-3 rounded-full mb-2 {% if similar_scent.similarity == 'Ähnliche Notizen' %}text-green-600{% else %} text-yellow-600 {% endif %}">
                     {{ similar_scent.similarity }}
                   </div>
                   <p class="my-0 text-sm underline cursor-pointer" data-tippy-content="{{ similar_scent.common_notes }}">Gemeinsame Noten ansehen</p>
