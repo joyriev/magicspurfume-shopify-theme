@@ -926,6 +926,8 @@
                 </div>
                 {% when 'reactive_atc' %}
                   {% render 'reactive-atc' %}
+                {% when 'dialect_atc' %}
+                  {% render 'dialect-atc' %}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -1008,6 +1010,10 @@
     {
       "type": "reactive_atc",
       "name": "Reactive ATC"
+    },
+    {
+      "type": "dialect_atc",
+      "name": "Dialect ATC"
     },
     {
       "type": "text",
