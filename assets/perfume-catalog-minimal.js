@@ -437,7 +437,7 @@ window.PerfumeCatalog = {
       productNumbers: ["280"],
       shopifyProduct: {
         title: "Riecht wie... One Million Lucky - No. 280",
-        url: "https://magicperfume.co/products/riecht-wie-one-million-lucky-no-280",
+        url: "https://magicperfume.co/products/magic-perfume-no-280m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132"
       }
@@ -457,7 +457,7 @@ window.PerfumeCatalog = {
   productNumbers: ["280"],
   shopifyProduct: {
     title: "Riecht wie... One Million Lucky - No. 280",
-    url: "https://magicperfume.co/products/riecht-wie-one-million-lucky-no-280",
+    url: "https://magicperfume.co/products/magic-perfume-no-280m",
     price: "€11.99",
     image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132"
   }
