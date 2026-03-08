@@ -3,6 +3,55 @@
   assign selected_variant = product.selected_or_first_available_variant
 %}
 
+{% comment %} {% if product.metafields.custom.similar_scents != blank %}
+    <div class="mt-4 pt-4 border-0 border-t border-solid border-gray-200">
+      <p class="mt-0 text-[10px] font-serif text-center leading-tight">Parfums mit ähnlichen Duftnoten</p>
+      {% assign similar_scents = product.metafields.custom.similar_scents.value %}
+      <div class="swiper slider-{{ section.id }}-{{ forloop.index }}">
+        <div class="swiper-wrapper">
+          {% for similar_scent in similar_scents %}
+            <div class="swiper-slide">
+              <div class="flex flex-col md:flex-row gap-2 items-center">
+                <img
+                  class="object-cover border border-solid border-gray-200"
+                  height="60"
+                  width="60"
+                  src="{{ similar_scent.image | image_url: width: 100 }}"
+                  alt="{{ similar_scent.title }}">
+                <div class="text-center md:text-left">
+                  <div class="text-sm font-semibold text-black line-clamp-1">
+                    {{ similar_scent.title }}
+                  </div>
+                  <div class="text-sm font-bold text-gray-600 my-1">
+                    {{ similar_scent.price.value | money }}
+                  </div>
+                  <div class="text-[10px] leading-none {% if similar_scent.similarity == 'Perfekte Übereinstimmung' %}text-green-600{% else %} text-yellow-600 {% endif %}">
+                    {{ similar_scent.similarity }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <button class="swiper-button-next p-0 !size-7 !right-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
+        <button class="swiper-button-prev p-0 !size-7 !left-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
+      </div>
+    </div>
+    <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                  new Swiper('.slider-{{ section.id }}-{{ forloop.index }}', {
+                      slidesPerView: 1,
+                      spaceBetween: 10,
+                      loop: true,
+                      navigation: {
+                          nextEl: '.swiper-button-next',
+                          prevEl: '.swiper-button-prev',
+                      },
+                  });
+              });
+    </script>
+{% endif %} {% endcomment %}
+
 <p class="text-base">
   Eine leuchtende Mischung aus Rosa und Orange. Romantisch und verführerisch.
 </p>
@@ -56,11 +105,6 @@
     {% endfor %}
   </div>
 {% endif %}
-
-<div class="text-[0.9em] text-[#262626] text-center bg-white p-4 rounded-[10px] mt-8 border-2 border-solid border-[#e5e5e5]">
-  <strong>Heute zwei kaufen, eins gratis!</strong>
-  <p class="mb-0 mt-1">Legen Sie einfach 3, 6 oder 9+ Flaschen (50 ml oder 100 ml) in Ihren Warenkorb.</p>
-</div>
 
 {% comment %} Add to cart form {% endcomment %}
 <product-form
