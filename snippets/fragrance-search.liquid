@@ -1772,9 +1772,55 @@
 
   // ===== FIND SHOPIFY PRODUCT BY CATALOG PERFUME - WITH HARDCODED MAPPINGS =====
   function findShopifyProductByCatalogPerfume(perfume) {
-    if (!perfume || !fcProducts.length) return null;
-    
-    console.log('🔍 Finde Shopify-Produkt für Katalog-Parfum:', perfume.name);
+  if (!perfume || !fcProducts.length) return null;
+  
+  console.log('🔍 Finde Shopify-Produkt für Katalog-Parfum:', perfume.name);
+  
+  // ===== STEP 1: Try to find by product number first (most reliable) =====
+  if (perfume.productNumbers && perfume.productNumbers.length > 0) {
+    for (const num of perfume.productNumbers) {
+      // Try exact match in fcProducts
+      const match = fcProducts.find(p => {
+        const pNumber = extractProductNumber(p.title);
+        return pNumber === num || pNumber === num.padStart(3, '0');
+      });
+      
+      if (match) {
+        console.log(`✅ Gefunden über Produktnummer ${num}:`, match.title);
+        return match;
+      }
+    }
+  }
+  
+  // ===== STEP 2: Try to find in hardcodedProducts array (the big list) =====
+  const perfumeLower = perfume.name.toLowerCase();
+  
+  // Search in hardcodedProducts by searchTerms
+  const hardcodedMatch = hardcodedProducts.find(p => {
+    // Check if any search term matches
+    if (p.searchTerms) {
+      return p.searchTerms.some(term => 
+        perfumeLower.includes(term.toLowerCase()) || 
+        perfume.brand.toLowerCase().includes(term.toLowerCase())
+      );
+    }
+    // Check by brand and number
+    return (p.brand && perfume.brand.toLowerCase().includes(p.brand.toLowerCase())) ||
+           (p.number && perfumeLower.includes(p.number));
+  });
+  
+  if (hardcodedMatch) {
+    console.log(`✅ Hardcoded Match gefunden:`, hardcodedMatch.title);
+    return {
+      id: hardcodedMatch.id,
+      title: hardcodedMatch.title,
+      image: hardcodedMatch.image,
+      url: hardcodedMatch.url,
+      variant: hardcodedMatch.variant,
+      price: hardcodedMatch.price,
+      description: hardcodedMatch.title
+    };
+  }
     
     // ===== HARDCODED DIRECT MAPPINGS FOR KNOWN PRODUCTS =====
     const hardcodedMappings = [
