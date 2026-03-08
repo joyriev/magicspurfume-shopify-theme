@@ -96,6 +96,7 @@
         },
         "product_reviews_W3CkbE": {
           "type": "product_reviews",
+          "disabled": true,
           "settings": {
             "show_placeholder_image": false,
             "reviewer_1": "<strong>Killian P.</strong>",
