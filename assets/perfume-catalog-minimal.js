@@ -2036,7 +2036,419 @@ window.PerfumeCatalog = {
         image: ""
       }
     }
-  ]
+  ]{
+  id: "dior_fahrenheit_32",
+  name: "Fahrenheit 32 Dior",
+  brand: "Dior",
+  image: "https://magicperfume.co/cdn/shop/files/Fahrenheit_32.webp?v=1772136282",
+  top_notes: ["Mandarine", "Bergamotte", "Muskatnuss"],
+  heart_notes: ["Veilchen", "Jasmin", "Orangenblüte"],
+  base_notes: ["Vanille", "Sandelholz", "Tonkabohne"],
+  description: "Eine frische und moderne Interpretation des ikonischen Fahrenheit.",
+  year: "2007",
+  gender: "Male",
+  productNumbers: ["327"],
+  shopifyProduct: {
+    title: "Riecht wie... Fahrenheit 32 - No. 327",
+    url: "https://magicperfume.co/products/magic-perfume-no-327m",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Fahrenheit_32.webp?v=1772136282"
+  }
+},
+
+// ===== CALVIN KLEIN =====
+// Add to calvinKlein array:
+{
+  id: "ck_glow",
+  name: "Glow Calvin Klein",
+  brand: "Calvin Klein",
+  image: "https://magicperfume.co/cdn/shop/files/Glow.webp?v=1772137808",
+  top_notes: ["Grüne Noten", "Zitrone", "Bergamotte"],
+  heart_notes: ["Jasmin", "Maiglöckchen", "Rose"],
+  base_notes: ["Moschus", "Amber", "Sandelholz"],
+  description: "Ein leichter und strahlender Duft, der die innere Schönheit betont.",
+  year: "2002",
+  gender: "Female",
+  productNumbers: ["007"],
+  shopifyProduct: {
+    title: "Riecht wie... Glow - No. 007",
+    url: "https://magicperfume.co/products/magic-perfume-no-007w",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Glow.webp?v=1772137808"
+  }
+},
+{
+  id: "ck_women",
+  name: "CK Women Calvin Klein",
+  brand: "Calvin Klein",
+  image: "https://magicperfume.co/cdn/shop/files/ck_women.webp?v=1772137384",
+  top_notes: ["Bergamotte", "Mandarine", "Grüne Noten"],
+  heart_notes: ["Jasmin", "Rose", "Maiglöckchen"],
+  base_notes: ["Moschus", "Amber", "Sandelholz"],
+  description: "Ein frischer und femininer Duft für die moderne Frau.",
+  year: "2002",
+  gender: "Female",
+  productNumbers: ["031"],
+  shopifyProduct: {
+    title: "Riecht wie... CK Women - No. 031",
+    url: "https://magicperfume.co/products/magic-perfume-no-031w",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/ck_women.webp?v=1772137384"
+  }
+},
+{
+  id: "ck_be",
+  name: "CK Be Calvin Klein",
+  brand: "Calvin Klein",
+  image: "https://magicperfume.co/cdn/shop/files/CK_be.webp?v=1772142766",
+  top_notes: ["Bergamotte", "Lavendel", "Wacholder"],
+  heart_notes: ["Jasmin", "Grüne Noten", "Pfirsich"],
+  base_notes: ["Moschus", "Sandelholz", "Zeder"],
+  description: "Ein frischer und maskuliner Duft für den modernen Mann.",
+  year: "1996",
+  gender: "Male",
+  productNumbers: ["477"],
+  shopifyProduct: {
+    title: "Riecht wie... CK Be - No. 477",
+    url: "https://magicperfume.co/products/magic-perfume-no-477m",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/CK_be.webp?v=1772142766"
+  }
+},
+
+// ===== HUGO BOSS =====
+// Add to hugoBoss array:
+{
+  id: "boss_bottled_intense",
+  name: "Boss Bottled Intense Hugo Boss",
+  brand: "Hugo Boss",
+  image: "https://magicperfume.co/cdn/shop/files/Boss_Bottled_Intense.webp?v=1772139127",
+  top_notes: ["Apfel", "Zitrone", "Bergamotte"],
+  heart_notes: ["Zimt", "Nelke", "Sandelholz"],
+  base_notes: ["Vanille", "Amber", "Moschus"],
+  description: "Eine intensivere und wärmere Version des ikonischen Boss Bottled.",
+  year: "2018",
+  gender: "Male",
+  productNumbers: ["346"],
+  shopifyProduct: {
+    title: "Riecht wie... Bottled Intense - No. 346",
+    url: "https://magicperfume.co/products/magic-perfume-no-346m",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Boss_Bottled_Intense.webp?v=1772139127"
+  }
+},
+{
+  id: "boss_energise",
+  name: "Energise Hugo Boss",
+  brand: "Hugo Boss",
+  image: "https://magicperfume.co/cdn/shop/files/Hugo_Energise.webp?v=1772142991",
+  top_notes: ["Grapefruit", "Apfel", "Minze"],
+  heart_notes: ["Salbei", "Lavendel", "Geranie"],
+  base_notes: ["Zeder", "Moschus", "Amber"],
+  description: "Ein energetischer und belebender Duft für den aktiven Mann.",
+  year: "2006",
+  gender: "Male",
+  productNumbers: ["254"],
+  shopifyProduct: {
+    title: "Riecht wie... Energise - No. 254",
+    url: "https://magicperfume.co/products/magic-perfume-no-254m",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Hugo_Energise.webp?v=1772142991"
+  }
+},
+
+// ===== DOLCE & GABBANA =====
+// Add to dolce array:
+{
+  id: "dolce_dolci",
+  name: "Dolci Dolce & Gabbana",
+  brand: "Dolce & Gabbana",
+  image: "https://magicperfume.co/cdn/shop/files/Dolce.webp?v=1772139227",
+  top_notes: ["Neroli", "Bergamotte", "Mandarine"],
+  heart_notes: ["Jasmin", "Rose", "Orangenblüte"],
+  base_notes: ["Vanille", "Moschus", "Zeder"],
+  description: "Ein süßer und blumiger Duft für die romantische Frau.",
+  year: "2015",
+  gender: "Female",
+  productNumbers: ["435"],
+  shopifyProduct: {
+    title: "Riecht wie... Dolci - No. 435",
+    url: "https://magicperfume.co/products/magic-perfume-no-435w",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Dolce.webp?v=1772139227"
+  }
+},
+
+// ===== ARMANI =====
+// Add to armani array:
+{
+  id: "armani_terra_di_gioia",
+  name: "Terra Di Gioia Giorgio Armani",
+  brand: "Giorgio Armani",
+  image: "https://magicperfume.co/cdn/shop/files/Terra_di_Gioia.webp?v=1772139466",
+  top_notes: ["Bergamotte", "Orange", "Mandarine"],
+  heart_notes: ["Jasmin", "Rose", "Ylang-Ylang"],
+  base_notes: ["Vanille", "Sandelholz", "Moschus"],
+  description: "Ein warmer und sinnlicher Duft, der die Essenz der Erde einfängt.",
+  year: "2015",
+  gender: "Female",
+  productNumbers: ["436"],
+  shopifyProduct: {
+    title: "Riecht wie... Terra Di Gioia - No. 436",
+    url: "https://magicperfume.co/products/magic-perfume-no-436w",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Terra_di_Gioia.webp?v=1772139466"
+  }
+},
+{
+  id: "armani_profumo",
+  name: "Acqua Di Gio Profumo Giorgio Armani",
+  brand: "Giorgio Armani",
+  image: "https://magicperfume.co/cdn/shop/files/Acqua_Di_Gio_Profumo.webp?v=1772140413",
+  top_notes: ["Bergamotte", "Mandarine", "Meeresnoten"],
+  heart_notes: ["Rosmarin", "Salbei", "Geranie"],
+  base_notes: ["Weihrauch", "Patschuli", "Zeder"],
+  description: "Eine intensivere und tiefere Interpretation des ikonischen Acqua Di Gio.",
+  year: "2015",
+  gender: "Male",
+  productNumbers: ["296"],
+  shopifyProduct: {
+    title: "Riecht wie... Profumo - No. 296",
+    url: "https://magicperfume.co/products/magic-perfume-no-296m",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Acqua_Di_Gio_Profumo.webp?v=1772140413"
+  }
+},
+
+// ===== CHANEL =====
+// Add to chanel array:
+{
+  id: "chanel_bois_des_iles",
+  name: "Bois des Iles Chanel",
+  brand: "Chanel",
+  image: "https://magicperfume.co/cdn/shop/files/Bois_des_Iles.webp?v=1772140695",
+  top_notes: ["Bergamotte", "Mandarine", "Neroli"],
+  heart_notes: ["Jasmin", "Rose", "Ylang-Ylang"],
+  base_notes: ["Sandelholz", "Vanille", "Amber"],
+  description: "Ein holziger und sinnlicher Duft, der die Essenz exotischer Inseln einfängt.",
+  year: "1926",
+  gender: "Unisex",
+  productNumbers: ["459"],
+  shopifyProduct: {
+    title: "Riecht wie... Bois des Iles - No. 459",
+    url: "https://magicperfume.co/products/magic-perfume-no-459m",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Bois_des_Iles.webp?v=1772140695"
+  }
+},
+
+// ===== NEW BRAND: DIOR POISON COLLECTION =====
+// Add to dior array:
+{
+  id: "dior_midnight_poison",
+  name: "Midnight Poison Dior",
+  brand: "Dior",
+  image: "https://magicperfume.co/cdn/shop/files/Midnight_Poison.jpg?v=1772105149",
+  top_notes: ["Bergamotte", "Mandarine", "Rose"],
+  heart_notes: ["Jasmin", "Patschuli", "Amber"],
+  base_notes: ["Vanille", "Moschus", "Zeder"],
+  description: "Ein geheimnisvoller und verführerischer Duft aus der Poison Kollektion.",
+  year: "2007",
+  gender: "Female",
+  productNumbers: ["044"],
+  shopifyProduct: {
+    title: "Riecht wie... Midnight Poison - No. 044",
+    url: "https://magicperfume.co/products/magic-perfume-no-044w",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Midnight_Poison.jpg?v=1772105149"
+  }
+},
+
+// ===== CALVIN KLEIN EUPHORIA =====
+// Add to calvinKlein array:
+{
+  id: "ck_euphoria_men",
+  name: "Euphoria Men Calvin Klein",
+  brand: "Calvin Klein",
+  image: "https://magicperfume.co/cdn/shop/files/Euphoria_Men.webp?v=1772140949",
+  top_notes: ["Gurke", "Melone", "Basilikum"],
+  heart_notes: ["Salbei", "Zeder", "Moschus"],
+  base_notes: ["Amber", "Sandelholz", "Patschuli"],
+  description: "Ein frischer und maskuliner Duft für den selbstbewussten Mann.",
+  year: "2006",
+  gender: "Male",
+  productNumbers: ["204"],
+  shopifyProduct: {
+    title: "Riecht wie... Euphoria Men - No. 204",
+    url: "https://magicperfume.co/products/magic-perfume-no-204m",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Euphoria_Men.webp?v=1772140949"
+  }
+},
+
+// ===== NEW BRAND: DIOR MISS DIOR =====
+// Add to dior array:
+{
+  id: "dior_rose_n_roses",
+  name: "Rose N'Roses Dior",
+  brand: "Dior",
+  image: "https://magicperfume.co/cdn/shop/files/Miss_Dior_Rose_N_Roses.jpg?v=1772106609",
+  top_notes: ["Bergamotte", "Zitrone", "Orange"],
+  heart_notes: ["Rose", "Jasmin", "Maiglöckchen"],
+  base_notes: ["Moschus", "Amber", "Zeder"],
+  description: "Ein frischer und romantischer Rosenduft aus der Miss Dior Kollektion.",
+  year: "2020",
+  gender: "Female",
+  productNumbers: ["084"],
+  shopifyProduct: {
+    title: "Riecht wie... Rose N'Roses - No. 084",
+    url: "https://magicperfume.co/products/magic-perfume-no-084w",
+    price: "€11.99",
+    image: "https://magicperfume.co/cdn/shop/files/Miss_Dior_Rose_N_Roses.jpg?v=1772106609"
+  }
+},
+
+// ===== DOLCE & GABBANA - L'IMPERATRICE =====
+// Add to dolce array:
+{
+  id: "dolce_limperatrice_3",
+  name: "L'Imperatrice 3 Dolce & Gabbana",
+  brand: "Dolce & Gabbana",
+  image: "https://magicperfume.co/cdn/shop/files/Dolce_7_Gabana.jpg?v=1772095859",
+  top_notes: ["Wassermelone", "Kiwi", "Rhabarber"],
+  heart_notes: ["Zyklamen", "Jasmin", "Moschus"],
+  base_notes: ["Rosa Pfeffer", "Sandelholz", "Zeder"],
+  description: "Ein frischer und fruchtiger Duft für die junge, lebendige Frau.",
+  year: "2009",
+  gender: "Female",
+  productNumbers: ["018"],
+  shopifyProduct: {
+    title: "Riecht wie... L'Imperatrice 3 - No. 018",
+    url: "https://magicperfume.co/products/magic-perfume-no-018w",
+    price: "€15.99",
+    image: "https://magicperfume.co/cdn/shop/files/Dolce_7_Gabana.jpg?v=1772095859"
+  }
+},
+
+// ===== OTHERS SECTION (for miscellaneous perfumes) =====
+// Create this section at the end of your catalog, before the helper functions:
+
+others: [
+  {
+    id: "the_only_one_032",
+    name: "The Only One",
+    brand: "The Only One",
+    image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987",
+    top_notes: ["Karamell", "Vanille", "Kaffee"],
+    heart_notes: ["Iris", "Frucht", "Patschuli"],
+    base_notes: ["Bergamotte", "Orange", "Orangenblüte", "Rose"],
+    description: "Ein eleganter und verführerischer Duft.",
+    year: "",
+    gender: "Female",
+    productNumbers: ["032"],
+    shopifyProduct: {
+      title: "Riecht wie... The Only One - No. 032",
+      url: "https://magicperfume.co/products/magic-perfume-no-032w",
+      price: "€11.99",
+      image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987"
+    }
+  },
+  {
+    id: "obsession_night_woman_028",
+    name: "Obsession Night Woman",
+    brand: "Obsession",
+    image: "https://magicperfume.co/cdn/shop/files/Obsession_Night_Woman.webp?v=1772136464",
+    top_notes: ["Mandarine", "Bergamotte", "Rote Früchte"],
+    heart_notes: ["Jasmin", "Rose", "Orangenblüte"],
+    base_notes: ["Vanille", "Moschus", "Amber"],
+    description: "Ein geheimnisvoller und sinnlicher Duft für die Nacht.",
+    year: "",
+    gender: "Female",
+    productNumbers: ["028"],
+    shopifyProduct: {
+      title: "Riecht wie... Obsession Night WOMAN - No. 028",
+      url: "https://magicperfume.co/products/magic-perfume-no-028w",
+      price: "€11.99",
+      image: "https://magicperfume.co/cdn/shop/files/Obsession_Night_Woman.webp?v=1772136464"
+    }
+  },
+  {
+    id: "fruity_floral_488",
+    name: "Fruity Floral",
+    brand: "Fruity Floral",
+    image: "https://magicperfume.co/cdn/shop/files/aventus.webp?v=1772533006",
+    top_notes: ["Fruchtnoten", "Zitrusfrüchte", "Bergamotte"],
+    heart_notes: ["Blumige Noten", "Jasmin", "Rose"],
+    base_notes: ["Moschus", "Amber", "Sandelholz"],
+    description: "Ein fruchtig-blumiger Duft für die moderne Frau.",
+    year: "",
+    gender: "Female",
+    productNumbers: ["488"],
+    shopifyProduct: {
+      title: "No. 488 – Fruity Floral",
+      url: "https://magicperfume.co/products/magic-perfume-no-488w",
+      price: "€11.99",
+      image: "https://magicperfume.co/cdn/shop/files/aventus.webp?v=1772533006"
+    }
+  },
+  {
+    id: "dione_008",
+    name: "Dione",
+    brand: "Dione",
+    image: "https://magicperfume.co/cdn/shop/files/MagicPerfume-79-300x300.png?v=1769157021",
+    top_notes: ["Bergamotte", "Zitrone", "Mandarine"],
+    heart_notes: ["Jasmin", "Rose", "Maiglöckchen"],
+    base_notes: ["Moschus", "Amber", "Zeder"],
+    description: "Ein eleganter und zeitloser Duft.",
+    year: "",
+    gender: "Female",
+    productNumbers: ["008"],
+    shopifyProduct: {
+      title: "Riecht wie... Dione - No. 008",
+      url: "https://magicperfume.co/products/magic-perfume-no-008w",
+      price: "€11.99",
+      image: "https://magicperfume.co/cdn/shop/files/MagicPerfume-79-300x300.png?v=1769157021"
+    }
+  },
+  {
+    id: "q_340",
+    name: "Q",
+    brand: "Q",
+    image: "https://magicperfume.co/cdn/shop/files/Q_EDP.webp?v=1772143999",
+    top_notes: ["Bergamotte", "Zitrone", "Grapefruit"],
+    heart_notes: ["Jasmin", "Rose", "Veilchen"],
+    base_notes: ["Moschus", "Amber", "Zeder"],
+    description: "Ein moderner und frischer Duft.",
+    year: "",
+    gender: "Unisex",
+    productNumbers: ["340"],
+    shopifyProduct: {
+      title: "Riecht wie... Q - No. 340",
+      url: "https://magicperfume.co/products/magic-perfume-no-340m",
+      price: "€11.99",
+      image: "https://magicperfume.co/cdn/shop/files/Q_EDP.webp?v=1772143999"
+    }
+  },
+  {
+    id: "rose_tangerine_097",
+    name: "Rose Tangerine",
+    brand: "Rose Tangerine",
+    image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143",
+    top_notes: ["Mandarine", "Orange", "Grapefruit"],
+    heart_notes: ["Rose", "Jasmin", "Pfingstrose"],
+    base_notes: ["Moschus", "Amber", "Zeder"],
+    description: "Ein frischer und fruchtiger Rosenduft.",
+    year: "",
+    gender: "Female",
+    productNumbers: ["097"],
+    shopifyProduct: {
+      title: "Riecht wie... Rose Tangerine - No. 097",
+      url: "https://magicperfume.co/products/magic-perfume-no-097w",
+      price: "€11.99",
+      image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143"
+    }
+  }
+]
 }; 
 
 // ===== HELPER FUNCTIONS =====
