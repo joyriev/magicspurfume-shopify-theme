@@ -7,6 +7,15 @@
   Eine leuchtende Mischung aus Rosa und Orange. Romantisch und verführerisch.
 </p>
 
+{% assign selling_points = product.metafields.custom.bullets.value %}
+{% if selling_points %}
+  <ul id="atc_scroll_target" class="list-none pl-0">
+    {% for point in selling_points %}
+      <li>✅ {{ point }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
 
 <div
   class="text-3xl px-3 rounded"
@@ -171,7 +180,7 @@
       height="32"
       sizes="32px">
     <p class="m-0 text-xs leading-4">
-      Kostenlose 30-tägige Rückgaben
+      Kostenlose 60-tägige Rückgaben
     </p>
   </div>
 
@@ -195,21 +204,6 @@
       class="w-8 h-8 blur-up image-alt lazyautosizes ls-is-cached lazyloaded"
       loading="lazy"
       data-sizes="auto"
-      src="{{ 'icons8-percentage_64x.svg' | asset_url }}"
-      alt="Image to render"
-      width="32"
-      height="32"
-      sizes="32px">
-    <p class="m-0 text-xs leading-4">
-      60% bis 85% günstiger
-    </p>
-  </div>
-
-  <div class="flex gap-2 items-center">
-    <img
-      class="w-8 h-8 blur-up image-alt lazyautosizes ls-is-cached lazyloaded"
-      loading="lazy"
-      data-sizes="auto"
       src="{{ 'icons8-diamond-100_64x.svg' | asset_url }}"
       alt="Image to render"
       width="32"
@@ -220,34 +214,112 @@
     </p>
   </div>
 
-  <div class="flex gap-2 items-center">
-    <img
-      class="w-8 h-8 blur-up image-alt lazyautosizes ls-is-cached lazyloaded"
-      loading="lazy"
-      data-sizes="auto"
-      src="{{ 'icons8-time_2_64x.svg' | asset_url }}"
-      alt="Image to render"
-      width="32"
-      height="32"
-      sizes="32px">
-    <p class="m-0 text-xs leading-4">
-      Langanhaltend
-    </p>
-  </div>
-
-  <div class="flex gap-2 items-center">
-    <img
-      class="w-8 h-8 blur-up image-alt lazyautosizes ls-is-cached lazyloaded"
-      loading="lazy"
-      data-sizes="auto"
-      src="{{ 'icons8-leaf-100_64x.svg' | asset_url }}"
-      alt="Image to render"
-      width="32"
-      height="32"
-      sizes="32px">
-    <p class="m-0 text-xs leading-4">
-      Vegan, Tierversuchsfrei & Klimaneutral
-    </p>
-  </div>
-
 </div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<div class="swiper atc-review-slider">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <div class="review-item rounded-lg bg-white border border-solid border-gray-100 overflow-hidden py-4 px-8">
+        <div class="flex justify-center gap-1">
+          <div class="flex leading-none">
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+          </div>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed text-center">
+          "Dies ist mein erster Einkauf und ich bin begeistert. Ich werde nie wieder woanders Parfüm kaufen. Ich konnte nie einen Duft-Dupe finden, der wirklich authentisch und konsistent roch."
+        </p>
+        <div class="flex gap-1 justify-center">
+          <p class="text-base font-bold text-slate-900 my-0">Killian P.</p>
+          <div class="flex items-center gap-1 text-xs text-[#297af4] font-medium">
+            <img
+              src="/cdn/shop/t/56/assets/verified-badge.svg?v=137009485922029072291771759932"
+              alt="Verifierad köpare"
+              width="16"
+              height="16"
+              loading="lazy">
+            Verifierad köpare
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <div class="review-item rounded-lg bg-white border border-solid border-gray-100 overflow-hidden py-4 px-8">
+        <div class="flex justify-center gap-1">
+          <div class="flex leading-none">
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+          </div>
+        </div>
+        <p class="text-slate-600 text-sm leading-relaxed text-center">
+          "Das ist der beste Duft, den ich seit sehr langer Zeit gerochen habe, die Noten machen mich wahnsinnig vor Glück. Ich werde diesen für immer in meiner Rotation behalten."
+        </p>
+        <div class="flex gap-1 justify-center">
+          <p class="text-base font-bold text-slate-900 my-0">Jenniffer W.</p>
+          <div class="flex items-center gap-1 text-xs text-[#297af4] font-medium">
+            <img
+              src="/cdn/shop/t/56/assets/verified-badge.svg?v=137009485922029072291771759932"
+              alt="Verifierad köpare"
+              width="16"
+              height="16"
+              loading="lazy">
+            Verifierad köpare
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <div class="review-item rounded-lg bg-white border border-solid border-gray-100 overflow-hidden py-4 px-8">
+        <div class="flex justify-center gap-1">
+          <div class="flex leading-none">
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+            <span class="text-[#ffc109]">★</span>
+          </div>
+        </div>
+        <p class="text-slate-600 text-sm text-center leading-relaxed">
+          "Alle drei Düfte, die ich erhalten habe, sind sehr gut. Halten lange und riechen so wie sie sollten. Ich war nur mit der Zeit unzufrieden, die es dauerte, sie zu erhalten. Aber ehrlich gesagt habe ich eine zweite Bestellung aufgegeben, also erwarte einfach eine Wartezeit. Haha!"
+        </p>
+        <div class="flex gap-1 justify-center">
+          <p class="text-base font-bold text-slate-900 my-0">Clara P.</p>
+          <div class="flex items-center gap-1 text-xs text-[#297af4] font-medium">
+            <img
+              src="/cdn/shop/t/56/assets/verified-badge.svg?v=137009485922029072291771759932"
+              alt="Verifierad köpare"
+              width="16"
+              height="16"
+              loading="lazy">
+            Verifierad köpare
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="swiper-button-next p-0 !size-7 !right-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
+  <button class="swiper-button-prev p-0 !size-7 !left-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper('.atc-review-slider', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+</script>
