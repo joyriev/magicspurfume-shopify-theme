@@ -1779,6 +1779,1436 @@
     // ===== HARDCODED DIRECT MAPPINGS FOR KNOWN PRODUCTS =====
     const hardcodedMappings = [
       // PACO RABANNE
+       // ===== COMPLETE HARDCODED MAPPINGS FOR ALL PRODUCTS =====
+// Add this RIGHT AFTER the hardcodedProducts array definition (around line 500-600)
+
+// ===== COMPLETE HARDCODED PRODUCT DATABASE =====
+const hardcodedProducts = [
+  // VALENTINO
+  {
+    id: "hardcoded-born-in-roma-469",
+    title: "Riecht wie... Born in Roma - No. 469",
+    image: "https://magicperfume.co/cdn/shop/files/Valentino_Donna_Born_In_Roma.png?v=1770224306",
+    url: "https://magicperfume.co/products/magic-perfume-no-469w",
+    variant: 47306556375298,
+    price: 1199,
+    brand: "Valentino",
+    number: "469",
+    gender: "w",
+    searchTerms: ["born in roma", "valentino", "roma", "469"]
+  },
+  {
+    id: "hardcoded-uomo-born-in-roma-360",
+    title: "Riecht wie... Uomo Born in Roma - No. 360",
+    image: "https://magicperfume.co/cdn/shop/files/Valentino_Uomo_Born_in_Roma.png?v=1770289172",
+    url: "https://magicperfume.co/products/magic-perfume-no-360m",
+    variant: 47306556375299,
+    price: 1199,
+    brand: "Valentino",
+    number: "360",
+    gender: "m",
+    searchTerms: ["uomo born in roma", "valentino uomo", "360"]
+  },
+  
+  // PRADA
+  {
+    id: "hardcoded-paradoxe-437",
+    title: "Riecht wie... Paradoxe - No. 437",
+    image: "https://magicperfume.co/cdn/shop/files/Prada_Paradoxe.jpg?v=1771894273",
+    url: "https://magicperfume.co/products/magic-perfume-no-437w",
+    variant: 47306556375300,
+    price: 1199,
+    brand: "Prada",
+    number: "437",
+    gender: "w",
+    searchTerms: ["paradoxe", "prada", "437"]
+  },
+  {
+    id: "hardcoded-candy-182",
+    title: "Riecht wie... Candy - No. 182",
+    image: "https://magicperfume.co/cdn/shop/files/Prada_Candy.avif?v=1770581340",
+    url: "https://magicperfume.co/products/magic-perfume-no-182w",
+    variant: 47306556375301,
+    price: 1199,
+    brand: "Prada",
+    number: "182",
+    gender: "w",
+    searchTerms: ["candy", "prada candy", "182"]
+  },
+
+  // LANCOME
+  {
+    id: "hardcoded-la-vie-est-belle-101",
+    title: "Riecht wie... La Vie Est Belle - No. 101",
+    image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle.png?v=1770220684",
+    url: "https://magicperfume.co/products/magic-perfume-no-101w",
+    variant: 47306556375302,
+    price: 1199,
+    brand: "Lancôme",
+    number: "101",
+    gender: "w",
+    searchTerms: ["la vie est belle", "lancome", "101"]
+  },
+  {
+    id: "hardcoded-la-vie-est-belle-intense-109",
+    title: "Riecht wie... La Vie Est Belle Intensement - No. 109",
+    image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle_Intensement.png?v=1772101772",
+    url: "https://magicperfume.co/products/magic-perfume-no-109w",
+    variant: 47306556375303,
+    price: 1199,
+    brand: "Lancôme",
+    number: "109",
+    gender: "w",
+    searchTerms: ["la vie est belle intense", "intensement", "109"]
+  },
+  {
+    id: "hardcoded-tresor-141",
+    title: "Riecht wie... Trésor - No. 141",
+    image: "https://magicperfume.co/cdn/shop/files/Lancome_Tresor.png?v=1770285746",
+    url: "https://magicperfume.co/products/magic-perfume-no-141w",
+    variant: 47306556375304,
+    price: 1199,
+    brand: "Lancôme",
+    number: "141",
+    gender: "w",
+    searchTerms: ["tresor", "lancome tresor", "141"]
+  },
+  {
+    id: "hardcoded-idole-55",
+    title: "Riecht wie... Idole - No. 55",
+    image: "https://magicperfume.co/cdn/shop/files/Idole.webp?v=1772097147",
+    url: "https://magicperfume.co/products/magic-perfume-no-055w",
+    variant: 47306556375305,
+    price: 1199,
+    brand: "Lancôme",
+    number: "55",
+    gender: "w",
+    searchTerms: ["idole", "lancome idole", "55", "055"]
+  },
+
+  // YVES SAINT LAURENT
+  {
+    id: "hardcoded-libre-034",
+    title: "Riecht wie... LIBRE - No. 034",
+    image: "https://magicperfume.co/cdn/shop/files/YSL_Libre.jpg",
+    url: "https://magicperfume.co/products/magic-perfume-no-034w",
+    variant: 47306556375306,
+    price: 1199,
+    brand: "Yves Saint Laurent",
+    number: "034",
+    gender: "w",
+    searchTerms: ["libre", "ysl libre", "034"]
+  },
+  {
+    id: "hardcoded-black-opium-132",
+    title: "Riecht wie... Black Opium - No. 132",
+    image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Black_Opium.png?v=1770217557",
+    url: "https://magicperfume.co/products/magic-perfume-no-132w",
+    variant: 47306556375307,
+    price: 1199,
+    brand: "Yves Saint Laurent",
+    number: "132",
+    gender: "w",
+    searchTerms: ["black opium", "ysl black opium", "132"]
+  },
+  {
+    id: "hardcoded-opium-083",
+    title: "Riecht wie... Laurent Opium - No. 083",
+    image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Opium.jpg?v=1770580952",
+    url: "https://magicperfume.co/products/magic-perfume-no-083w",
+    variant: 47306556375308,
+    price: 1199,
+    brand: "Yves Saint Laurent",
+    number: "083",
+    gender: "w",
+    searchTerms: ["opium", "laurent opium", "083"]
+  },
+  {
+    id: "hardcoded-y-283",
+    title: "Riecht wie... Y - No. 283",
+    image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Y.png?v=1771482466",
+    url: "https://magicperfume.co/products/magic-perfume-no-283m",
+    variant: 47306556375309,
+    price: 1199,
+    brand: "Yves Saint Laurent",
+    number: "283",
+    gender: "m",
+    searchTerms: ["y", "ysl y", "283"]
+  },
+
+  // CAROLINA HERRERA
+  {
+    id: "hardcoded-good-girl-461",
+    title: "Riecht wie... Good Girl - No. 461",
+    image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Good_Girl_Velvet_Fatale.png?v=1770218974",
+    url: "https://magicperfume.co/products/magic-perfume-no-461w",
+    variant: 47306556375310,
+    price: 1199,
+    brand: "Carolina Herrera",
+    number: "461",
+    gender: "w",
+    searchTerms: ["good girl", "carolina herrera", "461"]
+  },
+  {
+    id: "hardcoded-very-good-girl-404",
+    title: "Riecht wie... Very Good Girl - No. 404",
+    image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Very_Good_Girl.png?v=1770292680",
+    url: "https://magicperfume.co/products/magic-perfume-no-404w",
+    variant: 47306556375311,
+    price: 1199,
+    brand: "Carolina Herrera",
+    number: "404",
+    gender: "w",
+    searchTerms: ["very good girl", "carolina herrera", "404"]
+  },
+
+  // PACO RABANNE
+  {
+    id: "hardcoded-one-million-275",
+    title: "Riecht wie… One Million - No. 275",
+    image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million.png?v=1770217929",
+    url: "https://magicperfume.co/products/magic-perfume-no-275m",
+    variant: 47306572353794,
+    price: 1199,
+    brand: "Paco Rabanne",
+    number: "275",
+    gender: "m",
+    searchTerms: ["one million", "1 million", "million", "paco rabanne", "275"]
+  },
+  {
+    id: "hardcoded-one-million-elixir-334",
+    title: "Riecht wie... One Million Elixir - No. 334",
+    image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million_Elixir.png?v=1770579856",
+    url: "https://magicperfume.co/products/magic-perfume-no-334m",
+    variant: 47306572419330,
+    price: 1199,
+    brand: "Paco Rabanne",
+    number: "334",
+    gender: "m",
+    searchTerms: ["one million elixir", "million elixir", "elixir", "334"]
+  },
+  {
+    id: "hardcoded-one-million-lucky-280",
+    title: "Riecht wie... One Million Lucky - No. 280",
+    image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132",
+    url: "https://magicperfume.co/products/magic-perfume-no-280m",
+    variant: 47306572386562,
+    price: 2099,
+    brand: "Paco Rabanne",
+    number: "280",
+    gender: "m",
+    searchTerms: ["one million lucky", "million lucky", "lucky", "280"]
+  },
+  {
+    id: "hardcoded-lady-million-023",
+    title: "Riecht wie... LADY MILION - No. 023",
+    image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Lady_Million.png?v=1770218839",
+    url: "https://magicperfume.co/products/magic-perfume-no-023w",
+    variant: 47306572452098,
+    price: 1199,
+    brand: "Paco Rabanne",
+    number: "023",
+    gender: "w",
+    searchTerms: ["lady million", "lady milion", "023"]
+  },
+  {
+    id: "hardcoded-fame-498",
+    title: "Riecht wie... Fame - No. 498",
+    image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Fame.png?v=1770285610",
+    url: "https://magicperfume.co/products/magic-perfume-no-498w",
+    variant: 47306572484866,
+    price: 1199,
+    brand: "Paco Rabanne",
+    number: "498",
+    gender: "w",
+    searchTerms: ["fame", "paco rabanne fame", "498"]
+  },
+  {
+    id: "hardcoded-invictus-228",
+    title: "Riecht wie... Invictus - No. 228",
+    image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Invictus.png?v=1770286917",
+    url: "https://magicperfume.co/products/magic-perfume-no-228m",
+    variant: 47306572517634,
+    price: 1199,
+    brand: "Paco Rabanne",
+    number: "228",
+    gender: "m",
+    searchTerms: ["invictus", "paco rabanne invictus", "228"]
+  },
+  {
+    id: "hardcoded-pure-xs-050",
+    title: "Riecht wie... Pure XS For Her - No. 050",
+    image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_XS_For_Her.jpg?v=1772105675",
+    url: "https://magicperfume.co/products/magic-perfume-no-050w",
+    variant: 47306572615938,
+    price: 1199,
+    brand: "Paco Rabanne",
+    number: "050",
+    gender: "w",
+    searchTerms: ["pure xs", "pure", "050"]
+  },
+  {
+    id: "hardcoded-olympea-intense-095",
+    title: "Riecht wie... Olympea Intense - No. 095",
+    image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Olympea_INTENSE.jpg?v=1772108016",
+    url: "https://magicperfume.co/products/magic-perfume-no-095w",
+    variant: 47306572648706,
+    price: 1199,
+    brand: "Paco Rabanne",
+    number: "095",
+    gender: "w",
+    searchTerms: ["olympea", "olympea intense", "095"]
+  },
+  {
+    id: "hardcoded-phantom-399",
+    title: "Riecht wie... Phantom - No. 399",
+    image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078",
+    url: "https://magicperfume.co/products/magic-perfume-no-399m",
+    variant: 47306572583170,
+    price: 1199,
+    brand: "Paco Rabanne",
+    number: "399",
+    gender: "m",
+    searchTerms: ["phantom", "paco rabanne phantom", "399"]
+  },
+
+  // JEAN PAUL GAULTIER
+  {
+    id: "hardcoded-scandal-192",
+    title: "Riecht wie... SCANDAL - No. 192",
+    image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_SCANDAL.png?v=1770223879",
+    url: "https://magicperfume.co/products/magic-perfume-no-192w",
+    variant: 47306556375312,
+    price: 1199,
+    brand: "Jean Paul Gaultier",
+    number: "192",
+    gender: "w",
+    searchTerms: ["scandal", "jean paul gaultier", "192"]
+  },
+  {
+    id: "hardcoded-la-belle-412",
+    title: "Riecht wie... La Belle - No. 412",
+    image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_La_Belle.png?v=1770286342",
+    url: "https://magicperfume.co/products/magic-perfume-no-412w",
+    variant: 47306556375313,
+    price: 2099,
+    brand: "Jean Paul Gaultier",
+    number: "412",
+    gender: "w",
+    searchTerms: ["la belle", "jean paul gaultier", "412"]
+  },
+  {
+    id: "hardcoded-ultra-male-349",
+    title: "Riecht wie... Ultra Male - No. 349",
+    image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Ultra_Male.png?v=1770285911",
+    url: "https://magicperfume.co/products/magic-perfume-no-349m",
+    variant: 47306556375314,
+    price: 1199,
+    brand: "Jean Paul Gaultier",
+    number: "349",
+    gender: "m",
+    searchTerms: ["ultra male", "jean paul gaultier", "349"]
+  },
+  {
+    id: "hardcoded-classique-442",
+    title: "Riecht wie... Classique Essence de Parfum - No. 442",
+    image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Classique_Essence_de_Parfum.png?v=1770290311",
+    url: "https://magicperfume.co/products/magic-perfume-no-442w",
+    variant: 47306556375315,
+    price: 1199,
+    brand: "Jean Paul Gaultier",
+    number: "442",
+    gender: "w",
+    searchTerms: ["classique", "jean paul gaultier", "442"]
+  },
+  {
+    id: "hardcoded-le-male-247",
+    title: "Riecht wie... Le Male - No. 247",
+    image: "https://magicperfume.co/cdn/shop/files/J.P._Gaultier_Le_Male.png?v=1770217089",
+    url: "https://magicperfume.co/products/magic-perfume-no-247m",
+    variant: 47306556375316,
+    price: 1199,
+    brand: "Jean Paul Gaultier",
+    number: "247",
+    gender: "m",
+    searchTerms: ["le male", "jean paul gaultier", "247"]
+  },
+
+  // MUGLER
+  {
+    id: "hardcoded-angel-113",
+    title: "Riecht wie... Angel - No. 113",
+    image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_1992.png?v=1770293282",
+    url: "https://magicperfume.co/products/magic-perfume-no-113w",
+    variant: 47306556375317,
+    price: 1199,
+    brand: "Mugler",
+    number: "113",
+    gender: "w",
+    searchTerms: ["angel", "mugler", "113"]
+  },
+  {
+    id: "hardcoded-angel-nova-166",
+    title: "Riecht wie... Angel Nova - No. 166",
+    image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_Nova.webp?v=1771649097",
+    url: "https://magicperfume.co/products/magic-perfume-no-166w",
+    variant: 47306556375318,
+    price: 1199,
+    brand: "Mugler",
+    number: "166",
+    gender: "w",
+    searchTerms: ["angel nova", "mugler", "166"]
+  },
+  {
+    id: "hardcoded-amen-255",
+    title: "Riecht wie... A*Men - No. 255",
+    image: "https://magicperfume.co/cdn/shop/files/A_Men.webp?v=1772141383",
+    url: "https://magicperfume.co/products/magic-perfume-no-255m",
+    variant: 47306556375319,
+    price: 1199,
+    brand: "Mugler",
+    number: "255",
+    gender: "m",
+    searchTerms: ["amen", "a*men", "mugler", "255"]
+  },
+
+  // TOM FORD
+  {
+    id: "hardcoded-vanille-fatale-053",
+    title: "Riecht wie... Vanille Fatale - No. 053",
+    image: "https://magicperfume.co/cdn/shop/files/vanille_fatale.png?v=1772096768",
+    url: "https://magicperfume.co/products/magic-perfume-no-053w",
+    variant: 47306556375320,
+    price: 1199,
+    brand: "Tom Ford",
+    number: "053",
+    gender: "w",
+    searchTerms: ["vanille fatale", "tom ford", "053"]
+  },
+  {
+    id: "hardcoded-lost-cherry-438",
+    title: "Riecht wie... Lost Cherry - No. 438",
+    image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Lost_Cherry.png?v=1770283537",
+    url: "https://magicperfume.co/products/magic-perfume-no-438w",
+    variant: 47306556375321,
+    price: 1199,
+    brand: "Tom Ford",
+    number: "438",
+    gender: "w",
+    searchTerms: ["lost cherry", "tom ford", "438"]
+  },
+  {
+    id: "hardcoded-fucking-fabulous-232",
+    title: "Riecht wie... Fucking Fabulous - No. 232",
+    image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Fucking_Fabulous_EDP.png?v=1770283980",
+    url: "https://magicperfume.co/products/magic-perfume-no-232m",
+    variant: 47306556375322,
+    price: 1199,
+    brand: "Tom Ford",
+    number: "232",
+    gender: "m",
+    searchTerms: ["fucking fabulous", "tom ford", "232"]
+  },
+  {
+    id: "hardcoded-tobacco-vanille-193",
+    title: "Riecht wie... Tobacco Vanille - No. 193",
+    image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Tobacco_Vanille.png?v=1770290664",
+    url: "https://magicperfume.co/products/magic-perfume-no-193m",
+    variant: 47306556375323,
+    price: 1199,
+    brand: "Tom Ford",
+    number: "193",
+    gender: "m",
+    searchTerms: ["tobacco vanille", "tom ford", "193"]
+  },
+  {
+    id: "hardcoded-oud-wood-287",
+    title: "Riecht wie... Oud Wood - No. 287",
+    image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Oud_Wood.png?v=1770289479",
+    url: "https://magicperfume.co/products/magic-perfume-no-287m",
+    variant: 47306556375324,
+    price: 1199,
+    brand: "Tom Ford",
+    number: "287",
+    gender: "m",
+    searchTerms: ["oud wood", "tom ford", "287"]
+  },
+  {
+    id: "hardcoded-cherry-smoke-434",
+    title: "Riecht wie... Cherry Smoke - No. 434",
+    image: "https://magicperfume.co/cdn/shop/files/Cherry_Smoke.jpg",
+    url: "https://magicperfume.co/products/magic-perfume-no-434m",
+    variant: 47306556375325,
+    price: 1199,
+    brand: "Tom Ford",
+    number: "434",
+    gender: "m",
+    searchTerms: ["cherry smoke", "tom ford", "434"]
+  },
+
+  // GIORGIO ARMANI - COMPLETE LIST
+  {
+    id: "hardcoded-si-129",
+    title: "Riecht wie...Si - No. 129",
+    image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_S.jpg?v=1770285117",
+    url: "https://magicperfume.co/products/magic-perfume-no-129w",
+    variant: 47306556375326,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "129",
+    gender: "w",
+    searchTerms: ["si", "giorgio armani", "armani si", "129"]
+  },
+  {
+    id: "hardcoded-emporio-she-150",
+    title: "Riecht wie... Emporio She - No. 150",
+    image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_She.jpg?v=1770284423",
+    url: "https://magicperfume.co/products/magic-perfume-no-150w",
+    variant: 47306556375327,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "150",
+    gender: "w",
+    searchTerms: ["emporio she", "armani she", "150"]
+  },
+  {
+    id: "hardcoded-emporio-he-242",
+    title: "Riecht wie... Emporio He - No. 242",
+    image: "https://magicperfume.co/cdn/shop/files/Emporio_He.jpg",
+    url: "https://magicperfume.co/products/magic-perfume-no-242m",
+    variant: 47306556375328,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "242",
+    gender: "m",
+    searchTerms: ["emporio he", "armani he", "242"]
+  },
+  {
+    id: "hardcoded-my-way-140",
+    title: "Riecht wie... MY WAY - No. 140",
+    image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_MY_WAY.jpg?v=1770291090",
+    url: "https://magicperfume.co/products/magic-perfume-no-140w",
+    variant: 47306556375329,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "140",
+    gender: "w",
+    searchTerms: ["my way", "armani my way", "140"]
+  },
+  {
+    id: "hardcoded-armani-code-260",
+    title: "Riecht wie... Armani Code - No. 260",
+    image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Armani_Code.png?v=1770220395",
+    url: "https://magicperfume.co/products/magic-perfume-no-260m",
+    variant: 47306572714242,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "260",
+    gender: "m",
+    searchTerms: ["armani code", "code", "260"]
+  },
+  {
+    id: "hardcoded-code-for-woman-135",
+    title: "Riecht wie... Code for Woman - No. 135",
+    image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Code_for_Woman.jpg?v=1771252264",
+    url: "https://magicperfume.co/products/magic-perfume-no-135w",
+    variant: 47306572747010,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "135",
+    gender: "w",
+    searchTerms: ["code for woman", "armani code woman", "135"]
+  },
+  {
+    id: "hardcoded-acqua-di-gio-221",
+    title: "Riecht wie... Acqua di Gio - No. 221",
+    image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Acqua_Di_Gio.png?v=1770290000",
+    url: "https://magicperfume.co/products/magic-perfume-no-221m",
+    variant: 47306556375330,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "221",
+    gender: "m",
+    searchTerms: ["acqua di gio", "armani acqua", "221"]
+  },
+  {
+    id: "hardcoded-acqua-di-gioia-146",
+    title: "Riecht wie... Acqua di Gioia - No. 146",
+    image: "https://magicperfume.co/cdn/shop/files/Acqua_di_Gioia.webp?v=1772136136",
+    url: "https://magicperfume.co/products/magic-perfume-no-146w",
+    variant: 47306556375331,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "146",
+    gender: "w",
+    searchTerms: ["acqua di gioia", "armani gioia", "146"]
+  },
+  {
+    id: "hardcoded-stronger-with-you-318",
+    title: "Riecht wie... Stronger With You Intensely - No. 318",
+    image: "https://magicperfume.co/cdn/shop/files/Emporio_Armani_Stronger_With_You_Intensely.png?v=1770287057",
+    url: "https://magicperfume.co/products/magic-perfume-no-318m",
+    variant: 47306556375332,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "318",
+    gender: "m",
+    searchTerms: ["stronger with you", "armani stronger", "318"]
+  },
+  {
+    id: "hardcoded-armani-diamonds-040",
+    title: "Riecht wie... Armani Diamonds - No. 040",
+    image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_Armani_Diamonds.png?v=1770924117",
+    url: "https://magicperfume.co/products/magic-perfume-no-040w",
+    variant: 47306556375333,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "040",
+    gender: "w",
+    searchTerms: ["armani diamonds", "diamonds", "040"]
+  },
+  {
+    id: "hardcoded-code-sport-267",
+    title: "Riecht wie... Armani Code Sport - No.267",
+    image: "https://magicperfume.co/cdn/shop/files/Armani_Code_Sport.webp?v=1772137221",
+    url: "https://magicperfume.co/products/magic-perfume-no-267m",
+    variant: 47306556375334,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "267",
+    gender: "m",
+    searchTerms: ["code sport", "armani code sport", "267"]
+  },
+  {
+    id: "hardcoded-si-passione-100",
+    title: "Riecht wie... Si Passione - No. 100",
+    image: "https://magicperfume.co/cdn/shop/files/Si_Passione.webp?v=1772143097",
+    url: "https://magicperfume.co/products/magic-perfume-no-100w",
+    variant: 47306556375335,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "100",
+    gender: "w",
+    searchTerms: ["si passione", "armani passione", "100"]
+  },
+  {
+    id: "hardcoded-terra-di-gioia-436",
+    title: "Riecht wie... Terra Di Gioia - No. 436",
+    image: "https://magicperfume.co/cdn/shop/files/Terra_di_Gioia.webp?v=1772139466",
+    url: "https://magicperfume.co/products/magic-perfume-no-436w",
+    variant: 47306556375336,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "436",
+    gender: "w",
+    searchTerms: ["terra di gioia", "armani terra", "436"]
+  },
+  {
+    id: "hardcoded-profumo-296",
+    title: "Riecht wie... Profumo - No. 296",
+    image: "https://magicperfume.co/cdn/shop/files/Acqua_Di_Gio_Profumo.webp?v=1772140413",
+    url: "https://magicperfume.co/products/magic-perfume-no-296m",
+    variant: 47306556375337,
+    price: 1199,
+    brand: "Giorgio Armani",
+    number: "296",
+    gender: "m",
+    searchTerms: ["profumo", "acqua di gio profumo", "armani profumo", "296"]
+  },
+
+  // DIOR
+  {
+    id: "hardcoded-sauvage-parfum-338",
+    title: "Riecht wie... Sauvage Parfum - No. 338",
+    image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage.png?v=1770220271",
+    url: "https://magicperfume.co/products/magic-perfume-no-338m",
+    variant: 47306556375338,
+    price: 1199,
+    brand: "Dior",
+    number: "338",
+    gender: "m",
+    searchTerms: ["sauvage parfum", "dior sauvage", "338"]
+  },
+  {
+    id: "hardcoded-sauvage-elixir-366",
+    title: "Riecht wie... Sauvage Elixir - No. 366",
+    image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage_Elixir.png?v=1770218137",
+    url: "https://magicperfume.co/products/magic-perfume-no-366m",
+    variant: 47306556375339,
+    price: 1199,
+    brand: "Dior",
+    number: "366",
+    gender: "m",
+    searchTerms: ["sauvage elixir", "dior elixir", "366"]
+  },
+  {
+    id: "hardcoded-hypnotic-poison-145",
+    title: "Riecht wie... Hypnotic Poison - No. 145",
+    image: "https://magicperfume.co/cdn/shop/files/Hypnotic_Poison.png?v=1771366694",
+    url: "https://magicperfume.co/products/magic-perfume-no-145w",
+    variant: 47306556375340,
+    price: 1199,
+    brand: "Dior",
+    number: "145",
+    gender: "w",
+    searchTerms: ["hypnotic poison", "dior poison", "145"]
+  },
+  {
+    id: "hardcoded-jadore-159",
+    title: "Riecht wie... J'Adore - No. 159",
+    image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_J_adore.jpg?v=1770220853",
+    url: "https://magicperfume.co/products/magic-perfume-no-159w",
+    variant: 47306556375341,
+    price: 1199,
+    brand: "Dior",
+    number: "159",
+    gender: "w",
+    searchTerms: ["jadore", "j'adore", "dior jadore", "159"]
+  },
+  {
+    id: "hardcoded-miss-dior-196",
+    title: "Riecht wie... Miss Dior Le Parfum - No. 196",
+    image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Le_Parfum.jpg?v=1770293457",
+    url: "https://magicperfume.co/products/magic-perfume-no-196w",
+    variant: 47306556375342,
+    price: 1199,
+    brand: "Dior",
+    number: "196",
+    gender: "w",
+    searchTerms: ["miss dior", "dior miss", "196"]
+  },
+  {
+    id: "hardcoded-fahrenheit-206",
+    title: "Riecht wie... Fahrenheit - No. 206",
+    image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Fahrenheit.png?v=1770289652",
+    url: "https://magicperfume.co/products/magic-perfume-no-206m",
+    variant: 47306556375343,
+    price: 1199,
+    brand: "Dior",
+    number: "206",
+    gender: "m",
+    searchTerms: ["fahrenheit", "dior fahrenheit", "206"]
+  },
+  {
+    id: "hardcoded-fahrenheit-le-parfum-350",
+    title: "Riecht wie... Fahrenheit Le Parfum - No. 350",
+    image: "https://magicperfume.co/cdn/shop/files/Dior_Fahrenheit_Le_Parfum.jpg?v=1770284765",
+    url: "https://magicperfume.co/products/magic-perfume-no-350m",
+    variant: 47306556375344,
+    price: 1199,
+    brand: "Dior",
+    number: "350",
+    gender: "m",
+    searchTerms: ["fahrenheit le parfum", "dior fahrenheit", "350"]
+  },
+  {
+    id: "hardcoded-homme-intense-277",
+    title: "Riecht wie... Homme Intense - No. 277",
+    image: "https://magicperfume.co/cdn/shop/files/Dior_Homme_Intense.png?v=1770290129",
+    url: "https://magicperfume.co/products/magic-perfume-no-277m",
+    variant: 47306556375345,
+    price: 1199,
+    brand: "Dior",
+    number: "277",
+    gender: "m",
+    searchTerms: ["homme intense", "dior homme", "277"]
+  },
+  {
+    id: "hardcoded-miss-cherie-082",
+    title: "Riecht wie... Miss Cherie - No. 082",
+    image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Cherie.jpg?v=1770963606",
+    url: "https://magicperfume.co/products/magic-perfume-no-082w",
+    variant: 47306556375346,
+    price: 1199,
+    brand: "Dior",
+    number: "082",
+    gender: "w",
+    searchTerms: ["miss cherie", "dior cherie", "082"]
+  },
+  {
+    id: "hardcoded-fahrenheit-32-327",
+    title: "Riecht wie... Fahrenheit 32 - No. 327",
+    image: "https://magicperfume.co/cdn/shop/files/Fahrenheit_32.webp?v=1772136282",
+    url: "https://magicperfume.co/products/magic-perfume-no-327m",
+    variant: 47306556375347,
+    price: 1199,
+    brand: "Dior",
+    number: "327",
+    gender: "m",
+    searchTerms: ["fahrenheit 32", "dior 32", "327"]
+  },
+  {
+    id: "hardcoded-midnight-poison-044",
+    title: "Riecht wie... Midnight Poison - No. 044",
+    image: "https://magicperfume.co/cdn/shop/files/Midnight_Poison.jpg?v=1772105149",
+    url: "https://magicperfume.co/products/magic-perfume-no-044w",
+    variant: 47306556375348,
+    price: 1199,
+    brand: "Dior",
+    number: "044",
+    gender: "w",
+    searchTerms: ["midnight poison", "dior poison", "044"]
+  },
+  {
+    id: "hardcoded-rose-n-roses-084",
+    title: "Riecht wie... Rose N'Roses - No. 084",
+    image: "https://magicperfume.co/cdn/shop/files/Miss_Dior_Rose_N_Roses.jpg?v=1772106609",
+    url: "https://magicperfume.co/products/magic-perfume-no-084w",
+    variant: 47306556375349,
+    price: 1199,
+    brand: "Dior",
+    number: "084",
+    gender: "w",
+    searchTerms: ["rose n roses", "dior rose", "084"]
+  },
+
+  // CHANEL
+  {
+    id: "hardcoded-bleu-252",
+    title: "Riecht wie... Bleu - No. 252",
+    image: "https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838",
+    url: "https://magicperfume.co/products/magic-perfume-no-252m",
+    variant: 47306572779778,
+    price: 1199,
+    brand: "Chanel",
+    number: "252",
+    gender: "m",
+    searchTerms: ["bleu", "bleu de chanel", "chanel bleu", "252"]
+  },
+  {
+    id: "hardcoded-coco-079",
+    title: "Riecht wie... Cocoe - No. 079",
+    image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco.jpg?v=1770285282",
+    url: "https://magicperfume.co/products/magic-perfume-no-079w",
+    variant: 47306556375350,
+    price: 1199,
+    brand: "Chanel",
+    number: "079",
+    gender: "w",
+    searchTerms: ["coco", "chanel coco", "079"]
+  },
+  {
+    id: "hardcoded-mademoiselle-intense-067",
+    title: "Riecht wie... Mademoiselle Intense - No. 067",
+    image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco_Mademoiselle_Intense.png?v=1770291316",
+    url: "https://magicperfume.co/products/magic-perfume-no-067w",
+    variant: 47306556375351,
+    price: 1199,
+    brand: "Chanel",
+    number: "067",
+    gender: "w",
+    searchTerms: ["mademoiselle intense", "chanel intense", "067"]
+  },
+  {
+    id: "hardcoded-mademoiselle-139",
+    title: "Riecht wie... Mademoiselle - No. 139",
+    image: "https://magicperfume.co/cdn/shop/files/0a78ac2c2769df411731eaba9cb8c230.jpg_720x720q80.jpg?v=1772090593",
+    url: "https://magicperfume.co/products/magic-perfume-no-139w",
+    variant: 47306556375352,
+    price: 1199,
+    brand: "Chanel",
+    number: "139",
+    gender: "w",
+    searchTerms: ["mademoiselle", "chanel mademoiselle", "139"]
+  },
+  {
+    id: "hardcoded-chance-006",
+    title: "Riecht wie... Chance - No. 006",
+    image: "https://magicperfume.co/cdn/shop/files/Chanel_Chance.png?v=1770923697",
+    url: "https://magicperfume.co/products/magic-perfume-no-006w",
+    variant: 47306556375353,
+    price: 1199,
+    brand: "Chanel",
+    number: "006",
+    gender: "w",
+    searchTerms: ["chance", "chanel chance", "006"]
+  },
+  {
+    id: "hardcoded-no5-077",
+    title: "Riecht wie... No.5 - No. 077",
+    image: "https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018",
+    url: "https://magicperfume.co/products/magic-perfume-no-077w",
+    variant: 47306572812546,
+    price: 1199,
+    brand: "Chanel",
+    number: "077",
+    gender: "w",
+    searchTerms: ["no 5", "no5", "chanel no5", "077"]
+  },
+  {
+    id: "hardcoded-allure-homme-240",
+    title: "Riecht wie... Allure Homme - No. 240",
+    image: "https://magicperfume.co/cdn/shop/files/allure_homme.webp?v=1772119802",
+    url: "https://magicperfume.co/products/magic-perfume-no-240m",
+    variant: 47306556375354,
+    price: 1199,
+    brand: "Chanel",
+    number: "240",
+    gender: "m",
+    searchTerms: ["allure homme", "chanel allure", "240"]
+  },
+  {
+    id: "hardcoded-allure-homme-sport-222",
+    title: "Riecht wie... Allure Homme Sport - No. 222",
+    image: "https://magicperfume.co/cdn/shop/files/allure_homme_sport.webp",
+    url: "https://magicperfume.co/products/magic-perfume-no-222m",
+    variant: 47306556375355,
+    price: 1199,
+    brand: "Chanel",
+    number: "222",
+    gender: "m",
+    searchTerms: ["allure homme sport", "chanel sport", "222"]
+  },
+  {
+    id: "hardcoded-bois-des-iles-459",
+    title: "Riecht wie... Bois des Iles - No. 459",
+    image: "https://magicperfume.co/cdn/shop/files/Bois_des_Iles.webp?v=1772140695",
+    url: "https://magicperfume.co/products/magic-perfume-no-459m",
+    variant: 47306556375356,
+    price: 1199,
+    brand: "Chanel",
+    number: "459",
+    gender: "m",
+    searchTerms: ["bois des iles", "chanel bois", "459"]
+  },
+
+  // HUGO BOSS
+  {
+    id: "hardcoded-boss-woman-60",
+    title: "Riecht wie... Boss Woman - No. 60",
+    image: "https://magicperfume.co/cdn/shop/files/Boss_Woman.jpg?v=1770925272",
+    url: "https://magicperfume.co/products/magic-perfume-no-060w",
+    variant: 47306556375357,
+    price: 1199,
+    brand: "Hugo Boss",
+    number: "60",
+    gender: "w",
+    searchTerms: ["boss woman", "hugo boss", "60", "060"]
+  },
+  {
+    id: "hardcoded-boss-bottled-234",
+    title: "Riecht wie... Bottled - No. 234",
+    image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Bottled.png?v=1770223505",
+    url: "https://magicperfume.co/products/magic-perfume-no-234m",
+    variant: 47306556375358,
+    price: 1199,
+    brand: "Hugo Boss",
+    number: "234",
+    gender: "m",
+    searchTerms: ["boss bottled", "hugo boss bottled", "234"]
+  },
+  {
+    id: "hardcoded-boss-bottled-intense-346",
+    title: "Riecht wie... Bottled Intense - No. 346",
+    image: "https://magicperfume.co/cdn/shop/files/Boss_Bottled_Intense.webp?v=1772139127",
+    url: "https://magicperfume.co/products/magic-perfume-no-346m",
+    variant: 47306556375359,
+    price: 1199,
+    brand: "Hugo Boss",
+    number: "346",
+    gender: "m",
+    searchTerms: ["bottled intense", "boss intense", "346"]
+  },
+  {
+    id: "hardcoded-boss-hugo-223",
+    title: "Riecht wie... Hugo - No. 223",
+    image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Hugo.png?v=1770292811",
+    url: "https://magicperfume.co/products/magic-perfume-no-223m",
+    variant: 47306556375360,
+    price: 1199,
+    brand: "Hugo Boss",
+    number: "223",
+    gender: "m",
+    searchTerms: ["hugo", "hugo boss", "223"]
+  },
+  {
+    id: "hardcoded-boss-orange-148",
+    title: "Riecht wie... Boss Orange - No. 148",
+    image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Boss_Orange.jpg?v=1770293717",
+    url: "https://magicperfume.co/products/magic-perfume-no-148w",
+    variant: 47306556375361,
+    price: 1199,
+    brand: "Hugo Boss",
+    number: "148",
+    gender: "w",
+    searchTerms: ["boss orange", "hugo boss orange", "148"]
+  },
+  {
+    id: "hardcoded-boss-the-scent-270",
+    title: "Riecht wie... The Scent - No. 270",
+    image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_The_Scent.png?v=1770292543",
+    url: "https://magicperfume.co/products/magic-perfume-no-270m",
+    variant: 47306556375362,
+    price: 1199,
+    brand: "Hugo Boss",
+    number: "270",
+    gender: "m",
+    searchTerms: ["the scent", "hugo boss scent", "270"]
+  },
+  {
+    id: "hardcoded-boss-alive-098",
+    title: "Riecht wie... ALIVE - No. 098",
+    image: "https://magicperfume.co/cdn/shop/files/alive.png?v=1772098782",
+    url: "https://magicperfume.co/products/magic-perfume-no-098w",
+    variant: 47306556375363,
+    price: 1199,
+    brand: "Hugo Boss",
+    number: "098",
+    gender: "w",
+    searchTerms: ["alive", "hugo boss alive", "098"]
+  },
+  {
+    id: "hardcoded-boss-ma-vie-058",
+    title: "Riecht wie... Ma Vie - No. 058",
+    image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Ma_Vie.jpg?v=1770924802",
+    url: "https://magicperfume.co/products/magic-perfume-no-058w",
+    variant: 47306556375364,
+    price: 1199,
+    brand: "Hugo Boss",
+    number: "058",
+    gender: "w",
+    searchTerms: ["ma vie", "hugo boss ma vie", "058"]
+  },
+  {
+    id: "hardcoded-boss-energise-254",
+    title: "Riecht wie... Energise - No. 254",
+    image: "https://magicperfume.co/cdn/shop/files/Hugo_Energise.webp?v=1772142991",
+    url: "https://magicperfume.co/products/magic-perfume-no-254m",
+    variant: 47306556375365,
+    price: 1199,
+    brand: "Hugo Boss",
+    number: "254",
+    gender: "m",
+    searchTerms: ["energise", "hugo boss energise", "254"]
+  },
+
+  // CALVIN KLEIN
+  {
+    id: "hardcoded-ck-eternity-106",
+    title: "Riecht wie... Eternity - No. 106",
+    image: "https://magicperfume.co/cdn/shop/files/Calvin_Klein_Eternity.png?v=1770287215",
+    url: "https://magicperfume.co/products/magic-perfume-no-106w",
+    variant: 47306556375366,
+    price: 1199,
+    brand: "Calvin Klein",
+    number: "106",
+    gender: "w",
+    searchTerms: ["eternity", "calvin klein eternity", "106"]
+  },
+  {
+    id: "hardcoded-ck-eternity-moment-414",
+    title: "Riecht wie... CK Eternity Moment - No. 414",
+    image: "https://magicperfume.co/cdn/shop/files/Eternity_Moment.webp?v=1772138932",
+    url: "https://magicperfume.co/products/magic-perfume-no-414w",
+    variant: 47306556375367,
+    price: 1199,
+    brand: "Calvin Klein",
+    number: "414",
+    gender: "w",
+    searchTerms: ["eternity moment", "ck moment", "414"]
+  },
+  {
+    id: "hardcoded-ck-euphoria-087",
+    title: "Riecht wie... Euphoria Blossom - No. 087",
+    image: "https://magicperfume.co/cdn/shop/files/Euphoria_Blossom.webp?v=1772137112",
+    url: "https://magicperfume.co/products/magic-perfume-no-087w",
+    variant: 47306556375368,
+    price: 1199,
+    brand: "Calvin Klein",
+    number: "087",
+    gender: "w",
+    searchTerms: ["euphoria blossom", "ck euphoria", "087"]
+  },
+  {
+    id: "hardcoded-ck-one-209",
+    title: "Riecht wie... CK One - No. 209",
+    image: "https://magicperfume.co/cdn/shop/files/CK_One.webp?v=1772137544",
+    url: "https://magicperfume.co/products/magic-perfume-no-209m",
+    variant: 47306556375369,
+    price: 1199,
+    brand: "Calvin Klein",
+    number: "209",
+    gender: "m",
+    searchTerms: ["ck one", "calvin klein one", "209"]
+  },
+  {
+    id: "hardcoded-ck-glow-007",
+    title: "Riecht wie... Glow - No. 007",
+    image: "https://magicperfume.co/cdn/shop/files/Glow.webp?v=1772137808",
+    url: "https://magicperfume.co/products/magic-perfume-no-007w",
+    variant: 47306556375370,
+    price: 1199,
+    brand: "Calvin Klein",
+    number: "007",
+    gender: "w",
+    searchTerms: ["glow", "ck glow", "007"]
+  },
+  {
+    id: "hardcoded-ck-women-031",
+    title: "Riecht wie... CK Women - No. 031",
+    image: "https://magicperfume.co/cdn/shop/files/ck_women.webp?v=1772137384",
+    url: "https://magicperfume.co/products/magic-perfume-no-031w",
+    variant: 47306556375371,
+    price: 1199,
+    brand: "Calvin Klein",
+    number: "031",
+    gender: "w",
+    searchTerms: ["ck women", "calvin klein women", "031"]
+  },
+  {
+    id: "hardcoded-ck-be-477",
+    title: "Riecht wie... CK Be - No. 477",
+    image: "https://magicperfume.co/cdn/shop/files/CK_be.webp?v=1772142766",
+    url: "https://magicperfume.co/products/magic-perfume-no-477m",
+    variant: 47306556375372,
+    price: 1199,
+    brand: "Calvin Klein",
+    number: "477",
+    gender: "m",
+    searchTerms: ["ck be", "calvin klein be", "477"]
+  },
+  {
+    id: "hardcoded-ck-euphoria-men-204",
+    title: "Riecht wie... Euphoria Men - No. 204",
+    image: "https://magicperfume.co/cdn/shop/files/Euphoria_Men.webp?v=1772140949",
+    url: "https://magicperfume.co/products/magic-perfume-no-204m",
+    variant: 47306556375373,
+    price: 1199,
+    brand: "Calvin Klein",
+    number: "204",
+    gender: "m",
+    searchTerms: ["euphoria men", "ck euphoria men", "204"]
+  },
+
+  // NARCISO RODRIGUEZ
+  {
+    id: "hardcoded-musc-noir-457",
+    title: "Riecht wie... Musc Noir For Her - No. 457",
+    image: "https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273",
+    url: "https://magicperfume.co/products/magic-perfume-no-457w",
+    variant: 47306572845314,
+    price: 1199,
+    brand: "Narciso Rodriguez",
+    number: "457",
+    gender: "w",
+    searchTerms: ["musc noir", "narciso", "457"]
+  },
+
+  // DOLCE & GABBANA
+  {
+    id: "hardcoded-light-blue-017",
+    title: "Riecht wie... Light Blue - No. 017",
+    image: "https://magicperfume.co/cdn/shop/files/Dolce_Gabbana_Light_Blue.jpg?v=1770290817",
+    url: "https://magicperfume.co/products/magic-perfume-no-017w",
+    variant: 47306556375374,
+    price: 1199,
+    brand: "Dolce & Gabbana",
+    number: "017",
+    gender: "w",
+    searchTerms: ["light blue", "dolce gabbana", "017"]
+  },
+  {
+    id: "hardcoded-the-one-094",
+    title: "Riecht wie... The One - No. 094",
+    image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987",
+    url: "https://magicperfume.co/products/magic-perfume-no-094w",
+    variant: 47306556375375,
+    price: 1199,
+    brand: "Dolce & Gabbana",
+    number: "094",
+    gender: "w",
+    searchTerms: ["the one", "dolce gabbana one", "094"]
+  },
+  {
+    id: "hardcoded-dolci-435",
+    title: "Riecht wie... Dolci - No. 435",
+    image: "https://magicperfume.co/cdn/shop/files/Dolce.webp?v=1772139227",
+    url: "https://magicperfume.co/products/magic-perfume-no-435w",
+    variant: 47306556375376,
+    price: 1199,
+    brand: "Dolce & Gabbana",
+    number: "435",
+    gender: "w",
+    searchTerms: ["dolci", "dolce gabbana dolci", "435"]
+  },
+  {
+    id: "hardcoded-imperatrice-018",
+    title: "Riecht wie... L'Imperatrice 3 - No. 018",
+    image: "https://magicperfume.co/cdn/shop/files/Dolce_7_Gabana.jpg?v=1772095859",
+    url: "https://magicperfume.co/products/magic-perfume-no-018w",
+    variant: 47306556375377,
+    price: 1599,
+    brand: "Dolce & Gabbana",
+    number: "018",
+    gender: "w",
+    searchTerms: ["imperatrice", "limperatrice", "018"]
+  },
+
+  // KENZO
+  {
+    id: "hardcoded-flower-074",
+    title: "Riecht wie... Flower - No. 074",
+    image: "https://magicperfume.co/cdn/shop/files/KENZO_FLOWER.jpg?v=1770925860",
+    url: "https://magicperfume.co/products/magic-perfume-no-074w",
+    variant: 47306556375378,
+    price: 1199,
+    brand: "Kenzo",
+    number: "074",
+    gender: "w",
+    searchTerms: ["flower", "kenzo flower", "074"]
+  },
+
+  // CHLOE
+  {
+    id: "hardcoded-chloe-024",
+    title: "Riecht wie... ÄQUIVALENT - No. 024",
+    image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143",
+    url: "https://magicperfume.co/products/magic-perfume-no-024w",
+    variant: 47306556375379,
+    price: 1199,
+    brand: "Chloé",
+    number: "024",
+    gender: "w",
+    searchTerms: ["chloe", "äquivalent", "024"]
+  },
+  {
+    id: "hardcoded-nomade-049",
+    title: "Riecht wie… Nomade - No. 049",
+    image: "https://magicperfume.co/cdn/shop/files/Chloe_Nomade.jpg",
+    url: "https://magicperfume.co/products/magic-perfume-no-049w",
+    variant: 47306556375380,
+    price: 1199,
+    brand: "Chloé",
+    number: "049",
+    gender: "w",
+    searchTerms: ["nomade", "chloe nomade", "049"]
+  },
+
+  // HERMÈS
+  {
+    id: "hardcoded-terre-227",
+    title: "Riecht wie... Terre - No. 227",
+    image: "https://magicperfume.co/cdn/shop/files/Hermes_Terre_D_Hermes.png?v=1770292407",
+    url: "https://magicperfume.co/products/magic-perfume-no-227m",
+    variant: 47306556375381,
+    price: 1199,
+    brand: "Hermès",
+    number: "227",
+    gender: "m",
+    searchTerms: ["terre", "hermes terre", "227"]
+  },
+
+  // GUCCI
+  {
+    id: "hardcoded-rush-163",
+    title: "Riecht wie... Rush 2 - No. 163",
+    image: "https://magicperfume.co/cdn/shop/files/gucci_rush_8034ec32-d523-4890-b475-fc7c34e77c9e.webp?v=1771658050",
+    url: "https://magicperfume.co/products/magic-perfume-no-163w",
+    variant: 47306556375382,
+    price: 1199,
+    brand: "Gucci",
+    number: "163",
+    gender: "w",
+    searchTerms: ["rush", "gucci rush", "163"]
+  },
+  {
+    id: "hardcoded-envy-me-071",
+    title: "Riecht wie... Envy Me - No. 071",
+    image: "https://magicperfume.co/cdn/shop/files/Gucci_Envy_Me.webp?v=1772135696",
+    url: "https://magicperfume.co/products/magic-perfume-no-071w",
+    variant: 47306556375383,
+    price: 1199,
+    brand: "Gucci",
+    number: "071",
+    gender: "w",
+    searchTerms: ["envy me", "gucci envy", "071"]
+  },
+
+  // SALVATORE FERRAGAMO
+  {
+    id: "hardcoded-deep-red-022",
+    title: "Riecht wie... Deep Red - No. 022",
+    image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Deep_Red.jpg?v=1770922424",
+    url: "https://magicperfume.co/products/magic-perfume-no-022w",
+    variant: 47306556375384,
+    price: 1199,
+    brand: "Salvatore Ferragamo",
+    number: "022",
+    gender: "w",
+    searchTerms: ["deep red", "ferragamo", "022"]
+  },
+
+  // DAVIDOFF
+  {
+    id: "hardcoded-cool-water-200",
+    title: "Riecht wie... Cool Water - No. 200",
+    image: "https://magicperfume.co/cdn/shop/files/Davidoff_Cool_Water.png?v=1770292092",
+    url: "https://magicperfume.co/products/magic-perfume-no-200m",
+    variant: 47306556375385,
+    price: 1199,
+    brand: "Davidoff",
+    number: "200",
+    gender: "m",
+    searchTerms: ["cool water", "davidoff", "200"]
+  },
+
+  // DIESEL
+  {
+    id: "hardcoded-only-the-brave-239",
+    title: "Riecht wie... Only The Brave - No. 239",
+    image: "https://magicperfume.co/cdn/shop/files/Only_The_Brave.webp?v=1772141539",
+    url: "https://magicperfume.co/products/magic-perfume-no-239m",
+    variant: 47306556375386,
+    price: 1199,
+    brand: "Diesel",
+    number: "239",
+    gender: "m",
+    searchTerms: ["only the brave", "diesel", "239"]
+  },
+
+  // CAMPBELL
+  {
+    id: "hardcoded-campbell-056",
+    title: "Riecht wie... Campbell - No. 056",
+    image: "https://magicperfume.co/cdn/shop/files/Campbell.webp?v=1772140165",
+    url: "https://magicperfume.co/products/magic-perfume-no-056w",
+    variant: 47306556375387,
+    price: 2099,
+    brand: "Campbell",
+    number: "056",
+    gender: "w",
+    searchTerms: ["campbell", "naomi campbell", "056"]
+  },
+
+  // JOOP
+  {
+    id: "hardcoded-joop-211",
+    title: "Riecht wie... Joop Homme - No. 211",
+    image: "https://magicperfume.co/cdn/shop/files/Joop_Homme.png?v=1770286089",
+    url: "https://magicperfume.co/products/magic-perfume-no-211m",
+    variant: 47306556375388,
+    price: 1199,
+    brand: "Joop!",
+    number: "211",
+    gender: "m",
+    searchTerms: ["joop", "joop homme", "211"]
+  },
+
+  // ADIDAS
+  {
+    id: "hardcoded-adventure-213",
+    title: "Riecht wie... Adventure - No. 213",
+    image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535",
+    url: "https://magicperfume.co/products/magic-perfume-no-213m",
+    variant: 47306556375389,
+    price: 1199,
+    brand: "Adidas",
+    number: "213",
+    gender: "m",
+    searchTerms: ["adventure", "adidas", "213"]
+  },
+
+  // DOLCE VITA
+  {
+    id: "hardcoded-vita-116",
+    title: "Riecht wie... Vita - No. 116",
+    image: "https://magicperfume.co/cdn/shop/files/Dolce_Vita.webp?v=1772140820",
+    url: "https://magicperfume.co/products/magic-perfume-no-116w",
+    variant: 47306556375390,
+    price: 2099,
+    brand: "Dolce Vita",
+    number: "116",
+    gender: "w",
+    searchTerms: ["vita", "dolce vita", "116"]
+  },
+
+  // CARTIER
+  {
+    id: "hardcoded-la-panthere-421",
+    title: "Riecht wie... La Panthere - No. 421",
+    image: "https://magicperfume.co/cdn/shop/files/La_Panthere.webp?v=1772141818",
+    url: "https://magicperfume.co/products/magic-perfume-no-421w",
+    variant: 47306556375391,
+    price: 1199,
+    brand: "Cartier",
+    number: "421",
+    gender: "w",
+    searchTerms: ["la panthere", "cartier", "421"]
+  },
+
+  // OTHERS
+  {
+    id: "hardcoded-the-only-one-032",
+    title: "Riecht wie... The Only One - No. 032",
+    image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987",
+    url: "https://magicperfume.co/products/magic-perfume-no-032w",
+    variant: 47306556375392,
+    price: 1199,
+    brand: "The Only One",
+    number: "032",
+    gender: "w",
+    searchTerms: ["the only one", "032"]
+  },
+  {
+    id: "hardcoded-obsession-night-028",
+    title: "Riecht wie... Obsession Night WOMAN - No. 028",
+    image: "https://magicperfume.co/cdn/shop/files/Obsession_Night_Woman.webp?v=1772136464",
+    url: "https://magicperfume.co/products/magic-perfume-no-028w",
+    variant: 47306556375393,
+    price: 1199,
+    brand: "Obsession",
+    number: "028",
+    gender: "w",
+    searchTerms: ["obsession night", "028"]
+  },
+  {
+    id: "hardcoded-fruity-floral-488",
+    title: "No. 488 – Fruity Floral",
+    image: "https://magicperfume.co/cdn/shop/files/aventus.webp?v=1772533006",
+    url: "https://magicperfume.co/products/magic-perfume-no-488w",
+    variant: 47306556375394,
+    price: 1199,
+    brand: "Fruity Floral",
+    number: "488",
+    gender: "w",
+    searchTerms: ["fruity floral", "488"]
+  },
+  {
+    id: "hardcoded-dione-008",
+    title: "Riecht wie... Dione - No. 008",
+    image: "https://magicperfume.co/cdn/shop/files/MagicPerfume-79-300x300.png?v=1769157021",
+    url: "https://magicperfume.co/products/magic-perfume-no-008w",
+    variant: 47306556375395,
+    price: 1199,
+    brand: "Dione",
+    number: "008",
+    gender: "w",
+    searchTerms: ["dione", "008"]
+  },
+  {
+    id: "hardcoded-q-340",
+    title: "Riecht wie... Q - No. 340",
+    image: "https://magicperfume.co/cdn/shop/files/Q_EDP.webp?v=1772143999",
+    url: "https://magicperfume.co/products/magic-perfume-no-340m",
+    variant: 47306556375396,
+    price: 1199,
+    brand: "Q",
+    number: "340",
+    gender: "m",
+    searchTerms: ["q", "340"]
+  },
+  {
+    id: "hardcoded-rose-tangerine-097",
+    title: "Riecht wie... Rose Tangerine - No. 097",
+    image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143",
+    url: "https://magicperfume.co/products/magic-perfume-no-097w",
+    variant: 47306556375397,
+    price: 1199,
+    brand: "Rose Tangerine",
+    number: "097",
+    gender: "w",
+    searchTerms: ["rose tangerine", "097"]
+  },
       {
         catalogNames: ['one million lucky', '1 million lucky', 'million lucky', 'lucky one million'],
         productNumber: '280',
