@@ -218,6 +218,7 @@
     },
     "similar_scents_yKQPJb": {
       "type": "similar-scents",
+      "disabled": true,
       "name": "Similar Scents",
       "settings": {
         "background_color": "#f7f7f7",
