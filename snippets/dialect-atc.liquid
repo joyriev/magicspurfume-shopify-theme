@@ -3,58 +3,58 @@
   assign selected_variant = product.selected_or_first_available_variant
 %}
 
-{% comment %} {% if product.metafields.custom.similar_scents != blank %}
-    <div class="mt-4 pt-4 border-0 border-t border-solid border-gray-200">
-      <p class="mt-0 text-[10px] font-serif text-center leading-tight">Parfums mit ähnlichen Duftnoten</p>
-      {% assign similar_scents = product.metafields.custom.similar_scents.value %}
-      <div class="swiper slider-{{ section.id }}-{{ forloop.index }}">
-        <div class="swiper-wrapper">
-          {% for similar_scent in similar_scents %}
-            <div class="swiper-slide">
-              <div class="flex flex-col md:flex-row gap-2 items-center">
-                <img
-                  class="object-cover border border-solid border-gray-200"
-                  height="60"
-                  width="60"
-                  src="{{ similar_scent.image | image_url: width: 100 }}"
-                  alt="{{ similar_scent.title }}">
-                <div class="text-center md:text-left">
-                  <div class="text-sm font-semibold text-black line-clamp-1">
-                    {{ similar_scent.title }}
-                  </div>
-                  <div class="text-sm font-bold text-gray-600 my-1">
-                    {{ similar_scent.price.value | money }}
-                  </div>
-                  <div class="text-[10px] leading-none {% if similar_scent.similarity == 'Perfekte Übereinstimmung' %}text-green-600{% else %} text-yellow-600 {% endif %}">
-                    {{ similar_scent.similarity }}
-                  </div>
-                </div>
+{% if product.metafields.custom.similar_scents != blank %}
+  <p class="text-base font-serif leading-tight">Parfums mit ähnlichen Duftnoten:</p>
+  {% assign similar_scents = product.metafields.custom.similar_scents.value %}
+  <div class="swiper slider-{{ section.id }}-{{ forloop.index }}">
+    <div class="swiper-wrapper">
+      {% for similar_scent in similar_scents %}
+        <div class="swiper-slide">
+          <div class="flex gap-2 items-center p-3 bg-white rounded-lg">
+            <img
+              class="object-cover border border-solid border-gray-200"
+              height="60"
+              width="60"
+              src="{{ similar_scent.image | image_url: width: 100 }}"
+              alt="{{ similar_scent.title }}">
+            <div class="text-left">
+              <div class="text-sm font-semibold text-black line-clamp-1">
+                {{ similar_scent.title }}
+              </div>
+              <div class="text-sm text-gray-600 my-1">
+                {{ similar_scent.price.value | money }}
+              </div>
+              <div class="text-[10px] leading-none {% if similar_scent.similarity == 'Ähnliche Notizen' %}text-green-600{% else %} text-yellow-600 {% endif %}">
+                {{ similar_scent.similarity }}
               </div>
             </div>
-          {% endfor %}
+          </div>
         </div>
-        <button class="swiper-button-next p-0 !size-7 !right-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
-        <button class="swiper-button-prev p-0 !size-7 !left-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
-      </div>
+      {% endfor %}
     </div>
-    <script>
-              document.addEventListener('DOMContentLoaded', function() {
-                  new Swiper('.slider-{{ section.id }}-{{ forloop.index }}', {
-                      slidesPerView: 1,
-                      spaceBetween: 10,
-                      loop: true,
-                      navigation: {
-                          nextEl: '.swiper-button-next',
-                          prevEl: '.swiper-button-prev',
-                      },
-                  });
-              });
-    </script>
-{% endif %} {% endcomment %}
-
-<p class="text-base">
-  Eine leuchtende Mischung aus Rosa und Orange. Romantisch und verführerisch.
-</p>
+    <button class="swiper-button-next p-0 !size-7 !right-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
+    <button class="swiper-button-prev p-0 !size-7 !left-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm after:text-black after:!text-xs"></button>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        new Swiper('.slider-{{ section.id }}-{{ forloop.index }}', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            loop: true,
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 10,
+                }
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+  </script>
+{% endif %}
 
 {% assign selling_points = product.metafields.custom.bullets.value %}
 {% if selling_points %}
