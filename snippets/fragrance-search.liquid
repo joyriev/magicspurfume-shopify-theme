@@ -919,9 +919,29 @@
 </div>
 
 <script>
-(function() {
-  'use strict';
-  try {
+// ===== DEFINE TOGGLE FUNCTION FIRST (OUTSIDE TRY-CATCH FOR RELIABILITY) =====
+window.fcToggleSearch = function() {
+  const searchPopup = document.getElementById('fcSearchPopup');
+  const searchInput = document.getElementById('fcSearchInput');
+  
+  if (!searchPopup || !searchInput) {
+    console.warn('Fragrance Search popup elements not found');
+    return;
+  }
+  
+  if (searchPopup.classList.contains('active')) {
+    searchPopup.classList.remove('active');
+  } else {
+    searchPopup.classList.add('active');
+    searchInput.focus();
+    if (window.fetchCartAndUpdate) {
+      window.fetchCartAndUpdate();
+    }
+  }
+};
+
+try {
+  (function() {
     // ===== YOUR SHOPIFY PRODUCTS =====
   let fcProducts = [];
   let currentView = 'search';
@@ -944,17 +964,6 @@
   const offerProgress = document.getElementById('fcOfferProgress');
   const offerMessage = document.getElementById('fcOfferMessage');
   const offerSubtext = document.getElementById('fcOfferSubtext');
-
-  // ===== TOGGLE POPUP (EARLY DEFINITION FOR ONCLICK HANDLERS) =====
-  window.fcToggleSearch = function() {
-    if (searchPopup.classList.contains('active')) {
-      searchPopup.classList.remove('active');
-    } else {
-      searchPopup.classList.add('active');
-      searchInput.focus();
-      fetchCartAndUpdate();
-    }
-  };
 
   // ===== COMBINE ALL PERFUME CATALOGS =====
   let allPerfumes = [];
@@ -4797,7 +4806,7 @@
   }
 
   // ===== FETCH CART AND UPDATE COUNT =====
-  function fetchCartAndUpdate() {
+  window.fetchCartAndUpdate = function() {
     return fetch('/cart.js')
       .then(response => response.json())
       .then(cart => {
@@ -4811,7 +4820,7 @@
         console.error('Fehler beim Abrufen des Warenkorbs:', error);
         return { item_count: 0 };
       });
-  }
+  };
 
   // ===== ADD TO CART - MODIFIED TO NOT CLOSE POPUP =====
   window.fcAddToCart = function(variantId) {
@@ -5006,8 +5015,8 @@
       e.stopPropagation();
     });
   });
-  } catch (error) {
-    console.error('Fragrance Search Error:', error);
-  }
-})(); 
+  })(); // Close and invoke IIFE
+} catch (error) {
+  console.error('Fragrance Search Error:', error);
+}
 </script>
