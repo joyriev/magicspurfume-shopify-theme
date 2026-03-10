@@ -943,6 +943,17 @@
   const offerMessage = document.getElementById('fcOfferMessage');
   const offerSubtext = document.getElementById('fcOfferSubtext');
 
+  // ===== TOGGLE POPUP (EARLY DEFINITION FOR ONCLICK HANDLERS) =====
+  window.fcToggleSearch = function() {
+    if (searchPopup.classList.contains('active')) {
+      searchPopup.classList.remove('active');
+    } else {
+      searchPopup.classList.add('active');
+      searchInput.focus();
+      fetchCartAndUpdate();
+    }
+  };
+
   // ===== COMBINE ALL PERFUME CATALOGS =====
   let allPerfumes = [];
 
@@ -4782,17 +4793,6 @@
       offerBanner.classList.remove('qualified');
     }
   }
-
-  // ===== TOGGLE POPUP =====
-  window.fcToggleSearch = function() {
-    if (searchPopup.classList.contains('active')) {
-      searchPopup.classList.remove('active');
-    } else {
-      searchPopup.classList.add('active');
-      searchInput.focus();
-      fetchCartAndUpdate();
-    }
-  };
 
   // ===== FETCH CART AND UPDATE COUNT =====
   function fetchCartAndUpdate() {
