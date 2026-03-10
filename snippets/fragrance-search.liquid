@@ -920,7 +920,9 @@
 
 <script>
 (function() {
-  // ===== YOUR SHOPIFY PRODUCTS =====
+  'use strict';
+  try {
+    // ===== YOUR SHOPIFY PRODUCTS =====
   let fcProducts = [];
   let currentView = 'search';
   let currentSearchQuery = '';
@@ -4731,15 +4733,15 @@
           description: {{ product.description | strip_html | json }},
           metafields: {
             perfume: {
-              top_notes: {{ product.metafields.perfume.top_notes | default: '' | json }},
-              middle_notes: {{ product.metafields.perfume.middle_notes | default: '' | json }},
-              base_notes: {{ product.metafields.perfume.base_notes | default: '' | json }}
+              top_notes: {{ product.metafields.perfume.top_notes | default: 'null' | json }} || '',
+              middle_notes: {{ product.metafields.perfume.middle_notes | default: 'null' | json }} || '',
+              base_notes: {{ product.metafields.perfume.base_notes | default: 'null' | json }} || ''
             },
             custom: {
-              top_notes: {{ product.metafields.custom.top_notes | default: '' | json }},
-              middle_notes: {{ product.metafields.custom.middle_notes | default: '' | json }},
-              base_notes: {{ product.metafields.custom.base_notes | default: '' | json }},
-              nuta: {{ product.metafields.custom.nuta | default: '' | json }}
+              top_notes: {{ product.metafields.custom.top_notes | default: 'null' | json }} || '',
+              middle_notes: {{ product.metafields.custom.middle_notes | default: 'null' | json }} || '',
+              base_notes: {{ product.metafields.custom.base_notes | default: 'null' | json }} || '',
+              nuta: {{ product.metafields.custom.nuta | default: 'null' | json }} || ''
             }
           }
         }{% unless forloop.last %},{% endunless %}
@@ -5004,6 +5006,8 @@
       e.stopPropagation();
     });
   });
-
+  } catch (error) {
+    console.error('Fragrance Search Error:', error);
+  }
 })(); 
 </script>
