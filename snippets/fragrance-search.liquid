@@ -2949,30 +2949,47 @@
       
       html += '</div>';
     } else {
-      // Fallback - show products from same brand
+      // Fallback - show products from same brand with gender matching
       html += `<div class="fc-subsection-title">Das könnte dir gefallen</div>`;
       html += '<div class="fc-grid-2col">';
       
       const brandProducts = findProductsByBrand(perfume.brand);
-      if (brandProducts.length >= 2) {
-        html += renderProductCard(brandProducts[0], 'Empfohlen');
-        html += renderProductCard(brandProducts[1], 'Das könnte dir auch gefallen');
-      } else if (brandProducts.length === 1) {
-        html += renderProductCard(brandProducts[0], 'Empfohlen');
-        // Add a random product as second
-        const randomProduct = fcProducts.find(p => p.id !== brandProducts[0].id);
-        if (randomProduct) {
-          html += renderProductCard(randomProduct, 'Das könnte dir auch gefallen');
-        }
-      } else {
-        // Absolute fallback - show random products
-        const randomProducts = [...fcProducts].sort(() => 0.5 - Math.random()).slice(0, 2);
-        if (randomProducts.length >= 1) {
-          html += renderProductCard(randomProducts[0], 'Empfohlen');
-        }
-        if (randomProducts.length >= 2) {
-          html += renderProductCard(randomProducts[1], 'Das könnte dir auch gefallen');
-        }
+      let displayIndex = 0;
+      
+      // Filter by gender if possible
+      let genderFilteredProducts = brandProducts;
+      if (perfume.gender) {
+        genderFilteredProducts = brandProducts.filter(p => {
+          const titleLower = p.title.toLowerCase();
+          const perfumeLower = perfume.gender.toLowerCase();
+          
+          if (perfumeLower.includes('male') || perfumeLower.includes('homme')) {
+            return titleLower.includes('homme') || titleLower.includes('for him');
+          } else if (perfumeLower.includes('female') || perfumeLower.includes('femme')) {
+            return titleLower.includes('femme') || titleLower.includes('for her');
+          }
+          return true;
+        });
+      }
+      
+      // Show only products from same brand, gender-matched (no random fallback)
+      if (genderFilteredProducts.length >= 1) {
+        html += renderProductCard(genderFilteredProducts[0], 'Empfohlen');
+        displayIndex++;
+      }
+      if (genderFilteredProducts.length >= 2) {
+        html += renderProductCard(genderFilteredProducts[1], 'Das könnte dir auch gefallen');
+        displayIndex++;
+      }
+      
+      // Only fill empty grid if we have matching products
+      if (displayIndex === 0) {
+        // No products from same brand found
+        html += `<div class="fc-product-card" style="visibility: hidden;"></div>`;
+      }
+      if (displayIndex === 1) {
+        // Only one product found, leave second slot empty
+        html += `<div class="fc-product-card" style="visibility: hidden;"></div>`;
       }
       
       html += '</div>';
@@ -3031,6 +3048,23 @@
     
     content.innerHTML = html;
   };
+
+  // ===== HARDCODED "YOU MIGHT LIKE IT" RECOMMENDATIONS (EMPTY - USER WILL PROVIDE) =====
+  const hardcodedRecommendations = {
+    // Placeholder format: '288': '252' means product 288 recommends product 252
+    // User will fill in with: '040': '196', etc.
+  };
+
+  // ===== UTILITY: GET PRODUCT BY NUMBER =====
+  function getProductByNumber(number) {
+    return fcProducts.find(p => {
+      const numberMatch = p.title.match(/No\.?\s*(\d+)/i);
+      if (numberMatch) {
+        return numberMatch[1] === number || numberMatch[1] === number.padStart(3, '0');
+      }
+      return false;
+    });
+  }
 
   // ===== TWO-LAYER MATCHING SYSTEM =====
   function findMatchingShopifyProduct(perfume) {
@@ -3160,28 +3194,59 @@
     );
   }
 
-  // ===== FIND SIMILAR PRODUCT =====
+  // ===== FIND SIMILAR PRODUCT (WITH GENDER MATCHING & HARDCODED RECOMMENDATIONS) =====
   function findSimilarProduct(perfume, excludeId) {
     if (!perfume || !fcProducts.length) return null;
     
-    // First try: same brand
-    const sameBrand = fcProducts.find(p => 
-      p.id !== excludeId && 
-      p.title.toLowerCase().includes(perfume.brand.toLowerCase())
-    );
+    // Extract product number from the matched shopify product
+    let productNumber = null;
+    const shopifyProduct = fcProducts.find(p => p.id === excludeId);
+    if (shopifyProduct) {
+      const numberMatch = shopifyProduct.title.match(/No\.?\s*(\d+)/i);
+      if (numberMatch) {
+        productNumber = numberMatch[1];
+      }
+    }
     
-    if (sameBrand) return sameBrand;
+    // FIRST: Check hardcoded recommendations
+    if (productNumber && hardcodedRecommendations[productNumber]) {
+      const recNumber = hardcodedRecommendations[productNumber];
+      const recommendedProduct = getProductByNumber(recNumber);
+      if (recommendedProduct && recommendedProduct.id !== excludeId) {
+        return recommendedProduct;
+      }
+    }
     
-    // Second try: similar gender
-    if (perfume.gender) {
-      const genderIndicator = perfume.gender === 'Female' ? ['w', 'woman'] : ['m', 'man', 'homme'];
-      const sameGender = fcProducts.find(p => {
-        if (p.id === excludeId) return false;
-        const titleLower = p.title.toLowerCase();
-        return genderIndicator.some(ind => titleLower.includes(ind));
-      });
+    // SECOND: Same brand + gender matching
+    if (perfume.brand) {
+      const sameBrandProducts = fcProducts.filter(p => 
+        p.id !== excludeId && 
+        p.title.toLowerCase().includes(perfume.brand.toLowerCase())
+      );
       
-      if (sameGender) return sameGender;
+      // Filter by gender if we can determine it
+      let genderFiltered = sameBrandProducts;
+      if (perfume.gender) {
+        genderFiltered = sameBrandProducts.filter(p => {
+          const titleLower = p.title.toLowerCase();
+          const perfumeLower = perfume.gender.toLowerCase();
+          
+          // Match gender indicators
+          if (perfumeLower.includes('male') || perfumeLower.includes('homme') || perfumeLower.includes('m ')) {
+            return titleLower.includes('homme') || titleLower.includes('for him') || titleLower.match(/\bm\b/i);
+          } else if (perfumeLower.includes('female') || perfumeLower.includes('femme') || perfumeLower.includes('for her')) {
+            return titleLower.includes('femme') || titleLower.includes('for her') || titleLower.includes('women');
+          } else if (perfumeLower.includes('unisex') || perfumeLower.includes('unisexe')) {
+            return true; // Unisex works with all
+          }
+          return true; // Default to any if can't determine
+        });
+      }
+      
+      // Return first gender-matching product from same brand
+      if (genderFiltered.length > 0) {
+        return genderFiltered[0];
+      }
     }
     
     return null;
