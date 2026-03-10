@@ -21,6 +21,10 @@
     visibility: visible
 }
 
+.fixed {
+    position: fixed
+}
+
 .absolute {
     position: absolute
 }
@@ -488,16 +492,16 @@
     max-width: 250px
 }
 
+.max-w-\[500px\] {
+    max-width: 500px
+}
+
 .max-w-\[600px\] {
     max-width: 600px
 }
 
 .max-w-\[60px\] {
     max-width: 60px
-}
-
-.max-w-\[700px\] {
-    max-width: 700px
 }
 
 .flex-1 {
@@ -1474,6 +1478,10 @@
     color: rgb(255 255 255 / 0.5)
 }
 
+.underline {
+    text-decoration-line: underline
+}
+
 .line-through {
     text-decoration-line: line-through
 }
@@ -1530,6 +1538,11 @@
 
 .outline {
     outline-style: solid
+}
+
+.drop-shadow {
+    --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .drop-shadow-sm {
