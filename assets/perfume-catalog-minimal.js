@@ -569,7 +569,7 @@ window.PerfumeCatalog = {
     {
       id: "mugler_angel",
       name: "Angel Mugler",
-      brand: "Mugler",
+      brand: "Thierry Mugler",
       image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_1992.png?v=1770293282",
       top_notes: ["Zuckerwatte", "Bergamotte", "Ananas", "Kokosnuss"],
       heart_notes: ["Honig", "Rote Beeren", "Pfirsich", "Pflaume", "Aprikose"],
@@ -588,7 +588,7 @@ window.PerfumeCatalog = {
     {
       id: "mugler_angel_nova",
       name: "Angel Nova Mugler",
-      brand: "Mugler",
+      brand: "Thierry Mugler",
       image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_Nova.webp?v=1771649097",
       top_notes: ["Himbeere", "Litschi", "Bergamotte"],
       heart_notes: ["Rose", "Damascus-Rose", "Jasmin"],
@@ -607,7 +607,7 @@ window.PerfumeCatalog = {
     {
       id: "mugler_a_men",
       name: "A*Men Mugler",
-      brand: "Mugler",
+      brand: "Thierry Mugler",
       image: "https://magicperfume.co/cdn/shop/files/A_Men.webp?v=1772141383",
       top_notes: ["Minze", "Lavendel", "Koriander"],
       heart_notes: ["Honig", "Karamell", "Patschuli"],
