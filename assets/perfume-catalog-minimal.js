@@ -1384,7 +1384,7 @@ window.PerfumeCatalog = {
       id: "chanel_allure_homme_sport",
       name: "Allure Homme Sport Chanel",
       brand: "Chanel",
-      image: "https://magicperfume.co/cdn/shop/files/allure_homme_sport.webp",
+      image: "https://magicperfume.co/cdn/shop/files/Allure_Homme_Sport.png?v=1770580571",
       top_notes: ["Mandarine", "Zitrone", "Bergamotte"],
       heart_notes: ["Pfeffer", "Zeder", "Meeresnoten"],
       base_notes: ["Moschus", "Amber", "Tonkabohne"],
