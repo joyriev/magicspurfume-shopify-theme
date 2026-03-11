@@ -1265,7 +1265,13 @@ window.fcToggleSearch = function() {
         if (product.searchTerms) {
           for (const term of product.searchTerms) {
             const termLower = term.toLowerCase();
-            if (termLower.includes(variant) || variant.includes(termLower)) {
+            // Exact searchTerm match (e.g., query "ck" matches searchTerm "ck")
+            if (termLower === variant) {
+              bestScore = Math.max(bestScore, 160);  // Boost to highest (higher than number match)
+              matchReasons.push('exact-search-term');
+            }
+            // Partial searchTerm match
+            else if (termLower.includes(variant) || variant.includes(termLower)) {
               bestScore = Math.max(bestScore, 95);
               matchReasons.push('search-term-match');
             }
