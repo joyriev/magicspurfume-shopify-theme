@@ -3118,7 +3118,7 @@ try {
       return html;
     }
 
-    // ===== SHOW PERFUME DETAIL WITH TWO-LAYER MATCHING SYSTEM =====
+    // ===== FIXED: SHOW PERFUME DETAIL WITH SAME-BRAND RECOMMENDATIONS =====
     window.fcShowPerfumeDetail = function(perfumeId) {
       const perfume = findPerfumeById(perfumeId);
       if (!perfume) return;
@@ -3126,7 +3126,7 @@ try {
       currentView = 'detail';
       steps.style.display = 'none';
       
-      // Find matching Shopify product using two-layer system
+      // Find matching Shopify product
       const shopifyProduct = findMatchingShopifyProduct(perfume);
       
       let html = `
@@ -3140,22 +3140,18 @@ try {
         // RECOMMENDED: The found Shopify product
         html += renderProductCard(shopifyProduct, 'Empfohlen');
         
-        // YOU MIGHT LIKE IT: Find a similar product from same brand with gender matching
+        // YOU MIGHT LIKE IT: Find a similar product from SAME BRAND with gender matching
         const similarProduct = findSimilarProduct(perfume, shopifyProduct.id);
         if (similarProduct) {
           html += renderProductCard(similarProduct, 'Das könnte dir auch gefallen');
         } else {
-          // Fallback to random product
-          const otherProducts = fcProducts.filter(p => p.id !== shopifyProduct.id);
-          if (otherProducts.length > 0) {
-            const randomProduct = otherProducts[Math.floor(Math.random() * otherProducts.length)];
-            html += renderProductCard(randomProduct, 'Das könnte dir auch gefallen');
-          }
+          // Show empty card instead of random product
+          html += `<div class="fc-product-card" style="visibility: hidden;"></div>`;
         }
         
         html += '</div>';
       } else {
-        // Fallback - show products from same brand with gender matching
+        // Fallback - show products from same brand with strict gender matching
         html += `<div class="fc-subsection-title">Das könnte dir gefallen</div>`;
         html += '<div class="fc-grid-2col">';
         
@@ -3166,14 +3162,14 @@ try {
         // Gender detection functions
         const isMale = (text) => {
           const t = text.toLowerCase();
-          return t.includes('m)') || t.includes('-m') || t.includes('for him') || 
-                 t.includes('homme') || t.includes('men') || t.includes('man');
+          return t.includes('(m)') || t.includes('-m') || t.includes(' for him') || 
+                 t.includes(' homme') || t.includes(' men') || t.includes(' man');
         };
         
         const isFemale = (text) => {
           const t = text.toLowerCase();
-          return t.includes('w)') || t.includes('-w') || t.includes('for her') || 
-                 t.includes('femme') || t.includes('women') || t.includes('woman');
+          return t.includes('(w)') || t.includes('-w') || t.includes(' for her') || 
+                 t.includes(' femme') || t.includes(' women') || t.includes(' woman');
         };
         
         // Filter products by gender based on original perfume
@@ -3182,18 +3178,15 @@ try {
         if (perfume.gender) {
           const perfumeGender = perfume.gender.toLowerCase();
           
-          if (perfumeGender.includes('male') || perfumeGender.includes('homme')) {
-            // Show men's products
+          if (perfumeGender.includes('male') || perfumeGender.includes('m')) {
             genderFilteredProducts = brandProducts.filter(p => isMale(p.title));
             console.log(`   ${genderFilteredProducts.length} Herrenprodukte gefiltert`);
           } 
-          else if (perfumeGender.includes('female') || perfumeGender.includes('femme')) {
-            // Show women's products
+          else if (perfumeGender.includes('female') || perfumeGender.includes('w')) {
             genderFilteredProducts = brandProducts.filter(p => isFemale(p.title));
             console.log(`   ${genderFilteredProducts.length} Damenprodukte gefiltert`);
           }
           else {
-            // Unisex or unknown - show all
             genderFilteredProducts = brandProducts;
           }
         } else {
@@ -3203,42 +3196,24 @@ try {
         // Remove the current product if it's in the list
         genderFilteredProducts = genderFilteredProducts.filter(p => p.id !== shopifyProduct?.id);
         
-        // Show first two gender-matched products
+        // Show first gender-matched product
         if (genderFilteredProducts.length >= 1) {
           html += renderProductCard(genderFilteredProducts[0], 'Empfohlen');
         } else {
           html += `<div class="fc-product-card" style="visibility: hidden;"></div>`;
         }
         
+        // Show second gender-matched product OR leave empty
         if (genderFilteredProducts.length >= 2) {
           html += renderProductCard(genderFilteredProducts[1], 'Das könnte dir auch gefallen');
-        } else if (genderFilteredProducts.length === 1) {
-          // Only one product found, try to find another product from same brand (any gender)
-          const otherBrandProducts = brandProducts.filter(p => p.id !== genderFilteredProducts[0].id && p.id !== shopifyProduct?.id);
-          if (otherBrandProducts.length > 0) {
-            html += renderProductCard(otherBrandProducts[0], 'Das könnte dir auch gefallen');
-          } else {
-            html += `<div class="fc-product-card" style="visibility: hidden;"></div>`;
-          }
         } else {
-          // No gender-matched products, show any brand products
-          const anyBrandProducts = brandProducts.filter(p => p.id !== shopifyProduct?.id);
-          if (anyBrandProducts.length >= 2) {
-            html += renderProductCard(anyBrandProducts[0], 'Empfohlen');
-            html += renderProductCard(anyBrandProducts[1], 'Das könnte dir auch gefallen');
-          } else if (anyBrandProducts.length === 1) {
-            html += renderProductCard(anyBrandProducts[0], 'Empfohlen');
-            html += `<div class="fc-product-card" style="visibility: hidden;"></div>`;
-          } else {
-            html += `<div class="fc-product-card" style="visibility: hidden;"></div>`;
-            html += `<div class="fc-product-card" style="visibility: hidden;"></div>`;
-          }
+          html += `<div class="fc-product-card" style="visibility: hidden;"></div>`;
         }
         
         html += '</div>';
       }
       
-      // Show catalog perfume details
+      // Show catalog perfume details (keep the rest the same)
       html += `
         <div class="fc-detailed-view">
           <div class="fc-detailed-header">
@@ -3437,102 +3412,91 @@ try {
       );
     }
 
-    // ===== FIND SIMILAR PRODUCT WITH PROPER GENDER MATCHING =====
+    // ===== FIXED: FIND SIMILAR PRODUCT WITH STRICT SAME-BRAND + GENDER MATCHING =====
     function findSimilarProduct(perfume, excludeId) {
       if (!perfume || !fcProducts.length) return null;
       
-      // Extract product number from the matched shopify product
-      let productNumber = null;
-      const shopifyProduct = fcProducts.find(p => p.id === excludeId);
-      if (shopifyProduct) {
-        const numberMatch = shopifyProduct.title.match(/No\.?\s*(\d+)/i);
-        if (numberMatch) {
-          productNumber = numberMatch[1];
-        }
-      }
+      console.log(`🔍 Finde ähnliches Produkt für: ${perfume.name} (Brand: ${perfume.brand}, Gender: ${perfume.gender})`);
       
-      // Determine gender from perfume
-      let perfumeGender = '';
-      if (perfume.gender) {
-        perfumeGender = perfume.gender.toLowerCase();
-      }
-      
-      console.log(`🔍 Finde ähnliches Produkt für: ${perfume.name} (Gender: ${perfumeGender})`);
-      
-      // Find products from same brand
+      // ===== STEP 1: ONLY look at products from the SAME BRAND =====
       if (perfume.brand) {
         const brandLower = perfume.brand.toLowerCase();
         
-        // Get all products from same brand
+        // Get ALL products from same brand
         const sameBrandProducts = fcProducts.filter(p => {
           if (p.id === excludeId) return false;
           
           const titleLower = p.title.toLowerCase();
           
-          // Check if product belongs to same brand
+          // Check if product belongs to same brand (case insensitive)
           return titleLower.includes(brandLower) || 
                  (p.metafields?.custom?.nuta && p.metafields.custom.nuta.toLowerCase().includes(brandLower));
         });
         
         console.log(`   Gefunden: ${sameBrandProducts.length} Produkte von ${perfume.brand}`);
         
-        // If we have products from same brand, filter by gender
-        if (sameBrandProducts.length > 0) {
+        // If no same-brand products found, return null (don't show random products)
+        if (sameBrandProducts.length === 0) {
+          console.log(`   ⚠️ Keine Produkte von ${perfume.brand} gefunden`);
+          return null;
+        }
+        
+        // ===== STEP 2: Strict gender detection functions =====
+        const isMale = (text) => {
+          const t = text.toLowerCase();
+          return t.includes('(m)') || t.includes('-m') || t.includes(' for him') || 
+                 t.includes(' homme') || t.includes(' men') || t.includes(' man') ||
+                 t.includes('m -') || t.includes('m)');
+        };
+        
+        const isFemale = (text) => {
+          const t = text.toLowerCase();
+          return t.includes('(w)') || t.includes('-w') || t.includes(' for her') || 
+                 t.includes(' femme') || t.includes(' women') || t.includes(' woman') ||
+                 t.includes('w -') || t.includes('w)');
+        };
+        
+        // ===== STEP 3: Filter by gender based on original perfume =====
+        let genderFilteredProducts = [];
+        const perfumeGender = perfume.gender ? perfume.gender.toLowerCase() : '';
+        
+        // Original perfume is MEN'S
+        if (perfumeGender.includes('male') || perfumeGender.includes('m') || perfumeGender.includes('homme')) {
+          genderFilteredProducts = sameBrandProducts.filter(p => isMale(p.title));
+          console.log(`   ${genderFilteredProducts.length} Herrenprodukte von ${perfume.brand} gefunden`);
           
-          // Gender mapping for better matching
-          const isMale = (text) => {
-            const t = text.toLowerCase();
-            return t.includes('m)') || t.includes('-m') || t.includes('for him') || 
-                   t.includes('homme') || t.includes('men') || t.includes('man');
-          };
-          
-          const isFemale = (text) => {
-            const t = text.toLowerCase();
-            return t.includes('w)') || t.includes('-w') || t.includes('for her') || 
-                   t.includes('femme') || t.includes('women') || t.includes('woman');
-          };
-          
-          // Filter by gender based on original perfume
-          if (perfumeGender.includes('male') || perfumeGender.includes('homme') || perfumeGender.includes('m')) {
-            // Original is men's perfume - show men's products
-            const maleProducts = sameBrandProducts.filter(p => isMale(p.title));
-            if (maleProducts.length > 0) {
-              console.log(`   ✅ ${maleProducts.length} Herrenprodukte gefunden`);
-              return maleProducts[0];
-            }
-          } 
-          else if (perfumeGender.includes('female') || perfumeGender.includes('femme') || perfumeGender.includes('w')) {
-            // Original is women's perfume - show women's products
-            const femaleProducts = sameBrandProducts.filter(p => isFemale(p.title));
-            if (femaleProducts.length > 0) {
-              console.log(`   ✅ ${femaleProducts.length} Damenprodukte gefunden`);
-              return femaleProducts[0];
-            }
+          if (genderFilteredProducts.length > 0) {
+            return genderFilteredProducts[0]; // Return first men's product from same brand
           }
-          else if (perfumeGender.includes('unisex')) {
-            // Unisex - show any product from same brand
-            if (sameBrandProducts.length > 0) {
-              console.log(`   ✅ Unisex - zeige erstes Produkt der Marke`);
-              return sameBrandProducts[0];
-            }
-          }
+        }
+        // Original perfume is WOMEN'S
+        else if (perfumeGender.includes('female') || perfumeGender.includes('w') || perfumeGender.includes('femme')) {
+          genderFilteredProducts = sameBrandProducts.filter(p => isFemale(p.title));
+          console.log(`   ${genderFilteredProducts.length} Damenprodukte von ${perfume.brand} gefunden`);
           
-          // If no gender-specific products found, return any product from same brand
+          if (genderFilteredProducts.length > 0) {
+            return genderFilteredProducts[0]; // Return first women's product from same brand
+          }
+        }
+        // Original perfume is UNISEX
+        else if (perfumeGender.includes('unisex')) {
+          // For unisex, prefer same brand products (any gender)
           if (sameBrandProducts.length > 0) {
-            console.log(`   ⚠️ Keine gender-spezifischen Produkte, zeige beliebiges Produkt der Marke`);
+            console.log(`   ✅ Unisex - zeige erstes Produkt von ${perfume.brand}`);
             return sameBrandProducts[0];
           }
         }
+        
+        // ===== STEP 4: If no gender-matched products, try ANY product from same brand =====
+        if (sameBrandProducts.length > 0) {
+          console.log(`   ⚠️ Keine gender-spezifischen Produkte, zeige beliebiges Produkt von ${perfume.brand}`);
+          return sameBrandProducts[0];
+        }
       }
       
-      // Fallback: Random product
-      console.log('   ⚠️ Keine Produkte von gleicher Marke, zeige beliebiges Produkt');
-      
-      const otherProducts = fcProducts.filter(p => p.id !== excludeId);
-      if (otherProducts.length > 0) {
-        return otherProducts[Math.floor(Math.random() * otherProducts.length)];
-      }
-      
+      // ===== STEP 5: ABSOLUTELY NO RANDOM PRODUCTS =====
+      // Return null instead of random product - better to show nothing than wrong product
+      console.log(`   ❌ Keine passenden Produkte gefunden - zeige nichts`);
       return null;
     }
 
