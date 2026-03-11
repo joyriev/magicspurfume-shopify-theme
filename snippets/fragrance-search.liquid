@@ -3552,7 +3552,7 @@ window.fcToggleSearch = function() {
       
       // ===== FIRST: Show catalog results (Echte Parfums) =====
       if (catalogResults.length > 0) {
-        html += `<div class="fc-section-title">✨ Echte Parfums (${catalogResults.length})</div>`;
+        html += `<div class="fc-section-title">✨ Echte Parfums</div>`;
         
         catalogResults.slice(0, 8).forEach(perfume => {
           html += `
@@ -3573,7 +3573,7 @@ window.fcToggleSearch = function() {
       
       // ===== SECOND: Show hardcoded results (Our Collection) =====
       if (hardcodedResults.length > 0) {
-        html += `<div class="fc-section-title">🛍️ Unsere Kollektion (${hardcodedResults.length})</div>`;
+        html += `<div class="fc-section-title">🛍️ Unsere Kollektion</div>`;
         
         hardcodedResults.slice(0, 12).forEach(match => {
           const p = match.product;
