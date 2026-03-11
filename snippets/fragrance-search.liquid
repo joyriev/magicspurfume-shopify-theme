@@ -1215,21 +1215,11 @@ window.fcToggleSearch = function() {
     const results = [];
     const addedIds = new Set();
     
-    // Check if query is a number (for direct number matching)
-    const queryAsNumber = query.trim();
-    const isNumberQuery = /^\d+$/.test(queryAsNumber);
-    
     hardcodedProducts.forEach(product => {
       if (addedIds.has(product.id)) return;
       
       let bestScore = 0;
       let matchReasons = [];
-      
-      // ===== EXACT NUMBER MATCH (Highest Priority) =====
-      if (isNumberQuery && product.number && product.number.toString() === queryAsNumber) {
-        bestScore = 500;
-        matchReasons.push('exact-number-match');
-      }
       
       // Generate fuzzy variations of product fields
       const titleVariations = generateFuzzyVariations(product.title);
@@ -1238,21 +1228,6 @@ window.fcToggleSearch = function() {
       // Check each search variant
       for (const variant of searchVariants) {
         if (variant.length < 1) continue;
-        
-        // Check number (exact and contains)
-        if (product.number) {
-          const numberStr = product.number.toString();
-          if (variant === numberStr) {
-            bestScore = Math.max(bestScore, 450);
-            matchReasons.push('number-exact');
-          } else if (numberStr.includes(variant)) {
-            bestScore = Math.max(bestScore, 120);
-            matchReasons.push('number-contains');
-          } else if (variant.includes(numberStr)) {
-            bestScore = Math.max(bestScore, 110);
-            matchReasons.push('number-in-query');
-          }
-        }
         
         // Check title
         const titleLower = product.title.toLowerCase();
@@ -1270,6 +1245,12 @@ window.fcToggleSearch = function() {
               matchReasons.push('search-term-match');
             }
           }
+        }
+        
+        // Check number
+        if (product.number && variant.includes(product.number)) {
+          bestScore = Math.max(bestScore, 150);
+          matchReasons.push('number-match');
         }
         
         // Check brand
@@ -3434,22 +3415,10 @@ window.fcToggleSearch = function() {
       // Generate fuzzy variations of the search query
       const queryVariations = generateFuzzyVariations(query);
       
-      // Check if query is a pure number (ID/product number)
-      const isNumberQuery = /^\d+$/.test(query.trim());
-      let catalogSearchQuery = query;
-      
-      // If searching by number, also search by brand/name of the matching hardcoded product
-      if (isNumberQuery && hardcodedResults.length > 0) {
-        const firstProduct = hardcodedResults[0].product;
-        // Search catalog using the matched product's brand and name
-        catalogSearchQuery = `${firstProduct.brand} ${firstProduct.title}`;
-      }
-      
       // Search in catalog with intelligent scoring using fuzzy variations
       const catalogResultsWithScore = [];
-      const queryLower = catalogSearchQuery.toLowerCase();
-      const normalizedQuery = normalizeText(catalogSearchQuery);
-      const catalogQueryVariations = generateFuzzyVariations(catalogSearchQuery);
+      const queryLower = query.toLowerCase();
+      const normalizedQuery = normalizeText(query);
       
       allPerfumes.forEach(perfume => {
         const perfumeName = perfume.name.toLowerCase();
@@ -3524,11 +3493,11 @@ window.fcToggleSearch = function() {
         
         // ===== FUZZY VARIATIONS MATCH (Very High Priority) =====
         // Check if query variations match brand/name exactly
-        else if (catalogQueryVariations.some(v => normalizedBrand === v)) {
+        else if (queryVariations.some(v => normalizedBrand === v)) {
           score = 825;
           matchType = 'fuzzy-query-brand-exact';
         }
-        else if (catalogQueryVariations.some(v => normalizedName === v)) {
+        else if (queryVariations.some(v => normalizedName === v)) {
           score = 775;
           matchType = 'fuzzy-query-name-exact';
         }
@@ -3544,11 +3513,11 @@ window.fcToggleSearch = function() {
         }
         
         // ===== FUZZY VARIATIONS CONTAIN =====
-        else if (catalogQueryVariations.some(v => normalizedBrand.includes(v) || v.includes(normalizedBrand))) {
+        else if (queryVariations.some(v => normalizedBrand.includes(v) || v.includes(normalizedBrand))) {
           score = 750;
           matchType = 'fuzzy-query-brand-contains';
         }
-        else if (catalogQueryVariations.some(v => normalizedName.includes(v) || v.includes(normalizedName))) {
+        else if (queryVariations.some(v => normalizedName.includes(v) || v.includes(normalizedName))) {
           score = 700;
           matchType = 'fuzzy-query-name-contains';
         }
