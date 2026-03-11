@@ -3541,6 +3541,14 @@ window.fcToggleSearch = function() {
       const queryNormalized = normalizeText(queryLower);
       const queryNoSpaces = queryNormalized.replace(/\s+/g, '');
       
+      // ===== EXPAND BRAND ABBREVIATIONS (e.g., "ck" → "calvin klein") =====
+      let expandedQuery = queryLower;
+      if (brandAbbreviations[queryLower]) {
+        expandedQuery = brandAbbreviations[queryLower];
+        console.log(`🔍 Katalog: Expanding "${queryLower}" to "${expandedQuery}"`);
+      }
+      const expandedNormalized = normalizeText(expandedQuery);
+      
       // Generate fuzzy variations of the query (for typo matching) - INCREASE to 8-10 for advanced matching
       const allQueryVariations = generateFuzzyVariations(query);
       const queryFuzzyVariations = allQueryVariations.slice(0, 10); // Increased to 10 for better fuzzy
@@ -3557,17 +3565,25 @@ window.fcToggleSearch = function() {
         let score = 0;
         let matchType = '';
         
+        // ===== BRAND ABBREVIATION MATCH (Check expanded query first) =====
+        if (brandAbbreviations[queryLower]) {
+          if (normalizedBrand === expandedNormalized) {
+            score = 900; // Very high score for abbreviation matches
+            matchType = 'abbrev-brand-match';
+          }
+        }
+        
         // ===== FAST PATH: Exact Matches (Exit early if found) =====
-        if (perfumeBrand === queryLower) {
+        if (score === 0 && perfumeBrand === queryLower) {
           score = 1000;
           matchType = 'exact-brand';
         }
-        else if (perfumeName === queryLower) {
+        else if (score === 0 && perfumeName === queryLower) {
           score = 700;
           matchType = 'exact-name';
         }
         // ===== STARTS WITH =====
-        else if (perfumeBrand.startsWith(queryLower)) {
+        else if (score === 0 && perfumeBrand.startsWith(queryLower)) {
           score = 900;
           matchType = 'brand-starts-with';
         }
