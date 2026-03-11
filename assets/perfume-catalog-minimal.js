@@ -2360,7 +2360,7 @@ window.PerfumeCatalog = {
     {
       id: "creed_aventus_for_him",
       name: "Victorus for Him Creed",
-      brand: "Creed",
+      brand: "Aventus Creed",
       image: "https://magicperfume.co/cdn/shop/files/aventus.webp?v=1772533006",
       top_notes: ["Bergamotte", "Zitrone", "Schwarze Johannisbeere", "Ananas"],
       heart_notes: ["Jasmin", "Rose", "Birke", "Patschuli"],
@@ -2379,7 +2379,7 @@ window.PerfumeCatalog = {
     {
       id: "creed_aventus_for_her",
       name: "Fruity Floral Creed",
-      brand: "Creed",
+      brand: "Aventus Creed",
       image: "https://magicperfume.co/cdn/shop/files/aventus.webp?v=1772533006",
       top_notes: ["Grüner Apfel", "Bergamotte", "Zitrone", "Rosa Pfeffer"],
       heart_notes: ["Pfirsich", "Schwarze Johannisbeere", "Rose", "Jasmin"],
