@@ -787,7 +787,7 @@ window.PerfumeCatalog = {
       id: "armani_emporio_he",
       name: "Emporio Armani He Giorgio Armani",
       brand: "Giorgio Armani",
-      image: "https://magicperfume.co/cdn/shop/files/Emporio_He.jpg",
+      image: "https://magicperfume.co/cdn/shop/files/La_Nuit_de.png?v=1770292954",
       top_notes: ["Bergamotte", "Mandarine", "Zitrone"],
       heart_notes: ["Jasmin", "Rosmarin", "Salbei"],
       base_notes: ["Zeder", "Moschus", "Amber"],
