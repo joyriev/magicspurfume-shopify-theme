@@ -919,24 +919,30 @@
 </div>
 
 <script>
-// ===== DEFINE TOGGLE FUNCTION FIRST (OUTSIDE TRY-CATCH FOR RELIABILITY) =====
-window.fcToggleSearch = function() {
-  const searchPopup = document.getElementById('fcSearchPopup');
-  const searchInput = document.getElementById('fcSearchInput');
-  
-  if (!searchPopup || !searchInput) {
-    console.warn('Fragrance Search popup elements not found');
-    return;
-  }
-  
-  if (searchPopup.classList.contains('active')) {
-    searchPopup.classList.remove('active');
-  } else {
-    searchPopup.classList.add('active');
-    searchInput.focus();
-    if (window.fetchCartAndUpdate) {
-      window.fetchCartAndUpdate();
+// ===== DEFINE ALL GLOBAL FUNCTIONS IMMEDIATELY =====
+window.fcToggleSearch = window.fcToggleSearch || function() {
+  try {
+    const searchPopup = document.getElementById('fcSearchPopup');
+    const searchInput = document.getElementById('fcSearchInput');
+    
+    if (!searchPopup) {
+      console.warn('fcSearchPopup element not found');
+      return;
     }
+    
+    if (searchPopup.classList.contains('active')) {
+      searchPopup.classList.remove('active');
+    } else {
+      searchPopup.classList.add('active');
+      if (searchInput) {
+        searchInput.focus();
+      }
+      if (window.fetchCartAndUpdate) {
+        window.fetchCartAndUpdate();
+      }
+    }
+  } catch (e) {
+    console.error('Error in fcToggleSearch:', e);
   }
 };
 
