@@ -1243,11 +1243,27 @@ window.fcToggleSearch = function() {
     const queryAsNumber = query.trim();
     const isNumberQuery = /^\d+$/.test(queryAsNumber);
     
+    // ===== SPECIAL HANDLING FOR "5" OR "NO5" - ALWAYS SHOW CHANEL NO. 5 =====
+    const isChanelNo5Query = queryLower === "5" || queryLower === "no5" || queryLower === "no 5";
+    
     hardcodedProducts.forEach(product => {
       if (addedIds.has(product.id)) return;
       
       let bestScore = 0;
       let matchReasons = [];
+      
+      // ===== CHANEL NO. 5 SPECIAL BOOST =====
+      if (isChanelNo5Query && product.number === "077") {
+        bestScore = 1000;  // Maximum score for Chanel No. 5
+        matchReasons.push('chanel-no5-special-query');
+        results.push({
+          product,
+          score: bestScore,
+          reasons: matchReasons
+        });
+        addedIds.add(product.id);
+        return; // Skip normal scoring for this product
+      }
       
       // ===== BRAND ABBREVIATION MATCH (Highest for short queries) =====
       if (brandExpansion) {
@@ -3559,6 +3575,9 @@ window.fcToggleSearch = function() {
       const queryNormalized = normalizeText(queryLower);
       const queryNoSpaces = queryNormalized.replace(/\s+/g, '');
       
+      // ===== SPECIAL HANDLING FOR "5" OR "NO5" - BOOST CHANEL NO. 5 =====
+      const isChanelNo5Query = queryLower === "5" || queryLower === "no5" || queryLower === "no 5";
+      
       // For short queries (2-3 letters like "ck"), use STRICT matching
       const isShortQuery = queryLower.length <= 3;
       
@@ -3583,8 +3602,13 @@ window.fcToggleSearch = function() {
         let score = 0;
         let matchType = '';
         
-        // ===== FOR SHORT QUERIES (2-3 letters) =====
-        if (isShortQuery) {
+        // ===== CHANEL NO. 5 SPECIAL BOOST (from catalog) =====
+        if (isChanelNo5Query && perfume.productNumbers && perfume.productNumbers.includes("077")) {
+          score = 1000;  // Maximum score for Chanel No. 5
+          matchType = 'chanel-no5-special';
+        }
+        // ===== FOR SHORT QUERIES (2-3 letters) - Skip if Chanel No. 5 already matched =====
+        else if (isShortQuery) {
           // Check if this brand matches the short query
           if (queryLower === "ck" && perfumeBrand.includes("calvin klein")) {
             score = 1000;
@@ -3617,8 +3641,8 @@ window.fcToggleSearch = function() {
           }
         } 
         // ===== FOR NORMAL QUERIES (4+ letters) =====
-        else {
-          // Your existing matching logic for longer queries
+        else if (score === 0) {
+          // Your existing matching logic for longer queries - only if not Chanel No. 5
           if (perfumeBrand === queryLower) {
             score = 1000;
             matchType = 'exact-brand';
