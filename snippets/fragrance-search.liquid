@@ -831,6 +831,35 @@
 }
 </style>
 
+<!-- Define all critical functions BEFORE HTML elements use them -->
+<script>
+window.fcToggleSearch = function() {
+  try {
+    const searchPopup = document.getElementById('fcSearchPopup');
+    const searchInput = document.getElementById('fcSearchInput');
+    
+    if (!searchPopup) {
+      console.warn('fcSearchPopup element not found');
+      return;
+    }
+    
+    if (searchPopup.classList.contains('active')) {
+      searchPopup.classList.remove('active');
+    } else {
+      searchPopup.classList.add('active');
+      if (searchInput) {
+        searchInput.focus();
+      }
+      if (window.fetchCartAndUpdate) {
+        window.fetchCartAndUpdate();
+      }
+    }
+  } catch (e) {
+    console.error('Error in fcToggleSearch:', e);
+  }
+};
+</script>
+
 <div class="fc-float-wrapper">
   <!-- Floating Button -->
   <div class="fc-search-toggle" id="fcStickyButton" onclick="window.fcToggleSearch()">
@@ -919,33 +948,6 @@
 </div>
 
 <script>
-// ===== DEFINE ALL GLOBAL FUNCTIONS IMMEDIATELY =====
-window.fcToggleSearch = window.fcToggleSearch || function() {
-  try {
-    const searchPopup = document.getElementById('fcSearchPopup');
-    const searchInput = document.getElementById('fcSearchInput');
-    
-    if (!searchPopup) {
-      console.warn('fcSearchPopup element not found');
-      return;
-    }
-    
-    if (searchPopup.classList.contains('active')) {
-      searchPopup.classList.remove('active');
-    } else {
-      searchPopup.classList.add('active');
-      if (searchInput) {
-        searchInput.focus();
-      }
-      if (window.fetchCartAndUpdate) {
-        window.fetchCartAndUpdate();
-      }
-    }
-  } catch (e) {
-    console.error('Error in fcToggleSearch:', e);
-  }
-};
-
 try {
   (function() {
     // ===== YOUR SHOPIFY PRODUCTS =====
