@@ -1206,6 +1206,15 @@ window.fcToggleSearch = function() {
     return Array.from(variations).filter(v => v.length > 0);
   }
 
+  // ===== BRAND ABBREVIATION MAPPING =====
+  const brandAbbreviations = {
+    "ck": "calvin klein",
+    "ysl": "yves saint laurent",
+    "jpg": "jean paul gaultier",
+    "dg": "dolce gabbana",
+    "tf": "tom ford"
+  };
+
   // ===== ENHANCED SEARCH FUNCTION WITH FUZZY MATCHING =====
   function enhancedSearch(query) {
     if (!query || query.length < 1) return [];
@@ -1215,9 +1224,38 @@ window.fcToggleSearch = function() {
     const results = [];
     const addedIds = new Set();
     
+    // Check if query is a brand abbreviation
+    const queryLower = query.toLowerCase().trim();
+    const brandExpansion = brandAbbreviations[queryLower];
+    
     // Check if query is a number (for direct number matching)
     const queryAsNumber = query.trim();
     const isNumberQuery = /^\d+$/.test(queryAsNumber);
+    
+    hardcodedProducts.forEach(product => {
+      if (addedIds.has(product.id)) return;
+      
+      let bestScore = 0;
+      let matchReasons = [];
+      
+      // ===== BRAND ABBREVIATION MATCH (Highest for short queries) =====
+      if (brandExpansion) {
+        const brandLower = product.brand.toLowerCase();
+        const normalizedBrand = normalizeText(brandLower);
+        const normalizedExpansion = normalizeText(brandExpansion);
+        
+        // Check if product brand matches the expanded abbreviation
+        if (normalizedBrand === normalizedExpansion || brandLower === normalizedExpansion) {
+          bestScore = 500;  // Very high score for abbreviation matches
+          matchReasons.push('brand-abbreviation-match');
+        }
+      }
+      
+      // ===== EXACT NUMBER MATCH (Highest Priority) =====
+      if (isNumberQuery && product.number && product.number.toString() === queryAsNumber) {
+        bestScore = 500;
+        matchReasons.push('exact-number-match');
+      }
     
     hardcodedProducts.forEach(product => {
       if (addedIds.has(product.id)) return;
@@ -2452,7 +2490,7 @@ window.fcToggleSearch = function() {
     {
       id: "hardcoded-ck-eternity-106",
       title: "Riecht wie... Eternity - No. 106 (w)",
-      image: "https://magicperfume.co/cdn/shop/files/23397_366.png?v=1769690487&width=1200", // Approximated
+      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/106W_c.webp?v=1770965437", // Approximated
       url: "https://magicperfume.co/products/magic-perfume-no-106w",
       variant: 47306572071170,
       price: 1199,
