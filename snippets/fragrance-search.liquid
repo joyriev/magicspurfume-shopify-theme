@@ -1141,11 +1141,77 @@ window.fcToggleSearch = function() {
     return Array.from(variants);
   }
 
+  // ===== GENERATE FUZZY VARIATIONS =====
+  // Generates typo variations (dir, diore, dire, etc. for "dior")
+  function generateFuzzyVariations(str) {
+    const variations = new Set();
+    const normalized = normalizeText(str);
+    const chars = normalized.split('');
+    
+    // Original
+    variations.add(normalized);
+    
+    // Delete 1 character (dir, dio, dor, ior)
+    for (let i = 0; i < chars.length; i++) {
+      const variant = chars.slice(0, i).concat(chars.slice(i + 1)).join('');
+      if (variant.length > 0) variations.add(variant);
+    }
+    
+    // Swap adjacent characters (diore, dohr, etc.)
+    for (let i = 0; i < chars.length - 1; i++) {
+      const swapped = [...chars];
+      [swapped[i], swapped[i + 1]] = [swapped[i + 1], swapped[i]];
+      variations.add(swapped.join(''));
+    }
+    
+    // Substitute each character with nearby keys
+    const commonSubs = {
+      'a': ['e', 'o'],
+      'e': ['a', 'i', 'o'],
+      'i': ['e', 'o', 'u'],
+      'o': ['a', 'e', 'i', 'u'],
+      'u': ['i', 'o'],
+      's': ['c', 'd', 'z'],
+      'c': ['s', 'x'],
+      'd': ['s', 'f'],
+      'g': ['h', 'f'],
+      'h': ['g', 'j'],
+      'r': ['t', 'f'],
+      't': ['r', 'y'],
+      'v': ['b', 'c'],
+      'b': ['v', 'n']
+    };
+    
+    for (let i = 0; i < chars.length; i++) {
+      const char = chars[i];
+      const subs = commonSubs[char] || [];
+      subs.forEach(sub => {
+        const variant = [...chars];
+        variant[i] = sub;
+        variations.add(variant.join(''));
+      });
+    }
+    
+    // Insert common vowels at strategic positions
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    for (let i = 0; i <= Math.min(chars.length, 3); i++) {
+      vowels.forEach(vowel => {
+        const variant = chars.slice(0, i).concat(vowel, chars.slice(i)).join('');
+        if (variant.length <= normalized.length + 1) {
+          variations.add(variant);
+        }
+      });
+    }
+    
+    return Array.from(variations).filter(v => v.length > 0);
+  }
+
   // ===== ENHANCED SEARCH FUNCTION WITH FUZZY MATCHING =====
   function enhancedSearch(query) {
     if (!query || query.length < 1) return [];
     
     const searchVariants = generateSearchVariants(query);
+    const fuzzyQueryVariations = generateFuzzyVariations(query);
     const results = [];
     const addedIds = new Set();
     
@@ -1154,6 +1220,10 @@ window.fcToggleSearch = function() {
       
       let bestScore = 0;
       let matchReasons = [];
+      
+      // Generate fuzzy variations of product fields
+      const titleVariations = generateFuzzyVariations(product.title);
+      const brandVariations = generateFuzzyVariations(product.brand);
       
       // Check each search variant
       for (const variant of searchVariants) {
@@ -1191,13 +1261,50 @@ window.fcToggleSearch = function() {
         }
       }
       
-      // If no direct matches, try fuzzy matching
+      // Check fuzzy query variations against product fields
+      for (const variation of fuzzyQueryVariations) {
+        if (variation.length < 1) continue;
+        
+        const titleLower = product.title.toLowerCase();
+        if (titleLower.includes(variation)) {
+          bestScore = Math.max(bestScore, 92);
+          matchReasons.push('fuzzy-query-title');
+        }
+        
+        const brandLower = product.brand.toLowerCase();
+        if (brandLower.includes(variation)) {
+          bestScore = Math.max(bestScore, 88);
+          matchReasons.push('fuzzy-query-brand');
+        }
+        
+        if (product.searchTerms) {
+          for (const term of product.searchTerms) {
+            if (term.toLowerCase().includes(variation)) {
+              bestScore = Math.max(bestScore, 90);
+              matchReasons.push('fuzzy-query-term');
+            }
+          }
+        }
+      }
+      
+      // Check product variations against query
+      const normalizedQuery = normalizeText(query);
+      if (titleVariations.some(v => v === normalizedQuery)) {
+        bestScore = Math.max(bestScore, 98);
+        matchReasons.push('title-fuzzy-exact');
+      }
+      if (brandVariations.some(v => v === normalizedQuery)) {
+        bestScore = Math.max(bestScore, 96);
+        matchReasons.push('brand-fuzzy-exact');
+      }
+      
+      // If no direct matches, try Levenshtein fuzzy matching
       if (bestScore < 70) {
         const productText = `${product.title} ${product.brand} ${product.searchTerms ? product.searchTerms.join(' ') : ''}`.toLowerCase();
         const fuzzyScore = calculateFuzzyScore(query, productText);
         if (fuzzyScore > 60) {
           bestScore = Math.max(bestScore, fuzzyScore);
-          matchReasons.push('fuzzy-match');
+          matchReasons.push('levenshtein-fuzzy');
         }
       }
       
@@ -3305,7 +3412,10 @@ window.fcToggleSearch = function() {
       // Search in hardcoded products with enhanced fuzzy search
       const hardcodedResults = searchHardcodedProducts(query);
       
-      // Search in catalog with intelligent scoring
+      // Generate fuzzy variations of the search query
+      const queryVariations = generateFuzzyVariations(query);
+      
+      // Search in catalog with intelligent scoring using fuzzy variations
       const catalogResultsWithScore = [];
       const queryLower = query.toLowerCase();
       const normalizedQuery = normalizeText(query);
@@ -3315,6 +3425,10 @@ window.fcToggleSearch = function() {
         const perfumeBrand = perfume.brand.toLowerCase();
         const normalizedName = normalizeText(perfume.name);
         const normalizedBrand = normalizeText(perfume.brand);
+        
+        // Generate fuzzy variations of the product name and brand
+        const brandVariations = generateFuzzyVariations(perfume.brand);
+        const nameVariations = generateFuzzyVariations(perfume.name);
         
         let score = 0;
         let matchType = '';
@@ -3377,14 +3491,45 @@ window.fcToggleSearch = function() {
           matchType = 'nospace-name-contains';
         }
         
-        // ===== FUZZY MATCHES (Lower Priority) =====
+        // ===== FUZZY VARIATIONS MATCH (Very High Priority) =====
+        // Check if query variations match brand/name exactly
+        else if (queryVariations.some(v => normalizedBrand === v)) {
+          score = 825;
+          matchType = 'fuzzy-query-brand-exact';
+        }
+        else if (queryVariations.some(v => normalizedName === v)) {
+          score = 775;
+          matchType = 'fuzzy-query-name-exact';
+        }
+        // Check if product brand variations match query
+        else if (brandVariations.some(v => v === normalizedQuery)) {
+          score = 815;
+          matchType = 'brand-fuzzy-exact';
+        }
+        // Check if product name variations match query
+        else if (nameVariations.some(v => v === normalizedQuery)) {
+          score = 765;
+          matchType = 'name-fuzzy-exact';
+        }
+        
+        // ===== FUZZY VARIATIONS CONTAIN =====
+        else if (queryVariations.some(v => normalizedBrand.includes(v) || v.includes(normalizedBrand))) {
+          score = 750;
+          matchType = 'fuzzy-query-brand-contains';
+        }
+        else if (queryVariations.some(v => normalizedName.includes(v) || v.includes(normalizedName))) {
+          score = 700;
+          matchType = 'fuzzy-query-name-contains';
+        }
+        
+        // ===== LEVENSHTEIN FUZZY MATCHES (Lower Priority) =====
         else {
           const fuzzyScoreName = calculateFuzzyScore(query, perfume.name);
           const fuzzyScoreBrand = calculateFuzzyScore(query, perfume.brand);
           const bestFuzzyScore = Math.max(fuzzyScoreName, fuzzyScoreBrand);
           
-          if (bestFuzzyScore > 75) {
-            score = bestFuzzyScore * 4; // 75% → 300, 100% → 400
+          if (bestFuzzyScore > 70) {
+            score = bestFuzzyScore * 4; // 70% → 280, 100% → 400
             matchType = bestFuzzyScore === fuzzyScoreBrand ? 'fuzzy-brand' : 'fuzzy-name';
           }
         }
