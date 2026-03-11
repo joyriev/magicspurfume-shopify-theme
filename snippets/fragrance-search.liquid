@@ -2452,7 +2452,7 @@ window.fcToggleSearch = function() {
     {
       id: "hardcoded-ck-eternity-106",
       title: "Riecht wie... Eternity - No. 106 (w)",
-      image: "https://magicperfume.co/cdn/shop/files/23397_366.png?v=1769690487&width=1200", // Approximated
+      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/106W_c.webp?v=1770965437", // Approximated
       url: "https://magicperfume.co/products/magic-perfume-no-106w",
       variant: 47306572071170,
       price: 1199,
@@ -3462,7 +3462,7 @@ window.fcToggleSearch = function() {
       .catch(() => ({ item_count: 0 }));
   };
 
-  // ===== PERFORM SEARCH - SIMPLIFIED VERSION =====
+  // ===== PERFORM SEARCH - FIXED VERSION WITH BRAND PRIORITY =====
   function performSearch(query) {
     currentSearchQuery = query;
     content.innerHTML = '<div class="fc-loading">Suche läuft...</div>';
@@ -3471,20 +3471,14 @@ window.fcToggleSearch = function() {
       // Search in hardcoded products with enhanced fuzzy search
       const hardcodedResults = searchHardcodedProducts(query);
       
-      // ===== SIMPLIFIED CATALOG SEARCH - SHOWS ALL RESULTS =====
+      // ===== IMPROVED CATALOG SEARCH - BRAND FIRST =====
       const catalogResults = [];
       const queryLower = query.toLowerCase().trim();
       const queryNormalized = normalizeText(queryLower);
       const queryNoSpaces = queryNormalized.replace(/\s+/g, '');
       
-      // For number searches (e.g., "469"), we want to find the matching brand
-      const isNumberQuery = /^\d+$/.test(queryLower);
-      let searchBrand = '';
-      
-      // If searching by number and we have a matching product, use its brand
-      if (isNumberQuery && hardcodedResults.length > 0) {
-        searchBrand = hardcodedResults[0].product.brand;
-      }
+      // For short queries (like "ck"), prioritize exact brand matches
+      const isShortQuery = queryLower.length <= 3;
       
       allPerfumes.forEach(perfume => {
         const perfumeName = perfume.name.toLowerCase();
@@ -3493,72 +3487,90 @@ window.fcToggleSearch = function() {
         const normalizedBrand = normalizeText(perfumeBrand);
         
         let score = 0;
+        let matchType = '';
         
-        // ===== DIRECT MATCHES (Highest Priority) =====
+        // ===== BRAND MATCHES (Highest Priority for short queries) =====
         // Exact brand match
         if (perfumeBrand === queryLower) {
-          score = 100;
+          score = 1000;
+          matchType = 'exact-brand';
         }
-        // Brand contains query
+        // Brand starts with query (e.g., "calvin" starts with "ck" - NO, so this won't match)
+        else if (perfumeBrand.startsWith(queryLower)) {
+          score = 900;
+          matchType = 'brand-starts-with';
+        }
+        // Brand contains query as whole word
+        else if (perfumeBrand.includes(' ' + queryLower + ' ') || 
+                 perfumeBrand.startsWith(queryLower + ' ') || 
+                 perfumeBrand.endsWith(' ' + queryLower)) {
+          score = 850;
+          matchType = 'brand-word-match';
+        }
+        // Brand contains query (lower priority for short queries to avoid false matches)
         else if (perfumeBrand.includes(queryLower)) {
-          score = 90;
-        }
-        // Exact name match
-        else if (perfumeName === queryLower) {
-          score = 95;
-        }
-        // Name contains query
-        else if (perfumeName.includes(queryLower)) {
-          score = 85;
-        }
-        
-        // ===== NORMALIZED MATCHES (No accents) =====
-        else if (normalizedBrand === queryNormalized) {
-          score = 80;
-        }
-        else if (normalizedName === queryNormalized) {
-          score = 75;
-        }
-        else if (normalizedBrand.includes(queryNormalized)) {
-          score = 70;
-        }
-        else if (normalizedName.includes(queryNormalized)) {
-          score = 65;
-        }
-        
-        // ===== NO-SPACE MATCHES (e.g., "yslblackopium") =====
-        else if (normalizedBrand.replace(/\s+/g, '').includes(queryNoSpaces)) {
-          score = 60;
-        }
-        else if (normalizedName.replace(/\s+/g, '').includes(queryNoSpaces)) {
-          score = 55;
-        }
-        else if (queryNoSpaces.includes(normalizedBrand.replace(/\s+/g, ''))) {
-          score = 50;
-        }
-        else if (queryNoSpaces.includes(normalizedName.replace(/\s+/g, ''))) {
-          score = 45;
-        }
-        
-        // ===== FUZZY MATCHES (Typos) - SKIP FOR SHORT QUERIES =====
-        // For short queries (<=3 chars like "ck"), skip fuzzy to avoid false matches
-        else if (queryLower.length > 3) {
-          const fuzzyScore = calculateFuzzyScore(query, perfume.name + ' ' + perfume.brand);
-          if (fuzzyScore > 60) {
-            score = fuzzyScore * 0.5; // Scale down to 30-50 range
+          // For short queries like "ck", only boost if it's a substantial part of the brand
+          if (isShortQuery && queryLower.length === 2) {
+            // Check if the brand actually has these letters as a distinct part
+            // For "ck", only boost if brand is "CK" or contains "ck" as part of "Calvin Klein"
+            if (perfumeBrand === 'ck' || 
+                perfumeBrand.includes('calvin klein') || 
+                perfumeBrand.includes('ck ')) {
+              score = 800;
+              matchType = 'brand-contains-relevant';
+            } else {
+              // For other brands like "Black Opium", don't boost just because it has "ck"
+              score = 0;
+            }
+          } else {
+            score = 800;
+            matchType = 'brand-contains';
           }
         }
         
-        // ALSO include if it's a number search and this perfume's brand matches
-        if (isNumberQuery && searchBrand && perfumeBrand.includes(searchBrand.toLowerCase())) {
-          score = Math.max(score, 95);
+        // ===== NAME MATCHES (Lower Priority than brand) =====
+        else if (perfumeName === queryLower) {
+          score = 700;
+          matchType = 'exact-name';
+        }
+        else if (perfumeName.startsWith(queryLower)) {
+          score = 600;
+          matchType = 'name-starts-with';
+        }
+        else if (perfumeName.includes(' ' + queryLower + ' ') || 
+                 perfumeName.startsWith(queryLower + ' ') || 
+                 perfumeName.endsWith(' ' + queryLower)) {
+          score = 500;
+          matchType = 'name-word-match';
+        }
+        else if (perfumeName.includes(queryLower)) {
+          // For short queries, only boost if it's a meaningful match
+          if (isShortQuery && queryLower.length === 2) {
+            // Only boost if it's a substantial word, not just letters within a word
+            // This prevents "ck" matching "Black Opium"
+            score = 0;
+          } else {
+            score = 400;
+            matchType = 'name-contains';
+          }
         }
         
-        // Include if score is decent (lowered threshold to 30)
-        if (score > 30) {
+        // ===== NORMALIZED MATCHES =====
+        else if (normalizedBrand === queryNormalized) {
+          score = 750;
+          matchType = 'normalized-brand';
+        }
+        else if (normalizedName === queryNormalized) {
+          score = 650;
+          matchType = 'normalized-name';
+        }
+        
+        // Include if score is decent
+        if (score > 0) {
           catalogResults.push({
             perfume,
-            score
+            score,
+            matchType
           });
         }
       });
@@ -3568,7 +3580,7 @@ window.fcToggleSearch = function() {
       
       let html = '';
       
-      // ===== FIRST: Show catalog results (Echte Parfums) - ALWAYS SHOW IF ANY FOUND =====
+      // ===== FIRST: Show catalog results (Echte Parfums) =====
       if (catalogResults.length > 0) {
         html += `<div class="fc-section-title">✨ Echte Parfums</div>`;
         
