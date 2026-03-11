@@ -3729,7 +3729,28 @@ try {
         // Track which products we've already shown by their number
         const shownNumbers = new Set();
         
-        // First, show hardcoded results (these are the most accurate)
+        // ===== FIRST: SHOW CATALOG RESULTS (ECHTE PARFUMS) =====
+        if (catalogResults.length > 0) {
+          html += `<div class="fc-section-title">✨ Echte Parfums (${catalogResults.length})</div>`;
+          
+          catalogResults.slice(0, 8).forEach(perfume => {
+            html += `
+              <div class="fc-real-perfume-item" onclick="window.fcShowPerfumeDetail('${perfume.id}')">
+                <img class="fc-real-perfume-image" src="${perfume.image}" 
+                     alt="${perfume.name}" 
+                     loading="lazy"
+                     onerror="this.src='https://via.placeholder.com/60x60?text=Parfum'">
+                <div class="fc-real-perfume-info">
+                  <div class="fc-real-perfume-name">${perfume.name}</div>
+                  <div class="fc-real-perfume-brand">${perfume.brand}</div>
+                  ${perfume.year ? `<div class="fc-real-perfume-year">${perfume.year}</div>` : ''}
+                </div>
+              </div>
+            `;
+          });
+        }
+        
+        // ===== SECOND: Show hardcoded results (these are the most accurate) =====
         if (hardcodedResults.length > 0) {
           html += `<div class="fc-section-title">🛍️ Unsere Kollektion (${hardcodedResults.length})</div>`;
           
@@ -3754,7 +3775,7 @@ try {
           });
         }
         
-        // Then show your products (filter out duplicates)
+        // ===== THIRD: Then show your products (filter out duplicates) =====
         if (yourResults.length > 0) {
           const filteredYourResults = yourResults.filter(match => {
             const number = extractProductNumber(match.product.title);
@@ -3782,27 +3803,6 @@ try {
               `;
             });
           }
-        }
-        
-        // Show catalog results
-        if (catalogResults.length > 0) {
-          html += `<div class="fc-section-title">Echte Parfums (${catalogResults.length})</div>`;
-          
-          catalogResults.slice(0, 8).forEach(perfume => {
-            html += `
-              <div class="fc-real-perfume-item" onclick="window.fcShowPerfumeDetail('${perfume.id}')">
-                <img class="fc-real-perfume-image" src="${perfume.image}" 
-                     alt="${perfume.name}" 
-                     loading="lazy"
-                     onerror="this.src='https://via.placeholder.com/60x60?text=Parfum'">
-                <div class="fc-real-perfume-info">
-                  <div class="fc-real-perfume-name">${perfume.name}</div>
-                  <div class="fc-real-perfume-brand">${perfume.brand}</div>
-                  ${perfume.year ? `<div class="fc-real-perfume-year">${perfume.year}</div>` : ''}
-                </div>
-              </div>
-            `;
-          });
         }
         
         // If no results at all, show suggestions
