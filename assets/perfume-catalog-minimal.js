@@ -113,7 +113,7 @@ window.PerfumeCatalog = {
       id: "lancome_la_vie_est_belle_intensement",
       name: "La Vie Est Belle Intensément Lancôme",
       brand: "Lancôme",
-      image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle_Intensement.png?v=1772101772",
+      image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle_Intensement.webp?v=1771648433",
       top_notes: ["Mandarine", "Schwarze Johannisbeere", "Bergamotte"],
       heart_notes: ["Tuberose", "Jasmin", "Orangenblüte"],
       base_notes: ["Praliné", "Vanille", "Patschuli", "Tonkabohne"],
