@@ -174,7 +174,7 @@ window.PerfumeCatalog = {
       id: "ysl_libre",
       name: "Libre Yves Saint Laurent",
       brand: "Yves Saint Laurent",
-      image: "https://magicperfume.co/cdn/shop/files/Libre.jpg?v=1773236620",
+      image: "https://magicperfume.co/cdn/shop/files/YSL_Libre.jpg",
       top_notes: ["Lavendel", "Bergamotte", "Mandarine"],
       heart_notes: ["Orangenblüte", "Jasmin", "Rose"],
       base_notes: ["Vanille", "Amber", "Moschus"],
@@ -569,7 +569,7 @@ window.PerfumeCatalog = {
     {
       id: "mugler_angel",
       name: "Angel Mugler",
-      brand: "Thierry Mugler",
+      brand: "Mugler",
       image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_1992.png?v=1770293282",
       top_notes: ["Zuckerwatte", "Bergamotte", "Ananas", "Kokosnuss"],
       heart_notes: ["Honig", "Rote Beeren", "Pfirsich", "Pflaume", "Aprikose"],
@@ -588,7 +588,7 @@ window.PerfumeCatalog = {
     {
       id: "mugler_angel_nova",
       name: "Angel Nova Mugler",
-      brand: "Thierry Mugler",
+      brand: "Mugler",
       image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_Nova.webp?v=1771649097",
       top_notes: ["Himbeere", "Litschi", "Bergamotte"],
       heart_notes: ["Rose", "Damascus-Rose", "Jasmin"],
@@ -607,7 +607,7 @@ window.PerfumeCatalog = {
     {
       id: "mugler_a_men",
       name: "A*Men Mugler",
-      brand: "Thierry Mugler",
+      brand: "Mugler",
       image: "https://magicperfume.co/cdn/shop/files/A_Men.webp?v=1772141383",
       top_notes: ["Minze", "Lavendel", "Koriander"],
       heart_notes: ["Honig", "Karamell", "Patschuli"],
@@ -631,7 +631,7 @@ window.PerfumeCatalog = {
       id: "tomford_vanille_fatale",
       name: "Vanille Fatale Tom Ford",
       brand: "Tom Ford",
-      image: "https://d3mcqtyhv5hy6w.cloudfront.net/perfumes/67b907132b0e14660a563a40_clipped.webp",
+      image: "https://magicperfume.co/cdn/shop/files/vanille_fatale.png?v=1772096768",
       top_notes: ["Safran", "Neroli", "Bergamotte"],
       heart_notes: ["Vanille", "Kaffee", "Leder"],
       base_notes: ["Amber", "Myrrhe", "Benzoin"],
@@ -726,7 +726,7 @@ window.PerfumeCatalog = {
       id: "tomford_cherry_smoke",
       name: "Cherry Smoke Tom Ford",
       brand: "Tom Ford",
-      image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Cherry_Smoke.png?v=1771483578",
+      image: "https://magicperfume.co/cdn/shop/files/Cherry_Smoke.jpg",
       top_notes: ["Kirsche", "Pfeffer", "Safran"],
       heart_notes: ["Rose", "Jasmin", "Leder"],
       base_notes: ["Vanille", "Amber", "Holz"],
@@ -2305,6 +2305,29 @@ window.PerfumeCatalog = {
         url: "https://magicperfume.co/products/magic-perfume-no-097w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143"
+      }
+    }
+  ],
+
+  // ===== AMOUAGE =====
+  amouage: [
+    {
+      id: "amouage_quiet_king",
+      name: "Quiet King Amouage",
+      brand: "Amouage",
+      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/317M_c.png?v=1771856219",
+      top_notes: ["Holz", "Gewürze", "Muskat"],
+      heart_notes: ["Amber", "Leder", "Zeder"],
+      base_notes: ["Sandelholz", "Moschus", "Patschuli"],
+      description: "Ein holziger und würziger orientalischer Duft mit maskulinem Charakter.",
+      year: "2012",
+      gender: "Male",
+      productNumbers: ["317"],
+      shopifyProduct: {
+        title: "Riecht wie… Quiet King - No. 317 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-317m",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/317M_c.png?v=1771856219"
       }
     }
   ]
