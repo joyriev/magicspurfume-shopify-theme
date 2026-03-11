@@ -3302,67 +3302,23 @@ window.fcToggleSearch = function() {
     content.innerHTML = '<div class="fc-loading">Suche läuft...</div>';
     
     setTimeout(() => {
+      // Search in catalog
+      const catalogResults = allPerfumes.filter(p => 
+        p.name.toLowerCase().includes(query.toLowerCase()) ||
+        p.brand.toLowerCase().includes(query.toLowerCase())
+      );
+      
       // Search in hardcoded products with enhanced fuzzy search
       const hardcodedResults = searchHardcodedProducts(query);
       
-      // Search in catalog with fuzzy matching
-      const catalogResults = allPerfumes.filter(perfume => {
-        const perfumeName = perfume.name.toLowerCase();
-        const perfumeBrand = perfume.brand.toLowerCase();
-        const queryLower = query.toLowerCase();
-        const normalizedQuery = normalizeText(query);
-        const normalizedName = normalizeText(perfume.name);
-        const normalizedBrand = normalizeText(perfume.brand);
-        
-        // Exact match
-        if (perfumeName.includes(queryLower) || perfumeBrand.includes(queryLower)) {
-          return true;
-        }
-        
-        // Normalized match
-        if (normalizedName.includes(normalizedQuery) || normalizedBrand.includes(normalizedQuery)) {
-          return true;
-        }
-        
-        // No-space match
-        if (normalizedName.replace(/\s+/g, '').includes(normalizedQuery.replace(/\s+/g, ''))) {
-          return true;
-        }
-        
-        // Fuzzy match
-        const fuzzyScoreName = calculateFuzzyScore(query, perfume.name);
-        const fuzzyScoreBrand = calculateFuzzyScore(query, perfume.brand);
-        if (fuzzyScoreName > 65 || fuzzyScoreBrand > 65) {
-          return true;
-        }
-        
-        return false;
-      });
-      
       let html = '';
       
-      // ===== FIRST: Show catalog results (Echte Parfums) =====
+      // Show catalog results first
       if (catalogResults.length > 0) {
-        html += `<div class="fc-section-title">✨ Echte Parfums (${catalogResults.length})</div>`;
-        
-        catalogResults.slice(0, 8).forEach(perfume => {
-          html += `
-            <div class="fc-real-perfume-item" onclick="window.fcShowPerfumeDetail('${perfume.id}')">
-              <img class="fc-real-perfume-image" src="${perfume.image}" 
-                   alt="${perfume.name}" 
-                   loading="lazy"
-                   onerror="this.src='https://via.placeholder.com/60x60?text=Parfum'">
-              <div class="fc-real-perfume-info">
-                <div class="fc-real-perfume-name">${perfume.name}</div>
-                <div class="fc-real-perfume-brand">${perfume.brand}</div>
-                ${perfume.year ? `<div class="fc-real-perfume-year">${perfume.year}</div>` : ''}
-              </div>
-            </div>
-          `;
-        });
+        html += renderCatalogPerfumes(catalogResults, query);
       }
       
-      // ===== SECOND: Show hardcoded results (Our Collection) =====
+      // Show hardcoded results
       if (hardcodedResults.length > 0) {
         html += `<div class="fc-section-title">🛍️ Unsere Kollektion (${hardcodedResults.length})</div>`;
         
