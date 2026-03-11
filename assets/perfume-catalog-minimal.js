@@ -2099,28 +2099,29 @@ window.PerfumeCatalog = {
     }
   ],
 
-  // ===== ADIDAS =====
-  adidas: [
-    {
-      id: "adidas_adventure",
-      name: "Adventure Adidas",
-      brand: "Adidas",
-      image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535",
-      top_notes: ["Bergamotte", "Zitrone", "Mandarine"],
-      heart_notes: ["Jasmin", "Rose", "Maiglöckchen"],
-      base_notes: ["Zeder", "Moschus", "Amber"],
-      description: "Ein frischer und sportlicher Duft für den aktiven Mann.",
-      year: "2008",
-      gender: "Male",
-      productNumbers: ["213"],
-      shopifyProduct: {
-        title: "Riecht wie... Adventure - No. 213 (m)",
-        url: "https://magicperfume.co/products/magic-perfume-no-213m",
-        price: "€11.99",
-        image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535"
-      }
+ // ===== DAVIDOFF =====
+davidoff: [
+  // ... (any existing Davidoff products like Cool Water) ...
+  {
+    id: "davidoff_adventure",
+    name: "Adventure Davidoff",
+    brand: "Davidoff",
+    image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535",
+    top_notes: ["Mandarine", "Zitrone", "Bergamotte", "Pfeffer", "Teeblatt", "Mate"],
+    heart_notes: ["Piment", "Sesam"],
+    base_notes: ["Vetiver", "Zeder", "Weißer Moschus"],
+    description: "Ein frischer, würzig-holziger Duft für den aktiven Mann, der den Geist des Abenteuers und der Entdeckung einfängt.",
+    year: "2008",
+    gender: "Male",
+    productNumbers: ["213"],
+    shopifyProduct: {
+      title: "Riecht wie... Adventure - No. 213 (m)",
+      url: "https://magicperfume.co/products/magic-perfume-no-213m",
+      price: "€11.99",
+      image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535"
     }
-  ],
+  }
+],
 
   // ===== DOLCE VITA =====
   dolceVita: [
