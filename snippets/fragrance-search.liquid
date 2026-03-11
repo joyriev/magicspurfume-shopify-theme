@@ -1220,7 +1220,8 @@ window.fcToggleSearch = function() {
     if (!query || query.length < 1) return [];
     
     const searchVariants = generateSearchVariants(query);
-    const fuzzyQueryVariations = generateFuzzyVariations(query);
+    const allFuzzyVariations = generateFuzzyVariations(query);
+    const fuzzyQueryVariations = allFuzzyVariations.slice(0, 5); // Limit to 5 for performance
     const results = [];
     const addedIds = new Set();
     
@@ -1257,9 +1258,9 @@ window.fcToggleSearch = function() {
         matchReasons.push('exact-number-match');
       }
       
-      // Generate fuzzy variations of product fields
-      const titleVariations = generateFuzzyVariations(product.title);
-      const brandVariations = generateFuzzyVariations(product.brand);
+      // Generate fuzzy variations of product fields - LIMIT to avoid performance issues
+      const titleVariations = generateFuzzyVariations(product.title).slice(0, 3);
+      const brandVariations = generateFuzzyVariations(product.brand).slice(0, 3);
       
       // Check each search variant
       for (const variant of searchVariants) {
@@ -3516,8 +3517,9 @@ window.fcToggleSearch = function() {
       const queryNormalized = normalizeText(queryLower);
       const queryNoSpaces = queryNormalized.replace(/\s+/g, '');
       
-      // Generate fuzzy variations of the query (for typo matching)
-      const queryFuzzyVariations = generateFuzzyVariations(query);
+      // Generate fuzzy variations of the query (for typo matching) - LIMIT to top 5 variations
+      const allQueryVariations = generateFuzzyVariations(query);
+      const queryFuzzyVariations = allQueryVariations.slice(0, 5); // Limit to 5 for performance
       
       // For short queries (like "ck"), prioritize exact brand matches
       const isShortQuery = queryLower.length <= 3;
@@ -3528,154 +3530,101 @@ window.fcToggleSearch = function() {
         const normalizedName = normalizeText(perfumeName);
         const normalizedBrand = normalizeText(perfumeBrand);
         
-        // Generate fuzzy variations of brand and name (for matching typos)
-        const brandFuzzyVariations = generateFuzzyVariations(perfume.brand);
-        const nameFuzzyVariations = generateFuzzyVariations(perfume.name);
-        
         let score = 0;
         let matchType = '';
         
-        // ===== SCORE ALL MATCHING ATTEMPTS (Don't use else-if, find best match) =====
-        let candidateScores = [];
-        
-        // 1. EXACT MATCHES (Highest priority)
-        if (perfumeBrand === queryLower) candidateScores.push({ score: 1000, type: 'exact-brand' });
-        if (perfumeName === queryLower) candidateScores.push({ score: 700, type: 'exact-name' });
-        
-        // 2. STARTS WITH
-        if (perfumeBrand.startsWith(queryLower)) candidateScores.push({ score: 900, type: 'brand-starts-with' });
-        if (perfumeName.startsWith(queryLower)) candidateScores.push({ score: 600, type: 'name-starts-with' });
-        
-        // 3. WORD BOUNDARIES
-        if (perfumeBrand.includes(' ' + queryLower + ' ') || 
-            perfumeBrand.startsWith(queryLower + ' ') || 
-            perfumeBrand.endsWith(' ' + queryLower)) {
-          candidateScores.push({ score: 850, type: 'brand-word-match' });
+        // ===== FAST PATH: Exact Matches (Exit early if found) =====
+        if (perfumeBrand === queryLower) {
+          score = 1000;
+          matchType = 'exact-brand';
         }
-        if (perfumeName.includes(' ' + queryLower + ' ') || 
-            perfumeName.startsWith(queryLower + ' ') || 
-            perfumeName.endsWith(' ' + queryLower)) {
-          candidateScores.push({ score: 500, type: 'name-word-match' });
+        else if (perfumeName === queryLower) {
+          score = 700;
+          matchType = 'exact-name';
         }
-        
-        // 4. NORMALIZED MATCHES
-        if (normalizedBrand === queryNormalized) candidateScores.push({ score: 750, type: 'normalized-brand' });
-        if (normalizedName === queryNormalized) candidateScores.push({ score: 650, type: 'normalized-name' });
-        
-        // 5. CONTAINS (with checks for short queries)
-        if (perfumeBrand.includes(queryLower)) {
+        // ===== STARTS WITH =====
+        else if (perfumeBrand.startsWith(queryLower)) {
+          score = 900;
+          matchType = 'brand-starts-with';
+        }
+        else if (perfumeName.startsWith(queryLower)) {
+          score = 600;
+          matchType = 'name-starts-with';
+        }
+        // ===== WORD BOUNDARIES =====
+        else if (perfumeBrand.includes(' ' + queryLower + ' ') || 
+                 perfumeBrand.startsWith(queryLower + ' ') || 
+                 perfumeBrand.endsWith(' ' + queryLower)) {
+          score = 850;
+          matchType = 'brand-word-match';
+        }
+        else if (perfumeName.includes(' ' + queryLower + ' ') || 
+                 perfumeName.startsWith(queryLower + ' ') || 
+                 perfumeName.endsWith(' ' + queryLower)) {
+          score = 500;
+          matchType = 'name-word-match';
+        }
+        // ===== NORMALIZED MATCHES =====
+        else if (normalizedBrand === queryNormalized) {
+          score = 750;
+          matchType = 'normalized-brand';
+        }
+        else if (normalizedName === queryNormalized) {
+          score = 650;
+          matchType = 'normalized-name';
+        }
+        // ===== CONTAINS (with checks for short queries) =====
+        else if (perfumeBrand.includes(queryLower)) {
           if (!(isShortQuery && queryLower.length === 2)) {
-            candidateScores.push({ score: 800, type: 'brand-contains' });
+            score = 800;
+            matchType = 'brand-contains';
           }
         }
-        if (perfumeName.includes(queryLower)) {
+        else if (perfumeName.includes(queryLower)) {
           if (!(isShortQuery && queryLower.length === 2)) {
-            candidateScores.push({ score: 400, type: 'name-contains' });
+            score = 400;
+            matchType = 'name-contains';
           }
         }
-        
-        // ===== FUZZY VARIATIONS - Multiple Attempts for All Brands =====
-        // Try 1: Query variations vs Brand variations
-        if (queryFuzzyVariations.some(qVar => 
-          brandFuzzyVariations.some(bVar => 
-            normalizeText(bVar) === normalizeText(qVar)
-          )
-        )) {
-          candidateScores.push({ score: 785, type: 'fuzzy-brand-bilateral' });
+        // ===== SIMPLE FUZZY: Query variations vs normalized brand/name =====
+        else if (queryFuzzyVariations.some(v => normalizedBrand.includes(normalizeText(v)))) {
+          score = 775;
+          matchType = 'fuzzy-brand-query-var';
         }
-        
-        // Try 2: Query variations vs normalized brand
-        if (queryFuzzyVariations.some(v => normalizedBrand.includes(normalizeText(v)))) {
-          candidateScores.push({ score: 775, type: 'fuzzy-brand-query-var' });
+        else if (queryFuzzyVariations.some(v => normalizedName.includes(normalizeText(v)))) {
+          score = 725;
+          matchType = 'fuzzy-name-query-var';
         }
-        
-        // Try 3: Brand variations vs normalized query
-        if (brandFuzzyVariations.some(v => normalizeText(v) === queryNormalized)) {
-          candidateScores.push({ score: 770, type: 'fuzzy-brand-product-var' });
-        }
-        
-        // Try 4: Query variations vs Name variations
-        if (queryFuzzyVariations.some(qVar => 
-          nameFuzzyVariations.some(nVar => 
-            normalizeText(nVar) === normalizeText(qVar)
-          )
-        )) {
-          candidateScores.push({ score: 735, type: 'fuzzy-name-bilateral' });
-        }
-        
-        // Try 5: Query variations vs normalized name
-        if (queryFuzzyVariations.some(v => normalizedName.includes(normalizeText(v)))) {
-          candidateScores.push({ score: 725, type: 'fuzzy-name-query-var' });
-        }
-        
-        // Try 6: Name variations vs normalized query
-        if (nameFuzzyVariations.some(v => normalizeText(v) === queryNormalized)) {
-          candidateScores.push({ score: 720, type: 'fuzzy-name-product-var' });
-        }
-        
-        // ===== LEVENSHTEIN FUZZY FALLBACK - Multiple Threshold Attempts =====
-        // Try 1: High similarity (80%+) for brand or name
-        if (candidateScores.length === 0 || true) { // Also check for additional matches
-          const brandFuzzy80 = calculateFuzzyScore(queryLower, perfumeBrand);
-          const nameFuzzy80 = calculateFuzzyScore(queryLower, perfumeName);
-          if (brandFuzzy80 >= 80) {
-            candidateScores.push({ score: 550, type: 'levenshtein-brand-80' });
-          }
-          if (nameFuzzy80 >= 80) {
-            candidateScores.push({ score: 480, type: 'levenshtein-name-80' });
-          }
+        // ===== LEVENSHTEIN FUZZY - ONLY if above didn't match =====
+        else if (queryLower.length >= 4) { // Only for queries 4+ chars to avoid false matches
+          const brandFuzzyScore = calculateFuzzyScore(queryLower, perfumeBrand);
+          const nameFuzzyScore = calculateFuzzyScore(queryLower, perfumeName);
+          const bestFuzzy = Math.max(brandFuzzyScore, nameFuzzyScore);
           
-          // Try 2: Medium similarity (70%+) for longer queries
-          if (queryLower.length >= 4) {
-            const brandFuzzy70 = calculateFuzzyScore(queryLower, perfumeBrand);
-            const nameFuzzy70 = calculateFuzzyScore(queryLower, perfumeName);
-            if (brandFuzzy70 >= 70 && !candidateScores.some(c => c.type.includes('brand'))) {
-              candidateScores.push({ score: 520, type: 'levenshtein-brand-70' });
-            }
-            if (nameFuzzy70 >= 70 && !candidateScores.some(c => c.type.includes('name'))) {
-              candidateScores.push({ score: 450, type: 'levenshtein-name-70' });
-            }
-          }
-          
-          // Try 3: Lower similarity (60%+) for very long queries or specific keywords
-          if (queryLower.length >= 5) {
-            const brandFuzzy60 = calculateFuzzyScore(queryLower, perfumeBrand);
-            const nameFuzzy60 = calculateFuzzyScore(queryLower, perfumeName);
-            if (brandFuzzy60 >= 60 && !candidateScores.some(c => c.type.includes('brand'))) {
-              candidateScores.push({ score: 490, type: 'levenshtein-brand-60' });
-            }
-            if (nameFuzzy60 >= 60 && !candidateScores.some(c => c.type.includes('name'))) {
-              candidateScores.push({ score: 420, type: 'levenshtein-name-60' });
-            }
+          // Only include if similarity is high enough
+          if (bestFuzzy >= 75) {
+            score = bestFuzzy * 5;
+            matchType = bestFuzzy === brandFuzzyScore ? 'levenshtein-brand' : 'levenshtein-name';
           }
         }
-        
-        // ===== CHARACTER N-GRAM MATCHING (For partial brand/name matches) =====
-        // Get 3-char segments from query
-        if (queryLower.length >= 3 && candidateScores.length === 0) {
+        // ===== CHARACTER N-GRAM MATCHING (Last resort) =====
+        else if (queryLower.length >= 4) { // Only for 4+ char queries to avoid false matches
           for (let i = 0; i <= queryLower.length - 3; i++) {
             const ngram = queryLower.substring(i, i + 3);
-            if (perfumeBrand.includes(ngram) || perfumeName.includes(ngram)) {
-              candidateScores.push({ score: 400, type: 'ngram-match' });
+            if ((perfumeBrand.includes(ngram) && ngram.length >= 3) || 
+                (perfumeName.includes(ngram) && ngram.length >= 3)) {
+              score = 400;
+              matchType = 'ngram-match';
               break;
             }
           }
         }
         
-        // Get best score from all candidates
-        if (candidateScores.length > 0) {
-          const bestCandidate = candidateScores.reduce((max, curr) => 
-            curr.score > max.score ? curr : max
-          );
-          score = bestCandidate.score;
-          matchType = bestCandidate.type;
-        }
-        
-        // Include if score is decent (lowered threshold to catch more matches)
-        if (score > 0 || candidateScores.length > 0) {
+        // Include if score is decent
+        if (score > 0) {
           catalogResults.push({
             perfume,
-            score: score || 300,
+            score,
             matchType
           });
         }
