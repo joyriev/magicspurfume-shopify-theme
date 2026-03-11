@@ -1540,7 +1540,7 @@ window.PerfumeCatalog = {
       id: "boss_alive",
       name: "Boss Alive Hugo Boss",
       brand: "Hugo Boss",
-      image: "https://magicperfume.co/cdn/shop/files/alive.png?v=1772098782",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_ALIVE.jpg?v=1770289857",
       top_notes: ["Apfel", "Schwarze Johannisbeere", "Pflaume"],
       heart_notes: ["Rose", "Jasmin", "Zimt"],
       base_notes: ["Vanille", "Moschus", "Zeder"],
