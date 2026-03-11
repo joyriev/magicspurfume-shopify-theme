@@ -3129,13 +3129,28 @@ window.fcToggleSearch = function() {
     return null;
   }
 
+  // ===== HARDCODED "YOU MIGHT LIKE IT" RECOMMENDATIONS =====
+  const hardcodedRecommendations = {
+    "466": "461"  // Baccarat Rouge 540 (MFK) → Carolina Herrera Good Girl
+  };
+
   // ===== GET RECOMMENDATIONS - SAME BRAND, SAME GENDER =====
   function getRecommendationsForProduct(product) {
     if (!product) return [];
     
     console.log('🎯 Getting recommendations for:', product.title);
     
-    // Get ALL products from SAME BRAND with SAME GENDER
+    // First check for custom hardcoded recommendation
+    if (product.number && hardcodedRecommendations[product.number]) {
+      const recNumber = hardcodedRecommendations[product.number];
+      const customRec = hardcodedProducts.find(p => p.number === recNumber);
+      if (customRec) {
+        console.log('✅ Found custom recommendation:', customRec.title);
+        return [customRec];
+      }
+    }
+    
+    // Fall back to same-brand, same-gender recommendations
     const recommendations = hardcodedProducts
       .filter(p => 
         p.brandKey === product.brandKey && 
