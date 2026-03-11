@@ -1061,7 +1061,7 @@ window.fcToggleSearch = function() {
     return matrix[b.length][a.length];
   }
 
-  // ===== CALCULATE FUZZY SIMILARITY SCORE =====
+  // ===== CALCULATE FUZZY SIMILARITY SCORE - ADVANCED =====
   function calculateFuzzyScore(query, target) {
     if (!query || !target) return 0;
     
@@ -1073,14 +1073,24 @@ window.fcToggleSearch = function() {
     
     // Contains match
     if (normalizedTarget.includes(normalizedQuery) || normalizedQuery.includes(normalizedTarget)) {
-      return 90;
+      return 95;
+    }
+    
+    // ===== FULL STRING LEVENSHTEIN (Most important for advanced fuzzy) =====
+    const distance = levenshteinDistance(normalizedQuery, normalizedTarget);
+    const maxLen = Math.max(normalizedQuery.length, normalizedTarget.length);
+    const fullStringSimilarity = ((maxLen - distance) / maxLen) * 100;
+    
+    // Return early if similarity is good from full string comparison
+    if (fullStringSimilarity > 60) {
+      return fullStringSimilarity;
     }
     
     // Split into words and check each word
     const queryWords = normalizedQuery.split(' ');
     const targetWords = normalizedTarget.split(' ');
     
-    let bestScore = 0;
+    let bestScore = fullStringSimilarity; // Start with full string score
     
     for (const qWord of queryWords) {
       if (qWord.length < 2) continue;
@@ -1090,15 +1100,15 @@ window.fcToggleSearch = function() {
         
         // Check if one word contains the other
         if (tWord.includes(qWord) || qWord.includes(tWord)) {
-          bestScore = Math.max(bestScore, 80);
+          bestScore = Math.max(bestScore, 85);
         }
         
-        // Levenshtein distance for fuzzy matching
-        const distance = levenshteinDistance(qWord, tWord);
-        const maxLen = Math.max(qWord.length, tWord.length);
-        if (maxLen > 0) {
-          const similarity = ((maxLen - distance) / maxLen) * 100;
-          if (similarity > 70) {
+        // Levenshtein distance for fuzzy matching - LOWER THRESHOLD
+        const wordDistance = levenshteinDistance(qWord, tWord);
+        const wordMaxLen = Math.max(qWord.length, tWord.length);
+        if (wordMaxLen > 0) {
+          const similarity = ((wordMaxLen - wordDistance) / wordMaxLen) * 100;
+          if (similarity > 50) { // Lower threshold for more matches
             bestScore = Math.max(bestScore, similarity);
           }
         }
@@ -1221,7 +1231,7 @@ window.fcToggleSearch = function() {
     
     const searchVariants = generateSearchVariants(query);
     const allFuzzyVariations = generateFuzzyVariations(query);
-    const fuzzyQueryVariations = allFuzzyVariations.slice(0, 5); // Limit to 5 for performance
+    const fuzzyQueryVariations = allFuzzyVariations.slice(0, 10); // Increased to 10 for advanced matching
     const results = [];
     const addedIds = new Set();
     
@@ -1258,9 +1268,9 @@ window.fcToggleSearch = function() {
         matchReasons.push('exact-number-match');
       }
       
-      // Generate fuzzy variations of product fields - LIMIT to avoid performance issues
-      const titleVariations = generateFuzzyVariations(product.title).slice(0, 3);
-      const brandVariations = generateFuzzyVariations(product.brand).slice(0, 3);
+      // Generate fuzzy variations of product fields - INCREASE to 5 for advanced fuzzy
+      const titleVariations = generateFuzzyVariations(product.title).slice(0, 5);
+      const brandVariations = generateFuzzyVariations(product.brand).slice(0, 5);
       
       // Check each search variant
       for (const variant of searchVariants) {
@@ -1350,11 +1360,12 @@ window.fcToggleSearch = function() {
         matchReasons.push('brand-fuzzy-exact');
       }
       
-      // If no direct matches, try Levenshtein fuzzy matching
+      // If no direct matches, try advanced Levenshtein fuzzy matching
       if (bestScore < 70) {
         const productText = `${product.title} ${product.brand} ${product.searchTerms ? product.searchTerms.join(' ') : ''}`.toLowerCase();
         const fuzzyScore = calculateFuzzyScore(query, productText);
-        if (fuzzyScore > 60) {
+        // LOWER threshold for advanced matching: 50% instead of 60%
+        if (fuzzyScore > 50) {
           bestScore = Math.max(bestScore, fuzzyScore);
           matchReasons.push('levenshtein-fuzzy');
         }
@@ -2096,7 +2107,7 @@ window.fcToggleSearch = function() {
     {
       id: "hardcoded-code-for-woman-135",
       title: "Riecht wie... Code for Woman - No. 135 (w)",
-      image: "https://magicperfume.co/cdn/shop/files/23068_366.png?v=1769690480&width=1200", // Approximated from 134 image
+      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/135W_c.webp?v=1771317432", // Approximated from 134 image
       url: "https://magicperfume.co/products/magic-perfume-no-135w",
       variant: 47306563748098,
       price: 1199,
@@ -3517,9 +3528,9 @@ window.fcToggleSearch = function() {
       const queryNormalized = normalizeText(queryLower);
       const queryNoSpaces = queryNormalized.replace(/\s+/g, '');
       
-      // Generate fuzzy variations of the query (for typo matching) - LIMIT to top 5 variations
+      // Generate fuzzy variations of the query (for typo matching) - INCREASE to 8-10 for advanced matching
       const allQueryVariations = generateFuzzyVariations(query);
-      const queryFuzzyVariations = allQueryVariations.slice(0, 5); // Limit to 5 for performance
+      const queryFuzzyVariations = allQueryVariations.slice(0, 10); // Increased to 10 for better fuzzy
       
       // For short queries (like "ck"), prioritize exact brand matches
       const isShortQuery = queryLower.length <= 3;
@@ -3601,8 +3612,13 @@ window.fcToggleSearch = function() {
           const nameFuzzyScore = calculateFuzzyScore(queryLower, perfumeName);
           const bestFuzzy = Math.max(brandFuzzyScore, nameFuzzyScore);
           
-          // Only include if similarity is high enough
-          if (bestFuzzy >= 75) {
+          // Much LOWER threshold for advanced fuzzy matching
+          // 60% match for 4 chars, 55% for 5+, 50% for 7+
+          let fuzzyThreshold = 60;
+          if (queryLower.length >= 7) fuzzyThreshold = 50;
+          else if (queryLower.length >= 5) fuzzyThreshold = 55;
+          
+          if (bestFuzzy >= fuzzyThreshold) {
             score = bestFuzzy * 5;
             matchType = bestFuzzy === brandFuzzyScore ? 'levenshtein-brand' : 'levenshtein-name';
           }
