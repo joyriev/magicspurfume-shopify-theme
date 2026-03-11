@@ -1,6 +1,7 @@
 // ===== GERMAN PERFUME CATALOG - COMPLETE WITH ALL PRODUCTS =====
 // Save this as: assets/perfume-catalog-minimal.js
 // INCLUDES ALL PRODUCTS FROM YOUR STORE - COMPREHENSIVE LIST
+// UPDATED: Added missing product numbers and fixed gender mappings
 
 window.PerfumeCatalog = {
   // ===== VALENTINO =====
@@ -18,7 +19,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["469"],
       shopifyProduct: {
-        title: "Riecht wie... Born in Roma - No. 469",
+        title: "Riecht wie... Born in Roma - No. 469 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-469w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Valentino_Donna_Born_In_Roma.png?v=1770224306"
@@ -37,7 +38,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["360"],
       shopifyProduct: {
-        title: "Riecht wie... Uomo Born in Roma - No. 360",
+        title: "Riecht wie... Uomo Born in Roma - No. 360 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-360m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Valentino_Uomo_Born_in_Roma.png?v=1770289172"
@@ -60,7 +61,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["437"],
       shopifyProduct: {
-        title: "Riecht wie... Paradoxe - No. 437",
+        title: "Riecht wie... Paradoxe - No. 437 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-437w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Prada_Paradoxe.jpg?v=1771894273"
@@ -79,7 +80,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["182"],
       shopifyProduct: {
-        title: "Riecht wie... Candy - No. 182",
+        title: "Riecht wie... Candy - No. 182 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-182w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Prada_Candy.avif?v=1770581340"
@@ -102,7 +103,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["101"],
       shopifyProduct: {
-        title: "Riecht wie... La Vie Est Belle - No. 101",
+        title: "Riecht wie... La Vie Est Belle - No. 101 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-101w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle.png?v=1770220684"
@@ -121,7 +122,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["109"],
       shopifyProduct: {
-        title: "Riecht wie... La Vie Est Belle Intensement - No. 109",
+        title: "Riecht wie... La Vie Est Belle Intensement - No. 109 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-109w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle_Intensement.png?v=1772101772"
@@ -140,7 +141,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["141"],
       shopifyProduct: {
-        title: "Riecht wie... Trésor - No. 141",
+        title: "Riecht wie... Trésor - No. 141 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-141w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Lancome_Tresor.png?v=1770285746"
@@ -157,9 +158,9 @@ window.PerfumeCatalog = {
       description: "Ein moderner und eleganter Duft für die neue Generation von Frauen.",
       year: "2019",
       gender: "Female",
-      productNumbers: ["55"],
+      productNumbers: ["055"],
       shopifyProduct: {
-        title: "Riecht wie... Idole - No. 55",
+        title: "Riecht wie... Idole - No. 055 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-055w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Idole.webp?v=1772097147"
@@ -182,7 +183,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["034"],
       shopifyProduct: {
-        title: "Riecht wie... LIBRE - No. 034",
+        title: "Riecht wie... LIBRE - No. 034 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-034w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/YSL_Libre.jpg"
@@ -201,7 +202,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["132"],
       shopifyProduct: {
-        title: "Riecht wie... Black Opium - No. 132",
+        title: "Riecht wie... Black Opium - No. 132 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-132w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Black_Opium.png?v=1770217557"
@@ -220,7 +221,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["083"],
       shopifyProduct: {
-        title: "Riecht wie... Laurent Opium - No. 083",
+        title: "Riecht wie... Laurent Opium - No. 083 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-083w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Opium.jpg?v=1770580952"
@@ -239,7 +240,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["283"],
       shopifyProduct: {
-        title: "Riecht wie... Y - No. 283",
+        title: "Riecht wie... Y - No. 283 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-283m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Y.png?v=1771482466"
@@ -262,7 +263,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["461"],
       shopifyProduct: {
-        title: "Riecht wie... Good Girl - No. 461",
+        title: "Riecht wie... Good Girl - No. 461 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-461w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Good_Girl_Velvet_Fatale.png?v=1770218974"
@@ -281,7 +282,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["404"],
       shopifyProduct: {
-        title: "Riecht wie... Very Good Girl - No. 404",
+        title: "Riecht wie... Very Good Girl - No. 404 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-404w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Very_Good_Girl.png?v=1770292680"
@@ -304,7 +305,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["275"],
       shopifyProduct: {
-        title: "Riecht wie… One Million - No. 275",
+        title: "Riecht wie… One Million - No. 275 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-275m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million.png?v=1770217929"
@@ -323,7 +324,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["334"],
       shopifyProduct: {
-        title: "Riecht wie... One Million Elixir - No. 334",
+        title: "Riecht wie... One Million Elixir - No. 334 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-334m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million_Elixir.png?v=1770579856"
@@ -342,7 +343,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["280"],
       shopifyProduct: {
-        title: "Riecht wie... One Million Lucky - No. 280",
+        title: "Riecht wie... One Million Lucky - No. 280 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-280m",
         price: "€20.99",
         image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132"
@@ -361,7 +362,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["023"],
       shopifyProduct: {
-        title: "Riecht wie... LADY MILION - No. 023",
+        title: "Riecht wie... LADY MILION - No. 023 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-023w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Lady_Million.png?v=1770218839"
@@ -380,7 +381,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["498"],
       shopifyProduct: {
-        title: "Riecht wie... Fame - No. 498",
+        title: "Riecht wie... Fame - No. 498 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-498w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Fame.png?v=1770285610"
@@ -399,7 +400,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["228"],
       shopifyProduct: {
-        title: "Riecht wie... Invictus - No. 228",
+        title: "Riecht wie... Invictus - No. 228 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-228m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Invictus.png?v=1770286917"
@@ -418,7 +419,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["050"],
       shopifyProduct: {
-        title: "Riecht wie... Pure XS For Her - No. 050",
+        title: "Riecht wie... Pure XS For Her - No. 050 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-050w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_XS_For_Her.jpg?v=1772105675"
@@ -437,7 +438,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["095"],
       shopifyProduct: {
-        title: "Riecht wie... Olympea Intense - No. 095",
+        title: "Riecht wie... Olympea Intense - No. 095 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-095w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Olympea_INTENSE.jpg?v=1772108016"
@@ -456,7 +457,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["399"],
       shopifyProduct: {
-        title: "Riecht wie... Phantom - No. 399",
+        title: "Riecht wie... Phantom - No. 399 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-399m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078"
@@ -479,7 +480,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["192"],
       shopifyProduct: {
-        title: "Riecht wie... SCANDAL - No. 192",
+        title: "Riecht wie... SCANDAL - No. 192 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-192w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_SCANDAL.png?v=1770223879"
@@ -498,7 +499,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["412"],
       shopifyProduct: {
-        title: "Riecht wie... La Belle - No. 412",
+        title: "Riecht wie... La Belle - No. 412 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-412w",
         price: "€20.99",
         image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_La_Belle.png?v=1770286342"
@@ -517,7 +518,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["349"],
       shopifyProduct: {
-        title: "Riecht wie... Ultra Male - No. 349",
+        title: "Riecht wie... Ultra Male - No. 349 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-349m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Ultra_Male.png?v=1770285911"
@@ -536,7 +537,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["442"],
       shopifyProduct: {
-        title: "Riecht wie... Classique Essence de Parfum - No. 442",
+        title: "Riecht wie... Classique Essence de Parfum - No. 442 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-442w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Classique_Essence_de_Parfum.png?v=1770290311"
@@ -555,7 +556,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["247"],
       shopifyProduct: {
-        title: "Riecht wie... Le Male - No. 247",
+        title: "Riecht wie... Le Male - No. 247 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-247m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/J.P._Gaultier_Le_Male.png?v=1770217089"
@@ -578,7 +579,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["113"],
       shopifyProduct: {
-        title: "Riecht wie... Angel - No. 113",
+        title: "Riecht wie... Angel - No. 113 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-113w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_1992.png?v=1770293282"
@@ -597,7 +598,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["166"],
       shopifyProduct: {
-        title: "Riecht wie... Angel Nova - No. 166",
+        title: "Riecht wie... Angel Nova - No. 166 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-166w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_Nova.webp?v=1771649097"
@@ -616,7 +617,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["255"],
       shopifyProduct: {
-        title: "Riecht wie... A*Men - No. 255",
+        title: "Riecht wie... A*Men - No. 255 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-255m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/A_Men.webp?v=1772141383"
@@ -639,7 +640,7 @@ window.PerfumeCatalog = {
       gender: "Unisex",
       productNumbers: ["053"],
       shopifyProduct: {
-        title: "Riecht wie... Vanille Fatale - No. 053",
+        title: "Riecht wie... Vanille Fatale - No. 053 (unisex)",
         url: "https://magicperfume.co/products/magic-perfume-no-053w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/vanille_fatale.png?v=1772096768"
@@ -658,7 +659,7 @@ window.PerfumeCatalog = {
       gender: "Unisex",
       productNumbers: ["438"],
       shopifyProduct: {
-        title: "Riecht wie... Lost Cherry - No. 438",
+        title: "Riecht wie... Lost Cherry - No. 438 (unisex)",
         url: "https://magicperfume.co/products/magic-perfume-no-438w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Lost_Cherry.png?v=1770283537"
@@ -677,7 +678,7 @@ window.PerfumeCatalog = {
       gender: "Unisex",
       productNumbers: ["232"],
       shopifyProduct: {
-        title: "Riecht wie... Fucking Fabulous - No. 232",
+        title: "Riecht wie... Fucking Fabulous - No. 232 (unisex)",
         url: "https://magicperfume.co/products/magic-perfume-no-232m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Fucking_Fabulous_EDP.png?v=1770283980"
@@ -696,7 +697,7 @@ window.PerfumeCatalog = {
       gender: "Unisex",
       productNumbers: ["193"],
       shopifyProduct: {
-        title: "Riecht wie... Tobacco Vanille - No. 193",
+        title: "Riecht wie... Tobacco Vanille - No. 193 (unisex)",
         url: "https://magicperfume.co/products/magic-perfume-no-193m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Tobacco_Vanille.png?v=1770290664"
@@ -715,7 +716,7 @@ window.PerfumeCatalog = {
       gender: "Unisex",
       productNumbers: ["287"],
       shopifyProduct: {
-        title: "Riecht wie... Oud Wood - No. 287",
+        title: "Riecht wie... Oud Wood - No. 287 (unisex)",
         url: "https://magicperfume.co/products/magic-perfume-no-287m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Oud_Wood.png?v=1770289479"
@@ -734,7 +735,7 @@ window.PerfumeCatalog = {
       gender: "Unisex",
       productNumbers: ["434"],
       shopifyProduct: {
-        title: "Riecht wie... Cherry Smoke - No. 434",
+        title: "Riecht wie... Cherry Smoke - No. 434 (unisex)",
         url: "https://magicperfume.co/products/magic-perfume-no-434m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Cherry_Smoke.jpg"
@@ -757,7 +758,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["129"],
       shopifyProduct: {
-        title: "Riecht wie...Si - No. 129",
+        title: "Riecht wie... Si - No. 129 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-129w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_S.jpg?v=1770285117"
@@ -776,7 +777,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["150"],
       shopifyProduct: {
-        title: "Riecht wie... Emporio She - No. 150",
+        title: "Riecht wie... Emporio She - No. 150 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-150w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_She.jpg?v=1770284423"
@@ -795,7 +796,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["242"],
       shopifyProduct: {
-        title: "Riecht wie... Emporio He - No. 242",
+        title: "Riecht wie... Emporio He - No. 242 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-242m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Emporio_He.jpg"
@@ -814,7 +815,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["140"],
       shopifyProduct: {
-        title: "Riecht wie... MY WAY - No. 140",
+        title: "Riecht wie... MY WAY - No. 140 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-140w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_MY_WAY.jpg?v=1770291090"
@@ -833,7 +834,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["260"],
       shopifyProduct: {
-        title: "Riecht wie... Armani Code - No. 260",
+        title: "Riecht wie... Armani Code - No. 260 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-260m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Armani_Code.png?v=1770220395"
@@ -852,7 +853,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["135"],
       shopifyProduct: {
-        title: "Riecht wie... Code for Woman - No. 135",
+        title: "Riecht wie... Code for Woman - No. 135 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-135w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Code_for_Woman.jpg?v=1771252264"
@@ -871,7 +872,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["221"],
       shopifyProduct: {
-        title: "Riecht wie... Acqua di Gio - No. 221",
+        title: "Riecht wie... Acqua di Gio - No. 221 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-221m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Acqua_Di_Gio.png?v=1770290000"
@@ -890,7 +891,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["146"],
       shopifyProduct: {
-        title: "Riecht wie... Acqua di Gioia - No. 146",
+        title: "Riecht wie... Acqua di Gioia - No. 146 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-146w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Acqua_di_Gioia.webp?v=1772136136"
@@ -909,7 +910,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["318"],
       shopifyProduct: {
-        title: "Riecht wie... Stronger With You Intensely - No. 318",
+        title: "Riecht wie... Stronger With You Intensely - No. 318 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-318m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Emporio_Armani_Stronger_With_You_Intensely.png?v=1770287057"
@@ -928,7 +929,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["040"],
       shopifyProduct: {
-        title: "Riecht wie... Armani Diamonds - No. 040",
+        title: "Riecht wie... Armani Diamonds - No. 040 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-040w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_Armani_Diamonds.png?v=1770924117"
@@ -947,7 +948,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["267"],
       shopifyProduct: {
-        title: "Riecht wie... Armani Code Sport - No.267",
+        title: "Riecht wie... Armani Code Sport - No.267 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-267m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Armani_Code_Sport.webp?v=1772137221"
@@ -966,7 +967,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["100"],
       shopifyProduct: {
-        title: "Riecht wie... Si Passione - No. 100",
+        title: "Riecht wie... Si Passione - No. 100 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-100w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Si_Passione.webp?v=1772143097"
@@ -985,7 +986,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["436"],
       shopifyProduct: {
-        title: "Riecht wie... Terra Di Gioia - No. 436",
+        title: "Riecht wie... Terra Di Gioia - No. 436 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-436w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Terra_di_Gioia.webp?v=1772139466"
@@ -1004,7 +1005,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["296"],
       shopifyProduct: {
-        title: "Riecht wie... Profumo - No. 296",
+        title: "Riecht wie... Profumo - No. 296 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-296m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Acqua_Di_Gio_Profumo.webp?v=1772140413"
@@ -1027,7 +1028,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["338"],
       shopifyProduct: {
-        title: "Riecht wie... Sauvage Parfum - No. 338",
+        title: "Riecht wie... Sauvage Parfum - No. 338 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-338m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage.png?v=1770220271"
@@ -1046,7 +1047,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["366"],
       shopifyProduct: {
-        title: "Riecht wie... Sauvage Elixir - No. 366",
+        title: "Riecht wie... Sauvage Elixir - No. 366 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-366m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage_Elixir.png?v=1770218137"
@@ -1065,7 +1066,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["145"],
       shopifyProduct: {
-        title: "Riecht wie... Hypnotic Poison - No. 145",
+        title: "Riecht wie... Hypnotic Poison - No. 145 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-145w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hypnotic_Poison.png?v=1771366694"
@@ -1084,7 +1085,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["159"],
       shopifyProduct: {
-        title: "Riecht wie... J'Adore - No. 159",
+        title: "Riecht wie... J'Adore - No. 159 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-159w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_J_adore.jpg?v=1770220853"
@@ -1103,7 +1104,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["196"],
       shopifyProduct: {
-        title: "Riecht wie... Miss Dior Le Parfum - No. 196",
+        title: "Riecht wie... Miss Dior Le Parfum - No. 196 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-196w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Le_Parfum.jpg?v=1770293457"
@@ -1122,7 +1123,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["206"],
       shopifyProduct: {
-        title: "Riecht wie... Fahrenheit - No. 206",
+        title: "Riecht wie... Fahrenheit - No. 206 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-206m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Fahrenheit.png?v=1770289652"
@@ -1141,7 +1142,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["350"],
       shopifyProduct: {
-        title: "Riecht wie... Fahrenheit Le Parfum - No. 350",
+        title: "Riecht wie... Fahrenheit Le Parfum - No. 350 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-350m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Dior_Fahrenheit_Le_Parfum.jpg?v=1770284765"
@@ -1160,7 +1161,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["277"],
       shopifyProduct: {
-        title: "Riecht wie... Homme Intense - No. 277",
+        title: "Riecht wie... Homme Intense - No. 277 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-277m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Dior_Homme_Intense.png?v=1770290129"
@@ -1179,7 +1180,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["082"],
       shopifyProduct: {
-        title: "Riecht wie... Miss Cherie - No. 082",
+        title: "Riecht wie... Miss Cherie - No. 082 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-082w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Cherie.jpg?v=1770963606"
@@ -1198,7 +1199,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["327"],
       shopifyProduct: {
-        title: "Riecht wie... Fahrenheit 32 - No. 327",
+        title: "Riecht wie... Fahrenheit 32 - No. 327 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-327m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Fahrenheit_32.webp?v=1772136282"
@@ -1217,7 +1218,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["044"],
       shopifyProduct: {
-        title: "Riecht wie... Midnight Poison - No. 044",
+        title: "Riecht wie... Midnight Poison - No. 044 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-044w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Midnight_Poison.jpg?v=1772105149"
@@ -1236,7 +1237,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["084"],
       shopifyProduct: {
-        title: "Riecht wie... Rose N'Roses - No. 084",
+        title: "Riecht wie... Rose N'Roses - No. 084 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-084w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Miss_Dior_Rose_N_Roses.jpg?v=1772106609"
@@ -1259,7 +1260,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["252"],
       shopifyProduct: {
-        title: "Riecht wie... Bleu - No. 252",
+        title: "Riecht wie... Bleu - No. 252 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-252m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838"
@@ -1278,7 +1279,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["079"],
       shopifyProduct: {
-        title: "Riecht wie... Cocoe - No. 079",
+        title: "Riecht wie... Coco - No. 079 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-079w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco.jpg?v=1770285282"
@@ -1297,7 +1298,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["067"],
       shopifyProduct: {
-        title: "Riecht wie... Mademoiselle Intense - No. 067",
+        title: "Riecht wie... Mademoiselle Intense - No. 067 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-067w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco_Mademoiselle_Intense.png?v=1770291316"
@@ -1316,7 +1317,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["139"],
       shopifyProduct: {
-        title: "Riecht wie... Mademoiselle - No. 139",
+        title: "Riecht wie... Mademoiselle - No. 139 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-139w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/0a78ac2c2769df411731eaba9cb8c230.jpg_720x720q80.jpg?v=1772090593"
@@ -1335,7 +1336,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["006"],
       shopifyProduct: {
-        title: "Riecht wie... Chance - No. 006",
+        title: "Riecht wie... Chance - No. 006 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-006w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Chanel_Chance.png?v=1770923697"
@@ -1354,7 +1355,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["077"],
       shopifyProduct: {
-        title: "Riecht wie... No.5 - No. 077",
+        title: "Riecht wie... No.5 - No. 077 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-077w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018"
@@ -1373,7 +1374,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["240"],
       shopifyProduct: {
-        title: "Riecht wie... Allure Homme - No. 240",
+        title: "Riecht wie... Allure Homme - No. 240 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-240m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/allure_homme.webp?v=1772119802"
@@ -1392,7 +1393,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["222"],
       shopifyProduct: {
-        title: "Riecht wie... Allure Homme Sport - No. 222",
+        title: "Riecht wie... Allure Homme Sport - No. 222 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-222m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/allure_homme_sport.webp"
@@ -1411,7 +1412,7 @@ window.PerfumeCatalog = {
       gender: "Unisex",
       productNumbers: ["459"],
       shopifyProduct: {
-        title: "Riecht wie... Bois des Iles - No. 459",
+        title: "Riecht wie... Bois des Iles - No. 459 (unisex)",
         url: "https://magicperfume.co/products/magic-perfume-no-459m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Bois_des_Iles.webp?v=1772140695"
@@ -1432,9 +1433,9 @@ window.PerfumeCatalog = {
       description: "Ein klassischer und eleganter Duft für die erfolgreiche moderne Frau.",
       year: "2000",
       gender: "Female",
-      productNumbers: ["60"],
+      productNumbers: ["060"],
       shopifyProduct: {
-        title: "Riecht wie... Boss Woman - No. 60",
+        title: "Riecht wie... Boss Woman - No. 060 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-060w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Boss_Woman.jpg?v=1770925272"
@@ -1453,7 +1454,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["234"],
       shopifyProduct: {
-        title: "Riecht wie... Bottled - No. 234",
+        title: "Riecht wie... Bottled - No. 234 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-234m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Bottled.png?v=1770223505"
@@ -1472,7 +1473,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["346"],
       shopifyProduct: {
-        title: "Riecht wie... Bottled Intense - No. 346",
+        title: "Riecht wie... Bottled Intense - No. 346 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-346m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Boss_Bottled_Intense.webp?v=1772139127"
@@ -1491,7 +1492,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["223"],
       shopifyProduct: {
-        title: "Riecht wie... Hugo - No. 223",
+        title: "Riecht wie... Hugo - No. 223 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-223m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Hugo.png?v=1770292811"
@@ -1510,7 +1511,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["148"],
       shopifyProduct: {
-        title: "Riecht wie... Boss Orange - No. 148",
+        title: "Riecht wie... Boss Orange - No. 148 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-148w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Boss_Orange.jpg?v=1770293717"
@@ -1529,7 +1530,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["270"],
       shopifyProduct: {
-        title: "Riecht wie... The Scent - No. 270",
+        title: "Riecht wie... The Scent - No. 270 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-270m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_The_Scent.png?v=1770292543"
@@ -1548,7 +1549,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["098"],
       shopifyProduct: {
-        title: "Riecht wie... ALIVE - No. 098",
+        title: "Riecht wie... ALIVE - No. 098 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-098w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/alive.png?v=1772098782"
@@ -1567,7 +1568,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["058"],
       shopifyProduct: {
-        title: "Riecht wie... Ma Vie - No. 058",
+        title: "Riecht wie... Ma Vie - No. 058 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-058w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Ma_Vie.jpg?v=1770924802"
@@ -1586,7 +1587,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["254"],
       shopifyProduct: {
-        title: "Riecht wie... Energise - No. 254",
+        title: "Riecht wie... Energise - No. 254 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-254m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hugo_Energise.webp?v=1772142991"
@@ -1609,7 +1610,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["106"],
       shopifyProduct: {
-        title: "Riecht wie... Eternity - No. 106",
+        title: "Riecht wie... Eternity - No. 106 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-106w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Calvin_Klein_Eternity.png?v=1770287215"
@@ -1628,7 +1629,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["414"],
       shopifyProduct: {
-        title: "Riecht wie... CK Eternity Moment - No. 414",
+        title: "Riecht wie... CK Eternity Moment - No. 414 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-414w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Eternity_Moment.webp?v=1772138932"
@@ -1647,7 +1648,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["087"],
       shopifyProduct: {
-        title: "Riecht wie... Euphoria Blossom - No. 087",
+        title: "Riecht wie... Euphoria Blossom - No. 087 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-087w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Euphoria_Blossom.webp?v=1772137112"
@@ -1666,7 +1667,7 @@ window.PerfumeCatalog = {
       gender: "Unisex",
       productNumbers: ["209"],
       shopifyProduct: {
-        title: "Riecht wie... CK One - No. 209",
+        title: "Riecht wie... CK One - No. 209 (unisex)",
         url: "https://magicperfume.co/products/magic-perfume-no-209m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/CK_One.webp?v=1772137544"
@@ -1685,7 +1686,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["007"],
       shopifyProduct: {
-        title: "Riecht wie... Glow - No. 007",
+        title: "Riecht wie... Glow - No. 007 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-007w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Glow.webp?v=1772137808"
@@ -1704,7 +1705,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["031"],
       shopifyProduct: {
-        title: "Riecht wie... CK Women - No. 031",
+        title: "Riecht wie... CK Women - No. 031 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-031w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/ck_women.webp?v=1772137384"
@@ -1723,7 +1724,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["477"],
       shopifyProduct: {
-        title: "Riecht wie... CK Be - No. 477",
+        title: "Riecht wie... CK Be - No. 477 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-477m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/CK_be.webp?v=1772142766"
@@ -1742,7 +1743,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["204"],
       shopifyProduct: {
-        title: "Riecht wie... Euphoria Men - No. 204",
+        title: "Riecht wie... Euphoria Men - No. 204 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-204m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Euphoria_Men.webp?v=1772140949"
@@ -1765,7 +1766,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["457"],
       shopifyProduct: {
-        title: "Riecht wie... Musc Noir For Her - No. 457",
+        title: "Riecht wie... Musc Noir For Her - No. 457 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-457w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273"
@@ -1788,7 +1789,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["017"],
       shopifyProduct: {
-        title: "Riecht wie... Light Blue - No. 017",
+        title: "Riecht wie... Light Blue - No. 017 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-017w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Dolce_Gabbana_Light_Blue.jpg?v=1770290817"
@@ -1807,7 +1808,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["094"],
       shopifyProduct: {
-        title: "Riecht wie... The One - No. 094",
+        title: "Riecht wie... The One - No. 094 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-094w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987"
@@ -1826,7 +1827,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["435"],
       shopifyProduct: {
-        title: "Riecht wie... Dolci - No. 435",
+        title: "Riecht wie... Dolci - No. 435 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-435w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Dolce.webp?v=1772139227"
@@ -1845,7 +1846,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["018"],
       shopifyProduct: {
-        title: "Riecht wie... L'Imperatrice 3 - No. 018",
+        title: "Riecht wie... L'Imperatrice 3 - No. 018 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-018w",
         price: "€15.99",
         image: "https://magicperfume.co/cdn/shop/files/Dolce_7_Gabana.jpg?v=1772095859"
@@ -1868,7 +1869,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["074"],
       shopifyProduct: {
-        title: "Riecht wie... Flower - No. 074",
+        title: "Riecht wie... Flower - No. 074 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-074w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/KENZO_FLOWER.jpg?v=1770925860"
@@ -1891,7 +1892,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["024"],
       shopifyProduct: {
-        title: "Riecht wie... ÄQUIVALENT - No. 024",
+        title: "Riecht wie... ÄQUIVALENT - No. 024 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-024w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143"
@@ -1910,7 +1911,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["049"],
       shopifyProduct: {
-        title: "Riecht wie… Nomade - No. 049",
+        title: "Riecht wie… Nomade - No. 049 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-049w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Chloe_Nomade.jpg"
@@ -1933,7 +1934,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["227"],
       shopifyProduct: {
-        title: "Riecht wie... Terre - No. 227",
+        title: "Riecht wie... Terre - No. 227 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-227m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hermes_Terre_D_Hermes.png?v=1770292407"
@@ -1956,7 +1957,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["163"],
       shopifyProduct: {
-        title: "Riecht wie... Rush 2 - No. 163",
+        title: "Riecht wie... Rush 2 - No. 163 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-163w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/gucci_rush_8034ec32-d523-4890-b475-fc7c34e77c9e.webp?v=1771658050"
@@ -1975,7 +1976,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["071"],
       shopifyProduct: {
-        title: "Riecht wie... Envy Me - No. 071",
+        title: "Riecht wie... Envy Me - No. 071 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-071w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Gucci_Envy_Me.webp?v=1772135696"
@@ -1998,7 +1999,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["022"],
       shopifyProduct: {
-        title: "Riecht wie... Deep Red - No. 022",
+        title: "Riecht wie... Deep Red - No. 022 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-022w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Deep_Red.jpg?v=1770922424"
@@ -2021,7 +2022,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["200"],
       shopifyProduct: {
-        title: "Riecht wie... Cool Water - No. 200",
+        title: "Riecht wie... Cool Water - No. 200 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-200m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Davidoff_Cool_Water.png?v=1770292092"
@@ -2044,7 +2045,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["239"],
       shopifyProduct: {
-        title: "Riecht wie... Only The Brave - No. 239",
+        title: "Riecht wie... Only The Brave - No. 239 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-239m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Only_The_Brave.webp?v=1772141539"
@@ -2067,7 +2068,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["056"],
       shopifyProduct: {
-        title: "Riecht wie... Campbell - No. 056",
+        title: "Riecht wie... Campbell - No. 056 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-056w",
         price: "€20.99",
         image: "https://magicperfume.co/cdn/shop/files/Campbell.webp?v=1772140165"
@@ -2090,7 +2091,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["211"],
       shopifyProduct: {
-        title: "Riecht wie... Joop Homme - No. 211",
+        title: "Riecht wie... Joop Homme - No. 211 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-211m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Joop_Homme.png?v=1770286089"
@@ -2113,7 +2114,7 @@ window.PerfumeCatalog = {
       gender: "Male",
       productNumbers: ["213"],
       shopifyProduct: {
-        title: "Riecht wie... Adventure - No. 213",
+        title: "Riecht wie... Adventure - No. 213 (m)",
         url: "https://magicperfume.co/products/magic-perfume-no-213m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535"
@@ -2136,7 +2137,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["116"],
       shopifyProduct: {
-        title: "Riecht wie... Vita - No. 116",
+        title: "Riecht wie... Vita - No. 116 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-116w",
         price: "€20.99",
         image: "https://magicperfume.co/cdn/shop/files/Dolce_Vita.webp?v=1772140820"
@@ -2159,7 +2160,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["421"],
       shopifyProduct: {
-        title: "Riecht wie... La Panthere - No. 421",
+        title: "Riecht wie... La Panthere - No. 421 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-421w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/La_Panthere.webp?v=1772141818"
@@ -2182,7 +2183,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["032"],
       shopifyProduct: {
-        title: "Riecht wie... The Only One - No. 032",
+        title: "Riecht wie... The Only One - No. 032 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-032w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987"
@@ -2201,7 +2202,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["028"],
       shopifyProduct: {
-        title: "Riecht wie... Obsession Night WOMAN - No. 028",
+        title: "Riecht wie... Obsession Night WOMAN - No. 028 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-028w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Obsession_Night_Woman.webp?v=1772136464"
@@ -2220,7 +2221,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["488"],
       shopifyProduct: {
-        title: "No. 488 – Fruity Floral",
+        title: "No. 488 – Fruity Floral (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-488w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/aventus.webp?v=1772533006"
@@ -2239,7 +2240,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["008"],
       shopifyProduct: {
-        title: "Riecht wie... Dione - No. 008",
+        title: "Riecht wie... Dione - No. 008 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-008w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/MagicPerfume-79-300x300.png?v=1769157021"
@@ -2258,7 +2259,7 @@ window.PerfumeCatalog = {
       gender: "Unisex",
       productNumbers: ["340"],
       shopifyProduct: {
-        title: "Riecht wie... Q - No. 340",
+        title: "Riecht wie... Q - No. 340 (unisex)",
         url: "https://magicperfume.co/products/magic-perfume-no-340m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Q_EDP.webp?v=1772143999"
@@ -2277,7 +2278,7 @@ window.PerfumeCatalog = {
       gender: "Female",
       productNumbers: ["097"],
       shopifyProduct: {
-        title: "Riecht wie... Rose Tangerine - No. 097",
+        title: "Riecht wie... Rose Tangerine - No. 097 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-097w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143"
@@ -2307,6 +2308,22 @@ window.PerfumeCatalog.getShopifyProductByPerfumeName = function(perfumeName) {
       const perfume = this[brandKey].find(p => 
         p.name.toLowerCase().includes(searchName) || 
         searchName.includes(p.name.toLowerCase())
+      );
+      if (perfume && perfume.shopifyProduct) {
+        return perfume.shopifyProduct;
+      }
+    }
+  }
+  return null;
+};
+
+window.PerfumeCatalog.getShopifyProductByNumber = function(number) {
+  const numStr = number.toString().padStart(3, '0');
+  
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      const perfume = this[brandKey].find(p => 
+        p.productNumbers && p.productNumbers.includes(numStr)
       );
       if (perfume && perfume.shopifyProduct) {
         return perfume.shopifyProduct;
@@ -2355,6 +2372,39 @@ window.PerfumeCatalog.findById = function(id) {
   return null;
 };
 
+window.PerfumeCatalog.getBrands = function() {
+  const brands = [];
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      brands.push(brandKey);
+    }
+  }
+  return brands;
+};
+
+window.PerfumeCatalog.getProductsByBrand = function(brandKey) {
+  if (this[brandKey] && Array.isArray(this[brandKey])) {
+    return this[brandKey];
+  }
+  return [];
+};
+
+window.PerfumeCatalog.getProductNumbers = function() {
+  const numbers = [];
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      this[brandKey].forEach(perfume => {
+        if (perfume.productNumbers) {
+          numbers.push(...perfume.productNumbers);
+        }
+      });
+    }
+  }
+  return [...new Set(numbers)].sort();
+};
+
 console.log('✓ German PerfumeCatalog loaded with', 
   Object.keys(window.PerfumeCatalog).filter(key => Array.isArray(window.PerfumeCatalog[key])).length, 
-  'brand categories');
+  'brand categories and', 
+  window.PerfumeCatalog.getProductNumbers().length, 
+  'product numbers');
