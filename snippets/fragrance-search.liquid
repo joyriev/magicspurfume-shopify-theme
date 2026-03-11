@@ -3422,7 +3422,7 @@ window.fcToggleSearch = function() {
       .catch(() => ({ item_count: 0 }));
   };
 
-  // ===== PERFORM SEARCH =====
+  // ===== PERFORM SEARCH - SIMPLIFIED VERSION =====
   function performSearch(query) {
     currentSearchQuery = query;
     content.innerHTML = '<div class="fc-loading">Suche läuft...</div>';
@@ -3431,159 +3431,108 @@ window.fcToggleSearch = function() {
       // Search in hardcoded products with enhanced fuzzy search
       const hardcodedResults = searchHardcodedProducts(query);
       
-      // Determine what to search in catalog
-      let catalogSearchQuery = query;
+      // ===== SIMPLIFIED CATALOG SEARCH - SHOWS ALL RESULTS =====
+      const catalogResults = [];
+      const queryLower = query.toLowerCase().trim();
+      const queryNormalized = normalizeText(queryLower);
+      const queryNoSpaces = queryNormalized.replace(/\s+/g, '');
       
-      // Check if query is a pure number (ID/product number)
-      const isNumberQuery = /^\d+$/.test(query.trim());
+      // For number searches (e.g., "469"), we want to find the matching brand
+      const isNumberQuery = /^\d+$/.test(queryLower);
+      let searchBrand = '';
       
-      // If searching by number, also search catalog by brand/name of the matching hardcoded product
+      // If searching by number and we have a matching product, use its brand
       if (isNumberQuery && hardcodedResults.length > 0) {
-        const firstProduct = hardcodedResults[0].product;
-        catalogSearchQuery = `${firstProduct.brand} ${firstProduct.title}`;
+        searchBrand = hardcodedResults[0].product.brand;
       }
-      
-      // Search in catalog with intelligent scoring
-      const catalogResultsWithScore = [];
-      const catalogQueryLower = catalogSearchQuery.toLowerCase();
-      const catalogNormalizedQuery = normalizeText(catalogSearchQuery);
-      const catalogQueryVariations = generateFuzzyVariations(catalogSearchQuery);
       
       allPerfumes.forEach(perfume => {
         const perfumeName = perfume.name.toLowerCase();
         const perfumeBrand = perfume.brand.toLowerCase();
-        const normalizedName = normalizeText(perfume.name);
-        const normalizedBrand = normalizeText(perfume.brand);
-        
-        // Generate fuzzy variations of the product name and brand
-        const brandVariations = generateFuzzyVariations(perfume.brand);
-        const nameVariations = generateFuzzyVariations(perfume.name);
+        const normalizedName = normalizeText(perfumeName);
+        const normalizedBrand = normalizeText(perfumeBrand);
         
         let score = 0;
-        let matchType = '';
         
-        // ===== EXACT MATCHES (Highest Priority) =====
+        // ===== DIRECT MATCHES (Highest Priority) =====
         // Exact brand match
-        if (perfumeBrand === catalogQueryLower) {
-          score = 1000;
-          matchType = 'exact-brand';
-        }
-        // Exact name match
-        else if (perfumeName === catalogQueryLower) {
-          score = 950;
-          matchType = 'exact-name';
+        if (perfumeBrand === queryLower) {
+          score = 100;
         }
         // Brand contains query
-        else if (perfumeBrand.includes(catalogQueryLower)) {
-          score = 900;
-          matchType = 'brand-contains';
+        else if (perfumeBrand.includes(queryLower)) {
+          score = 90;
+        }
+        // Exact name match
+        else if (perfumeName === queryLower) {
+          score = 95;
         }
         // Name contains query
-        else if (perfumeName.includes(catalogQueryLower)) {
-          score = 850;
-          matchType = 'name-contains';
+        else if (perfumeName.includes(queryLower)) {
+          score = 85;
         }
         
-        // ===== NORMALIZED MATCHES =====
-        else if (normalizedBrand === catalogNormalizedQuery) {
-          score = 800;
-          matchType = 'normalized-brand';
+        // ===== NORMALIZED MATCHES (No accents) =====
+        else if (normalizedBrand === queryNormalized) {
+          score = 80;
         }
-        else if (normalizedName === catalogNormalizedQuery) {
-          score = 750;
-          matchType = 'normalized-name';
+        else if (normalizedName === queryNormalized) {
+          score = 75;
         }
-        else if (normalizedBrand.includes(catalogNormalizedQuery)) {
-          score = 700;
-          matchType = 'normalized-brand-contains';
+        else if (normalizedBrand.includes(queryNormalized)) {
+          score = 70;
         }
-        else if (normalizedName.includes(catalogNormalizedQuery)) {
-          score = 650;
-          matchType = 'normalized-name-contains';
+        else if (normalizedName.includes(queryNormalized)) {
+          score = 65;
         }
         
-        // ===== NO-SPACE MATCHES =====
-        else if (normalizedBrand.replace(/\s+/g, '') === catalogNormalizedQuery.replace(/\s+/g, '')) {
-          score = 600;
-          matchType = 'nospace-brand';
+        // ===== NO-SPACE MATCHES (e.g., "yslblackopium") =====
+        else if (normalizedBrand.replace(/\s+/g, '').includes(queryNoSpaces)) {
+          score = 60;
         }
-        else if (normalizedName.replace(/\s+/g, '') === catalogNormalizedQuery.replace(/\s+/g, '')) {
-          score = 550;
-          matchType = 'nospace-name';
+        else if (normalizedName.replace(/\s+/g, '').includes(queryNoSpaces)) {
+          score = 55;
         }
-        else if (normalizedBrand.replace(/\s+/g, '').includes(catalogNormalizedQuery.replace(/\s+/g, ''))) {
-          score = 500;
-          matchType = 'nospace-brand-contains';
+        else if (queryNoSpaces.includes(normalizedBrand.replace(/\s+/g, ''))) {
+          score = 50;
         }
-        else if (normalizedName.replace(/\s+/g, '').includes(catalogNormalizedQuery.replace(/\s+/g, ''))) {
-          score = 450;
-          matchType = 'nospace-name-contains';
+        else if (queryNoSpaces.includes(normalizedName.replace(/\s+/g, ''))) {
+          score = 45;
         }
         
-        // ===== FUZZY VARIATIONS MATCH (Very High Priority) =====
-        // Check if query variations match brand/name exactly
-        else if (catalogQueryVariations.some(v => normalizedBrand === v)) {
-          score = 825;
-          matchType = 'fuzzy-query-brand-exact';
-        }
-        else if (catalogQueryVariations.some(v => normalizedName === v)) {
-          score = 775;
-          matchType = 'fuzzy-query-name-exact';
-        }
-        // Check if product brand variations match query
-        else if (brandVariations.some(v => v === catalogNormalizedQuery)) {
-          score = 815;
-          matchType = 'brand-fuzzy-exact';
-        }
-        // Check if product name variations match query
-        else if (nameVariations.some(v => v === catalogNormalizedQuery)) {
-          score = 765;
-          matchType = 'name-fuzzy-exact';
-        }
-        
-        // ===== FUZZY VARIATIONS CONTAIN =====
-        else if (catalogQueryVariations.some(v => normalizedBrand.includes(v) || v.includes(normalizedBrand))) {
-          score = 750;
-          matchType = 'fuzzy-query-brand-contains';
-        }
-        else if (catalogQueryVariations.some(v => normalizedName.includes(v) || v.includes(normalizedName))) {
-          score = 700;
-          matchType = 'fuzzy-query-name-contains';
-        }
-        
-        // ===== LEVENSHTEIN FUZZY MATCHES (Lower Priority) =====
+        // ===== FUZZY MATCHES (Typos) =====
         else {
-          const fuzzyScoreName = calculateFuzzyScore(catalogSearchQuery, perfume.name);
-          const fuzzyScoreBrand = calculateFuzzyScore(catalogSearchQuery, perfume.brand);
-          const bestFuzzyScore = Math.max(fuzzyScoreName, fuzzyScoreBrand);
-          
-          if (bestFuzzyScore > 70) {
-            score = bestFuzzyScore * 4; // 70% → 280, 100% → 400
-            matchType = bestFuzzyScore === fuzzyScoreBrand ? 'fuzzy-brand' : 'fuzzy-name';
+          const fuzzyScore = calculateFuzzyScore(query, perfume.name + ' ' + perfume.brand);
+          if (fuzzyScore > 60) {
+            score = fuzzyScore * 0.5; // Scale down to 30-50 range
           }
         }
         
-        // Only include results with meaningful scores
-        if (score > 0) {
-          catalogResultsWithScore.push({
+        // ALSO include if it's a number search and this perfume's brand matches
+        if (isNumberQuery && searchBrand && perfumeBrand.includes(searchBrand.toLowerCase())) {
+          score = Math.max(score, 95);
+        }
+        
+        // Include if score is decent (lowered threshold to 30)
+        if (score > 30) {
+          catalogResults.push({
             perfume,
-            score,
-            matchType
+            score
           });
         }
       });
       
       // Sort by score (highest first)
-      catalogResultsWithScore.sort((a, b) => b.score - a.score);
-      const catalogResults = catalogResultsWithScore.map(r => r.perfume);
+      catalogResults.sort((a, b) => b.score - a.score);
       
       let html = '';
       
-      // ===== FIRST: Show catalog results (Echte Parfums) =====
+      // ===== FIRST: Show catalog results (Echte Parfums) - ALWAYS SHOW IF ANY FOUND =====
       if (catalogResults.length > 0) {
         html += `<div class="fc-section-title">✨ Echte Parfums</div>`;
         
-        catalogResults.slice(0, 8).forEach(perfume => {
+        catalogResults.slice(0, 8).forEach(result => {
+          const perfume = result.perfume;
           html += `
             <div class="fc-real-perfume-item" onclick="window.fcShowPerfumeDetail('${perfume.id}')">
               <img class="fc-real-perfume-image" src="${perfume.image}" 
