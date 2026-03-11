@@ -3540,8 +3540,9 @@ window.fcToggleSearch = function() {
           score = 45;
         }
         
-        // ===== FUZZY MATCHES (Typos) =====
-        else {
+        // ===== FUZZY MATCHES (Typos) - SKIP FOR SHORT QUERIES =====
+        // For short queries (<=3 chars like "ck"), skip fuzzy to avoid false matches
+        else if (queryLower.length > 3) {
           const fuzzyScore = calculateFuzzyScore(query, perfume.name + ' ' + perfume.brand);
           if (fuzzyScore > 60) {
             score = fuzzyScore * 0.5; // Scale down to 30-50 range
