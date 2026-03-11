@@ -2174,7 +2174,7 @@ window.PerfumeCatalog = {
       id: "mfk_baccarat_rouge_540",
       name: "Baccarat Rouge 540 Maison Francis Kurkdjian",
       brand: "Maison Francis Kurkdjian",
-      image: "https://magicperfume.co/cdn/shop/files/Rouge_540.webp?v=1772096768",
+      image: "https://magicperfume.co/cdn/shop/files/rouge_540.jpg?v=1772744947",
       top_notes: ["Jasmin", "Safran"],
       heart_notes: ["Zeder", "Amberholz"],
       base_notes: ["Ambroxan", "Ethyl Maltol", "Amber"],
