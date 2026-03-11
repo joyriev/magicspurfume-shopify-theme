@@ -2338,7 +2338,7 @@ window.PerfumeCatalog = {
       id: "kilian_angel_share",
       name: "Angel Share Kilian",
       brand: "Kilian",
-      image: "https://magicperfume.co/cdn/shop/files/Angel_Share.webp?v=1772140165",
+      image: "https://d3mcqtyhv5hy6w.cloudfront.net/perfumes/67b900be78aaff2b1d65e185_clipped.webp",
       top_notes: ["Kognak", "Holz", "Eichenfass"],
       heart_notes: ["Zimt", "Vanille", "Tonkabohne"],
       base_notes: ["Sandelholz", "Patschuli", "Amber", "Eichenmoos"],
