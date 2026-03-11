@@ -1308,7 +1308,7 @@ window.PerfumeCatalog = {
       id: "chanel_mademoiselle",
       name: "Coco Mademoiselle Chanel",
       brand: "Chanel",
-      image: "https://magicperfume.co/cdn/shop/files/0a78ac2c2769df411731eaba9cb8c230.jpg_720x720q80.jpg?v=1772090593",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco_Mademoiselle_Intense.png?v=1770291316",
       top_notes: ["Orange", "Bergamotte", "Grapefruit"],
       heart_notes: ["Rose", "Jasmin", "Litschi"],
       base_notes: ["Patschuli", "Vanille", "Moschus", "Vetiver"],
