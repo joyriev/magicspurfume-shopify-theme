@@ -1,3723 +1,2410 @@
-{% comment %}
-  FRAGRANCE CODE SUCHE POPUP - PREMIUM DESIGN
-  - KOMPLETT HARDCODED - Jedes Parfum hat exakte Zuordnungen
-  - KORREKTE PRODUKTBILDER - Alle Bilder mit _c.webp Format
-  - ERWEITERTE FUZZY-SUCHE - Findet auch bei Tippfehlern
-  - KEIN-SPACE-ERKENNUNG - "valentinoborninroma" findet Produkte
-  - SONDERZEICHEN-BEHANDLUNG - "j'adore" findet "J'Adore"
-  - STRENGE MARKEN- UND GESCHLECHTSZUORDNUNG
-  - ZEIGT PRODUKTE DER GLEICHEN MARKE BEI "DAS KÖNNTE DIR AUCH GEFALLEN"
-  - GESCHLECHTSSPEZIFISCHE EMPFEHLUNGEN
-{% endcomment %}
-
-<!-- Lade unseren kuratierten Katalog -->
-<script src="{{ 'perfume-catalog-minimal.js' | asset_url }}"></script>
-
-<style>
-/* ===== PREMIUM FRAGRANCE CODE POPUP ===== */
-.fc-float-wrapper {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 9999;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
-
-/* ===== FLOATING BUTTON ===== */
-.fc-search-toggle {
-  background: #C41E3A;
-  border-radius: 30px;
-  padding: 14px 28px;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(196, 30, 58, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-  border: none;
-  min-width: 130px;
-}
-
-.fc-search-toggle:hover {
-  background: #A51D36;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(165, 29, 54, 0.4);
-}
-
-.fc-search-toggle svg {
-  width: 20px;
-  height: 20px;
-  stroke: #FFFFFF;
-  stroke-width: 2;
-  fill: none;
-}
-
-.fc-toggle-text {
-  color: #FFFFFF;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-/* ===== POPUP CONTAINER ===== */
-.fc-search-popup {
-  position: fixed;
-  bottom: 110px;
-  right: 30px;
-  width: 440px;
-  max-height: 80vh;
-  background: #FFFFFF;
-  border-radius: 24px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  padding: 0;
-  overflow-y: auto;
-  transform: translateY(30px);
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 10000;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.fc-search-popup.active {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Premium Scrollbar */
-.fc-search-popup::-webkit-scrollbar {
-  width: 6px;
-}
-.fc-search-popup::-webkit-scrollbar-track {
-  background: #F8F4F0;
-  border-radius: 10px;
-}
-.fc-search-popup::-webkit-scrollbar-thumb {
-  background: #C41E3A;
-  border-radius: 10px;
-}
-
-/* ===== CLOSE BUTTON ===== */
-.fc-close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 36px;
-  height: 36px;
-  background: #F8F4F0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 20px;
-  color: #4A3F39;
-  transition: all 0.2s ease;
-  z-index: 10;
-  border: none;
-  opacity: 0.9;
-}
-
-.fc-close-btn:hover {
-  background: #EDE5DC;
-  color: #C41E3A;
-  transform: rotate(90deg);
-}
-
-/* ===== OFFER BANNER - PREMIUM ===== */
-.fc-offer-banner {
-  background: linear-gradient(135deg, #FFF5EB, #FFE8DA);
-  border: 2px solid #C41E3A;
-  border-radius: 16px;
-  padding: 16px 20px;
-  margin: 20px 20px 15px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 8px 15px -5px rgba(196, 30, 58, 0.2);
-  transition: all 0.3s ease;
-}
-
-.fc-offer-banner.qualified {
-  background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
-  border-color: #2E7D32;
-  box-shadow: 0 8px 15px -5px rgba(46, 125, 50, 0.2);
-}
-
-.fc-offer-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-}
-
-.fc-offer-icon {
-  font-size: 28px;
-  background: #C41E3A;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  box-shadow: 0 5px 10px rgba(196, 30, 58, 0.3);
-  transition: background 0.3s ease;
-  flex-shrink: 0;
-}
-
-.fc-offer-banner.qualified .fc-offer-icon {
-  background: #2E7D32;
-  box-shadow: 0 5px 10px rgba(46, 125, 50, 0.3);
-}
-
-.fc-offer-text {
-  flex: 1;
-}
-
-.fc-offer-text strong {
-  display: block;
-  font-size: 15px;
-  color: #C41E3A;
-  font-weight: 800;
-  margin-bottom: 2px;
-  letter-spacing: 0.3px;
-  transition: color 0.3s ease;
-  line-height: 1.3;
-}
-
-.fc-offer-banner.qualified .fc-offer-text strong {
-  color: #2E7D32;
-}
-
-.fc-offer-text span {
-  font-size: 12px;
-  color: #4A3F39;
-  font-weight: 500;
-  display: block;
-  line-height: 1.4;
-}
-
-.fc-offer-status {
-  background: #C41E3A;
-  color: white;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 30px;
-  box-shadow: 0 4px 8px rgba(196, 30, 58, 0.2);
-  transition: all 0.3s ease;
-  min-width: 65px;
-  text-align: center;
-  white-space: nowrap;
-  margin-left: 10px;
-}
-
-.fc-offer-banner.qualified .fc-offer-status {
-  background: #2E7D32;
-  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.2);
-}
-
-/* Progress bar */
-.fc-offer-progress-container {
-  padding: 0 20px 15px 20px;
-}
-
-.fc-offer-progress-bar {
-  height: 6px;
-  background: #EDE5DC;
-  border-radius: 10px;
-  overflow: hidden;
-  width: 100%;
-}
-
-.fc-offer-progress-fill {
-  height: 100%;
-  background: #C41E3A;
-  border-radius: 10px;
-  width: 0%;
-  transition: width 0.3s ease;
-}
-
-.fc-offer-banner.qualified .fc-offer-progress-fill {
-  background: #2E7D32;
-}
-
-.fc-offer-message {
-  font-size: 12px;
-  color: #4A3F39;
-  margin-top: 8px;
-  text-align: right;
-  font-weight: 500;
-  padding-right: 5px;
-}
-
-/* ===== INFO SECTION ===== */
-.fc-info-section {
-  padding: 5px 20px 5px 20px;
-}
-
-.fc-info-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #8A7A70;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-
-/* ===== LOGO SECTION - CLICKABLE ===== */
-.fc-logo-section {
-  padding: 0 20px 15px 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.fc-logo-section:hover {
-  opacity: 0.8;
-}
-
-.fc-logo-red {
-  width: 60px;
-  height: 60px;
-  background: #C41E3A;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 15px rgba(196, 30, 58, 0.25);
-}
-
-.fc-logo-fc {
-  color: white;
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.fc-brand-text {
-  font-size: 18px;
-  font-weight: 700;
-  color: #2C2420;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-/* ===== SEARCH SECTION WITH CLEAR BUTTON ===== */
-.fc-search-section {
-  padding: 0 20px 20px 20px;
-  position: relative;
-}
-
-.fc-search-container {
-  position: relative;
-  border-bottom: 2px solid #EDE5DC;
-  transition: border-color 0.2s ease;
-}
-
-.fc-search-container:focus-within {
-  border-color: #C41E3A;
-}
-
-.fc-search-field {
-  width: 100%;
-  padding: 15px 45px 15px 0;
-  border: none;
-  font-size: 16px;
-  outline: none;
-  background: transparent;
-  color: #2C2420;
-}
-
-.fc-search-field::placeholder {
-  color: #B0A298;
-  font-weight: 400;
-  font-size: 15px;
-}
-
-.fc-clear-search {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
-  background: #F8F4F0;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 18px;
-  color: #8A7A70;
-  padding: 0;
-  transition: all 0.2s ease;
-}
-
-.fc-clear-search:hover {
-  background: #EDE5DC;
-  color: #C41E3A;
-}
-
-/* ===== STEPS SECTION - PREMIUM BOX ===== */
-.fc-steps-section {
-  padding: 0 20px 25px 20px;
-}
-
-.fc-steps-box {
-  background: #FEFCF9;
-  border: 1px solid #EDE5DC;
-  border-radius: 24px;
-  padding: 28px 20px;
-  box-shadow: 0 8px 20px -10px rgba(0, 0, 0, 0.08);
-}
-
-.fc-steps-title {
-  font-size: 22px;
-  font-weight: 800;
-  color: #2C2420;
-  margin-bottom: 25px;
-  line-height: 1.2;
-  letter-spacing: -0.3px;
-}
-
-.fc-steps-title span {
-  display: block;
-  color: #C41E3A;
-  font-size: 24px;
-}
-
-.fc-step-item {
-  font-size: 15px;
-  margin: 20px 0;
-  color: #4A3F39;
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  line-height: 1.5;
-  font-weight: 500;
-}
-
-.fc-step-number {
-  display: inline-block;
-  width: 28px;
-  height: 28px;
-  background: #C41E3A;
-  color: white;
-  border-radius: 8px;
-  text-align: center;
-  line-height: 28px;
-  font-size: 15px;
-  font-weight: 700;
-  flex-shrink: 0;
-  box-shadow: 0 4px 8px rgba(196, 30, 58, 0.2);
-}
-
-/* ===== SECTION TITLES ===== */
-.fc-section-title {
-  font-size: 16px;
-  font-weight: 800;
-  color: #C41E3A;
-  margin: 20px 20px 15px 20px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #EDE5DC;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-.fc-subsection-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: #2C2420;
-  margin: 20px 20px 15px 20px;
-}
-
-/* ===== REAL PERFUME LIST ===== */
-.fc-real-perfume-item {
-  background: #FFFFFF;
-  padding: 15px 20px;
-  margin: 0;
-  border-bottom: 1px solid #F0E8E0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  transition: background 0.2s ease;
-}
-
-.fc-real-perfume-item:hover {
-  background: #FEF9F5;
-}
-
-.fc-real-perfume-image {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border-radius: 12px;
-  background: #FFFFFF;
-  padding: 5px;
-  border: 1px solid #EDE5DC;
-}
-
-.fc-real-perfume-info {
-  flex: 1;
-}
-
-.fc-real-perfume-name {
-  font-size: 16px;
-  font-weight: 700;
-  color: #2C2420;
-  margin-bottom: 4px;
-}
-
-.fc-real-perfume-brand {
-  font-size: 14px;
-  color: #C41E3A;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.fc-real-perfume-year {
-  font-size: 12px;
-  color: #B0A298;
-}
-
-/* ===== PRODUCT GRID ===== */
-.fc-grid-2col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  padding: 0 20px 20px 20px;
-}
-
-.fc-product-card {
-  text-align: center;
-}
-
-.fc-badge {
-  background: #F8F4F0;
-  padding: 6px 12px;
-  border-radius: 40px;
-  font-size: 10px;
-  font-weight: 700;
-  color: #4A3F39;
-  margin-bottom: 12px;
-  display: inline-block;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  border: 1px solid #EDE5DC;
-}
-
-.fc-product-inner {
-  background: #FFFFFF;
-  border: 1px solid #EDE5DC;
-  border-radius: 20px;
-  padding: 18px 12px;
-  transition: all 0.2s ease;
-}
-
-.fc-product-inner:hover {
-  border-color: #C41E3A;
-  box-shadow: 0 8px 18px -8px rgba(196, 30, 58, 0.15);
-}
-
-/* ===== ENLARGED CATALOGUE IMAGES ===== */
-.fc-product-image {
-  width: 100%;
-  height: 150px;
-  object-fit: contain;
-  margin-bottom: 12px;
-  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.1));
-}
-
-.fc-product-title {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 5px;
-  color: #2C2420;
-}
-
-.fc-product-price {
-  font-size: 14px;
-  font-weight: 800;
-  color: #C41E3A;
-  margin-bottom: 10px;
-}
-
-.fc-add-to-cart {
-  width: 100%;
-  background: #C41E3A;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 40px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  transition: background 0.2s ease;
-}
-
-.fc-add-to-cart:hover {
-  background: #A51D36;
-}
-
-.fc-view-link {
-  font-size: 11px;
-  color: #8A7A70;
-  text-decoration: underline;
-  cursor: pointer;
-  font-weight: 500;
-  display: inline-block;
-}
-
-.fc-view-link:hover {
-  color: #C41E3A;
-}
-
-/* ===== DETAILED VIEW ===== */
-.fc-detailed-view {
-  background: #FEFCF9;
-  border-radius: 24px;
-  padding: 20px;
-  margin: 0 20px 20px 20px;
-  border: 1px solid #EDE5DC;
-}
-
-.fc-back-btn {
-  background: none;
-  border: none;
-  padding: 0 20px 15px 20px;
-  font-size: 13px;
-  color: #8A7A70;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  font-weight: 600;
-}
-
-.fc-back-btn:hover {
-  color: #C41E3A;
-}
-
-.fc-back-btn:before {
-  content: "←";
-  font-size: 16px;
-}
-
-.fc-detailed-header {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 25px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #EDE5DC;
-}
-
-.fc-detailed-image {
-  width: 110px;
-  height: 110px;
-  object-fit: contain;
-  border-radius: 16px;
-  background: #FFFFFF;
-  padding: 10px;
-  border: 1px solid #EDE5DC;
-}
-
-.fc-detailed-name {
-  font-size: 20px;
-  font-weight: 800;
-  color: #2C2420;
-  margin-bottom: 6px;
-}
-
-.fc-detailed-brand {
-  font-size: 15px;
-  color: #C41E3A;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.fc-detailed-meta {
-  font-size: 13px;
-  color: #8A7A70;
-  margin-top: 5px;
-}
-
-/* ===== NOTES ===== */
-.fc-notes-section {
-  margin: 20px 0;
-}
-
-.fc-note-category {
-  margin-bottom: 18px;
-}
-
-.fc-note-category h4 {
-  font-size: 13px;
-  font-weight: 800;
-  color: #C41E3A;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-.fc-note-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.fc-note-tag {
-  background: #FFFFFF;
-  border: 1px solid #EDE5DC;
-  padding: 6px 14px;
-  border-radius: 40px;
-  font-size: 12px;
-  color: #4A3F39;
-  font-weight: 500;
-}
-
-.fc-description {
-  margin: 20px 0 0 0;
-  padding: 18px;
-  background: #FFFFFF;
-  border-radius: 16px;
-  border: 1px solid #EDE5DC;
-  font-size: 13px;
-  line-height: 1.6;
-  color: #4A3F39;
-}
-
-/* ===== NOTIFICATION ===== */
-.fc-notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #2E7D32;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 40px;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  z-index: 10001;
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: all 0.3s ease;
-}
-
-.fc-notification.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== LOADING & NO RESULTS ===== */
-.fc-loading, .fc-no-results {
-  text-align: center;
-  padding: 40px;
-  color: #B0A298;
-  background: #FEFCF9;
-  border-radius: 20px;
-  margin: 20px;
-  font-size: 14px;
-}
-
-/* ===== SUGGESTIONS SECTION ===== */
-.fc-suggestions-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: #2C2420;
-  margin: 20px 20px 10px 20px;
-}
-
-.fc-suggestion-item {
-  background: #FFFFFF;
-  padding: 15px 20px;
-  margin: 0;
-  border-bottom: 1px solid #F0E8E0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  transition: background 0.2s ease;
-}
-
-.fc-suggestion-item:hover {
-  background: #FEF9F5;
-}
-
-.fc-suggestion-image {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  border-radius: 10px;
-  background: #FFFFFF;
-  padding: 5px;
-  border: 1px solid #EDE5DC;
-}
-
-.fc-suggestion-info {
-  flex: 1;
-}
-
-.fc-suggestion-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #2C2420;
-  margin-bottom: 2px;
-}
-
-.fc-suggestion-price {
-  font-size: 13px;
-  font-weight: 600;
-  color: #C41E3A;
-}
-
-.fc-suggestion-tag {
-  font-size: 11px;
-  color: #8A7A70;
-  margin-top: 2px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 520px) {
-  .fc-search-popup {
-    width: 90vw;
-    right: 5vw;
-    left: 5vw;
-    bottom: 100px;
-  }
-  
-  .fc-offer-banner {
-    margin: 15px 15px 15px 15px;
-    padding: 15px;
-  }
-  
-  .fc-info-section, .fc-logo-section, .fc-search-section, .fc-steps-section {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  
-  .fc-steps-box {
-    padding: 20px 15px;
-  }
-  
-  .fc-offer-text strong {
-    font-size: 14px;
-  }
-  
-  .fc-offer-text span {
-    font-size: 11px;
-  }
-  
-  .fc-offer-status {
-    font-size: 13px;
-    padding: 5px 10px;
-    min-width: 55px;
-  }
-}
-</style>
-
-<!-- Define toggle function -->
-<script>
-window.fcToggleSearch = function() {
-  try {
-    const searchPopup = document.getElementById('fcSearchPopup');
-    const searchInput = document.getElementById('fcSearchInput');
-    
-    if (!searchPopup) {
-      console.warn('fcSearchPopup element not found');
-      return;
-    }
-    
-    if (searchPopup.classList.contains('active')) {
-      searchPopup.classList.remove('active');
-    } else {
-      searchPopup.classList.add('active');
-      if (searchInput) {
-        searchInput.focus();
-      }
-      if (window.fetchCartAndUpdate) {
-        window.fetchCartAndUpdate();
-      }
-    }
-  } catch (e) {
-    console.error('Error in fcToggleSearch:', e);
-  }
-};
-</script>
-
-<div class="fc-float-wrapper">
-  <!-- Floating Button -->
-  <div class="fc-search-toggle" id="fcStickyButton" onclick="window.fcToggleSearch()">
-    <svg viewBox="0 0 24 24">
-      <circle cx="11" cy="11" r="8" stroke="#FFFFFF" fill="none"/>
-      <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#FFFFFF" stroke-width="2"/>
-    </svg>
-    <span class="fc-toggle-text">Suche</span>
-  </div>
-
-  <!-- Search Popup -->
-  <div class="fc-search-popup" id="fcSearchPopup">
-    <div class="fc-close-btn" onclick="window.fcToggleSearch()">✕</div>
-
-    <!-- OFFER BANNER -->
-    <div class="fc-offer-banner" id="fcOfferBanner">
-      <div class="fc-offer-left">
-        <span class="fc-offer-icon">🎁</span>
-        <div class="fc-offer-text">
-          <strong>3 KAUFEN 1 GRATIS</strong>
-          <span id="fcOfferSubtext">Füge 3 Artikel hinzu für ein gratis Geschenk</span>
-        </div>
-      </div>
-      <div class="fc-offer-status" id="fcOfferStatus">0/3</div>
-    </div>
-    
-    <!-- Progress bar -->
-    <div class="fc-offer-progress-container">
-      <div class="fc-offer-progress-bar">
-        <div class="fc-offer-progress-fill" id="fcOfferProgress" style="width: 0%;"></div>
-      </div>
-      <div class="fc-offer-message" id="fcOfferMessage">Füge 3 Artikel hinzu für ein gratis Geschenk</div>
-    </div>
-
-    <!-- INFO SECTION -->
-    <div class="fc-info-section">
-      <div class="fc-info-label">INFORMATIONEN BEREITGESTELLT VON:</div>
-    </div>
-
-    <!-- Logo Section -->
-    <a href="https://fragrancecode.com" target="_blank" style="text-decoration: none;">
-      <div class="fc-logo-section">
-        <div class="fc-logo-red">
-          <span class="fc-logo-fc">FC</span>
-        </div>
-        <span class="fc-brand-text">FRAGRANCE CODE</span>
-      </div>
-    </a>
-
-    <!-- Search Input -->
-    <div class="fc-search-section">
-      <div class="fc-search-container">
-        <input type="text" 
-               id="fcSearchInput" 
-               class="fc-search-field" 
-               placeholder="Suche nach Name, Marke, ID oder Duftnoten..."
-               autocomplete="off">
-        <button class="fc-clear-search" id="fcClearSearch">✕</button>
-      </div>
-    </div>
-
-    <!-- Steps Section -->
-    <div class="fc-steps-section" id="fcSteps">
-      <div class="fc-steps-box">
-        <div class="fc-steps-title">
-          SO FINDEST DU<br><span>DEIN PARFUM.</span>
-        </div>
-        <div class="fc-step-item">
-          <span class="fc-step-number">1</span>
-          <span>SAG MIR, WELCHES PARFUM DU LIEBST.</span>
-        </div>
-        <div class="fc-step-item">
-          <span class="fc-step-number">2</span>
-          <span>ICH SERVIERE ES DIR IN SEKUNDEN...</span>
-        </div>
-        <div class="fc-step-item">
-          <span class="fc-step-number">3</span>
-          <span>ENTDECKE DEIN NEUES LIEBLINGSPARFUM UND GENIESSE ES!</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Dynamic Content -->
-    <div id="fcContent"></div>
-  </div>
-</div>
-
-<script>
-(function() {
-  // ===== YOUR SHOPIFY PRODUCTS =====
-  let fcProducts = [];
-  let currentView = 'search';
-  let currentSearchQuery = '';
-  
-  // Debounce timer
-  let searchTimer = null;
-
-  // Get elements
-  const stickyButton = document.getElementById('fcStickyButton');
-  const searchPopup = document.getElementById('fcSearchPopup');
-  const searchInput = document.getElementById('fcSearchInput');
-  const clearSearch = document.getElementById('fcClearSearch');
-  const steps = document.getElementById('fcSteps');
-  const content = document.getElementById('fcContent');
-  
-  // Offer elements
-  const offerBanner = document.getElementById('fcOfferBanner');
-  const offerStatus = document.getElementById('fcOfferStatus');
-  const offerProgress = document.getElementById('fcOfferProgress');
-  const offerMessage = document.getElementById('fcOfferMessage');
-  const offerSubtext = document.getElementById('fcOfferSubtext');
-
-  // ===== COMBINE ALL PERFUME CATALOGS =====
-  let allPerfumes = [];
-
-  function combineCatalogs() {
-    allPerfumes = [];
-    
-    // Add from PerfumeCatalog if it exists
-    if (window.PerfumeCatalog) {
-      for (let brandKey in window.PerfumeCatalog) {
-        if (Array.isArray(window.PerfumeCatalog[brandKey])) {
-          allPerfumes.push(...window.PerfumeCatalog[brandKey]);
-        }
-      }
-    }
-    
-    console.log(`✓ Kombinierter Katalog: ${allPerfumes.length} Parfums`);
-  }
-
-  // ===== EXTRACT PRODUCT NUMBER FROM TITLE =====
-  function extractProductNumber(title) {
-    if (!title) return null;
-    const match = title.match(/No\.?\s*(\d+)/i);
-    return match ? match[1] : null;
-  }
-
-  // ===== FIND PERFUME BY ID =====
-  function findPerfumeById(id) {
-    return allPerfumes.find(p => p.id === id);
-  }
-
-  // ===== ADVANCED TEXT NORMALIZATION FOR FUZZY SEARCH =====
-  function normalizeText(text) {
-    if (!text) return '';
-    
-    let normalized = text.toLowerCase();
-    
-    // Remove accents and special characters
-    const accents = {
-      'á': 'a', 'à': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a', 'å': 'a',
-      'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
-      'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i',
-      'ó': 'o', 'ò': 'o', 'ô': 'o', 'õ': 'o', 'ö': 'o',
-      'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u',
-      'ç': 'c', 'ñ': 'n',
-      'ß': 'ss',
-      'æ': 'ae', 'œ': 'oe'
-    };
-    
-    for (let [accent, plain] of Object.entries(accents)) {
-      normalized = normalized.replace(new RegExp(accent, 'g'), plain);
-    }
-    
-    // Remove apostrophes, quotes, and other punctuation
-    normalized = normalized.replace(/[''`´,.;:!?()[\]{}<>@#$%^&*+=|\\/~-]/g, ' ');
-    
-    // Replace multiple spaces with single space
-    normalized = normalized.replace(/\s+/g, ' ').trim();
-    
-    return normalized;
-  }
-
-  // ===== LEVENSHTEIN DISTANCE FOR FUZZY MATCHING =====
-  function levenshteinDistance(a, b) {
-    const matrix = [];
-    
-    for (let i = 0; i <= b.length; i++) {
-      matrix[i] = [i];
-    }
-    
-    for (let j = 0; j <= a.length; j++) {
-      matrix[0][j] = j;
-    }
-    
-    for (let i = 1; i <= b.length; i++) {
-      for (let j = 1; j <= a.length; j++) {
-        if (b.charAt(i - 1) === a.charAt(j - 1)) {
-          matrix[i][j] = matrix[i - 1][j - 1];
-        } else {
-          matrix[i][j] = Math.min(
-            matrix[i - 1][j - 1] + 1,
-            matrix[i][j - 1] + 1,
-            matrix[i - 1][j] + 1
-          );
-        }
-      }
-    }
-    
-    return matrix[b.length][a.length];
-  }
-
-  // ===== CALCULATE FUZZY SIMILARITY SCORE =====
-  function calculateFuzzyScore(query, target) {
-    if (!query || !target) return 0;
-    
-    const normalizedQuery = normalizeText(query);
-    const normalizedTarget = normalizeText(target);
-    
-    // Exact match after normalization
-    if (normalizedQuery === normalizedTarget) return 100;
-    
-    // Contains match
-    if (normalizedTarget.includes(normalizedQuery) || normalizedQuery.includes(normalizedTarget)) {
-      return 90;
-    }
-    
-    // Split into words and check each word
-    const queryWords = normalizedQuery.split(' ');
-    const targetWords = normalizedTarget.split(' ');
-    
-    let bestScore = 0;
-    
-    for (const qWord of queryWords) {
-      if (qWord.length < 2) continue;
-      
-      for (const tWord of targetWords) {
-        if (tWord.length < 2) continue;
-        
-        // Check if one word contains the other
-        if (tWord.includes(qWord) || qWord.includes(tWord)) {
-          bestScore = Math.max(bestScore, 80);
-        }
-        
-        // Levenshtein distance for fuzzy matching
-        const distance = levenshteinDistance(qWord, tWord);
-        const maxLen = Math.max(qWord.length, tWord.length);
-        if (maxLen > 0) {
-          const similarity = ((maxLen - distance) / maxLen) * 100;
-          if (similarity > 70) {
-            bestScore = Math.max(bestScore, similarity);
-          }
-        }
-      }
-    }
-    
-    return bestScore;
-  }
-
-  // ===== GENERATE SEARCH VARIANTS =====
-  function generateSearchVariants(query) {
-    const variants = new Set();
-    const normalized = normalizeText(query);
-    
-    // Add original and normalized
-    variants.add(query.toLowerCase());
-    variants.add(normalized);
-    
-    // Remove spaces for no-space matching
-    variants.add(normalized.replace(/\s+/g, ''));
-    
-    // Split into words
-    const words = normalized.split(' ').filter(w => w.length > 0);
-    
-    // Add individual words
-    words.forEach(word => variants.add(word));
-    
-    // Add word combinations (for brand+name matching)
-    if (words.length > 1) {
-      variants.add(words.join('')); // without spaces
-      variants.add(words.slice(0, 2).join('')); // first two words
-    }
-    
-    // Handle numbers
-    const numbers = query.match(/\d+/g);
-    if (numbers) {
-      numbers.forEach(num => variants.add(num));
-    }
-    
-    return Array.from(variants);
-  }
-
-  // ===== GENERATE FUZZY VARIATIONS =====
-  // Generates typo variations (dir, diore, dire, etc. for "dior")
-  function generateFuzzyVariations(str) {
-    const variations = new Set();
-    const normalized = normalizeText(str);
-    const chars = normalized.split('');
-    
-    // Original
-    variations.add(normalized);
-    
-    // Delete 1 character (dir, dio, dor, ior)
-    for (let i = 0; i < chars.length; i++) {
-      const variant = chars.slice(0, i).concat(chars.slice(i + 1)).join('');
-      if (variant.length > 0) variations.add(variant);
-    }
-    
-    // Swap adjacent characters (diore, dohr, etc.)
-    for (let i = 0; i < chars.length - 1; i++) {
-      const swapped = [...chars];
-      [swapped[i], swapped[i + 1]] = [swapped[i + 1], swapped[i]];
-      variations.add(swapped.join(''));
-    }
-    
-    // Substitute each character with nearby keys
-    const commonSubs = {
-      'a': ['e', 'o'],
-      'e': ['a', 'i', 'o'],
-      'i': ['e', 'o', 'u'],
-      'o': ['a', 'e', 'i', 'u'],
-      'u': ['i', 'o'],
-      's': ['c', 'd', 'z'],
-      'c': ['s', 'x'],
-      'd': ['s', 'f'],
-      'g': ['h', 'f'],
-      'h': ['g', 'j'],
-      'r': ['t', 'f'],
-      't': ['r', 'y'],
-      'v': ['b', 'c'],
-      'b': ['v', 'n']
-    };
-    
-    for (let i = 0; i < chars.length; i++) {
-      const char = chars[i];
-      const subs = commonSubs[char] || [];
-      subs.forEach(sub => {
-        const variant = [...chars];
-        variant[i] = sub;
-        variations.add(variant.join(''));
-      });
-    }
-    
-    // Insert common vowels at strategic positions
-    const vowels = ['a', 'e', 'i', 'o', 'u'];
-    for (let i = 0; i <= Math.min(chars.length, 3); i++) {
-      vowels.forEach(vowel => {
-        const variant = chars.slice(0, i).concat(vowel, chars.slice(i)).join('');
-        if (variant.length <= normalized.length + 1) {
-          variations.add(variant);
-        }
-      });
-    }
-    
-    return Array.from(variations).filter(v => v.length > 0);
-  }
-
-  // ===== ENHANCED SEARCH FUNCTION WITH FUZZY MATCHING =====
-  function enhancedSearch(query) {
-    if (!query || query.length < 1) return [];
-    
-    const searchVariants = generateSearchVariants(query);
-    const fuzzyQueryVariations = generateFuzzyVariations(query);
-    const results = [];
-    const addedIds = new Set();
-    
-    // Check if query is a number (for direct number matching)
-    const queryAsNumber = query.trim();
-    const isNumberQuery = /^\d+$/.test(queryAsNumber);
-    
-    hardcodedProducts.forEach(product => {
-      if (addedIds.has(product.id)) return;
-      
-      let bestScore = 0;
-      let matchReasons = [];
-      
-      // ===== EXACT NUMBER MATCH (Highest Priority) =====
-      if (isNumberQuery && product.number && product.number.toString() === queryAsNumber) {
-        bestScore = 500;
-        matchReasons.push('exact-number-match');
-      }
-      
-      // Generate fuzzy variations of product fields
-      const titleVariations = generateFuzzyVariations(product.title);
-      const brandVariations = generateFuzzyVariations(product.brand);
-      
-      // Check each search variant
-      for (const variant of searchVariants) {
-        if (variant.length < 1) continue;
-        
-        // Check number (exact and contains)
-        if (product.number) {
-          const numberStr = product.number.toString();
-          if (variant === numberStr) {
-            bestScore = Math.max(bestScore, 450);
-            matchReasons.push('number-exact');
-          } else if (numberStr.includes(variant)) {
-            bestScore = Math.max(bestScore, 120);
-            matchReasons.push('number-contains');
-          } else if (variant.includes(numberStr)) {
-            bestScore = Math.max(bestScore, 110);
-            matchReasons.push('number-in-query');
-          }
-        }
-        
-        // Check title
-        const titleLower = product.title.toLowerCase();
-        if (titleLower.includes(variant)) {
-          bestScore = Math.max(bestScore, 100);
-          matchReasons.push('title-match');
-        }
-        
-        // Check search terms
-        if (product.searchTerms) {
-          for (const term of product.searchTerms) {
-            const termLower = term.toLowerCase();
-            if (termLower.includes(variant) || variant.includes(termLower)) {
-              bestScore = Math.max(bestScore, 95);
-              matchReasons.push('search-term-match');
-            }
-          }
-        }
-        
-        // Check brand
-        const brandLower = product.brand.toLowerCase();
-        if (brandLower.includes(variant) || variant.includes(brandLower)) {
-          bestScore = Math.max(bestScore, 85);
-          matchReasons.push('brand-match');
-        }
-      }
-      
-      // Check fuzzy query variations against product fields
-      for (const variation of fuzzyQueryVariations) {
-        if (variation.length < 1) continue;
-        
-        const titleLower = product.title.toLowerCase();
-        if (titleLower.includes(variation)) {
-          bestScore = Math.max(bestScore, 92);
-          matchReasons.push('fuzzy-query-title');
-        }
-        
-        const brandLower = product.brand.toLowerCase();
-        if (brandLower.includes(variation)) {
-          bestScore = Math.max(bestScore, 88);
-          matchReasons.push('fuzzy-query-brand');
-        }
-        
-        if (product.searchTerms) {
-          for (const term of product.searchTerms) {
-            if (term.toLowerCase().includes(variation)) {
-              bestScore = Math.max(bestScore, 90);
-              matchReasons.push('fuzzy-query-term');
-            }
-          }
-        }
-      }
-      
-      // Check product variations against query
-      const normalizedQuery = normalizeText(query);
-      if (titleVariations.some(v => v === normalizedQuery)) {
-        bestScore = Math.max(bestScore, 98);
-        matchReasons.push('title-fuzzy-exact');
-      }
-      if (brandVariations.some(v => v === normalizedQuery)) {
-        bestScore = Math.max(bestScore, 96);
-        matchReasons.push('brand-fuzzy-exact');
-      }
-      
-      // If no direct matches, try Levenshtein fuzzy matching
-      if (bestScore < 70) {
-        const productText = `${product.title} ${product.brand} ${product.searchTerms ? product.searchTerms.join(' ') : ''}`.toLowerCase();
-        const fuzzyScore = calculateFuzzyScore(query, productText);
-        if (fuzzyScore > 60) {
-          bestScore = Math.max(bestScore, fuzzyScore);
-          matchReasons.push('levenshtein-fuzzy');
-        }
-      }
-      
-      if (bestScore > 50) {
-        results.push({ product, score: Math.round(bestScore), matchReasons });
-        addedIds.add(product.id);
-      }
-    });
-    
-    results.sort((a, b) => b.score - a.score);
-    return results;
-  }
-
-  // ===== COMPLETE HARDCODED PRODUCT DATABASE WITH CORRECT IMAGES =====
-  const hardcodedProducts = [
-    // ===== VALENTINO =====
+// ===== GERMAN PERFUME CATALOG - COMPLETE WITH ALL PRODUCTS =====
+// Save this as: assets/perfume-catalog-minimal.js
+// INCLUDES ALL PRODUCTS FROM YOUR STORE - COMPREHENSIVE LIST
+// UPDATED: Added missing product numbers and fixed gender mappings
+
+window.PerfumeCatalog = {
+  // ===== VALENTINO =====
+  valentino: [
     {
-      id: "hardcoded-born-in-roma-469",
-      title: "Riecht wie... Born in Roma - No. 469 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/469W_c.webp?v=1772947103",
-      url: "https://magicperfume.co/products/magic-perfume-no-469w",
-      variant: 47306582491394,
-      price: 1199,
+      id: "valentino_born_in_roma",
+      name: "Born in Roma Valentino",
       brand: "Valentino",
-      brandKey: "valentino",
-      number: "469",
-      gender: "w",
-      searchTerms: ["born in roma", "valentino", "roma", "469", "valentino donna", "valentinoborninroma", "borninroma"]
+      image: "https://magicperfume.co/cdn/shop/files/Valentino_Donna_Born_In_Roma.png?v=1770224306",
+      top_notes: ["Schwarze Johannisbeere", "Bergamotte", "Jasmin"],
+      heart_notes: ["Rose", "Jasmin", "Zeder"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein moderner und kantiger Duft, der den Geist der römischen Jugendkultur einfängt.",
+      year: "2019",
+      gender: "Female",
+      productNumbers: ["469"],
+      shopifyProduct: {
+        title: "Riecht wie... Born in Roma - No. 469 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-469w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Valentino_Donna_Born_In_Roma.png?v=1770224306"
+      }
     },
     {
-      id: "hardcoded-uomo-born-in-roma-360",
-      title: "Riecht wie... Uomo Born in Roma - No. 360 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/360M_c.webp?v=1770971193",
-      url: "https://magicperfume.co/products/magic-perfume-no-360m",
-      variant: 47306563354882,
-      price: 1199,
+      id: "valentino_uomo_born_in_roma",
+      name: "Uomo Born in Roma Valentino",
       brand: "Valentino",
-      brandKey: "valentino",
-      number: "360",
-      gender: "m",
-      searchTerms: ["uomo born in roma", "valentino uomo", "360", "valentino", "valentinouomo", "uomoborninroma"]
-    },
+      image: "https://magicperfume.co/cdn/shop/files/Valentino_Uomo_Born_in_Roma.png?v=1770289172",
+      top_notes: ["Mandarine", "Salz", "Minze"],
+      heart_notes: ["Lavendel", "Salbei", "Zeder"],
+      base_notes: ["Vanille", "Tonkabohne", "Moschus"],
+      description: "Ein frischer und aromatischer Duft für den modernen Mann.",
+      year: "2019",
+      gender: "Male",
+      productNumbers: ["360"],
+      shopifyProduct: {
+        title: "Riecht wie... Uomo Born in Roma - No. 360 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-360m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Valentino_Uomo_Born_in_Roma.png?v=1770289172"
+      }
+    }
+  ],
 
-    // ===== PRADA =====
+  // ===== PRADA =====
+  prada: [
     {
-      id: "hardcoded-paradoxe-437",
-      title: "Riecht wie... Paradoxe - No. 437 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/437W_c.webp?v=1770965105",
-      url: "https://magicperfume.co/products/magic-perfume-no-437w",
-      variant: 47306580754690,
-      price: 1199,
+      id: "prada_paradoxe",
+      name: "Paradoxe Prada",
       brand: "Prada",
-      brandKey: "prada",
-      number: "437",
-      gender: "w",
-      searchTerms: ["paradoxe", "prada", "437", "prada paradoxe", "pradaparadoxe"]
+      image: "https://magicperfume.co/cdn/shop/files/Prada_Paradoxe.jpg?v=1771894273",
+      top_notes: ["Birne", "Bergamotte", "Mandarine"],
+      heart_notes: ["Orangenblüte", "Jasmin", "Rose"],
+      base_notes: ["Vanille", "Amber", "Zeder"],
+      description: "Ein moderner und paradoxer Duft, der mit Kontrasten spielt.",
+      year: "2022",
+      gender: "Female",
+      productNumbers: ["437"],
+      shopifyProduct: {
+        title: "Riecht wie... Paradoxe - No. 437 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-437w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Prada_Paradoxe.jpg?v=1771894273"
+      }
     },
     {
-      id: "hardcoded-candy-182",
-      title: "Riecht wie... Candy - No. 182 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/182W_c.webp?v=1770970410",
-      url: "https://magicperfume.co/products/magic-perfume-no-182w",
-      variant: 47306567287042,
-      price: 1199,
+      id: "prada_candy",
+      name: "Candy Prada",
       brand: "Prada",
-      brandKey: "prada",
-      number: "182",
-      gender: "w",
-      searchTerms: ["candy", "prada candy", "182", "prada", "pradacandy"]
-    },
+      image: "https://magicperfume.co/cdn/shop/files/Prada_Candy.avif?v=1770581340",
+      top_notes: ["Karamell", "Moschus", "Vanille"],
+      heart_notes: ["Benzoin", "Moschus"],
+      base_notes: ["Vanille", "Moschus", "Karamell"],
+      description: "Ein verspielter und genüsslicher Gourmand-Duft, der den Geist von Spaß und Weiblichkeit einfängt.",
+      year: "2011",
+      gender: "Female",
+      productNumbers: ["182"],
+      shopifyProduct: {
+        title: "Riecht wie... Candy - No. 182 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-182w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Prada_Candy.avif?v=1770581340"
+      }
+    }
+  ],
 
-    // ===== YVES SAINT LAURENT =====
+  // ===== LANCOME =====
+  lancome: [
     {
-      id: "hardcoded-libre-034",
-      title: "Riecht wie... LIBRE - No. 034 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/034W_c.webp?v=1770924033",
-      url: "https://magicperfume.co/products/034w-yves-saint-laurent-libre-ersatz",
-      variant: 47306580263170,
-      price: 1199,
-      brand: "Yves Saint Laurent",
-      brandKey: "ysl",
-      number: "034",
-      gender: "w",
-      searchTerms: ["libre", "ysl libre", "034", "yves saint laurent", "ysllib"]
+      id: "lancome_la_vie_est_belle",
+      name: "La Vie Est Belle Lancôme",
+      brand: "Lancôme",
+      image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle.png?v=1770220684",
+      top_notes: ["Schwarze Johannisbeere", "Birne", "Orangenblüte"],
+      heart_notes: ["Iris", "Jasmin", "Orangenblüte"],
+      base_notes: ["Praliné", "Vanille", "Patschuli", "Tonkabohne"],
+      description: "Ein strahlender und freudiger Duft, der die Schönheit des Lebens feiert.",
+      year: "2012",
+      gender: "Female",
+      productNumbers: ["101"],
+      shopifyProduct: {
+        title: "Riecht wie... La Vie Est Belle - No. 101 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-101w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle.png?v=1770220684"
+      }
     },
     {
-      id: "hardcoded-black-opium-132",
-      title: "Riecht wie... Black Opium - No. 132 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/132W_c.webp?v=1770964748",
-      url: "https://magicperfume.co/products/magic-perfume-no-132w",
-      variant: 47306582098178,
-      price: 1199,
-      brand: "Yves Saint Laurent",
-      brandKey: "ysl",
-      number: "132",
-      gender: "w",
-      searchTerms: ["black opium", "ysl black opium", "132", "yves saint laurent", "blackopium"]
+      id: "lancome_la_vie_est_belle_intensement",
+      name: "La Vie Est Belle Intensément Lancôme",
+      brand: "Lancôme",
+      image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle_Intensement.webp?v=1771648433",
+      top_notes: ["Mandarine", "Schwarze Johannisbeere", "Bergamotte"],
+      heart_notes: ["Tuberose", "Jasmin", "Orangenblüte"],
+      base_notes: ["Praliné", "Vanille", "Patschuli", "Tonkabohne"],
+      description: "Eine intensivere und üppigere Interpretation von La Vie Est Belle.",
+      year: "2017",
+      gender: "Female",
+      productNumbers: ["109"],
+      shopifyProduct: {
+        title: "Riecht wie... La Vie Est Belle Intensement - No. 109 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-109w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Lancome_La_Vie_Est_Belle_Intensement.png?v=1772101772"
+      }
     },
     {
-      id: "hardcoded-opium-083",
-      title: "Riecht wie... Laurent Opium - No. 083 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/083W_c.webp?v=1770963824",
-      url: "https://magicperfume.co/products/magic-perfume-no-083w",
-      variant: 47306567975170,
-      price: 1199,
-      brand: "Yves Saint Laurent",
-      brandKey: "ysl",
-      number: "083",
-      gender: "w",
-      searchTerms: ["opium", "laurent opium", "083", "yves saint laurent opium"]
+      id: "lancome_tresor",
+      name: "Trésor Lancôme",
+      brand: "Lancôme",
+      image: "https://magicperfume.co/cdn/shop/files/Lancome_Tresor.png?v=1770285746",
+      top_notes: ["Pfirsich", "Aprikose", "Rose"],
+      heart_notes: ["Maiglöckchen", "Jasmin", "Iris"],
+      base_notes: ["Vanille", "Sandelholz", "Moschus"],
+      description: "Ein romantischer und zeitloser Duft, der die Essenz der Liebe einfängt.",
+      year: "1990",
+      gender: "Female",
+      productNumbers: ["141"],
+      shopifyProduct: {
+        title: "Riecht wie... Trésor - No. 141 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-141w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Lancome_Tresor.png?v=1770285746"
+      }
     },
     {
-      id: "hardcoded-y-283",
-      title: "Riecht wie... Y - No. 283 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/283M_c.webp?v=1771482593",
-      url: "https://magicperfume.co/products/magic-perfume-no-283m",
-      variant: 47306573086978,
-      price: 1199,
-      brand: "Yves Saint Laurent",
-      brandKey: "ysl",
-      number: "283",
-      gender: "m",
-      searchTerms: ["y", "ysl y", "283", "yves saint laurent y", "ysly"]
-    },
-    {
-      id: "hardcoded-quiet-king-317",
-      title: "Riecht wie… Quiet King - No. 317 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/317M_c.png?v=1771856219",
-      url: "https://magicperfume.co/products/magic-perfume-317m",
-      variant: 47395668984066,
-      price: 1199,
-      brand: "Yves Saint Laurent",
-      brandKey: "ysl",
-      number: "317",
-      gender: "m",
-      searchTerms: ["quiet king", "ysl quiet king", "317", "quietking"]
-    },
+      id: "lancome_idole",
+      name: "Idôle Lancôme",
+      brand: "Lancôme",
+      image: "https://magicperfume.co/cdn/shop/files/LANCOME_IDOLE.webp?v=1771658673",
+      top_notes: ["Birne", "Bergamotte", "Zitrone"],
+      heart_notes: ["Rose", "Jasmin", "Magnolie"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein moderner und eleganter Duft für die neue Generation von Frauen.",
+      year: "2019",
+      gender: "Female",
+      productNumbers: ["055"],
+      shopifyProduct: {
+        title: "Riecht wie... Idole - No. 055 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-055w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Idole.webp?v=1772097147"
+      }
+    }
+  ],
 
-    // ===== LANCOME =====
+  // ===== YVES SAINT LAURENT =====
+  ysl: [
     {
-      id: "hardcoded-la-vie-est-belle-101",
-      title: "Riecht wie... La Vie Est Belle - No. 101 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/101W_c.webp?v=1770973719",
-      url: "https://magicperfume.co/products/magic-perfume-no-101w",
-      variant: 47306555326722,
-      price: 1199,
-      brand: "Lancôme",
-      brandKey: "lancome",
-      number: "101",
-      gender: "w",
-      searchTerms: ["la vie est belle", "lancome", "101", "lavieestbelle"]
+      id: "ysl_libre",
+      name: "Libre Yves Saint Laurent",
+      brand: "Yves Saint Laurent",
+      image: "https://magicperfume.co/cdn/shop/files/YSL_Libre.jpg",
+      top_notes: ["Lavendel", "Bergamotte", "Mandarine"],
+      heart_notes: ["Orangenblüte", "Jasmin", "Rose"],
+      base_notes: ["Vanille", "Amber", "Moschus"],
+      description: "Ein freier und kühner Duft für die selbstbewusste Frau.",
+      year: "2019",
+      gender: "Female",
+      productNumbers: ["034"],
+      shopifyProduct: {
+        title: "Riecht wie... LIBRE - No. 034 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-034w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/YSL_Libre.jpg"
+      }
     },
     {
-      id: "hardcoded-la-vie-est-belle-intensement-109",
-      title: "Riecht wie... La Vie Est Belle Intensement - No. 109 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/109W_c.webp?v=1771648214",
-      url: "https://magicperfume.co/products/magic-perfume-no-109w",
-      variant: 47306572693762,
-      price: 1199,
-      brand: "Lancôme",
-      brandKey: "lancome",
-      number: "109",
-      gender: "w",
-      searchTerms: ["la vie est belle intensement", "109", "lavieestbelleintense"]
+      id: "ysl_black_opium",
+      name: "Black Opium Yves Saint Laurent",
+      brand: "Yves Saint Laurent",
+      image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Black_Opium.png?v=1770217557",
+      top_notes: ["Kaffee", "Rosa Pfeffer", "Orangenblüte"],
+      heart_notes: ["Jasmin", "Bittermandel", "Lakritze"],
+      base_notes: ["Vanille", "Zeder", "Patschuli"],
+      description: "Ein kühner und kantiger Duft, der den Geist der Rockkultur einfängt.",
+      year: "2014",
+      gender: "Female",
+      productNumbers: ["132"],
+      shopifyProduct: {
+        title: "Riecht wie... Black Opium - No. 132 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-132w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Black_Opium.png?v=1770217557"
+      }
     },
     {
-      id: "hardcoded-tresor-141",
-      title: "Riecht wie... Tresor - No. 141 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/141W_c.webp?v=1770971241",
-      url: "https://magicperfume.co/products/magic-perfume-no-141w",
-      variant: 47306562699522,
-      price: 1199,
-      brand: "Lancôme",
-      brandKey: "lancome",
-      number: "141",
-      gender: "w",
-      searchTerms: ["tresor", "lancome tresor", "141"]
+      id: "ysl_opium",
+      name: "Opium Yves Saint Laurent",
+      brand: "Yves Saint Laurent",
+      image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Opium.jpg?v=1770580952",
+      top_notes: ["Mandarine", "Pflaume", "Nelke", "Koriander"],
+      heart_notes: ["Nelke", "Rose", "Jasmin", "Maiglöckchen"],
+      base_notes: ["Opium", "Myrrhe", "Amber", "Sandelholz"],
+      description: "Ein legendärer orientalischer Duft, der sowohl würzig als auch sinnlich ist.",
+      year: "1977",
+      gender: "Female",
+      productNumbers: ["083"],
+      shopifyProduct: {
+        title: "Riecht wie... Laurent Opium - No. 083 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-083w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Opium.jpg?v=1770580952"
+      }
     },
     {
-      id: "hardcoded-idole-055",
-      title: "Riecht wie... Idole - No. 055 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/055W_c.webp?v=1771658453",
-      url: "https://magicperfume.co/products/magic-perfume-no-055w",
-      variant: 47306557325570,
-      price: 1199,
-      brand: "Lancôme",
-      brandKey: "lancome",
-      number: "055",
-      gender: "w",
-      searchTerms: ["idole", "lancome idole", "055"]
-    },
+      id: "ysl_y",
+      name: "Y Yves Saint Laurent",
+      brand: "Yves Saint Laurent",
+      image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Y.png?v=1771482466",
+      top_notes: ["Bergamotte", "Ingwer", "Aldehyde"],
+      heart_notes: ["Salbei", "Wacholder", "Geranie"],
+      base_notes: ["Amber", "Zeder", "Moschus"],
+      description: "Ein frischer und holziger Duft, der eine neue Generation repräsentiert.",
+      year: "2017",
+      gender: "Male",
+      productNumbers: ["283"],
+      shopifyProduct: {
+        title: "Riecht wie... Y - No. 283 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-283m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Y.png?v=1771482466"
+      }
+    }
+  ],
 
-    // ===== PACO RABANNE =====
+  // ===== CAROLINA HERRERA =====
+  carolinaHerrera: [
     {
-      id: "hardcoded-one-million-275",
-      title: "Riecht wie… One Million - No. 275 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/275M_c.webp?v=1770973531",
-      url: "https://magicperfume.co/products/magic-perfume-no-275m",
-      variant: 47306556309762,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "275",
-      gender: "m",
-      searchTerms: ["one million", "1 million", "million", "paco rabanne", "275", "onemillion"]
-    },
-    {
-      id: "hardcoded-one-million-elixir-334",
-      title: "Riecht wie... One Million Elixir - No. 334 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/334M_c.webp?v=1770965729",
-      url: "https://magicperfume.co/products/magic-perfume-no-334m",
-      variant: 47306569908482,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "334",
-      gender: "m",
-      searchTerms: ["one million elixir", "million elixir", "elixir", "334", "onemillionelixir"]
-    },
-    {
-      id: "hardcoded-one-million-lucky-280",
-      title: "Riecht wie... One Million Lucky - No. 280 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/280Mc.webp?v=1772135231",
-      url: "https://magicperfume.co/products/magic-perfume-no-280m",
-      variant: 47306583638274,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "280",
-      gender: "m",
-      searchTerms: ["one million lucky", "million lucky", "280", "onemillionlucky"]
-    },
-    {
-      id: "hardcoded-invictus-228",
-      title: "Riecht wie... Invictus - No. 228 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/228M_c.webp?v=1770971338",
-      url: "https://magicperfume.co/products/magic-perfume-no-228m",
-      variant: 47306561454338,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "228",
-      gender: "m",
-      searchTerms: ["invictus", "paco rabanne invictus", "228"]
-    },
-    {
-      id: "hardcoded-invictus-victory-303",
-      title: "Riecht wie... Invictus Victory - No. 303 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/303M_c.webp?v=1772135217", // Approximated
-      url: "https://magicperfume.co/products/magic-perfume-no-303m",
-      variant: 47306582196482,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "303",
-      gender: "m",
-      searchTerms: ["invictus victory", "303", "invictusvictory"]
-    },
-    {
-      id: "hardcoded-phantom-399",
-      title: "Riecht wie... Phantom - No. 399 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/399M_c.webp?v=1770965797",
-      url: "https://magicperfume.co/products/magic-perfume-no-399m",
-      variant: 47306569285890,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "399",
-      gender: "m",
-      searchTerms: ["phantom", "paco rabanne phantom", "399"]
-    },
-    {
-      id: "hardcoded-ultraviolet-480",
-      title: "Riecht wie... Ultraviolet - No. 480 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/480wc.webp?v=1772142031",
-      url: "https://magicperfume.co/products/magic-perfume-no-480w",
-      variant: 47306577805570,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "480",
-      gender: "m",
-      searchTerms: ["ultraviolet", "paco rabanne ultraviolet", "480"]
-    },
-    {
-      id: "hardcoded-lady-million-023",
-      title: "Riecht wie... LADY MILION - No. 023 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/023W_c.webp?v=1770922184",
-      url: "https://magicperfume.co/products/magic-perfume-no-023w",
-      variant: 47306582819074,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "023",
-      gender: "w",
-      searchTerms: ["lady million", "lady milion", "023", "ladymillion"]
-    },
-    {
-      id: "hardcoded-fame-498",
-      title: "Riecht wie... Fame - No. 498 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/498W_c.webp?v=1770972059",
-      url: "https://magicperfume.co/products/magic-perfume-no-498w",
-      variant: 47306558046466,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "498",
-      gender: "w",
-      searchTerms: ["fame", "paco rabanne fame", "498"]
-    },
-    {
-      id: "hardcoded-olympea-intense-095",
-      title: "Riecht wie... Olympea Intense - No. 095 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/095w_c.webp?v=1772107957",
-      url: "https://magicperfume.co/products/magic-perfume-no-095w",
-      variant: 47306569187586,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "095",
-      gender: "w",
-      searchTerms: ["olympea", "olympea intense", "095", "olympeaintense"]
-    },
-    {
-      id: "hardcoded-olympea-aqua-490",
-      title: "Riecht wie... Olympea Aqua - No. 490 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/490wc.webp?v=1772141170",
-      url: "https://magicperfume.co/products/magic-perfume-no-490w",
-      variant: 47306578559234,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "490",
-      gender: "w",
-      searchTerms: ["olympea aqua", "490", "olympeaaqua"]
-    },
-    {
-      id: "hardcoded-pure-xs-for-her-050",
-      title: "Riecht wie... Pure XS For Her - No. 050 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/050w_c.webp?v=1772105341",
-      url: "https://magicperfume.co/products/magic-perfume-no-050w",
-      variant: 47306581278978,
-      price: 1199,
-      brand: "Paco Rabanne",
-      brandKey: "pacoRabanne",
-      number: "050",
-      gender: "w",
-      searchTerms: ["pure xs for her", "050", "purexsforher"]
-    },
-
-    // ===== CAROLINA HERRERA =====
-    {
-      id: "hardcoded-good-girl-461",
-      title: "Riecht wie... Good Girl - No. 461 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/461W_c.webp?v=1770964992",
-      url: "https://magicperfume.co/products/magic-perfume-no-461w",
-      variant: 47306581672194,
-      price: 1199,
+      id: "carolina_good_girl",
+      name: "Good Girl Carolina Herrera",
       brand: "Carolina Herrera",
-      brandKey: "carolinaHerrera",
-      number: "461",
-      gender: "w",
-      searchTerms: ["good girl", "carolina herrera", "461", "goodgirl"]
+      image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Good_Girl_Velvet_Fatale.png?v=1770218974",
+      top_notes: ["Pflaume", "Safran", "Bergamotte"],
+      heart_notes: ["Tuberose", "Jasmin", "Orangenblüte"],
+      base_notes: ["Leder", "Vanille", "Patschuli", "Tonkabohne"],
+      description: "Eine dunklere, geheimnisvollere Interpretation von Good Girl.",
+      year: "2022",
+      gender: "Female",
+      productNumbers: ["461"],
+      shopifyProduct: {
+        title: "Riecht wie... Good Girl - No. 461 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-461w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Good_Girl_Velvet_Fatale.png?v=1770218974"
+      }
     },
     {
-      id: "hardcoded-very-good-girl-404",
-      title: "Riecht wie... Very Good Girl - No. 404 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/404W_c.webp?v=1770965849",
-      url: "https://magicperfume.co/products/magic-perfume-no-404w",
-      variant: 47306569089282,
-      price: 1199,
+      id: "carolina_very_good_girl",
+      name: "Very Good Girl Carolina Herrera",
       brand: "Carolina Herrera",
-      brandKey: "carolinaHerrera",
-      number: "404",
-      gender: "w",
-      searchTerms: ["very good girl", "carolina herrera", "404", "verygoodgirl"]
-    },
-    {
-      id: "hardcoded-212-245",
-      title: "Riecht wie... 212 - No. 245 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/245mcfixed.webp?v=1772143474",
-      url: "https://magicperfume.co/products/magic-perfume-no-245m",
-      variant: 47306576003330,
-      price: 1199,
-      brand: "Carolina Herrera",
-      brandKey: "carolinaHerrera",
-      number: "245",
-      gender: "w",
-      searchTerms: ["212", "carolina herrera 212", "245"]
-    },
+      image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Very_Good_Girl.png?v=1770292680",
+      top_notes: ["Rote Johannisbeere", "Litschi", "Bergamotte"],
+      heart_notes: ["Rose", "Jasmin", "Orangenblüte"],
+      base_notes: ["Vanille", "Tonkabohne", "Zeder", "Patschuli"],
+      description: "Eine kühne und glamouröse Interpretation von Good Girl.",
+      year: "2021",
+      gender: "Female",
+      productNumbers: ["404"],
+      shopifyProduct: {
+        title: "Riecht wie... Very Good Girl - No. 404 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-404w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Carolina_Herrera_Very_Good_Girl.png?v=1770292680"
+      }
+    }
+  ],
 
-    // ===== JEAN PAUL GAULTIER =====
+  // ===== PACO RABANNE =====
+  pacoRabanne: [
     {
-      id: "hardcoded-scandal-192",
-      title: "Riecht wie... SCANDAL - No. 192 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/192W_c.webp?v=1770973630",
-      url: "https://magicperfume.co/products/magic-perfume-no-192w",
-      variant: 47306556014850,
-      price: 1199,
+      id: "paco_one_million",
+      name: "1 Million Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million.png?v=1770217929",
+      top_notes: ["Grapefruit", "Minze", "Mandarine"],
+      heart_notes: ["Zimt", "Rose", "Gewürze"],
+      base_notes: ["Leder", "Amber", "Patschuli"],
+      description: "Ein kühner und verführerischer Duft für den Mann, der seinen Wert kennt.",
+      year: "2008",
+      gender: "Male",
+      productNumbers: ["275"],
+      shopifyProduct: {
+        title: "Riecht wie… One Million - No. 275 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-275m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million.png?v=1770217929"
+      }
+    },
+    {
+      id: "paco_one_million_elixir",
+      name: "1 Million Elixir Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million_Elixir.png?v=1770579856",
+      top_notes: ["Grapefruit", "Mandarine", "Minze"],
+      heart_notes: ["Zimt", "Rose", "Safran"],
+      base_notes: ["Leder", "Amber", "Vanille", "Patschuli"],
+      description: "Eine intensivere und konzentriertere Version des ikonischen 1 Million.",
+      year: "2020",
+      gender: "Male",
+      productNumbers: ["334"],
+      shopifyProduct: {
+        title: "Riecht wie... One Million Elixir - No. 334 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-334m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_One_Million_Elixir.png?v=1770579856"
+      }
+    },
+    {
+      id: "paco_one_million_lucky",
+      name: "One Million Lucky Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132",
+      top_notes: ["Pflaume", "Grapefruit", "Mandarine"],
+      heart_notes: ["Honig", "Zeder", "Eichenmoos"],
+      base_notes: ["Leder", "Amber", "Patschuli"],
+      description: "Eine frische und holzige Interpretation des ikonischen One Million.",
+      year: "2018",
+      gender: "Male",
+      productNumbers: ["280"],
+      shopifyProduct: {
+        title: "Riecht wie... One Million Lucky - No. 280 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-280m",
+        price: "€20.99",
+        image: "https://magicperfume.co/cdn/shop/files/One_Million_Lucky.webp?v=1772135132"
+      }
+    },
+    {
+      id: "paco_lady_million",
+      name: "Lady Million Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Lady_Million.png?v=1770218839",
+      top_notes: ["Himbeere", "Neroli", "Zitrone"],
+      heart_notes: ["Orangenblüte", "Jasmin", "Honig"],
+      base_notes: ["Patschuli", "Amber", "Zeder"],
+      description: "Ein schillernder und glamouröser Duft für die moderne Frau.",
+      year: "2010",
+      gender: "Female",
+      productNumbers: ["023"],
+      shopifyProduct: {
+        title: "Riecht wie... LADY MILION - No. 023 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-023w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Lady_Million.png?v=1770218839"
+      }
+    },
+    {
+      id: "paco_fame",
+      name: "Fame Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Fame.png?v=1770285610",
+      top_notes: ["Mango", "Bergamotte", "Mandarine"],
+      heart_notes: ["Jasmin", "Rose", "Weihrauch"],
+      base_notes: ["Sandelholz", "Vanille", "Moschus"],
+      description: "Ein lebendiger und moderner Duft, der die Selbstverwirklichung feiert.",
+      year: "2022",
+      gender: "Female",
+      productNumbers: ["498"],
+      shopifyProduct: {
+        title: "Riecht wie... Fame - No. 498 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-498w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Fame.png?v=1770285610"
+      }
+    },
+    {
+      id: "paco_invictus",
+      name: "Invictus Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Invictus.png?v=1770286917",
+      top_notes: ["Grapefruit", "Mandarine", "Meeresnoten"],
+      heart_notes: ["Lorbeerblatt", "Jasmin", "Zeder"],
+      base_notes: ["Eichenmoos", "Amber", "Patschuli"],
+      description: "Ein frischer und kraftvoller Duft für den siegreichen Mann.",
+      year: "2013",
+      gender: "Male",
+      productNumbers: ["228"],
+      shopifyProduct: {
+        title: "Riecht wie... Invictus - No. 228 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-228m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Invictus.png?v=1770286917"
+      }
+    },
+    {
+      id: "paco_pure_xs_for_her",
+      name: "Pure XS For Her Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_XS_For_Her.jpg?v=1772105675",
+      top_notes: ["Ingwer", "Mandarine", "Passionsfrucht"],
+      heart_notes: ["Jasmin", "Orangenblüte", "Ylang-Ylang"],
+      base_notes: ["Vanille", "Patschuli", "Moschus"],
+      description: "Ein verführerischer und intensiver Duft für die mutige Frau.",
+      year: "2017",
+      gender: "Female",
+      productNumbers: ["050"],
+      shopifyProduct: {
+        title: "Riecht wie... Pure XS For Her - No. 050 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-050w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_XS_For_Her.jpg?v=1772105675"
+      }
+    },
+    {
+      id: "paco_olympea_intense",
+      name: "Olympea Intense Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Olympea_INTENSE.jpg?v=1772108016",
+      top_notes: ["Mandarine", "Ingwer", "Wassernoten"],
+      heart_notes: ["Jasmin", "Salbei", "Seerose"],
+      base_notes: ["Amber", "Moschus", "Sandelholz"],
+      description: "Eine intensivere und sinnlichere Version des ikonischen Olympea.",
+      year: "2018",
+      gender: "Female",
+      productNumbers: ["095"],
+      shopifyProduct: {
+        title: "Riecht wie... Olympea Intense - No. 095 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-095w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Olympea_INTENSE.jpg?v=1772108016"
+      }
+    },
+    {
+      id: "paco_phantom",
+      name: "Phantom Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078",
+      top_notes: ["Zitrone", "Bergamotte", "Lavendel"],
+      heart_notes: ["Salbei", "Vetiver", "Patschuli"],
+      base_notes: ["Vanille", "Amber", "Zeder"],
+      description: "Ein futuristischer und vernetzter Duft für eine neue Generation.",
+      year: "2021",
+      gender: "Male",
+      productNumbers: ["399"],
+      shopifyProduct: {
+        title: "Riecht wie... Phantom - No. 399 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-399m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078"
+      }
+    }
+  ],
+
+  // ===== JEAN PAUL GAULTIER =====
+  jpg: [
+    {
+      id: "jpg_scandal",
+      name: "Scandal Jean Paul Gaultier",
       brand: "Jean Paul Gaultier",
-      brandKey: "jpg",
-      number: "192",
-      gender: "w",
-      searchTerms: ["scandal", "jean paul gaultier", "192", "jpgscandal"]
+      image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_SCANDAL.png?v=1770223879",
+      top_notes: ["Mandarine", "Gardenie", "Blutorange"],
+      heart_notes: ["Honig", "Jasmin", "Rose"],
+      base_notes: ["Patschuli", "Tonkabohne", "Zeder"],
+      description: "Ein kühner und verspielter Duft mit einem gourmandigen Herzen.",
+      year: "2017",
+      gender: "Female",
+      productNumbers: ["192"],
+      shopifyProduct: {
+        title: "Riecht wie... SCANDAL - No. 192 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-192w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_SCANDAL.png?v=1770223879"
+      }
     },
     {
-      id: "hardcoded-la-belle-412",
-      title: "Riecht wie... La Belle - No. 412 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/412W_c.webp?v=1770971909",
-      url: "https://magicperfume.co/products/magic-perfume-no-412w",
-      variant: 47306559357186,
-      price: 1199,
+      id: "jpg_la_belle",
+      name: "La Belle Jean Paul Gaultier",
       brand: "Jean Paul Gaultier",
-      brandKey: "jpg",
-      number: "412",
-      gender: "w",
-      searchTerms: ["la belle", "jean paul gaultier", "412", "labelle"]
+      image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_La_Belle.png?v=1770286342",
+      top_notes: ["Birne", "Bergamotte"],
+      heart_notes: ["Jasmin", "Orangenblüte"],
+      base_notes: ["Vanille", "Tonkabohne", "Zeder"],
+      description: "Ein verführerischer und süchtig machender Gourmand-Duft.",
+      year: "2019",
+      gender: "Female",
+      productNumbers: ["412"],
+      shopifyProduct: {
+        title: "Riecht wie... La Belle - No. 412 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-412w",
+        price: "€20.99",
+        image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_La_Belle.png?v=1770286342"
+      }
     },
     {
-      id: "hardcoded-classique-442",
-      title: "Riecht wie... Classique Essence de Parfum - No. 442 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/442W_c.webp?v=1770971533",
-      url: "https://magicperfume.co/products/magic-perfume-no-442w",
-      variant: 47306561356034,
-      price: 1199,
+      id: "jpg_ultra_male",
+      name: "Ultra Male Jean Paul Gaultier",
       brand: "Jean Paul Gaultier",
-      brandKey: "jpg",
-      number: "442",
-      gender: "w",
-      searchTerms: ["classique", "jean paul gaultier", "442", "jpgclassique"]
+      image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Ultra_Male.png?v=1770285911",
+      top_notes: ["Birne", "Minze", "Lavendel"],
+      heart_notes: ["Zimt", "Salbei", "Muskatellersalbei"],
+      base_notes: ["Vanille", "Amber", "Holzige Noten"],
+      description: "Ein kraftvoller und verführerischer Duft, der die Grenzen der Männlichkeit erweitert.",
+      year: "2015",
+      gender: "Male",
+      productNumbers: ["349"],
+      shopifyProduct: {
+        title: "Riecht wie... Ultra Male - No. 349 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-349m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Ultra_Male.png?v=1770285911"
+      }
     },
     {
-      id: "hardcoded-ultra-male-349",
-      title: "Riecht wie... Ultra Male - No. 349 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/349M_c.webp?v=1770970830",
-      url: "https://magicperfume.co/products/magic-perfume-no-349m",
-      variant: 47306564862210,
-      price: 1199,
+      id: "jpg_classique_essence",
+      name: "Classique Essence de Parfum Jean Paul Gaultier",
       brand: "Jean Paul Gaultier",
-      brandKey: "jpg",
-      number: "349",
-      gender: "m",
-      searchTerms: ["ultra male", "jean paul gaultier", "349", "ultramale"]
+      image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Classique_Essence_de_Parfum.png?v=1770290311",
+      top_notes: ["Rose", "Ingwer", "Bergamotte"],
+      heart_notes: ["Tuberose", "Jasmin", "Orangenblüte"],
+      base_notes: ["Vanille", "Amber", "Moschus"],
+      description: "Eine intensivere und sinnlichere Interpretation des ikonischen Classique.",
+      year: "2013",
+      gender: "Female",
+      productNumbers: ["442"],
+      shopifyProduct: {
+        title: "Riecht wie... Classique Essence de Parfum - No. 442 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-442w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Jean_Paul_Gaultier_Classique_Essence_de_Parfum.png?v=1770290311"
+      }
     },
     {
-      id: "hardcoded-le-male-247",
-      title: "Riecht wie... Le Male - No. 247 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/247M_c.webp?v=1772874842",
-      url: "https://magicperfume.co/products/magic-perfume-no-247m",
-      variant: 47306557030658,
-      price: 1199,
+      id: "jpg_le_male",
+      name: "Le Male Jean Paul Gaultier",
       brand: "Jean Paul Gaultier",
-      brandKey: "jpg",
-      number: "247",
-      gender: "m",
-      searchTerms: ["le male", "jean paul gaultier", "247", "lemale"]
-    },
+      image: "https://magicperfume.co/cdn/shop/files/J.P._Gaultier_Le_Male.png?v=1770217089",
+      top_notes: ["Minze", "Lavendel", "Bergamotte", "Kardamom"],
+      heart_notes: ["Zimt", "Orangenblüte", "Kümmel"],
+      base_notes: ["Vanille", "Tonkabohne", "Amber", "Zeder"],
+      description: "Ein ikonischer und verführerischer Duft für den modernen Mann.",
+      year: "1995",
+      gender: "Male",
+      productNumbers: ["247"],
+      shopifyProduct: {
+        title: "Riecht wie... Le Male - No. 247 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-247m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/J.P._Gaultier_Le_Male.png?v=1770217089"
+      }
+    }
+  ],
 
-    // ===== DIOR =====
-    {
-      id: "hardcoded-sauvage-338",
-      title: "Riecht wie... Sauvage Parfum - No. 338 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/338M_c.webp?v=1770970081",
-      url: "https://magicperfume.co/products/magic-perfume-no-338m",
-      variant: 47306568794370,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "338",
-      gender: "m",
-      searchTerms: ["sauvage", "dior sauvage", "338", "sauvageparfum"]
-    },
-    {
-      id: "hardcoded-sauvage-elixir-366",
-      title: "Riecht wie... Sauvage Elixir - No. 366 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/366M_c.webp?v=1770974142",
-      url: "https://magicperfume.co/products/magic-perfume-no-366m-2",
-      variant: 47306554900738,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "366",
-      gender: "m",
-      searchTerms: ["sauvage elixir", "dior elixir", "366", "sauvageelixir"]
-    },
-    {
-      id: "hardcoded-homme-intense-277",
-      title: "Riecht wie... Homme Intense - No. 277 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/277M_c.webp?v=1770970552",
-      url: "https://magicperfume.co/products/magic-perfume-no-277m",
-      variant: 47306566172930,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "277",
-      gender: "m",
-      searchTerms: ["homme intense", "dior homme", "277", "hommeintense"]
-    },
-    {
-      id: "hardcoded-fahrenheit-206",
-      title: "Riecht wie... Fahrenheit - No. 206 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/206M_c.webp?v=1770971867",
-      url: "https://magicperfume.co/products/magic-perfume-no-206m",
-      variant: 47306559553794,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "206",
-      gender: "m",
-      searchTerms: ["fahrenheit", "dior fahrenheit", "206"]
-    },
-    {
-      id: "hardcoded-fahrenheit-32-327",
-      title: "Riecht wie... Fahrenheit 32 - No. 327 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/327mc.webp?v=1772136396",
-      url: "https://magicperfume.co/products/magic-perfume-no-327m",
-      variant: 47306582589698,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "327",
-      gender: "m",
-      searchTerms: ["fahrenheit 32", "dior 32", "327", "fahrenheit32"]
-    },
-    {
-      id: "hardcoded-fahrenheit-le-parfum-350",
-      title: "Riecht wie... Fahrenheit Le Parfum - No. 350 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/350M_c.webp?v=1770965191",
-      url: "https://magicperfume.co/products/magic-perfume-no-350m",
-      variant: 47306578952450,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "350",
-      gender: "m",
-      searchTerms: ["fahrenheit le parfum", "350", "fahrenheitleparfum"]
-    },
-    {
-      id: "hardcoded-jadore-159",
-      title: "Riecht wie... J'Adore - No. 159 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/159W_c.webp?v=1770972500",
-      url: "https://magicperfume.co/products/magic-perfume-no-159w",
-      variant: 47306557128962,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "159",
-      gender: "w",
-      searchTerms: ["jadore", "j'adore", "dior jadore", "159", "jadore"]
-    },
-    {
-      id: "hardcoded-hypnotic-poison-145",
-      title: "Riecht wie... Hypnotic Poison - No. 145 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/145W_c.webp?v=1770972222",
-      url: "https://magicperfume.co/products/magic-perfume-no-145w",
-      variant: 47306557522178,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "145",
-      gender: "w",
-      searchTerms: ["hypnotic poison", "dior poison", "145", "hypnoticpoison"]
-    },
-    {
-      id: "hardcoded-miss-dior-196",
-      title: "Riecht wie... Miss Dior Le Parfum - No. 196 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/196W_c.webp?v=1770972132",
-      url: "https://magicperfume.co/products/magic-perfume-no-196w",
-      variant: 47306557718786,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "196",
-      gender: "w",
-      searchTerms: ["miss dior", "dior miss", "196", "missdior"]
-    },
-    {
-      id: "hardcoded-midnight-poison-044",
-      title: "Riecht wie... Midnight Poison - No. 044 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/044w_c.webp?v=1772105244",
-      url: "https://magicperfume.co/products/magic-perfume-no-044w",
-      variant: 47306582393090,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "044",
-      gender: "w",
-      searchTerms: ["midnight poison", "dior poison", "044", "midnightpoison"]
-    },
-    {
-      id: "hardcoded-rose-n-roses-084",
-      title: "Riecht wie... Rose N'Roses - No. 084 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/084w_c.webp?v=1772106402",
-      url: "https://magicperfume.co/products/magic-perfume-no-084w",
-      variant: 47306560471298,
-      price: 1199,
-      brand: "Dior",
-      brandKey: "dior",
-      number: "084",
-      gender: "w",
-      searchTerms: ["rose n roses", "dior rose", "084", "rosenroses"]
-    },
-    
-
-    // ===== TOM FORD =====
-    {
-      id: "hardcoded-lost-cherry-438",
-      title: "Riecht wie... Lost Cherry - No. 438 (unisex)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/438W_c.webp?v=1770965044",
-      url: "https://magicperfume.co/products/magic-perfume-no-438w",
-      variant: 47306581180674,
-      price: 1199,
-      brand: "Tom Ford",
-      brandKey: "tomFord",
-      number: "438",
-      gender: "unisex",
-      searchTerms: ["lost cherry", "tom ford", "438", "lostcherry"]
-    },
-    {
-      id: "hardcoded-vanille-fatale-053",
-      title: "Riecht wie... Vanille Fatale - No. 053 (unisex)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/053W_c.webp?v=1770924453",
-      url: "https://magicperfume.co/products/magic-perfume-no-053w-m",
-      variant: 47306559062274,
-      price: 1199,
-      brand: "Tom Ford",
-      brandKey: "tomFord",
-      number: "053",
-      gender: "unisex",
-      searchTerms: ["vanille fatale", "tom ford", "053", "vanillefatale"]
-    },
-    {
-      id: "hardcoded-tobacco-vanille-193",
-      title: "Riecht wie... Tobacco Vanille - No. 193 (unisex)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/193W_c.webp?v=1770971688",
-      url: "https://magicperfume.co/products/magic-perfume-no-193w",
-      variant: 47306559848706,
-      price: 1199,
-      brand: "Tom Ford",
-      brandKey: "tomFord",
-      number: "193",
-      gender: "unisex",
-      searchTerms: ["tobacco vanille", "tom ford", "193", "tobaccovanille"]
-    },
-    {
-      id: "hardcoded-oud-wood-287",
-      title: "Riecht wie... Oud Wood - No. 287 (unisex)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/287M_c.webp?v=1770972176",
-      url: "https://magicperfume.co/products/magic-perfume-no-287m",
-      variant: 47306557620482,
-      price: 1199,
-      brand: "Tom Ford",
-      brandKey: "tomFord",
-      number: "287",
-      gender: "unisex",
-      searchTerms: ["oud wood", "tom ford", "287", "oudwood"]
-    },
-    {
-      id: "hardcoded-fucking-fabulous-232",
-      title: "Riecht wie... Fucking Fabulous - No. 232 (unisex)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/232M_c.webp?v=1770973672",
-      url: "https://magicperfume.co/products/232m-tom-ford-fucking-fabulous-unisex-ersatz",
-      variant: 47306555719938,
-      price: 1199,
-      brand: "Tom Ford",
-      brandKey: "tomFord",
-      number: "232",
-      gender: "unisex",
-      searchTerms: ["fucking fabulous", "tom ford", "232", "fuckingfabulous"]
-    },
-    {
-      id: "hardcoded-cherry-smoke-434",
-      title: "Riecht wie... Cherry Smoke - No. 434 (unisex)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/434W_c.webp?v=1771483722",
-      url: "https://magicperfume.co/products/magic-perfume-no-434w",
-      variant: 47306576396546,
-      price: 1199,
-      brand: "Tom Ford",
-      brandKey: "tomFord",
-      number: "434",
-      gender: "unisex",
-      searchTerms: ["cherry smoke", "tom ford", "434", "cherrysmoke"]
-    },
-
-    // ===== GIORGIO ARMANI =====
-    {
-      id: "hardcoded-si-129",
-      title: "Riecht wie... Si - No. 129 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/129W_c.webp?v=1770964671",
-      url: "https://magicperfume.co/products/magic-perfume-no-129w",
-      variant: 47306583507202,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "129",
-      gender: "w",
-      searchTerms: ["si", "giorgio armani", "armani si", "129"]
-    },
-    {
-      id: "hardcoded-si-passione-100",
-      title: "Riecht wie... Si Passione - No. 100 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/100Wc.webp?v=1772143063",
-      url: "https://magicperfume.co/products/magic-perfume-no-100w",
-      variant: 47306576494850,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "100",
-      gender: "w",
-      searchTerms: ["si passione", "armani passione", "100", "sipassione"]
-    },
-    {
-      id: "hardcoded-emporio-she-150",
-      title: "Riecht wie... Emprio She - No. 150 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/150W_c.webp?v=1772874779",
-      url: "https://magicperfume.co/products/magic-perfume-no-150w",
-      variant: 47306583933186,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "150",
-      gender: "w",
-      searchTerms: ["emporio she", "armani she", "150"]
-    },
-    {
-      id: "hardcoded-my-way-140",
-      title: "Riecht wie... MY WAY - No. 140 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/140W_c.webp?v=1770971949",
-      url: "https://magicperfume.co/products/magic-perfume-no-140w",
-      variant: 47306558832898,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "140",
-      gender: "w",
-      searchTerms: ["my way", "armani my way", "140", "myway"]
-    },
-    {
-      id: "hardcoded-code-for-woman-135",
-      title: "Riecht wie... Code for Woman - No. 135 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/135W_c.webp?v=1771317432", // Approximated from 134 image
-      url: "https://magicperfume.co/products/magic-perfume-no-135w",
-      variant: 47306563748098,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "135",
-      gender: "w",
-      searchTerms: ["code for woman", "armani code woman", "135"]
-    },
-    {
-      id: "hardcoded-acqua-di-gioia-146",
-      title: "Riecht wie... Acqua di Gioia - No. 146 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/146Wc.webp?v=1772136083",
-      url: "https://magicperfume.co/products/magic-perfume-no-400w",
-      variant: 47306582688002,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "146",
-      gender: "w",
-      searchTerms: ["acqua di gioia", "armani gioia", "146", "acquagioia"]
-    },
-    {
-      id: "hardcoded-terra-di-gioia-436",
-      title: "Riecht wie... Terra Di Gioia - No. 436 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/436wc.webp?v=1772139555",
-      url: "https://magicperfume.co/products/magic-perfume-no-436w",
-      variant: 47306580558082,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "436",
-      gender: "w",
-      searchTerms: ["terra di gioia", "armani terra", "436", "terragioia"]
-    },
-    {
-      id: "hardcoded-armani-diamonds-040",
-      title: "Riecht wie... Armani Diamonds - No. 040 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/040Wc.webp?v=1770924367",
-      url: "https://magicperfume.co/products/magic-perfume-no-040w",
-      variant: 47306573480194,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "040",
-      gender: "w",
-      searchTerms: ["armani diamonds", "040", "armanidiamonds"]
-    },
-    {
-      id: "hardcoded-armani-code-260",
-      title: "Riecht wie... Armani Code - No. 260 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/260M_c.webp?v=1770970255",
-      url: "https://magicperfume.co/products/magic-perfume-no-260m",
-      variant: 47306568073474,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "260",
-      gender: "m",
-      searchTerms: ["armani code", "code", "260", "armanicode"]
-    },
-    {
-      id: "hardcoded-code-profumo-304",
-      title: "Riecht wie... Code Profumo - No. 304 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/304Mc.webp?v=1772134765",
-      url: "https://magicperfume.co/products/magic-perfume-no-304m",
-      variant: 47306584162562,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "304",
-      gender: "m",
-      searchTerms: ["code profumo", "armani code profumo", "304", "codeprofumo"]
-    },
-    {
-      id: "hardcoded-emporio-he-242",
-      title: "Riecht wie... Emporio He - No. 242 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/242M_c.webp?v=1770965238",
-      url: "https://magicperfume.co/products/magic-perfume-no-293m",
-      variant: 47306576822530,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "242",
-      gender: "m",
-      searchTerms: ["emporio he", "armani he", "242"]
-    },
-    {
-      id: "hardcoded-acqua-di-gio-221",
-      title: "Riecht wie... Acqua Di Gio - No. 221 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/221M_c.webp?v=1770971288",
-      url: "https://magicperfume.co/products/magic-perfume-no-221m",
-      variant: 47306562076930,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "221",
-      gender: "m",
-      searchTerms: ["acqua di gio", "armani acqua", "221", "acquagio"]
-    },
-    {
-      id: "hardcoded-profumo-296",
-      title: "Riecht wie... Profumo - No. 296 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/296Mc.webp?v=1772140370",
-      url: "https://magicperfume.co/products/magic-perfume-no-296",
-      variant: 47306579837186,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "296",
-      gender: "m",
-      searchTerms: ["profumo", "acqua di gio profumo", "armani profumo", "296"]
-    },
-    {
-      id: "hardcoded-stronger-with-you-291",
-      title: "Riecht wie... Stronger with You - No. 291 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/291M_c.webp?v=1771481426",
-      url: "https://magicperfume.co/products/magic-perfume-no-291m",
-      variant: 47306584031490,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "291",
-      gender: "m",
-      searchTerms: ["stronger with you", "armani stronger", "291", "strongerwithyou"]
-    },
-    {
-      id: "hardcoded-stronger-with-you-intensely-318",
-      title: "Riecht wie... Stronger With You Intensely - No. 318 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/318M_c.webp?v=1770971608",
-      url: "https://magicperfume.co/products/magic-perfume-no-318m",
-      variant: 47306560143618,
-      price: 1199,
-      brand: "Giorgio Armani",
-      brandKey: "armani",
-      number: "318",
-      gender: "m",
-      searchTerms: ["stronger with you intensely", "armani stronger", "318", "strongerwithyouintensely"]
-    },
-
-    // ===== CHANEL =====
-    {
-      id: "hardcoded-bleu-252",
-      title: "Riecht wie... Bleu - No. 252 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/252M_c.webp?v=1770969799",
-      url: "https://magicperfume.co/products/magic-perfume-no-252m",
-      variant: 47306560864514,
-      price: 1199,
-      brand: "Chanel",
-      brandKey: "chanel",
-      number: "252",
-      gender: "m",
-      searchTerms: ["bleu", "bleu de chanel", "chanel bleu", "252", "chanelbleu"]
-    },
-    {
-      id: "hardcoded-allure-homme-240",
-      title: "Riecht wie... Allure Homme - No. 240 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/240Mc.webp?v=1772119461",
-      url: "https://magicperfume.co/products/magic-perfume-no-240m",
-      variant: 47306584260866,
-      price: 1199,
-      brand: "Chanel",
-      brandKey: "chanel",
-      number: "240",
-      gender: "m",
-      searchTerms: ["allure homme", "chanel allure", "240"]
-    },
-    {
-      id: "hardcoded-allure-homme-sport-222",
-      title: "Riecht wie... Allure Homme Sport - No. 222 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/222M_c.webp?v=1770970335",
-      url: "https://magicperfume.co/products/magic-perfume-no-222m",
-      variant: 47306567581954,
-      price: 1199,
-      brand: "Chanel",
-      brandKey: "chanel",
-      number: "222",
-      gender: "m",
-      searchTerms: ["allure homme sport", "chanel allure sport", "222"]
-    },
-    {
-      id: "hardcoded-bois-des-iles-459",
-      title: "Riecht wie... Bois des Iles - No. 459 (unisex)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/459Wc.webp?v=1772140665",
-      url: "https://magicperfume.co/products/magic-perfume-no-459",
-      variant: 47306579640578,
-      price: 1199,
-      brand: "Chanel",
-      brandKey: "chanel",
-      number: "459",
-      gender: "unisex",
-      searchTerms: ["bois des iles", "chanel bois", "459"]
-    },
-    {
-      id: "hardcoded-coco-079",
-      title: "Riecht wie... Coco - No. 079 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/079W_c.webp?v=1770955756",
-      url: "https://magicperfume.co/products/magic-perfume-no-079w",
-      variant: 47306561061122,
-      price: 1199,
-      brand: "Chanel",
-      brandKey: "chanel",
-      number: "079",
-      gender: "w",
-      searchTerms: ["coco", "chanel coco", "079"]
-    },
-    {
-      id: "hardcoded-mademoiselle-intense-067",
-      title: "Riecht wie... Mademoiselle Intense - No. 067 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/067W_c.webp?v=1770925560",
-      url: "https://magicperfume.co/products/magic-perfume-no-067w",
-      variant: 47306557227266,
-      price: 1199,
-      brand: "Chanel",
-      brandKey: "chanel",
-      number: "067",
-      gender: "w",
-      searchTerms: ["mademoiselle intense", "chanel intense", "067"]
-    },
-    {
-      id: "hardcoded-mademoiselle-139",
-      title: "Riecht wie... Mademoiselle - No. 139 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/139W_c.webp?v=1770973448",
-      url: "https://magicperfume.co/products/magic-perfume-no-139w",
-      variant: 47306556539138,
-      price: 1199,
-      brand: "Chanel",
-      brandKey: "chanel",
-      number: "139",
-      gender: "w",
-      searchTerms: ["mademoiselle", "chanel mademoiselle", "139"]
-    },
-    {
-      id: "hardcoded-chance-006",
-      title: "Riecht wie... Chance - No. 006 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/006w.webp?v=1772945741",
-      url: "https://magicperfume.co/products/magic-perfume-no-006w",
-      variant: 47306558963970,
-      price: 1199,
-      brand: "Chanel",
-      brandKey: "chanel",
-      number: "006",
-      gender: "w",
-      searchTerms: ["chance", "chanel chance", "006"]
-    },
-    {
-      id: "hardcoded-no5-077",
-      title: "Riecht wie... No.5 - No. 077 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/077W_c.webp?v=1770955697",
-      url: "https://magicperfume.co/products/magic-perfume-no-077w",
-      variant: 47306583212290,
-      price: 1199,
-      brand: "Chanel",
-      brandKey: "chanel",
-      number: "077",
-      gender: "w",
-      searchTerms: ["no 5", "no5", "chanel no5", "077"]
-    },
-
-    // ===== HUGO BOSS =====
-    {
-      id: "hardcoded-boss-woman-060",
-      title: "Riecht wie... Boss Woman - No. 060 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/060W_c.webp?v=1770925448",
-      url: "https://magicperfume.co/products/magic-perfume-no-060w",
-      variant: 47306561552642,
-      price: 1199,
-      brand: "Hugo Boss",
-      brandKey: "hugoBoss",
-      number: "060",
-      gender: "w",
-      searchTerms: ["boss woman", "hugo boss woman", "060", "bosswoman"]
-    },
-    {
-      id: "hardcoded-boss-orange-148",
-      title: "Riecht wie... Boss Orange - No. 148 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/148W_c.webp?v=1770965437",
-      url: "https://magicperfume.co/products/magic-perfume-no-148w",
-      variant: 47306570334466,
-      price: 1199,
-      brand: "Hugo Boss",
-      brandKey: "hugoBoss",
-      number: "148",
-      gender: "w",
-      searchTerms: ["boss orange", "hugo boss orange", "148", "bossorange"]
-    },
-    {
-      id: "hardcoded-ma-vie-058",
-      title: "Riecht wie... Ma Vie - No. 058 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/058W_c.webp?v=1770924958",
-      url: "https://magicperfume.co/products/magic-perfume-no-058w",
-      variant: 47306579443970,
-      price: 1199,
-      brand: "Hugo Boss",
-      brandKey: "hugoBoss",
-      number: "058",
-      gender: "w",
-      searchTerms: ["ma vie", "hugo boss ma vie", "058", "mavie"]
-    },
-    {
-      id: "hardcoded-boss-bottled-234",
-      title: "Riecht wie... Bottled - No. 234 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/234M_c.webp?v=1770971992",
-      url: "https://magicperfume.co/products/magic-perfume-no-234m",
-      variant: 47306558144770,
-      price: 1199,
-      brand: "Hugo Boss",
-      brandKey: "hugoBoss",
-      number: "234",
-      gender: "m",
-      searchTerms: ["boss bottled", "hugo boss bottled", "234", "bossbottled"]
-    },
-    {
-      id: "hardcoded-boss-bottled-intense-346",
-      title: "Riecht wie... Bottled Intense - No. 346 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/346Mc.webp?v=1772139059",
-      url: "https://magicperfume.co/products/magic-perfume-no-346m",
-      variant: 47306580852994,
-      price: 1199,
-      brand: "Hugo Boss",
-      brandKey: "hugoBoss",
-      number: "346",
-      gender: "m",
-      searchTerms: ["bottled intense", "boss intense", "346", "bottledintense"]
-    },
-    {
-      id: "hardcoded-boss-bottled-night-274",
-      title: "Riecht wie... Bottled Night - No. 274 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/274M_c.webp?v=1771480860",
-      url: "https://magicperfume.co/products/magic-perfume-no-274m",
-      variant: 47306577510658,
-      price: 1199,
-      brand: "Hugo Boss",
-      brandKey: "hugoBoss",
-      number: "274",
-      gender: "m",
-      searchTerms: ["bottled night", "boss night", "274", "bottlednight"]
-    },
-    {
-      id: "hardcoded-boss-hugo-223",
-      title: "Riecht wie... Hugo - No. 223 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/223M_c.webp?v=1770965297",
-      url: "https://magicperfume.co/products/magic-perfume-no-223m",
-      variant: 47306574299394,
-      price: 1199,
-      brand: "Hugo Boss",
-      brandKey: "hugoBoss",
-      number: "223",
-      gender: "m",
-      searchTerms: ["hugo", "hugo boss", "223"]
-    },
-    {
-      id: "hardcoded-boss-the-scent-270",
-      title: "Riecht wie... The Scent - No. 270 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/270M_c.webp?v=1770970608",
-      url: "https://magicperfume.co/products/magic-perfume-no-270m",
-      variant: 47306565550338,
-      price: 1199,
-      brand: "Hugo Boss",
-      brandKey: "hugoBoss",
-      number: "270",
-      gender: "m",
-      searchTerms: ["the scent", "hugo boss scent", "270", "thescent"]
-    },
-    {
-      id: "hardcoded-boss-energise-254",
-      title: "Riecht wie... Energise - No. 254 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/254mc.webp?v=1772142964",
-      url: "https://magicperfume.co/products/magic-perfume-no-254m",
-      variant: 47306576724226,
-      price: 1199,
-      brand: "Hugo Boss",
-      brandKey: "hugoBoss",
-      number: "254",
-      gender: "m",
-      searchTerms: ["energise", "hugo boss energise", "254"]
-    },
-
-    // ===== CALVIN KLEIN =====
-    {
-      id: "hardcoded-ck-eternity-106",
-      title: "Riecht wie... Eternity - No. 106 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/106W_c.webp?v=1770965437", // Approximated
-      url: "https://magicperfume.co/products/magic-perfume-no-106w",
-      variant: 47306572071170,
-      price: 1199,
-      brand: "Calvin Klein",
-      brandKey: "calvinKlein",
-      number: "106",
-      gender: "w",
-      searchTerms: ["eternity", "calvin klein eternity", "106"]
-    },
-    {
-      id: "hardcoded-ck-eternity-moment-414",
-      title: "Riecht wie... CK Eternity Moment - No. 414 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/414Wc.webp?v=1772138901",
-      url: "https://magicperfume.co/products/magic-perfume-no-414w",
-      variant: 47306580951298,
-      price: 1199,
-      brand: "Calvin Klein",
-      brandKey: "calvinKlein",
-      number: "414",
-      gender: "w",
-      searchTerms: ["eternity moment", "ck eternity moment", "414"]
-    },
-    {
-      id: "hardcoded-ck-euphoria-blossom-087",
-      title: "Riecht wie... Euphoria Blossom - No. 087 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/087Wc.webp?v=1772137086",
-      url: "https://magicperfume.co/products/magic-perfume-no-087",
-      variant: 47306581901570,
-      price: 1199,
-      brand: "Calvin Klein",
-      brandKey: "calvinKlein",
-      number: "087",
-      gender: "w",
-      searchTerms: ["euphoria blossom", "ck euphoria", "087"]
-    },
-    {
-      id: "hardcoded-ck-glow-007",
-      title: "Riecht wie... Glow - No. 007 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/007Wc.webp?v=1772137762",
-      url: "https://magicperfume.co/products/magic-perfume-no-007",
-      variant: 47306581082370,
-      price: 1199,
-      brand: "Calvin Klein",
-      brandKey: "calvinKlein",
-      number: "007",
-      gender: "w",
-      searchTerms: ["glow", "ck glow", "007"]
-    },
-    {
-      id: "hardcoded-ck-women-031",
-      title: "Riecht wie... CK Women - No. 031 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/031wc.webp?v=1772137486",
-      url: "https://magicperfume.co/products/magic-perfume-no-031",
-      variant: 47306581475586,
-      price: 1199,
-      brand: "Calvin Klein",
-      brandKey: "calvinKlein",
-      number: "031",
-      gender: "w",
-      searchTerms: ["ck women", "calvin klein women", "031"]
-    },
-    {
-      id: "hardcoded-ck-obsession-night-028",
-      title: "Riecht wie... Obsession Night WOMAN - No. 028 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/028wc.webp?v=1772136424",
-      url: "https://magicperfume.co/products/magic-perfume-no-028",
-      variant: 47306582294786,
-      price: 1199,
-      brand: "Calvin Klein",
-      brandKey: "calvinKlein",
-      number: "028",
-      gender: "w",
-      searchTerms: ["obsession night", "ck obsession", "028"]
-    },
-    {
-      id: "hardcoded-ck-one-209",
-      title: "Riecht wie... CK One - No. 209 (unisex)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/209Mc.webp?v=1772137521",
-      url: "https://magicperfume.co/products/magic-perfume-no-209m",
-      variant: 47306581377282,
-      price: 1199,
-      brand: "Calvin Klein",
-      brandKey: "calvinKlein",
-      number: "209",
-      gender: "unisex",
-      searchTerms: ["ck one", "calvin klein one", "209", "ckone"]
-    },
-    {
-      id: "hardcoded-ck-be-477",
-      title: "Riecht wie... CK Be - No. 477 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/477Wc.webp?v=1772142714",
-      url: "https://magicperfume.co/products/magic-perfume-no-477w",
-      variant: 47306577019138,
-      price: 1199,
-      brand: "Calvin Klein",
-      brandKey: "calvinKlein",
-      number: "477",
-      gender: "m",
-      searchTerms: ["ck be", "calvin klein be", "477", "ckbe"]
-    },
-    {
-      id: "hardcoded-ck-euphoria-men-204",
-      title: "Riecht wie... Euphoria Men - No. 204 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/204Mc.webp?v=1772140892",
-      url: "https://magicperfume.co/products/magic-perfume-no-204m",
-      variant: 47306578755842,
-      price: 1199,
-      brand: "Calvin Klein",
-      brandKey: "calvinKlein",
-      number: "204",
-      gender: "m",
-      searchTerms: ["euphoria men", "ck euphoria men", "204"]
-    },
-    {
-      id: "hardcoded-ck2-216",
-      title: "Riecht wie... CK2 - No. 216 (unisex)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/216Mc.webp?v=1772135769",
-      url: "https://magicperfume.co/products/magic-perfume-no-216m",
-      variant: 47306583015682,
-      price: 1199,
-      brand: "Calvin Klein",
-      brandKey: "calvinKlein",
-      number: "216",
-      gender: "unisex",
-      searchTerms: ["ck2", "calvin klein ck2", "216"]
-    },
-
-    // ===== DOLCE & GABBANA =====
-    {
-      id: "hardcoded-light-blue-017",
-      title: "Riecht wie... Light Blue - No. 017 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/017W_c.webp?v=1770923429",
-      url: "https://magicperfume.co/products/magic-perfume-no-017w",
-      variant: 47306555621634,
-      price: 1199,
-      brand: "Dolce & Gabbana",
-      brandKey: "dolce",
-      number: "017",
-      gender: "w",
-      searchTerms: ["light blue", "dolce gabbana", "017", "lightblue"]
-    },
-    {
-      id: "hardcoded-light-blue-eau-intense-195",
-      title: "Riecht wie... Light Blue Eau Intense - No. 195 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/195wc.webp?v=1772140262",
-      url: "https://magicperfume.co/products/magic-perfume-no-195w",
-      variant: 47306580066562,
-      price: 1199,
-      brand: "Dolce & Gabbana",
-      brandKey: "dolce",
-      number: "195",
-      gender: "w",
-      searchTerms: ["light blue intense", "dolce gabbana intense", "195"]
-    },
-    {
-      id: "hardcoded-the-one-094",
-      title: "Riecht wie... The One - No. 094 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/094W_c.webp?v=1770964137",
-      url: "https://magicperfume.co/products/magic-perfume-no-094w",
-      variant: 47306581573890,
-      price: 1199,
-      brand: "Dolce & Gabbana",
-      brandKey: "dolce",
-      number: "094",
-      gender: "w",
-      searchTerms: ["the one", "dolce gabbana one", "094", "theone"]
-    },
-    {
-      id: "hardcoded-dolci-435",
-      title: "Riecht wie... Dolci - No. 435 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/435Wc.webp?v=1772139184",
-      url: "https://magicperfume.co/products/magic-perfume-no-435",
-      variant: 47306580656386,
-      price: 1199,
-      brand: "Dolce & Gabbana",
-      brandKey: "dolce",
-      number: "435",
-      gender: "w",
-      searchTerms: ["dolci", "dolce gabbana dolci", "435"]
-    },
-    {
-      id: "hardcoded-imperatrice-018",
-      title: "Riecht wie... L'Imperatrice 3 - No. 018 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/018w_c.webp?v=1772095675",
-      url: "https://magicperfume.co/products/magic-perfume-no-018w",
-      variant: 47306568401154,
-      price: 1599,
-      brand: "Dolce & Gabbana",
-      brandKey: "dolce",
-      number: "018",
-      gender: "w",
-      searchTerms: ["imperatrice", "limperatrice", "018", "limperatrice"]
-    },
-
-    // ===== MUGLER =====
-    {
-      id: "hardcoded-angel-113",
-      title: "Riecht wie... Angel - No. 113 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/113W_c.webp?v=1770965910",
-      url: "https://magicperfume.co/products/magic-perfume-no-113w",
-      variant: 47306568990978,
-      price: 1199,
+  // ===== MUGLER =====
+  mugler: [
+    {
+      id: "mugler_angel",
+      name: "Angel Mugler",
       brand: "Mugler",
-      brandKey: "mugler",
-      number: "113",
-      gender: "w",
-      searchTerms: ["angel", "mugler", "113"]
+      image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_1992.png?v=1770293282",
+      top_notes: ["Zuckerwatte", "Bergamotte", "Ananas", "Kokosnuss"],
+      heart_notes: ["Honig", "Rote Beeren", "Pfirsich", "Pflaume", "Aprikose"],
+      base_notes: ["Patschuli", "Vanille", "Schokolade", "Karamell"],
+      description: "Ein revolutionärer Gourmand-Duft, der die Parfümerie für immer verändert hat.",
+      year: "1992",
+      gender: "Female",
+      productNumbers: ["113"],
+      shopifyProduct: {
+        title: "Riecht wie... Angel - No. 113 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-113w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_1992.png?v=1770293282"
+      }
     },
     {
-      id: "hardcoded-angel-nova-166",
-      title: "Riecht wie... Angel Nova - No. 166 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/166W_c.webp?v=1771648812",
-      url: "https://magicperfume.co/products/magic-perfume-no-166w",
-      variant: 47306579738882,
-      price: 1199,
+      id: "mugler_angel_nova",
+      name: "Angel Nova Mugler",
       brand: "Mugler",
-      brandKey: "mugler",
-      number: "166",
-      gender: "w",
-      searchTerms: ["angel nova", "mugler", "166", "angelnova"]
+      image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_Nova.webp?v=1771649097",
+      top_notes: ["Himbeere", "Litschi", "Bergamotte"],
+      heart_notes: ["Rose", "Damascus-Rose", "Jasmin"],
+      base_notes: ["Akigalawood", "Benzoin", "Vanille"],
+      description: "Eine strahlende und fruchtige Interpretation des ikonischen Angel.",
+      year: "2020",
+      gender: "Female",
+      productNumbers: ["166"],
+      shopifyProduct: {
+        title: "Riecht wie... Angel Nova - No. 166 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-166w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Thierry_Mugler_Angel_Nova.webp?v=1771649097"
+      }
     },
     {
-      id: "hardcoded-angel-share-476",
-      title: "Riecht wie… Angel Share - No. 476 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/476w_c.png?v=1771855867",
-      url: "https://magicperfume.co/products/magic-perfume-476w",
-      variant: 47395668263170,
-      price: 1199,
+      id: "mugler_a_men",
+      name: "A*Men Mugler",
       brand: "Mugler",
-      brandKey: "mugler",
-      number: "476",
-      gender: "w",
-      searchTerms: ["angel share", "mugler", "476", "angelshare"]
-    },
+      image: "https://magicperfume.co/cdn/shop/files/A_Men.webp?v=1772141383",
+      top_notes: ["Minze", "Lavendel", "Koriander"],
+      heart_notes: ["Honig", "Karamell", "Patschuli"],
+      base_notes: ["Vanille", "Moschus", "Amber"],
+      description: "Ein kühner und gourmandiger Duft für den selbstbewussten Mann.",
+      year: "1996",
+      gender: "Male",
+      productNumbers: ["255"],
+      shopifyProduct: {
+        title: "Riecht wie... A*Men - No. 255 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-255m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/A_Men.webp?v=1772141383"
+      }
+    }
+  ],
 
-    // ===== NARCISO RODRIGUEZ =====
+  // ===== TOM FORD =====
+  tomFord: [
     {
-      id: "hardcoded-musc-noir-457",
-      title: "Riecht wie... Musc Noir For Her - No. 457 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/457W_c.webp?v=1770964889",
-      url: "https://magicperfume.co/products/magic-perfume-no-457w",
-      variant: 47306581999874,
-      price: 1199,
+      id: "tomford_vanille_fatale",
+      name: "Vanille Fatale Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/vanille_fatale.png?v=1772096768",
+      top_notes: ["Safran", "Neroli", "Bergamotte"],
+      heart_notes: ["Vanille", "Kaffee", "Leder"],
+      base_notes: ["Amber", "Myrrhe", "Benzoin"],
+      description: "Ein dunkler und berauschender Vanilleduft.",
+      year: "2017",
+      gender: "Unisex",
+      productNumbers: ["053"],
+      shopifyProduct: {
+        title: "Riecht wie... Vanille Fatale - No. 053 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-no-053w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/vanille_fatale.png?v=1772096768"
+      }
+    },
+    {
+      id: "tomford_lost_cherry",
+      name: "Lost Cherry Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Lost_Cherry.png?v=1770283537",
+      top_notes: ["Kirsche", "Mandel", "Likör"],
+      heart_notes: ["Kirsche", "Rose", "Jasmin"],
+      base_notes: ["Perubalsam", "Benzoin", "Vanille", "Zeder"],
+      description: "Ein verführerischer und verspielter Duft, der die Essenz einer verbotenen Frucht einfängt.",
+      year: "2018",
+      gender: "Unisex",
+      productNumbers: ["438"],
+      shopifyProduct: {
+        title: "Riecht wie... Lost Cherry - No. 438 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-no-438w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Lost_Cherry.png?v=1770283537"
+      }
+    },
+    {
+      id: "tomford_fucking_fabulous",
+      name: "Fucking Fabulous Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Fucking_Fabulous_EDP.png?v=1770283980",
+      top_notes: ["Salbei", "Lavendel"],
+      heart_notes: ["Leder", "Mandel", "Vanille"],
+      base_notes: ["Tonka", "Amber", "Holzige Noten"],
+      description: "Ein kühner, provokativer Duft mit Leder- und Mandelnoten.",
+      year: "2017",
+      gender: "Unisex",
+      productNumbers: ["232"],
+      shopifyProduct: {
+        title: "Riecht wie... Fucking Fabulous - No. 232 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-no-232m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Fucking_Fabulous_EDP.png?v=1770283980"
+      }
+    },
+    {
+      id: "tomford_tobacco_vanille",
+      name: "Tobacco Vanille Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Tobacco_Vanille.png?v=1770290664",
+      top_notes: ["Tabakblatt", "Würzige Noten"],
+      heart_notes: ["Vanille", "Kakao", "Tonka", "Tabakblüte"],
+      base_notes: ["Trockenfrüchte", "Holzige Noten"],
+      description: "Ein warmer und würziger Duft mit Tabak- und Vanillenoten.",
+      year: "2007",
+      gender: "Unisex",
+      productNumbers: ["193"],
+      shopifyProduct: {
+        title: "Riecht wie... Tobacco Vanille - No. 193 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-no-193m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Tobacco_Vanille.png?v=1770290664"
+      }
+    },
+    {
+      id: "tomford_oud_wood",
+      name: "Oud Wood Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Oud_Wood.png?v=1770289479",
+      top_notes: ["Rosenholz", "Kardamom", "Chinesischer Pfeffer"],
+      heart_notes: ["Sandelholz", "Vetiver", "Oud"],
+      base_notes: ["Tonka", "Amber", "Vanille"],
+      description: "Eine geheimnisvolle und exotische Mischung aus seltenem Oud-Holz mit rauchigen Noten.",
+      year: "2007",
+      gender: "Unisex",
+      productNumbers: ["287"],
+      shopifyProduct: {
+        title: "Riecht wie... Oud Wood - No. 287 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-no-287m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Oud_Wood.png?v=1770289479"
+      }
+    },
+    {
+      id: "tomford_cherry_smoke",
+      name: "Cherry Smoke Tom Ford",
+      brand: "Tom Ford",
+      image: "https://magicperfume.co/cdn/shop/files/Cherry_Smoke.jpg",
+      top_notes: ["Kirsche", "Pfeffer", "Safran"],
+      heart_notes: ["Rose", "Jasmin", "Leder"],
+      base_notes: ["Vanille", "Amber", "Holz"],
+      description: "Ein rauchiger und sinnlicher Kirschduft.",
+      year: "2023",
+      gender: "Unisex",
+      productNumbers: ["434"],
+      shopifyProduct: {
+        title: "Riecht wie... Cherry Smoke - No. 434 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-no-434m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Cherry_Smoke.jpg"
+      }
+    }
+  ],
+
+  // ===== GIORGIO ARMANI =====
+  armani: [
+    {
+      id: "armani_si",
+      name: "Si Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_S.jpg?v=1770285117",
+      top_notes: ["Schwarze Johannisbeere", "Birne", "Mandarine"],
+      heart_notes: ["Rose", "Freesie", "Maiglöckchen"],
+      base_notes: ["Vanille", "Patschuli", "Benzoin"],
+      description: "Ein anspruchsvoller und moderner Chypre-Duft, der feminine Stärke feiert.",
+      year: "2013",
+      gender: "Female",
+      productNumbers: ["129"],
+      shopifyProduct: {
+        title: "Riecht wie... Si - No. 129 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-129w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_S.jpg?v=1770285117"
+      }
+    },
+    {
+      id: "armani_emporio_she",
+      name: "Emporio Armani She Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_She.jpg?v=1770284423",
+      top_notes: ["Zitrone", "Bergamotte", "Rose"],
+      heart_notes: ["Jasmin", "Pfingstrose", "Maiglöckchen"],
+      base_notes: ["Sandelholz", "Moschus", "Vanille"],
+      description: "Ein frischer und femininer Duft, der den Geist der modernen Jugend einfängt.",
+      year: "1998",
+      gender: "Female",
+      productNumbers: ["150"],
+      shopifyProduct: {
+        title: "Riecht wie... Emporio She - No. 150 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-150w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_She.jpg?v=1770284423"
+      }
+    },
+    {
+      id: "armani_emporio_he",
+      name: "Emporio Armani He Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Emporio_He.jpg",
+      top_notes: ["Bergamotte", "Mandarine", "Zitrone"],
+      heart_notes: ["Jasmin", "Rosmarin", "Salbei"],
+      base_notes: ["Zeder", "Moschus", "Amber"],
+      description: "Ein frischer und maskuliner Duft für den modernen Mann.",
+      year: "1998",
+      gender: "Male",
+      productNumbers: ["242"],
+      shopifyProduct: {
+        title: "Riecht wie... Emporio He - No. 242 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-242m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Emporio_He.jpg"
+      }
+    },
+    {
+      id: "armani_my_way",
+      name: "My Way Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_MY_WAY.jpg?v=1770291090",
+      top_notes: ["Orangenblüte", "Bergamotte"],
+      heart_notes: ["Tuberose", "Jasmin"],
+      base_notes: ["Vanille", "Zeder", "Weißer Moschus"],
+      description: "Ein strahlender und ethischer Duft, der Authentizität und Verbundenheit feiert.",
+      year: "2020",
+      gender: "Female",
+      productNumbers: ["140"],
+      shopifyProduct: {
+        title: "Riecht wie... MY WAY - No. 140 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-140w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_MY_WAY.jpg?v=1770291090"
+      }
+    },
+    {
+      id: "armani_code",
+      name: "Code Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Armani_Code.png?v=1770220395",
+      top_notes: ["Bergamotte", "Zitrone", "Grüne Noten"],
+      heart_notes: ["Olivenblüte", "Jasmin", "Orangenblüte"],
+      base_notes: ["Leder", "Zeder", "Tonkabohne"],
+      description: "Ein anspruchsvoller und verführerischer Duft für den modernen Mann.",
+      year: "2004",
+      gender: "Male",
+      productNumbers: ["260"],
+      shopifyProduct: {
+        title: "Riecht wie... Armani Code - No. 260 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-260m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Armani_Code.png?v=1770220395"
+      }
+    },
+    {
+      id: "armani_code_for_woman",
+      name: "Armani Code for Woman Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Code_for_Woman.jpg?v=1771252264",
+      top_notes: ["Orangenblüte", "Jasmin", "Bergamotte"],
+      heart_notes: ["Honig", "Mandel", "Ingwer"],
+      base_notes: ["Vanille", "Sandelholz", "Moschus"],
+      description: "Ein verführerischer und eleganter orientalischer Blumenduft für Frauen.",
+      year: "2006",
+      gender: "Female",
+      productNumbers: ["135"],
+      shopifyProduct: {
+        title: "Riecht wie... Code for Woman - No. 135 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-135w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Code_for_Woman.jpg?v=1771252264"
+      }
+    },
+    {
+      id: "armani_acqua_di_gio",
+      name: "Acqua Di Gio Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Acqua_Di_Gio.png?v=1770290000",
+      top_notes: ["Bergamotte", "Neroli", "Grüne Mandarine"],
+      heart_notes: ["Jasmin", "Rosmarin", "Salbei"],
+      base_notes: ["Zeder", "Patschuli", "Moschus"],
+      description: "Ein zeitloser aquatischer Klassiker, der die Essenz des Mittelmeers einfängt.",
+      year: "1996",
+      gender: "Male",
+      productNumbers: ["221"],
+      shopifyProduct: {
+        title: "Riecht wie... Acqua di Gio - No. 221 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-221m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Acqua_Di_Gio.png?v=1770290000"
+      }
+    },
+    {
+      id: "armani_acqua_di_gioia",
+      name: "Acqua di Gioia Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Acqua_di_Gioia.webp?v=1772136136",
+      top_notes: ["Minze", "Zitrone", "Bergamotte"],
+      heart_notes: ["Jasmin", "Pfingstrose", "Freesie"],
+      base_notes: ["Zeder", "Moschus", "Brauner Zucker"],
+      description: "Ein frischer und aquatischer Duft für Frauen, der die Essenz des Meeres einfängt.",
+      year: "2010",
+      gender: "Female",
+      productNumbers: ["146"],
+      shopifyProduct: {
+        title: "Riecht wie... Acqua di Gioia - No. 146 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-146w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Acqua_di_Gioia.webp?v=1772136136"
+      }
+    },
+    {
+      id: "armani_stronger_with_you_intensely",
+      name: "Stronger With You Intensely Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Emporio_Armani_Stronger_With_You_Intensely.png?v=1770287057",
+      top_notes: ["Rosa Pfeffer", "Kardamom", "Veilchenblatt"],
+      heart_notes: ["Salbei", "Lavendel", "Zimt"],
+      base_notes: ["Vanille", "Kastanie", "Tonkabohne", "Amber"],
+      description: "Eine intensivere und kraftvollere Interpretation von Stronger With You.",
+      year: "2019",
+      gender: "Male",
+      productNumbers: ["318"],
+      shopifyProduct: {
+        title: "Riecht wie... Stronger With You Intensely - No. 318 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-318m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Emporio_Armani_Stronger_With_You_Intensely.png?v=1770287057"
+      }
+    },
+    {
+      id: "armani_diamonds",
+      name: "Armani Diamonds Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_Armani_Diamonds.png?v=1770924117",
+      top_notes: ["Mandarine", "Bergamotte", "Orange"],
+      heart_notes: ["Rose", "Jasmin", "Ylang-Ylang"],
+      base_notes: ["Sandelholz", "Moschus", "Amber"],
+      description: "Ein funkelnder und eleganter Duft, der die Brillanz von Diamanten einfängt.",
+      year: "2000",
+      gender: "Female",
+      productNumbers: ["040"],
+      shopifyProduct: {
+        title: "Riecht wie... Armani Diamonds - No. 040 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-040w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Giorgio_Armani_Emporio_Armani_Diamonds.png?v=1770924117"
+      }
+    },
+    {
+      id: "armani_code_sport",
+      name: "Armani Code Sport Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Armani_Code_Sport.webp?v=1772137221",
+      top_notes: ["Bergamotte", "Zitrone", "Grapefruit"],
+      heart_notes: ["Guarana", "Muskatnuss", "Zeder"],
+      base_notes: ["Tonkabohne", "Vanille", "Amber"],
+      description: "Ein frischer und energetischer Duft für den aktiven Mann.",
+      year: "2017",
+      gender: "Male",
+      productNumbers: ["267"],
+      shopifyProduct: {
+        title: "Riecht wie... Armani Code Sport - No.267 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-267m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Armani_Code_Sport.webp?v=1772137221"
+      }
+    },
+    {
+      id: "armani_si_passione",
+      name: "Si Passione Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Si_Passione.webp?v=1772143097",
+      top_notes: ["Schwarze Johannisbeere", "Birne", "Mandarine"],
+      heart_notes: ["Rose", "Jasmin", "Pfingstrose"],
+      base_notes: ["Vanille", "Patschuli", "Zeder"],
+      description: "Ein leidenschaftlicher und intensiver Duft für die moderne Frau.",
+      year: "2017",
+      gender: "Female",
+      productNumbers: ["100"],
+      shopifyProduct: {
+        title: "Riecht wie... Si Passione - No. 100 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-100w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Si_Passione.webp?v=1772143097"
+      }
+    },
+    {
+      id: "armani_terra_di_gioia",
+      name: "Terra Di Gioia Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Terra_di_Gioia.webp?v=1772139466",
+      top_notes: ["Bergamotte", "Orange", "Mandarine"],
+      heart_notes: ["Jasmin", "Rose", "Ylang-Ylang"],
+      base_notes: ["Vanille", "Sandelholz", "Moschus"],
+      description: "Ein warmer und sinnlicher Duft, der die Essenz der Erde einfängt.",
+      year: "2015",
+      gender: "Female",
+      productNumbers: ["436"],
+      shopifyProduct: {
+        title: "Riecht wie... Terra Di Gioia - No. 436 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-436w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Terra_di_Gioia.webp?v=1772139466"
+      }
+    },
+    {
+      id: "armani_profumo",
+      name: "Acqua Di Gio Profumo Giorgio Armani",
+      brand: "Giorgio Armani",
+      image: "https://magicperfume.co/cdn/shop/files/Acqua_Di_Gio_Profumo.webp?v=1772140413",
+      top_notes: ["Bergamotte", "Mandarine", "Meeresnoten"],
+      heart_notes: ["Rosmarin", "Salbei", "Geranie"],
+      base_notes: ["Weihrauch", "Patschuli", "Zeder"],
+      description: "Eine intensivere und tiefere Interpretation des ikonischen Acqua Di Gio.",
+      year: "2015",
+      gender: "Male",
+      productNumbers: ["296"],
+      shopifyProduct: {
+        title: "Riecht wie... Profumo - No. 296 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-296m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Acqua_Di_Gio_Profumo.webp?v=1772140413"
+      }
+    }
+  ],
+
+  // ===== DIOR =====
+  dior: [
+    {
+      id: "dior_sauvage_parfum",
+      name: "Sauvage Parfum Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage.png?v=1770220271",
+      top_notes: ["Bergamotte", "Mandarine"],
+      heart_notes: ["Lavendel", "Sternanis", "Muskatnuss"],
+      base_notes: ["Sandelholz", "Vanille", "Amber"],
+      description: "Eine tiefere, intensivere Interpretation von Sauvage.",
+      year: "2018",
+      gender: "Male",
+      productNumbers: ["338"],
+      shopifyProduct: {
+        title: "Riecht wie... Sauvage Parfum - No. 338 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-338m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage.png?v=1770220271"
+      }
+    },
+    {
+      id: "dior_sauvage_elixir",
+      name: "Sauvage Elixir Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage_Elixir.png?v=1770218137",
+      top_notes: ["Grapefruit", "Muskatnuss", "Zimt"],
+      heart_notes: ["Lavendel", "Sternanis", "Koriander"],
+      base_notes: ["Lakritze", "Patschuli", "Sandelholz"],
+      description: "Eine kühne und intensive Neuinterpretation von Sauvage.",
+      year: "2021",
+      gender: "Male",
+      productNumbers: ["366"],
+      shopifyProduct: {
+        title: "Riecht wie... Sauvage Elixir - No. 366 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-366m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dior_Sauvage_Elixir.png?v=1770218137"
+      }
+    },
+    {
+      id: "dior_hypnotic_poison",
+      name: "Hypnotic Poison Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Hypnotic_Poison.png?v=1771366694",
+      top_notes: ["Aprikose", "Pflaume", "Kokosnuss", "Bittermandel"],
+      heart_notes: ["Rose", "Jasmin", "Maiglöckchen"],
+      base_notes: ["Vanille", "Mandel", "Moschus"],
+      description: "Ein geheimnisvoller und sinnlicher Duft, der einen Zauber der Verführung webt.",
+      year: "1998",
+      gender: "Female",
+      productNumbers: ["145"],
+      shopifyProduct: {
+        title: "Riecht wie... Hypnotic Poison - No. 145 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-145w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hypnotic_Poison.png?v=1771366694"
+      }
+    },
+    {
+      id: "dior_jadore",
+      name: "J'adore Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_J_adore.jpg?v=1770220853",
+      top_notes: ["Birne", "Melone", "Pfirsich", "Magnolie"],
+      heart_notes: ["Jasmin", "Rose", "Maiglöckchen", "Ylang-Ylang"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein blumiger Strauß von außergewöhnlicher Fülle.",
+      year: "1999",
+      gender: "Female",
+      productNumbers: ["159"],
+      shopifyProduct: {
+        title: "Riecht wie... J'Adore - No. 159 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-159w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_J_adore.jpg?v=1770220853"
+      }
+    },
+    {
+      id: "dior_miss_dior_le_parfum",
+      name: "Miss Dior Le Parfum Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Le_Parfum.jpg?v=1770293457",
+      top_notes: ["Lavendel", "Bergamotte", "Salbei"],
+      heart_notes: ["Iris", "Moschus", "Ambrette", "Birne"],
+      base_notes: ["Virginische Zeder", "Vetiver", "Leder", "Amber Accord"],
+      description: "Die konzentrierteste und luxuriöseste Version von Dior Homme.",
+      year: "2025",
+      gender: "Female",
+      productNumbers: ["196"],
+      shopifyProduct: {
+        title: "Riecht wie... Miss Dior Le Parfum - No. 196 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-196w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Le_Parfum.jpg?v=1770293457"
+      }
+    },
+    {
+      id: "dior_fahrenheit",
+      name: "Fahrenheit Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Fahrenheit.png?v=1770289652",
+      top_notes: ["Weißdorn", "Zeder", "Beifuß", "Muskatnuss", "Mandarine"],
+      heart_notes: ["Leder", "Veilchen", "Geißblatt"],
+      base_notes: ["Leder", "Vetiver", "Amber"],
+      description: "Ein revolutionärer Duft, der blumige, holzige und ledrige Noten vereint.",
+      year: "1988",
+      gender: "Male",
+      productNumbers: ["206"],
+      shopifyProduct: {
+        title: "Riecht wie... Fahrenheit - No. 206 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-206m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Fahrenheit.png?v=1770289652"
+      }
+    },
+    {
+      id: "dior_fahrenheit_le_parfum",
+      name: "Fahrenheit Le Parfum Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Dior_Fahrenheit_Le_Parfum.jpg?v=1770284765",
+      top_notes: ["Veilchen", "Leder", "Weihrauch"],
+      heart_notes: ["Leder", "Veilchen", "Geißblatt"],
+      base_notes: ["Leder", "Vetiver", "Amber", "Myrrhe"],
+      description: "Eine tiefere, intensivere Interpretation des ikonischen Fahrenheit.",
+      year: "2015",
+      gender: "Male",
+      productNumbers: ["350"],
+      shopifyProduct: {
+        title: "Riecht wie... Fahrenheit Le Parfum - No. 350 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-350m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dior_Fahrenheit_Le_Parfum.jpg?v=1770284765"
+      }
+    },
+    {
+      id: "dior_homme_intense",
+      name: "Dior Homme Intense Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Dior_Homme_Intense.png?v=1770290129",
+      top_notes: ["Lavendel"],
+      heart_notes: ["Toskanische Iris", "Ambrettasamen", "Birne"],
+      base_notes: ["Virginische Zeder", "Vetiver"],
+      description: "Ein intensiver und sinnlicher Duft, der die Männlichkeit betont.",
+      year: "2011",
+      gender: "Male",
+      productNumbers: ["277"],
+      shopifyProduct: {
+        title: "Riecht wie... Homme Intense - No. 277 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-277m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dior_Homme_Intense.png?v=1770290129"
+      }
+    },
+    {
+      id: "dior_miss_cherie",
+      name: "Miss Chérie Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Cherie.jpg?v=1770963606",
+      top_notes: ["Erdbeere", "Mandarine", "Rosa Pfeffer"],
+      heart_notes: ["Jasmin", "Rose", "Karamell", "Popcorn"],
+      base_notes: ["Patschuli", "Moschus", "Zeder"],
+      description: "Ein verspielter und romantischer Duft, der den Geist einer jungen Frau in Liebe einfängt.",
+      year: "2005",
+      gender: "Female",
+      productNumbers: ["082"],
+      shopifyProduct: {
+        title: "Riecht wie... Miss Cherie - No. 082 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-082w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Christian_Dior_Miss_Dior_Cherie.jpg?v=1770963606"
+      }
+    },
+    {
+      id: "dior_fahrenheit_32",
+      name: "Fahrenheit 32 Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Fahrenheit_32.webp?v=1772136282",
+      top_notes: ["Mandarine", "Bergamotte", "Muskatnuss"],
+      heart_notes: ["Veilchen", "Jasmin", "Orangenblüte"],
+      base_notes: ["Vanille", "Sandelholz", "Tonkabohne"],
+      description: "Eine frische und moderne Interpretation des ikonischen Fahrenheit.",
+      year: "2007",
+      gender: "Male",
+      productNumbers: ["327"],
+      shopifyProduct: {
+        title: "Riecht wie... Fahrenheit 32 - No. 327 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-327m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Fahrenheit_32.webp?v=1772136282"
+      }
+    },
+    {
+      id: "dior_midnight_poison",
+      name: "Midnight Poison Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Midnight_Poison.jpg?v=1772105149",
+      top_notes: ["Bergamotte", "Mandarine", "Rose"],
+      heart_notes: ["Jasmin", "Patschuli", "Amber"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein geheimnisvoller und verführerischer Duft aus der Poison Kollektion.",
+      year: "2007",
+      gender: "Female",
+      productNumbers: ["044"],
+      shopifyProduct: {
+        title: "Riecht wie... Midnight Poison - No. 044 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-044w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Midnight_Poison.jpg?v=1772105149"
+      }
+    },
+    {
+      id: "dior_rose_n_roses",
+      name: "Rose N'Roses Dior",
+      brand: "Dior",
+      image: "https://magicperfume.co/cdn/shop/files/Miss_Dior_Rose_N_Roses.jpg?v=1772106609",
+      top_notes: ["Bergamotte", "Zitrone", "Orange"],
+      heart_notes: ["Rose", "Jasmin", "Maiglöckchen"],
+      base_notes: ["Moschus", "Amber", "Zeder"],
+      description: "Ein frischer und romantischer Rosenduft aus der Miss Dior Kollektion.",
+      year: "2020",
+      gender: "Female",
+      productNumbers: ["084"],
+      shopifyProduct: {
+        title: "Riecht wie... Rose N'Roses - No. 084 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-084w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Miss_Dior_Rose_N_Roses.jpg?v=1772106609"
+      }
+    }
+  ],
+
+  // ===== CHANEL =====
+  chanel: [
+    {
+      id: "chanel_bleu",
+      name: "Bleu de Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838",
+      top_notes: ["Grapefruit", "Zitrone", "Minze", "Rosa Pfeffer"],
+      heart_notes: ["Ingwer", "Muskatnuss", "Jasmin"],
+      base_notes: ["Weihrauch", "Vetiver", "Zeder", "Sandelholz"],
+      description: "Ein zeitloser und anspruchsvoller Duft für Männer, der den Geist der Freiheit verkörpert.",
+      year: "2010",
+      gender: "Male",
+      productNumbers: ["252"],
+      shopifyProduct: {
+        title: "Riecht wie... Bleu - No. 252 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-252m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chanel_Bleud.png?v=1770283838"
+      }
+    },
+    {
+      id: "chanel_coco",
+      name: "Coco Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco.jpg?v=1770285282",
+      top_notes: ["Koriander", "Mandarine", "Pfirsich", "Jasmin"],
+      heart_notes: ["Rose", "Nelke", "Mimose", "Nelke"],
+      base_notes: ["Sandelholz", "Amber", "Opium", "Benzoin"],
+      description: "Ein üppiger und sinnlicher orientalischer Duft, der den Geist von Mademoiselle Chanel verkörpert.",
+      year: "1984",
+      gender: "Female",
+      productNumbers: ["079"],
+      shopifyProduct: {
+        title: "Riecht wie... Coco - No. 079 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-079w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco.jpg?v=1770285282"
+      }
+    },
+    {
+      id: "chanel_coco_mademoiselle_intense",
+      name: "Coco Mademoiselle Intense Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco_Mademoiselle_Intense.png?v=1770291316",
+      top_notes: ["Orange", "Bergamotte", "Grapefruit"],
+      heart_notes: ["Rose", "Jasmin", "Litschi"],
+      base_notes: ["Patschuli", "Vanille", "Moschus", "Vetiver"],
+      description: "Eine intensivere Interpretation des ikonischen Coco Mademoiselle.",
+      year: "2018",
+      gender: "Female",
+      productNumbers: ["067"],
+      shopifyProduct: {
+        title: "Riecht wie... Mademoiselle Intense - No. 067 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-067w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chanel_Coco_Mademoiselle_Intense.png?v=1770291316"
+      }
+    },
+    {
+      id: "chanel_mademoiselle",
+      name: "Coco Mademoiselle Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/0a78ac2c2769df411731eaba9cb8c230.jpg_720x720q80.jpg?v=1772090593",
+      top_notes: ["Orange", "Bergamotte", "Grapefruit"],
+      heart_notes: ["Rose", "Jasmin", "Litschi"],
+      base_notes: ["Patschuli", "Vanille", "Moschus", "Vetiver"],
+      description: "Ein frischer und moderner orientalischer Duft, der den Geist einer jungen, selbstbewussten Frau einfängt.",
+      year: "2001",
+      gender: "Female",
+      productNumbers: ["139"],
+      shopifyProduct: {
+        title: "Riecht wie... Mademoiselle - No. 139 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-139w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/0a78ac2c2769df411731eaba9cb8c230.jpg_720x720q80.jpg?v=1772090593"
+      }
+    },
+    {
+      id: "chanel_chance",
+      name: "Chance Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel_Chance.png?v=1770923697",
+      top_notes: ["Rosa Pfeffer", "Quitte", "Zitrusfrüchte"],
+      heart_notes: ["Hyazinthe", "Jasmin", "Iris"],
+      base_notes: ["Moschus", "Patschuli", "Vetiver", "Zeder"],
+      description: "Ein lebendiger und unerwarteter Blumenduft.",
+      year: "2003",
+      gender: "Female",
+      productNumbers: ["006"],
+      shopifyProduct: {
+        title: "Riecht wie... Chance - No. 006 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-006w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chanel_Chance.png?v=1770923697"
+      }
+    },
+    {
+      id: "chanel_no5",
+      name: "No. 5 Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018",
+      top_notes: ["Aldehyde", "Ylang-Ylang", "Neroli", "Bergamotte"],
+      heart_notes: ["Iris", "Jasmin", "Rose", "Maiglöckchen"],
+      base_notes: ["Vanille", "Amber", "Sandelholz", "Vetiver", "Moschus"],
+      description: "Der legendärste Duft der Welt, Chanel No 5 ist ein abstrakter blumiger Aldehyd, der die Parfümerie revolutionierte.",
+      year: "1921",
+      gender: "Female",
+      productNumbers: ["077"],
+      shopifyProduct: {
+        title: "Riecht wie... No.5 - No. 077 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-077w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chanel.jpg?v=1771891018"
+      }
+    },
+    {
+      id: "chanel_allure_homme",
+      name: "Allure Homme Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/allure_homme.webp?v=1772119802",
+      top_notes: ["Bergamotte", "Mandarine", "Zitrone"],
+      heart_notes: ["Zeder", "Sandelholz", "Vetiver"],
+      base_notes: ["Tonkabohne", "Vanille", "Amber"],
+      description: "Ein eleganter und maskuliner Duft für den modernen Mann.",
+      year: "1999",
+      gender: "Male",
+      productNumbers: ["240"],
+      shopifyProduct: {
+        title: "Riecht wie... Allure Homme - No. 240 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-240m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/allure_homme.webp?v=1772119802"
+      }
+    },
+    {
+      id: "chanel_allure_homme_sport",
+      name: "Allure Homme Sport Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/allure_homme_sport.webp",
+      top_notes: ["Mandarine", "Zitrone", "Bergamotte"],
+      heart_notes: ["Pfeffer", "Zeder", "Meeresnoten"],
+      base_notes: ["Moschus", "Amber", "Tonkabohne"],
+      description: "Ein frischer und sportlicher Duft für den dynamischen Mann.",
+      year: "2004",
+      gender: "Male",
+      productNumbers: ["222"],
+      shopifyProduct: {
+        title: "Riecht wie... Allure Homme Sport - No. 222 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-222m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/allure_homme_sport.webp"
+      }
+    },
+    {
+      id: "chanel_bois_des_iles",
+      name: "Bois des Iles Chanel",
+      brand: "Chanel",
+      image: "https://magicperfume.co/cdn/shop/files/Bois_des_Iles.webp?v=1772140695",
+      top_notes: ["Bergamotte", "Mandarine", "Neroli"],
+      heart_notes: ["Jasmin", "Rose", "Ylang-Ylang"],
+      base_notes: ["Sandelholz", "Vanille", "Amber"],
+      description: "Ein holziger und sinnlicher Duft, der die Essenz exotischer Inseln einfängt.",
+      year: "1926",
+      gender: "Unisex",
+      productNumbers: ["459"],
+      shopifyProduct: {
+        title: "Riecht wie... Bois des Iles - No. 459 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-no-459m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Bois_des_Iles.webp?v=1772140695"
+      }
+    }
+  ],
+
+  // ===== HUGO BOSS =====
+  hugoBoss: [
+    {
+      id: "boss_woman",
+      name: "Boss Woman Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Boss_Woman.jpg?v=1770925272",
+      top_notes: ["Mandarine", "Apfel", "Pfirsich"],
+      heart_notes: ["Rose", "Jasmin", "Lilie"],
+      base_notes: ["Sandelholz", "Moschus", "Vanille"],
+      description: "Ein klassischer und eleganter Duft für die erfolgreiche moderne Frau.",
+      year: "2000",
+      gender: "Female",
+      productNumbers: ["060"],
+      shopifyProduct: {
+        title: "Riecht wie... Boss Woman - No. 060 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-060w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Boss_Woman.jpg?v=1770925272"
+      }
+    },
+    {
+      id: "boss_bottled",
+      name: "Boss Bottled Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Bottled.png?v=1770223505",
+      top_notes: ["Apfel", "Zitrusfrüchte", "Geranie"],
+      heart_notes: ["Zeder", "Sandelholz", "Patschuli"],
+      base_notes: ["Vanille", "Moschus", "Amber"],
+      description: "Ein klassischer und anspruchsvoller Duft für den erfolgreichen modernen Mann.",
+      year: "1998",
+      gender: "Male",
+      productNumbers: ["234"],
+      shopifyProduct: {
+        title: "Riecht wie... Bottled - No. 234 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-234m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Bottled.png?v=1770223505"
+      }
+    },
+    {
+      id: "boss_bottled_intense",
+      name: "Boss Bottled Intense Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Boss_Bottled_Intense.webp?v=1772139127",
+      top_notes: ["Apfel", "Zitrone", "Bergamotte"],
+      heart_notes: ["Zimt", "Nelke", "Sandelholz"],
+      base_notes: ["Vanille", "Amber", "Moschus"],
+      description: "Eine intensivere und wärmere Version des ikonischen Boss Bottled.",
+      year: "2018",
+      gender: "Male",
+      productNumbers: ["346"],
+      shopifyProduct: {
+        title: "Riecht wie... Bottled Intense - No. 346 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-346m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Boss_Bottled_Intense.webp?v=1772139127"
+      }
+    },
+    {
+      id: "boss_hugo",
+      name: "Hugo Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Hugo.png?v=1770292811",
+      top_notes: ["Grüne Noten", "Basilikum", "Minze"],
+      heart_notes: ["Lavendel", "Geranie", "Muskatellersalbei"],
+      base_notes: ["Zeder", "Sandelholz", "Moschus"],
+      description: "Ein frischer und energetischer Duft für den jungen und dynamischen Mann.",
+      year: "1995",
+      gender: "Male",
+      productNumbers: ["223"],
+      shopifyProduct: {
+        title: "Riecht wie... Hugo - No. 223 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-223m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Hugo.png?v=1770292811"
+      }
+    },
+    {
+      id: "boss_orange",
+      name: "Boss Orange Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Boss_Orange.jpg?v=1770293717",
+      top_notes: ["Apfel", "Weiße Blüten", "Zitrusfrüchte"],
+      heart_notes: ["Rose", "Jasmin", "Pfingstrose"],
+      base_notes: ["Sandelholz", "Moschus", "Vanille"],
+      description: "Ein frischer und unbeschwerter Duft für die moderne Frau.",
+      year: "2003",
+      gender: "Female",
+      productNumbers: ["148"],
+      shopifyProduct: {
+        title: "Riecht wie... Boss Orange - No. 148 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-148w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Boss_Orange.jpg?v=1770293717"
+      }
+    },
+    {
+      id: "boss_the_scent",
+      name: "The Scent Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_The_Scent.png?v=1770292543",
+      top_notes: ["Ingwer", "Bergamotte", "Mandarine"],
+      heart_notes: ["Lavendel", "Maninka", "Fruchtnoten"],
+      base_notes: ["Leder", "Patschuli", "Zeder"],
+      description: "Ein verführerischer und magnetischer Duft, der die Essenz der Anziehung einfängt.",
+      year: "2015",
+      gender: "Male",
+      productNumbers: ["270"],
+      shopifyProduct: {
+        title: "Riecht wie... The Scent - No. 270 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-270m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_The_Scent.png?v=1770292543"
+      }
+    },
+    {
+      id: "boss_alive",
+      name: "Boss Alive Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/alive.png?v=1772098782",
+      top_notes: ["Apfel", "Schwarze Johannisbeere", "Pflaume"],
+      heart_notes: ["Rose", "Jasmin", "Zimt"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein lebendiger und energetischer Duft, der die Freude am Leben feiert.",
+      year: "2019",
+      gender: "Female",
+      productNumbers: ["098"],
+      shopifyProduct: {
+        title: "Riecht wie... ALIVE - No. 098 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-098w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/alive.png?v=1772098782"
+      }
+    },
+    {
+      id: "boss_ma_vie",
+      name: "Ma Vie Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Ma_Vie.jpg?v=1770924802",
+      top_notes: ["Zitrusfrüchte", "Fruchtnoten", "Bergamotte"],
+      heart_notes: ["Rose", "Jasmin", "Maiglöckchen"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein frischer und eleganter Duft, der die Schönheit des Lebens feiert.",
+      year: "2010",
+      gender: "Female",
+      productNumbers: ["058"],
+      shopifyProduct: {
+        title: "Riecht wie... Ma Vie - No. 058 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-058w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Ma_Vie.jpg?v=1770924802"
+      }
+    },
+    {
+      id: "boss_energise",
+      name: "Energise Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Energise.webp?v=1772142991",
+      top_notes: ["Grapefruit", "Apfel", "Minze"],
+      heart_notes: ["Salbei", "Lavendel", "Geranie"],
+      base_notes: ["Zeder", "Moschus", "Amber"],
+      description: "Ein energetischer und belebender Duft für den aktiven Mann.",
+      year: "2006",
+      gender: "Male",
+      productNumbers: ["254"],
+      shopifyProduct: {
+        title: "Riecht wie... Energise - No. 254 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-254m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Energise.webp?v=1772142991"
+      }
+    }
+  ],
+
+  // ===== CALVIN KLEIN =====
+  calvinKlein: [
+    {
+      id: "ck_eternity",
+      name: "Eternity Calvin Klein",
+      brand: "Calvin Klein",
+      image: "https://magicperfume.co/cdn/shop/files/Calvin_Klein_Eternity.png?v=1770287215",
+      top_notes: ["Mandarine", "Bergamotte", "Zitrone"],
+      heart_notes: ["Maiglöckchen", "Rose", "Jasmin"],
+      base_notes: ["Sandelholz", "Moschus", "Amber"],
+      description: "Ein zeitloser und romantischer Duft, der die dauerhafte Liebe feiert.",
+      year: "1988",
+      gender: "Female",
+      productNumbers: ["106"],
+      shopifyProduct: {
+        title: "Riecht wie... Eternity - No. 106 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-106w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Calvin_Klein_Eternity.png?v=1770287215"
+      }
+    },
+    {
+      id: "ck_eternity_moment",
+      name: "Eternity Moment Calvin Klein",
+      brand: "Calvin Klein",
+      image: "https://magicperfume.co/cdn/shop/files/Eternity_Moment.webp?v=1772138932",
+      top_notes: ["Granatapfel", "Mandarine", "Pfirsich"],
+      heart_notes: ["Lilie", "Jasmin", "Rose"],
+      base_notes: ["Sandelholz", "Moschus", "Amber"],
+      description: "Ein romantischer und femininer Duft für besondere Momente.",
+      year: "2008",
+      gender: "Female",
+      productNumbers: ["414"],
+      shopifyProduct: {
+        title: "Riecht wie... CK Eternity Moment - No. 414 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-414w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Eternity_Moment.webp?v=1772138932"
+      }
+    },
+    {
+      id: "ck_euphoria_blossom",
+      name: "Euphoria Blossom Calvin Klein",
+      brand: "Calvin Klein",
+      image: "https://magicperfume.co/cdn/shop/files/Euphoria_Blossom.webp?v=1772137112",
+      top_notes: ["Granatapfel", "Kaktusfeige", "Mandarine"],
+      heart_notes: ["Orchidee", "Jasmin", "Pfingstrose"],
+      base_notes: ["Amber", "Moschus", "Sandelholz"],
+      description: "Ein blumiger und fruchtiger Duft für die moderne Frau.",
+      year: "2012",
+      gender: "Female",
+      productNumbers: ["087"],
+      shopifyProduct: {
+        title: "Riecht wie... Euphoria Blossom - No. 087 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-087w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Euphoria_Blossom.webp?v=1772137112"
+      }
+    },
+    {
+      id: "ck_one",
+      name: "CK One Calvin Klein",
+      brand: "Calvin Klein",
+      image: "https://magicperfume.co/cdn/shop/files/CK_One.webp?v=1772137544",
+      top_notes: ["Bergamotte", "Zitrone", "Grüne Noten"],
+      heart_notes: ["Jasmin", "Rose", "Maiglöckchen"],
+      base_notes: ["Moschus", "Amber", "Zeder"],
+      description: "Ein ikonischer Unisex-Duft, der Frische und Reinheit symbolisiert.",
+      year: "1994",
+      gender: "Unisex",
+      productNumbers: ["209"],
+      shopifyProduct: {
+        title: "Riecht wie... CK One - No. 209 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-no-209m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/CK_One.webp?v=1772137544"
+      }
+    },
+    {
+      id: "ck_glow",
+      name: "Glow Calvin Klein",
+      brand: "Calvin Klein",
+      image: "https://magicperfume.co/cdn/shop/files/Glow.webp?v=1772137808",
+      top_notes: ["Grüne Noten", "Zitrone", "Bergamotte"],
+      heart_notes: ["Jasmin", "Maiglöckchen", "Rose"],
+      base_notes: ["Moschus", "Amber", "Sandelholz"],
+      description: "Ein leichter und strahlender Duft, der die innere Schönheit betont.",
+      year: "2002",
+      gender: "Female",
+      productNumbers: ["007"],
+      shopifyProduct: {
+        title: "Riecht wie... Glow - No. 007 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-007w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Glow.webp?v=1772137808"
+      }
+    },
+    {
+      id: "ck_women",
+      name: "CK Women Calvin Klein",
+      brand: "Calvin Klein",
+      image: "https://magicperfume.co/cdn/shop/files/ck_women.webp?v=1772137384",
+      top_notes: ["Bergamotte", "Mandarine", "Grüne Noten"],
+      heart_notes: ["Jasmin", "Rose", "Maiglöckchen"],
+      base_notes: ["Moschus", "Amber", "Sandelholz"],
+      description: "Ein frischer und femininer Duft für die moderne Frau.",
+      year: "2002",
+      gender: "Female",
+      productNumbers: ["031"],
+      shopifyProduct: {
+        title: "Riecht wie... CK Women - No. 031 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-031w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/ck_women.webp?v=1772137384"
+      }
+    },
+    {
+      id: "ck_be",
+      name: "CK Be Calvin Klein",
+      brand: "Calvin Klein",
+      image: "https://magicperfume.co/cdn/shop/files/CK_be.webp?v=1772142766",
+      top_notes: ["Bergamotte", "Lavendel", "Wacholder"],
+      heart_notes: ["Jasmin", "Grüne Noten", "Pfirsich"],
+      base_notes: ["Moschus", "Sandelholz", "Zeder"],
+      description: "Ein frischer und maskuliner Duft für den modernen Mann.",
+      year: "1996",
+      gender: "Male",
+      productNumbers: ["477"],
+      shopifyProduct: {
+        title: "Riecht wie... CK Be - No. 477 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-477m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/CK_be.webp?v=1772142766"
+      }
+    },
+    {
+      id: "ck_euphoria_men",
+      name: "Euphoria Men Calvin Klein",
+      brand: "Calvin Klein",
+      image: "https://magicperfume.co/cdn/shop/files/Euphoria_Men.webp?v=1772140949",
+      top_notes: ["Gurke", "Melone", "Basilikum"],
+      heart_notes: ["Salbei", "Zeder", "Moschus"],
+      base_notes: ["Amber", "Sandelholz", "Patschuli"],
+      description: "Ein frischer und maskuliner Duft für den selbstbewussten Mann.",
+      year: "2006",
+      gender: "Male",
+      productNumbers: ["204"],
+      shopifyProduct: {
+        title: "Riecht wie... Euphoria Men - No. 204 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-204m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Euphoria_Men.webp?v=1772140949"
+      }
+    }
+  ],
+
+  // ===== NARCISO RODRIGUEZ =====
+  narciso: [
+    {
+      id: "narciso_musc_noir",
+      name: "Musc Noir Narciso Rodriguez",
       brand: "Narciso Rodriguez",
-      brandKey: "narciso",
-      number: "457",
-      gender: "w",
-      searchTerms: ["musc noir", "narciso", "457", "muscnoir"]
-    },
+      image: "https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273",
+      top_notes: ["Pflaume", "Bergamotte", "Mandarine"],
+      heart_notes: ["Tuberose", "Jasmin", "Moschus"],
+      base_notes: ["Patschuli", "Vanille", "Zeder"],
+      description: "Ein sinnlicher und geheimnisvoller Duft, der die Kraft von Moschus feiert.",
+      year: "2018",
+      gender: "Female",
+      productNumbers: ["457"],
+      shopifyProduct: {
+        title: "Riecht wie... Musc Noir For Her - No. 457 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-457w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Narciso_Rodriguez_Musc_Noir_For_Her.png?v=1770292273"
+      }
+    }
+  ],
 
-    // ===== KENZO =====
+  // ===== DOLCE & GABBANA =====
+  dolce: [
     {
-      id: "hardcoded-flower-074",
-      title: "Riecht wie... Flower - No. 074 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/074W_c.webp?v=1770925660",
-      url: "https://magicperfume.co/products/magic-perfume-no-074w",
-      variant: 47306565976322,
-      price: 1199,
+      id: "dolce_light_blue",
+      name: "Light Blue Dolce & Gabbana",
+      brand: "Dolce & Gabbana",
+      image: "https://magicperfume.co/cdn/shop/files/Dolce_Gabbana_Light_Blue.jpg?v=1770290817",
+      top_notes: ["Sizilianische Zitrone", "Apfel", "Zeder"],
+      heart_notes: ["Jasmin", "Weiße Rose", "Bambus"],
+      base_notes: ["Zeder", "Amber", "Moschus"],
+      description: "Ein frischer und sonniger Duft, der die Essenz des Mittelmeers einfängt.",
+      year: "2001",
+      gender: "Female",
+      productNumbers: ["017"],
+      shopifyProduct: {
+        title: "Riecht wie... Light Blue - No. 017 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-017w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dolce_Gabbana_Light_Blue.jpg?v=1770290817"
+      }
+    },
+    {
+      id: "dolce_the_one",
+      name: "The One Dolce & Gabbana",
+      brand: "Dolce & Gabbana",
+      image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987",
+      top_notes: ["Pfirsich", "Litschi", "Mandarine"],
+      heart_notes: ["Rose", "Jasmin", "Lilie"],
+      base_notes: ["Vanille", "Amber", "Moschus"],
+      description: "Ein anspruchsvoller und sinnlicher Duft, der die Essenz einer zeitlosen Frau einfängt.",
+      year: "2006",
+      gender: "Female",
+      productNumbers: ["094"],
+      shopifyProduct: {
+        title: "Riecht wie... The One - No. 094 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-094w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987"
+      }
+    },
+    {
+      id: "dolce_dolci",
+      name: "Dolci Dolce & Gabbana",
+      brand: "Dolce & Gabbana",
+      image: "https://magicperfume.co/cdn/shop/files/Dolce.webp?v=1772139227",
+      top_notes: ["Neroli", "Bergamotte", "Mandarine"],
+      heart_notes: ["Jasmin", "Rose", "Orangenblüte"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein süßer und blumiger Duft für die romantische Frau.",
+      year: "2015",
+      gender: "Female",
+      productNumbers: ["435"],
+      shopifyProduct: {
+        title: "Riecht wie... Dolci - No. 435 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-435w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dolce.webp?v=1772139227"
+      }
+    },
+    {
+      id: "dolce_limperatrice_3",
+      name: "L'Imperatrice 3 Dolce & Gabbana",
+      brand: "Dolce & Gabbana",
+      image: "https://magicperfume.co/cdn/shop/files/Dolce_7_Gabana.jpg?v=1772095859",
+      top_notes: ["Wassermelone", "Kiwi", "Rhabarber"],
+      heart_notes: ["Zyklamen", "Jasmin", "Moschus"],
+      base_notes: ["Rosa Pfeffer", "Sandelholz", "Zeder"],
+      description: "Ein frischer und fruchtiger Duft für die junge, lebendige Frau.",
+      year: "2009",
+      gender: "Female",
+      productNumbers: ["018"],
+      shopifyProduct: {
+        title: "Riecht wie... L'Imperatrice 3 - No. 018 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-018w",
+        price: "€15.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dolce_7_Gabana.jpg?v=1772095859"
+      }
+    }
+  ],
+
+  // ===== KENZO =====
+  kenzo: [
+    {
+      id: "kenzo_flower",
+      name: "Flower by Kenzo",
       brand: "Kenzo",
-      brandKey: "kenzo",
-      number: "074",
-      gender: "w",
-      searchTerms: ["flower", "kenzo flower", "074"]
-    },
+      image: "https://magicperfume.co/cdn/shop/files/KENZO_FLOWER.jpg?v=1770925860",
+      top_notes: ["Weißdorn", "Schwarze Johannisbeere", "Mandarine"],
+      heart_notes: ["Rose", "Jasmin", "Veilchen"],
+      base_notes: ["Vanille", "Moschus", "Zeder"],
+      description: "Ein poetischer und zarter Duft, der die Schönheit der Mohnblume feiert.",
+      year: "2000",
+      gender: "Female",
+      productNumbers: ["074"],
+      shopifyProduct: {
+        title: "Riecht wie... Flower - No. 074 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-074w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/KENZO_FLOWER.jpg?v=1770925860"
+      }
+    }
+  ],
 
-    // ===== CHLOE =====
+  // ===== CHLOE =====
+  chloe: [
     {
-      id: "hardcoded-chloe-024",
-      title: "Riecht wie... ÄQUIVALENT - No. 024 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/024W_c.webp?v=1770923311",
-      url: "https://magicperfume.co/products/magic-perfume-no-024w",
-      variant: 47306560962818,
-      price: 1199,
+      id: "chloe_chloe",
+      name: "Chloé",
       brand: "Chloé",
-      brandKey: "chloe",
-      number: "024",
-      gender: "w",
-      searchTerms: ["chloe", "äquivalent", "024"]
+      image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143",
+      top_notes: ["Pfingstrose", "Litschi", "Freesie"],
+      heart_notes: ["Magnolie", "Rose", "Maiglöckchen"],
+      base_notes: ["Zeder", "Amber", "Moschus"],
+      description: "Ein frischer und eleganter Rosenduft, der den Geist der modernen Frau einfängt.",
+      year: "2008",
+      gender: "Female",
+      productNumbers: ["024"],
+      shopifyProduct: {
+        title: "Riecht wie... ÄQUIVALENT - No. 024 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-024w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143"
+      }
     },
     {
-      id: "hardcoded-nomade-049",
-      title: "Riecht wie… Nomade - No. 049 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/049w_c.webp?v=1771784518",
-      url: "https://magicperfume.co/products/riecht-wie-nomade",
-      variant: 47369185591554,
-      price: 1199,
+      id: "chloe_nomade",
+      name: "Nomade Chloé",
       brand: "Chloé",
-      brandKey: "chloe",
-      number: "049",
-      gender: "w",
-      searchTerms: ["nomade", "chloe nomade", "049"]
-    },
+      image: "https://magicperfume.co/cdn/shop/files/Chloe_Nomade.jpg",
+      top_notes: ["Mirabelle", "Zitrone", "Bergamotte"],
+      heart_notes: ["Freesie", "Jasmin", "Rose"],
+      base_notes: ["Eichenmoos", "Sandelholz", "Amber"],
+      description: "Ein freier und abenteuerlicher Duft für die moderne Nomadin.",
+      year: "2018",
+      gender: "Female",
+      productNumbers: ["049"],
+      shopifyProduct: {
+        title: "Riecht wie… Nomade - No. 049 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-049w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chloe_Nomade.jpg"
+      }
+    }
+  ],
 
-    // ===== GUCCI =====
+  // ===== HERMÈS =====
+  hermes: [
     {
-      id: "hardcoded-rush-163",
-      title: "Riecht wie... Rush 2 - No. 163 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/163W_c.webp?v=1771657769",
-      url: "https://magicperfume.co/products/magic-perfume-no-163w",
-      variant: 47306563256578,
-      price: 1199,
-      brand: "Gucci",
-      brandKey: "gucci",
-      number: "163",
-      gender: "w",
-      searchTerms: ["rush", "gucci rush", "163"]
-    },
-    {
-      id: "hardcoded-rush-167",
-      title: "Riecht wie... Rush - No. 167 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/167W_c.webp?v=1771647042",
-      url: "https://magicperfume.co/products/magic-perfume-no-167w",
-      variant: 47306578657538,
-      price: 1199,
-      brand: "Gucci",
-      brandKey: "gucci",
-      number: "167",
-      gender: "w",
-      searchTerms: ["rush", "gucci rush", "167"]
-    },
-    {
-      id: "hardcoded-envy-me-071",
-      title: "Riecht wie... Envy Me - No. 071 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/071Wc.webp?v=1772135616",
-      url: "https://magicperfume.co/products/magic-perfume-no-071w",
-      variant: 47306583310594,
-      price: 1199,
-      brand: "Gucci",
-      brandKey: "gucci",
-      number: "071",
-      gender: "w",
-      searchTerms: ["envy me", "gucci envy", "071", "envyme"]
-    },
-    {
-      id: "hardcoded-bloom-051",
-      title: "Riecht wie... Bloom - No. 051 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/051wc.webp?v=1772139914",
-      url: "https://magicperfume.co/products/magic-perfume-no-051w",
-      variant: 47306580459778,
-      price: 1199,
-      brand: "Gucci",
-      brandKey: "gucci",
-      number: "051",
-      gender: "w",
-      searchTerms: ["bloom", "gucci bloom", "051"]
-    },
-    {
-      id: "hardcoded-gucci-guilty-214",
-      title: "Riecht wie... Guilty - No. 214 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/214Mc_eadd435c-9c4c-47a8-af50-b7fc6af04e8d.webp?v=1772135581",
-      url: "https://magicperfume.co/products/magic-perfume-no-214m",
-      variant: 47306583408898,
-      price: 1199,
-      brand: "Gucci",
-      brandKey: "gucci",
-      number: "214",
-      gender: "m",
-      searchTerms: ["guilty", "gucci guilty", "214"]
-    },
-
-    // ===== HERMÈS =====
-    {
-      id: "hardcoded-terre-227",
-      title: "Riecht wie... Terre - No. 227 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/227M_c.webp?v=1770970905",
-      url: "https://magicperfume.co/products/magic-perfume-no-227m",
-      variant: 47306562830594,
-      price: 1199,
+      id: "hermes_terre",
+      name: "Terre d'Hermès",
       brand: "Hermès",
-      brandKey: "hermes",
-      number: "227",
-      gender: "m",
-      searchTerms: ["terre", "hermes terre", "227"]
-    },
+      image: "https://magicperfume.co/cdn/shop/files/Hermes_Terre_D_Hermes.png?v=1770292407",
+      top_notes: ["Orange", "Grapefruit", "Feuerstein"],
+      heart_notes: ["Pfeffer", "Geranie", "Zeder"],
+      base_notes: ["Vetiver", "Benzoin", "Zeder", "Eichenmoos"],
+      description: "Ein kraftvoller und origineller Duft, der die Verbindung zwischen Mensch und Erde feiert.",
+      year: "2006",
+      gender: "Male",
+      productNumbers: ["227"],
+      shopifyProduct: {
+        title: "Riecht wie... Terre - No. 227 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-227m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hermes_Terre_D_Hermes.png?v=1770292407"
+      }
+    }
+  ],
 
-    // ===== DAVIDOFF =====
+  // ===== GUCCI =====
+  gucci: [
     {
-      id: "hardcoded-cool-water-200",
-      title: "Riecht wie... Cool Water - No. 200 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/200M_c.webp?v=1770965598",
-      url: "https://magicperfume.co/products/magic-perfume-no-200m",
-      variant: 47306570006786,
-      price: 1199,
-      brand: "Davidoff",
-      brandKey: "davidoff",
-      number: "200",
-      gender: "m",
-      searchTerms: ["cool water", "davidoff", "200", "coolwater"]
+      id: "gucci_rush",
+      name: "Rush Gucci",
+      brand: "Gucci",
+      image: "https://magicperfume.co/cdn/shop/files/gucci_rush_8034ec32-d523-4890-b475-fc7c34e77c9e.webp?v=1771658050",
+      top_notes: ["Freesie", "Seerose", "Koriander"],
+      heart_notes: ["Rose", "Jasmin", "Maiglöckchen"],
+      base_notes: ["Sandelholz", "Moschus", "Amber"],
+      description: "Ein kühner und moderner Blumenduft, der die Energie des urbanen Lebens einfängt.",
+      year: "1999",
+      gender: "Female",
+      productNumbers: ["163"],
+      shopifyProduct: {
+        title: "Riecht wie... Rush 2 - No. 163 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-163w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/gucci_rush_8034ec32-d523-4890-b475-fc7c34e77c9e.webp?v=1771658050"
+      }
     },
+    {
+      id: "gucci_envy_me",
+      name: "Envy Me Gucci",
+      brand: "Gucci",
+      image: "https://magicperfume.co/cdn/shop/files/Gucci_Envy_Me.webp?v=1772135696",
+      top_notes: ["Pfingstrose", "Ananas", "Mandarine"],
+      heart_notes: ["Jasmin", "Rose", "Litschi"],
+      base_notes: ["Sandelholz", "Moschus", "Amber"],
+      description: "Ein lebendiger und fruchtiger Duft für die selbstbewusste Frau.",
+      year: "2004",
+      gender: "Female",
+      productNumbers: ["071"],
+      shopifyProduct: {
+        title: "Riecht wie... Envy Me - No. 071 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-071w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Gucci_Envy_Me.webp?v=1772135696"
+      }
+    }
+  ],
 
-    // ===== DIESEL =====
+  // ===== SALVATORE FERRAGAMO =====
+  ferragamo: [
     {
-      id: "hardcoded-only-the-brave-239",
-      title: "Riecht wie... Only The Brave - No. 239 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/239mc.webp?v=1772141512",
-      url: "https://magicperfume.co/products/magic-perfume-no-239m",
-      variant: 47306578133250,
-      price: 1199,
-      brand: "Diesel",
-      brandKey: "diesel",
-      number: "239",
-      gender: "m",
-      searchTerms: ["only the brave", "diesel", "239", "onlythebrave"]
-    },
-
-    // ===== CAMPBELL =====
-    {
-      id: "hardcoded-campbell-056",
-      title: "Riecht wie... Campbell - No. 056 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/056wc.webp?v=1772140192",
-      url: "https://magicperfume.co/products/magic-perfume-no-056",
-      variant: 47306580164866,
-      price: 2099,
-      brand: "Campbell",
-      brandKey: "campbell",
-      number: "056",
-      gender: "w",
-      searchTerms: ["campbell", "naomi campbell", "056"]
-    },
-
-    // ===== JOOP =====
-    {
-      id: "hardcoded-joop-211",
-      title: "Riecht wie... Joop Homme - No. 211 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/211M_c.webp?v=1770970475",
-      url: "https://magicperfume.co/products/magic-perfume-no-211m",
-      variant: 47306566762754,
-      price: 1199,
-      brand: "Joop!",
-      brandKey: "joop",
-      number: "211",
-      gender: "m",
-      searchTerms: ["joop", "joop homme", "211"]
-    },
-
-    // ===== ADIDAS =====
-    {
-      id: "hardcoded-adventure-213",
-      title: "Riecht wie... Adventure - No. 213 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/213Mc.webp?v=1772140618",
-      url: "https://magicperfume.co/products/magic-perfume-no-213m",
-      variant: 47306579542274,
-      price: 1199,
-      brand: "Adidas",
-      brandKey: "adidas",
-      number: "213",
-      gender: "m",
-      searchTerms: ["adventure", "adidas", "213"]
-    },
-
-    // ===== CARTIER =====
-    {
-      id: "hardcoded-la-panthere-421",
-      title: "Riecht wie... La Panthere - No. 421 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/421wc.webp?v=1772141795",
-      url: "https://magicperfume.co/products/magic-perfume-no-421w",
-      variant: 47306577903874,
-      price: 1199,
-      brand: "Cartier",
-      brandKey: "cartier",
-      number: "421",
-      gender: "w",
-      searchTerms: ["la panthere", "cartier", "421", "lapanthere"]
-    },
-
-    // ===== GIVENCHY =====
-    {
-      id: "hardcoded-lhomme-ideal-319",
-      title: "Riecht wie... L'Homme Ideal - No. 319 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/319mc.webp?v=1772142056",
-      url: "https://magicperfume.co/products/magic-perfume-no-319m",
-      variant: 47306577707266,
-      price: 1199,
-      brand: "Givenchy",
-      brandKey: "givenchy",
-      number: "319",
-      gender: "m",
-      searchTerms: ["l'homme ideal", "givenchy", "319", "lhommeideal"]
-    },
-    {
-      id: "hardcoded-ange-ou-demon-142",
-      title: "Riecht wie... Ange Ou Demon - No. 142 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/142W_c.webp?v=1771251841",
-      url: "https://magicperfume.co/products/magic-perfume-no-142w",
-      variant: 47306574201090,
-      price: 1199,
-      brand: "Givenchy",
-      brandKey: "givenchy",
-      number: "142",
-      gender: "w",
-      searchTerms: ["ange ou demon", "givenchy", "142", "angeoudemon"]
-    },
-
-    // ===== CERRUTI =====
-    {
-      id: "hardcoded-1881-120",
-      title: "Riecht wie... 1881 - No. 120 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/120Wc.webp?v=1772142183",
-      url: "https://magicperfume.co/products/magic-perfume-no-120",
-      variant: 47306577608962,
-      price: 1199,
-      brand: "Cerruti",
-      brandKey: "cerruti",
-      number: "120",
-      gender: "m",
-      searchTerms: ["1881", "cerruti", "120"]
-    },
-
-    // ===== MAISON FRANCIS KURKDJIAN =====
-    {
-      id: "hardcoded-rouge-540-466",
-      title: "Riecht wie ... Rouge 540 - No. 466 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/ChatGPT_Image_Mar_9_2026_01_38_08_PM.png?v=1773052780",
-      url: "https://magicperfume.co/products/riecht-wie-rouvera-no-466",
-      variant: 47442797297922,
-      price: 1199,
-      brand: "Maison Francis Kurkdjian",
-      brandKey: "mfk",
-      number: "466",
-      gender: "w",
-      searchTerms: ["rouge 540", "baccarat", "466", "rouge540"]
-    },
-
-    // ===== SALVATORE FERRAGAMO =====
-    {
-      id: "hardcoded-deep-red-022",
-      title: "Riecht wie... Deep Red - No. 022 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/022W_c.webp?v=1770922324",
-      url: "https://magicperfume.co/products/magic-perfume-no-022w",
-      variant: 47306579968258,
-      price: 1199,
+      id: "ferragamo_deep_red",
+      name: "Deep Red Salvatore Ferragamo",
       brand: "Salvatore Ferragamo",
-      brandKey: "ferragamo",
-      number: "022",
-      gender: "w",
-      searchTerms: ["deep red", "ferragamo", "022", "deepred"]
-    },
+      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Deep_Red.jpg?v=1770922424",
+      top_notes: ["Schwarze Johannisbeere", "Mandarine", "Rosa Pfeffer"],
+      heart_notes: ["Rose", "Jasmin", "Orangenblüte"],
+      base_notes: ["Patschuli", "Vanille", "Zeder"],
+      description: "Ein lebendiger und leidenschaftlicher Duft, der die Intensität von Rot einfängt.",
+      year: "2006",
+      gender: "Female",
+      productNumbers: ["022"],
+      shopifyProduct: {
+        title: "Riecht wie... Deep Red - No. 022 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-022w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Deep_Red.jpg?v=1770922424"
+      }
+    }
+  ],
 
-    // ===== THE ONLY ONE =====
+  // ===== DAVIDOFF =====
+  davidoff: [
     {
-      id: "hardcoded-the-only-one-032",
-      title: "Riecht wie... The Only One - No. 032 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/032w_c.webp?v=1772104269",
-      url: "https://magicperfume.co/products/magic-perfume-no-032w",
-      variant: 47306556440834,
-      price: 1199,
+      id: "davidoff_cool_water",
+      name: "Cool Water Davidoff",
+      brand: "Davidoff",
+      image: "https://magicperfume.co/cdn/shop/files/Davidoff_Cool_Water.png?v=1770292092",
+      top_notes: ["Meerwasser", "Minze", "Lavendel", "Rosmarin"],
+      heart_notes: ["Jasmin", "Geranie", "Sandelholz"],
+      base_notes: ["Moschus", "Amber", "Zeder"],
+      description: "Ein frischer und aquatischer Duft, der die Kraft und Frische des Ozeans einfängt.",
+      year: "1988",
+      gender: "Male",
+      productNumbers: ["200"],
+      shopifyProduct: {
+        title: "Riecht wie... Cool Water - No. 200 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-200m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Davidoff_Cool_Water.png?v=1770292092"
+      }
+    }
+  ],
+
+  // ===== DIESEL =====
+  diesel: [
+    {
+      id: "diesel_only_the_brave",
+      name: "Only The Brave Diesel",
+      brand: "Diesel",
+      image: "https://magicperfume.co/cdn/shop/files/Only_The_Brave.webp?v=1772141539",
+      top_notes: ["Zitrone", "Mandarine", "Koriander"],
+      heart_notes: ["Leder", "Veilchen", "Tabak"],
+      base_notes: ["Amber", "Moschus", "Zeder"],
+      description: "Ein kraftvoller und maskuliner Duft für mutige Männer.",
+      year: "2009",
+      gender: "Male",
+      productNumbers: ["239"],
+      shopifyProduct: {
+        title: "Riecht wie... Only The Brave - No. 239 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-239m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Only_The_Brave.webp?v=1772141539"
+      }
+    }
+  ],
+
+  // ===== CAMPBELL =====
+  campbell: [
+    {
+      id: "campbell_campbell",
+      name: "Campbell Naomi Campbell",
+      brand: "Campbell",
+      image: "https://magicperfume.co/cdn/shop/files/Campbell.webp?v=1772140165",
+      top_notes: ["Vanille", "Karamell", "Kokosnuss"],
+      heart_notes: ["Sandelholz", "Tonkabohne", "Heliotrop"],
+      base_notes: ["Sternanis", "Moschus", "Benzoin"],
+      description: "Ein süßer und exotischer Duft für die moderne Frau.",
+      year: "2015",
+      gender: "Female",
+      productNumbers: ["056"],
+      shopifyProduct: {
+        title: "Riecht wie... Campbell - No. 056 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-056w",
+        price: "€20.99",
+        image: "https://magicperfume.co/cdn/shop/files/Campbell.webp?v=1772140165"
+      }
+    }
+  ],
+
+  // ===== JOOP! =====
+  joop: [
+    {
+      id: "joop_homme",
+      name: "Joop! Homme",
+      brand: "Joop!",
+      image: "https://magicperfume.co/cdn/shop/files/Joop_Homme.png?v=1770286089",
+      top_notes: ["Zimt", "Bergamotte", "Mandarine"],
+      heart_notes: ["Maiglöckchen", "Jasmin", "Geranie"],
+      base_notes: ["Sandelholz", "Vanille", "Tonkabohne", "Zeder"],
+      description: "Ein kühner und unverwechselbarer Duft, der sowohl süß als auch würzig ist.",
+      year: "1989",
+      gender: "Male",
+      productNumbers: ["211"],
+      shopifyProduct: {
+        title: "Riecht wie... Joop Homme - No. 211 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-211m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Joop_Homme.png?v=1770286089"
+      }
+    }
+  ],
+
+  // ===== ADIDAS =====
+  adidas: [
+    {
+      id: "adidas_adventure",
+      name: "Adventure Adidas",
+      brand: "Adidas",
+      image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535",
+      top_notes: ["Bergamotte", "Zitrone", "Mandarine"],
+      heart_notes: ["Jasmin", "Rose", "Maiglöckchen"],
+      base_notes: ["Zeder", "Moschus", "Amber"],
+      description: "Ein frischer und sportlicher Duft für den aktiven Mann.",
+      year: "2008",
+      gender: "Male",
+      productNumbers: ["213"],
+      shopifyProduct: {
+        title: "Riecht wie... Adventure - No. 213 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-213m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535"
+      }
+    }
+  ],
+
+  // ===== DOLCE VITA =====
+  dolceVita: [
+    {
+      id: "dolce_vita_vita",
+      name: "Vita Dolce Vita",
+      brand: "Dolce Vita",
+      image: "https://magicperfume.co/cdn/shop/files/Dolce_Vita.webp?v=1772140820",
+      top_notes: ["Zimt", "Kardamom", "Bergamotte"],
+      heart_notes: ["Rose", "Lilie", "Zeder"],
+      base_notes: ["Vanille", "Sandelholz", "Moschus"],
+      description: "Ein lebendiger und sonniger Duft, der die Freude am Leben feiert.",
+      year: "2010",
+      gender: "Female",
+      productNumbers: ["116"],
+      shopifyProduct: {
+        title: "Riecht wie... Vita - No. 116 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-116w",
+        price: "€20.99",
+        image: "https://magicperfume.co/cdn/shop/files/Dolce_Vita.webp?v=1772140820"
+      }
+    }
+  ],
+
+  // ===== CARTIER =====
+  cartier: [
+    {
+      id: "cartier_la_panthere",
+      name: "La Panthère Cartier",
+      brand: "Cartier",
+      image: "https://magicperfume.co/cdn/shop/files/La_Panthere.webp?v=1772141818",
+      top_notes: ["Erdbeere", "Rhabarber", "Getrocknete Früchte"],
+      heart_notes: ["Gardenie", "Eichenmoos", "Moschus"],
+      base_notes: ["Moschus", "Amber", "Sandelholz"],
+      description: "Ein geheimnisvoller und sinnlicher Duft für die wilde Frau.",
+      year: "2014",
+      gender: "Female",
+      productNumbers: ["421"],
+      shopifyProduct: {
+        title: "Riecht wie... La Panthere - No. 421 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-421w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/La_Panthere.webp?v=1772141818"
+      }
+    }
+  ],
+
+  // ===== OTHERS =====
+  others: [
+    {
+      id: "the_only_one_032",
+      name: "The Only One",
       brand: "The Only One",
-      brandKey: "theOnlyOne",
-      number: "032",
-      gender: "w",
-      searchTerms: ["the only one", "032", "theonlyone"]
+      image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987",
+      top_notes: ["Karamell", "Vanille", "Kaffee"],
+      heart_notes: ["Iris", "Frucht", "Patschuli"],
+      base_notes: ["Bergamotte", "Orange", "Orangenblüte", "Rose"],
+      description: "Ein eleganter und verführerischer Duft.",
+      year: "",
+      gender: "Female",
+      productNumbers: ["032"],
+      shopifyProduct: {
+        title: "Riecht wie... The Only One - No. 032 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-032w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/The_One.jpg?v=1770963987"
+      }
     },
     {
-      id: "hardcoded-fruity-floral-488",
-      title: "No. 488 – Fruity Floral (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/488W_i.webp?v=1772529681",
-      url: "https://magicperfume.co/products/riecht-wie-victorus-for-her-no-488",
-      variant: 47430357090562,
-      price: 1199,
+      id: "obsession_night_woman_028",
+      name: "Obsession Night Woman",
+      brand: "Obsession",
+      image: "https://magicperfume.co/cdn/shop/files/Obsession_Night_Woman.webp?v=1772136464",
+      top_notes: ["Mandarine", "Bergamotte", "Rote Früchte"],
+      heart_notes: ["Jasmin", "Rose", "Orangenblüte"],
+      base_notes: ["Vanille", "Moschus", "Amber"],
+      description: "Ein geheimnisvoller und sinnlicher Duft für die Nacht.",
+      year: "",
+      gender: "Female",
+      productNumbers: ["028"],
+      shopifyProduct: {
+        title: "Riecht wie... Obsession Night WOMAN - No. 028 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-028w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Obsession_Night_Woman.webp?v=1772136464"
+      }
+    },
+    {
+      id: "fruity_floral_488",
+      name: "Fruity Floral",
       brand: "Fruity Floral",
-      brandKey: "fruityFloral",
-      number: "488",
-      gender: "w",
-      searchTerms: ["fruity floral", "488", "fruityfloral"]
+      image: "https://magicperfume.co/cdn/shop/files/aventus.webp?v=1772533006",
+      top_notes: ["Fruchtnoten", "Zitrusfrüchte", "Bergamotte"],
+      heart_notes: ["Blumige Noten", "Jasmin", "Rose"],
+      base_notes: ["Moschus", "Amber", "Sandelholz"],
+      description: "Ein fruchtig-blumiger Duft für die moderne Frau.",
+      year: "",
+      gender: "Female",
+      productNumbers: ["488"],
+      shopifyProduct: {
+        title: "No. 488 – Fruity Floral (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-488w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/aventus.webp?v=1772533006"
+      }
     },
     {
-      id: "hardcoded-dione-008",
-      title: "Riecht wie... Dione - No. 008 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/008Wc.webp?v=1772142598",
-      url: "https://magicperfume.co/products/magic-perfume-no-008",
-      variant: 47306577117442,
-      price: 1199,
+      id: "dione_008",
+      name: "Dione",
       brand: "Dione",
-      brandKey: "dione",
-      number: "008",
-      gender: "w",
-      searchTerms: ["dione", "008"]
+      image: "https://magicperfume.co/cdn/shop/files/MagicPerfume-79-300x300.png?v=1769157021",
+      top_notes: ["Bergamotte", "Zitrone", "Mandarine"],
+      heart_notes: ["Jasmin", "Rose", "Maiglöckchen"],
+      base_notes: ["Moschus", "Amber", "Zeder"],
+      description: "Ein eleganter und zeitloser Duft.",
+      year: "",
+      gender: "Female",
+      productNumbers: ["008"],
+      shopifyProduct: {
+        title: "Riecht wie... Dione - No. 008 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-008w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/MagicPerfume-79-300x300.png?v=1769157021"
+      }
     },
     {
-      id: "hardcoded-q-340",
-      title: "Riecht wie... Q - No. 340 (m)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/340Mcfixed.webp?v=1772144029",
-      url: "https://magicperfume.co/products/magic-perfume-no-431w",
-      variant: 47306575806722,
-      price: 1199,
+      id: "q_340",
+      name: "Q",
       brand: "Q",
-      brandKey: "q",
-      number: "340",
-      gender: "m",
-      searchTerms: ["q", "340"]
+      image: "https://magicperfume.co/cdn/shop/files/Q_EDP.webp?v=1772143999",
+      top_notes: ["Bergamotte", "Zitrone", "Grapefruit"],
+      heart_notes: ["Jasmin", "Rose", "Veilchen"],
+      base_notes: ["Moschus", "Amber", "Zeder"],
+      description: "Ein moderner und frischer Duft.",
+      year: "",
+      gender: "Unisex",
+      productNumbers: ["340"],
+      shopifyProduct: {
+        title: "Riecht wie... Q - No. 340 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-no-340m",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Q_EDP.webp?v=1772143999"
+      }
     },
     {
-      id: "hardcoded-rose-tangerine-097",
-      title: "Riecht wie... Rose Tangerine - No. 097 (w)",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/097Wc.webp?v=1772136083", // Approximated
-      url: "https://magicperfume.co/products/magic-perfume-no-097w",
-      variant: 47306572988674,
-      price: 1199,
+      id: "rose_tangerine_097",
+      name: "Rose Tangerine",
       brand: "Rose Tangerine",
-      brandKey: "roseTangerine",
-      number: "097",
-      gender: "w",
-      searchTerms: ["rose tangerine", "097", "rosetangerine"]
-    }
-  ];
-
-  // ===== ENHANCED SEARCH FUNCTION =====
-  function searchHardcodedProducts(query) {
-    if (!query || query.length < 1) return [];
-    
-    const results = enhancedSearch(query);
-    return results;
-  }
-
-  // ===== FIND HARDCODED PRODUCT BY CATALOG PERFUME =====
-  function findHardcodedProductByPerfume(perfume) {
-    if (!perfume) return null;
-    
-    console.log('🔍 Finding hardcoded product for:', perfume.name);
-    
-    const perfumeLower = perfume.name.toLowerCase();
-    const perfumeBrandLower = perfume.brand.toLowerCase();
-    
-    // Try to find by product number first
-    if (perfume.productNumbers && perfume.productNumbers.length > 0) {
-      for (const num of perfume.productNumbers) {
-        const numStr = num.toString().padStart(3, '0');
-        const match = hardcodedProducts.find(p => 
-          p.number === numStr || p.number === num
-        );
-        if (match) {
-          console.log(`✅ Found by number ${num}:`, match.title);
-          return match;
-        }
+      image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143",
+      top_notes: ["Mandarine", "Orange", "Grapefruit"],
+      heart_notes: ["Rose", "Jasmin", "Pfingstrose"],
+      base_notes: ["Moschus", "Amber", "Zeder"],
+      description: "Ein frischer und fruchtiger Rosenduft.",
+      year: "",
+      gender: "Female",
+      productNumbers: ["097"],
+      shopifyProduct: {
+        title: "Riecht wie... Rose Tangerine - No. 097 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-097w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143"
       }
     }
-    
-    // Try to find by brand + name
-    let bestMatch = null;
-    let bestScore = 0;
-    
-    hardcodedProducts.forEach(product => {
-      let score = 0;
-      
-      // Brand match (highest weight)
-      if (perfumeBrandLower.includes(product.brand.toLowerCase()) || 
-          product.brand.toLowerCase().includes(perfumeBrandLower)) {
-        score += 50;
+  ]
+};
+
+// ===== HELPER FUNCTIONS =====
+window.PerfumeCatalog.getShopifyProductByPerfumeId = function(perfumeId) {
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      const perfume = this[brandKey].find(p => p.id === perfumeId);
+      if (perfume && perfume.shopifyProduct) {
+        return perfume.shopifyProduct;
       }
-      
-      // Name keywords match
-      const nameWords = perfume.name.toLowerCase().split(' ');
-      for (const word of nameWords) {
-        if (word.length > 2 && product.title.toLowerCase().includes(word)) {
-          score += 20;
-        }
-      }
-      
-      // Gender match
-      if (perfume.gender && product.gender) {
-        if (perfume.gender.toLowerCase() === product.gender.toLowerCase() ||
-            (perfume.gender === 'Female' && product.gender === 'w') ||
-            (perfume.gender === 'Male' && product.gender === 'm')) {
-          score += 15;
-        }
-      }
-      
-      if (score > bestScore && score > 30) {
-        bestScore = score;
-        bestMatch = product;
-      }
-    });
-    
-    if (bestMatch) {
-      console.log(`✅ Found by keyword match (score ${bestScore}):`, bestMatch.title);
-      return bestMatch;
-    }
-    
-    console.log('❌ No hardcoded product found');
-    return null;
-  }
-
-  // ===== GET RECOMMENDATIONS - SAME BRAND, SAME GENDER =====
-  function getRecommendationsForProduct(product) {
-    if (!product) return [];
-    
-    console.log('🎯 Getting recommendations for:', product.title);
-    
-    // Get ALL products from SAME BRAND with SAME GENDER
-    const recommendations = hardcodedProducts
-      .filter(p => 
-        p.brandKey === product.brandKey && 
-        p.id !== product.id &&
-        p.gender === product.gender
-      )
-      .slice(0, 1); // Take first one
-    
-    console.log(`💡 Found ${recommendations.length} same-brand, same-gender recommendations`);
-    
-    return recommendations;
-  }
-
-  // ===== GET POPULAR PRODUCTS FOR SUGGESTIONS =====
-  function getPopularSuggestions() {
-    return hardcodedProducts.slice(0, 8);
-  }
-
-  // ===== RENDER SUGGESTIONS =====
-  function renderSuggestions() {
-    const suggestions = getPopularSuggestions();
-    
-    if (suggestions.length === 0) return '';
-    
-    let html = `<div class="fc-suggestions-title">✨ Beliebte Düfte</div>`;
-    
-    suggestions.forEach(product => {
-      const priceFormatted = '€' + (product.price / 100).toFixed(2);
-      
-      html += `
-        <div class="fc-suggestion-item" onclick="window.fcViewDetails('${product.url}')">
-          <img class="fc-suggestion-image" src="${product.image}" alt="${product.title}" loading="lazy">
-          <div class="fc-suggestion-info">
-            <div class="fc-suggestion-name">${product.title}</div>
-            <div class="fc-suggestion-price">${priceFormatted}</div>
-          </div>
-        </div>
-      `;
-    });
-    
-    return html;
-  }
-
-  // ===== RENDER CATALOG PERFUME LIST =====
-  function renderCatalogPerfumes(perfumes, query) {
-    if (!perfumes || perfumes.length === 0) return '';
-    
-    const sortedPerfumes = [...perfumes].sort((a, b) => a.name.localeCompare(b.name));
-    
-    let html = `<div class="fc-section-title">Echte Parfums (${perfumes.length})</div>`;
-    
-    sortedPerfumes.slice(0, 8).forEach(perfume => {
-      html += `
-        <div class="fc-real-perfume-item" onclick="window.fcShowPerfumeDetail('${perfume.id}')">
-          <img class="fc-real-perfume-image" src="${perfume.image}" 
-               alt="${perfume.name}" 
-               loading="lazy"
-               onerror="this.src='https://via.placeholder.com/60x60?text=Parfum'">
-          <div class="fc-real-perfume-info">
-            <div class="fc-real-perfume-name">${perfume.name}</div>
-            <div class="fc-real-perfume-brand">${perfume.brand}</div>
-            ${perfume.year ? `<div class="fc-real-perfume-year">${perfume.year}</div>` : ''}
-          </div>
-        </div>
-      `;
-    });
-    
-    return html;
-  }
-
-  // ===== RENDER HARDCODED PRODUCT CARD =====
-  function renderHardcodedProductCard(product, badge) {
-    const priceFormatted = '€' + (product.price / 100).toFixed(2);
-    
-    return `
-      <div class="fc-product-card">
-        <div class="fc-badge">${badge}</div>
-        <div class="fc-product-inner">
-          <img class="fc-product-image" src="${product.image}" alt="${product.title}" loading="lazy">
-          <div class="fc-product-title">${product.title}</div>
-          <div class="fc-product-price">${priceFormatted}</div>
-          <button class="fc-add-to-cart" onclick="event.stopPropagation(); window.fcAddToCart(${product.variant}, event)">In den Warenkorb</button>
-          <div>
-            <span class="fc-view-link" onclick="event.stopPropagation(); window.fcViewDetails('${product.url}')">Details ansehen</span>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  // ===== SHOW PERFUME DETAIL WITH HARDCODED MAPPINGS =====
-  window.fcShowPerfumeDetail = function(perfumeId) {
-    const perfume = findPerfumeById(perfumeId);
-    if (!perfume) return;
-    
-    currentView = 'detail';
-    steps.style.display = 'none';
-    
-    // Find matching hardcoded product
-    const hardcodedProduct = findHardcodedProductByPerfume(perfume);
-    
-    let html = `
-      <button class="fc-back-btn" onclick="window.fcGoBack()">Zurück</button>
-    `;
-    
-    if (hardcodedProduct) {
-      html += `<div class="fc-subsection-title">Unsere inspirierte Version</div>`;
-      html += '<div class="fc-grid-2col">';
-      
-      // RECOMMENDED: The found product
-      html += renderHardcodedProductCard(hardcodedProduct, 'Empfohlen');
-      
-      // YOU MIGHT LIKE IT: Same brand, same gender recommendation
-      const recommendations = getRecommendationsForProduct(hardcodedProduct);
-      
-      if (recommendations.length > 0) {
-        html += renderHardcodedProductCard(recommendations[0], 'Das könnte dir auch gefallen');
-      } else {
-        html += `<div class="fc-product-card" style="visibility: hidden;"></div>`;
-      }
-      
-      html += '</div>';
-    } else {
-      html += `<div class="fc-subsection-title">Kein passendes Produkt gefunden</div>`;
-    }
-    
-    // Show catalog perfume details
-    html += `
-      <div class="fc-detailed-view">
-        <div class="fc-detailed-header">
-          <img class="fc-detailed-image" src="${perfume.image}" 
-               alt="${perfume.name}"
-               loading="lazy"
-               onerror="this.src='https://via.placeholder.com/110x110?text=Parfum'">
-          <div>
-            <div class="fc-detailed-name">${perfume.name}</div>
-            <div class="fc-detailed-brand">${perfume.brand}</div>
-            ${perfume.year ? `<div class="fc-detailed-meta">${perfume.year}</div>` : ''}
-            ${perfume.gender ? `<div class="fc-detailed-meta">${perfume.gender}</div>` : ''}
-          </div>
-        </div>
-
-        <div class="fc-notes-section">
-          ${perfume.top_notes ? `
-            <div class="fc-note-category">
-              <h4>KOPFNOTEN</h4>
-              <div class="fc-note-tags">
-                ${perfume.top_notes.map(note => `<span class="fc-note-tag">${note}</span>`).join('')}
-              </div>
-            </div>
-          ` : ''}
-          
-          ${perfume.heart_notes ? `
-            <div class="fc-note-category">
-              <h4>HERZNOTEN</h4>
-              <div class="fc-note-tags">
-                ${perfume.heart_notes.map(note => `<span class="fc-note-tag">${note}</span>`).join('')}
-              </div>
-            </div>
-          ` : ''}
-          
-          ${perfume.base_notes ? `
-            <div class="fc-note-category">
-              <h4>BASISNOTEN</h4>
-              <div class="fc-note-tags">
-                ${perfume.base_notes.map(note => `<span class="fc-note-tag">${note}</span>`).join('')}
-              </div>
-            </div>
-          ` : ''}
-        </div>
-        
-        <div class="fc-description">
-          ${perfume.description}
-        </div>
-      </div>
-    `;
-    
-    content.innerHTML = html;
-  };
-
-  // ===== ADD TO CART =====
-  window.fcAddToCart = function(variantId, event) {
-    if (event) event.stopPropagation();
-    
-    const btn = event?.target || document.activeElement;
-    const originalText = btn.innerText;
-    
-    btn.innerText = 'Wird hinzugefügt...';
-    btn.disabled = true;
-    
-    fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: variantId, quantity: 1 })
-    })
-    .then(response => response.json())
-    .then(data => {
-      btn.innerText = '✓ Hinzugefügt!';
-      btn.style.background = '#2E7D32';
-      
-      fetchCartAndUpdate().then(cart => {
-        showNotification(`✓ Hinzugefügt! ${cart.item_count}/3 Artikel für gratis Geschenk`);
-      });
-      
-      setTimeout(() => {
-        btn.innerText = originalText;
-        btn.style.background = '#C41E3A';
-        btn.disabled = false;
-      }, 2000);
-    })
-    .catch(error => {
-      btn.innerText = 'Fehler';
-      setTimeout(() => {
-        btn.innerText = originalText;
-        btn.disabled = false;
-      }, 2000);
-    });
-    
-    return false;
-  };
-
-  // ===== VIEW DETAILS =====
-  window.fcViewDetails = function(url) {
-    window.location.href = url;
-  };
-
-  // ===== GO BACK =====
-  window.fcGoBack = function() {
-    currentView = 'search';
-    if (currentSearchQuery.length >= 1) {
-      performSearch(currentSearchQuery);
-    } else {
-      steps.style.display = 'block';
-      content.innerHTML = '';
-    }
-  };
-
-  // ===== SHOW NOTIFICATION =====
-  function showNotification(message) {
-    let notification = document.querySelector('.fc-notification');
-    if (!notification) {
-      notification = document.createElement('div');
-      notification.className = 'fc-notification';
-      document.body.appendChild(notification);
-    }
-    
-    notification.textContent = message;
-    notification.classList.add('show');
-    
-    setTimeout(() => {
-      notification.classList.remove('show');
-    }, 2000);
-  }
-
-  // ===== UPDATE OFFER DISPLAY =====
-  function updateOfferDisplay(itemCount) {
-    if (!offerStatus || !offerProgress || !offerMessage || !offerSubtext) return;
-    
-    const percentage = Math.min((itemCount / 3) * 100, 100);
-    offerProgress.style.width = percentage + '%';
-    
-    if (itemCount >= 3) {
-      offerStatus.textContent = '🎉 GRATIS!';
-      offerSubtext.textContent = 'Du qualifizierst dich für ein gratis Geschenk!';
-      offerMessage.textContent = '🎉 Du qualifizierst dich für ein GRATIS Geschenk!';
-      offerBanner.classList.add('qualified');
-    } else {
-      const needed = 3 - itemCount;
-      offerStatus.textContent = `${itemCount}/3`;
-      offerSubtext.textContent = `Füge ${needed} mehr hinzu für ein gratis Geschenk`;
-      offerMessage.textContent = `Füge ${needed} mehr Artikel hinzu für ein gratis Geschenk`;
-      offerBanner.classList.remove('qualified');
     }
   }
+  return null;
+};
 
-  // ===== FETCH CART AND UPDATE COUNT =====
-  window.fetchCartAndUpdate = function() {
-    return fetch('/cart.js')
-      .then(response => response.json())
-      .then(cart => {
-        updateOfferDisplay(cart.item_count);
-        return cart;
-      })
-      .catch(() => ({ item_count: 0 }));
-  };
+window.PerfumeCatalog.getShopifyProductByPerfumeName = function(perfumeName) {
+  const searchName = perfumeName.toLowerCase().trim();
+  
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      const perfume = this[brandKey].find(p => 
+        p.name.toLowerCase().includes(searchName) || 
+        searchName.includes(p.name.toLowerCase())
+      );
+      if (perfume && perfume.shopifyProduct) {
+        return perfume.shopifyProduct;
+      }
+    }
+  }
+  return null;
+};
 
-  // ===== PERFORM SEARCH =====
-  function performSearch(query) {
-    currentSearchQuery = query;
-    content.innerHTML = '<div class="fc-loading">Suche läuft...</div>';
-    
-    setTimeout(() => {
-      // Search in hardcoded products with enhanced fuzzy search
-      const hardcodedResults = searchHardcodedProducts(query);
-      
-      // Generate fuzzy variations of the search query
-      const queryVariations = generateFuzzyVariations(query);
-      
-      // Search in catalog with intelligent scoring using fuzzy variations
-      const catalogResultsWithScore = [];
-      const queryLower = query.toLowerCase();
-      const normalizedQuery = normalizeText(query);
-      
-      allPerfumes.forEach(perfume => {
-        const perfumeName = perfume.name.toLowerCase();
-        const perfumeBrand = perfume.brand.toLowerCase();
-        const normalizedName = normalizeText(perfume.name);
-        const normalizedBrand = normalizeText(perfume.brand);
+window.PerfumeCatalog.getShopifyProductByNumber = function(number) {
+  const numStr = number.toString().padStart(3, '0');
+  
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      const perfume = this[brandKey].find(p => 
+        p.productNumbers && p.productNumbers.includes(numStr)
+      );
+      if (perfume && perfume.shopifyProduct) {
+        return perfume.shopifyProduct;
+      }
+    }
+  }
+  return null;
+};
+
+window.PerfumeCatalog.search = function(query) {
+  if (!query || query.length < 2) return [];
+  
+  const results = [];
+  const queryLower = query.toLowerCase().trim();
+  
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      this[brandKey].forEach(perfume => {
+        const searchableText = [
+          perfume.name,
+          perfume.brand,
+          perfume.year,
+          ...(perfume.top_notes || []),
+          ...(perfume.heart_notes || []),
+          ...(perfume.base_notes || []),
+          ...(perfume.productNumbers || [])
+        ].join(' ').toLowerCase();
         
-        // Generate fuzzy variations of the product name and brand
-        const brandVariations = generateFuzzyVariations(perfume.brand);
-        const nameVariations = generateFuzzyVariations(perfume.name);
-        
-        let score = 0;
-        let matchType = '';
-        
-        // ===== ID/NUMBER MATCHES (Highest Priority) =====
-        // Check if query is a number
-        const isNumberQuery = /^\d+$/.test(query.trim());
-        if (isNumberQuery) {
-          if (perfume.id === query.trim()) {
-            score = 1500;
-            matchType = 'exact-id';
-          } else if (perfume.sku && perfume.sku === query.trim()) {
-            score = 1400;
-            matchType = 'exact-sku';
-          }
-        }
-        
-        // ===== EXACT MATCHES (Highest Priority) =====
-        // Exact brand match
-        if (score === 0 && perfumeBrand === queryLower) {
-          score = 1000;
-          matchType = 'exact-brand';
-        }
-        // Exact name match
-        else if (perfumeName === queryLower) {
-          score = 950;
-          matchType = 'exact-name';
-        }
-        // Brand contains query
-        else if (perfumeBrand.includes(queryLower)) {
-          score = 900;
-          matchType = 'brand-contains';
-        }
-        // Name contains query
-        else if (perfumeName.includes(queryLower)) {
-          score = 850;
-          matchType = 'name-contains';
-        }
-        
-        // ===== NORMALIZED MATCHES =====
-        else if (normalizedBrand === normalizedQuery) {
-          score = 800;
-          matchType = 'normalized-brand';
-        }
-        else if (normalizedName === normalizedQuery) {
-          score = 750;
-          matchType = 'normalized-name';
-        }
-        else if (normalizedBrand.includes(normalizedQuery)) {
-          score = 700;
-          matchType = 'normalized-brand-contains';
-        }
-        else if (normalizedName.includes(normalizedQuery)) {
-          score = 650;
-          matchType = 'normalized-name-contains';
-        }
-        
-        // ===== NO-SPACE MATCHES =====
-        else if (normalizedBrand.replace(/\s+/g, '') === normalizedQuery.replace(/\s+/g, '')) {
-          score = 600;
-          matchType = 'nospace-brand';
-        }
-        else if (normalizedName.replace(/\s+/g, '') === normalizedQuery.replace(/\s+/g, '')) {
-          score = 550;
-          matchType = 'nospace-name';
-        }
-        else if (normalizedBrand.replace(/\s+/g, '').includes(normalizedQuery.replace(/\s+/g, ''))) {
-          score = 500;
-          matchType = 'nospace-brand-contains';
-        }
-        else if (normalizedName.replace(/\s+/g, '').includes(normalizedQuery.replace(/\s+/g, ''))) {
-          score = 450;
-          matchType = 'nospace-name-contains';
-        }
-        
-        // ===== FUZZY VARIATIONS MATCH (Very High Priority) =====
-        // Check if query variations match brand/name exactly
-        else if (queryVariations.some(v => normalizedBrand === v)) {
-          score = 825;
-          matchType = 'fuzzy-query-brand-exact';
-        }
-        else if (queryVariations.some(v => normalizedName === v)) {
-          score = 775;
-          matchType = 'fuzzy-query-name-exact';
-        }
-        // Check if product brand variations match query
-        else if (brandVariations.some(v => v === normalizedQuery)) {
-          score = 815;
-          matchType = 'brand-fuzzy-exact';
-        }
-        // Check if product name variations match query
-        else if (nameVariations.some(v => v === normalizedQuery)) {
-          score = 765;
-          matchType = 'name-fuzzy-exact';
-        }
-        
-        // ===== FUZZY VARIATIONS CONTAIN =====
-        else if (queryVariations.some(v => normalizedBrand.includes(v) || v.includes(normalizedBrand))) {
-          score = 750;
-          matchType = 'fuzzy-query-brand-contains';
-        }
-        else if (queryVariations.some(v => normalizedName.includes(v) || v.includes(normalizedName))) {
-          score = 700;
-          matchType = 'fuzzy-query-name-contains';
-        }
-        
-        // ===== LEVENSHTEIN FUZZY MATCHES (Lower Priority) =====
-        else {
-          const fuzzyScoreName = calculateFuzzyScore(query, perfume.name);
-          const fuzzyScoreBrand = calculateFuzzyScore(query, perfume.brand);
-          const bestFuzzyScore = Math.max(fuzzyScoreName, fuzzyScoreBrand);
-          
-          if (bestFuzzyScore > 70) {
-            score = bestFuzzyScore * 4; // 70% → 280, 100% → 400
-            matchType = bestFuzzyScore === fuzzyScoreBrand ? 'fuzzy-brand' : 'fuzzy-name';
-          }
-        }
-        
-        // Only include results with meaningful scores
-        if (score > 0) {
-          catalogResultsWithScore.push({
-            perfume,
-            score,
-            matchType
-          });
+        if (searchableText.includes(queryLower)) {
+          results.push(perfume);
         }
       });
-      
-      // Sort by score (highest first)
-      catalogResultsWithScore.sort((a, b) => b.score - a.score);
-      const catalogResults = catalogResultsWithScore.map(r => r.perfume);
-      
-      let html = '';
-      
-      // ===== FIRST: Show catalog results (Echte Parfums) =====
-      if (catalogResults.length > 0) {
-        html += `<div class="fc-section-title">✨ Echte Parfums</div>`;
-        
-        catalogResults.slice(0, 8).forEach(perfume => {
-          html += `
-            <div class="fc-real-perfume-item" onclick="window.fcShowPerfumeDetail('${perfume.id}')">
-              <img class="fc-real-perfume-image" src="${perfume.image}" 
-                   alt="${perfume.name}" 
-                   loading="lazy"
-                   onerror="this.src='https://via.placeholder.com/60x60?text=Parfum'">
-              <div class="fc-real-perfume-info">
-                <div class="fc-real-perfume-name">${perfume.name}</div>
-                <div class="fc-real-perfume-brand">${perfume.brand}</div>
-                ${perfume.year ? `<div class="fc-real-perfume-year">${perfume.year}</div>` : ''}
-              </div>
-            </div>
-          `;
-        });
-      }
-      
-      // ===== SECOND: Show hardcoded results (Our Collection) =====
-      if (hardcodedResults.length > 0) {
-        html += `<div class="fc-section-title">🛍️ Unsere Kollektion</div>`;
-        
-        hardcodedResults.slice(0, 12).forEach(match => {
-          const p = match.product;
-          const priceFormatted = '€' + (p.price / 100).toFixed(2);
-          
-          html += `
-            <div class="fc-real-perfume-item" onclick="window.fcViewDetails('${p.url}')">
-              <img class="fc-real-perfume-image" src="${p.image}" alt="${p.title}" loading="lazy">
-              <div class="fc-real-perfume-info">
-                <div class="fc-real-perfume-name">${p.title}</div>
-                <div class="fc-real-perfume-year">${priceFormatted}</div>
-              </div>
-            </div>
-          `;
-        });
-      }
-      
-      // If no results at all, show suggestions
-      if (catalogResults.length === 0 && hardcodedResults.length === 0) {
-        html = '<div class="fc-no-results">Keine Produkte gefunden für "' + query + '"</div>';
-        html += renderSuggestions();
-      }
-      
-      content.innerHTML = html;
-    }, 300);
-  }
-
-  // ===== SEARCH HANDLER =====
-  function fcHandleSearch() {
-    const query = searchInput.value.trim();
-    
-    if (query.length < 1) {
-      if (currentView !== 'detail') {
-        steps.style.display = 'block';
-        content.innerHTML = '';
-      }
-      return;
     }
-    
-    steps.style.display = 'none';
-    currentView = 'search';
-    
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => performSearch(query), 300);
   }
+  
+  return results.sort((a, b) => a.name.localeCompare(b.name));
+};
 
-  // ===== INITIALIZE =====
-  document.addEventListener('DOMContentLoaded', function() {
-    combineCatalogs();
-    
-    if (searchInput) {
-      searchInput.addEventListener('keyup', fcHandleSearch);
+window.PerfumeCatalog.findById = function(id) {
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      const found = this[brandKey].find(p => p.id === id);
+      if (found) return found;
     }
-    
-    if (clearSearch) {
-      clearSearch.addEventListener('click', function() {
-        searchInput.value = '';
-        searchInput.focus();
-        steps.style.display = 'block';
-        content.innerHTML = '';
-        currentView = 'search';
+  }
+  return null;
+};
+
+window.PerfumeCatalog.getBrands = function() {
+  const brands = [];
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      brands.push(brandKey);
+    }
+  }
+  return brands;
+};
+
+window.PerfumeCatalog.getProductsByBrand = function(brandKey) {
+  if (this[brandKey] && Array.isArray(this[brandKey])) {
+    return this[brandKey];
+  }
+  return [];
+};
+
+window.PerfumeCatalog.getProductNumbers = function() {
+  const numbers = [];
+  for (let brandKey in this) {
+    if (Array.isArray(this[brandKey])) {
+      this[brandKey].forEach(perfume => {
+        if (perfume.productNumbers) {
+          numbers.push(...perfume.productNumbers);
+        }
       });
     }
-    
-    setTimeout(fetchCartAndUpdate, 500);
-    
-    // Modified document click handler to prevent popup from closing when clicking results
-    document.addEventListener('click', function(event) {
-      const searchPopup = document.getElementById('fcSearchPopup');
-      const stickyButton = document.getElementById('fcStickyButton');
-      
-      // Don't close if clicking inside the popup
-      if (searchPopup && searchPopup.contains(event.target)) {
-        return;
-      }
-      
-      // Don't close if clicking the toggle button
-      if (stickyButton && stickyButton.contains(event.target)) {
-        return;
-      }
-      
-      // Don't close if clicking on any result item (they have class fc-real-perfume-item)
-      if (event.target.closest('.fc-real-perfume-item')) {
-        return;
-      }
-      
-      // Don't close if clicking on any product card
-      if (event.target.closest('.fc-product-card')) {
-        return;
-      }
-      
-      // Don't close if clicking on any button inside popup
-      if (event.target.closest('.fc-add-to-cart') || event.target.closest('.fc-view-link') || event.target.closest('.fc-back-btn')) {
-        return;
-      }
-      
-      // Only close if clicking outside all these elements and popup is active
-      if (searchPopup && searchPopup.classList.contains('active')) {
-        searchPopup.classList.remove('active');
-      }
-    });
-    
-    // Escape key handler
-    document.addEventListener('keydown', function(e) {
-      const searchPopup = document.getElementById('fcSearchPopup');
-      if (e.key === 'Escape' && searchPopup && searchPopup.classList.contains('active')) {
-        searchPopup.classList.remove('active');
-      }
-    });
-    
-    console.log('✓ Fragrance Search initialized with enhanced fuzzy search and correct images');
-  });
-})();
-</script>
+  }
+  return [...new Set(numbers)].sort();
+};
+
+console.log('✓ German PerfumeCatalog loaded with', 
+  Object.keys(window.PerfumeCatalog).filter(key => Array.isArray(window.PerfumeCatalog[key])).length, 
+  'brand categories and', 
+  window.PerfumeCatalog.getProductNumbers().length, 
+  'product numbers');
