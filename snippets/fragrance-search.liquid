@@ -3212,21 +3212,52 @@ window.fcToggleSearch = function() {
     setTimeout(fetchCartAndUpdate, 500);
     
     // Close popup when clicking outside
-    document.addEventListener('click', function(event) {
-      if (searchPopup && stickyButton && 
-          !searchPopup.contains(event.target) && 
-          !stickyButton.contains(event.target) && 
-          searchPopup.classList.contains('active')) {
-        searchPopup.classList.remove('active');
-      }
-    });
-    
-    // Close with Escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && searchPopup && searchPopup.classList.contains('active')) {
-        searchPopup.classList.remove('active');
-      }
-    });
+    // ===== FIX: Prevent popup from closing when clicking on search results =====
+// Add this right after the fcHandleSearch function
+
+// Modify the document click handler to be more selective
+document.addEventListener('click', function(event) {
+  const searchPopup = document.getElementById('fcSearchPopup');
+  const stickyButton = document.getElementById('fcStickyButton');
+  
+  // Don't close if clicking inside the popup
+  if (searchPopup && searchPopup.contains(event.target)) {
+    return;
+  }
+  
+  // Don't close if clicking the toggle button
+  if (stickyButton && stickyButton.contains(event.target)) {
+    return;
+  }
+  
+  // Don't close if clicking on any result item (they have class fc-real-perfume-item)
+  if (event.target.closest('.fc-real-perfume-item')) {
+    return;
+  }
+  
+  // Don't close if clicking on any product card
+  if (event.target.closest('.fc-product-card')) {
+    return;
+  }
+  
+  // Don't close if clicking on any button inside popup
+  if (event.target.closest('.fc-add-to-cart') || event.target.closest('.fc-view-link') || event.target.closest('.fc-back-btn')) {
+    return;
+  }
+  
+  // Only close if clicking outside all these elements and popup is active
+  if (searchPopup && searchPopup.classList.contains('active')) {
+    searchPopup.classList.remove('active');
+  }
+});
+
+// Also update the Escape key handler to be safe
+document.addEventListener('keydown', function(e) {
+  const searchPopup = document.getElementById('fcSearchPopup');
+  if (e.key === 'Escape' && searchPopup && searchPopup.classList.contains('active')) {
+    searchPopup.classList.remove('active');
+  }
+});
     
     console.log('✓ Fragrance Search initialized');
   });
