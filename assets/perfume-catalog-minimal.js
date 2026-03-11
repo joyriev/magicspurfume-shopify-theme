@@ -2315,7 +2315,7 @@ window.PerfumeCatalog = {
       id: "amouage_quiet_king",
       name: "Quiet King Amouage",
       brand: "Amouage",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/317M_c.png?v=1771856219",
+      image: "https://magicperfume.co/cdn/shop/files/Interlude_man.jpg?v=1771856149",
       top_notes: ["Holz", "Gewürze", "Muskat"],
       heart_notes: ["Amber", "Leder", "Zeder"],
       base_notes: ["Sandelholz", "Moschus", "Patschuli"],
