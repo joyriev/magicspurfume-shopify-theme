@@ -1349,6 +1349,19 @@ window.fcToggleSearch = function() {
         }
       }
       
+      // Advanced Levenshtein matching on searchTerms for typo tolerance (e.g., "anglee" → "angel")
+      if (bestScore < 85 && product.searchTerms) {
+        for (const term of product.searchTerms) {
+          if (term.length >= 3) { // Only match on meaningful terms
+            const termScore = calculateFuzzyScore(queryLower, term);
+            if (termScore >= 65) { // Lower threshold for searchTerms
+              bestScore = Math.max(bestScore, termScore * 1.1); // Boost by 10%
+              matchReasons.push('levenshtein-search-term');
+            }
+          }
+        }
+      }
+      
       // Check product variations against query
       const normalizedQuery = normalizeText(query);
       if (titleVariations.some(v => v === normalizedQuery)) {
@@ -3651,7 +3664,27 @@ window.fcToggleSearch = function() {
       
       let html = '';
       
-      // ===== FIRST: Show catalog results (Echte Parfums) =====
+      // ===== FIRST: Show hardcoded results (Our Collection) =====
+      if (hardcodedResults.length > 0) {
+        html += `<div class="fc-section-title">🛍️ Unsere Kollektion</div>`;
+        
+        hardcodedResults.slice(0, 12).forEach(match => {
+          const p = match.product;
+          const priceFormatted = '€' + (p.price / 100).toFixed(2);
+          
+          html += `
+            <div class="fc-real-perfume-item" onclick="window.fcViewDetails('${p.url}')">
+              <img class="fc-real-perfume-image" src="${p.image}" alt="${p.title}" loading="lazy">
+              <div class="fc-real-perfume-info">
+                <div class="fc-real-perfume-name">${p.title}</div>
+                <div class="fc-real-perfume-year">${priceFormatted}</div>
+              </div>
+            </div>
+          `;
+        });
+      }
+      
+      // ===== SECOND: Show catalog results (Echte Parfums) =====
       if (catalogResults.length > 0) {
         html += `<div class="fc-section-title">✨ Echte Parfums</div>`;
         
@@ -3667,26 +3700,6 @@ window.fcToggleSearch = function() {
                 <div class="fc-real-perfume-name">${perfume.name}</div>
                 <div class="fc-real-perfume-brand">${perfume.brand}</div>
                 ${perfume.year ? `<div class="fc-real-perfume-year">${perfume.year}</div>` : ''}
-              </div>
-            </div>
-          `;
-        });
-      }
-      
-      // ===== SECOND: Show hardcoded results (Our Collection) =====
-      if (hardcodedResults.length > 0) {
-        html += `<div class="fc-section-title">🛍️ Unsere Kollektion</div>`;
-        
-        hardcodedResults.slice(0, 12).forEach(match => {
-          const p = match.product;
-          const priceFormatted = '€' + (p.price / 100).toFixed(2);
-          
-          html += `
-            <div class="fc-real-perfume-item" onclick="window.fcViewDetails('${p.url}')">
-              <img class="fc-real-perfume-image" src="${p.image}" alt="${p.title}" loading="lazy">
-              <div class="fc-real-perfume-info">
-                <div class="fc-real-perfume-name">${p.title}</div>
-                <div class="fc-real-perfume-year">${priceFormatted}</div>
               </div>
             </div>
           `;
