@@ -3664,27 +3664,7 @@ window.fcToggleSearch = function() {
       
       let html = '';
       
-      // ===== FIRST: Show hardcoded results (Our Collection) =====
-      if (hardcodedResults.length > 0) {
-        html += `<div class="fc-section-title">🛍️ Unsere Kollektion</div>`;
-        
-        hardcodedResults.slice(0, 12).forEach(match => {
-          const p = match.product;
-          const priceFormatted = '€' + (p.price / 100).toFixed(2);
-          
-          html += `
-            <div class="fc-real-perfume-item" onclick="window.fcViewDetails('${p.url}')">
-              <img class="fc-real-perfume-image" src="${p.image}" alt="${p.title}" loading="lazy">
-              <div class="fc-real-perfume-info">
-                <div class="fc-real-perfume-name">${p.title}</div>
-                <div class="fc-real-perfume-year">${priceFormatted}</div>
-              </div>
-            </div>
-          `;
-        });
-      }
-      
-      // ===== SECOND: Show catalog results (Echte Parfums) =====
+      // ===== FIRST: Show catalog results (Echte Parfums) - SHOW FIRST =====
       if (catalogResults.length > 0) {
         html += `<div class="fc-section-title">✨ Echte Parfums</div>`;
         
@@ -3706,9 +3686,29 @@ window.fcToggleSearch = function() {
         });
       }
       
+      // ===== SECOND: Show hardcoded results (Our Collection) =====
+      if (hardcodedResults.length > 0) {
+        html += `<div class="fc-section-title">🛍️ Unsere Kollektion</div>`;
+        
+        hardcodedResults.slice(0, 12).forEach(match => {
+          const p = match.product;
+          const priceFormatted = '€' + (p.price / 100).toFixed(2);
+          
+          html += `
+            <div class="fc-real-perfume-item" onclick="window.fcViewDetails('${p.url}')">
+              <img class="fc-real-perfume-image" src="${p.image}" alt="${p.title}" loading="lazy">
+              <div class="fc-real-perfume-info">
+                <div class="fc-real-perfume-name">${p.title}</div>
+                <div class="fc-real-perfume-year">${priceFormatted}</div>
+              </div>
+            </div>
+          `;
+        });
+      }
+      
       // If no results at all, show suggestions
       if (catalogResults.length === 0 && hardcodedResults.length === 0) {
-        html = '<div class="fc-no-results">Keine Produkte gefunden für "' + query + '"</div>';
+        html = '<div class="fc-no-results" style="padding: 40px 20px; text-align: center; color: #8A7A70;">Keine Produkte gefunden für "' + query + '"</div>';
         html += renderSuggestions();
       }
       
