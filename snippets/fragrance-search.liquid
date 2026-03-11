@@ -3305,39 +3305,103 @@ window.fcToggleSearch = function() {
       // Search in hardcoded products with enhanced fuzzy search
       const hardcodedResults = searchHardcodedProducts(query);
       
-      // Search in catalog with fuzzy matching
-      const catalogResults = allPerfumes.filter(perfume => {
+      // Search in catalog with intelligent scoring
+      const catalogResultsWithScore = [];
+      const queryLower = query.toLowerCase();
+      const normalizedQuery = normalizeText(query);
+      
+      allPerfumes.forEach(perfume => {
         const perfumeName = perfume.name.toLowerCase();
         const perfumeBrand = perfume.brand.toLowerCase();
-        const queryLower = query.toLowerCase();
-        const normalizedQuery = normalizeText(query);
         const normalizedName = normalizeText(perfume.name);
         const normalizedBrand = normalizeText(perfume.brand);
         
-        // Exact match
-        if (perfumeName.includes(queryLower) || perfumeBrand.includes(queryLower)) {
-          return true;
+        let score = 0;
+        let matchType = '';
+        
+        // ===== EXACT MATCHES (Highest Priority) =====
+        // Exact brand match
+        if (perfumeBrand === queryLower) {
+          score = 1000;
+          matchType = 'exact-brand';
+        }
+        // Exact name match
+        else if (perfumeName === queryLower) {
+          score = 950;
+          matchType = 'exact-name';
+        }
+        // Brand contains query
+        else if (perfumeBrand.includes(queryLower)) {
+          score = 900;
+          matchType = 'brand-contains';
+        }
+        // Name contains query
+        else if (perfumeName.includes(queryLower)) {
+          score = 850;
+          matchType = 'name-contains';
         }
         
-        // Normalized match
-        if (normalizedName.includes(normalizedQuery) || normalizedBrand.includes(normalizedQuery)) {
-          return true;
+        // ===== NORMALIZED MATCHES =====
+        else if (normalizedBrand === normalizedQuery) {
+          score = 800;
+          matchType = 'normalized-brand';
+        }
+        else if (normalizedName === normalizedQuery) {
+          score = 750;
+          matchType = 'normalized-name';
+        }
+        else if (normalizedBrand.includes(normalizedQuery)) {
+          score = 700;
+          matchType = 'normalized-brand-contains';
+        }
+        else if (normalizedName.includes(normalizedQuery)) {
+          score = 650;
+          matchType = 'normalized-name-contains';
         }
         
-        // No-space match
-        if (normalizedName.replace(/\s+/g, '').includes(normalizedQuery.replace(/\s+/g, ''))) {
-          return true;
+        // ===== NO-SPACE MATCHES =====
+        else if (normalizedBrand.replace(/\s+/g, '') === normalizedQuery.replace(/\s+/g, '')) {
+          score = 600;
+          matchType = 'nospace-brand';
+        }
+        else if (normalizedName.replace(/\s+/g, '') === normalizedQuery.replace(/\s+/g, '')) {
+          score = 550;
+          matchType = 'nospace-name';
+        }
+        else if (normalizedBrand.replace(/\s+/g, '').includes(normalizedQuery.replace(/\s+/g, ''))) {
+          score = 500;
+          matchType = 'nospace-brand-contains';
+        }
+        else if (normalizedName.replace(/\s+/g, '').includes(normalizedQuery.replace(/\s+/g, ''))) {
+          score = 450;
+          matchType = 'nospace-name-contains';
         }
         
-        // Fuzzy match
-        const fuzzyScoreName = calculateFuzzyScore(query, perfume.name);
-        const fuzzyScoreBrand = calculateFuzzyScore(query, perfume.brand);
-        if (fuzzyScoreName > 65 || fuzzyScoreBrand > 65) {
-          return true;
+        // ===== FUZZY MATCHES (Lower Priority) =====
+        else {
+          const fuzzyScoreName = calculateFuzzyScore(query, perfume.name);
+          const fuzzyScoreBrand = calculateFuzzyScore(query, perfume.brand);
+          const bestFuzzyScore = Math.max(fuzzyScoreName, fuzzyScoreBrand);
+          
+          if (bestFuzzyScore > 75) {
+            score = bestFuzzyScore * 4; // 75% → 300, 100% → 400
+            matchType = bestFuzzyScore === fuzzyScoreBrand ? 'fuzzy-brand' : 'fuzzy-name';
+          }
         }
         
-        return false;
+        // Only include results with meaningful scores
+        if (score > 0) {
+          catalogResultsWithScore.push({
+            perfume,
+            score,
+            matchType
+          });
+        }
       });
+      
+      // Sort by score (highest first)
+      catalogResultsWithScore.sort((a, b) => b.score - a.score);
+      const catalogResults = catalogResultsWithScore.map(r => r.perfume);
       
       let html = '';
       
