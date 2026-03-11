@@ -1540,7 +1540,7 @@ window.PerfumeCatalog = {
       id: "boss_alive",
       name: "Boss Alive Hugo Boss",
       brand: "Hugo Boss",
-      image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_ALIVE.jpg?v=1770289857",
+      image: "https://magicperfume.co/cdn/shop/files/alive.png?v=1772098782",
       top_notes: ["Apfel", "Schwarze Johannisbeere", "Pflaume"],
       heart_notes: ["Rose", "Jasmin", "Zimt"],
       base_notes: ["Vanille", "Moschus", "Zeder"],
@@ -2315,7 +2315,7 @@ window.PerfumeCatalog = {
       id: "amouage_quiet_king",
       name: "Quiet King Amouage",
       brand: "Amouage",
-      image: "https://magicperfume.co/cdn/shop/files/Interlude_man.jpg?v=1771856149",
+      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/317M_c.png?v=1771856219",
       top_notes: ["Holz", "Gewürze", "Muskat"],
       heart_notes: ["Amber", "Leder", "Zeder"],
       base_notes: ["Sandelholz", "Moschus", "Patschuli"],
@@ -2328,6 +2328,71 @@ window.PerfumeCatalog = {
         url: "https://magicperfume.co/products/magic-perfume-317m",
         price: "€11.99",
         image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/317M_c.png?v=1771856219"
+      }
+    }
+  ],
+
+  // ===== KILIAN =====
+  kilian: [
+    {
+      id: "kilian_angel_share",
+      name: "Angel Share Kilian",
+      brand: "Kilian",
+      image: "https://magicperfume.co/cdn/shop/files/Angel_Share.webp?v=1772140165",
+      top_notes: ["Kognak", "Holz", "Eichenfass"],
+      heart_notes: ["Zimt", "Vanille", "Tonkabohne"],
+      base_notes: ["Sandelholz", "Patschuli", "Amber", "Eichenmoos"],
+      description: "Ein verführerischer und warmer Gourmand-Duft, der die Essenz von Cognac in einem Holzfass einfängt. Angel Share ist eine Hommage an die Kunst des Genießens und die kostbaren Stunden in guter Gesellschaft.",
+      year: "2019",
+      gender: "Unisex",
+      productNumbers: ["476"],
+      shopifyProduct: {
+        title: "Riecht wie… Angel Share - No. 476 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-476w",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/476w_c.png?v=1771855867"
+      }
+    }
+  ],
+
+  // ===== CREED =====
+  creed: [
+    {
+      id: "creed_aventus_for_him",
+      name: "Victorus for Him Creed",
+      brand: "Creed",
+      image: "https://magicperfume.co/cdn/shop/files/aventus.webp?v=1772533006",
+      top_notes: ["Bergamotte", "Zitrone", "Schwarze Johannisbeere", "Ananas"],
+      heart_notes: ["Jasmin", "Rose", "Birke", "Patschuli"],
+      base_notes: ["Eichenmoos", "Amber", "Moschus", "Sandelholz", "Vanille"],
+      description: "Ein ikonischer und kraftvoller Duft, der Stärke und Erfolg zelebriert. Inspiriert vom legendären Aventus, vereint diese Komposition fruchtige Kopfnoten mit einer rauchig-holzigen Basis für einen unverwechselbaren Charakter.",
+      year: "2010",
+      gender: "Male",
+      productNumbers: ["288"],
+      shopifyProduct: {
+        title: "Riecht wie… Victorus for Him - No. 288 (m)",
+        url: "https://magicperfume.co/products/no-288-inspired-by-aventus-for-him",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/288M_i.webp?v=1772532926"
+      }
+    },
+    {
+      id: "creed_aventus_for_her",
+      name: "Fruity Floral Creed",
+      brand: "Creed",
+      image: "https://magicperfume.co/cdn/shop/files/aventus.webp?v=1772533006",
+      top_notes: ["Grüner Apfel", "Bergamotte", "Zitrone", "Rosa Pfeffer"],
+      heart_notes: ["Pfirsich", "Schwarze Johannisbeere", "Rose", "Jasmin"],
+      base_notes: ["Sandelholz", "Moschus", "Amber", "Patschuli", "Eichenmoos"],
+      description: "Elegant. Strahlend. Selbstbewusst. No. 488 ist ein lebendiger und raffinierter Duft für Frauen, die moderne Eleganz mit einer frischen, fruchtigen Note lieben. Inspiriert von der femininen Interpretation des legendären Aventus.",
+      year: "2016",
+      gender: "Female",
+      productNumbers: ["488"],
+      shopifyProduct: {
+        title: "No. 488 – Fruity Floral (w)",
+        url: "https://magicperfume.co/products/no-488-inspired-by-aventus-for-her",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/488W_i.webp?v=1772529681"
       }
     }
   ]
