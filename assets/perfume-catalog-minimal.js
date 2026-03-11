@@ -2168,6 +2168,29 @@ window.PerfumeCatalog = {
     }
   ],
 
+  // ===== MAISON FRANCIS KURKDJIAN =====
+  maisonFrancisKurkdjian: [
+    {
+      id: "mfk_baccarat_rouge_540",
+      name: "Baccarat Rouge 540 Maison Francis Kurkdjian",
+      brand: "Maison Francis Kurkdjian",
+      image: "https://magicperfume.co/cdn/shop/files/Rouge_540.webp?v=1772096768",
+      top_notes: ["Jasmin", "Safran"],
+      heart_notes: ["Zeder", "Amberholz"],
+      base_notes: ["Ambroxan", "Ethyl Maltol", "Amber"],
+      description: "Ein ikonischer und luxuriöser Duft, der die Alchemie des Kristalls einfängt. Baccarat Rouge 540 verbindet die strahlenden Facetten von Jasmin und Safran mit mineralischen Ambernoten und holzigen Akkorden von frisch geschnittenem Zedernholz. Ein leuchtender, ätherischer und unverwechselbarer Duft.",
+      year: "2015",
+      gender: "Unisex",
+      productNumbers: ["466"],
+      shopifyProduct: {
+        title: "Riecht wie... Baccarat Rouge 540 - No. 466 (unisex)",
+        url: "https://magicperfume.co/products/riecht-wie-rouvera-no-466",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/ChatGPT_Image_Mar_9_2026_01_38_08_PM.png?v=1773052780"
+      }
+    }
+  ],
+
   // ===== OTHERS =====
   others: [
     {
