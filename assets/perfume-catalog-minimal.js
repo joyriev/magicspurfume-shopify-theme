@@ -151,7 +151,7 @@ window.PerfumeCatalog = {
       id: "lancome_idole",
       name: "Idôle Lancôme",
       brand: "Lancôme",
-      image: "https://magicperfume.co/cdn/shop/files/Idole.webp?v=1772097147",
+      image: "https://magicperfume.co/cdn/shop/files/LANCOME_IDOLE.webp?v=1771658673",
       top_notes: ["Birne", "Bergamotte", "Zitrone"],
       heart_notes: ["Rose", "Jasmin", "Magnolie"],
       base_notes: ["Vanille", "Moschus", "Zeder"],
