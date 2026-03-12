@@ -245,6 +245,25 @@ window.PerfumeCatalog = {
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Y.png?v=1771482466"
       }
+    },
+    {
+      id: "ysl_manifesto",
+      name: "Laurent Manifesto Yves Saint Laurent",
+      brand: "Yves Saint Laurent",
+      image: "https://magicperfume.co/cdn/shop/files/134W_c.webp?v=1771317432",
+      top_notes: ["Grüne Noten", "Bergamotte", "Pfirsich"],
+      heart_notes: ["Jasmin", "Maiglöckchen", "Orangenblüte"],
+      base_notes: ["Vanille", "Zeder", "Moschus", "Tonkabohne"],
+      description: "Ein warmer, holziger und zugleich frischer Duft, der die Essenz einer freigeistigen Frau einfängt. Manifesto verbindet grüne Noten mit einer verführerischen Basis aus Vanille und Hölzern.",
+      year: "2012",
+      gender: "Female",
+      productNumbers: ["134"],
+      shopifyProduct: {
+        title: "Riecht wie... Laurent Manifesto - No. 134 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-134w",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/134W_c.webp?v=1771317432"
+      }
     }
   ],
 
