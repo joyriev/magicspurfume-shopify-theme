@@ -1870,6 +1870,25 @@ window.PerfumeCatalog = {
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Euphoria_Men.webp?v=1772140949"
       }
+    },
+    {
+      id: "ck_ck2",
+      name: "CK2 Calvin Klein",
+      brand: "Calvin Klein",
+      image: "https://magicperfume.co/cdn/shop/files/ck2.webp?v=1772142766",
+      top_notes: ["Bergamotte", "Zitrone", "Wacholder"],
+      heart_notes: ["Jasmin", "Moosholz", "Amberoxan"],
+      base_notes: ["Moschus", "Sandelholz", "Amber"],
+      description: "Ein eleganter unisex Duft mit frischen und warmen Noten.",
+      year: "2016",
+      gender: "Unisex",
+      productNumbers: ["216"],
+      shopifyProduct: {
+        title: "Riecht wie... CK2 - No. 216 (unisex)",
+        url: "https://magicperfume.co/products/magic-perfume-no-216",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/ck2.webp?v=1772142766"
+      }
     }
   ],
 

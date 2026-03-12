@@ -3698,6 +3698,9 @@ window.fcToggleSearch = function() {
       // ===== SPECIAL HANDLING FOR "5" OR "NO5" - BOOST CHANEL NO. 5 =====
       const isChanelNo5Query = queryLower === "5" || queryLower === "no5" || queryLower === "no 5";
       
+      // ===== SPECIAL HANDLING FOR "NIGHT", "BOTTLED NIGHT", "HUGO BOSS" - BOOST BOSS BOTTLED NIGHT =====
+      const isNightQuery = queryLower === "night" || queryLower === "bottled night" || queryLower === "boss bottled night" || queryLower === "hugo boss";
+      
       // For short queries (2-3 letters like "ck"), use STRICT matching
       const isShortQuery = queryLower.length <= 3;
       
@@ -3727,7 +3730,12 @@ window.fcToggleSearch = function() {
           score = 1000;  // Maximum score for Chanel No. 5
           matchType = 'chanel-no5-special';
         }
-        // ===== FOR SHORT QUERIES (2-3 letters) - Skip if Chanel No. 5 already matched =====
+        // ===== BOSS BOTTLED NIGHT SPECIAL BOOST (from catalog) =====
+        else if (isNightQuery && perfume.productNumbers && perfume.productNumbers.includes("274")) {
+          score = 1000;  // Maximum score for Boss Bottled Night
+          matchType = 'boss-bottled-night-special';
+        }
+        // ===== FOR SHORT QUERIES (2-3 letters) - Skip if already matched =====
         else if (isShortQuery) {
           // Check if this brand matches the short query
           if (queryLower === "ck" && perfumeBrand.includes("calvin klein")) {
