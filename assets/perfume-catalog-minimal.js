@@ -787,7 +787,7 @@ window.PerfumeCatalog = {
       id: "tomford_cherry_smoke",
       name: "Cherry Smoke Tom Ford",
       brand: "Tom Ford",
-      image: "https://magicperfume.co/cdn/shop/files/Cherry_Smoke.jpg",
+      image: "https://magicperfume.co/cdn/shop/files/Tom_Ford_Cherry_Smoke.png?v=1771483578",
       top_notes: ["Kirsche", "Pfeffer", "Safran"],
       heart_notes: ["Rose", "Jasmin", "Leder"],
       base_notes: ["Vanille", "Amber", "Holz"],
