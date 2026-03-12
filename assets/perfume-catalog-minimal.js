@@ -1921,7 +1921,7 @@ window.PerfumeCatalog = {
       id: "chloe_nomade",
       name: "Nomade Chloé",
       brand: "Chloé",
-      image: "https://magicperfume.co/cdn/shop/files/Chloe_Nomade.jpg",
+      image: "https://magicperfume.co/cdn/shop/files/Chloe_Nomade.png?v=1771253540",
       top_notes: ["Mirabelle", "Zitrone", "Bergamotte"],
       heart_notes: ["Freesie", "Jasmin", "Rose"],
       base_notes: ["Eichenmoos", "Sandelholz", "Amber"],
