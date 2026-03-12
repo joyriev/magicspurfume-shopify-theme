@@ -3838,7 +3838,7 @@ window.fcToggleSearch = function() {
       if (catalogResults.length > 0) {
         html += `<div class="fc-section-title">✨ Echte Parfums</div>`;
         
-        catalogResults.slice(0, 8).forEach(result => {
+        catalogResults.slice(0, 12).forEach(result => {
           const perfume = result.perfume;
           html += `
             <div class="fc-real-perfume-item" onclick="window.fcShowPerfumeDetail('${perfume.id}')">
