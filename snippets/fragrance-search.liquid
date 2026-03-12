@@ -1246,6 +1246,9 @@ window.fcToggleSearch = function() {
     // ===== SPECIAL HANDLING FOR "5" OR "NO5" - ALWAYS SHOW CHANEL NO. 5 =====
     const isChanelNo5Query = queryLower === "5" || queryLower === "no5" || queryLower === "no 5";
     
+    // ===== SPECIAL HANDLING FOR "INVICTUS" - ALWAYS SHOW PACO RABANNE INVICTUS FIRST =====
+    const isInvictusQuery = queryLower === "invictus";
+    
     hardcodedProducts.forEach(product => {
       if (addedIds.has(product.id)) return;
       
@@ -1256,6 +1259,19 @@ window.fcToggleSearch = function() {
       if (isChanelNo5Query && product.number === "077") {
         bestScore = 1000;  // Maximum score for Chanel No. 5
         matchReasons.push('chanel-no5-special-query');
+        results.push({
+          product,
+          score: bestScore,
+          reasons: matchReasons
+        });
+        addedIds.add(product.id);
+        return; // Skip normal scoring for this product
+      }
+      
+      // ===== INVICTUS SPECIAL BOOST =====
+      if (isInvictusQuery && product.number === "228") {
+        bestScore = 1000;  // Maximum score for main Invictus
+        matchReasons.push('invictus-special-query');
         results.push({
           product,
           score: bestScore,
