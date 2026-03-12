@@ -250,7 +250,7 @@ window.PerfumeCatalog = {
       id: "ysl_manifesto",
       name: "Laurent Manifesto Yves Saint Laurent",
       brand: "Yves Saint Laurent",
-      image: "https://magicperfume.co/cdn/shop/files/134W_c.webp?v=1771317432",
+      image: "https://magicperfume.co/cdn/shop/files/Yves_Saint_Laurent_Manifesto.avif?v=1771317410",
       top_notes: ["Grüne Noten", "Bergamotte", "Pfirsich"],
       heart_notes: ["Jasmin", "Maiglöckchen", "Orangenblüte"],
       base_notes: ["Vanille", "Zeder", "Moschus", "Tonkabohne"],
