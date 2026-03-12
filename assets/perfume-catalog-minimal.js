@@ -1695,6 +1695,25 @@ window.PerfumeCatalog = {
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hugo_Energise.webp?v=1772142991"
       }
+    },
+    {
+      id: "boss_bottled_night",
+      name: "Boss Bottled Night Hugo Boss",
+      brand: "Hugo Boss",
+      image: "https://magicperfume.co/cdn/shop/files/Boss_Bottled_Night.png?v=1771480778",
+      top_notes: ["Lavendel", "Wacholderbeere", "Birkenblätter"],
+      heart_notes: ["Veilchenblatt", "Klette"],
+      base_notes: ["Moschus", "Holzige Noten", "Coush"],
+      description: "Ein maskuliner, holziger Duft mit einer frischen, aromatischen Kopfnote und einer tiefen, geheimnisvollen Basis. Inspiriert von der nächtlichen Eleganz einer Großstadt.",
+      year: "2010",
+      gender: "Male",
+      productNumbers: ["274"],
+      shopifyProduct: {
+        title: "Riecht wie... Bottled Night - No. 274 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-274m",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/274M_c.webp?v=1771480860"
+      }
     }
   ],
 
