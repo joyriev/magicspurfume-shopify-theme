@@ -174,7 +174,7 @@ window.PerfumeCatalog = {
       id: "ysl_libre",
       name: "Libre Yves Saint Laurent",
       brand: "Yves Saint Laurent",
-      image: "https://magicperfume.co/cdn/shop/files/YSL_Libre.jpg",
+      image: "https://magicperfume.co/cdn/shop/files/Libre.jpg?v=1773236620",
       top_notes: ["Lavendel", "Bergamotte", "Mandarine"],
       heart_notes: ["Orangenblüte", "Jasmin", "Rose"],
       base_notes: ["Vanille", "Amber", "Moschus"],
