@@ -692,7 +692,7 @@ window.PerfumeCatalog = {
       id: "tomford_vanille_fatale",
       name: "Vanille Fatale Tom Ford",
       brand: "Tom Ford",
-      image: "https://magicperfume.co/cdn/shop/files/vanille_fatale.png?v=1772096768",
+      image: "https://d3mcqtyhv5hy6w.cloudfront.net/perfumes/67b907132b0e14660a563a40_clipped.webp",
       top_notes: ["Safran", "Neroli", "Bergamotte"],
       heart_notes: ["Vanille", "Kaffee", "Leder"],
       base_notes: ["Amber", "Myrrhe", "Benzoin"],
