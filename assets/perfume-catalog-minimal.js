@@ -2219,24 +2219,23 @@ window.PerfumeCatalog = {
 
  // ===== DAVIDOFF =====
 davidoff: [
-  // ... (any existing Davidoff products like Cool Water) ...
   {
-    id: "davidoff_adventure",
-    name: "Adventure Davidoff",
+    id: "davidoff_cool_water",
+    name: "Cool Water Davidoff",
     brand: "Davidoff",
-    image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535",
-    top_notes: ["Mandarine", "Zitrone", "Bergamotte", "Pfeffer", "Teeblatt", "Mate"],
-    heart_notes: ["Piment", "Sesam"],
-    base_notes: ["Vetiver", "Zeder", "Weißer Moschus"],
-    description: "Ein frischer, würzig-holziger Duft für den aktiven Mann, der den Geist des Abenteuers und der Entdeckung einfängt.",
-    year: "2008",
+    image: "https://magicperfume.co/cdn/shop/files/Davidoff_Cool_Water.png?v=1770292092",
+    top_notes: ["Meerwasser", "Minze", "Lavendel", "Rosmarin", "Koriander"],
+    heart_notes: ["Geranie", "Sandelholz", "Jasmin", "Maiglöckchen"],
+    base_notes: ["Moschus", "Amber", "Zeder", "Eichenmoos"],
+    description: "Ein frischer, aquatischer und zeitloser Klassiker, der die Kraft und Reinheit des Ozeans einfängt. Eine belebende Mischung aus aromatischen Kräutern, erfrischenden Wasserakkorden und einer warmen, holzigen Basis.",
+    year: "1988",
     gender: "Male",
-    productNumbers: ["213"],
+    productNumbers: ["200"],
     shopifyProduct: {
-      title: "Riecht wie... Adventure - No. 213 (m)",
-      url: "https://magicperfume.co/products/magic-perfume-no-213m",
+      title: "Riecht wie... Cool Water - No. 200 (m)",
+      url: "https://magicperfume.co/products/magic-perfume-no-200m",
       price: "€11.99",
-      image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535"
+      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/200M_c.webp?v=1770965598"
     }
   }
 ],
