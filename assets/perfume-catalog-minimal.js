@@ -2000,6 +2000,25 @@ window.PerfumeCatalog = {
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Gucci_Envy_Me.webp?v=1772135696"
       }
+    },
+    {
+      id: "gucci_flora",
+      name: "Flora Gucci",
+      brand: "Gucci",
+      image: "https://magicperfume.co/cdn/shop/files/GUCCI_FLORA.webp?v=1771655213",
+      top_notes: ["Zitrone", "Mandarine", "Pfingstrose"],
+      heart_notes: ["Rose", "Jasmin", "Osmanthus"],
+      base_notes: ["Sandelholz", "Patschuli", "Moschus"],
+      description: "Ein frischer, blumiger und zugleich sinnlicher Duft, der die Anmut und das Geheimnis einer modernen, selbstbewussten Frau einfängt.",
+      year: "2009",
+      gender: "Female",
+      productNumbers: ["162"],
+      shopifyProduct: {
+        title: "Riecht wie... Flora - No. 162 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-162w",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/162W_c.webp?v=1771657115"
+      }
     }
   ],
 
