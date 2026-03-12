@@ -352,6 +352,25 @@ window.PerfumeCatalog = {
         price: "€11.99",
         image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/200M_c.webp?v=1770965598"
       }
+    },
+    {
+      id: "davidoff_adventure",
+      name: "Adventure Davidoff",
+      brand: "Davidoff",
+      image: "https://magicperfume.co/cdn/shop/files/Adventure.webp?v=1772140535",
+      top_notes: ["Mandarine", "Zitrone", "Bergamotte", "Pfeffer", "Teeblatt", "Mate"],
+      heart_notes: ["Piment", "Sesam"],
+      base_notes: ["Vetiver", "Zeder", "Weißer Moschus"],
+      description: "Ein frischer, würzig-holziger Duft für den aktiven Mann, der den Geist des Abenteuers und der Entdeckung einfängt.",
+      year: "2008",
+      gender: "Male",
+      productNumbers: ["213"],
+      shopifyProduct: {
+        title: "Riecht wie... Adventure - No. 213 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-213m",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/213Mc.webp?v=1772140618"
+      }
     }
   ],
 
@@ -2125,29 +2144,6 @@ window.PerfumeCatalog = {
         url: "https://magicperfume.co/products/magic-perfume-no-022w",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Hugo_Boss_Deep_Red.jpg?v=1770922424"
-      }
-    }
-  ],
-
-  // ===== DAVIDOFF =====
-  davidoff: [
-    {
-      id: "davidoff_cool_water",
-      name: "Cool Water Davidoff",
-      brand: "Davidoff",
-      image: "https://magicperfume.co/cdn/shop/files/Davidoff_Cool_Water.png?v=1770292092",
-      top_notes: ["Meerwasser", "Minze", "Lavendel", "Rosmarin"],
-      heart_notes: ["Jasmin", "Geranie", "Sandelholz"],
-      base_notes: ["Moschus", "Amber", "Zeder"],
-      description: "Ein frischer und aquatischer Duft, der die Kraft und Frische des Ozeans einfängt.",
-      year: "1988",
-      gender: "Male",
-      productNumbers: ["200"],
-      shopifyProduct: {
-        title: "Riecht wie... Cool Water - No. 200 (m)",
-        url: "https://magicperfume.co/products/magic-perfume-no-200m",
-        price: "€11.99",
-        image: "https://magicperfume.co/cdn/shop/files/Davidoff_Cool_Water.png?v=1770292092"
       }
     }
   ],
