@@ -1875,7 +1875,7 @@ window.PerfumeCatalog = {
       id: "ck_ck2",
       name: "CK2 Calvin Klein",
       brand: "Calvin Klein",
-      image: "https://magicperfume.co/cdn/shop/files/ck2.webp?v=1772142766",
+      image: "https://magicperfume.co/cdn/shop/files/CK2.webp?v=1772135823",
       top_notes: ["Bergamotte", "Zitrone", "Wacholder"],
       heart_notes: ["Jasmin", "Moosholz", "Amberoxan"],
       base_notes: ["Moschus", "Sandelholz", "Amber"],
