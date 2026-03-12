@@ -2217,29 +2217,6 @@ window.PerfumeCatalog = {
     }
   ],
 
- // ===== DAVIDOFF =====
-davidoff: [
-  {
-    id: "davidoff_cool_water",
-    name: "Cool Water Davidoff",
-    brand: "Davidoff",
-    image: "https://magicperfume.co/cdn/shop/files/Davidoff_Cool_Water.png?v=1770292092",
-    top_notes: ["Meerwasser", "Minze", "Lavendel", "Rosmarin", "Koriander"],
-    heart_notes: ["Geranie", "Sandelholz", "Jasmin", "Maiglöckchen"],
-    base_notes: ["Moschus", "Amber", "Zeder", "Eichenmoos"],
-    description: "Ein frischer, aquatischer und zeitloser Klassiker, der die Kraft und Reinheit des Ozeans einfängt. Eine belebende Mischung aus aromatischen Kräutern, erfrischenden Wasserakkorden und einer warmen, holzigen Basis.",
-    year: "1988",
-    gender: "Male",
-    productNumbers: ["200"],
-    shopifyProduct: {
-      title: "Riecht wie... Cool Water - No. 200 (m)",
-      url: "https://magicperfume.co/products/magic-perfume-no-200m",
-      price: "€11.99",
-      image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/200M_c.webp?v=1770965598"
-    }
-  }
-],
-
   // ===== DOLCE VITA =====
   dolceVita: [
     {
