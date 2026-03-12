@@ -4,6 +4,29 @@
 // UPDATED: Added missing product numbers and fixed gender mappings
 
 window.PerfumeCatalog = {
+  // ===== ARIANA GRANDE =====
+  arianaGrande: [
+    {
+      id: "ariana_grande_sweet_like_candy",
+      name: "Sweet Like Candy Ariana Grande",
+      brand: "Ariana Grande",
+      image: "https://magicperfume.co/cdn/shop/files/Sweet_Like_Candy.webp?v=1772143261",
+      top_notes: ["Himbeere", "Birne", "Bergamotte"],
+      heart_notes: ["Marshmallow", "Gardenie", "Jasmin"],
+      base_notes: ["Vanille", "Moschus", "Holzige Noten"],
+      description: "Ein verspielter, süßer und unwiderstehlicher Duft, der an eine verführerische Tüte voller Zuckerwatte erinnert.",
+      year: "2015",
+      gender: "Female",
+      productNumbers: ["405"],
+      shopifyProduct: {
+        title: "Riecht wie... Sweet Like Candy - No. 405 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-405w",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/405wc.webp?v=1772143216"
+      }
+    }
+  ],
+
   // ===== VALENTINO =====
   valentino: [
     {
@@ -480,6 +503,25 @@ window.PerfumeCatalog = {
         url: "https://magicperfume.co/products/magic-perfume-no-399m",
         price: "€11.99",
         image: "https://magicperfume.co/cdn/shop/files/Paco_Rabanne_Phantom.png?v=1770580078"
+      }
+    },
+    {
+      id: "paco_ultraviolet",
+      name: "Ultraviolet Paco Rabanne",
+      brand: "Paco Rabanne",
+      image: "https://magicperfume.co/cdn/shop/files/Ultraviolet.webp?v=1772141928",
+      top_notes: ["Minze", "Zitrone", "Mandarine"],
+      heart_notes: ["Amber", "Vanille", "Kurkuma"],
+      base_notes: ["Ebenholz", "Moschus", "Patschuli"],
+      description: "Ein futuristischer und rätselhafter Duft, der süße, würzige und holzige Noten zu einer einzigartigen Signatur vereint.",
+      year: "1995",
+      gender: "Male",
+      productNumbers: ["480"],
+      shopifyProduct: {
+        title: "Riecht wie... Ultraviolet - No. 480 (m)",
+        url: "https://magicperfume.co/products/magic-perfume-no-480w",
+        price: "€11.99",
+        image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/480wc.webp?v=1772142031"
       }
     }
   ],
@@ -2019,6 +2061,25 @@ window.PerfumeCatalog = {
         price: "€11.99",
         image: "https://cdn.shopify.com/s/files/1/0700/7928/3458/files/162W_c.webp?v=1771657115"
       }
+    },
+    {
+      id: "gucci_bloom",
+      name: "Bloom Gucci",
+      brand: "Gucci",
+      image: "https://magicperfume.co/cdn/shop/files/Bloom.webp?v=1772139665",
+      top_notes: ["Jasmin", "Orangenblüte"],
+      heart_notes: ["Rangoon Creeper", "Tuberose"],
+      base_notes: ["Sandelholz", "Moschus", "Patschuli"],
+      description: "Ein üppiger, strahlender und authentischer Blumenduft, der die Lebendigkeit eines blühenden Gartens einfängt.",
+      year: "2017",
+      gender: "Female",
+      productNumbers: ["051"],
+      shopifyProduct: {
+        title: "Riecht wie... Bloom - No. 051 (w)",
+        url: "https://magicperfume.co/products/magic-perfume-no-051w",
+        price: "€11.99",
+        image: "https://magicperfume.co/cdn/shop/files/Bloom.webp?v=1772139665"
+      }
     }
   ],
 
@@ -2343,7 +2404,7 @@ davidoff: [
         title: "Riecht wie... Rose Tangerine - No. 097 (w)",
         url: "https://magicperfume.co/products/magic-perfume-no-097w",
         price: "€11.99",
-        image: "https://magicperfume.co/cdn/shop/files/Chloe.png?v=1770221143"
+        image: "https://magicperfume.co/cdn/shop/files/097w_c.webp?v=1772108290&width=1200"
       }
     }
   ],
