@@ -841,6 +841,11 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "floating_atc_FiLij8": {
+      "type": "floating-atc",
+      "name": "Floating ATC",
+      "settings": {}
     }
   },
   "order": [
@@ -851,6 +856,7 @@
     "image_and_text_EFE4gB",
     "popular_products_BptEUV",
     "massive_review_xQhDkP",
-    "1770288371f70b6dc1"
+    "1770288371f70b6dc1",
+    "floating_atc_FiLij8"
   ]
 }
