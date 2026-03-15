@@ -78,7 +78,7 @@
       <div class="grid__item product__media-wrapper">
         <div class="product__media-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}">
         <div class="flex">
-          <div class="md:w-[calc(100%-144px)]">
+          <div class="md:w-[calc(100%-144px)] overflow-hidden">
             {% render 'product-media-gallery', variant_images: variant_images %}
           </div>
           <div class="w-28 lg:w-36 pl-2 [display:none] md:grid grid-rows-3 gap-2">
