@@ -844,7 +844,6 @@
     },
     "floating_atc_FiLij8": {
       "type": "floating-atc",
-      "disabled": true,
       "name": "Floating ATC",
       "settings": {}
     }
