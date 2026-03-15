@@ -42,15 +42,15 @@
   {% endif %}</div>
 
 {% comment %} <div>
-    <div class="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-white font-semibold">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
-        alt="🇪🇺"
-        height="20"
-        width="20"
-        class="object-cover size-5 rounded-full">
-      <span>Hergestellt in der EU</span>
-    </div>
+      <div class="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-white font-semibold">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
+          alt="🇪🇺"
+          height="20"
+          width="20"
+          class="object-cover size-5 rounded-full">
+        <span>Hergestellt in der EU</span>
+      </div>
 </div> {% endcomment %}
 
 {% assign selling_points = product.metafields.custom.bullets.value %}
@@ -204,6 +204,15 @@
       }
 
       currentPriceSpan.innerHTML = variantData.originalPrice;
+
+      // Update all other current-price elements in the page
+      const allCurrentPriceElements = document.querySelectorAll('.current-price');
+      allCurrentPriceElements.forEach(element => {
+        // Skip the main price container element that we already updated
+        if (element !== currentPriceSpan && element.textContent.trim() !== '') {
+          element.innerHTML = variantData.originalPrice;
+        }
+      });
     }
 
     // Add click event listeners to variant buttons
