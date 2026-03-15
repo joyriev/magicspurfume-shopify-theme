@@ -517,6 +517,10 @@
     max-width: 60px
 }
 
+.max-w-screen-md {
+    max-width: 768px
+}
+
 .flex-1 {
     flex: 1 1 0%
 }
@@ -1222,6 +1226,14 @@
     padding-top: 32px
 }
 
+.pb-\[95px\] {
+    padding-bottom: 95px
+}
+
+.pt-4 {
+    padding-top: 16px
+}
+
 .text-left {
     text-align: left
 }
@@ -1878,6 +1890,10 @@
     .md\:py-20 {
         padding-top: 80px;
         padding-bottom: 80px
+    }
+
+    .md\:pb-4 {
+        padding-bottom: 16px
     }
 
     .md\:text-left {
