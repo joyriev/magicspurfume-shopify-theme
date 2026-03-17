@@ -76,6 +76,19 @@
         "padding_bottom": 16
       }
     },
+    "offer_timebar_8kAUGX": {
+      "type": "offer-timebar",
+      "disabled": true,
+      "name": "Offer Timebar",
+      "settings": {
+        "background_color": "#15803d",
+        "forground_color": "#15803d",
+        "prepend_text": "St. Patrick's Day-Aktion",
+        "ends_in_minutes": 300,
+        "append_text": "3 kaufen – 1 gratis",
+        "link": ""
+      }
+    },
     "header": {
       "type": "header",
       "settings": {
@@ -99,6 +112,7 @@
   "order": [
     "offer_annoucement_4tnBfB",
     "blocky_lys_scrolling_text_bar_GLkKNr",
+    "offer_timebar_8kAUGX",
     "header"
   ]
 }
