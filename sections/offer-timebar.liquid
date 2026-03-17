@@ -1,0 +1,235 @@
+<link rel="stylesheet" href="https://pbutcher.uk/flipdown/css/flipdown/flipdown.css">
+<script defer src="https://pbutcher.uk/flipdown/js/flipdown/flipdown.js"></script>
+
+<style>
+  /* FlipDown Custom Styles */
+  .flipdown {
+    width: 140px;
+    height: 42px;
+  }
+
+  .flipdown div:empty {
+    display: block;
+  }
+
+  .flipdown .rotor {
+    font-size: 1.32rem;
+    margin-right: 1.8px;
+  }
+
+  .flipdown .rotor,
+  .flipdown .rotor-leaf,
+  .flipdown .rotor-leaf-front,
+  .flipdown .rotor-leaf-rear,
+  .flipdown .rotor-top,
+  .flipdown .rotor-bottom,
+  .flipdown .rotor:after {
+    width: 18px;
+  }
+
+  .flipdown .rotor-group {
+    padding-right: 12px;
+  }
+
+  .flipdown .rotor-group:first-child {
+    display: none;
+  }
+
+  .flipdown .rotor-group:last-child {
+    padding-right: 0;
+  }
+
+  .flipdown .rotor-group-heading:before {
+    font-size: 0.48rem;
+    height: 12px;
+    line-height: 12px;
+  }
+
+  .flipdown .rotor-group:nth-child(n + 2):nth-child(-n + 3):before,
+  .flipdown .rotor-group:nth-child(n + 2):nth-child(-n + 3):after {
+    left: 41px;
+  }
+
+  .flipdown .rotor-group:nth-child(n + 2):nth-child(-n + 3):before {
+    bottom: 7.8px;
+    height: 4.8px;
+    width: 4.8px;
+  }
+
+  .flipdown .rotor-group:nth-child(n + 2):nth-child(-n + 3):after {
+    bottom: 17.4px;
+    height: 4.8px;
+    width: 4.8px;
+  }
+
+  .flipdown .rotor-leaf-front,
+  .flipdown .rotor-top {
+    line-height: 30px;
+  }
+
+  .flipdown .rotor-leaf,
+  .flipdown .rotor {
+    height: 30px;
+  }
+
+  .flipdown .rotor-leaf-front,
+  .flipdown .rotor-leaf-rear,
+  .flipdown .rotor-top,
+  .flipdown .rotor-bottom,
+  .flipdown .rotor:after {
+    height: 15px;
+  }
+
+  .flipdown.flipdown__theme-dark .rotor-group-heading:before {
+    color: #fff;
+    font-size: 8px;
+    font-weight: 400;
+  }
+
+  /* Timebar Section Styles */
+  .timebar-section-bg {
+    display: block;
+    text-decoration: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #f87171;
+    background-repeat: repeat;
+  }
+
+  .timebar-container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .timebar-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .timebar-sale-text {
+    color: white;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  @media (min-width: 768px) {
+    .timebar-row {
+      gap: 16px;
+    }
+  }
+
+  /* Coupon Button Styles */
+  .timebar-code-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 2px solid white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    transition: 0.2s ease;
+    user-select: none;
+  }
+
+  .timebar-code-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  #copyCodeText {
+    font-weight: 600;
+  }
+</style>
+
+<div class="py-4" style="background-color: {{ section.settings.background_color }};">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-center">
+      {% if section.settings.link != blank %}
+        <a href="{{ section.settings.link }}" class="text-white font-medium no-underline flex items-center text-nowrap text-base md:text-lg">
+          <span>
+            {{ section.settings.prepend_text }}
+          </span>
+          <div id="flipdown" class="flipdown"></div>
+          <span>
+            {{ section.settings.append_text }}
+          </span>
+        </a>
+      {% else %}
+        <div class="text-white font-medium flex items-center text-nowrap text-base md:text-lg">
+          <span>
+            {{ section.settings.prepend_text }}
+          </span>
+          <div id="flipdown" class="flipdown"></div>
+          <span>
+            {{ section.settings.append_text }}
+          </span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // FlipDown Countdown - 24 hours
+        var twentyFourHoursFromNow = (new Date().getTime() / 1000) + (3600 * 8) + (60 * 23) + 1;
+        var flipdown = new FlipDown(twentyFourHoursFromNow)
+          .start()
+          .ifEnded(() => {
+            console.log('The countdown has ended!');
+          });
+      });
+</script>
+
+{% schema %}
+  {
+    "name": "Offer Timebar",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#15803d"
+      },
+      {
+        "type": "color",
+        "id": "forground_color",
+        "label": "Forground Color",
+        "default": "#15803d"
+      },
+      {
+        "type": "text",
+        "id": "prepend_text",
+        "label": "Prepend Text",
+        "default": "Exclusive Offer"
+      },
+      {
+        "type": "number",
+        "id": "ends_in_minutes",
+        "label": "Ends in (in minutes)",
+        "default": 30
+      }, {
+        "type": "text",
+        "id": "append_text",
+        "label": "Append Text",
+        "default": "Shop Now 👉"
+      }, {
+        "type": "url",
+        "id": "link",
+        "label": "Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Offer Timebar"
+      }
+    ]
+  }
+{% endschema %}
