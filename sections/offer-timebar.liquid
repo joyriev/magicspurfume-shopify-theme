@@ -148,11 +148,11 @@
   }
 </style>
 
-<div class="py-4" style="background-color: {{ section.settings.background_color }};">
+<div class="py-2" style="background-color: {{ section.settings.background_color }};">
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-center">
       {% if section.settings.link != blank %}
-        <a href="{{ section.settings.link }}" class="text-white font-medium no-underline flex items-center text-nowrap text-base md:text-lg">
+        <a href="{{ section.settings.link }}" class="text-white font-medium no-underline flex flex-wrap gap-x-3 justify-center items-center text-nowrap text-base md:text-lg">
           <span>
             {{ section.settings.prepend_text }}
           </span>
@@ -162,7 +162,7 @@
           </span>
         </a>
       {% else %}
-        <div class="text-white font-medium flex items-center text-nowrap text-base md:text-lg">
+        <div class="text-white font-medium flex flex-wrap gap-x-3 justify-center items-center text-nowrap text-base md:text-lg">
           <span>
             {{ section.settings.prepend_text }}
           </span>

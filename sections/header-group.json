@@ -14,6 +14,7 @@
     "offer_annoucement_4tnBfB": {
       "type": "offer-annoucement",
       "name": "Offer Announcement",
+      "disabled": true,
       "settings": {
         "background_color": "#000000",
         "background_color_2": "#e32402",
@@ -78,7 +79,7 @@
     },
     "offer_timebar_8kAUGX": {
       "type": "offer-timebar",
-      "disabled": true,
+      "disabled": false,
       "name": "Offer Timebar",
       "settings": {
         "background_color": "#15803d",
