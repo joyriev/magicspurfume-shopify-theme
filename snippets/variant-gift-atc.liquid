@@ -1,0 +1,59 @@
+{% comment %} Add to cart form {% endcomment %}
+<product-form
+  class="product-form !m-0"
+  data-hide-errors="{{ gift_card_recipient_feature_active }}"
+  data-section-id="{{ section.id }}">
+  {%- form 'product'
+    , product
+    , id: product_form_id
+    , class: 'form'
+    , novalidate: 'novalidate'
+    , data-type: 'add-to-cart-form'
+  -%}
+    <input
+      type="hidden"
+      name="id"
+      id="product-variant-id"
+      value="{{ selected_variant.id }}"
+      class="product-variant-id">
+    <button
+      type="submit"
+      name="add"
+      value="1"
+      class="atc-button cta_product_from_submit_btn flex flex-wrap items-center !mb-0 text-2xl !pb-3 !pt-3 rounded-lg button bg-black transition-colors shadow-xl tracking-normal button--full-width button--primary"
+      aria-label="Add to cart"
+      {% if product.metafields.custom.choose_your_fragrances_options != blank %}
+      disabled="disabled"
+      {% endif %}>
+      <span>In den Warenkorb</span>
+      <div class="ml-2 pl-2 border-0 border-l flex items-center border-solid border-gray-200/20">
+        <div
+          class="inline-block text-lg bg-gray-800 px-3 rounded"
+          id="product-price"
+          role="status"
+          {{ block.shopify_attributes }}>
+          {% if selected_variant.compare_at_price > selected_variant.price %}
+            <span class="compare-price line-through text-white/50 text-base">{{ selected_variant.compare_at_price | money }}</span>
+          {% endif %}
+          <span class="current-price">{{ selected_variant.price | money }}</span>
+        </div>
+      </div>
+      {%- render 'loading-spinner' -%}
+    </button>
+  {%- endform -%}
+</product-form>
+
+<div class="my-6">
+  <div class="flex items-center gap-3 text-base">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0623/0691/0402/files/thimbs_up.png?v=1751372431"
+      alt="Thumbs up badge"
+      class="w-10 h-10 flex-shrink-0"
+      width="40"
+      height="40" />
+    <div class="text-slate-900">
+      <strong class="font-semibold">Teste es 60 Tage lang – völlig risikofrei.</strong>
+      <div class="[display:none] md:block">Sollten Sie nicht absolut begeistert sein, erstatten wir Ihnen den vollen Betrag zurück!</div>
+    </div>
+  </div>
+</div>
