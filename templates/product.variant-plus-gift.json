@@ -55,9 +55,11 @@
             "moonbundle_selected_product": "{{product}}"
           }
         },
-        "reactive_atc_LBDQE9": {
-          "type": "reactive_atc",
-          "settings": {}
+        "custom_liquid_WV9cjd": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'variant-gift-atc' %}"
+          }
         },
         "payment_badges_FkCwVc": {
           "type": "payment_badges",
@@ -206,7 +208,7 @@
         "buy_buttons_eXWBwX",
         "custom_liquid_QcxgR4",
         "moon_bundles_app_block_tHVyDR",
-        "reactive_atc_LBDQE9",
+        "custom_liquid_WV9cjd",
         "payment_badges_FkCwVc",
         "delivery_deadline_CQHJwz",
         "quantity_selector_WT7P8d",
