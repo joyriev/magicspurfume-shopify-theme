@@ -43,6 +43,12 @@
             "show_gift_card_recipient": true
           }
         },
+        "custom_liquid_QcxgR4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'pre-variant-gift' %}"
+          }
+        },
         "moon_bundles_app_block_tHVyDR": {
           "type": "shopify://apps/moon-bundles/blocks/app-block/aaf4cd95-8b9b-4a14-b929-0f7fc8fced27",
           "settings": {
@@ -52,13 +58,6 @@
         "reactive_atc_LBDQE9": {
           "type": "reactive_atc",
           "settings": {}
-        },
-        "custom_liquid_QcxgR4": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<img \nstyle=\"width: 100%;\" \nsrc=\"https://cdn.shopify.com/s/files/1/0086/7932/5753/files/Zrzut-ekranu-2025-03-19-095755-1024x294.png?v=1770100462\" alt=\"Benefits\">"
-          }
         },
         "payment_badges_FkCwVc": {
           "type": "payment_badges",
@@ -205,9 +204,9 @@
         "price_MG94AW",
         "variant_picker_hH3Diz",
         "buy_buttons_eXWBwX",
+        "custom_liquid_QcxgR4",
         "moon_bundles_app_block_tHVyDR",
         "reactive_atc_LBDQE9",
-        "custom_liquid_QcxgR4",
         "payment_badges_FkCwVc",
         "delivery_deadline_CQHJwz",
         "quantity_selector_WT7P8d",
