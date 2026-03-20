@@ -13,8 +13,8 @@
   "sections": {
     "offer_annoucement_4tnBfB": {
       "type": "offer-annoucement",
-      "name": "Offer Announcement",
       "disabled": true,
+      "name": "Offer Announcement",
       "settings": {
         "background_color": "#000000",
         "background_color_2": "#e32402",
@@ -79,12 +79,11 @@
     },
     "offer_timebar_8kAUGX": {
       "type": "offer-timebar",
-      "disabled": false,
       "name": "Offer Timebar",
       "settings": {
         "background_color": "#15803d",
         "forground_color": "#15803d",
-        "prepend_text": "St. Patrick's Day-Aktion",
+        "prepend_text": "Zahltagsverkauf",
         "ends_in_minutes": 300,
         "append_text": "3 kaufen – 1 gratis",
         "link": ""
