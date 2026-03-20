@@ -203,7 +203,7 @@
       },
       "7054877461618660028": {
         "type": "shopify://apps/moon-bundles/blocks/app-embed/aaf4cd95-8b9b-4a14-b929-0f7fc8fced27",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     },
