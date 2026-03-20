@@ -45,7 +45,6 @@
         },
         "reactive_atc_LBDQE9": {
           "type": "reactive_atc",
-          "disabled": true,
           "settings": {}
         },
         "custom_liquid_QcxgR4": {
@@ -106,18 +105,21 @@
         },
         "custom_liquid_3PYMcC": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "{% render 'pre-variant-gift' %}"
           }
         },
         "moon_bundles_app_block_tHVyDR": {
           "type": "shopify://apps/moon-bundles/blocks/app-block/aaf4cd95-8b9b-4a14-b929-0f7fc8fced27",
+          "disabled": true,
           "settings": {
             "moonbundle_selected_product": "{{product}}"
           }
         },
         "custom_liquid_aeXkRF": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "{% render 'variant-gift-atc' %}"
           }
