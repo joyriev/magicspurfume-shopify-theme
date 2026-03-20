@@ -43,6 +43,13 @@
             "show_gift_card_recipient": true
           }
         },
+        "moon_bundles_app_block_tHVyDR": {
+          "type": "shopify://apps/moon-bundles/blocks/app-block/aaf4cd95-8b9b-4a14-b929-0f7fc8fced27",
+          "disabled": true,
+          "settings": {
+            "moonbundle_selected_product": "{{product}}"
+          }
+        },
         "reactive_atc_LBDQE9": {
           "type": "reactive_atc",
           "settings": {}
@@ -101,12 +108,6 @@
             "heading_3": "",
             "icon_4": "truck",
             "heading_4": ""
-          }
-        },
-        "moon_bundles_app_block_tHVyDR": {
-          "type": "shopify://apps/moon-bundles/blocks/app-block/aaf4cd95-8b9b-4a14-b929-0f7fc8fced27",
-          "settings": {
-            "moonbundle_selected_product": "{{product}}"
           }
         },
         "collapsible_tab_FAAFhb": {
@@ -205,13 +206,13 @@
         "price_MG94AW",
         "variant_picker_hH3Diz",
         "buy_buttons_eXWBwX",
+        "moon_bundles_app_block_tHVyDR",
         "reactive_atc_LBDQE9",
         "custom_liquid_QcxgR4",
         "payment_badges_FkCwVc",
         "delivery_deadline_CQHJwz",
         "quantity_selector_WT7P8d",
         "icon_with_text_ytpGUH",
-        "moon_bundles_app_block_tHVyDR",
         "collapsible_tab_FAAFhb",
         "collapsible_tab_bKn87j",
         "collapsible_tab_T6Fk9z",
