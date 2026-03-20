@@ -113,10 +113,6 @@
     top: 12px
 }
 
-.\!top-1\/2 {
-    top: 50% !important
-}
-
 .isolate {
     isolation: isolate
 }
@@ -148,6 +144,11 @@
 .\!my-0 {
     margin-top: 0px !important;
     margin-bottom: 0px !important
+}
+
+.\!my-10 {
+    margin-top: 40px !important;
+    margin-bottom: 40px !important
 }
 
 .mx-2 {
@@ -183,21 +184,6 @@
 .my-6 {
     margin-top: 24px;
     margin-bottom: 24px
-}
-
-.my-\[4px\] {
-    margin-top: 4px;
-    margin-bottom: 4px
-}
-
-.\!my-8 {
-    margin-top: 32px !important;
-    margin-bottom: 32px !important
-}
-
-.\!my-10 {
-    margin-top: 40px !important;
-    margin-bottom: 40px !important
 }
 
 .\!mb-0 {
@@ -314,14 +300,6 @@
 
 .mt-auto {
     margin-top: auto
-}
-
-.mt-8 {
-    margin-top: 32px
-}
-
-.mt-1 {
-    margin-top: 4px
 }
 
 .line-clamp-1 {
@@ -551,6 +529,10 @@
     max-width: 250px
 }
 
+.max-w-\[500px\] {
+    max-width: 500px
+}
+
 .max-w-\[600px\] {
     max-width: 600px
 }
@@ -559,16 +541,8 @@
     max-width: 60px
 }
 
-.max-w-\[700px\] {
-    max-width: 700px
-}
-
 .max-w-full {
     max-width: 100%
-}
-
-.max-w-\[500px\] {
-    max-width: 500px
 }
 
 .flex-1 {
@@ -648,10 +622,6 @@
     grid-template-rows: repeat(3, minmax(0, 1fr))
 }
 
-.flex-row {
-    flex-direction: row
-}
-
 .flex-col {
     flex-direction: column
 }
@@ -716,6 +686,11 @@
     gap: 5px
 }
 
+.gap-x-2 {
+    -moz-column-gap: 8px;
+         column-gap: 8px
+}
+
 .gap-x-4 {
     -moz-column-gap: 16px;
          column-gap: 16px
@@ -723,11 +698,6 @@
 
 .gap-y-4 {
     row-gap: 16px
-}
-
-.gap-x-2 {
-    -moz-column-gap: 8px;
-         column-gap: 8px
 }
 
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
@@ -796,10 +766,6 @@
 
 .rounded-xl {
     border-radius: 12px
-}
-
-.rounded-\[10px\] {
-    border-radius: 10px
 }
 
 .rounded-t-lg {
@@ -940,11 +906,6 @@
     border-color: transparent
 }
 
-.border-\[\#e5e5e5\] {
-    --tw-border-opacity: 1;
-    border-color: rgb(229 229 229 / var(--tw-border-opacity, 1))
-}
-
 .bg-\[\#0F172A\] {
     --tw-bg-opacity: 1;
     background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1))
@@ -1081,11 +1042,6 @@
     background-color: rgb(255 255 255 / 0.6)
 }
 
-.bg-\[\#F8F8F8\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(248 248 248 / var(--tw-bg-opacity, 1))
-}
-
 .bg-opacity-20 {
     --tw-bg-opacity: 0.2
 }
@@ -1180,6 +1136,11 @@
     padding-right: 24px
 }
 
+.px-8 {
+    padding-left: 32px;
+    padding-right: 32px
+}
+
 .py-0\.5 {
     padding-top: 2px;
     padding-bottom: 2px
@@ -1228,11 +1189,6 @@
 .py-8 {
     padding-top: 32px;
     padding-bottom: 32px
-}
-
-.px-8 {
-    padding-left: 32px;
-    padding-right: 32px
 }
 
 .\!pb-3 {
@@ -1368,10 +1324,6 @@
 .text-xs {
     font-size: 12px;
     line-height: 16px
-}
-
-.text-\[0\.9em\] {
-    font-size: 0.9em
 }
 
 .font-\[700\] {
@@ -1601,11 +1553,6 @@
 .text-yellow-600 {
     --tw-text-opacity: 1;
     color: rgb(202 138 4 / var(--tw-text-opacity, 1))
-}
-
-.text-\[\#262626\] {
-    --tw-text-opacity: 1;
-    color: rgb(38 38 38 / var(--tw-text-opacity, 1))
 }
 
 .underline {
