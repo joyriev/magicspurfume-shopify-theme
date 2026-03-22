@@ -552,7 +552,7 @@
         "accept_sms_checkbox_label": "Schicke mir exklusive Werbeaktionen, Angebote und Deals",
         "sms": {
           "disclaimer": {
-            "description_html": "By checking the checkbox above, you agree to receive recurring automated messages from Magic Perfume DE, including cart reminders, at the phone number provided. Consent is not a condition of purchase. Reply STOP to unsubscribe. Reply HELP for help. Message frequency varies. Msg & data rates may apply. View our {{ privacy_policy_link }} and {{ terms_of_service_link }}."
+            "description_html": "Indem Sie das obenstehende Kontrollkästchen aktivieren, stimmen Sie zu, wiederkehrende automatisierte Nachrichten von Magic Perfume DE zu erhalten, einschließlich Warenkorberinnerungen, an die angegebene Telefonnummer. Die Zustimmung ist keine Bedingung für den Kauf. Antworten Sie mit STOP, um sich abzumelden. Antworten Sie mit HELP für Hilfe. Die Häufigkeit der Nachrichten kann variieren. Es können Nachrichten- und Datentarife anfallen. Lesen Sie unsere {{ privacy_policy_link }} und {{ terms_of_service_link }}."
           }
         }
       }
