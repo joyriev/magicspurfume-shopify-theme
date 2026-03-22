@@ -547,6 +547,9 @@
       "contact": {
         "phone_label": "Phone - get support and updates via text",
         "optional_phone_label": "Phone - get support and updates via text"
+      },
+      "marketing": {
+        "accept_sms_checkbox_label": "Text me exclusive promotions, offers and deals"
       }
     }
   }
