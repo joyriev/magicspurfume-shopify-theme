@@ -3909,6 +3909,68 @@ window.fcToggleSearch = function() {
   document.addEventListener('DOMContentLoaded', function() {
     combineCatalogs();
     
+    // ===== MOBILE CART & PRODUCT PAGE DETECTION =====
+    const searchPopup = document.getElementById('fcSearchPopup');
+    const stickyButton = document.getElementById('fcStickyButton');
+    
+    function isMobile() {
+      // Check ONLY user agent, NOT viewport width
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+    
+    function isCartPage() {
+      return window.location.pathname.includes('/cart') || window.location.href.includes('/cart');
+    }
+    
+    function isProductPage() {
+      return window.location.pathname.includes('/products/') || window.location.pathname.includes('/product/');
+    }
+    
+    function updateSearchButtonVisibility() {
+      if (!stickyButton) return;
+      
+      const mobile = isMobile();
+      const onCart = isCartPage();
+      const onProduct = isProductPage();
+      
+      // ONLY hide if BOTH: mobile AND (cart OR product)
+      if (mobile && (onCart || onProduct)) {
+        stickyButton.setAttribute('style', 'display: none !important;');
+        if (searchPopup && searchPopup.classList.contains('active')) {
+          searchPopup.classList.remove('active');
+        }
+      } else {
+        // ALWAYS show on desktop regardless of page
+        stickyButton.setAttribute('style', 'display: flex !important; visibility: visible !important;');
+        stickyButton.classList.remove('hidden');
+      }
+    }
+    
+    // Initial check on page load
+    updateSearchButtonVisibility();
+    
+    // Check visibility on window resize
+    window.addEventListener('resize', updateSearchButtonVisibility);
+    
+    // Check visibility when page becomes visible
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible') {
+        updateSearchButtonVisibility();
+      }
+    });
+    
+    // Detect back/forward navigation
+    window.addEventListener('popstate', updateSearchButtonVisibility);
+    
+    // Monitor for page navigation changes
+    let lastPath = window.location.pathname;
+    setInterval(function() {
+      if (window.location.pathname !== lastPath) {
+        lastPath = window.location.pathname;
+        setTimeout(updateSearchButtonVisibility, 50);
+      }
+    }, 1000);
+    
     if (searchInput) {
       searchInput.addEventListener('keyup', fcHandleSearch);
     }
