@@ -1,0 +1,239 @@
+{% comment %}
+  Renders a product media gallery with vertical thumbnails
+  Accepts:
+  - product: {Object} Product liquid object
+  - variant_images: {Array} Product images associated with a variant
+  - limit: {Number} (optional) Limits the number of media items to render
+  Usage:
+  {% render 'product-media-gallery', product: product, variant_images: variant_images %}
+{% endcomment %}
+
+{%- liquid
+  assign media_count = product.media.size
+  if limit and limit < media_count
+    assign media_count = limit
+  endif
+-%}
+
+<div class="flex flex-col md:flex-row gap-2" data-product-media-gallery>
+  {%- if media_count > 1 -%}
+    {%- comment %} Thumbnail Navigation {%- endcomment -%}
+    <div class="flex md:flex-col gap-2 w-full md:w-16 shrink-0 order-1 md:order-none">
+      {%- for media in product.media limit: limit -%}
+        <button
+          type="button"
+          class="p-0 relative aspect-square rounded overflow-hidden transition-all border-2 border-solid cursor-pointer {% if forloop.first %}border-black{% else %}border-transparent{% endif %} size-[60px]"
+          data-media-thumbnail
+          data-media-id="{{ media.id }}"
+          data-index="{{ forloop.index0 }}"
+          aria-label="View image {{ forloop.index }}">
+          {%- case media.media_type -%}
+            {%- when 'image' -%}
+              <img
+                src="{{ media.preview_image | image_url: width: 200 }}"
+                alt="{{ media.alt | escape }}"
+                loading="lazy"
+                class="w-full max-w-[60px] h-full object-cover"
+                width="100"
+                height="100">
+            {%- when 'video'
+              , 'external_video' -%}
+              <img
+                src="{{ media.preview_image | image_url: width: 200 }}"
+                alt="{{ media.alt | escape }}"
+                loading="lazy"
+                class="w-full h-full object-cover"
+                width="100"
+                height="100">
+              <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
+                <svg
+                  class="w-8 h-8 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            {%- when 'model' -%}
+              <img
+                src="{{ media.preview_image | image_url: width: 200 }}"
+                alt="{{ media.alt | escape }}"
+                loading="lazy"
+                class="w-full h-full object-cover"
+                width="100"
+                height="100">
+              <div class="absolute bottom-1 right-1 bg-white rounded px-1 py-0.5 text-xs font-medium">3D</div>
+          {%- endcase -%}
+        </button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment %} Main Media Display {%- endcomment -%}
+  <div class="flex-1 min-w-0">
+    <div class="relative bg-gray-50 rounded-lg overflow-hidden" data-main-media-container>
+      {%- for media in product.media limit: limit -%}
+        <div
+          class="media-item flex {% if forloop.first %}is-active{% endif %}"
+          data-media-item
+          data-media-id="{{ media.id }}"
+          data-media-type="{{ media.media_type }}">
+
+          {%- case media.media_type -%}
+            {%- when 'image' -%}
+              <img
+                src="{{ media | image_url: width: 1200 }}"
+                alt="{{ media.alt | escape }}"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                class="w-full h-auto aspect-square object-cover rounded-lg"
+                width="{{ media.width }}"
+                height="{{ media.height }}"
+                data-media-image>
+
+              {%- when 'video' -%}
+                <div class="relative aspect-square">
+                  {{- media | video_tag: image_size: '1200x', controls: true, class: 'w-full h-full object-contain', autoplay: false
+                  -}}
+                </div>
+
+              {%- when 'external_video' -%}
+                <div class="relative aspect-square">
+                  {%- if media.host == 'youtube' -%}
+                    {{- media | external_video_url: color: 'white' | external_video_tag: class: 'w-full h-full' -}}
+                  {%- elsif media.host == 'vimeo' -%}
+                    {{- media | external_video_url: color: 'ffffff' | external_video_tag: class: 'w-full h-full' -}}
+                  {%- endif -%}
+                </div>
+
+              {%- when 'model' -%}
+                <div class="relative aspect-square">
+                  {{- media | model_viewer_tag: image_size: '1200x', reveal: 'interaction', toggleable: true, class: 'w-full h-full'
+                  -}}
+                </div>
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+
+        {%- if media_count > 1 -%}
+          {%- comment %} Navigation Arrows {%- endcomment -%}
+          <button
+            type="button"
+            class="absolute left-4 top-1/2 [transform:translate(0,-50%)] w-10 h-10 rounded-full text-black bg-white/50 flex items-center justify-center border-0 cursor-pointer [backdrop-filter:blur(8px)] transition-all"
+            data-media-prev
+            aria-label="Previous image">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            class="absolute right-4 top-1/2 [transform:translate(0,-50%)] w-10 h-10 rounded-full text-black bg-white/50 flex items-center justify-center border-0 cursor-pointer [backdrop-filter:blur(8px)] transition-all"
+            data-media-next
+            aria-label="Next image">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    class ProductMediaGallery {
+      constructor(container) {
+        this.container = container;
+        this.thumbnails = container.querySelectorAll('[data-media-thumbnail]');
+        this.items = container.querySelectorAll('[data-media-item]');
+        this.prev = container.querySelector('[data-media-prev]');
+        this.next = container.querySelector('[data-media-next]');
+        this.counter = container.querySelector('[data-current-index]');
+        this.index = 0;
+
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        this.thumbnails.forEach((thumb, i) => {
+          thumb.addEventListener('click', () => this.show(i));
+        });
+
+        this.prev?.addEventListener('click', () => this.show(this.index - 1));
+        this.next?.addEventListener('click', () => this.show(this.index + 1));
+      }
+
+      show(newIndex) {
+        // Handle boundary conditions
+        if (newIndex < 0) newIndex = this.items.length - 1;
+        if (newIndex >= this.items.length) newIndex = 0;
+        if (newIndex === this.index) return;
+
+        // Update active media item
+        this.items[this.index].classList.remove('is-active');
+        this.items[newIndex].classList.add('is-active');
+
+        // Reset all thumbnails
+        this.thumbnails.forEach(thumb => {
+          thumb.classList.remove('border-black');
+          thumb.classList.add('border-transparent');
+        });
+
+        // Update active thumbnail
+        const activeThumb = this.thumbnails[newIndex];
+        activeThumb.classList.add('border-black');
+        activeThumb.classList.remove('border-transparent');
+
+        // Update counter if it exists
+        this.index = newIndex;
+        if (this.counter) {
+          this.counter.textContent = newIndex + 1;
+        }
+      }
+    }
+
+    // Initialize gallery when DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      const gallery = document.querySelector('[data-product-media-gallery]');
+      if (gallery) {
+        new ProductMediaGallery(gallery);
+      }
+    });
+  </script>
+
+
+  <style>
+    [data-product-media-gallery] [data-main-media-container] {
+      position: relative;
+    }
+
+    [data-product-media-gallery] .media-item {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease-in-out;
+    }
+
+    [data-product-media-gallery] .media-item.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      position: relative;
+    }
+
+  </style>
