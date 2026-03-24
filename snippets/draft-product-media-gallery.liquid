@@ -15,14 +15,14 @@
   endif
 -%}
 
-<div class="flex flex-col gap-4" data-product-media-gallery>
+<div class="flex flex-col gap-4 mb-4 md:mb-12" data-product-media-gallery>
   {%- if media_count > 1 -%}
     {%- comment %} Thumbnail Navigation {%- endcomment -%}
     <div class="flex gap-2 w-full shrink-0 order-1">
       {%- for media in product.media limit: limit -%}
         <button
           type="button"
-          class="p-0 relative aspect-square rounded overflow-hidden transition-all border-2 border-solid cursor-pointer {% if forloop.first %}border-black{% else %}border-transparent{% endif %} size-[60px]"
+          class="p-0 relative aspect-square rounded overflow-hidden transition-all border-2 border-solid cursor-pointer {% if forloop.first %}border-black{% else %}border-transparent{% endif %} size-[60px] md:size-[100px]"
           data-media-thumbnail
           data-media-id="{{ media.id }}"
           data-index="{{ forloop.index0 }}"

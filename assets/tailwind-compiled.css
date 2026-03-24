@@ -113,6 +113,14 @@
     top: 12px
 }
 
+.\!left-0 {
+    left: 0px !important
+}
+
+.\!right-0 {
+    right: 0px !important
+}
+
 .isolate {
     isolation: isolate
 }
@@ -174,6 +182,11 @@
 .my-6 {
     margin-top: 24px;
     margin-bottom: 24px
+}
+
+.my-1 {
+    margin-top: 4px;
+    margin-bottom: 4px
 }
 
 .\!mb-0 {
@@ -391,6 +404,16 @@
 .size-\[60px\] {
     width: 60px;
     height: 60px
+}
+
+.size-\[100px\] {
+    width: 100px;
+    height: 100px
+}
+
+.\!size-7 {
+    width: 28px !important;
+    height: 28px !important
 }
 
 .\!h-8 {
@@ -885,6 +908,11 @@
     border-color: transparent
 }
 
+.\!border-gray-200 {
+    --tw-border-opacity: 1 !important;
+    border-color: rgb(229 231 235 / var(--tw-border-opacity, 1)) !important
+}
+
 .bg-\[\#0F172A\] {
     --tw-bg-opacity: 1;
     background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1))
@@ -1015,6 +1043,10 @@
 
 .bg-white\/50 {
     background-color: rgb(255 255 255 / 0.5)
+}
+
+.bg-white\/60 {
+    background-color: rgb(255 255 255 / 0.6)
 }
 
 .bg-opacity-20 {
@@ -1262,6 +1294,10 @@
     font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }
 
+.font-serif {
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif
+}
+
 .text-2xl {
     font-size: 24px;
     line-height: 32px
@@ -1295,6 +1331,10 @@
 .text-xs {
     font-size: 12px;
     line-height: 16px
+}
+
+.text-\[10px\] {
+    font-size: 10px
 }
 
 .font-\[700\] {
@@ -1521,6 +1561,11 @@
     color: rgb(255 255 255 / 0.5)
 }
 
+.text-yellow-600 {
+    --tw-text-opacity: 1;
+    color: rgb(202 138 4 / var(--tw-text-opacity, 1))
+}
+
 .underline {
     text-decoration-line: underline
 }
@@ -1601,6 +1646,11 @@
 
 .filter {
     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
+}
+
+.backdrop-blur-sm {
+    --tw-backdrop-blur: blur(4px);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)
 }
 
 .transition {
@@ -1687,6 +1737,18 @@
     to {
         transform: translateX(-50%)
     }
+}
+
+.after\:\!text-xs::after {
+    content: var(--tw-content);
+    font-size: 12px !important;
+    line-height: 16px !important
+}
+
+.after\:text-black::after {
+    content: var(--tw-content);
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity, 1))
 }
 
 .hover\:scale-105:hover {
@@ -1776,6 +1838,11 @@
 
     .md\:hidden {
         display: none
+    }
+
+    .md\:size-\[100px\] {
+        width: 100px;
+        height: 100px
     }
 
     .md\:h-10 {
