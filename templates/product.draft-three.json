@@ -54,7 +54,6 @@
         },
         "custom_liquid_QcxgR4": {
           "type": "custom_liquid",
-          "disabled": true,
           "settings": {
             "custom_liquid": "{% render 'draft-three-atc' %}"
           }
