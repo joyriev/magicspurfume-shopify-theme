@@ -15,10 +15,10 @@
   endif
 -%}
 
-<div class="flex flex-col md:flex-row gap-2" data-product-media-gallery>
+<div class="flex flex-col gap-4" data-product-media-gallery>
   {%- if media_count > 1 -%}
     {%- comment %} Thumbnail Navigation {%- endcomment -%}
-    <div class="flex md:flex-col gap-2 w-full md:w-16 shrink-0 order-1 md:order-none">
+    <div class="flex gap-2 w-full shrink-0 order-1">
       {%- for media in product.media limit: limit -%}
         <button
           type="button"
@@ -33,9 +33,9 @@
                 src="{{ media.preview_image | image_url: width: 200 }}"
                 alt="{{ media.alt | escape }}"
                 loading="lazy"
-                class="w-full max-w-[60px] h-full object-cover"
-                width="100"
-                height="100">
+                class="w-full max-w-[100px] h-full object-cover"
+                width="150"
+                height="150">
             {%- when 'video'
               , 'external_video' -%}
               <img
@@ -43,8 +43,8 @@
                 alt="{{ media.alt | escape }}"
                 loading="lazy"
                 class="w-full h-full object-cover"
-                width="100"
-                height="100">
+                width="150"
+                height="150">
               <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
                 <svg
                   class="w-8 h-8 text-white"
@@ -59,8 +59,8 @@
                 alt="{{ media.alt | escape }}"
                 loading="lazy"
                 class="w-full h-full object-cover"
-                width="100"
-                height="100">
+                width="150"
+                height="150">
               <div class="absolute bottom-1 right-1 bg-white rounded px-1 py-0.5 text-xs font-medium">3D</div>
           {%- endcase -%}
         </button>

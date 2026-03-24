@@ -418,6 +418,8 @@ body {
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1" rel="stylesheet" />
-    {% include 'fragrance-search' %}
+    {% unless template.name == 'product' %}
+      {% include 'fragrance-search' %}
+    {% endunless %}
   </body>
 </html>
