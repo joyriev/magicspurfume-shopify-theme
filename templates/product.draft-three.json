@@ -43,6 +43,10 @@
             "show_gift_card_recipient": true
           }
         },
+        "similar_scents_D3Pxfa": {
+          "type": "similar_scents",
+          "settings": {}
+        },
         "reactive_atc_LBDQE9": {
           "type": "reactive_atc",
           "settings": {}
@@ -213,6 +217,7 @@
         "price_MG94AW",
         "variant_picker_hH3Diz",
         "buy_buttons_eXWBwX",
+        "similar_scents_D3Pxfa",
         "reactive_atc_LBDQE9",
         "custom_liquid_QcxgR4",
         "payment_badges_FkCwVc",
