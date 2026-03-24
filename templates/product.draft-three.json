@@ -49,13 +49,14 @@
         },
         "reactive_atc_LBDQE9": {
           "type": "reactive_atc",
+          "disabled": true,
           "settings": {}
         },
         "custom_liquid_QcxgR4": {
           "type": "custom_liquid",
           "disabled": true,
           "settings": {
-            "custom_liquid": "<img \nstyle=\"width: 100%;\" \nsrc=\"https://cdn.shopify.com/s/files/1/0086/7932/5753/files/Zrzut-ekranu-2025-03-19-095755-1024x294.png?v=1770100462\" alt=\"Benefits\">"
+            "custom_liquid": "{% render 'draft-three-atc' %}"
           }
         },
         "payment_badges_FkCwVc": {
