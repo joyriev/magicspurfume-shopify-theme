@@ -189,6 +189,26 @@
     margin-bottom: 4px
 }
 
+.my-12 {
+    margin-top: 48px;
+    margin-bottom: 48px
+}
+
+.\!my-12 {
+    margin-top: 48px !important;
+    margin-bottom: 48px !important
+}
+
+.\!my-8 {
+    margin-top: 32px !important;
+    margin-bottom: 32px !important
+}
+
+.\!my-6 {
+    margin-top: 24px !important;
+    margin-bottom: 24px !important
+}
+
 .\!mb-0 {
     margin-bottom: 0px !important
 }
@@ -299,6 +319,10 @@
 
 .mt-auto {
     margin-top: auto
+}
+
+.\!mt-8 {
+    margin-top: 32px !important
 }
 
 .line-clamp-1 {
@@ -635,6 +659,10 @@
 
 .items-start {
     align-items: flex-start
+}
+
+.items-end {
+    align-items: flex-end
 }
 
 .items-center {
@@ -1198,6 +1226,21 @@
     padding-bottom: 32px
 }
 
+.py-5 {
+    padding-top: 20px;
+    padding-bottom: 20px
+}
+
+.px-7 {
+    padding-left: 28px;
+    padding-right: 28px
+}
+
+.\!py-4 {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important
+}
+
 .\!pb-3 {
     padding-bottom: 12px !important
 }
@@ -1272,6 +1315,10 @@
 
 .pl-4 {
     padding-left: 16px
+}
+
+.pt-5 {
+    padding-top: 20px
 }
 
 .text-left {
