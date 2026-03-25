@@ -250,6 +250,19 @@
         "padding_bottom": 72
       }
     },
+    "draft_relative_products_jdV9PJ": {
+      "type": "draft-relative-products",
+      "name": "Draft Related Products",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "heading": "Ähnliche Produkte",
+        "subheading": "",
+        "collection": "best-sellers",
+        "show_all_button_text": "Alle anzeigen",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "feature_heighlights_fCUG3E": {
       "type": "feature-heighlights",
       "blocks": {
@@ -871,6 +884,7 @@
   },
   "order": [
     "main",
+    "draft_relative_products_jdV9PJ",
     "feature_heighlights_fCUG3E",
     "scent_breakdown_pqKDL9",
     "stacks_up_WR4y4d",
