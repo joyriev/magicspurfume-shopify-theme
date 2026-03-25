@@ -17,49 +17,68 @@
   class="section-{{ section.id }}-padding"
   style="background-color: {{ section.settings.background_color }}">
   <div class="page-width">
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-2xl mx-auto">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+        <h2 class="my-0 text-2xl md:text-3xl font-bold text-gray-900">
           {{ section.settings.title }}
         </h2>
-        <p class="mt-4 text-gray-600 text-lg">
-          {{ section.settings.subtitle }}
-        </p>
+
       </div>
-      <div class="grid md:grid-cols-2 gap-8 items-stretch">
-        <div class="relative bg-white rounded-2xl shadow-xl border border-gray-200 p-8 scale-100 md:scale-105">
-          <span class="absolute -top-4 left-1/2 [transform:translateX(-50%)] bg-black text-white text-sm px-4 py-1 rounded-full">
-            ⭐ Recommended
-          </span>
-          <h3 class="text-2xl font-semibold text-center mb-8 mt-4">
-            Magic Perfume
-          </h3>
-          <ul class="space-y-5 text-gray-700 p-0 m-0">
-            {% for block in section.blocks %}
-              <li class="flex items-start gap-3">
-                <span class="text-green-500 text-xl">✔</span>
-                {{ block.settings.our_stack }}
-              </li>
-            {% endfor %}
-          </ul>
-          <div class="mt-10 text-center">
-            <a href="#atc_scroll_target" class="inline-block bg-black text-white px-6 py-3 rounded-xl font-medium hover:bg-gray-800 transition no-underline scroll-smooth">
-              Shop Magic Perfume Now
-            </a>
+      <div class="">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-8">
+          <!-- Logo -->
+          <div>
+            <div class="text-2xl font-bold tracking-widest text-gray-900 leading-none">MAGIC</div>
+            <div class="text-xs tracking-[0.35em] text-gray-500 font-medium mt-0.5">PERFUME</div>
+          </div>
+          <!-- Perfume bottle -->
+          <div class="w-16 h-20 relative">
+            {% render 'icon-perfume-bottle' %}
           </div>
         </div>
-        <div class="bg-gray-100 rounded-2xl p-8 border border-gray-200">
-          <h3 class="text-2xl font-semibold text-center mb-8">
-            Expensive Luxury Brands
-          </h3>
-          <ul class="space-y-5 text-gray-600 p-0 m-0">
-            {% for block in section.blocks %}
-              <li class="flex items-start gap-3">
-                <span class="text-gray-400 text-xl">✖</span>
-                {{ block.settings.other_brands }}
-              </li>
-            {% endfor %}
-          </ul>
+
+        <!-- Comparison Rows -->
+        <div class="flex flex-col gap-2.5">
+          {% assign comparison_features = "Hohe Qualität,Lang anhaltend,Preiswert,Dermatologisch getestet,Kombinierbare Düfte,Kostenlose 30-Tage-Rückgabe,Schneller Versand,100% Vegan,Tierversuchsfrei" | split: "," %}
+          {% assign magic_statuses = "check,check,check,check,check,check,check,check,check" | split: "," %}
+          {% assign other_statuses = "check,warning,cross,check,cross,warning,warning,warning,warning" | split: "," %}
+          {% assign other_texts = " ,Je nach<br>Händler, , , ,Selten,Je nach<br>Händler,Nicht<br>immer,Nicht<br>immer" | split: "," %}
+
+          {% for feature_name in comparison_features %}
+            {% assign current_index = forloop.index0 %}
+            {% assign magic_status = magic_statuses[current_index] %}
+            {% assign other_status = other_statuses[current_index] %}
+            {% assign other_text = other_texts[current_index] %}
+
+              <div class="grid grid-cols-[44px_1fr_80px] items-center gap-x-3 bg-gray-100 rounded-full px-3 py-2">
+              <!-- Magic Perfume Status -->
+              <div class="flex items-center justify-center">
+                {% if magic_status == 'check' %}
+                  {% render 'icon-check-green' %}
+                {% endif %}
+              </div>
+
+              <!-- Feature Name -->
+              <div class="text-center text-gray-800 font-medium text-[15px] bg-white rounded-full py-1">{{ feature_name }}</div>
+
+              <!-- Other Brands Status -->
+              <div class="flex items-center justify-center">
+                {% if other_status == 'check' %}
+                  {% render 'icon-check-green' %}
+                {% elsif other_status == 'cross' %}
+                  {% render 'icon-check-red' %}
+                {% elsif other_status == 'warning' %}
+                  <div class="flex items-center justify-center gap-1">
+                    {% render 'icon-warning' %}
+                    <span class="text-xs text-gray-600 font-medium leading-tight text-center">{{ other_text }}</span>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+
         </div>
       </div>
     </div>
@@ -91,6 +110,14 @@
       },
       {
         "type": "header",
+        "content": "Comparison Items"
+      }, {
+        "type": "textarea",
+        "id": "comparison_items",
+        "label": "Comparison Items (JSON format)",
+        "default": "[{\"feature_name\":\"Hohe Qualität\",\"magic_status\":\"check\",\"other_status\":\"check\"},{\"feature_name\":\"Lang anhaltend\",\"magic_status\":\"check\",\"other_status\":\"warning\",\"other_text\":\"Je nach<br>Händler\"},{\"feature_name\":\"Preiswert\",\"magic_status\":\"check\",\"other_status\":\"cross\"},{\"feature_name\":\"Dermatologisch getestet\",\"magic_status\":\"check\",\"other_status\":\"check\"},{\"feature_name\":\"Kombinierbare Düfte\",\"magic_status\":\"check\",\"other_status\":\"cross\"},{\"feature_name\":\"Kostenlose 30-Tage-Rückgabe\",\"magic_status\":\"check\",\"other_status\":\"warning\",\"other_text\":\"Selten\"},{\"feature_name\":\"Schneller Versand\",\"magic_status\":\"check\",\"other_status\":\"warning\",\"other_text\":\"Je nach<br>Händler\"},{\"feature_name\":\"100% Vegan\",\"magic_status\":\"check\",\"other_status\":\"warning\",\"other_text\":\"Nicht<br>immer\"},{\"feature_name\":\"Tierversuchsfrei\",\"magic_status\":\"check\",\"other_status\":\"warning\",\"other_text\":\"Nicht<br>immer\"}]"
+      }, {
+        "type": "header",
         "content": "t:sections.all.padding.section_padding_heading"
       }, {
         "type": "range",
@@ -110,23 +137,6 @@
         "unit": "px",
         "label": "t:sections.all.padding.padding_bottom",
         "default": 36
-      }
-    ],
-    "blocks": [
-      {
-        "type": "stack",
-        "name": "Stack",
-        "settings": [
-          {
-            "type": "text",
-            "id": "our_stack",
-            "label": "Our Stack"
-          }, {
-            "type": "text",
-            "id": "other_brands",
-            "label": "Other Brands"
-          }
-        ]
       }
     ],
     "presets": [
