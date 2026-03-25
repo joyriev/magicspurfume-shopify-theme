@@ -806,6 +806,7 @@
       "settings": {
         "caption": "FAQs",
         "heading": "Haben Sie eine Frage? Wir haben die Antwort.",
+        "subheading": "<p>Hier sind einige der häufigsten Fragen, die wir täglich erhalten. Auf unserer vollständigen FAQ-Seite finden Sie weitere Informationen. Sie können uns auch über unseren Chat oder über unsere Kontaktseite erreichen.</p>",
         "heading_size": "h2",
         "heading_alignment": "center",
         "layout": "none",
