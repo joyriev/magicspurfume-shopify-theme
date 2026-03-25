@@ -331,6 +331,11 @@ body {
         onload="this.media='all'">
     {%- endif -%}
 
+    {% if template.name == 'product' %}
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+      <script defer="" src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    {% endif %}
+
     {{ 'tailwind-compiled.css' | asset_url | stylesheet_tag }}
     {{ 'blocky.css' | asset_url | stylesheet_tag }}
 

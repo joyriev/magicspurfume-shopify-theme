@@ -894,8 +894,6 @@
                   {% render 'reactive-atc' %}
                 {% when 'similar_scents' %}
                   {% if product.metafields.custom.similar_scents != blank %}
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-                    <script defer="" src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
                     <p class="text-base font-serif leading-tight">Parfums mit ähnlichen Duftnoten:</p>
                     {% assign similar_scents = product.metafields.custom.similar_scents.value %}
                     <div class="swiper slider-{{ section.id }}-{{ forloop.index }}">

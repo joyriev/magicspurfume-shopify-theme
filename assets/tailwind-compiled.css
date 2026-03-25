@@ -577,6 +577,10 @@
     max-width: 100px
 }
 
+.max-w-full {
+    max-width: 100%
+}
+
 .flex-1 {
     flex: 1 1 0%
 }
@@ -1709,6 +1713,11 @@
 
 .outline {
     outline-style: solid
+}
+
+.blur {
+    --tw-blur: blur(8px);
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .drop-shadow {
