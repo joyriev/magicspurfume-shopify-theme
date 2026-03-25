@@ -766,6 +766,17 @@
         "padding_bottom": 72
       }
     },
+    "draft_comparison_AgPVTz": {
+      "type": "draft-comparison",
+      "name": "Draft Comparison",
+      "settings": {
+        "background_color": "#ffffff",
+        "title": "Magic Perfume im Vergleich zu anderen Marken",
+        "subtitle": "",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
     "collapsible_content_4fTNQQ": {
       "type": "collapsible-content",
       "blocks": {
@@ -830,24 +841,13 @@
         "heading_size": "h2",
         "heading_alignment": "center",
         "layout": "none",
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "container_color_scheme": "",
         "open_first_collapsible_row": false,
         "image_ratio": "adapt",
         "desktop_layout": "image_second",
         "padding_top": 72,
         "padding_bottom": 72
-      }
-    },
-    "draft_comparison_AgPVTz": {
-      "type": "draft-comparison",
-      "name": "Draft Comparison",
-      "settings": {
-        "background_color": "#fcfbf9",
-        "title": "Magic Perfume im Vergleich zu anderen Marken",
-        "subtitle": "",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "1770288371f70b6dc1": {
@@ -869,8 +869,8 @@
     "image_and_text_EFE4gB",
     "popular_products_BptEUV",
     "massive_review_xQhDkP",
-    "collapsible_content_4fTNQQ",
     "draft_comparison_AgPVTz",
+    "collapsible_content_4fTNQQ",
     "1770288371f70b6dc1",
     "floating_atc_FiLij8"
   ]
