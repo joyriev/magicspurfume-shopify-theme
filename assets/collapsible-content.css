@@ -60,12 +60,6 @@
   margin-top: 0;
 }
 
-@media screen and (min-width: 750px) {
-  .collapsible-content__heading {
-    margin-bottom: 3rem;
-  }
-}
-
 .collapsible-none-layout .accordion + .accordion {
   border-top: 0;
 }
