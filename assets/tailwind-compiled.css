@@ -121,6 +121,42 @@
     right: 0px !important
 }
 
+.\!bottom-0 {
+    bottom: 0px !important
+}
+
+.\!top-1\/2 {
+    top: 50% !important
+}
+
+.\!right-12 {
+    right: 48px !important
+}
+
+.\!top-0 {
+    top: 0px !important
+}
+
+.\!top-6 {
+    top: 24px !important
+}
+
+.\!left-\[unset\] {
+    left: unset !important
+}
+
+.\!right-1 {
+    right: 4px !important
+}
+
+.\!right-16 {
+    right: 64px !important
+}
+
+.\!right-4 {
+    right: 16px !important
+}
+
 .isolate {
     isolation: isolate
 }
@@ -325,6 +361,14 @@
     margin-top: 32px !important
 }
 
+.-mt-20 {
+    margin-top: -80px
+}
+
+.-mt-16 {
+    margin-top: -64px
+}
+
 .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
@@ -364,6 +408,10 @@
 
 .flex {
     display: flex
+}
+
+.\!flex {
+    display: flex !important
 }
 
 .inline-flex {
@@ -489,6 +537,10 @@
     height: 100%
 }
 
+.\!h-10 {
+    height: 40px !important
+}
+
 .min-h-\[200px\] {
     min-height: 200px
 }
@@ -541,6 +593,10 @@
     width: 100%
 }
 
+.\!w-10 {
+    width: 40px !important
+}
+
 .min-w-0 {
     min-width: 0px
 }
@@ -581,6 +637,10 @@
     max-width: 100%
 }
 
+.max-w-\[320px\] {
+    max-width: 320px
+}
+
 .flex-1 {
     flex: 1 1 0%
 }
@@ -608,6 +668,11 @@
 .-translate-y-1\/2 {
     --tw-translate-y: -50%;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.\!-translate-y-1\/2 {
+    --tw-translate-y: -50% !important;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important
 }
 
 .scale-100 {
@@ -639,6 +704,10 @@
 
 .cursor-pointer {
     cursor: pointer
+}
+
+.cursor-none {
+    cursor: none
 }
 
 .resize {
@@ -689,6 +758,10 @@
     align-items: center
 }
 
+.\!items-center {
+    align-items: center !important
+}
+
 .items-stretch {
     align-items: stretch
 }
@@ -699,6 +772,10 @@
 
 .justify-center {
     justify-content: center
+}
+
+.\!justify-center {
+    justify-content: center !important
 }
 
 .justify-between {
@@ -773,6 +850,10 @@
     overflow: hidden
 }
 
+.overflow-y-visible {
+    overflow-y: visible
+}
+
 .scroll-smooth {
     scroll-behavior: smooth
 }
@@ -819,6 +900,10 @@
     border-radius: 12px
 }
 
+.\!rounded-full {
+    border-radius: 9999px !important
+}
+
 .rounded-t-lg {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px
@@ -834,6 +919,10 @@
 
 .border-2 {
     border-width: 2px
+}
+
+.\!border {
+    border-width: 1px !important
 }
 
 .border-b {
@@ -1102,6 +1191,10 @@
     background-color: rgb(22 163 74 / var(--tw-bg-opacity, 1))
 }
 
+.\!bg-white\/90 {
+    background-color: rgb(255 255 255 / 0.9) !important
+}
+
 .bg-opacity-20 {
     --tw-bg-opacity: 0.2
 }
@@ -1266,6 +1359,11 @@
     padding-bottom: 16px !important
 }
 
+.px-0 {
+    padding-left: 0px;
+    padding-right: 0px
+}
+
 .\!pb-3 {
     padding-bottom: 12px !important
 }
@@ -1344,6 +1442,22 @@
 
 .pt-5 {
     padding-top: 20px
+}
+
+.pt-20 {
+    padding-top: 80px
+}
+
+.pt-16 {
+    padding-top: 64px
+}
+
+.pl-\[1\.5rem\] {
+    padding-left: 24px
+}
+
+.pb-10 {
+    padding-bottom: 40px
 }
 
 .text-left {
@@ -1706,6 +1820,12 @@
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
 }
 
+.\!shadow-lg {
+    --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+    --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color) !important;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important
+}
+
 .shadow-green-500\/50 {
     --tw-shadow-color: rgb(34 197 94 / 0.5);
     --tw-shadow: var(--tw-shadow-colored)
@@ -1879,6 +1999,14 @@
 
 @media (min-width: 768px) {
 
+    .md\:\!right-0 {
+        right: 0px !important
+    }
+
+    .md\:\!right-12 {
+        right: 48px !important
+    }
+
     .md\:-order-1 {
         order: -1
     }
@@ -1901,6 +2029,14 @@
 
     .md\:mt-12 {
         margin-top: 48px
+    }
+
+    .md\:-mt-20 {
+        margin-top: -80px
+    }
+
+    .md\:mb-10 {
+        margin-bottom: 40px
     }
 
     .md\:line-clamp-1 {
@@ -2044,8 +2180,26 @@
         padding-bottom: 80px
     }
 
+    .md\:px-\[5rem\] {
+        padding-left: 80px;
+        padding-right: 80px
+    }
+
+    .md\:px-\[52\.5px\] {
+        padding-left: 52.5px;
+        padding-right: 52.5px
+    }
+
     .md\:pb-4 {
         padding-bottom: 16px
+    }
+
+    .md\:pt-20 {
+        padding-top: 80px
+    }
+
+    .md\:pl-0 {
+        padding-left: 0px
     }
 
     .md\:text-left {
