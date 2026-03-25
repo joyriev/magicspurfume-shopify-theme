@@ -32,6 +32,9 @@
           {%- else -%}
             <h2 class="visually-hidden">{{ 'accessibility.collapsible_content_title' | t }}</h2>
           {% endif %}
+          {% if section.settings.subheading != blank %}
+            <p>{{ section.settings.subheading }}</p>
+          {% endif %}
         </div>
         <div class="grid_layout grid--1-col grid--2-col-tablet collapsible-content__grid{% if section.settings.desktop_layout == 'image_second' %} collapsible-content__grid--reverse{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           {%- if section.settings.image != blank -%}
@@ -115,6 +118,11 @@
         "default": "t:sections.collapsible_content.settings.heading.default"
       },
       {
+        "type": "richtext",
+        "id": "subheading",
+        "label": "Subheading"
+      },
+      {
         "type": "select",
         "id": "heading_size",
         "options": [
@@ -140,8 +148,7 @@
         ],
         "default": "h1",
         "label": "t:sections.all.heading_size.label"
-      },
-      {
+      }, {
         "type": "select",
         "id": "heading_alignment",
         "label": "t:sections.collapsible_content.settings.heading_alignment.label",

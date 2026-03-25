@@ -804,7 +804,7 @@
       ],
       "name": "t:sections.collapsible_content.presets.name",
       "settings": {
-        "caption": "FAQ",
+        "caption": "FAQs",
         "heading": "Haben Sie eine Frage? Wir haben die Antwort.",
         "heading_size": "h2",
         "heading_alignment": "center",
