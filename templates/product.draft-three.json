@@ -839,6 +839,17 @@
         "padding_bottom": 72
       }
     },
+    "draft_comparison_AgPVTz": {
+      "type": "draft-comparison",
+      "name": "Draft Comparison",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "title": "Magic Perfume im Vergleich zu anderen Marken",
+        "subtitle": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "1770288371f70b6dc1": {
       "type": "apps",
       "settings": {
@@ -859,6 +870,7 @@
     "popular_products_BptEUV",
     "massive_review_xQhDkP",
     "collapsible_content_4fTNQQ",
+    "draft_comparison_AgPVTz",
     "1770288371f70b6dc1",
     "floating_atc_FiLij8"
   ]
