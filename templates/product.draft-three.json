@@ -45,6 +45,7 @@
         },
         "similar_scents_D3Pxfa": {
           "type": "similar_scents",
+          "disabled": true,
           "settings": {}
         },
         "reactive_atc_LBDQE9": {
@@ -773,6 +774,7 @@
         "background_color": "#ffffff",
         "title": "Magic Perfume im Vergleich zu anderen Marken",
         "subtitle": "",
+        "comparison_items": "[{\"feature_name\":\"Hohe Qualität\",\"magic_status\":\"check\",\"other_status\":\"check\"},{\"feature_name\":\"Lang anhaltend\",\"magic_status\":\"check\",\"other_status\":\"warning\",\"other_text\":\"Je nach<br>Händler\"},{\"feature_name\":\"Preiswert\",\"magic_status\":\"check\",\"other_status\":\"cross\"},{\"feature_name\":\"Dermatologisch getestet\",\"magic_status\":\"check\",\"other_status\":\"check\"},{\"feature_name\":\"Kombinierbare Düfte\",\"magic_status\":\"check\",\"other_status\":\"cross\"},{\"feature_name\":\"Kostenlose 30-Tage-Rückgabe\",\"magic_status\":\"check\",\"other_status\":\"warning\",\"other_text\":\"Selten\"},{\"feature_name\":\"Schneller Versand\",\"magic_status\":\"check\",\"other_status\":\"warning\",\"other_text\":\"Je nach<br>Händler\"},{\"feature_name\":\"100% Vegan\",\"magic_status\":\"check\",\"other_status\":\"warning\",\"other_text\":\"Nicht<br>immer\"},{\"feature_name\":\"Tierversuchsfrei\",\"magic_status\":\"check\",\"other_status\":\"warning\",\"other_text\":\"Nicht<br>immer\"}]",
         "padding_top": 72,
         "padding_bottom": 72
       }
