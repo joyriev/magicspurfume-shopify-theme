@@ -86,6 +86,26 @@
                     <div class="footer-block__details-content rte">
                       {{ block.settings.subtext }}
                     </div>
+                    {% if block.settings.show_social %}
+                      <div class="mt-8 flex items-center flex-wrap gap-4">
+                        <a class="text-white no-underline border border-solid border-gray-600 size-12 rounded-full flex items-center justify-center" target="_blank" href="https://www.facebook.com/profile.php?id=61567378124322&sk=reviews">
+                          <span class="sr-only">
+                            Facebook
+                          </span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a class="text-white no-underline border border-solid border-gray-600 size-12 rounded-full flex items-center justify-center" target="_blank" href="https://www.instagram.com/magicperfumeco/">
+                          <span class="sr-only">
+                            Instagram
+                          </span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a class="no-underline text-white" target="_blank" href="https://www.trustpilot.com/review/magicperfume.co">
+                          <span class="sr-only">Trustpilot</span>
+                          <img src="https://cdn.shopify.com/s/files/1/0700/7928/3458/files/trustpilot-logo.svg?v=1774525256" alt="Trustpilot" width="160" height="40">
+                        </a>
+                      </div>
+                    {% endif %}
                   {%- when 'link_list' -%}
                     {%- if block.settings.menu != blank -%}
                       <ul class="footer-block__details-content list-unstyled">
@@ -338,6 +358,12 @@
           "default": "footer",
           "label": "t:sections.footer.blocks.link_list.settings.menu.label",
           "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social",
+          "default": false,
+          "label": "Show social links"
         }
       ]
     },
