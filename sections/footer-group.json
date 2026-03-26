@@ -18,7 +18,8 @@
           "type": "text",
           "settings": {
             "heading": "Magic Perfume",
-            "subtext": "<p>Magic Perfume ist eine Parfümmarke, die Ihnen hilft, Ihren ganz persönlichen Duft zu finden. Wir bieten hochwertige Parfums in praktischen Probiergrößen an.</p>"
+            "subtext": "<p>Magic Perfume ist eine Parfümmarke, die Ihnen hilft, Ihren ganz persönlichen Duft zu finden. Wir bieten hochwertige Parfums in praktischen Probiergrößen an.</p>",
+            "show_social": true
           }
         },
         "link_list_Fhdw8K": {
@@ -32,7 +33,8 @@
           "type": "text",
           "settings": {
             "heading": "Kontakt",
-            "subtext": "<p>Impressum<br/><br/>Kurfürstendamm 11<br/>10719 Berlin, Germany<br/><br/>Magic Parfums ist eine Tochtergesellschaft von MOMMENTE IT PTE. LTD.<br/>113B Jalan Besar, Singapur 208833<br/><br/>VAT Number: DE136695976<br/><br/>Phone: +1 888 373 6114<br/>Email: hello@magicperfume.co</p><p>Für Rückkehrer nutzen Sie Pilsudskiego 31a/15. 72-300 Gryfice</p>"
+            "subtext": "<p>Impressum<br/><br/>Kurfürstendamm 11<br/>10719 Berlin, Germany<br/><br/>Magic Parfums ist eine Tochtergesellschaft von MOMMENTE IT PTE. LTD.<br/>113B Jalan Besar, Singapur 208833<br/><br/>VAT Number: DE136695976<br/><br/>Phone: +1 888 373 6114<br/>Email: hello@magicperfume.co</p><p>Für Rückkehrer nutzen Sie Pilsudskiego 31a/15. 72-300 Gryfice</p>",
+            "show_social": false
           }
         }
       },
