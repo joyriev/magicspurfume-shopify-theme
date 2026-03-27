@@ -769,6 +769,7 @@
     },
     "draft_comparison_AgPVTz": {
       "type": "draft-comparison",
+      "disabled": true,
       "name": "Draft Comparison",
       "settings": {
         "background_color": "#ffffff",
