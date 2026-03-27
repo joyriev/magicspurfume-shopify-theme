@@ -253,6 +253,7 @@
     },
     "draft_relative_products_jdV9PJ": {
       "type": "draft-relative-products",
+      "disabled": true,
       "name": "Draft Related Products",
       "settings": {
         "background_color": "#ffffff",
