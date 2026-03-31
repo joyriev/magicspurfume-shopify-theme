@@ -1,6 +1,14 @@
 {% liquid
   assign product_form_id = 'product-form-' | append: section.id
+
   assign selected_variant = product.selected_or_first_available_variant
+
+  for variant in product.variants
+    if variant.title == '50ml'
+      assign selected_variant = variant
+      break
+    endif
+  endfor
 %}
 
 {% if product.handle != 'magic-perfume-no-053w-m' %}
