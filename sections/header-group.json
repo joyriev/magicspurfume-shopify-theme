@@ -83,9 +83,9 @@
       "settings": {
         "background_color": "#15803d",
         "forground_color": "#15803d",
-        "prepend_text": "🐣 Paasdeal:",
+        "prepend_text": "🐣 Oster-Sale:",
         "ends_in_minutes": 300,
-        "append_text": "Koop 3, krijg 2 GRATIS!",
+        "append_text": "3 kaufen, 2 GRATIS sichern!",
         "link": ""
       }
     },
