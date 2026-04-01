@@ -27,7 +27,7 @@
         "background_image": "shopify://shop_images/magic_header_1.png",
         "mobile_background_image": "shopify://shop_images/magic_header_mobile_1.jpg",
         "title": "Homepage Hero",
-        "subtitle": "3 kaufen – 1 gratis",
+        "subtitle": "3 kaufen – 2 gratis",
         "button_text": "FÜR MÄNNER",
         "button_link": "shopify://collections/fuer-maenner",
         "second_button_text": "FÜR FRAUEN",
@@ -340,6 +340,7 @@
       "settings": {
         "caption": "",
         "heading": "FAQ",
+        "subheading": "",
         "heading_size": "h1",
         "heading_alignment": "center",
         "layout": "none",
