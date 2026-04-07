@@ -157,6 +157,10 @@
     grid-column: span 2 / span 2
 }
 
+.col-span-3 {
+    grid-column: span 3 / span 3
+}
+
 .\!m-0 {
     margin: 0px !important
 }
@@ -1402,6 +1406,14 @@
 
 .pt-8 {
     padding-top: 32px
+}
+
+.pl-1 {
+    padding-left: 4px
+}
+
+.pr-3 {
+    padding-right: 12px
 }
 
 .text-left {
