@@ -52,7 +52,7 @@
                 {% else %}
                   <div class="flex gap-3">
                     <select
-                      class="flex-grow pl-1 pr-3 h-8 border border-gray-200 rounded border-solid"
+                      class="pl-1 pr-3 h-8 border border-gray-200 rounded border-solid"
                       name="id"
                       aria-label="Select variant">
                       {% for variant in product.variants %}
@@ -70,7 +70,7 @@
                     <button
                       type="submit"
                       name="add"
-                      class="product-form__submit button tracking-wider text-xs leading-snug px-2 py-2 rounded-full w-full">
+                      class="product-form__submit button tracking-wider text-xs leading-snug px-2 py-2 rounded-full flex-grow">
                       <span>
                         Hinzufügen
                       </span>

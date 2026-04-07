@@ -93,9 +93,7 @@
 
             <div class="bc-progress-text" style="color: #000000;">
               {% if cart_total >= 5000 %}
-                🎉
-                <strong>Kostenloser Versand</strong>
-                freigeschaltet!
+                🎉 Kostenloser Versand aktiviert!
               {% else %}
                 <strong>{{ 5000 | minus: cart_total | money }}</strong>
                 zu
