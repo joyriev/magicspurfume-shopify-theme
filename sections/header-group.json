@@ -83,9 +83,9 @@
       "settings": {
         "background_color": "#15803d",
         "forground_color": "#15803d",
-        "prepend_text": "🐣 Oster-Sale:",
+        "prepend_text": "Frühlingsangebot:",
         "ends_in_minutes": 300,
-        "append_text": "3 kaufen, 2 GRATIS sichern!",
+        "append_text": "Kaufe 3, erhalte 1 GRATIS",
         "link": ""
       }
     },
