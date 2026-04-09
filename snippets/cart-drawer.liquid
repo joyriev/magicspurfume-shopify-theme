@@ -68,19 +68,19 @@
             {% assign progress_percentage = cart_count | times: 20 | at_most: 100 %}
 
             <div class="bc-progress-text" style="color: #000000;">
-              {% if cart_count >= 5 %}
-                🎉 3+2-Angebot freigeschaltet!
+              {% if cart_count >= 4 %}
+                🎉 3+1-Angebot freigeschaltet!
               {% else %}
                 Nur noch
-                <strong>{{ 5 | minus: cart_count }}</strong>
+                <strong>{{ 4 | minus: cart_count }}</strong>
                 Flaschen bis 2 gratis!
               {% endif %}
             </div>
             <div class="bc-progress-bar" style="background-color: #E2E2E2; margin-bottom: 0;">
               <div class="bc-progress-fill" style="width: {{ progress_percentage }}%; background-color: #93D3FF;"></div>
               <div class="bc-checkpoints">
-                <div class="bc-checkpoint {% if cart_count >= 5 %}is-reached{% endif %}" style="left: 100%; 
-               background-color: {% if cart_count >= 5 %}#93D3FF{% else %}#E2E2E2{% endif %};
+                <div class="bc-checkpoint {% if cart_count >= 4 %}is-reached{% endif %}" style="left: 100%; 
+               background-color: {% if cart_count >= 4 %}#93D3FF{% else %}#E2E2E2{% endif %};
                color: #000000;">
                   {{ 'icon-gift.svg' | inline_asset_content }}
                 </div>
