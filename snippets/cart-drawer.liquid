@@ -65,7 +65,7 @@
         <div class="bc-rewards-bars-wrap" style="flex-direction: row;">
           <div class="bc-progress-wrap">
             {% assign cart_count = cart.item_count %}
-            {% assign progress_percentage = cart_count | times: 20 | at_most: 100 %}
+            {% assign progress_percentage = cart_count | times: 25 | at_most: 100 %}
 
             <div class="bc-progress-text" style="color: #000000;">
               {% if cart_count >= 4 %}
@@ -73,7 +73,7 @@
               {% else %}
                 Nur noch
                 <strong>{{ 4 | minus: cart_count }}</strong>
-                Flaschen bis 2 gratis!
+                Flaschen bis 1 gratis!
               {% endif %}
             </div>
             <div class="bc-progress-bar" style="background-color: #E2E2E2; margin-bottom: 0;">
