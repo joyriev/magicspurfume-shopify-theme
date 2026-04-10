@@ -24,7 +24,7 @@
     {% for variant in product.variants %}
       <button
         type="button"
-        class="variant-button flex-grow flex md:flex-col items-center gap-2 rounded-lg px-2 pt-4 pb-3 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative {% if variant.id == selected_variant.id %}border-black{% else %}border-gray-200{% endif %}"
+        class="variant-button flex-grow flex justify-center gap-2 rounded-lg px-2 pt-4 pb-3 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative {% if variant.id == selected_variant.id %}border-black{% else %}border-gray-200{% endif %}"
         data-variant-id="{{ variant.id }}"
         data-variant-title="{{ variant.title }}"
         data-original-price="{{ variant.price | money }}"
