@@ -22,22 +22,15 @@
 
   <div class="flex gap-3" id="variant-selector">
     {% for variant in product.variants %}
-      {% assign size = variant.title | remove: 'ml' %}
-      {% assign size_int = size | times: 1 %}
-      {% assign price_in_dollars = variant.price | times: 0.01 %}
-      {% assign per_ml = price_in_dollars | divided_by: size_int | round: 2 %}
       <button
         type="button"
-        class="variant-button flex-grow flex md:flex-col items-center gap-2 rounded-lg p-2 pt-3 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative {% if variant.id == selected_variant.id %}border-black{% else %}border-gray-200{% endif %}"
+        class="variant-button flex-grow flex md:flex-col items-center gap-2 rounded-lg px-2 pt-4 pb-3 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative {% if variant.id == selected_variant.id %}border-black{% else %}border-gray-200{% endif %}"
         data-variant-id="{{ variant.id }}"
         data-variant-title="{{ variant.title }}"
         data-original-price="{{ variant.price | money }}"
         data-compare-price="{{ variant.compare_at_price | money }}">
         <div class="text-center">
           <div class="text-base font-semibold">{{ variant.title }}</div>
-          <div class="text-xs text-gray-600">
-           {% comment %} {{- cart.currency.symbol -}}
-            {{- per_ml }} Pro Sprühstoß</div> {% endcomment %}
         </div>
         {% if variant.title contains '50' %}
           <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#c8202f] px-2 py-0.5">Beliebt</span>
