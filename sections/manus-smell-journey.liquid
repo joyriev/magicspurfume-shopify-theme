@@ -36,24 +36,30 @@
         <div class="space-y-8">
           <div class="[display:grid] gap-3 md:grid-cols-[180px_1fr] md:gap-6">
             <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-[#C8A96E]">ERÖFFNUNG · 0–15 MIN</p>
-            <div>
-              <p class="text-sm font-semibold text-[#F5F2EC]">{{ product.metafields.custom.top_notes.value.first.heading }}</p>
-              <p class="mt-3 text-sm leading-7 text-[#B0ADA6]">{{ product.metafields.custom.top_notes.value.first.description | metafield_text }}</p>
-            </div>
+            {% for note in product.metafields.custom.top_notes.value %}
+              <div>
+                <p class="text-sm font-semibold text-[#F5F2EC]">{{ note.heading }}</p>
+                <p class="mt-3 text-sm leading-7 text-[#B0ADA6]">{{ note.description | metafield_text }}</p>
+              </div>
+            {% endfor %}
           </div>
           <div class="[display:grid] gap-3 md:grid-cols-[180px_1fr] md:gap-6">
             <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-[#C8A96E]">HERZ · 1–4 STD</p>
-            <div>
-              <p class="text-sm font-semibold text-[#F5F2EC]">{{ product.metafields.custom.middle_notes.value.first.heading }}</p>
-              <p class="mt-3 text-sm leading-7 text-[#B0ADA6]">{{ product.metafields.custom.middle_notes.value.first.description | metafield_text }}</p>
-            </div>
+            {% for note in product.metafields.custom.middle_notes.value %}
+              <div>
+                <p class="text-sm font-semibold text-[#F5F2EC]">{{ note.heading }}</p>
+                <p class="mt-3 text-sm leading-7 text-[#B0ADA6]">{{ note.description | metafield_text }}</p>
+              </div>
+            {% endfor %}
           </div>
           <div class="[display:grid] gap-3 md:grid-cols-[180px_1fr] md:gap-6">
             <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-[#C8A96E]">BASIS · 4–12+ STD</p>
-            <div>
-              <p class="text-sm font-semibold text-[#F5F2EC]">{{ product.metafields.custom.base_notes.value.first.heading }}</p>
-              <p class="mt-3 text-sm leading-7 text-[#B0ADA6]">{{ product.metafields.custom.base_notes.value.first.description | metafield_text }}</p>
-            </div>
+            {% for note in product.metafields.custom.base_notes.value %}
+              <div>
+                <p class="text-sm font-semibold text-[#F5F2EC]">{{ note.heading }}</p>
+                <p class="mt-3 text-sm leading-7 text-[#B0ADA6]">{{ note.description | metafield_text }}</p>
+              </div>
+            {% endfor %}
           </div>
         </div>
       </div>
