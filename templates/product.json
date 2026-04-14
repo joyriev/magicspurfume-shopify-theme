@@ -374,6 +374,41 @@
         "padding_bottom": 72
       }
     },
+    "manus_smell_journey_PHwdYi": {
+      "type": "manus-smell-journey",
+      "disabled": true,
+      "name": "Manus Smell Journey",
+      "settings": {
+        "background_color": "#0a0a0f",
+        "subtitle": "Duftreise",
+        "title": "Wie sie sich auf der Haut entwickelt",
+        "description": "Die ersten 30 Sekunden verkaufen den Duft. Die nächsten 12 Stunden entscheiden, ob Sie ihn weiterhin verwenden.",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "manus_why_it_last_qNYfJ8": {
+      "type": "manus-why-it-last",
+      "disabled": true,
+      "name": "Manus Why It Last",
+      "settings": {
+        "background_color": "#f6f2ec",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "manus_comparison_D9DAGJ": {
+      "type": "manus-comparison",
+      "disabled": true,
+      "name": "Manus Comparison",
+      "settings": {
+        "background_color": "#0a0a0f",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "button_url": "",
+        "button_text": "Mehr Düfte entdecken"
+      }
+    },
     "image_and_text_EFE4gB": {
       "type": "image-and-text",
       "blocks": {
@@ -884,6 +919,9 @@
     "feature_heighlights_fCUG3E",
     "scent_breakdown_pqKDL9",
     "stacks_up_WR4y4d",
+    "manus_smell_journey_PHwdYi",
+    "manus_why_it_last_qNYfJ8",
+    "manus_comparison_D9DAGJ",
     "image_and_text_EFE4gB",
     "popular_products_BptEUV",
     "massive_review_xQhDkP",
