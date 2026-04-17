@@ -224,6 +224,10 @@
     }
   },
   "templates": {
+    "404": {
+      "title": "Page not found",
+      "subtext": "404"
+    },
     "search": {
       "no_results": "No results found for “{{ terms }}”. Check the spelling or use a different word or phrase.",
       "page": "Page",
@@ -267,10 +271,6 @@
         "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
         "error_heading": "Please adjust the following:"
       }
-    },
-    "404": {
-      "title": "Page not found",
-      "subtext": "404"
     }
   },
   "sections": {
@@ -538,6 +538,17 @@
     "checkout": {
       "general": {
         "autocomplete_powered_by_google": " "
+      },
+      "contact": {
+        "phone_label": "Phone",
+        "optional_phone_label": "Phone"
+      },
+      "marketing": {
+        "sms": {
+          "disclaimer": {
+            "description_html": "By checking the checkbox above, you agree to receive recurring automated messages from Magic Perfume DE, including cart reminders, at the phone number provided. Consent is not a condition of purchase. Reply STOP to unsubscribe. Reply HELP for help. Message frequency varies. Msg & data rates may apply. View our {{ privacy_policy_link }} and {{ terms_of_service_link }}."
+          }
+        }
       }
     },
     "links": {
