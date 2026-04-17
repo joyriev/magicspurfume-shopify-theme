@@ -26,11 +26,11 @@
 {% if product.variants.size > 1 %}
   {% comment %} Variant Selector {% endcomment %}
   <h2 class="m-0 text-sm text-gray-400 tracking-wide font-normal">GRÖSSENAUSWAHL:</h2>
-  <div class="flex gap-3 flex-wrap" id="variant-selector">
+  <div class="flex gap-3" id="variant-selector">
     {% for variant in product.variants %}
       <button
         type="button"
-        class="variant-button flex md:flex-col items-center gap-2 rounded-lg px-7 pt-5 pb-4 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative {% if variant.id == selected_variant.id %}border-black{% else %}border-gray-200{% endif %}"
+        class="variant-button flex md:flex-col items-center gap-2 rounded-lg px-5 flex-grow pt-5 pb-4 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative {% if variant.id == selected_variant.id %}border-black{% else %}border-gray-200{% endif %}"
         data-variant-id="{{ variant.id }}"
         data-variant-title="{{ variant.title }}"
         data-original-price="{{ variant.price | money }}"
@@ -201,28 +201,47 @@
 {% assign day = future_date | date: "%d" %}
 
 {% case weekday_en %}
-  {% when "Monday" %}{% assign weekday = "Montag" %}
-  {% when "Tuesday" %}{% assign weekday = "Dienstag" %}
-  {% when "Wednesday" %}{% assign weekday = "Mittwoch" %}
-  {% when "Thursday" %}{% assign weekday = "Donnerstag" %}
-  {% when "Friday" %}{% assign weekday = "Freitag" %}
-  {% when "Saturday" %}{% assign weekday = "Samstag" %}
-  {% when "Sunday" %}{% assign weekday = "Sonntag" %}
+  {% when "Monday" %}
+    {% assign weekday = "Montag" %}
+  {% when "Tuesday" %}
+    {% assign weekday = "Dienstag" %}
+  {% when "Wednesday" %}
+    {% assign weekday = "Mittwoch" %}
+  {% when "Thursday" %}
+    {% assign weekday = "Donnerstag" %}
+  {% when "Friday" %}
+    {% assign weekday = "Freitag" %}
+  {% when "Saturday" %}
+    {% assign weekday = "Samstag" %}
+  {% when "Sunday" %}
+    {% assign weekday = "Sonntag" %}
 {% endcase %}
 
 {% case month_en %}
-  {% when "January" %}{% assign month = "Januar" %}
-  {% when "February" %}{% assign month = "Februar" %}
-  {% when "March" %}{% assign month = "März" %}
-  {% when "April" %}{% assign month = "April" %}
-  {% when "May" %}{% assign month = "Mai" %}
-  {% when "June" %}{% assign month = "Juni" %}
-  {% when "July" %}{% assign month = "Juli" %}
-  {% when "August" %}{% assign month = "August" %}
-  {% when "September" %}{% assign month = "September" %}
-  {% when "October" %}{% assign month = "Oktober" %}
-  {% when "November" %}{% assign month = "November" %}
-  {% when "December" %}{% assign month = "Dezember" %}
+  {% when "January" %}
+    {% assign month = "Januar" %}
+  {% when "February" %}
+    {% assign month = "Februar" %}
+  {% when "March" %}
+    {% assign month = "März" %}
+  {% when "April" %}
+    {% assign month = "April" %}
+  {% when "May" %}
+    {% assign month = "Mai" %}
+  {% when "June" %}
+    {% assign month = "Juni" %}
+  {% when "July" %}
+    {% assign month = "Juli" %}
+  {% when "August" %}
+    {% assign month = "August" %}
+  {% when "September" %}
+    {% assign month = "September" %}
+  {% when "October" %}
+    {% assign month = "Oktober" %}
+  {% when "November" %}
+    {% assign month = "November" %}
+  {% when "December" %}
+    {% assign month = "Dezember" %}
 {% endcase %}
 
 <div class="!my-6 flex justify-center items-center gap-3">
@@ -367,7 +386,7 @@
           <p class="text-base font-bold text-slate-900 my-0">Jenniffer W.</p>
           <div class="flex items-center gap-1 text-xs text-[#297af4] font-medium">
             <img
-              src="/cdn/shop/t/56/assets/verified-badge.svg?v=137009485922029072291771759932"
+              src="{{ 'verified-badge.svg' | asset_url }}"
               alt="Verifierad köpare"
               width="16"
               height="16"

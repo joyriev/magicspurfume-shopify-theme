@@ -350,10 +350,6 @@
     margin-top: auto
 }
 
-.mt-1 {
-    margin-top: 4px
-}
-
 .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
@@ -834,12 +830,6 @@
     --tw-space-y-reverse: 0;
     margin-top: calc(32px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(32px * var(--tw-space-y-reverse))
-}
-
-.space-y-4 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0;
-    margin-top: calc(16px * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(16px * var(--tw-space-y-reverse))
 }
 
 .overflow-hidden {
@@ -1352,11 +1342,6 @@
 .px-6 {
     padding-left: 24px;
     padding-right: 24px
-}
-
-.px-7 {
-    padding-left: 28px;
-    padding-right: 28px
 }
 
 .px-8 {
@@ -1886,11 +1871,6 @@
 .text-yellow-600 {
     --tw-text-opacity: 1;
     color: rgb(202 138 4 / var(--tw-text-opacity, 1))
-}
-
-.text-\[\#666666\] {
-    --tw-text-opacity: 1;
-    color: rgb(102 102 102 / var(--tw-text-opacity, 1))
 }
 
 .underline {
