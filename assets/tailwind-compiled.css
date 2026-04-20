@@ -469,6 +469,16 @@
     height: 60px
 }
 
+.\!size-8 {
+    width: 32px !important;
+    height: 32px !important
+}
+
+.size-32 {
+    width: 128px;
+    height: 128px
+}
+
 .\!h-10 {
     height: 40px !important
 }
@@ -631,6 +641,10 @@
 
 .max-w-xl {
     max-width: 576px
+}
+
+.max-w-full {
+    max-width: 100%
 }
 
 .flex-1 {
@@ -2052,6 +2066,18 @@
     to {
         transform: translateX(-50%)
     }
+}
+
+.after\:\!text-sm::after {
+    content: var(--tw-content);
+    font-size: 14px !important;
+    line-height: 20px !important
+}
+
+.after\:text-black::after {
+    content: var(--tw-content);
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0 / var(--tw-text-opacity, 1))
 }
 
 .hover\:scale-105:hover {
