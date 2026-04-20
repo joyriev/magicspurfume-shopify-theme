@@ -90,24 +90,6 @@
                     {{ 'blocky-lys-product-reviews.css' | asset_url | stylesheet_tag }}
                     {% render 'blocky-lys-product-reviews', block: block, side: 'left' %}
                   {% endif %}
-                {%- when 'collapsible_tab' -%}
-                  <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                    <details id="Details-{{ block.id }}-{{ section.id }}">
-                      <summary>
-                        <div class="summary__title">
-                          {% render 'icon-accordion', icon: block.settings.icon %}
-                          <h2 class="h4 accordion__title inline-richtext">
-                            {{ block.settings.heading | default: block.settings.page.title | escape }}
-                          </h2>
-                        </div>
-                        {% render 'icon-caret' %}
-                      </summary>
-                      <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                        {{ block.settings.content }}
-                        {{ block.settings.page.content }}
-                      </div>
-                    </details>
-                  </div>
               {%- endcase -%}
             {%- endfor -%}
           </div>
@@ -947,7 +929,7 @@
                   {% endif %}
             {%- endcase -%}
           {%- endfor -%}
-          <div class="md:hidden">
+          <div>
             {% for block in section.blocks %}
               {% if block.type == 'collapsible_tab' %}
                 <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
