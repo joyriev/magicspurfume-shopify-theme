@@ -265,6 +265,17 @@
         "padding_bottom": 40
       }
     },
+    "similar_scents_WBNFHN": {
+      "type": "similar-scents",
+      "name": "Similar Scents",
+      "settings": {
+        "background_color": "#f7f7f7",
+        "title": "Parfüms mit ähnlichen Duftnoten",
+        "subtitle": "Die intelligente Alternative zu überteuerten Luxusmarken.",
+        "padding_top": 36,
+        "padding_bottom": 60
+      }
+    },
     "draft_scent_breakdown_V4JKwk": {
       "type": "draft-scent-breakdown",
       "name": "Draft Scent Breakdown",
@@ -869,6 +880,7 @@
   "order": [
     "main",
     "draft_relative_products_jdV9PJ",
+    "similar_scents_WBNFHN",
     "draft_scent_breakdown_V4JKwk",
     "image_and_text_EFE4gB",
     "popular_products_BptEUV",
