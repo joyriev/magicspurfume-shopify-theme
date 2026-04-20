@@ -1,3 +1,11 @@
+<style>
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 12px !important;
+    color: #000 !important;
+  }
+</style>
+
 {% if product.metafields.custom.similar_scents != blank %}
   <p class="text-base font-serif leading-tight">Parfüms mit ähnlichen Duftnoten:</p>
   {% assign similar_scents = product.metafields.custom.similar_scents.value %}
