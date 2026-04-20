@@ -1,3 +1,56 @@
+{% if product.metafields.custom.similar_scents != blank %}
+  <p class="text-base font-serif leading-tight">Parfüms mit ähnlichen Duftnoten:</p>
+  {% assign similar_scents = product.metafields.custom.similar_scents.value %}
+  <div class="swiper slider-{{ section.id }}-{{ forloop.index }}">
+    <div class="swiper-wrapper">
+      {% for similar_scent in similar_scents %}
+        <div class="swiper-slide">
+          <div class="flex gap-2 items-center p-3 bg-white rounded-lg">
+            <img
+              class="object-cover border border-solid border-gray-200"
+              height="60"
+              width="60"
+              src="{{ similar_scent.image | image_url: width: 100 }}"
+              alt="{{ similar_scent.title }}">
+            <div class="text-left">
+              <div class="text-sm font-semibold text-black line-clamp-1">
+                {{ similar_scent.title }}
+              </div>
+              <div class="text-sm text-gray-600 my-1">
+                {{ similar_scent.price.value | money }}
+              </div>
+              <div class="text-[10px] leading-none {% if similar_scent.similarity == 'Ähnliche Notizen' %}text-green-600{% else %} text-yellow-600 {% endif %}">
+                {{ similar_scent.similarity }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <button class="swiper-button-next p-0 !size-7 !right-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm"></button>
+    <button class="swiper-button-prev p-0 !size-7 !left-0 rounded-full border border-solid !border-gray-200 bg-white/60 filter backdrop-blur-sm"></button>
+  </div>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          new Swiper('.slider-{{ section.id }}-{{ forloop.index }}', {
+              slidesPerView: 1,
+              spaceBetween: 10,
+              loop: true,
+              breakpoints: {
+                  640: {
+                      slidesPerView: 2,
+                      spaceBetween: 10,
+                  }
+              },
+              navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
+              },
+          });
+      });
+  </script>
+{% endif %}
+
 {% liquid
   assign product_form_id = 'product-form-' | append: section.id
   assign selected_variant = product.selected_or_first_available_variant
@@ -5,9 +58,10 @@
 %}
 
 {% if selling_points %}
-  <ul id="atc_scroll_target" class="pl-4">
+  <ul id="atc_scroll_target" class="list-none pl-0">
     {% for point in selling_points %}
-      <li>{{ point }}</li>
+      {% assign point_value = point | replace: '✅', '' %}
+      <li>✅ {{ point_value }}</li>
     {% endfor %}
   </ul>
 {% endif %}
@@ -96,84 +150,84 @@
 </product-form>
 
 <script>
-  (function() {
-    // Variant data object
-    const variantsData = {
-      {% for variant in product.variants %}
-        "{{ variant.id }}": {
-          title: "{{ variant.title }}",
-          originalPrice: "{{ variant.price | money }}",
-          compareAtPrice: "{{ variant.compare_at_price | money }}",
-          hasComparePrice: {% if variant.compare_at_price > variant.price %}true{% else %}false{% endif %}
-        }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    };
+    (function() {
+  // Variant data object
+  const variantsData = {
+    {% for variant in product.variants %}
+      "{{ variant.id }}": {
+        title: "{{ variant.title }}",
+        originalPrice: "{{ variant.price | money }}",
+        compareAtPrice: "{{ variant.compare_at_price | money }}",
+        hasComparePrice: {% if variant.compare_at_price > variant.price %}true{% else %}false{% endif %}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
 
-    // State
-    let selectedVariantId = "{{ selected_variant.id }}";
+  // State
+  let selectedVariantId = "{{ selected_variant.id }}";
 
-    // DOM elements
-    const variantButtons = document.querySelectorAll('.variant-button');
-    const variantIdInput = document.getElementById('product-variant-id');
-    const priceContainer = document.getElementById('product-price');
-    const comparePriceSpan = priceContainer.querySelector('.compare-price');
-    const currentPriceSpan = priceContainer.querySelector('.current-price');
+  // DOM elements
+  const variantButtons = document.querySelectorAll('.variant-button');
+  const variantIdInput = document.getElementById('product-variant-id');
+  const priceContainer = document.getElementById('product-price');
+  const comparePriceSpan = priceContainer.querySelector('.compare-price');
+  const currentPriceSpan = priceContainer.querySelector('.current-price');
 
-    // Update variant selection
-    function updateVariant(variantId) {
-      selectedVariantId = variantId;
-      const variantData = variantsData[variantId];
+  // Update variant selection
+  function updateVariant(variantId) {
+    selectedVariantId = variantId;
+    const variantData = variantsData[variantId];
 
-      // Update hidden input
-      variantIdInput.value = variantId;
+    // Update hidden input
+    variantIdInput.value = variantId;
 
-      // Update button styles
-      variantButtons.forEach(button => {
-        if (button.dataset.variantId === variantId) {
-          button.classList.add('border-black');
-          button.classList.remove('border-gray-200');
-        } else {
-          button.classList.remove('border-black');
-          button.classList.add('border-gray-200');
-        }
-      });
-
-      // Update price display
-      if (variantData.hasComparePrice) {
-        if (!comparePriceSpan) {
-          const newCompareSpan = document.createElement('span');
-          newCompareSpan.className = 'compare-price line-through text-white/50 text-base';
-          priceContainer.insertBefore(newCompareSpan, currentPriceSpan);
-        }
-        const compareSpan = priceContainer.querySelector('.compare-price');
-        compareSpan.innerHTML = variantData.compareAtPrice;
-        compareSpan.style.display = '';
+    // Update button styles
+    variantButtons.forEach(button => {
+      if (button.dataset.variantId === variantId) {
+        button.classList.add('border-black');
+        button.classList.remove('border-gray-200');
       } else {
-        if (comparePriceSpan) {
-          comparePriceSpan.style.display = 'none';
-        }
+        button.classList.remove('border-black');
+        button.classList.add('border-gray-200');
       }
+    });
 
-      currentPriceSpan.innerHTML = variantData.originalPrice;
-
-      // Update all other current-price elements in page
-      const allCurrentPriceElements = document.querySelectorAll('.current-price');
-      allCurrentPriceElements.forEach(element => {
-        // Skip the main price container element that we already updated
-        if (element !== currentPriceSpan && element.textContent.trim() !== '') {
-          element.innerHTML = variantData.originalPrice;
-        }
-      });
+    // Update price display
+    if (variantData.hasComparePrice) {
+      if (!comparePriceSpan) {
+        const newCompareSpan = document.createElement('span');
+        newCompareSpan.className = 'compare-price line-through text-white/50 text-base';
+        priceContainer.insertBefore(newCompareSpan, currentPriceSpan);
+      }
+      const compareSpan = priceContainer.querySelector('.compare-price');
+      compareSpan.innerHTML = variantData.compareAtPrice;
+      compareSpan.style.display = '';
+    } else {
+      if (comparePriceSpan) {
+        comparePriceSpan.style.display = 'none';
+      }
     }
 
-    // Add click event listeners to variant buttons
-    variantButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const variantId = this.dataset.variantId;
-        updateVariant(variantId);
-      });
+    currentPriceSpan.innerHTML = variantData.originalPrice;
+
+    // Update all other current-price elements in page
+    const allCurrentPriceElements = document.querySelectorAll('.current-price');
+    allCurrentPriceElements.forEach(element => {
+      // Skip the main price container element that we already updated
+      if (element !== currentPriceSpan && element.textContent.trim() !== '') {
+        element.innerHTML = variantData.originalPrice;
+      }
     });
-  })();
+  }
+
+  // Add click event listeners to variant buttons
+  variantButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const variantId = this.dataset.variantId;
+      updateVariant(variantId);
+    });
+  });
+    })();
 </script>
 
 <style>
@@ -430,17 +484,17 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        new Swiper('.atc-review-slider', {
-            slidesPerView: 1,
-            spaceBetween: 10,
-            loop: true,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    });
+  document.addEventListener('DOMContentLoaded', function() {
+      new Swiper('.atc-review-slider', {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          loop: true,
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+      });
+  });
 </script>
 
 <img
