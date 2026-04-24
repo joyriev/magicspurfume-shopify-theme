@@ -3,90 +3,235 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 {% if upsell_collection and upsell_collection.all_products.size > 0 %}
-  <h3 class="text-center text-lg tracking-wider my-2">Diese werden Sie lieben</h3>
-  <div class="flex flex-col gap-3 mb-3">
-    {% assign shown = 0 %}
-    {% for product in upsell_collection.all_products %}
-      {% assign in_cart = false %}
-      {% for item in cart.items %}
-        {% if item.product.id == product.id %}
-          {% assign in_cart = true %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-      {% unless in_cart %}
-        {% assign product_form_id = 'product-form-' | append: product.id %}
-        <product-form class="product-form">
-          {%- form 'product'
-            , product
-            , id: product_form_id
-            , class: 'form'
-            , novalidate: 'novalidate' -%}
+  <div class="cart-upsell-slider my-6">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-sm font-semibold tracking-wider uppercase">Diese werden Sie lieben</h3>
+      <div class="flex gap-2">
+        <button
+          type="button"
+          class="slider-prev w-8 h-8 flex items-center justify-center rounded-full border border-solid border-gray-300 hover:border-black transition-colors cursor-pointer"
+          aria-label="Previous products">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="slider-next w-8 h-8 flex items-center justify-center rounded-full border border-solid border-gray-300 hover:border-black transition-colors cursor-pointer"
+          aria-label="Next products">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
 
-            {% if product.selected_or_first_available_variant.requires_selling_plan %}
-              <input
-                type="hidden"
-                name="selling_plan"
-                value="{{ product.selected_or_first_available_variant.selling_plan_allocations.first.selling_plan_id }}">
+    <div class="slider-container overflow-hidden">
+      <div class="slider-track flex gap-4 transition-transform duration-300 ease-in-out">
+        {% assign shown = 0 %}
+        {% for product in upsell_collection.all_products %}
+          {% assign in_cart = false %}
+          {% for item in cart.items %}
+            {% if item.product.id == product.id %}
+              {% assign in_cart = true %}
+              {% break %}
             {% endif %}
+          {% endfor %}
+          {% unless in_cart %}
+            {% assign product_form_id = 'product-form-' | append: product.id %}
+            {% assign variant = product.selected_or_first_available_variant %}
 
-            <div style="display: none;">
-              {{ product.variants | json }}
-            </div>
+            <div class="upsell-product-card flex-shrink-0 w-[calc(50%-8px)]">
+              <product-form class="product-form">
+                {%- form 'product'
+                  , product
+                  , id: product_form_id
+                  , class: 'form'
+                  , novalidate: 'novalidate' -%}
 
-            <div class="grid !mb-0 grid-cols-4 border gap-4 border-solid border-gray-100 rounded-lg p-3 items-center bg-white">
-              <img
-                src="{{ product.featured_image | image_url: width: 200 }}"
-                alt="{{ product.title }}"
-                class="w-full aspect-square object-cover object-center rounded-lg"
-                width=""
-                height="">
-              <div class="col-span-3">
-                <a href="{{ product.url }}" class="my-0 font-semibold leading-snug block text-black no-underline hover:underline mb-2">{{ product.title }}</a>
-                {% if product.has_only_default_variant %}
-                  <div>{{ product.price | money }}</div>
+                  {% if variant.requires_selling_plan %}
+                    <input
+                      type="hidden"
+                      name="selling_plan"
+                      value="{{ variant.selling_plan_allocations.first.selling_plan_id }}">
+                  {% endif %}
+
                   <input
                     type="hidden"
                     name="id"
-                    value="{{ product.selected_or_first_available_variant.id }}">
-                {% else %}
-                  <div class="flex gap-3">
-                    <select
-                      class="pl-1 pr-3 h-8 border border-gray-200 rounded border-solid"
-                      name="id"
-                      aria-label="Select variant">
-                      {% for variant in product.variants %}
-                        {% assign variant_image = variant.image | default: product.featured_image %}
-                        <option
-                          value="{{ variant.id }}"
-                          data-price="{{ variant.price | money_without_currency }}"
-                          data-img="{{ variant_image | image_url: width: 200 }}"
-                          {% if forloop.first %}
-                          selected{% endif %}>
-                          {{ variant.title }} - {{ variant.price | money }}
-                        </option>
-                      {% endfor %}
-                    </select>
+                    class="variant-id-input"
+                    value="{{ variant.id }}">
+
+                  <div class="upsell-card-content border border-solid border-gray-200 rounded-lg p-3 bg-white">
+                    <div class="aspect-square mb-3 overflow-hidden rounded bg-gray-50">
+                      <img
+                        src="{{ product.featured_image | image_url: width: 300 }}"
+                        alt="{{ product.title }}"
+                        class="w-full h-full object-cover object-center"
+                        width="300"
+                        height="300">
+                    </div>
+
+                    <a href="{{ product.url }}" class="text-sm font-medium mb-2 line-clamp-2 block text-black no-underline hover:underline">{{ product.title }}</a>
+
+                    {% unless product.has_only_default_variant %}
+                      <select
+                        class="w-full text-xs border border-gray-200 rounded p-2 mb-3 variant-selector cursor-pointer"
+                        name="id"
+                        aria-label="Select variant">
+                        {% for variant in product.variants %}
+                          <option
+                            value="{{ variant.id }}"
+                            data-price="{{ variant.price | money }}"
+                            {% if variant.id == product.selected_or_first_available_variant.id %}
+                            selected{% endif %}>
+                            {{ variant.title }} - {{ variant.price | money }}
+                          </option>
+                        {% endfor %}
+                      </select>
+                    {% endunless %}
+
                     <button
                       type="submit"
                       name="add"
-                      class="product-form__submit button tracking-wider text-xs leading-snug px-2 py-2 rounded-full flex-grow">
-                      <span>
-                        Hinzufügen
-                      </span>
+                      class="w-full bg-black text-white text-xs font-semibold py-2.5 rounded hover:bg-gray-800 transition-colors cursor-pointer [&.loading]:opacity-50 [&.loading]:cursor-not-allowed [&_.path]:!stroke-white">
+                      <span>Hinzufügen</span>
                       {%- render 'loading-spinner' -%}
                     </button>
                   </div>
-                {% endif %}
-              </div>
+                {%- endform -%}
+              </product-form>
             </div>
-          {%- endform -%}
-        </product-form>
-        {% assign shown = shown | plus: 1 %}
-      {% endunless %}
-      {% if shown == 3 %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
+
+            {% assign shown = shown | plus: 1 %}
+          {% endunless %}
+          {% if shown >= 6 %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
   </div>
+
+  <style>
+    .cart-upsell-slider {
+      position: relative;
+    }
+
+    .slider-track {
+      will-change: transform;
+    }
+
+    .upsell-product-card {
+      min-width: calc(50% - 8px);
+    }
+
+    @media (min-width: 768px) {
+      .upsell-product-card {
+        min-width: calc(50% - 8px);
+      }
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+
+  <script>
+    function initCartUpsellSlider() {
+      const slider = document.querySelector('.cart-upsell-slider');
+      if (!slider) return;
+
+      const track = slider.querySelector('.slider-track');
+      const prevBtn = slider.querySelector('.slider-prev');
+      const nextBtn = slider.querySelector('.slider-next');
+      const cards = slider.querySelectorAll('.upsell-product-card');
+
+      // Variant selector functionality
+      const variantSelectors = slider.querySelectorAll('.variant-selector');
+      variantSelectors.forEach(select => {
+        select.addEventListener('change', function() {
+          const hiddenInput = this.closest('form').querySelector('.variant-id-input');
+          if (hiddenInput) {
+            hiddenInput.value = this.value;
+          }
+        });
+      });
+
+      if (cards.length <= 2) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        return;
+      }
+
+      let currentIndex = 0;
+      const cardsPerView = 2;
+      const gap = 16;
+      const maxIndex = Math.ceil(cards.length / cardsPerView) - 1;
+
+      function updateSlider() {
+        const cardWidth = cards[0].offsetWidth;
+        const slideWidth = (cardWidth + gap) * cardsPerView;
+        const translateX = -(currentIndex * slideWidth);
+        track.style.transform = `translateX(${translateX}px)`;
+
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= maxIndex;
+
+        prevBtn.style.opacity = currentIndex === 0 ? '0.3' : '1';
+        nextBtn.style.opacity = currentIndex >= maxIndex ? '0.3' : '1';
+      }
+
+      // Recalculate on resize
+      const resizeObserver = new ResizeObserver(() => {
+        updateSlider();
+      });
+      resizeObserver.observe(slider);
+
+      prevBtn.onclick = null;
+      nextBtn.onclick = null;
+
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlider();
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+          updateSlider();
+        }
+      });
+
+      updateSlider();
+    }
+
+    // Initialize on load
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCartUpsellSlider);
+    } else {
+      initCartUpsellSlider();
+    }
+
+    // Re-initialize when cart is updated using MutationObserver
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.addedNodes.length > 0) {
+          for (const node of mutation.addedNodes) {
+            if (node.nodeType === 1 && (node.classList?.contains('cart-upsell-slider') || node.querySelector?.('.cart-upsell-slider'))) {
+              setTimeout(initCartUpsellSlider, 100);
+              break;
+            }
+          }
+        }
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+  </script>
 {% endif %}

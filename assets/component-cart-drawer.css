@@ -288,13 +288,10 @@ cart-drawer-items {
   }
 }
 
-.cart-drawer__footer > * + * {
-  margin-top: 1rem;
-}
-
 .cart-drawer .totals {
   justify-content: space-between;
-  display: none;
+  margin-bottom: 2rem; 
+  align-items: center;
 }
 
 .cart-drawer .price {

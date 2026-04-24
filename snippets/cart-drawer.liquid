@@ -60,64 +60,65 @@
             </div>
           </div>
         </div>
-      {%- else -%}
-
-        <div class="bc-rewards-bars-wrap" style="flex-direction: row;">
-          <div class="bc-progress-wrap">
-            {% assign cart_count = cart.item_count %}
-            {% assign progress_percentage = cart_count | times: 25 | at_most: 100 %}
-
-            <div class="bc-progress-text" style="color: #000000;">
-              {% if cart_count >= 4 %}
-                🎉 3+1-Angebot freigeschaltet!
-              {% else %}
-                Nur noch
-                <strong>{{ 4 | minus: cart_count }}</strong>
-                Flaschen bis 1 gratis!
-              {% endif %}
-            </div>
-            <div class="bc-progress-bar" style="background-color: #E2E2E2; margin-bottom: 0;">
-              <div class="bc-progress-fill" style="width: {{ progress_percentage }}%; background-color: #93D3FF;"></div>
-              <div class="bc-checkpoints">
-                <div class="bc-checkpoint {% if cart_count >= 4 %}is-reached{% endif %}" style="left: 100%; 
-               background-color: {% if cart_count >= 4 %}#93D3FF{% else %}#E2E2E2{% endif %};
-               color: #000000;">
-                  {{ 'icon-gift.svg' | inline_asset_content }}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="bc-progress-wrap">
-            {% assign cart_total = cart.total_price %}
-            {% assign progress_percentage = cart_total | times: 100.0 | divided_by: 5000 | at_most: 100 %}
-
-            <div class="bc-progress-text" style="color: #000000;">
-              {% if cart_total >= 5000 %}
-                🎉 Kostenloser Versand aktiviert!
-              {% else %}
-                <strong>{{ 5000 | minus: cart_total | money }}</strong>
-                zu
-                <strong>Kostenloser Versand</strong>!
-              {% endif %}
-            </div>
-            <div class="bc-progress-bar" style="background-color: #E2E2E2; margin-bottom: 0;">
-              <div class="bc-progress-fill" style="width: {{ progress_percentage }}%; background-color: #93D3FF;"></div>
-              <div class="bc-checkpoints">
-                <div class="bc-checkpoint {% if cart_total >= 5000 %}is-reached{% endif %}" style="left: 100%; 
-               background-color: {% if cart_total >= 5000 %}#93D3FF{% else %}#E2E2E2 {% endif %};
-               color: #000000;">
-                  {{ 'icon-truck.svg' | inline_asset_content }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       {% endif %}
 
       <cart-drawer-items
         {% if cart == empty %}
         class=" is-empty"
         {% endif %}>
+
+        {% if cart != empty %}
+          <div class="bc-rewards-bars-wrap" style="flex-direction: row;">
+            <div class="bc-progress-wrap">
+              {% assign cart_count = cart.item_count %}
+              {% assign progress_percentage = cart_count | times: 25 | at_most: 100 %}
+
+              <div class="bc-progress-text" style="color: #000000;">
+                {% if cart_count >= 4 %}
+                  🎉 3+1-Angebot freigeschaltet!
+                {% else %}
+                  Nur noch
+                  <strong>{{ 4 | minus: cart_count }}</strong>
+                  Flaschen bis 1 gratis!
+                {% endif %}
+              </div>
+              <div class="bc-progress-bar" style="background-color: #E2E2E2; margin-bottom: 0;">
+                <div class="bc-progress-fill" style="width: {{ progress_percentage }}%; background-color: #93D3FF;"></div>
+                <div class="bc-checkpoints">
+                  <div class="bc-checkpoint {% if cart_count >= 4 %}is-reached{% endif %}" style="left: 100%; 
+               background-color: {% if cart_count >= 4 %}#93D3FF{% else %}#E2E2E2{% endif %};
+               color: #000000;">
+                    {{ 'icon-gift.svg' | inline_asset_content }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bc-progress-wrap">
+              {% assign cart_total = cart.total_price %}
+              {% assign progress_percentage = cart_total | times: 100.0 | divided_by: 4500 | at_most: 100 %}
+
+              <div class="bc-progress-text" style="color: #000000;">
+                {% if cart_total >= 4500 %}
+                  🎉 Kostenloser Versand aktiviert!
+                {% else %}
+                  <strong>{{ 4500 | minus: cart_total | money }}</strong>
+                  zu
+                  <strong>Kostenloser Versand</strong>!
+                {% endif %}
+              </div>
+              <div class="bc-progress-bar" style="background-color: #E2E2E2; margin-bottom: 0;">
+                <div class="bc-progress-fill" style="width: {{ progress_percentage }}%; background-color: #93D3FF;"></div>
+                <div class="bc-checkpoints">
+                  <div class="bc-checkpoint {% if cart_total >= 4500 %}is-reached{% endif %}" style="left: 100%; 
+               background-color: {% if cart_total >= 4500 %}#93D3FF{% else %}#E2E2E2 {% endif %};
+               color: #000000;">
+                    {{ 'icon-truck.svg' | inline_asset_content }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
         <form
           action="{{ routes.cart_url }}"
           id="CartDrawer-Form"
@@ -529,9 +530,27 @@
             {%- endif -%}
           </div>
 
-          <div class="totals" role="status">
-            <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+          {% if cart.total_price != cart.original_total_price %}
+            <div class="totals flex-wrap gap-4 !mb-3" role="status">
+              <h2 class="totals__total">Zwischensumme:</h2>
+              <p class="totals__total-value">
+                {{ cart.original_total_price | money_with_currency }}
+              </p>
+            </div>
+
+            <div class="totals flex-wrap gap-4 !mb-3" role="status">
+              <h2 class="totals__total">Rabatt:</h2>
+              <p class="totals__total-value">
+                <span class="text-green-700">-{{ cart.original_total_price | minus: cart.total_price | money_with_currency }}</span>
+              </p>
+            </div>
+          {% endif %}
+
+          <div class="totals flex-wrap gap-4" role="status">
+            <h2 class="totals__total">Gesamt:</h2>
+            <p class="totals__total-value">
+              <span>{{ cart.total_price | money_with_currency }}</span>
+            </p>
           </div>
 
           <small class="tax-note caption-large rte">
@@ -584,8 +603,7 @@
             disabled
             {% endif %}>
             {{ 'sections.cart.checkout' | t }}
-            <span style="color: #6c6c6c; margin: 0 5px;">•</span>
-            {{ cart.total_price | money_with_currency }}
+
           </button>
         </div>
         <img
