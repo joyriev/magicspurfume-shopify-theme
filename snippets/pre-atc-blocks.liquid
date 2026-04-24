@@ -34,19 +34,18 @@
         {% endfor %}
       </div>
     </div>
-  {% endif %}</div>
+  {% endif %}
+</div>
 
-{% comment %} <div>
-        <div class="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-white font-semibold">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Flag_of_Europe.svg"
-            alt="🇪🇺"
-            height="20"
-            width="20"
-            class="object-cover size-5 rounded-full">
-          <span>Hergestellt in der EU</span>
-        </div>
-</div> {% endcomment %}
+{% if product.metafields.custom.google_search_text != blank %}
+  <div>
+    Riecht wie diese Düfte
+    <a
+      target="_blank"
+      class="font-bold text-green-700"
+      href="https://www.google.com/search?q={{ product.metafields.custom.google_search_text.value | url_encode }}">auf Google</a>
+  </div>
+{% endif %}
 
 {% assign selling_points = product.metafields.custom.bullets.value %}
 {% if selling_points %}
