@@ -1,13 +1,13 @@
 {% comment %} 
-  FRAGRANCE CODE SUCHE POPUP - PREMIUM DESIGN 
-  - KOMPLETT HARDCODED - Jedes Parfum hat exakte Zuordnungen 
-  - KORREKTE PRODUKTBILDER - Alle Bilder mit _c.webp Format 
-  - ERWEITERTE FUZZY-SUCHE - Findet auch bei Tippfehlern 
-  - KEIN-SPACE-ERKENNUNG - "valentinoborninroma" findet Produkte 
-  - SONDERZEICHEN-BEHANDLUNG - "j'adore" findet "J'Adore" 
-  - STRENGE MARKEN- UND GESCHLECHTSZUORDNUNG 
-  - ZEIGT PRODUKTE DER GLEICHEN MARKE BEI "DAS KÖNNTE DIR AUCH GEFALLEN" 
-  - GESCHLECHTSSPEZIFISCHE EMPFEHLUNGEN 
+      FRAGRANCE CODE SUCHE POPUP - PREMIUM DESIGN 
+      - KOMPLETT HARDCODED - Jedes Parfum hat exakte Zuordnungen 
+      - KORREKTE PRODUKTBILDER - Alle Bilder mit _c.webp Format 
+      - ERWEITERTE FUZZY-SUCHE - Findet auch bei Tippfehlern 
+      - KEIN-SPACE-ERKENNUNG - "valentinoborninroma" findet Produkte 
+      - SONDERZEICHEN-BEHANDLUNG - "j'adore" findet "J'Adore" 
+      - STRENGE MARKEN- UND GESCHLECHTSZUORDNUNG 
+      - ZEIGT PRODUKTE DER GLEICHEN MARKE BEI "DAS KÖNNTE DIR AUCH GEFALLEN" 
+      - GESCHLECHTSSPEZIFISCHE EMPFEHLUNGEN 
 {% endcomment %}
 
 <!-- Lade unseren kuratierten Katalog -->
@@ -3867,7 +3867,8 @@
       let html = '';
       
       // ===== FIRST: Show catalog results (Echte Parfums) =====
-      if (catalogResults.length > 0) {
+      // if (catalogResults.length > 0) {
+      if (false) {
         html += `<div class="fc-section-title">✨ Echte Parfums</div>`;
         
         catalogResults.slice(0, 12).forEach(result => {
