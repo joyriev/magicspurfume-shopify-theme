@@ -83,9 +83,9 @@
       "settings": {
         "background_color": "#15803d",
         "forground_color": "#15803d",
-        "prepend_text": "Frühlingsangebot:",
+        "prepend_text": "Zahltagsangebot:",
         "ends_in_minutes": 300,
-        "append_text": "4 kaufen, 2 GRATIS",
+        "append_text": "4 kaufen, 2 gratis dazu 🎁",
         "link": ""
       }
     },
