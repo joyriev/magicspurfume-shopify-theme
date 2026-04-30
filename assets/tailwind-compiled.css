@@ -1246,6 +1246,16 @@
     background-color: rgb(20 107 50 / var(--tw-bg-opacity, 1))
 }
 
+.bg-\[\#0c5224\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(12 82 36 / var(--tw-bg-opacity, 1))
+}
+
+.bg-\[\#0b4e23\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(11 78 35 / var(--tw-bg-opacity, 1))
+}
+
 .bg-opacity-20 {
     --tw-bg-opacity: 0.2
 }
@@ -2148,6 +2158,11 @@
 .hover\:bg-\[\#146b32\]:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(20 107 50 / var(--tw-bg-opacity, 1))
+}
+
+.hover\:bg-\[\#17803d\]:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(23 128 61 / var(--tw-bg-opacity, 1))
 }
 
 .hover\:text-white:hover {
