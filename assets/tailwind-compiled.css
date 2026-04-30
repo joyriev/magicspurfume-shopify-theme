@@ -2058,6 +2058,7 @@
 
 .shimmer-btn {
     position: relative;
+    overflow: hidden;
 }
 
 .shimmer-btn:before {
@@ -2070,6 +2071,7 @@
     background: linear-gradient(to right, #fff0, #fff3, #fff0);
     transform: skew(-25deg);
     animation: shimmer 3s infinite;
+    z-index: 1;
 }
 
 @keyframes shimmer {
