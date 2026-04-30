@@ -157,10 +157,6 @@
     grid-column: span 2 / span 2
 }
 
-.col-span-3 {
-    grid-column: span 3 / span 3
-}
-
 .\!m-0 {
     margin: 0px !important
 }
@@ -459,11 +455,6 @@
     height: 16px
 }
 
-.size-5 {
-    width: 20px;
-    height: 20px
-}
-
 .size-6 {
     width: 24px;
     height: 24px
@@ -579,16 +570,16 @@
     width: calc(50% - 8px)
 }
 
+.w-\[calc\(50\%-8px\)\] {
+    width: calc(50% - 8px)
+}
+
 .w-auto {
     width: auto
 }
 
 .w-full {
     width: 100%
-}
-
-.w-\[calc\(50\%-8px\)\] {
-    width: calc(50% - 8px)
 }
 
 .min-w-0 {
@@ -718,10 +709,6 @@
 
 .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr))
-}
-
-.grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr))
 }
 
 .grid-cols-\[44px_1fr_80px\] {
@@ -1098,6 +1085,11 @@
     background-color: rgb(20 20 28 / var(--tw-bg-opacity, 1))
 }
 
+.bg-\[\#17803d\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(23 128 61 / var(--tw-bg-opacity, 1))
+}
+
 .bg-\[\#1A1A24\] {
     --tw-bg-opacity: 1;
     background-color: rgb(26 26 36 / var(--tw-bg-opacity, 1))
@@ -1106,16 +1098,6 @@
 .bg-\[\#1A1A2E\] {
     --tw-bg-opacity: 1;
     background-color: rgb(26 26 46 / var(--tw-bg-opacity, 1))
-}
-
-.bg-\[\#22613A\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(34 97 58 / var(--tw-bg-opacity, 1))
-}
-
-.bg-\[\#22613a\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(34 97 58 / var(--tw-bg-opacity, 1))
 }
 
 .bg-\[\#C8A96E\] {
@@ -1387,6 +1369,11 @@
     padding-bottom: 8px
 }
 
+.py-2\.5 {
+    padding-top: 10px;
+    padding-bottom: 10px
+}
+
 .py-20 {
     padding-top: 80px;
     padding-bottom: 80px
@@ -1415,11 +1402,6 @@
 .py-8 {
     padding-top: 32px;
     padding-bottom: 32px
-}
-
-.py-2\.5 {
-    padding-top: 10px;
-    padding-bottom: 10px
 }
 
 .\!pb-3 {
@@ -1458,10 +1440,6 @@
     padding-left: 0px
 }
 
-.pl-1 {
-    padding-left: 4px
-}
-
 .pl-12 {
     padding-left: 48px
 }
@@ -1476,10 +1454,6 @@
 
 .pl-8 {
     padding-left: 32px
-}
-
-.pr-3 {
-    padding-right: 12px
 }
 
 .pt-10 {
@@ -1962,6 +1936,11 @@
 
 .outline {
     outline-style: solid
+}
+
+.blur {
+    --tw-blur: blur(8px);
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
 .drop-shadow {
