@@ -1241,6 +1241,11 @@
     background-color: rgb(255 255 255 / 0.6)
 }
 
+.bg-\[\#146b32\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(20 107 50 / var(--tw-bg-opacity, 1))
+}
+
 .bg-opacity-20 {
     --tw-bg-opacity: 0.2
 }
