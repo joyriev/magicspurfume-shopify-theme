@@ -451,7 +451,7 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 
 /* Progress Bar Styles */
 .bc-rewards-bars-wrap {
-    padding: 16px 24px 24px;
+    padding: 16px 0 24px;
     display: flex;
     column-gap: 8px;
     row-gap: 32px;
