@@ -426,6 +426,6 @@ body {
     {% unless template.name == 'product' %}
       {% include 'fragrance-search' %}
     {% endunless %}
-    {% render 'checkout-modal' %}
+  {% comment %} {% render 'checkout-modal' %} {% endcomment %}
   </body>
 </html>
