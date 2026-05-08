@@ -101,7 +101,7 @@
           "type": "perks",
           "settings": {
             "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.00.15_PM.png",
-            "perk_title": "Kostenloser Versand ab 50 €",
+            "perk_title": "Kostenloser Versand ab 50€",
             "perk_content": "nur diese Woche"
           }
         },
@@ -125,8 +125,8 @@
           "type": "perks",
           "settings": {
             "perk_image": "shopify://shop_images/Screenshot_2026-02-03_at_12.07.45_PM.png",
-            "perk_title": "Persönlicher Kundenservice",
-            "perk_content": "8:00 - 20:00, 7 Tage/Woche"
+            "perk_title": "PersönlicheBeratung",
+            "perk_content": "täglich von 8 bis 20 Uhr"
           }
         }
       },
