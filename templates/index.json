@@ -430,7 +430,7 @@
           "type": "review",
           "settings": {
             "content": "<p>„Meine Freundin meinte direkt, dass ich gut rieche 😄 Seitdem benutze ich ihn fast jeden Tag.“</p>",
-            "author": "Christine N.",
+            "author": "Lukas Schneider",
             "date": "vor 5 Tag",
             "rating": 4,
             "show_verified_badge": false,
@@ -452,10 +452,10 @@
           "type": "review",
           "settings": {
             "review_image": "shopify://shop_images/magic_ugc_male_01.webp",
-            "content": "<p>\"Es riecht sehr schön, aber hält nicht so lange wie es sollte\"</p>",
-            "author": "Terence M.",
+            "content": "<p>„War erst unsicher wegen dem Preis, aber die Qualität hat mich echt überzeugt. Würde ich sofort wieder kaufen.“</p>",
+            "author": "Matthias Krüger",
             "author_image": "shopify://shop_images/magic_ugc_male_01.webp",
-            "date": "2 Months ago",
+            "date": "vor 2 Monaten",
             "rating": 5,
             "show_verified_badge": false,
             "product": ""
