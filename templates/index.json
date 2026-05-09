@@ -371,10 +371,10 @@
           "type": "review",
           "settings": {
             "review_image": "shopify://shop_images/magic_ugc_female_01.webp",
-            "content": "<p>\"Das ist der beste Duft, den ich seit sehr langer Zeit gerochen habe, die Noten machen mich wahnsinnig vor Glück. Ich werde diesen für immer in meiner Rotation behalten.\"</p>",
-            "author": "Jenniffer W.",
+            "content": "<p>„Ehrlich, einer der besten Düfte, die ich seit Jahren gerochen habe. Die Noten sind einfach brutal gut. Der bleibt definitiv dauerhaft in meiner Sammlung.“</p>",
+            "author": "Emilia Wagner",
             "author_image": "shopify://shop_images/magic_ugc_female_01.webp",
-            "date": "2 days ago",
+            "date": "vor 2 Tag",
             "rating": 4,
             "show_verified_badge": true,
             "product": ""
@@ -429,7 +429,7 @@
         "review_YXwWcc": {
           "type": "review",
           "settings": {
-            "content": "<p>\"Ich liiiebe diese Parfüms!!! Jedes einzelne, das ich bekommen habe, riecht göttlich. Einige würde ich sagen sind besser als das Original.\"</p>",
+            "content": "<p>„Meine Freundin meinte direkt, dass ich gut rieche 😄 Seitdem benutze ich ihn fast jeden Tag.“</p>",
             "author": "Christine N.",
             "date": "5 days ago",
             "rating": 4,
@@ -486,9 +486,9 @@
         "review_639hbA": {
           "type": "review",
           "settings": {
-            "content": "<p>\"Perfekt duftende Parfüms, die Düfte halten sehr lange, hervorragende Qualität\"</p>",
+            "content": "<p>„Die Parfüms riechen einfach perfekt und die Düfte halten richtig lange. Wirklich tolle Qualität.“<br/></p>",
             "author": "Kamila G.",
-            "date": "3 Months ago",
+            "date": "vor 3 Monaten",
             "rating": 5,
             "show_verified_badge": true,
             "product": ""
@@ -508,9 +508,9 @@
         "review_KK6jhW": {
           "type": "review",
           "settings": {
-            "content": "<p>\"Das ist die Art von Duft, die einen gepflegt fühlen lässt. Nicht überwältigend, genau richtig. 👌\"</p>",
+            "content": "<p>„So ein Duft, bei dem man sich direkt frisch und gepflegt fühlt. Nicht zu aufdringlich, einfach genau richtig. 👌“</p>",
             "author": "Michael R.",
-            "date": "4 Months ago",
+            "date": "vor 4 Monaten",
             "rating": 5,
             "show_verified_badge": true,
             "product": ""
@@ -543,9 +543,9 @@
         "review_8FxpJj": {
           "type": "review",
           "settings": {
-            "content": "<p>\"Wunderschöner Duft. Langanhaltend. <br/>Süß und warm. Gute schnelle Lieferung. <br/>Werde wieder kaufen.\"</p>",
+            "content": "<p>„Wunderschöner Duft, der echt lange hält. Schön süß und warm. Lieferung ging auch super schnell. Werde auf jeden Fall wieder bestellen.“</p>",
             "author": "Lucy R",
-            "date": "4 Months ago",
+            "date": "vor 4 Monaten",
             "rating": 5,
             "show_verified_badge": true,
             "product": ""
@@ -565,9 +565,9 @@
         "review_9T4pt3": {
           "type": "review",
           "settings": {
-            "content": "<p>\"Ihre Produkte sind von guter Qualität zu einem sehr erschwinglichen Preis.\"</p>",
+            "content": "<p>„Die Produkte haben echt eine tolle Qualität und das zu einem richtig guten Preis.“</p>",
             "author": "Amanda G",
-            "date": "5 Months ago",
+            "date": "vor 5 Monaten",
             "rating": 4,
             "show_verified_badge": true,
             "product": ""
@@ -578,7 +578,7 @@
           "settings": {
             "content": "<p>\"Tolle Düfte, tolle Produkte, keine Probleme.\"</p>",
             "author": "Alex S.",
-            "date": "6 Months ago",
+            "date": "vor 6 Monaten",
             "rating": 5,
             "show_verified_badge": true,
             "product": ""
