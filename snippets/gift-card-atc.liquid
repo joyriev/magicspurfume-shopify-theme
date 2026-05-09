@@ -15,12 +15,8 @@
 
 {% if product.variants.size > 1 %}
   {% comment %} Variant Selector {% endcomment %}
-  <div class="flex justify-between items-center mb-3 !mt-6">
-    <h2 class="m-0 text-base font-semibold">Größe auswählen:</h2>
-    <div class="text-sm italic text-gray-500">80 % unserer Kunden kaufen 50 ml oder mehr</div>
-  </div>
 
-  <div class="flex gap-3" id="variant-selector">
+  <div class="flex gap-3 pt-4" id="variant-selector">
     {% for variant in product.variants %}
       <button
         type="button"
