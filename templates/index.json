@@ -306,7 +306,7 @@
           "settings": {
             "heading": "Wie lange hält das Parfüm?",
             "icon": "none",
-            "row_content": "<p>Das Parfüm hält je nach Person unterschiedlich lange an, von 3 bis 8 Stunden für einen ruhigen, intensiven Duft. Nach einer längeren Zeitspanne verblasst der Duft.</p>",
+            "row_content": "<p>Das Parfüm hält je nach Person und Anwendungsart unterschiedlich lange an. Auf die Haut gesprüht hält es dank unserer Formel und 19–21 % Parfümölkonzentration 8 bis sogar 12 Stunden und länger. Nach einer längeren Zeitspanne verblasst der Duft.</p>",
             "page": ""
           }
         },
@@ -324,7 +324,7 @@
           "settings": {
             "heading": "Was bedeutet 19% Parfüm?",
             "icon": "none",
-            "row_content": "<p>Es bedeutet, dass der Inhalt des Flakons bis zu 19 % Parfümöl enthält. Originalflakons enthalten zwischen 16 und 21 % Parfüm für Eau de Parfum.</p>",
+            "row_content": "<p>Es bedeutet, dass der Inhalt des Flakons zwischen 19 % und 21 % Parfümöl enthält. Designerflakons enthalten zwischen 10 und 15 % Parfümöl für Eau de Toilette.</p>",
             "page": ""
           }
         }
