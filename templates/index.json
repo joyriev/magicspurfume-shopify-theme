@@ -297,7 +297,7 @@
           "settings": {
             "heading": "Ist es ein parfümiertes Wasser?",
             "icon": "none",
-            "row_content": "<p>Ja, es ist ein parfümiertes Wasser – es enthält bis zu 19 % Essenz. Eau de Toilette zum Beispiel hat zwischen 5 und 8 % und die Essenz liegt bei 41 % aufwärts.</p>",
+            "row_content": "<p>Nein, es ist ein Eau de Parfum – es enthält zwischen 19 % und 21 % Duftöl, je nach Parfüm. Eau de Toilette enthält zum Beispiel zwischen 5 und 15 %.</p>",
             "page": ""
           }
         },
@@ -359,9 +359,9 @@
         "review_8jw9Px": {
           "type": "review",
           "settings": {
-            "content": "<p>\"Dies ist mein erster Einkauf und ich bin begeistert. Ich werde nie wieder woanders Parfüm kaufen. Ich konnte nie einen Duft-Dupe finden, der wirklich authentisch und konsistent roch.\"</p>",
-            "author": "Killian P.",
-            "date": "1 day ago",
+            "content": "<p>„Das war meine erste Bestellung hier und ich bin echt begeistert. Ich kauf mein Parfüm ab jetzt nirgendwo anders mehr. Ich hab vorher nie einen Duft-Dupe gefunden, der wirklich authentisch riecht und dabei auch konstant gleich gut bleibt.“</p>",
+            "author": "Sebastian Müller",
+            "date": "vor 1 Tag",
             "rating": 5,
             "show_verified_badge": true,
             "product": ""
@@ -394,9 +394,9 @@
         "review_icFmQQ": {
           "type": "review",
           "settings": {
-            "content": "<p>\"Ich habe vergeblich versucht, Düfte zu finden, die teuer riechen und lange halten. Die Passform ist genau das, wonach ich gesucht habe.\"</p>",
-            "author": "Tiana N.",
-            "date": "2 days ago",
+            "content": "<p>„Ich hab ewig nach Düften gesucht, die hochwertig riechen und auch lange halten. Genau so einen Duft hab ich gesucht.“</p>",
+            "author": "Daniel Roth",
+            "date": "vor 2 Tag",
             "rating": 4,
             "show_verified_badge": true,
             "product": ""
@@ -418,9 +418,9 @@
         "review_aThE8h": {
           "type": "review",
           "settings": {
-            "content": "<p>\"Einer meiner Lieblingsdüfte. Kam wirklich schnell zu mir. Riecht so schön.\"</p>",
-            "author": "Alex W.",
-            "date": "2 days ago",
+            "content": "<p>„Einer meiner absoluten Lieblingsdüfte. War super schnell da und riecht einfach richtig gut.“</p>",
+            "author": "Jonas Hartmann",
+            "date": "vor 2 Tag",
             "rating": 5,
             "show_verified_badge": true,
             "product": ""
