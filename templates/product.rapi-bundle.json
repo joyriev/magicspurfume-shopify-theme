@@ -43,11 +43,15 @@
         },
         "buy_buttons_eXWBwX": {
           "type": "buy_buttons",
-          "disabled": true,
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
+        },
+        "reactive_atc_LBDQE9": {
+          "type": "reactive_atc",
+          "disabled": true,
+          "settings": {}
         },
         "text_T466xD": {
           "type": "text",
@@ -56,15 +60,10 @@
             "text_style": "body"
           }
         },
-        "reactive_atc_LBDQE9": {
-          "type": "reactive_atc",
-          "settings": {}
-        },
         "custom_liquid_QcxgR4": {
           "type": "custom_liquid",
-          "disabled": true,
           "settings": {
-            "custom_liquid": "<img \nstyle=\"width: 100%;\" \nsrc=\"https://cdn.shopify.com/s/files/1/0086/7932/5753/files/Zrzut-ekranu-2025-03-19-095755-1024x294.png?v=1770100462\" alt=\"Benefits\">"
+            "custom_liquid": "<div class=\"my-6\">\n  <div class=\"flex items-center gap-3 text-base\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0623/0691/0402/files/thimbs_up.png?v=1751372431\"\n      alt=\"Thumbs up badge\"\n      class=\"w-10 h-10 flex-shrink-0\"\n      width=\"40\"\n      height=\"40\" />\n    <div class=\"text-slate-900\">\n      <strong class=\"font-semibold\">Teste es 60 Tage lang – völlig risikofrei.</strong>\n      <div class=\"[display:none] md:block\">Sollten Sie nicht absolut begeistert sein, erstatten wir Ihnen den vollen Betrag zurück!</div>\n    </div>\n  </div>\n</div>"
           }
         },
         "payment_badges_FkCwVc": {
@@ -227,8 +226,8 @@
         "price_MG94AW",
         "variant_picker_hH3Diz",
         "buy_buttons_eXWBwX",
-        "text_T466xD",
         "reactive_atc_LBDQE9",
+        "text_T466xD",
         "custom_liquid_QcxgR4",
         "payment_badges_FkCwVc",
         "delivery_deadline_CQHJwz",
