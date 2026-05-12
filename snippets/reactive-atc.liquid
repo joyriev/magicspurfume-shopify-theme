@@ -13,6 +13,14 @@
   endfor
 %}
 
+{% comment %} Hide Rapi bundle for default template {% endcomment %}
+<style>
+  .rapi-bundle-content-0,
+  .rapi-bundle-boosters-afteratc-0 {
+    display: none !important;
+  }
+</style>
+
 {% if product.variants.size > 1 %}
   {% comment %} Variant Selector {% endcomment %}
   <div class="flex justify-between items-center mb-3 !mt-6">
