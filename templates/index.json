@@ -148,6 +148,19 @@
       "name": "Popular Products",
       "settings": {
         "background_color": "#f7f7f7",
+        "heading": "Neue Düfte",
+        "subheading": "",
+        "collection": "neue-dufte",
+        "show_all_button_text": "Alle Bestseller ansehen",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "popular_products_Abxx6b": {
+      "type": "popular-products",
+      "name": "Popular Products",
+      "settings": {
+        "background_color": "#f7f7f7",
         "heading": "BESTSELLERS",
         "subheading": "",
         "collection": "best-sellers",
@@ -793,6 +806,7 @@
     "image_and_text_nj4mfM",
     "feature_heighlights_EpJcyT",
     "popular_products_3gqnEi",
+    "popular_products_Abxx6b",
     "image_and_text_TQajG3",
     "bigger_then_a_shave_nJQJzw",
     "home_tabs_fcxFYG",
