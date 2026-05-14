@@ -31,7 +31,7 @@
         "custom_liquid_wVgaRG": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'pre-atc-blocks' %}"
+            "custom_liquid": "{% render 'pre-atc-blocks' %}\n{% comment %} Hide Rapi bundle for default template {% endcomment %}\n<style>\n  .rapi-bundle-content-0,\n  .rapi-bundle-boosters-afteratc-0 {\n    display: none !important;\n  }\n</style>"
           }
         },
         "price_MG94AW": {
