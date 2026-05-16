@@ -41,6 +41,12 @@
             "swatch_shape": "circle"
           }
         },
+        "rapi_rapi_bundle_VtTfem": {
+          "type": "shopify://apps/rapi/blocks/rapi-bundle/99617c17-a32b-4e70-a883-7a155610d032",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
         "buy_buttons_eXWBwX": {
           "type": "buy_buttons",
           "settings": {
@@ -52,12 +58,6 @@
           "type": "reactive_atc",
           "disabled": true,
           "settings": {}
-        },
-        "rapi_rapi_bundle_VtTfem": {
-          "type": "shopify://apps/rapi/blocks/rapi-bundle/99617c17-a32b-4e70-a883-7a155610d032",
-          "settings": {
-            "product": "{{product}}"
-          }
         },
         "text_T466xD": {
           "type": "text",
@@ -231,9 +231,9 @@
         "custom_liquid_wVgaRG",
         "price_MG94AW",
         "variant_picker_hH3Diz",
+        "rapi_rapi_bundle_VtTfem",
         "buy_buttons_eXWBwX",
         "reactive_atc_LBDQE9",
-        "rapi_rapi_bundle_VtTfem",
         "text_T466xD",
         "custom_liquid_QcxgR4",
         "payment_badges_FkCwVc",
