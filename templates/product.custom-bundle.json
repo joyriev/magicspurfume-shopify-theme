@@ -22,49 +22,10 @@
             "text": "4,7/5 Sterne (10.000+ Bewertungen)"
           }
         },
-        "custom_liquid_wVgaRG": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "{% render 'pre-atc-blocks' %}"
-          }
-        },
-        "price_MG94AW": {
-          "type": "price",
-          "disabled": true,
-          "settings": {}
-        },
-        "variant_picker_hH3Diz": {
-          "type": "variant_picker",
-          "disabled": true,
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "buy_buttons_eXWBwX": {
-          "type": "buy_buttons",
-          "disabled": true,
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": true
-          }
-        },
-        "text_T466xD": {
-          "type": "text",
-          "settings": {
-            "text": "<strong>Kopfnoten: </strong>{{ product.metafields.custom.top_notes | metafield_text: field: 'heading' }}",
-            "text_style": "body"
-          }
-        },
-        "reactive_atc_LBDQE9": {
-          "type": "reactive_atc",
-          "settings": {}
-        },
         "custom_liquid_QcxgR4": {
           "type": "custom_liquid",
-          "disabled": true,
           "settings": {
-            "custom_liquid": "<img \nstyle=\"width: 100%;\" \nsrc=\"https://cdn.shopify.com/s/files/1/0086/7932/5753/files/Zrzut-ekranu-2025-03-19-095755-1024x294.png?v=1770100462\" alt=\"Benefits\">"
+            "custom_liquid": "{% render 'custom-offer-bundle' %}"
           }
         },
         "payment_badges_FkCwVc": {
@@ -223,12 +184,6 @@
       "block_order": [
         "title_DkyBTh",
         "custom_rating_text_ehyqmQ",
-        "custom_liquid_wVgaRG",
-        "price_MG94AW",
-        "variant_picker_hH3Diz",
-        "buy_buttons_eXWBwX",
-        "text_T466xD",
-        "reactive_atc_LBDQE9",
         "custom_liquid_QcxgR4",
         "payment_badges_FkCwVc",
         "delivery_deadline_CQHJwz",
