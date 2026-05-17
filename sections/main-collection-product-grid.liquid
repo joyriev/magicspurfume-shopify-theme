@@ -163,9 +163,29 @@
             </ul>
 
             {%- if paginate.pages > 1 -%}
-              {% render 'pagination'
-                , paginate: paginate
-                , anchor: '' %}
+              {%- if paginate.next -%}
+                <div class="load-more-wrapper" style="text-align: center; margin-top: 40px; padding: 20px;">
+                  <button
+                    id="load-more-btn"
+                    class="button"
+                    data-next-url="{{ paginate.next.url }}"
+                    style="visibility: hidden; height: 1px; overflow: hidden; padding: 0; border: none;">Load More Products</button>
+                  <div id="loading-indicator" style="display: none; font-size: 16px; color: #000;">
+                    <span style="display: inline-block; animation: spin 1s linear infinite;">⏳</span>
+                    Weitere Produkte laden...
+                  </div>
+                  <style>
+                    @keyframes spin {
+                      from {
+                        transform: rotate(0deg);
+                      }
+                      to {
+                        transform: rotate(360deg);
+                      }
+                    }
+                  </style>
+                </div>
+              {%- endif -%}
             {%- endif -%}
           </div>
         {%- endif -%}
@@ -176,6 +196,93 @@
     {% render 'mask-arch' %}
   {%- endif -%}
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("Infinite scroll script loaded");
+    let loading = false;
+
+    async function loadMoreProducts() {
+      if (loading) return;
+
+      const loadMoreBtn = document.querySelector("#load-more-btn");
+      if (!loadMoreBtn) {
+        console.log("No load more button found");
+        return;
+      }
+
+      const url = loadMoreBtn.dataset.nextUrl;
+      if (!url) {
+        console.log("No next URL found");
+        return;
+      }
+
+      console.log("Loading products from:", url);
+      loading = true;
+      const loadingIndicator = document.querySelector("#loading-indicator");
+      if (loadingIndicator) {
+        loadingIndicator.style.display = "block";
+        console.log("Showing loading indicator");
+      }
+
+      try {
+        // Use section rendering for faster load - only fetch the product grid section
+        const sectionUrl = url + (url.includes('?') ? '&' : '?') + 'section_id=main-collection-product-grid';
+        const res = await fetch(sectionUrl);
+        const text = await res.text();
+        console.log("Fetched response, length:", text.length);
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, "text/html");
+
+        const newProducts = doc.querySelectorAll("#product-grid .grid__item");
+        console.log("Found new products:", newProducts.length);
+        const grid = document.querySelector("#product-grid");
+
+        newProducts.forEach(item => grid.appendChild(item));
+
+        const newNextUrl = doc.querySelector("#load-more-btn")?.dataset.nextUrl;
+        console.log("New next URL:", newNextUrl);
+
+        if (newNextUrl) {
+          loadMoreBtn.dataset.nextUrl = newNextUrl;
+        } else {
+          loadMoreBtn.remove(); // no more pages
+          if (loadingIndicator) loadingIndicator.remove();
+          console.log("No more pages");
+        }
+
+      } catch (err) {
+        console.error("Error loading products:", err);
+      }
+
+      loading = false;
+      if (loadingIndicator) loadingIndicator.style.display = "none";
+      console.log("Loading complete");
+    }
+
+    // Use Intersection Observer for efficient scroll detection
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        console.log("Intersection observed:", entry.isIntersecting);
+        if (entry.isIntersecting && !loading) {
+          console.log("Triggering load more");
+          loadMoreProducts();
+        }
+      });
+    }, {
+      rootMargin: '100px'
+    });
+
+    const loadMoreBtn = document.querySelector("#load-more-btn");
+    if (loadMoreBtn) {
+      observer.observe(loadMoreBtn);
+      console.log("Observer attached to load more button");
+    } else {
+      console.log("Load more button not found on page load");
+    }
+  });
+</script>
 
 {% schema %}
   {
