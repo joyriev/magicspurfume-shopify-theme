@@ -308,7 +308,7 @@
         "collapsible_row_rCVDnP": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Ist es ein parfümiertes Wasser?",
+            "heading": "es ein Eau de Toilette oder ein Eau de Parfum?",
             "icon": "none",
             "row_content": "<p>Nein, es ist ein Eau de Parfum – es enthält zwischen 19 % und 21 % Duftöl, je nach Parfüm. Eau de Toilette enthält zum Beispiel zwischen 5 und 15 %.</p>",
             "page": ""
