@@ -798,6 +798,61 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
+    },
+    "stacks_up_CyAwL9": {
+      "type": "stacks-up",
+      "blocks": {
+        "stack_AEewgG": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Ewige Haltbarkeit",
+            "other_brands": "Hoher Preis durch Branding"
+          }
+        },
+        "stack_HPVTBz": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Tägliche Komplimente ab 10€",
+            "other_brands": "Oft Massenproduktion"
+          }
+        },
+        "stack_rCCF6m": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Keine Tierversuche",
+            "other_brands": "Teilweise Tierversuche"
+          }
+        },
+        "stack_wzLdqD": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Du zahlst für Qualität – nicht für Marketing",
+            "other_brands": "Du zahlst für den Namen"
+          }
+        },
+        "stack_BaYU3C": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Handgemacht in kleiner Manufaktur",
+            "other_brands": "Hohe Marketingkosten im Preis inbegriffen"
+          }
+        }
+      },
+      "block_order": [
+        "stack_AEewgG",
+        "stack_HPVTBz",
+        "stack_rCCF6m",
+        "stack_wzLdqD",
+        "stack_BaYU3C"
+      ],
+      "name": "Stacks Up",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "title": "Warum Magic Perfume?",
+        "subtitle": "Die clevere Alternative zu überteuerten Luxusmarken.",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -810,6 +865,7 @@
     "image_and_text_TQajG3",
     "bigger_then_a_shave_nJQJzw",
     "home_tabs_fcxFYG",
+    "stacks_up_CyAwL9",
     "collapsible_content_JWRDn8",
     "massive_review_kTc3WW"
   ]
