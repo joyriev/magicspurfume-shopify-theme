@@ -37,7 +37,7 @@
         data-variant-id="{{ variant.id }}"
         data-variant-title="{{ variant.title }}"
         data-original-price="{{ variant.price | money }}"
-        data-compare-price="{% if variant.compare_at_price != blank %}{{ variant.compare_at_price | money }}{% elsif original_retail_price != blank %}{{ original_retail_price | money }}{% endif %}">
+        data-compare-price="{{ product.compare_at_price |  money }}">
         <div class="text-center">
           <div class="text-base font-semibold">{{ variant.title }}</div>
         </div>
