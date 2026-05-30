@@ -192,6 +192,22 @@
         updateVariant(variantId);
       });
     });
+
+    const shippingLocation = document.querySelector('.shipping_location');
+    if (shippingLocation) {
+    fetch('https://ipapi.co/country_name/')
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.text();
+      })
+      .then((countryName) => {
+        shippingLocation.textContent = countryName.trim();
+      })
+      .catch(() => {
+        // Leave existing text in place if lookup fails
+      });
+    }
+
   })();
 </script>
 
