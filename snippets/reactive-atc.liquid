@@ -2,6 +2,7 @@
   assign product_form_id = 'product-form-' | append: section.id
 
   assign selected_variant = product.selected_or_first_available_variant
+  assign original_retail_price = product.metafields.custom.original_retail_price.value
 
   for variant in product.variants
     assign variant_title_down = variant.title | downcase
@@ -36,7 +37,7 @@
         data-variant-id="{{ variant.id }}"
         data-variant-title="{{ variant.title }}"
         data-original-price="{{ variant.price | money }}"
-        data-compare-price="{{ variant.compare_at_price | money }}">
+        data-compare-price="{% if variant.compare_at_price != blank %}{{ variant.compare_at_price | money }}{% elsif original_retail_price != blank %}{{ original_retail_price | money }}{% endif %}">
         <div class="text-center">
           <div class="text-base font-semibold">{{ variant.title }}</div>
         </div>
@@ -87,6 +88,8 @@
           {{ block.shopify_attributes }}>
           {% if selected_variant.compare_at_price > selected_variant.price %}
             <span class="compare-price line-through text-white/50 text-base">{{ selected_variant.compare_at_price | money }}</span>
+          {% elsif original_retail_price != blank %}
+            <span class="compare-price line-through text-white/50 text-base">{{ original_retail_price | money }}</span>
           {% endif %}
           <span class="current-price">{{ selected_variant.price | money }}</span>
         </div>
@@ -104,8 +107,8 @@
         "{{ variant.id }}": {
           title: "{{ variant.title }}",
           originalPrice: "{{ variant.price | money }}",
-          compareAtPrice: "{{ variant.compare_at_price | money }}",
-          hasComparePrice: {% if variant.compare_at_price > variant.price %}true{% else %}false{% endif %}
+          compareAtPrice: "{% if variant.compare_at_price != blank %}{{ variant.compare_at_price | money }}{% elsif original_retail_price != blank %}{{ original_retail_price | money }}{% endif %}",
+          hasComparePrice: {% if variant.compare_at_price > variant.price or (variant.compare_at_price == blank and original_retail_price != blank) %}true{% else %}false{% endif %}
         }{% unless forloop.last %},{% endunless %}
       {% endfor %}
     };
@@ -117,7 +120,6 @@
     const variantButtons = document.querySelectorAll('.variant-button');
     const variantIdInput = document.getElementById('product-variant-id');
     const priceContainer = document.getElementById('product-price');
-    const comparePriceSpan = priceContainer.querySelector('.compare-price');
     const currentPriceSpan = priceContainer.querySelector('.current-price');
 
     // Update variant selection
@@ -141,17 +143,19 @@
 
       // Update price display
       if (variantData.hasComparePrice) {
-        if (!comparePriceSpan) {
+        let compareSpan = priceContainer.querySelector('.compare-price');
+        if (!compareSpan) {
           const newCompareSpan = document.createElement('span');
           newCompareSpan.className = 'compare-price line-through text-white/50 text-base';
           priceContainer.insertBefore(newCompareSpan, currentPriceSpan);
+          compareSpan = newCompareSpan;
         }
-        const compareSpan = priceContainer.querySelector('.compare-price');
         compareSpan.innerHTML = variantData.compareAtPrice;
         compareSpan.style.display = '';
       } else {
-        if (comparePriceSpan) {
-          comparePriceSpan.style.display = 'none';
+        const compareSpan = priceContainer.querySelector('.compare-price');
+        if (compareSpan) {
+          compareSpan.style.display = 'none';
         }
       }
 
