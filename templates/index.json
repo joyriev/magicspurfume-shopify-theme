@@ -293,6 +293,61 @@
         "padding_bottom": 72
       }
     },
+    "stacks_up_CyAwL9": {
+      "type": "stacks-up",
+      "blocks": {
+        "stack_AEewgG": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Ewige Haltbarkeit",
+            "other_brands": "Hoher Preis durch Branding"
+          }
+        },
+        "stack_HPVTBz": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Tägliche Komplimente ab 10€",
+            "other_brands": "Oft Massenproduktion"
+          }
+        },
+        "stack_rCCF6m": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Keine Tierversuche",
+            "other_brands": "Teilweise Tierversuche"
+          }
+        },
+        "stack_wzLdqD": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Du zahlst für Qualität – nicht für Marketing",
+            "other_brands": "Du zahlst für den Namen"
+          }
+        },
+        "stack_BaYU3C": {
+          "type": "stack",
+          "settings": {
+            "our_stack": "Handgemacht in kleiner Manufaktur",
+            "other_brands": "Hohe Marketingkosten im Preis inbegriffen"
+          }
+        }
+      },
+      "block_order": [
+        "stack_AEewgG",
+        "stack_HPVTBz",
+        "stack_rCCF6m",
+        "stack_wzLdqD",
+        "stack_BaYU3C"
+      ],
+      "name": "Stacks Up",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "title": "Warum Magic Perfume?",
+        "subtitle": "Die clevere Alternative zu überteuerten Luxusmarken.",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "collapsible_content_JWRDn8": {
       "type": "collapsible-content",
       "blocks": {
@@ -308,7 +363,7 @@
         "collapsible_row_rCVDnP": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "es ein Eau de Toilette oder ein Eau de Parfum?",
+            "heading": "Ist es ein Eau de Toilette oder ein Eau de Parfum?",
             "icon": "none",
             "row_content": "<p>Nein, es ist ein Eau de Parfum – es enthält zwischen 19 % und 21 % Duftöl, je nach Parfüm. Eau de Toilette enthält zum Beispiel zwischen 5 und 15 %.</p>",
             "page": ""
@@ -797,61 +852,6 @@
         "button_link": "",
         "padding_top": 72,
         "padding_bottom": 72
-      }
-    },
-    "stacks_up_CyAwL9": {
-      "type": "stacks-up",
-      "blocks": {
-        "stack_AEewgG": {
-          "type": "stack",
-          "settings": {
-            "our_stack": "Ewige Haltbarkeit",
-            "other_brands": "Hoher Preis durch Branding"
-          }
-        },
-        "stack_HPVTBz": {
-          "type": "stack",
-          "settings": {
-            "our_stack": "Tägliche Komplimente ab 10€",
-            "other_brands": "Oft Massenproduktion"
-          }
-        },
-        "stack_rCCF6m": {
-          "type": "stack",
-          "settings": {
-            "our_stack": "Keine Tierversuche",
-            "other_brands": "Teilweise Tierversuche"
-          }
-        },
-        "stack_wzLdqD": {
-          "type": "stack",
-          "settings": {
-            "our_stack": "Du zahlst für Qualität – nicht für Marketing",
-            "other_brands": "Du zahlst für den Namen"
-          }
-        },
-        "stack_BaYU3C": {
-          "type": "stack",
-          "settings": {
-            "our_stack": "Handgemacht in kleiner Manufaktur",
-            "other_brands": "Hohe Marketingkosten im Preis inbegriffen"
-          }
-        }
-      },
-      "block_order": [
-        "stack_AEewgG",
-        "stack_HPVTBz",
-        "stack_rCCF6m",
-        "stack_wzLdqD",
-        "stack_BaYU3C"
-      ],
-      "name": "Stacks Up",
-      "settings": {
-        "background_color": "#fcfbf9",
-        "title": "Warum Magic Perfume?",
-        "subtitle": "Die clevere Alternative zu überteuerten Luxusmarken.",
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     }
   },
