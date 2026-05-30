@@ -74,9 +74,9 @@
       "settings": {
         "background_color": "#15803d",
         "forground_color": "#15803d",
-        "prepend_text": "Langes-Wochenende-Sale!",
+        "prepend_text": "Special AngeBot: Kaufe 4 Zum Preis von 3",
         "ends_in_minutes": 300,
-        "append_text": "Kaufe 4 zum Preis von 3 🎁",
+        "append_text": "",
         "link": ""
       }
     },
