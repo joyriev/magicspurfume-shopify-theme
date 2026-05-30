@@ -383,12 +383,13 @@
           "settings": {
             "heading": "Was ist ein inspirierter Duft?",
             "icon": "none",
-            "row_content": "<p>Nein, dieser Duft ist eine perfekte Ergänzung mit dem gleichen Duft.</p>",
+            "row_content": "<p>Nein — es ist ein Eau de Parfum mit einem Duftölanteil von bis zu 19 %. Es bedeutet, dass der Inhalt des Flakons zwischen 19 % und 21 % Parfümöl enthält. Designerflakons enthalten zwischen 10 und 15 % Parfümöl für Eau de Toilette.</p>",
             "page": ""
           }
         },
         "collapsible_row_gJVQkB": {
           "type": "collapsible_row",
+          "disabled": true,
           "settings": {
             "heading": "Nein — es ist ein Eau de Parfum mit einem Duftölanteil von bis zu 19 %.",
             "icon": "none",
