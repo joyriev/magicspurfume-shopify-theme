@@ -20,19 +20,6 @@
     },
     "177731697070c376bb": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_0bf58ae_DjAkTc": {
-          "type": "ai_gen_block_0bf58ae",
-          "settings": {
-            "desktop_image": "shopify://shop_images/Magic_Perfume_Payday_desktop.png",
-            "mobile_image": "shopify://shop_images/Magic_Perfume_Payday_mobile.png"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_0bf58ae_DjAkTc"
-      ],
       "settings": {}
     },
     "17773166932fc1644f": {
