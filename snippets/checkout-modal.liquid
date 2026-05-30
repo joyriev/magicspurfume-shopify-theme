@@ -68,7 +68,7 @@
       <div class="text-2xl font-bold text-black mb-6">{{ mystery_product.price | money }}
         {% if mystery_product.compare_at_price > mystery_product.price %}
           <span class="text-sm text-gray-500 line-through">{{ mystery_product.compare_at_price | money }}</span>
-          <span class="text-sm text-green-600">{{ mystery_product.compare_at_price | minus: mystery_product.price | times: 100.0 | divided_by: mystery_product.compare_at_price | round }}% AUS</span>
+          <span class="text-sm text-green-600">{{ mystery_product.compare_at_price | minus: mystery_product.price | times: 100.0 | divided_by: mystery_product.compare_at_price | round }}% Spare</span>
         {% endif %}
       </div>
       <div class="flex flex-col gap-4">
