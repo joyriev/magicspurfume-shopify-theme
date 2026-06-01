@@ -21,7 +21,7 @@
   </div>
 {% endif %}
 <div>
-  {% if false %}
+  {% if product.metafields.custom.original_retail_price.value != blank %}
     <div>(UVP: {{ product.metafields.custom.original_retail_price.value | money }})</div>
   {% endif %}
   {% if product.metafields.custom.scent_intensity != blank %}
