@@ -22,7 +22,7 @@
 {% endif %}
 <div>
   {% if product.metafields.custom.original_retail_price.value != blank %}
-    <div>(UVP: {{ product.metafields.custom.original_retail_price.value | money }})</div>
+    <div>(UVP: {{ product.metafields.custom.original_retail_price.value | money_without_trailing_zeros }})</div>
   {% endif %}
   {% if product.metafields.custom.scent_intensity != blank %}
     <div class="flex items-center gap-[5px]">
