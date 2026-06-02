@@ -11,6 +11,40 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "newsletter_D3xybA": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_yHFKeC": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Abonniere unsere E-Mails und sichere dir ein Mystery Duft-Duo GRATIS!</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "paragraph_zERFgA": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Erfahre als Erster von neuen Kollektionen und exklusiven Angeboten.</p>"
+          }
+        },
+        "email_form_6YfwgH": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_yHFKeC",
+        "paragraph_zERFgA",
+        "email_form_6YfwgH"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -60,6 +94,7 @@
     }
   },
   "order": [
+    "newsletter_D3xybA",
     "footer"
   ]
 }
