@@ -4,7 +4,7 @@
 <style>
   /* FlipDown Custom Styles */
   .flipdown {
-    width: 140px;
+    width: 150px;
     height: 42px;
   }
 
@@ -180,7 +180,9 @@
       document.addEventListener('DOMContentLoaded', () => {
         // FlipDown Countdown - 24 hours
         var twentyFourHoursFromNow = (new Date().getTime() / 1000) + (3600 * 8) + (60 * 23) + 1;
-        var flipdown = new FlipDown(twentyFourHoursFromNow)
+        var flipdown = new FlipDown(twentyFourHoursFromNow, {
+          headings: ["Tage", "Stunden", "Minuten", "Sekunden"],
+        })
           .start()
           .ifEnded(() => {
             console.log('The countdown has ended!');
