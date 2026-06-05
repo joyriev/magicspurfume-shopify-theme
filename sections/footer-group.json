@@ -67,7 +67,7 @@
           "type": "text",
           "settings": {
             "heading": "Kontakt",
-            "subtext": "<p>Betreibendes Unternehmen: Lancer Properties Adresse: 1209 Orange Street, Wilmington, Delaware<br/><br/>Phone: +6531071778 or +1 888 373 6114</p><p><br/>Email: hello@magicperfume.co</p>",
+            "subtext": "<p>Betreibendes Unternehmen: <br/>Lancer Properties LLC<br/><br/>Phone: +6531071778 or +1 888 373 6114</p><p><br/>Email: hello@magicperfume.co</p>",
             "show_social": false
           }
         }
