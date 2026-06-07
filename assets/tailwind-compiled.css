@@ -526,6 +526,10 @@
     height: 40px
 }
 
+.h-16 {
+    height: 64px
+}
+
 .h-24 {
     height: 96px
 }
@@ -670,6 +674,10 @@
     max-width: 320px
 }
 
+.max-w-\[400px\] {
+    max-width: 400px
+}
+
 .max-w-\[500px\] {
     max-width: 500px
 }
@@ -700,14 +708,6 @@
 
 .max-w-xl {
     max-width: 576px
-}
-
-.max-w-\[300px\] {
-    max-width: 300px
-}
-
-.max-w-\[400px\] {
-    max-width: 400px
 }
 
 .flex-1 {
@@ -1664,6 +1664,10 @@
     text-align: right
 }
 
+.font-\[\'Figtree\'\] {
+    font-family: 'Figtree'
+}
+
 .font-\[\'Plus_Jakarta_Sans\'\] {
     font-family: 'Plus Jakarta Sans'
 }
@@ -2065,6 +2069,14 @@
     text-decoration-line: none
 }
 
+.decoration-2 {
+    text-decoration-thickness: 2px
+}
+
+.underline-offset-4 {
+    text-underline-offset: 4px
+}
+
 .opacity-0 {
     opacity: 0
 }
@@ -2145,16 +2157,6 @@
 
 .drop-shadow-sm {
     --tw-drop-shadow: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
-    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
-}
-
-.grayscale {
-    --tw-grayscale: grayscale(100%);
-    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
-}
-
-.invert {
-    --tw-invert: invert(100%);
     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)
 }
 
@@ -2431,6 +2433,10 @@
 
 .hover\:underline:hover {
     text-decoration-line: underline
+}
+
+.hover\:decoration-\[\#22613A\]:hover {
+    text-decoration-color: #22613A
 }
 
 .hover\:opacity-90:hover {
@@ -2737,14 +2743,14 @@
         line-height: 28px
     }
 
-    .md\:text-xl {
-        font-size: 20px;
-        line-height: 28px
-    }
-
     .md\:text-sm {
         font-size: 14px;
         line-height: 20px
+    }
+
+    .md\:text-xl {
+        font-size: 20px;
+        line-height: 28px
     }
 
     .md\:text-black {
