@@ -24,6 +24,7 @@
         },
         "custom_liquid_wVgaRG": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "{% render 'pre-atc-blocks' %}"
           }
