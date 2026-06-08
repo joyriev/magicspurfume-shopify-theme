@@ -39,7 +39,7 @@
       <div class="tab-content pt-6 {% unless forloop.first %}[display:none]{% endunless %}">
         {% assign collection = block.settings.collection %}
         {% if collection and collection.products.size > 0 %}
-          <div class="grid grid-cols-2 gap-6 md:gap-8 md:grid-cols-4">
+          <div class="grid grid-cols-2 gap-3 md:gap-8 md:grid-cols-4">
             {%- for product in collection.products limit: 4 -%}
               {% render 'product-card'
                 , product: product %}
