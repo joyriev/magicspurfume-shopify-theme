@@ -133,7 +133,7 @@
               {%- when 'title' -%}
                 <div class="product__title relative" {{ block.shopify_attributes }}>
                   {%- if product.tags contains 'bestseller' or product.tags contains 'onsale' -%}
-                    <div class="absolute top-0 left-0">
+                    <div class="absolute top-1 left-0">
                       {% if product.tags contains 'onsale' and product.compare_at_price != blank and product.compare_at_price > product.price %}
                         {%- assign discount_percent = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
                         <span class="inline-block bg-red-600 text-white text-sm font-bold px-3 py-1">
@@ -143,6 +143,15 @@
                       {% if product.tags contains 'bestseller' %}
                         <span class="inline-block bg-[#17803d] text-white text-sm font-bold px-3 py-1 mr-2">
                           Bestseller
+                        </span>
+                      {% endif %}
+                      {% if product.template_suffix == 'expressive-notes' %}
+                        <span class="inline-flex items-center px-3 py-1 rounded-md border border-solid border-[#3b82f6] text-[#3b82f6] text-sm font-medium bg-white">
+                        {% if product.tags contains 'Woman' or product.tags contains 'fuer-frauen' %}
+                         FRAUEN
+                        {% else %}
+                         MÄNNER
+                        {% endif %}
                         </span>
                       {% endif %}
                     </div>
@@ -931,6 +940,9 @@
           {%- endfor -%}
           <div>
             {% for block in section.blocks %}
+              {% if block.type == 'expanded_notes' %}
+                {% render 'expanded-notes' %}
+              {% endif %}
               {% if block.type == 'collapsible_tab' %}
                 <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                   <details id="Details-{{ block.id }}-{{ section.id }}">
@@ -1036,6 +1048,10 @@
     {
       "type": "reactive_atc",
       "name": "Reactive ATC"
+    },
+    {
+      "type": "expanded_notes",
+      "name": "Expanded NOtes"
     },
     {
       "type": "similar_scents",
