@@ -11,10 +11,10 @@
             </div>
         </summary>
         <div class="accordion__content rte" id="ProductAccordion-collapsible_tab_XYmgtQ-template--20437930934342__main">
-            <div class="scent-notes-panel font-['Figtree'] text-gray-800">
+            <div class="scent-notes-panel text-gray-800">
                 <div class="mb-5">
                     <p class="text-xs text-gray-500 mb-3 m-0">Hauptnoten:</p>
-                    <div class="flex flex-wrap gap-6">
+                    <div class="flex flex-wrap gap-x-6">
                         {% for note in product.metafields.custom.main_notes.value %}
                             <figure class="m-0 flex flex-col items-center text-center">
                                 <div class="h-16 mb-2 flex items-end justify-center">
@@ -29,43 +29,49 @@
                 <hr class="border-0 border-b border-solid border-gray-200 my-4">
 
                 <div class="space-y-3">
+                    {% for note in product.metafields.custom.top_notes.value %}
                     <div class="flex items-start gap-3">
-                    <svg width="20" height="28" viewBox="0 0 20 28" class="text-gray-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                        <rect x="8" y="2" width="4" height="3" rx="0.5"></rect>
-                        <path d="M7 5 h6 v2 h-6 z"></path>
-                        <rect x="4" y="7" width="12" height="18" rx="2"></rect>
-                    </svg>
-                    <div class="min-w-0">
-                        <p class="text-sm m-0"><strong class="font-bold">Kopfnoten:</strong> {{ product.metafields.custom.top_notes.value.heading }}</p>
-                        <p class="text-sm text-gray-700 m-0">{{ product.metafields.custom.top_notes.value.description | metafield_text }}</p>
+                        <svg width="20" height="28" viewBox="0 0 20 28" class="text-gray-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <rect x="8" y="2" width="4" height="3" rx="0.5"></rect>
+                            <path d="M7 5 h6 v2 h-6 z"></path>
+                            <rect x="4" y="7" width="12" height="18" rx="2"></rect>
+                        </svg>
+                        <div class="min-w-0">
+                            <p class="text-sm m-0"><strong class="font-bold">Kopfnoten:</strong>{{ note.heading }}</p>
+                            <p class="text-sm text-gray-700 m-0">{{ note.description | metafield_text }}</p>
+                        </div>
                     </div>
-                    </div>
+                    {% endfor %}
 
+                    {% for note in product.metafields.custom.middle_notes.value %}
                     <div class="flex items-start gap-3">
-                    <svg width="20" height="28" viewBox="0 0 20 28" class="text-gray-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                        <rect x="8" y="2" width="4" height="3" rx="0.5"></rect>
-                        <path d="M7 5 h6 v2 h-6 z"></path>
-                        <rect x="4" y="7" width="12" height="18" rx="2"></rect>
-                        <rect x="4" y="14" width="12" height="11" rx="2" fill="currentColor" fill-opacity="0.2"></rect>
-                    </svg>
-                    <div class="min-w-0">
-                        <p class="text-sm m-0"><strong class="font-bold">Herznoten:</strong> {{ product.metafields.custom.middle_notes.value.heading }}</p>
-                        <p class="text-sm text-gray-700 m-0">{{ product.metafields.custom.middle_notes.value.description | metafield_text }}</p>
+                        <svg width="20" height="28" viewBox="0 0 20 28" class="text-gray-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <rect x="8" y="2" width="4" height="3" rx="0.5"></rect>
+                            <path d="M7 5 h6 v2 h-6 z"></path>
+                            <rect x="4" y="7" width="12" height="18" rx="2"></rect>
+                            <rect x="4" y="14" width="12" height="11" rx="2" fill="currentColor" fill-opacity="0.2"></rect>
+                        </svg>
+                        <div class="min-w-0">
+                            <p class="text-sm m-0"><strong class="font-bold">Herznoten:</strong> {{ note.heading }}</p>
+                            <p class="text-sm text-gray-700 m-0">{{ note.description | metafield_text }}</p>
+                        </div>
                     </div>
-                    </div>
+                    {% endfor %}
 
+                    {% for note in product.metafields.custom.base_notes.value %}
                     <div class="flex items-start gap-3">
-                    <svg width="20" height="28" viewBox="0 0 20 28" class="text-gray-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                        <rect x="8" y="2" width="4" height="3" rx="0.5"></rect>
-                        <path d="M7 5 h6 v2 h-6 z"></path>
-                        <rect x="4" y="7" width="12" height="18" rx="2"></rect>
-                        <rect x="4" y="7" width="12" height="18" rx="2" fill="currentColor" fill-opacity="0.35"></rect>
-                    </svg>
-                    <div class="min-w-0">
-                        <p class="text-sm m-0"><strong class="font-bold">Basisnoten:</strong> {{ product.metafields.custom.base_notes.value.heading }}</p>
-                        <p class="text-sm text-gray-700 m-0">{{ product.metafields.custom.base_notes.value.description | metafield_text }}</p>
+                        <svg width="20" height="28" viewBox="0 0 20 28" class="text-gray-700 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <rect x="8" y="2" width="4" height="3" rx="0.5"></rect>
+                            <path d="M7 5 h6 v2 h-6 z"></path>
+                            <rect x="4" y="7" width="12" height="18" rx="2"></rect>
+                            <rect x="4" y="7" width="12" height="18" rx="2" fill="currentColor" fill-opacity="0.35"></rect>
+                        </svg>
+                        <div class="min-w-0">
+                            <p class="text-sm m-0"><strong class="font-bold">Basisnoten:</strong> {{ note.heading }}</p>
+                            <p class="text-sm text-gray-700 m-0">{{ note.description | metafield_text }}</p>
+                        </div>
                     </div>
-                    </div>
+                    {% endfor %}
                 </div>
 
                 <hr class="border-0 border-b border-solid border-gray-200 my-4">
