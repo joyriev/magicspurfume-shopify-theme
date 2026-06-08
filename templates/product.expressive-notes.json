@@ -117,6 +117,10 @@
             "custom_liquid": "{% render 'variant-gift-atc' %}"
           }
         },
+        "expanded_notes_iVdnJA": {
+          "type": "expanded_notes",
+          "settings": {}
+        },
         "collapsible_tab_FAAFhb": {
           "type": "collapsible_tab",
           "settings": {
@@ -221,6 +225,7 @@
         "icon_with_text_ytpGUH",
         "custom_liquid_3PYMcC",
         "custom_liquid_aeXkRF",
+        "expanded_notes_iVdnJA",
         "collapsible_tab_FAAFhb",
         "collapsible_tab_bKn87j",
         "collapsible_tab_T6Fk9z",
