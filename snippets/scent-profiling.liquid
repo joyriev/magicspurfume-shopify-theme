@@ -1,14 +1,14 @@
-<div class="product-quick-nav flex flex-wrap items-center gap-6 mt-6 mb-6 font-['Figtree']">
+<div class="product-quick-nav flex flex-wrap items-center gap-6 mt-6 mb-6">
   <a
     href="#Details-collapsible_tab_XYmgtQ-template--20437930934342__main"
     data-scroll-to-foldable="1"
-    class="text-xs font-bold tracking-wider uppercase text-gray-900 underline underline-offset-4 decoration-2 hover:decoration-[#22613A] cursor-pointer">Fullständig beskrivning</a>
+    class="text-xs font-bold tracking-wider uppercase text-gray-900 underline underline-offset-4 decoration-2 hover:decoration-[#22613A] cursor-pointer">Vollständige Beschreibung</a>
   <a
     href="#shopify-section-template--20437930934342__image_and_text_RDUKE4"
     data-scroll-to-anchor="clean-label-section"
-    class="text-xs font-bold tracking-wider uppercase text-gray-900 underline underline-offset-4 decoration-2 hover:decoration-[#22613A] cursor-pointer">Rent märke</a>
+    class="text-xs font-bold tracking-wider uppercase text-gray-900 underline underline-offset-4 decoration-2 hover:decoration-[#22613A] cursor-pointer">Clean Label</a>
 </div>
-<div class="scent-attributes flex gap-6 md:gap-12 font-['Figtree']">
+<div class="scent-attributes flex gap-6 md:gap-12">
   {% if product.metafields.custom.fragrance_family != blank %}
     <figure class="flex flex-col items-center text-center m-0">
       <div class="relative h-16 flex items-center justify-center">
@@ -222,9 +222,9 @@
       </div>
       <figcaption class="text-sm text-gray-800">
         {% case product.metafields.custom.scent_intensity %}
-          {% when 1 %}Light
-        {% when 2 %}Medium
-      {% when 3 %}Strong
+          {% when 1 %}Leicht
+        {% when 2 %}Mittel
+      {% when 3 %}Stark
     {% else %}
       {{ product.metafields.custom.scent_intensity }}
   {% endcase %}
