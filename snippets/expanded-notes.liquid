@@ -37,7 +37,7 @@
                             <rect x="4" y="7" width="12" height="18" rx="2"></rect>
                         </svg>
                         <div class="min-w-0">
-                            <p class="text-sm m-0"><strong class="font-bold">Kopfnoten:</strong>{{ note.heading }}</p>
+                            <p class="text-sm m-0"><strong class="font-bold">Kopfnoten:</strong> {{ note.heading }}</p>
                             <p class="text-sm text-gray-700 m-0">{{ note.description | metafield_text }}</p>
                         </div>
                     </div>
@@ -76,12 +76,14 @@
 
                 <hr class="border-0 border-b border-solid border-gray-200 my-4">
 
-                {% if product.metafields.custom.ingredients.value != blank %}
-                    <p class="text-xs leading-relaxed text-gray-700 mb-4 m-0">
-                        <strong class="font-bold">Inhaltsstoffe:</strong>
+                <p class="text-xs leading-relaxed text-gray-700 mb-4 m-0">
+                    <strong class="font-bold">Inhaltsstoffe:</strong>
+                        {% if product.metafields.custom.ingredients.value != blank %}
                         {{ product.metafields.custom.ingredients.value | metafield_text }}
+                        {% else %}
+                        Vergällter Alkohol, Duftstoff, Wasser, Limonen, Linalool, Citronellol, Geraniol, Citral, Benzylsalicylat, Cumarin, Alpha-Isomethylionon, Hexylcinnamal, Benzylbenzoat.
+                        {% endif %}
                     </p>
-                {% endif %}
 
                 <div class="flex flex-wrap gap-2 mt-4">
                     <span class="inline-flex items-center whitespace-nowrap px-3 py-1.5 rounded-full bg-white border border-solid border-gray-200 text-xs text-gray-800">
