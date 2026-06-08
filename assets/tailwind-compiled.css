@@ -243,6 +243,11 @@
     margin-bottom: 24px
 }
 
+.-mx-\[15px\] {
+    margin-left: -15px;
+    margin-right: -15px
+}
+
 .\!mb-0 {
     margin-bottom: 0px !important
 }
@@ -518,6 +523,11 @@
     height: 60px
 }
 
+.\!size-10 {
+    width: 40px !important;
+    height: 40px !important
+}
+
 .\!h-10 {
     height: 40px !important
 }
@@ -708,6 +718,10 @@
 
 .max-w-xl {
     max-width: 576px
+}
+
+.max-w-16 {
+    max-width: 64px
 }
 
 .flex-1 {
@@ -2093,6 +2107,10 @@
     opacity: 0.75
 }
 
+.opacity-70 {
+    opacity: 0.7
+}
+
 .shadow {
     --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -2474,6 +2492,11 @@
         order: 0
     }
 
+    .md\:mx-0 {
+        margin-left: 0px;
+        margin-right: 0px
+    }
+
     .md\:\!mb-12 {
         margin-bottom: 48px !important
     }
@@ -2569,6 +2592,10 @@
         width: 100%
     }
 
+    .md\:max-w-24 {
+        max-width: 96px
+    }
+
     .md\:scale-105 {
         --tw-scale-x: 1.05;
         --tw-scale-y: 1.05;
@@ -2634,6 +2661,10 @@
 
     .md\:rounded-xl {
         border-radius: 12px
+    }
+
+    .md\:rounded-lg {
+        border-radius: 8px
     }
 
     .md\:bg-center {
@@ -2785,6 +2816,11 @@
         padding-left: 16px;
         padding-right: 16px
     }
+
+    .lg\:text-sm {
+        font-size: 14px;
+        line-height: 20px
+    }
 }
 
 .\[\&\.active\]\:\[transform\:translateY\(0\)\].active {
@@ -2803,6 +2839,15 @@
     border: 2px solid #000000
 }
 
+.\[\&\>\.swiper-slide-thumb-active\]\:border-black>.swiper-slide-thumb-active {
+    --tw-border-opacity: 1;
+    border-color: rgb(0 0 0 / var(--tw-border-opacity, 1))
+}
+
+.\[\&\>\.swiper-slide-thumb-active\]\:opacity-100>.swiper-slide-thumb-active {
+    opacity: 1
+}
+
 .\[\&\>p\:first-child\]\:mt-0>p:first-child {
     margin-top: 0px
 }
@@ -2817,6 +2862,18 @@
 
 .\[\&\>ul\]\:text-left>ul {
     text-align: left
+}
+
+.\[\&\]\:after\:\!text-xl::after {
+    content: var(--tw-content);
+    font-size: 20px !important;
+    line-height: 28px !important
+}
+
+.\[\&\]\:after\:text-gray-900::after {
+    content: var(--tw-content);
+    --tw-text-opacity: 1;
+    color: rgb(17 24 39 / var(--tw-text-opacity, 1))
 }
 
 .\[\&_\.path\]\:\!stroke-white .path {
