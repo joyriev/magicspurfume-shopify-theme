@@ -274,32 +274,32 @@
           "type": "perks",
           "settings": {
             "perk_image": "shopify://shop_images/icons_eu_1.webp",
-            "perk_title": "Kostenloser Versand für alle Bestellungen über 45€!",
-            "perk_content": "Nur in dieser Woche"
+            "perk_title": "Hergestellt in der EU",
+            "perk_content": "Vegan, tierversuchsfrei und in der EU hergestellt."
           }
         },
         "perks_NV4H3P": {
           "type": "perks",
           "settings": {
             "perk_image": "shopify://shop_images/icons_quality_1.webp",
-            "perk_title": "Spezielle Rabatte für Stammkunden",
-            "perk_content": "Gutscheine bis zu 100€"
+            "perk_title": "Französische Duftqualität",
+            "perk_content": "Mit derselben Sorgfalt hergestellt wie führende Luxusmarken."
           }
         },
         "perks_qWY7Uy": {
           "type": "perks",
           "settings": {
             "perk_image": "shopify://shop_images/icons_guarantee_1.webp",
-            "perk_title": "Kostenlose Geschenkverpackung",
-            "perk_content": "Mit 100 Buchstaben benutzerdefinierte Notiz"
+            "perk_title": "60 Tage Geld-zurück-Garantie",
+            "perk_content": "Nicht überzeugt? Senden Sie Ihre Bestellung innerhalb von 60 Tagen zurück und erhalten Sie Ihr Geld zurück."
           }
         },
         "perks_HKnHJ8": {
           "type": "perks",
           "settings": {
             "perk_image": "shopify://shop_images/icons_time_1.webp",
-            "perk_title": "Experten-Kundenservice",
-            "perk_content": "8:00 - 20:00, 7 Tage/Woche"
+            "perk_title": "Langanhaltender Duft",
+            "perk_content": "Hält über 12 Stunden auf der Haut (manche berichten von noch längerer Haltbarkeit)."
           }
         }
       },
