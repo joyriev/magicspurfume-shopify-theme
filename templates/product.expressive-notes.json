@@ -141,6 +141,7 @@
         },
         "collapsible_tab_T6Fk9z": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Handelt es sich um ein Duftwasser?",
             "icon": "none",
@@ -159,6 +160,7 @@
         },
         "collapsible_tab_TKfWP3": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Was ist ein duftzwilling?",
             "icon": "none",
@@ -168,6 +170,7 @@
         },
         "collapsible_tab_HiNKBa": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Was bedeutet 19% Parfüm?",
             "icon": "none",
