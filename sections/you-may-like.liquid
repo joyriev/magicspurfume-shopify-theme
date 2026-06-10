@@ -32,23 +32,59 @@
     <div class="swiper" id="you-may-like-swiper">
       <div class="swiper-wrapper">
         {% for product in section.settings.collection.products limit: 5 %}
+          {% assign selected_variant = product.selected_or_first_available_variant %}
+          {% for variant in product.variants %}
+            {% if variant.title contains '100' %}
+              {% assign selected_variant = variant %}
+            {% endif %}
+          {% endfor %}
           <div class="swiper-slide max-w-[250px]">
-            <a href="{{ product.url }}" class="block no-underline text-inherit bg-white p-3 rounded-lg border border-solid border-gray-200">
-              <div class="aspect-square rounded-lg overflow-hidden bg-[#FAF8F3] mb-3 relative">
+            <div class="block no-underline text-inherit bg-white p-3 rounded-lg border border-solid border-gray-200">
+              <a href="{{ product.url }}" class="aspect-square rounded-lg overflow-hidden bg-[#FAF8F3] mb-3 relative">
                 <img
                   src="{{ product.featured_image | image_url: width: 300 }}"
                   alt="{{ product.title }}"
                   height="216"
                   width="216"
                   class="w-full h-full object-cover">
-              </div>
+              </a>
               <p class="text-xs text-gray-500 m-0 mb-1 line-clamp-1">Inspired by {{ product.metafields.custom.inspiration.value.name }}</p>
-              <h3 class="text-sm font-semibold m-0 mb-2 line-clamp-1">{{ product.title }}</h3>
-              <div class="flex items-center gap-2">
-                <span class="text-sm font-bold text-gray-900">{{ product.price | money }}</span>
-                <span class="text-xs text-gray-400 line-through">{{ product.compare_at_price | money }}</span>
+              <h3 class="text-sm font-semibold m-0 mb-2 line-clamp-1">
+                <a class="text-black no-underline" href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="text-sm font-bold text-gray-900">{{ selected_variant.price | money }}</span>
               </div>
-            </a>
+              {% comment %} Add to cart form {% endcomment %}
+              <product-form
+                class="product-form !m-0 [&_form]:flex"
+                data-hide-errors=""
+                data-section-id="{{ section.id }}">
+                {%- form 'product'
+                  , product
+                  , id: ''
+                  , class: 'form'
+                  , novalidate: 'novalidate'
+                  , data-type: 'add-to-cart-form'
+                -%}
+                  <input
+                    type="hidden"
+                    name="id"
+                    id="product-variant-id"
+                    value="{{ selected_variant.id }}"
+                    class="product-variant-id">
+                  <button
+                    type="submit"
+                    name="add"
+                    value="1"
+                    class="shimmer-btn p-3 rounded-lg hover:bg-[#17803d] bg-[#146b32] transition-colors shadow-xl tracking-normal border-0 text-white w-full button leading-snug !px-2 text-base"
+                    aria-label="Add to cart">
+                    <span>{{ 'products.product.add_to_cart' | t }}</span>
+                    {%- render 'loading-spinner' -%}
+                  </button>
+                {%- endform -%}
+              </product-form>
+            </div>
           </div>
         {% endfor %}
       </div>
