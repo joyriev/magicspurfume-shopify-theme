@@ -241,20 +241,16 @@
   {% endcase %}
 </figcaption></figure>{% endif %}</div><script>
   document.addEventListener('DOMContentLoaded', function () {
-    const foldableSummery = document.querySelector(
-      '#expanded-notes summery'
-    );
-    const foldableLink = document.querySelector('a[data-scroll-to-foldable="1"]');
+    const foldableSummery = document.querySelector('#expanded-notes summery');
+    const foldableLink = document.querySelector('a[href="#expanded-notes"]');
 
-    console.log(foldable);
+    console.log(foldableSummery);
     console.log(foldableLink);
 
-    if (foldable && foldableLink) {
+    if (foldableSummery && foldableLink) {
       foldableLink.addEventListener('click', function () {
-        if (!foldable.hasAttribute('open')) {
-          console.log('clicked');
-          foldable.click();
-        }
+        console.log('clicked');
+        foldableSummery.click();
       });
     }
   });
