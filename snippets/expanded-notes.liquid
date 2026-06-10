@@ -216,3 +216,20 @@
     </div>
   </details>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const foldable = document.getElementById(
+      'Details-collapsible_tab_FAAFhb-template--22305367884034__main'
+    );
+
+    if (!foldable) return;
+    const foldableLink = document.querySelector('a[data-scroll-to-foldable="1"]');
+
+    foldableLink.addEventListener('click', function () {
+      if (!foldable.hasAttribute('open') && foldableSummary) {
+        foldableSummary.click();
+      }
+    });
+  });
+</script>
