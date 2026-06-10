@@ -246,9 +246,13 @@
     );
     const foldableLink = document.querySelector('a[data-scroll-to-foldable="1"]');
 
+    console.log(foldable);
+    console.log(foldableLink);
+
     if (foldable && foldableLink) {
       foldableLink.addEventListener('click', function () {
         if (!foldable.hasAttribute('open')) {
+          console.log('clicked');
           foldable.click();
         }
       });
