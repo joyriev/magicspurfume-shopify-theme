@@ -244,12 +244,8 @@
     const foldableSummary = document.querySelector('#expanded-notes summary');
     const foldableLink = document.querySelector('a[href="#expanded-notes"]');
 
-    console.log(foldableSummary);
-    console.log(foldableLink);
-
     if (foldableSummary && foldableLink) {
       foldableLink.addEventListener('click', function () {
-        console.log('clicked');
         foldableSummary.click();
       });
     }
