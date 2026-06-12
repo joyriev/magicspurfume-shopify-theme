@@ -70,12 +70,43 @@
             "subtext": "<p>Betreibendes Unternehmen: <br/>Lancer Properties LLC<br/><br/>Phone: to this +44808 1724138 or +1 888 373 6114</p><p><br/>Email: hello@magicperfume.co</p>",
             "show_social": false
           }
+        },
+        "revoq_eu_withdrawal_button_widerrufsbutton_popup_button_WQwzfW": {
+          "type": "shopify://apps/revoq-eu-withdrawal-button/blocks/widerrufsbutton-popup-button/019c3356-2775-7d52-b915-4b0f965005ae",
+          "settings": {
+            "trigger_label": "-",
+            "trigger_alignment": "left",
+            "trigger_width": "auto",
+            "trigger_button_size": "medium",
+            "trigger_button_variant": "filled",
+            "trigger_button_color": "#111827",
+            "trigger_button_text_color": "#ffffff",
+            "trigger_button_border_color": "#111827",
+            "trigger_button_border_width": 1,
+            "section_padding": 24,
+            "heading_text": "-",
+            "show_section_heading": true,
+            "show_subheading": true,
+            "subheading_text": "-",
+            "name_placeholder": "-",
+            "order_placeholder": "-",
+            "show_order_hint": true,
+            "show_email_hint": true,
+            "show_privacy_notice": true,
+            "text_color": "#111827",
+            "secondary_text_color": "#6b7280",
+            "card_shape": "rounded",
+            "input_shape": "rounded",
+            "button_color": "#111827",
+            "button_text_color": "#ffffff"
+          }
         }
       },
       "block_order": [
         "text_x89MfR",
         "link_list_Fhdw8K",
-        "text_RP9BNp"
+        "text_RP9BNp",
+        "revoq_eu_withdrawal_button_widerrufsbutton_popup_button_WQwzfW"
       ],
       "settings": {
         "color_scheme": "scheme-4",
