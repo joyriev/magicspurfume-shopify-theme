@@ -854,6 +854,12 @@
         "padding_top": 72,
         "padding_bottom": 72
       }
+    },
+    "178125510878c9a1b8": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -868,6 +874,7 @@
     "home_tabs_fcxFYG",
     "stacks_up_CyAwL9",
     "collapsible_content_JWRDn8",
-    "massive_review_kTc3WW"
+    "massive_review_kTc3WW",
+    "178125510878c9a1b8"
   ]
 }
