@@ -11,7 +11,7 @@
         {% if product.tags contains "local_image" %}
           {% assign image_found = false %}
           {% for image in product.images %}
-            {% assign curr_currency = localization.country.currency.iso_code | prepend: "bundle_" | downcase %}
+            {% assign curr_currency = localization.country.iso_code | prepend: "bundle_" | downcase %}
             {% assign img_alt = image.alt | downcase %}
             {% if img_alt contains "bundle_" and img_alt == curr_currency %}
               {% assign image_found = true %}
@@ -152,7 +152,7 @@
         {% if product.tags contains "local_image" %}
           {% assign image_found = false %}
           {% for image in product.images %}
-            {% assign curr_currency = localization.country.currency.iso_code | prepend: "bundle_" | downcase %}
+            {% assign curr_currency = localization.country.iso_code | prepend: "bundle_" | downcase %}
             {% assign img_alt = image.alt | downcase %}
             {% if img_alt contains "bundle_" and img_alt == curr_currency %}
               {% assign image_found = true %}
