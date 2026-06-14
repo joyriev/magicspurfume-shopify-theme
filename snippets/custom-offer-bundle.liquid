@@ -12,9 +12,9 @@
     {% assign discount_percent = discount | times: 100 | divided_by: product.compare_at_price | round %}
   {% endif %}
 
-  <div class="flex items-center gap-3 text-xl">
+  <div class="flex flex-wrap items-center gap-x-3 text-xl">
     {% if product.compare_at_price > product.price %}
-      <span class="text-red-600 font-bold text-[24px] discount-percent">
+      <span class="text-red-600 font-bold discount-percent">
         -{{ discount_percent }}%
       </span>
     {% endif %}
