@@ -1648,6 +1648,10 @@
     padding: 7px
 }
 
+.p-\[18px\] {
+    padding: 18px
+}
+
 .\!px-2 {
     padding-left: 8px !important;
     padding-right: 8px !important
@@ -2948,6 +2952,10 @@
 
     .md\:p-8 {
         padding: 32px
+    }
+
+    .md\:p-\[18px\] {
+        padding: 18px
     }
 
     .md\:px-0 {
