@@ -81,7 +81,7 @@
       "settings": {
         "background_color": "#15803d",
         "forground_color": "#15803d",
-        "prepend_text": "Special Angebot: Kaufe 4 Zum Preis von 3",
+        "prepend_text": "Magic Parfümtage – bis zu 2 Parfüms gratis!",
         "ends_in_minutes": 300,
         "append_text": "",
         "link": ""
