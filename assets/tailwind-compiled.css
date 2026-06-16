@@ -716,6 +716,10 @@
     min-width: 0px
 }
 
+.min-w-\[300px\] {
+    min-width: 300px
+}
+
 .max-w-16 {
     max-width: 64px
 }
@@ -2305,6 +2309,11 @@
     color: rgb(202 138 4 / var(--tw-text-opacity, 1))
 }
 
+.text-\[\#FFB800\] {
+    --tw-text-opacity: 1;
+    color: rgb(255 184 0 / var(--tw-text-opacity, 1))
+}
+
 .underline {
     text-decoration-line: underline
 }
@@ -3108,6 +3117,10 @@
 
 .\[\&\.loading\]\:opacity-50.loading {
     opacity: 0.5
+}
+
+.\[\&\>\*\]\:m-0>* {
+    margin: 0px
 }
 
 .\[\&\>\.active\]\:\[border\:2px_solid_\#000000\]>.active {
