@@ -212,7 +212,7 @@
 </script>
 
 {% assign bundle_product = all_products['8x-50ml-parfumflaschen'] %}
-{% if bundle_product != blank %}
+{% if bundle_product != blank and product.template_suffix == 'tsr-promo' %}
   <a href="{{ bundle_product.url }}" class="mt-8 [display:grid] grid-cols-3 overflow-hidden rounded-lg border-2 border-[#cc303d] border-solid bg-white text-inherit no-underline shadow-[0_1px_0_rgba(17,24,39,0.03)] md:flex-row">
     <div class="relative w-full overflow-hidden bg-[#f2ede7] md:max-w-[280px]">
       <img
