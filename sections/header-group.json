@@ -27,6 +27,12 @@
     "blocky_lys_scrolling_text_bar_GLkKNr": {
       "type": "blocky-lys-scrolling-text-bar",
       "blocks": {
+        "text_iDAedj": {
+          "type": "text",
+          "settings": {
+            "text": "3 KAUFEN- 1  GRATIS"
+          }
+        },
         "text_QD7JEH": {
           "type": "text",
           "settings": {
@@ -53,6 +59,7 @@
         }
       },
       "block_order": [
+        "text_iDAedj",
         "text_QD7JEH",
         "text_39tt9p",
         "text_DiPtyi",
