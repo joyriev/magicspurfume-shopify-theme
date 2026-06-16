@@ -21,6 +21,7 @@
     },
     "home_hero_XQyQrf": {
       "type": "home-hero",
+      "disabled": true,
       "name": "Homepage Hero",
       "settings": {
         "background_color": "#ffffff",
@@ -38,10 +39,11 @@
     },
     "tryscent_hero_A8wiWK": {
       "type": "tryscent-hero",
-      "disabled": true,
       "name": "TryScent Hero",
       "settings": {
         "background_color": "#fcfbf9",
+        "background_image": "shopify://shop_images/TryScent_Days.png",
+        "mobile_background_image": "shopify://shop_images/TryScent_Days_Mobile.png",
         "review_text": "LOVED BY 10,000 CUSTOMERS",
         "title": "TryScent Days! Riech wie die Reichen",
         "subtitle": "Dein Lieblingsduft. Premium-Qualität. 95% günstiger.",
