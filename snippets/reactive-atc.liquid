@@ -211,6 +211,35 @@
   })();
 </script>
 
+{% assign bundle_product = all_products['8x-50ml-parfumflaschen'] %}
+{% if bundle_product != blank %}
+  <a href="{{ bundle_product.url }}" class="mt-8 [display:grid] grid-cols-3 overflow-hidden rounded-lg border-2 border-[#cc303d] border-solid bg-white text-inherit no-underline shadow-[0_1px_0_rgba(17,24,39,0.03)] md:flex-row">
+    <div class="relative w-full overflow-hidden bg-[#f2ede7] md:max-w-[280px]">
+      <img
+        src="{{ bundle_product.featured_image | image_url: width: 560 }}"
+        alt="{{ bundle_product.title | escape }}"
+        class="h-full w-full object-cover"
+        loading="lazy"
+        width="280"
+        height="280">
+    </div>
+
+    <div class="col-span-2 p-5">
+      <div class="inline-block rounded-xl bg-green-100 text-green-600 px-2 py-1 text-xs font-semibold uppercase">
+        Spare 64%
+      </div>
+      <h3 class="my-2 tracking-normal font-semibold">
+        Unser bestes Angebot: Bundle zusammenstellen!
+      </h3>
+      <div class="m-0 tracking-normal text-black">
+        Nur
+        <strong>{{ bundle_product.price | divided_by: 8 | money }}</strong>
+        pro Flasche
+      </div>
+    </div>
+  </a>
+{% endif %}
+
 <div class="my-6">
   <div class="flex items-center gap-3 text-base">
     <img
