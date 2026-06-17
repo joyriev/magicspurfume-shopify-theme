@@ -9,41 +9,28 @@
  */
 {
   "sections": {
-    "popular_products_9FaAf8": {
-      "type": "popular-products",
-      "name": "Popular Products",
-      "settings": {
-        "background_color": "#fcfbf9",
-        "heading": "Beliebte Produkte",
-        "subheading": "",
-        "collection": "bundle-save",
-        "show_all_button_text": "Alle anzeigen",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "collection_header_QyeyVD": {
       "type": "collection-header",
       "blocks": {
         "step_FDXazG": {
           "type": "step",
           "settings": {
-            "step_title": "",
-            "step_description": ""
+            "step_title": "Sparen Sie bis zu 40 % mit unseren Paketen",
+            "step_description": "Wählen Sie Ihre Lieblingsdüfte aus und legen Sie sie in Ihren Warenkorb."
           }
         },
         "step_FinVGB": {
           "type": "step",
           "settings": {
-            "step_title": "",
-            "step_description": ""
+            "step_title": "Sichern Sie sich bis zu zwei GRATIS-Parfums!",
+            "step_description": "Beim Kauf für 34 Euros erhalten Sie 1 Stück gratis. Beim Kauf für 65 Euros  erhalten Sie 2 Stück gratis."
           }
         },
         "step_BDxfBQ": {
           "type": "step",
           "settings": {
-            "step_title": "",
-            "step_description": ""
+            "step_title": "Kaufen Sie für mindestens 35 Euros ein.",
+            "step_description": "Und erhalten Sie kostenlosen Versand!"
           }
         }
       },
@@ -55,15 +42,28 @@
       "name": "Collection Header",
       "settings": {
         "background_color": "#242833",
-        "social_proof_text": "Join 10,000+ happy customers",
-        "collection_title": "Collection Title",
-        "collection_description": "Best scents you've ever smelled or your money back.",
+        "social_proof_text": "Und erhalten Sie kostenlosen Versand!",
+        "collection_title": "Magic Parfüm-Dagar!",
+        "collection_description": "Kaufen Sie Ihre Lieblingsdüfte zu noch besseren Preisen!",
         "btn_link": "",
-        "btn_text": "View All",
+        "btn_text": "und bis zu zwei Flaschen gratis!",
         "padding_top": 72,
         "padding_bottom": 72,
         "mobile_padding_top": 40,
         "mobile_padding_bottom": 40
+      }
+    },
+    "popular_products_9FaAf8": {
+      "type": "popular-products",
+      "name": "Popular Products",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "heading": "Beliebte Produkte",
+        "subheading": "",
+        "collection": "bundle-save",
+        "show_all_button_text": "Alle anzeigen",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "banner": {
