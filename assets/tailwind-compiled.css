@@ -2749,6 +2749,10 @@
         margin-bottom: 16px
     }
 
+    .md\:mb-8 {
+        margin-bottom: 32px
+    }
+
     .md\:mt-12 {
         margin-top: 48px
     }
