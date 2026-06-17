@@ -22,6 +22,50 @@
         "padding_bottom": 36
       }
     },
+    "collection_header_QyeyVD": {
+      "type": "collection-header",
+      "blocks": {
+        "step_FDXazG": {
+          "type": "step",
+          "settings": {
+            "step_title": "",
+            "step_description": ""
+          }
+        },
+        "step_FinVGB": {
+          "type": "step",
+          "settings": {
+            "step_title": "",
+            "step_description": ""
+          }
+        },
+        "step_BDxfBQ": {
+          "type": "step",
+          "settings": {
+            "step_title": "",
+            "step_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "step_FDXazG",
+        "step_FinVGB",
+        "step_BDxfBQ"
+      ],
+      "name": "Collection Header",
+      "settings": {
+        "background_color": "#242833",
+        "social_proof_text": "Join 10,000+ happy customers",
+        "collection_title": "Collection Title",
+        "collection_description": "Best scents you've ever smelled or your money back.",
+        "btn_link": "",
+        "btn_text": "View All",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "disabled": true,
@@ -61,6 +105,7 @@
     }
   },
   "order": [
+    "collection_header_QyeyVD",
     "popular_products_9FaAf8",
     "banner",
     "177731697070c376bb",
