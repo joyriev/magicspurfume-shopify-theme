@@ -14,7 +14,7 @@
     </div>
   {% endif %}
 
-  <a href="{{ product.url }}" class="flex">
+  <a href="{{ product.url }}" class="flex relative">
     <img
       class="w-full h-auto"
       src="{{ product.images.first | image_url: width: 300 }}"
@@ -22,6 +22,22 @@
       height="{{ product.images.first.height }}"
       width="{{ product.images.first.width }}"
     >
+    <div class="card__promo-marquee absolute left-0 right-0 bottom-0 bg-[#137c44] text-white" aria-label="Köp 3, få 1 gratis">
+      <div class="card__promo-marquee-rail">
+        <div class="card__promo-marquee-group">
+          <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
+          <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+          <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
+          <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+        </div>
+        <div class="card__promo-marquee-group" aria-hidden="true">
+          <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
+          <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+          <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
+          <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
   </a>
 
   <h3 class="mb-0 text-base">
