@@ -26,11 +26,13 @@
           <p class="text-center mb-12">{{ section.settings.subheading }}</p>
         {% endif %}
       </div>
-      <div class="[display:none] md:block">
-        <a href="{{ section.settings.collection.url }}" class="px-4 py-2 border-2 border-solid border-black bg-white font-bold text-sm uppercase tracking-wide hover:bg-black text-black hover:text-white transition-colors cursor-pointer inline-block no-underline">
-          {{ section.settings.show_all_button_text }}
-        </a>
-      </div>
+      {% if section.settings.show_all_button_text != blank %}
+        <div class="[display:none] md:block">
+          <a href="{{ section.settings.collection.url }}" class="px-4 py-2 border-2 border-solid border-black bg-white font-bold text-sm uppercase tracking-wide hover:bg-black text-black hover:text-white transition-colors cursor-pointer inline-block no-underline">
+            {{ section.settings.show_all_button_text }}
+          </a>
+        </div>
+      {% endif %}
     </div>
     <div class="grid grid-cols-2 gap-3 md:gap-8 md:grid-cols-4 products-grid">
       {% for product in section.settings.collection.products limit: 4 %}
@@ -38,11 +40,13 @@
           , product: product %}
       {% endfor %}
     </div>
-    <div class="text-center pt-14 md:hidden">
-      <a href="{{ section.settings.collection.url }}" class="px-4 py-2 border-2 border-solid border-black bg-white font-bold text-sm uppercase tracking-wide hover:bg-black text-black hover:text-white transition-colors cursor-pointer inline-block no-underline">
-        {{ section.settings.show_all_button_text }}
-      </a>
-    </div>
+    {% if section.settings.show_all_button_text != blank %}
+      <div class="text-center pt-14 md:hidden">
+        <a href="{{ section.settings.collection.url }}" class="px-4 py-2 border-2 border-solid border-black bg-white font-bold text-sm uppercase tracking-wide hover:bg-black text-black hover:text-white transition-colors cursor-pointer inline-block no-underline">
+          {{ section.settings.show_all_button_text }}
+        </a>
+      </div>
+    {% endif %}
   </div>
 </div>
 
