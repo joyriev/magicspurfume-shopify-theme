@@ -22,22 +22,24 @@
       height="{{ product.images.first.height }}"
       width="{{ product.images.first.width }}"
     >
-    <div class="card__promo-marquee absolute left-0 right-0 bottom-0 bg-[#137c44] text-white" aria-label="Köp 3, få 1 gratis">
-      <div class="card__promo-marquee-rail">
-        <div class="card__promo-marquee-group">
-          <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
-          <span class="card__promo-marquee-dot" aria-hidden="true"></span>
-          <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
-          <span class="card__promo-marquee-dot" aria-hidden="true"></span>
-        </div>
-        <div class="card__promo-marquee-group" aria-hidden="true">
-          <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
-          <span class="card__promo-marquee-dot" aria-hidden="true"></span>
-          <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
-          <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+    {% unless product.tags contains 'Bundle_Price_Show' %}
+      <div class="card__promo-marquee absolute left-0 right-0 bottom-0 bg-[#137c44] text-white" aria-label="Köp 3, få 1 gratis">
+        <div class="card__promo-marquee-rail">
+          <div class="card__promo-marquee-group">
+            <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
+            <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+            <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
+            <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+          </div>
+          <div class="card__promo-marquee-group" aria-hidden="true">
+            <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
+            <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+            <span class="card__promo-marquee-text">Kaufe 4 Zum Preis von 3</span>
+            <span class="card__promo-marquee-dot" aria-hidden="true"></span>
+          </div>
         </div>
       </div>
-    </div>
+    {% endunless %}
   </a>
 
   <h3 class="mb-0 text-base">
