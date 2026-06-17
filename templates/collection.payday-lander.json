@@ -9,6 +9,19 @@
  */
 {
   "sections": {
+    "popular_products_9FaAf8": {
+      "type": "popular-products",
+      "name": "Popular Products",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "heading": "Beliebte Produkte",
+        "subheading": "",
+        "collection": "bundle-save",
+        "show_all_button_text": "Alle anzeigen",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "disabled": true,
@@ -48,6 +61,7 @@
     }
   },
   "order": [
+    "popular_products_9FaAf8",
     "banner",
     "177731697070c376bb",
     "17773166932fc1644f",
