@@ -30,6 +30,13 @@
             class="px-4 py-2 rounded border border-solid cursor-pointer">Frauen</button>
         </div>
       </div>
+      <div class="mt-2">
+        <input
+          type="text"
+          placeholder="Suchen..."
+          x-model="$store.bundleBuilder.searchText"
+          class="block w-full px-4 py-2 rounded border-2 border-solid cursor-pointer bg-white border-gray-200 focus:outline-none focus:border-green-700 focus:shadow-none focus:border-2">
+      </div>
     </div>
 
     {% comment %} Product Grid {% endcomment %}

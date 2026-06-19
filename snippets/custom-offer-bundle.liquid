@@ -193,7 +193,7 @@
         const matchesCategory = product.tags.some(tag => {
           return tag === this.activeCategory;
         }) || this.activeCategory === 'All';
-        const matchesSearch = this.searchText === '' || product.name.toLowerCase().includes(this.searchText.toLowerCase());
+        const matchesSearch = this.searchText === '' || product.name.toLowerCase().includes(this.searchText.toLowerCase()) || (product.inspiration_name && product.inspiration_name.toLowerCase().includes(this.searchText.toLowerCase()));
         return matchesCategory && matchesSearch;
       },
       addRemoveProduct(product) {
