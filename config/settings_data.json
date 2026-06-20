@@ -241,6 +241,13 @@
         "type": "shopify://apps/kite-discount-free-gift/blocks/app-embed/2c7302c4-455d-4078-a829-48563ba26089",
         "disabled": false,
         "settings": {}
+      },
+      "1273113416114949626": {
+        "type": "shopify://apps/wati-whatsapp-chat/blocks/widget/019a33d5-6693-76b8-aede-2d1cd0923b25",
+        "disabled": false,
+        "settings": {
+          "atc_app_proxy_prefix": "wati"
+        }
       }
     },
     "color_schemes": {
