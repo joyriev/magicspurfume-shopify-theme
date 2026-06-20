@@ -45,7 +45,7 @@
         "bg_image": "shopify://shop_images/desktop_shade.png",
         "bg_mobile_image": "shopify://shop_images/shaded_mobile.png",
         "social_proof_text": "Und erhalten Sie kostenlosen Versand!",
-        "collection_title": "Magic Parfüm-Dagar!",
+        "collection_title": "Magic Parfüm-Tage!",
         "collection_description": "Kaufen Sie Ihre Lieblingsdüfte zu noch besseren Preisen!",
         "btn_link": "",
         "btn_text": "und bis zu zwei Flaschen gratis!",
@@ -59,7 +59,7 @@
       "type": "popular-products",
       "name": "Popular Products",
       "settings": {
-        "background_color": "#FCFBF9",
+        "background_color": "#fcfbf9",
         "heading": "Magic Perfume Days-Paket",
         "subheading": "",
         "collection": "tag-des-magic-parfums",
