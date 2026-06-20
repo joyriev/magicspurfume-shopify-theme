@@ -2693,11 +2693,6 @@
     border-width: 2px
 }
 
-.focus\:border-\[\#944234\]:focus {
-    --tw-border-opacity: 1;
-    border-color: rgb(148 66 52 / var(--tw-border-opacity, 1))
-}
-
 .focus\:border-green-700:focus {
     --tw-border-opacity: 1;
     border-color: rgb(21 128 61 / var(--tw-border-opacity, 1))
