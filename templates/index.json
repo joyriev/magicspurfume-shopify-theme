@@ -196,7 +196,7 @@
         "heading_CcxYji": {
           "type": "heading",
           "settings": {
-            "content": "EU-Produktion",
+            "content": "Warum fühlen sich in der EU hergestellte Parfums anders an?",
             "heading_type": "h2",
             "font_size": 40,
             "mobile_font_size": 24,
@@ -206,7 +206,7 @@
         "text_gHnd8C": {
           "type": "text",
           "settings": {
-            "content": "<p>Unsere EU Produktion garantiert höchste Qualitätsstandards und ermöglicht es uns, jeden Schritt des Herstellungsprozesses zu überwachen und zu kontrollieren. </p><p>Von der Auswahl der hochwertigen Rohstoffe bis zur sorgfältigen Abfüllung jeder Flasche stellen wir sicher, dass jedes Produkt unseren hohen Ansprüchen an Qualität und Handwerkskunst gerecht wird.</p>",
+            "content": "<p>Hergestellt in EU-Anlagen mit Inhaltsstoffen und Zusammensetzungen, die den IFRA-Anforderungen entsprechen.</p><ul><li>Phthalatefrei</li><li>Ohne Parabene</li><li>Vegan</li><li>Nicht an Tieren getestet</li><li>IFRA-zertifiziert</li><li>Nach EU-Standards entwickelt</li><li>Keine bekannten hormonellen Störstoffe</li></ul><p>Wir stellen Parfums nach strengen europäischen Kosmetikstandards her</p>",
             "mobile_content": "",
             "font_size": 18,
             "text_color": "#000000"
