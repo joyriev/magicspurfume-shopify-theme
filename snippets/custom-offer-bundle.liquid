@@ -181,7 +181,7 @@
             tags: {{ bundle_product.tags | json }},
             variants: {
               {% for variant in bundle_product.variants %}
-                "{{ variant.title | downcase }}": {
+                "{{ variant.title | downcase | replace: ' ml', 'ml' }}": {
                   id: {{ variant.id }}
                 },
               {% endfor %}
