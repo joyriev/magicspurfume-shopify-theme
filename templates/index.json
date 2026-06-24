@@ -644,8 +644,10 @@
         "review_JRzxRP": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/avatar.png",
             "content": "<p>„Bin echt zufrieden mit Magic Perfume. Der Duft kommt dem Original ziemlich nah und hält bei mir auch echt gut. Verpackung war ordentlich und die Flasche macht ebenfalls einen hochwertigen Eindruck. Für den Preis auf jeden Fall eine richtig gute Alternative.“</p>",
             "author": "Alina M",
+            "author_image": "shopify://shop_images/avatar.png",
             "date": "vor 5 Monaten",
             "rating": 5,
             "show_verified_badge": false,
