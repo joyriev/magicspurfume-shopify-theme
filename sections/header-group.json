@@ -27,12 +27,6 @@
     "blocky_lys_scrolling_text_bar_GLkKNr": {
       "type": "blocky-lys-scrolling-text-bar",
       "blocks": {
-        "text_gVpQqV": {
-          "type": "text",
-          "settings": {
-            "text": "Payday-Sale:30 % Rabatt"
-          }
-        },
         "text_iDAedj": {
           "type": "text",
           "settings": {
@@ -65,7 +59,6 @@
         }
       },
       "block_order": [
-        "text_gVpQqV",
         "text_iDAedj",
         "text_QD7JEH",
         "text_39tt9p",
