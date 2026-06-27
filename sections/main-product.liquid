@@ -132,7 +132,7 @@
                 </a>
               {%- when 'title' -%}
                 <div class="product__title relative" {{ block.shopify_attributes }}>
-                  {%- if product.tags contains 'bestseller' or product.tags contains 'onsale' -%}
+                  {%- if product.tags contains 'bestseller' or product.tags contains 'onsale' or product.metafields.custom.custom_label != blank -%}
                     <div class="absolute top-1 left-0">
                       {% if product.tags contains 'onsale' and product.compare_at_price != blank and product.compare_at_price > product.price %}
                         {%- assign discount_percent = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
@@ -143,6 +143,11 @@
                       {% if product.tags contains 'bestseller' %}
                         <span class="inline-block bg-[#17803d] text-white text-sm font-bold px-3 py-1 mr-2">
                           Bestseller
+                        </span>
+                      {% endif %}
+                      {% if product.metafields.custom.custom_label != blank %}
+                        <span class="inline-block bg-blue-500 text-white text-sm font-bold px-3 py-1">
+                          {{ product.metafields.custom.custom_label }}
                         </span>
                       {% endif %}
                       {% if product.template_suffix == 'expressive-notes' %}
@@ -156,7 +161,7 @@
                       {% endif %}
                     </div>
                   {%- endif -%}  
-                  <h1 class="font-[700] leading-tight capitalize !tracking-normal flex flex-col {% if product.tags contains 'bestseller' or product.tags contains 'onsale' and product.compare_at_price != blank and product.compare_at_price > product.price %}pt-12{% endif %}">
+                  <h1 class="font-[700] leading-tight capitalize !tracking-normal flex flex-col {% if product.tags contains 'bestseller' or product.tags contains 'onsale' and product.compare_at_price != blank and product.compare_at_price > product.price or product.metafields.custom.custom_label != blank %}pt-12{% endif %}">
                       {{ product.title }}
                   </h1>
                 </div>
