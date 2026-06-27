@@ -957,6 +957,10 @@
          column-gap: 24px
 }
 
+.gap-y-1 {
+    row-gap: 4px
+}
+
 .gap-y-3 {
     row-gap: 12px
 }
@@ -1423,6 +1427,10 @@
     background-color: rgb(239 246 255 / var(--tw-bg-opacity, 1))
 }
 
+.bg-blue-500\/10 {
+    background-color: rgb(59 130 246 / 0.1)
+}
+
 .bg-gray-100 {
     --tw-bg-opacity: 1;
     background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1))
@@ -1465,6 +1473,10 @@
 .bg-green-600 {
     --tw-bg-opacity: 1;
     background-color: rgb(22 163 74 / var(--tw-bg-opacity, 1))
+}
+
+.bg-green-600\/10 {
+    background-color: rgb(22 163 74 / 0.1)
 }
 
 .bg-green-700 {
@@ -2097,6 +2109,11 @@
     color: rgb(0 0 0 / var(--tw-text-opacity, 1))
 }
 
+.text-blue-500 {
+    --tw-text-opacity: 1;
+    color: rgb(59 130 246 / var(--tw-text-opacity, 1))
+}
+
 .text-blue-600 {
     --tw-text-opacity: 1;
     color: rgb(37 99 235 / var(--tw-text-opacity, 1))
@@ -2110,6 +2127,11 @@
 .text-gray-200 {
     --tw-text-opacity: 1;
     color: rgb(229 231 235 / var(--tw-text-opacity, 1))
+}
+
+.text-gray-300 {
+    --tw-text-opacity: 1;
+    color: rgb(209 213 219 / var(--tw-text-opacity, 1))
 }
 
 .text-gray-400 {
@@ -2789,6 +2811,10 @@
 
     .md\:block {
         display: block
+    }
+
+    .md\:inline-block {
+        display: inline-block
     }
 
     .md\:flex {
