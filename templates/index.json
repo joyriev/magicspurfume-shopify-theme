@@ -21,14 +21,13 @@
     },
     "home_hero_XQyQrf": {
       "type": "home-hero",
-      "disabled": true,
       "name": "Homepage Hero",
       "settings": {
         "background_color": "#ffffff",
         "background_image": "shopify://shop_images/magic_header_1.png",
         "mobile_background_image": "shopify://shop_images/magic_header_mobile_1.jpg",
-        "title": "Luxusdüfte Duftinspiriert. Bis zu 95% günstiger.",
-        "subtitle": "3 kaufen – 1 gratis",
+        "title": "Duft-Zwillinge, die wirklich lange halten.",
+        "subtitle": "Wähle deine aus",
         "button_text": "FÜR MÄNNER",
         "button_link": "shopify://collections/fuer-maenner",
         "second_button_text": "FÜR FRAUEN",
@@ -39,6 +38,7 @@
     },
     "tryscent_hero_A8wiWK": {
       "type": "tryscent-hero",
+      "disabled": true,
       "name": "TryScent Hero",
       "settings": {
         "background_color": "#fcfbf9",
