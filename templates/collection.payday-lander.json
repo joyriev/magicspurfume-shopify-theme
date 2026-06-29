@@ -39,6 +39,7 @@
         "step_FinVGB",
         "step_BDxfBQ"
       ],
+      "disabled": true,
       "name": "Collection Header",
       "settings": {
         "background_color": "#242833",
@@ -55,12 +56,28 @@
         "mobile_padding_bottom": 40
       }
     },
+    "blocky_lys_image_embed_gEUmLb": {
+      "type": "blocky-lys-image-embed",
+      "name": "Blocky Image Embed",
+      "settings": {
+        "image": "shopify://shop_images/Magicperfume.co_desktop_PAYDAY_-30.png",
+        "section_height": "650px",
+        "mobile_height": "300px",
+        "image_fit": "cover",
+        "overlay_opacity": 0,
+        "text_align": "vertical-center horizontal-center",
+        "full_screen": false,
+        "page_width": 1200,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "popular_products_9FaAf8": {
       "type": "popular-products",
       "name": "Popular Products",
       "settings": {
         "background_color": "#fcfbf9",
-        "heading": "Magic Perfume Days-Paket",
+        "heading": "Magic Perfume Paket",
         "subheading": "",
         "collection": "tag-des-magic-parfums",
         "show_all_button_text": "",
@@ -108,6 +125,7 @@
   },
   "order": [
     "collection_header_QyeyVD",
+    "blocky_lys_image_embed_gEUmLb",
     "popular_products_9FaAf8",
     "banner",
     "177731697070c376bb",
