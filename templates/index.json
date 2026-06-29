@@ -28,9 +28,9 @@
         "mobile_background_image": "shopify://shop_images/magic_header_mobile_1.jpg",
         "title": "Duft-Zwillinge, die wirklich lange halten.",
         "subtitle": "Wähle deine aus",
-        "button_text": "FÜR MÄNNER",
-        "button_link": "shopify://collections/fuer-maenner",
-        "second_button_text": "FÜR FRAUEN",
+        "button_text": "GEHALTSVERKAUF",
+        "button_link": "shopify://collections/payday-4-2",
+        "second_button_text": "",
         "second_button_link": "shopify://collections/fuer-frauen",
         "padding_top": 36,
         "padding_bottom": 36
