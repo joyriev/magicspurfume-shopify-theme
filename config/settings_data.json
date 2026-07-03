@@ -155,11 +155,6 @@
         "disabled": false,
         "settings": {}
       },
-      "10840395464443086010": {
-        "type": "shopify://apps/alia/blocks/customer-app-frame/51f1d398-3e41-44da-b81e-defd5804b292",
-        "disabled": false,
-        "settings": {}
-      },
       "16803653808412383594": {
         "type": "shopify://apps/ysms-sms-marketing/blocks/back_in_stock/100124b5-2f57-4ba4-97a3-a4d223780a62",
         "disabled": false,
@@ -251,6 +246,11 @@
       },
       "11349500561483629931": {
         "type": "shopify://apps/notify-back-in-stock-preorder/blocks/app-embed/b399b727-6c85-44fc-9e21-63114bd72054",
+        "disabled": false,
+        "settings": {}
+      },
+      "12995158295224700252": {
+        "type": "shopify://apps/insureful/blocks/app-embed/9d68bce0-511b-458e-a75c-59b30247783c",
         "disabled": false,
         "settings": {}
       }
