@@ -4,7 +4,7 @@
 <style>
   /* FlipDown Custom Styles */
   .flipdown {
-    width: 150px;
+    width: 200px;
     height: 42px;
   }
 
@@ -29,10 +29,6 @@
 
   .flipdown .rotor-group {
     padding-right: 12px;
-  }
-
-  .flipdown .rotor-group:first-child {
-    display: none;
   }
 
   .flipdown .rotor-group:last-child {
@@ -146,6 +142,14 @@
   #copyCodeText {
     font-weight: 600;
   }
+  {% if section.settings.countdown_date == blank %}
+    .flipdown {
+      width: 145px !important;
+    }
+    .flipdown .rotor-group:first-child {
+      display: none;
+    }
+  {% endif %}
 </style>
 
 <div class="py-2" style="background-color: {{ section.settings.background_color }};">
@@ -187,17 +191,37 @@
 </div>
 
 <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // FlipDown Countdown - 24 hours
-        var twentyFourHoursFromNow = (new Date().getTime() / 1000) + (3600 * 8) + (60 * 23) + 1;
-        var flipdown = new FlipDown(twentyFourHoursFromNow, {
-          headings: ["Tage", "Stunden", "Minuten", "Sekunden"],
-        })
-          .start()
-          .ifEnded(() => {
-            console.log('The countdown has ended!');
-          });
+  document.addEventListener('DOMContentLoaded', () => {
+    function getNextMidnightTimestamp() {
+      const nextMidnight = new Date();
+
+      nextMidnight.setHours(24, 0, 0, 0); // next day 00:00:00
+
+      return Math.floor(nextMidnight.getTime() / 1000);
+    }
+
+    function getCountdownDeadline() {
+      const configuredDate = {{ section.settings.countdown_date | json }};
+
+      if (!configuredDate) {
+        return getNextMidnightTimestamp();
+      }
+
+      const configuredTimestamp = Math.floor(new Date(configuredDate).getTime() / 1000);
+
+      return Number.isNaN(configuredTimestamp) ? getNextMidnightTimestamp() : configuredTimestamp;
+    }
+
+    const deadline = getCountdownDeadline();
+
+    new FlipDown(deadline, {
+      headings: ["Tage", "Stunden", "Minuten", "Sekunden"],
+    })
+      .start()
+      .ifEnded(() => {
+        console.log('Countdown ended');
       });
+  });
 </script>
 
 {% schema %}
@@ -223,10 +247,10 @@
         "default": "Exclusive Offer"
       },
       {
-        "type": "number",
-        "id": "ends_in_minutes",
-        "label": "Ends in (in minutes)",
-        "default": 30
+        "type": "text",
+        "id": "countdown_date",
+        "label": "End Date and Time",
+        "info": "Format: YYYY/MM/DD HH:MM:SS (e.g., 2026/12/25 23:59:59)"
       }, {
         "type": "text",
         "id": "append_text",
