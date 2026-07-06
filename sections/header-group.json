@@ -81,8 +81,8 @@
       "settings": {
         "background_color": "#15803d",
         "forground_color": "#15803d",
-        "prepend_text": "Payday-Sale: 30% Rabatt",
-        "ends_in_minutes": 300,
+        "prepend_text": "Zahltag-Sale: 30% Rabatt",
+        "countdown_date": "",
         "append_text": "",
         "link": ""
       }
