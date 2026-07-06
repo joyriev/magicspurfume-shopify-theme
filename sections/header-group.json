@@ -82,7 +82,7 @@
         "background_color": "#15803d",
         "forground_color": "#15803d",
         "prepend_text": "Zahltag-Sale: 30% Rabatt",
-        "countdown_date": "",
+        "countdown_date": "2026/07/10 23:59:59",
         "append_text": "",
         "link": ""
       }
