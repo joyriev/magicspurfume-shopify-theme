@@ -42,7 +42,7 @@
     {% endunless %}
   </a>
 
-  <div class="flex items-center flex-wrap gap-x-2 gap-y-1 mt-3">
+  {% comment %} <div class="flex items-center flex-wrap gap-x-2 gap-y-1 mt-3">
     {% if product.tags contains 'onsale' %}
       <div class="text-green-600 text-xs font-semibold bg-green-600/10 px-2 py-1 rounded inline-block">
         Sale
@@ -88,7 +88,7 @@
       </p>
       </div>
     {%- endif -%}
-  </div>
+  </div> {% endcomment %}
 
   <h3 class="mb-0 mt-2 text-base">
     <a class="no-underline text-black font-semibold" href="{{ product.url }}">
