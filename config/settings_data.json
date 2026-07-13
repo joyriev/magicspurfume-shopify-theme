@@ -253,6 +253,11 @@
         "type": "shopify://apps/insureful/blocks/app-embed/9d68bce0-511b-458e-a75c-59b30247783c",
         "disabled": false,
         "settings": {}
+      },
+      "10912811961125325620": {
+        "type": "shopify://apps/absolutely/blocks/absolutely_extension/121741f7-5296-410e-8ae4-71174169eced",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
