@@ -30,8 +30,8 @@
         "subtitle": "Wähle deine aus",
         "button_text": "Sommer Sale",
         "button_link": "shopify://collections/bundle-save",
-        "second_button_text": "",
-        "second_button_link": "shopify://collections/fuer-frauen",
+        "second_button_text": "Bestsellers",
+        "second_button_link": "shopify://collections/best-sellers",
         "padding_top": 36,
         "padding_bottom": 36
       }
