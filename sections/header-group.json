@@ -81,8 +81,8 @@
       "settings": {
         "background_color": "#15803d",
         "forground_color": "#15803d",
-        "prepend_text": "Zahltag-Sale: 30% Rabatt",
-        "countdown_date": "2026/07/12 23:59:59",
+        "prepend_text": "Sommer-Angebot: 3 kaufen, 1 geschenkt",
+        "countdown_date": "2026/07/24 23:59:59",
         "append_text": "",
         "link": ""
       }
