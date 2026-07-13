@@ -2,37 +2,39 @@
   <span>{{ product.metafields.custom.bundle_product_content }}</span>
 </div>
 
-<div
-  id="price-{{ section.id }}"
-  class="bundle-price-pdp"
-  role="status"
-  {{ block.shopify_attributes }}>
-  {% if product.compare_at_price > product.price %}
-    {% assign discount = product.compare_at_price | minus: product.price %}
-    {% assign discount_percent = discount | times: 100 | divided_by: product.compare_at_price | round %}
-  {% endif %}
-
-  <div class="flex flex-wrap items-center gap-x-3 text-xl">
+{% if product.metafields.custom.choose_your_fragrances_options != blank %}
+  <div
+    id="price-{{ section.id }}"
+    class="bundle-price-pdp"
+    role="status"
+    {{ block.shopify_attributes }}>
     {% if product.compare_at_price > product.price %}
-      <span class="text-red-600 font-bold discount-percent">
-        -{{ discount_percent }}%
-      </span>
+      {% assign discount = product.compare_at_price | minus: product.price %}
+      {% assign discount_percent = discount | times: 100 | divided_by: product.compare_at_price | round %}
     {% endif %}
 
-    <span class="text-black font-bold product-price">
-      {{ product.price | money }}
-    </span>
+    <div class="flex flex-wrap items-center gap-x-3 text-xl">
+      {% if product.compare_at_price > product.price %}
+        <span class="text-red-600 font-bold discount-percent">
+          -{{ discount_percent }}%
+        </span>
+      {% endif %}
 
-    {% if product.compare_at_price > product.price %}
-      <span class="text-gray-500 font-semibold line-through compare-price">
-        Designerpreis: {{ product.compare_at_price | money }}
+      <span class="text-black font-bold product-price">
+        {{ product.price | money }}
       </span>
-    {% endif %}
+
+      {% if product.compare_at_price > product.price %}
+        <span class="text-gray-500 font-semibold line-through compare-price">
+          Designerpreis: {{ product.compare_at_price | money }}
+        </span>
+      {% endif %}
+    </div>
+    <div class="text-lg font-semibold text-black leading-normal">
+      Das entspricht nur {{ product.price | divided_by: product.metafields.custom.choose_your_fragrances_options | money }} pro Flasche.
+    </div>
   </div>
-  <div class="text-lg font-semibold text-black leading-normal">
-    Das entspricht nur {{ product.price | divided_by: product.metafields.custom.choose_your_fragrances_options | money }} pro Flasche.
-  </div>
-</div>
+{% endif %}
 
 {% assign bundle_collection = collections['best-sellers'] %}
 {% assign product_count = product.metafields.custom.choose_your_fragrances_options %}
