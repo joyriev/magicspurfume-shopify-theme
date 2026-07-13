@@ -22,13 +22,6 @@
             "text": "4,7/5 Sterne (10.000+ Bewertungen)"
           }
         },
-        "custom_liquid_wVgaRG": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "{% render 'pre-atc-blocks' %}"
-          }
-        },
         "price_MG94AW": {
           "type": "price",
           "disabled": true,
@@ -50,11 +43,10 @@
             "show_gift_card_recipient": true
           }
         },
-        "text_T466xD": {
-          "type": "text",
+        "custom_liquid_wVgaRG": {
+          "type": "custom_liquid",
           "settings": {
-            "text": "<strong>Kopfnoten: </strong>{{ product.metafields.custom.top_notes | metafield_text: field: 'heading' }}",
-            "text_style": "body"
+            "custom_liquid": "<div class=\"flex items-center gap-1 text-sm\">\n  <span>{{ product.metafields.custom.bundle_product_content }}</span>\n</div>"
           }
         },
         "reactive_atc_LBDQE9": {
@@ -224,11 +216,10 @@
       "block_order": [
         "title_DkyBTh",
         "custom_rating_text_ehyqmQ",
-        "custom_liquid_wVgaRG",
         "price_MG94AW",
         "variant_picker_hH3Diz",
         "buy_buttons_eXWBwX",
-        "text_T466xD",
+        "custom_liquid_wVgaRG",
         "reactive_atc_LBDQE9",
         "custom_liquid_QcxgR4",
         "payment_badges_FkCwVc",
