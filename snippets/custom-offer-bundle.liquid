@@ -169,7 +169,7 @@
               id: {{ fixed_var.product.id }},
               name: "{{ fixed_var.product.title }}",
               image: "{{ fixed_var.product.featured_image | image_url }}",
-              inspiration_name: "{% if fixed_var.product.metafields.custom.inspiration.value %}{{ fixed_var.product.metafields.custom.inspiration.value.title }}{% endif %}",
+              inspiration_name: "{% if fixed_var.product.metafields.custom.inspiration.value %}{{ fixed_var.product.metafields.custom.inspiration.value.name }}{% endif %}",
               variant: {
                 id: "{{ fixed_var.id }}",
                 title: "{{ fixed_var.title }}"
