@@ -41,6 +41,7 @@
 {% assign dropdown_ml = product.metafields.custom.select_bundle_dropdown_ml | default: "50" %}
 {% assign bundle_ml = dropdown_ml | append: "ml" %}
 {% assign selected_variant = product.selected_or_first_available_variant %}
+{% assign fixed_bundle_products = product.metafields.custom.fixed_bundle_products.value %}
 
 <style>
   [x-cloak] {
