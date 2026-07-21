@@ -9,6 +9,19 @@
  */
 {
   "sections": {
+    "popular_products_qtxDBm": {
+      "type": "popular-products",
+      "name": "Popular Products",
+      "settings": {
+        "background_color": "#fcfbf9",
+        "heading": "Kaufe mehr und spare!",
+        "subheading": "",
+        "collection": "bestselling-bundles",
+        "show_all_button_text": "Schau dir mehr an!",
+        "padding_top": 16,
+        "padding_bottom": 12
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "settings": {
@@ -39,6 +52,7 @@
     }
   },
   "order": [
+    "popular_products_qtxDBm",
     "banner",
     "product-grid"
   ]
