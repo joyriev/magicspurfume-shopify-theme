@@ -207,11 +207,6 @@
     margin-bottom: 24px !important
 }
 
-.-mx-2 {
-    margin-left: -8px;
-    margin-right: -8px
-}
-
 .-mx-\[15px\] {
     margin-left: -15px;
     margin-right: -15px
@@ -365,6 +360,10 @@
     margin-right: 8px
 }
 
+.mr-auto {
+    margin-right: auto
+}
+
 .mt-0 {
     margin-top: 0px
 }
@@ -407,10 +406,6 @@
 
 .mt-auto {
     margin-top: auto
-}
-
-.mr-auto {
-    margin-right: auto
 }
 
 .line-clamp-1 {
@@ -535,11 +530,6 @@
 .size-4 {
     width: 16px;
     height: 16px
-}
-
-.size-5 {
-    width: 20px;
-    height: 20px
 }
 
 .size-6 {
@@ -1000,12 +990,6 @@
     margin-bottom: calc(4px * var(--tw-space-y-reverse))
 }
 
-.space-y-2 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0;
-    margin-top: calc(8px * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(8px * var(--tw-space-y-reverse))
-}
-
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;
     margin-top: calc(12px * calc(1 - var(--tw-space-y-reverse)));
@@ -1177,6 +1161,11 @@
     border-color: rgb(21 32 49 / var(--tw-border-opacity, 1))
 }
 
+.border-\[\#22613A\] {
+    --tw-border-opacity: 1;
+    border-color: rgb(34 97 58 / var(--tw-border-opacity, 1))
+}
+
 .border-\[\#3b82f6\] {
     --tw-border-opacity: 1;
     border-color: rgb(59 130 246 / var(--tw-border-opacity, 1))
@@ -1205,6 +1194,11 @@
 .border-\[\#cc303d\] {
     --tw-border-opacity: 1;
     border-color: rgb(204 48 61 / var(--tw-border-opacity, 1))
+}
+
+.border-\[\#e3e8e5\] {
+    --tw-border-opacity: 1;
+    border-color: rgb(227 232 229 / var(--tw-border-opacity, 1))
 }
 
 .border-black {
@@ -1255,11 +1249,6 @@
     border-color: rgb(34 197 94 / var(--tw-border-opacity, 1))
 }
 
-.border-green-600 {
-    --tw-border-opacity: 1;
-    border-color: rgb(22 163 74 / var(--tw-border-opacity, 1))
-}
-
 .border-green-700 {
     --tw-border-opacity: 1;
     border-color: rgb(21 128 61 / var(--tw-border-opacity, 1))
@@ -1296,16 +1285,6 @@
 
 .border-white\/10 {
     border-color: rgb(255 255 255 / 0.1)
-}
-
-.border-\[\#22613A\] {
-    --tw-border-opacity: 1;
-    border-color: rgb(34 97 58 / var(--tw-border-opacity, 1))
-}
-
-.border-\[\#e3e8e5\] {
-    --tw-border-opacity: 1;
-    border-color: rgb(227 232 229 / var(--tw-border-opacity, 1))
 }
 
 .\!bg-white\/90 {
@@ -1405,6 +1384,11 @@
 .bg-\[\#c8202f\] {
     --tw-bg-opacity: 1;
     background-color: rgb(200 32 47 / var(--tw-bg-opacity, 1))
+}
+
+.bg-\[\#f1f4f2\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(241 244 242 / var(--tw-bg-opacity, 1))
 }
 
 .bg-\[\#f2ede7\] {
@@ -1550,11 +1534,6 @@
     background-color: rgb(255 255 255 / 0.6)
 }
 
-.bg-\[\#f1f4f2\] {
-    --tw-bg-opacity: 1;
-    background-color: rgb(241 244 242 / var(--tw-bg-opacity, 1))
-}
-
 .bg-opacity-20 {
     --tw-bg-opacity: 0.2
 }
@@ -1583,16 +1562,12 @@
     background-position: left
 }
 
-.fill-current {
-    fill: currentColor
-}
-
-.fill-green-700 {
-    fill: #15803d
-}
-
 .fill-\[\#22613A\] {
     fill: #22613A
+}
+
+.fill-current {
+    fill: currentColor
 }
 
 .object-contain {
@@ -1809,6 +1784,10 @@
     padding-left: 32px
 }
 
+.pt-0 {
+    padding-top: 0px
+}
+
 .pt-10 {
     padding-top: 40px
 }
@@ -1843,10 +1822,6 @@
 
 .pt-8 {
     padding-top: 32px
-}
-
-.pt-0 {
-    padding-top: 0px
 }
 
 .text-left {
@@ -2685,11 +2660,6 @@
     background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1))
 }
 
-.hover\:text-white:hover {
-    --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity, 1))
-}
-
 .hover\:\!text-white:hover {
     --tw-text-opacity: 1 !important;
     color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important
@@ -2698,6 +2668,11 @@
 .hover\:text-\[\#22613A\]:hover {
     --tw-text-opacity: 1;
     color: rgb(34 97 58 / var(--tw-text-opacity, 1))
+}
+
+.hover\:text-white:hover {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1))
 }
 
 .hover\:underline:hover {
@@ -2714,11 +2689,6 @@
 
 .focus\:border-2:focus {
     border-width: 2px
-}
-
-.focus\:border-green-700:focus {
-    --tw-border-opacity: 1;
-    border-color: rgb(21 128 61 / var(--tw-border-opacity, 1))
 }
 
 .focus\:border-\[\#22613A\]:focus {
@@ -2756,14 +2726,6 @@
         right: 48px !important
     }
 
-    .md\:-right-2 {
-        right: -8px
-    }
-
-    .md\:-top-2 {
-        top: -8px
-    }
-
     .md\:right-2 {
         right: 8px
     }
@@ -2799,10 +2761,6 @@
 
     .md\:mb-3 {
         margin-bottom: 12px
-    }
-
-    .md\:mb-4 {
-        margin-bottom: 16px
     }
 
     .md\:mt-12 {
@@ -3010,20 +2968,12 @@
         padding-bottom: 80px
     }
 
-    .md\:pb-6 {
-        padding-bottom: 24px
-    }
-
     .md\:pl-0 {
         padding-left: 0px
     }
 
     .md\:pt-20 {
         padding-top: 80px
-    }
-
-    .md\:pt-6 {
-        padding-top: 24px
     }
 
     .md\:text-left {
