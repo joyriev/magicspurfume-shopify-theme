@@ -263,6 +263,11 @@
         "type": "shopify://apps/wiz/blocks/app-embed/240b6bc0-e686-4c07-8fde-eb7ee1949893",
         "disabled": false,
         "settings": {}
+      },
+      "687748571449776701": {
+        "type": "shopify://apps/voluum/blocks/app-block/6bb81c29-e33c-42c4-b756-dd9ebccb13b2",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
