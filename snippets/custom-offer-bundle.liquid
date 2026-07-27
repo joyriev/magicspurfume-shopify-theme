@@ -85,7 +85,9 @@
   <div class="grid grid-cols-1 gap-2 mb-4">
     <template x-for="index in ({{ product_count }})" :key="index">
       <div
-        @click="$store.bundleBuilder.showModal = true"
+        {% unless product.tags contains 'fixed_bundle' %}
+          @click="$store.bundleBuilder.showModal = true"
+        {% endunless %}
         class="bg-white border-2 border-solid border-gray-200 flex items-center p-[7px] rounded-xl gap-2 cursor-pointer relative transition duration-300 hover:border-[#22613A]"
         :class="{ '!border-[#22613A]' : typeof $store.bundleBuilder.selectedProducts[index - 1] !== 'undefined'}">
         <div x-text="index" class="bg-[#22613A] size-6 rounded-lg text-white font-bold text-xs flex items-center justify-center shrink-0"></div>
