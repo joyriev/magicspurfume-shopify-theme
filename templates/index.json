@@ -369,80 +369,6 @@
         "padding_bottom": 36
       }
     },
-    "collapsible_content_JWRDn8": {
-      "type": "collapsible-content",
-      "blocks": {
-        "collapsible_row_b44n9F": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Warum sind eure Parfüms so erschwinglich?",
-            "icon": "none",
-            "row_content": "<p>Wir konzentrieren uns auf den Duftinhalt. Kein luxuriöses Flakon, keine besondere Verpackung, keine teuren Läden & keine teuren Influencerdeals — ermöglichen dir luxuriös zu riechen, ohne das Budget zu sprengen.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_rCVDnP": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Ist es ein Eau de Toilette oder ein Eau de Parfum?",
-            "icon": "none",
-            "row_content": "<p>Nein, es ist ein Eau de Parfum – es enthält zwischen 19 % und 21 % Duftöl, je nach Parfüm. Eau de Toilette enthält zum Beispiel zwischen 5 und 15 %.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_rNbx6p": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Wie lange hält das Parfüm?",
-            "icon": "none",
-            "row_content": "<p>Das Parfüm hält je nach Person und Anwendungsart unterschiedlich lange an. Auf die Haut gesprüht hält es dank unserer Formel und 19–21 % Parfümölkonzentration 8 bis sogar 12 Stunden und länger. Nach einer längeren Zeitspanne verblasst der Duft.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_irweNa": {
-          "type": "collapsible_row",
-          "settings": {
-            "heading": "Was ist ein Duftzwilling?",
-            "icon": "none",
-            "row_content": "<p>Es ist ein Eau de Parfum mit einem Duftölanteil von bis zu 19 %, inspiriert von teuren Luxusparfüms. Es bedeutet, dass der Inhalt des Flakons zwischen 19 % und 21 % Parfümöl enthält. Designerflakons enthalten zwischen 10 und 15 % Parfümöl für Eau de Toilette.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_row_gJVQkB": {
-          "type": "collapsible_row",
-          "disabled": true,
-          "settings": {
-            "heading": "Nein — es ist ein Eau de Parfum mit einem Duftölanteil von bis zu 19 %.",
-            "icon": "none",
-            "row_content": "<p>Es bedeutet, dass der Inhalt des Flakons zwischen 19 % und 21 % Parfümöl enthält. Designerflakons enthalten zwischen 10 und 15 % Parfümöl für Eau de Toilette.</p>",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_row_b44n9F",
-        "collapsible_row_rCVDnP",
-        "collapsible_row_rNbx6p",
-        "collapsible_row_irweNa",
-        "collapsible_row_gJVQkB"
-      ],
-      "name": "t:sections.collapsible_content.presets.name",
-      "settings": {
-        "caption": "",
-        "heading": "FAQ",
-        "subheading": "",
-        "heading_size": "h1",
-        "heading_alignment": "center",
-        "layout": "none",
-        "color_scheme": "",
-        "container_color_scheme": "",
-        "open_first_collapsible_row": false,
-        "image_ratio": "adapt",
-        "desktop_layout": "image_second",
-        "padding_top": 72,
-        "padding_bottom": 72
-      }
-    },
     "massive_review_kTc3WW": {
       "type": "massive-review",
       "blocks": {
@@ -473,6 +399,7 @@
         "review_XfwcAY": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/image_1.jpg",
             "content": "<p>„Alle drei Düfte, die ich bestellt habe, riechen echt richtig gut und halten auch lange. Die Düfte sind wirklich nah an den Originalen. Das Einzige war die Lieferzeit, die etwas länger gedauert hat. Aber ganz ehrlich – ich hab trotzdem direkt nochmal bestellt 😄 Man muss nur ein bisschen Geduld haben.“</p>",
             "author": "Clara P.",
             "date": "vor 2 Tagen",
@@ -508,6 +435,7 @@
         "review_aThE8h": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/magic_175_review.png",
             "content": "<p>„Einer meiner absoluten Lieblingsdüfte. War super schnell da und riecht einfach richtig gut.“</p>",
             "author": "Jonas Hartmann",
             "date": "vor 2 Tagen",
@@ -554,6 +482,7 @@
         "review_y8tq9b": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/image.jpg",
             "content": "<p>\"Ist perfekt und wunderschön 🥰🥰🥰\"</p>",
             "author": "Lidis A.",
             "date": "vor 2 Monaten",
@@ -576,6 +505,7 @@
         "review_639hbA": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/2026-07-22_16h43_29.png",
             "content": "<p>„Die Parfüms riechen einfach perfekt und die Düfte halten richtig lange. Wirklich tolle Qualität.“<br/></p>",
             "author": "Kamila G.",
             "date": "vor 3 Monaten",
@@ -598,6 +528,7 @@
         "review_KK6jhW": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/magic_revie.png",
             "content": "<p>„So ein Duft, bei dem man sich direkt frisch und gepflegt fühlt. Nicht zu aufdringlich, einfach genau richtig. 👌“</p>",
             "author": "Michael R.",
             "date": "vor 4 Monaten",
@@ -878,6 +809,80 @@
         "padding_bottom": 72
       }
     },
+    "collapsible_content_JWRDn8": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_b44n9F": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Warum sind eure Parfüms so erschwinglich?",
+            "icon": "none",
+            "row_content": "<p>Wir konzentrieren uns auf den Duftinhalt. Kein luxuriöses Flakon, keine besondere Verpackung, keine teuren Läden & keine teuren Influencerdeals — ermöglichen dir luxuriös zu riechen, ohne das Budget zu sprengen.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_rCVDnP": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Ist es ein Eau de Toilette oder ein Eau de Parfum?",
+            "icon": "none",
+            "row_content": "<p>Nein, es ist ein Eau de Parfum – es enthält zwischen 19 % und 21 % Duftöl, je nach Parfüm. Eau de Toilette enthält zum Beispiel zwischen 5 und 15 %.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_rNbx6p": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Wie lange hält das Parfüm?",
+            "icon": "none",
+            "row_content": "<p>Das Parfüm hält je nach Person und Anwendungsart unterschiedlich lange an. Auf die Haut gesprüht hält es dank unserer Formel und 19–21 % Parfümölkonzentration 8 bis sogar 12 Stunden und länger. Nach einer längeren Zeitspanne verblasst der Duft.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_irweNa": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Was ist ein Duftzwilling?",
+            "icon": "none",
+            "row_content": "<p>Es ist ein Eau de Parfum mit einem Duftölanteil von bis zu 19 %, inspiriert von teuren Luxusparfüms. Es bedeutet, dass der Inhalt des Flakons zwischen 19 % und 21 % Parfümöl enthält. Designerflakons enthalten zwischen 10 und 15 % Parfümöl für Eau de Toilette.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_gJVQkB": {
+          "type": "collapsible_row",
+          "disabled": true,
+          "settings": {
+            "heading": "Nein — es ist ein Eau de Parfum mit einem Duftölanteil von bis zu 19 %.",
+            "icon": "none",
+            "row_content": "<p>Es bedeutet, dass der Inhalt des Flakons zwischen 19 % und 21 % Parfümöl enthält. Designerflakons enthalten zwischen 10 und 15 % Parfümöl für Eau de Toilette.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_b44n9F",
+        "collapsible_row_rCVDnP",
+        "collapsible_row_rNbx6p",
+        "collapsible_row_irweNa",
+        "collapsible_row_gJVQkB"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "FAQ",
+        "subheading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
     "178125510878c9a1b8": {
       "type": "apps",
       "settings": {
@@ -942,8 +947,8 @@
     "bigger_then_a_shave_nJQJzw",
     "home_tabs_fcxFYG",
     "stacks_up_CyAwL9",
-    "collapsible_content_JWRDn8",
     "massive_review_kTc3WW",
+    "collapsible_content_JWRDn8",
     "178125510878c9a1b8",
     "1781255245cd8c094d"
   ]
