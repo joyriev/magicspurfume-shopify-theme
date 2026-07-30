@@ -268,6 +268,18 @@
         "type": "shopify://apps/voluum/blocks/app-block/6bb81c29-e33c-42c4-b756-dd9ebccb13b2",
         "disabled": false,
         "settings": {}
+      },
+      "5537102726230261467": {
+        "type": "shopify://apps/revenuehunt-product-quiz-maker/blocks/v2-link-quiz/672f3d48-fd3b-4227-8778-c6e58c4f8a98",
+        "disabled": false,
+        "settings": {
+          "quiz_width": "100",
+          "quiz_height": "100",
+          "quiz_z_index": 100,
+          "popup_close_color": "#777777",
+          "show_list": true,
+          "quiz_id": ""
+        }
       }
     },
     "color_schemes": {
