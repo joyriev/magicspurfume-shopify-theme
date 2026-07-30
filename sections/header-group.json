@@ -81,10 +81,10 @@
       "settings": {
         "background_color": "#15803d",
         "forground_color": "#15803d",
-        "prepend_text": "Sommer-Angebot: 3 kaufen, 1 geschenkt",
+        "prepend_text": "Zahltags-Sonderangebot:",
         "countdown_date": "",
-        "append_text": "",
-        "link": "shopify://collections/bundle-save"
+        "append_text": "30% Rabatt auf den gesamten Warenkorb",
+        "link": "shopify://collections/payday-4-2"
       }
     },
     "header": {
