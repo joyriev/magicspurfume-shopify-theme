@@ -27,7 +27,7 @@
         "background_image": "shopify://shop_images/magic_header_1.png",
         "mobile_background_image": "shopify://shop_images/magic_header_mobile_1.jpg",
         "title": "Duft-Zwillinge, die wirklich lange halten.",
-        "subtitle": "Wähle deine aus",
+        "subtitle": "Wähle Sie Ihren aus",
         "button_text": "Finden Sie Ihr Lieblingsparfüm",
         "button_link": "#quiz-HoOR5K",
         "second_button_text": "",
@@ -923,6 +923,7 @@
             "order_hint_text": "-",
             "show_email_hint": true,
             "show_privacy_notice": true,
+            "show_required_hint": false,
             "email_hint_text": "-"
           }
         }
