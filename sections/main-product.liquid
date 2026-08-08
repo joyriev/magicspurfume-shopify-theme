@@ -886,6 +886,8 @@
                     <span class="alert-text-text">{{ block.settings.text }}</span>
                   </div>
                 </div>
+                {%- when 'selling_fast' -%}
+                  {% render 'selling-fast', block: block %}
                 {% when 'reactive_atc' %}
                   {% render 'reactive-atc' %}
                 {% when 'similar_scents' %}
@@ -1061,6 +1063,99 @@
     {
       "type": "similar_scents",
       "name": "Similar Scents"
+    },
+        {
+      "type": "selling_fast",
+      "name": "Selling Out Fast",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Selling out fast",
+          "label": "Heading"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "subheading",
+          "default": "Due to high demand, limited quantities available",
+          "label": "Subheading"
+        },
+        {
+          "type": "text",
+          "id": "sold_text",
+          "default": "[percent]% sold",
+          "label": "Sold text",
+          "info": "Use [percent] where the percentage should appear."
+        },
+        {
+          "type": "header",
+          "content": "Progress"
+        },
+        {
+          "type": "range",
+          "id": "percent_min",
+          "min": 1,
+          "max": 99,
+          "step": 1,
+          "unit": "%",
+          "default": 8,
+          "label": "Minimum sold percentage"
+        },
+        {
+          "type": "range",
+          "id": "percent_max",
+          "min": 1,
+          "max": 99,
+          "step": 1,
+          "unit": "%",
+          "default": 95,
+          "label": "Maximum sold percentage"
+        },
+        {
+          "type": "header",
+          "content": "Countdown"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_countdown",
+          "default": true,
+          "label": "Show countdown"
+        },
+        {
+          "type": "text",
+          "id": "countdown_label",
+          "default": "Ends in",
+          "label": "Countdown label"
+        },
+        {
+          "type": "text",
+          "id": "end_time",
+          "label": "End date and time",
+          "info": "Format: YYYY-MM-DD HH:MM (for example 2026-12-24 18:00). Leave empty to end at midnight + 12 hours, which resets every day."
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "bar_color",
+          "default": "#22613b",
+          "label": "Progress bar"
+        },
+        {
+          "type": "color",
+          "id": "track_color",
+          "default": "#c2dbcb",
+          "label": "Progress bar background"
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "default": "#22613b",
+          "label": "Countdown text"
+        }
+      ]
     },
     {
       "type": "text",
