@@ -56,7 +56,7 @@
             "percent_min": 8,
             "percent_max": 95,
             "show_countdown": true,
-            "countdown_label": "Ends in",
+            "countdown_label": "Endet in",
             "end_time": "",
             "bar_color": "#22613b",
             "track_color": "#c2dbcb",
