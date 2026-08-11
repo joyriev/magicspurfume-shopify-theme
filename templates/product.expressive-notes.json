@@ -47,22 +47,6 @@
           "type": "reactive_atc",
           "settings": {}
         },
-        "selling_fast_pKQUVi": {
-          "type": "selling_fast",
-          "settings": {
-            "heading": "Schnell ausverkauft",
-            "subheading": "Aufgrund der hohen Nachfrage sind nur begrenzte Mengen verfügbar.",
-            "sold_text": "[percent]% verkauft",
-            "percent_min": 8,
-            "percent_max": 95,
-            "show_countdown": true,
-            "countdown_label": "Endet in",
-            "end_time": "",
-            "bar_color": "#22613b",
-            "track_color": "#c2dbcb",
-            "accent_color": "#22613b"
-          }
-        },
         "custom_liquid_QcxgR4": {
           "type": "custom_liquid",
           "disabled": true,
@@ -237,7 +221,6 @@
         "text_T466xD",
         "custom_liquid_Wb3gBi",
         "reactive_atc_LBDQE9",
-        "selling_fast_pKQUVi",
         "custom_liquid_QcxgR4",
         "payment_badges_FkCwVc",
         "delivery_deadline_CQHJwz",
