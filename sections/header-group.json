@@ -81,10 +81,10 @@
       "settings": {
         "background_color": "#15803d",
         "forground_color": "#15803d",
-        "prepend_text": "Zahltags-Sonderangebot:",
+        "prepend_text": "Sommerferien!",
         "countdown_date": "",
-        "append_text": "30% Rabatt auf den gesamten Warenkorb",
-        "link": "shopify://collections/payday-4-2"
+        "append_text": "Erhalte bis zu zwei Düfte gratis!",
+        "link": "shopify://collections/best-sellers"
       }
     },
     "header": {
