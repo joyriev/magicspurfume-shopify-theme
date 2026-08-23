@@ -12,44 +12,67 @@
     "collection_header_QyeyVD": {
       "type": "collection-header",
       "blocks": {
+        "guarantee_47wh73": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "shopify://shop_images/sandwatch_1.svg",
+            "text": "Gaat 12+ uur mee"
+          }
+        },
+        "guarantee_7YzHWw": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "shopify://shop_images/icons_quality_3.webp",
+            "text": "19–21 %:n hajusteöljypitoisuus"
+          }
+        },
+        "guarantee_wNMEew": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "shopify://shop_images/sheild-star_1.svg",
+            "text": "60 dagen geld-terug-garantie"
+          }
+        },
         "step_FDXazG": {
           "type": "step",
           "settings": {
-            "step_title": "Sparen Sie bis zu 40 % mit unseren Paketen",
-            "step_description": "Wählen Sie Ihre Lieblingsdüfte aus und legen Sie sie in Ihren Warenkorb."
+            "step_title": "Erhalten Sie 30 % Rabatt auf Ihren gesamten Warenkorb",
+            "step_description": "Välj dina favoritdofter och lägg dem i varukorgen"
           }
         },
         "step_FinVGB": {
           "type": "step",
           "settings": {
-            "step_title": "Sichern Sie sich bis zu zwei GRATIS-Parfums!",
-            "step_description": "Beim Kauf für 34 Euros erhalten Sie 1 Stück gratis. Beim Kauf für 65 Euros  erhalten Sie 2 Stück gratis."
+            "step_title": "Mit den Paketen sparst du noch mehr!",
+            "step_description": "Kaufen Sie 3 – sparen Sie 40%. Kaufen Sie 6 – sparen Sie 48%."
           }
         },
         "step_BDxfBQ": {
           "type": "step",
           "settings": {
-            "step_title": "Kaufen Sie für mindestens 35 Euros ein.",
-            "step_description": "Und erhalten Sie kostenlosen Versand!"
+            "step_title": "Bestellwert von mindestens 65 Euros",
+            "step_description": "Erhalten Sie KOSTENLOSEN Versand und KOSTENLOSE Geschenke!"
           }
         }
       },
       "block_order": [
+        "guarantee_47wh73",
+        "guarantee_7YzHWw",
+        "guarantee_wNMEew",
         "step_FDXazG",
         "step_FinVGB",
         "step_BDxfBQ"
       ],
-      "disabled": true,
       "name": "Collection Header",
       "settings": {
         "background_color": "#242833",
-        "bg_image": "shopify://shop_images/desktop_shade.png",
-        "bg_mobile_image": "shopify://shop_images/shaded_mobile.png",
-        "social_proof_text": "Geliebt von über 10.000 Parfümliebhabern",
-        "collection_title": "Magic Parfüm-Tage!",
-        "collection_description": "Kaufen Sie Ihre Lieblingsdüfte zu noch besseren Preisen!",
+        "bg_image": "shopify://shop_images/payday_banner_magic_no_bottles.jpg",
+        "bg_mobile_image": "shopify://shop_images/payday_mobile_Nobottles.jpg",
+        "social_proof_text": "Von über 10.000 zufriedenen Duftliebhabern empfohlen",
+        "collection_title": "Sonderangebot zum Zahltag!",
+        "collection_description": "Kaufen Sie Ihre Lieblingsdüfte zu noch günstigeren Preisen! Und sparen Sie mit Paketangeboten noch mehr!",
         "btn_link": "",
-        "btn_text": "und bis zu zwei Flaschen gratis!",
+        "btn_text": "",
         "padding_top": 72,
         "padding_bottom": 72,
         "mobile_padding_top": 40,
@@ -58,6 +81,7 @@
     },
     "blocky_lys_image_embed_gEUmLb": {
       "type": "blocky-lys-image-embed",
+      "disabled": true,
       "name": "Blocky Image Embed",
       "settings": {
         "image": "shopify://shop_images/Magicperfume.co_desktop_PAYDAY_-30.png",
@@ -77,7 +101,7 @@
       "name": "Popular Products",
       "settings": {
         "background_color": "#fcfbf9",
-        "heading": "Magic Perfume Paket",
+        "heading": "Mit den Paketen sparst du mehr und kaufst mehr!",
         "subheading": "",
         "collection": "tag-des-magic-parfums",
         "show_all_button_text": "",
