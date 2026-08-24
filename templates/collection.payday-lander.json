@@ -63,6 +63,7 @@
         "step_FinVGB",
         "step_BDxfBQ"
       ],
+      "disabled": true,
       "name": "Collection Header",
       "settings": {
         "background_color": "#242833",
