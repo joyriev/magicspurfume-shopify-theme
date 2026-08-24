@@ -81,10 +81,9 @@
     },
     "blocky_lys_image_embed_gEUmLb": {
       "type": "blocky-lys-image-embed",
-      "disabled": true,
       "name": "Blocky Image Embed",
       "settings": {
-        "image": "shopify://shop_images/Magicperfume.co_desktop_PAYDAY_-30.png",
+        "image": "shopify://shop_images/PaydayDeal_Header_-_Magic_Perfume_-_DE.webp",
         "section_height": "650px",
         "mobile_height": "300px",
         "image_fit": "cover",
