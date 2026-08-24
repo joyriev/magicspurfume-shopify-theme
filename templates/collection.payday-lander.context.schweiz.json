@@ -12,5 +12,17 @@
     "market": "schweiz"
   },
   "parent": "collection.payday-lander.json",
-  "sections": {}
+  "sections": {
+    "collection_header_QyeyVD": {
+      "disabled": true,
+      "settings": {},
+      "blocks": {}
+    },
+    "blocky_lys_image_embed_gEUmLb": {
+      "settings": {
+        "image": "shopify://shop_images/PaydayDeal_Header_-_Magic_Perfume_-_DE_-_CHF.webp"
+      },
+      "blocks": {}
+    }
+  }
 }
