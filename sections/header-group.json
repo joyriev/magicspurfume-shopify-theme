@@ -79,9 +79,9 @@
       "type": "offer-timebar",
       "name": "Offer Timebar",
       "settings": {
-        "background_color": "#15803d",
-        "forground_color": "#15803d",
-        "prepend_text": "Sommerferien!",
+        "background_color": "#000000",
+        "forground_color": "#000000",
+        "prepend_text": "Zurück-ins-Büro-Sale",
         "countdown_date": "",
         "append_text": "Erhalte bis zu zwei Düfte gratis!",
         "link": "shopify://collections/payday-4-2"
