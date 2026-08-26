@@ -285,6 +285,11 @@
         "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
         "settings": {}
+      },
+      "2441077020710769822": {
+        "type": "shopify://apps/aimerce-first-party-pixel/blocks/c-track-embed/51cbda5a-dbfc-4e7b-8d12-c9e90363dcd7",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
