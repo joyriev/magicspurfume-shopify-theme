@@ -78,6 +78,50 @@
     },
     "offer_timebar_8kAUGX": {
       "type": "offer-timebar",
+      "blocks": {
+        "payment_icon_NXYPjm": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/090e7fd71af4b4e7589642874d6cae93a0a34f77.png",
+            "label": "Schnell"
+          }
+        },
+        "payment_icon_KF79X3": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/65f2284e66ff1dcb1a272319f1ef543c429f73e2.png",
+            "label": "EU-Versand"
+          }
+        },
+        "payment_icon_3nUT9e": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/800c98d03dc73f77225bfa90300384e0370c7cff.png",
+            "label": "Sicher"
+          }
+        },
+        "payment_icon_Qjr7YN": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/777929254296c2d290f0836dc4e68451f4cfdbc4.png",
+            "label": "Flexibel"
+          }
+        },
+        "payment_icon_rTMrrJ": {
+          "type": "payment_icon",
+          "settings": {
+            "icon": "shopify://shop_images/images-555x360--08-28-2026_03_03_PM.png",
+            "label": "Direkt"
+          }
+        }
+      },
+      "block_order": [
+        "payment_icon_NXYPjm",
+        "payment_icon_KF79X3",
+        "payment_icon_3nUT9e",
+        "payment_icon_Qjr7YN",
+        "payment_icon_rTMrrJ"
+      ],
       "name": "Offer Timebar",
       "settings": {
         "primary_color": "#000000",
