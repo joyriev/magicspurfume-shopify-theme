@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "serve": "shopify theme dev --store=microsoft-business-license.myshopify.com"
   },
   "dependencies": {
     "framer-motion": "^11.9.0",
