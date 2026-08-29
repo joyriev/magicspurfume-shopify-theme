@@ -125,11 +125,11 @@
       "name": "Offer Timebar",
       "settings": {
         "primary_color": "#000000",
-        "secondary_color": "#F2F2F2",
+        "secondary_color": "#f2f2f2",
         "top_banner_text": "NUR FÜR KURZE ZEIT",
-        "prepend_text": "Zurück-ins-Büro-Sale",
+        "prepend_text": "PAYDAY SALE:",
         "countdown_date": "",
-        "append_text": "Erhalte bis zu zwei Düfte gratis!",
+        "append_text": "30 % RABATT AUF ALLES.",
         "link": "shopify://collections/payday-4-2"
       }
     },
