@@ -886,6 +886,22 @@
                     <span class="alert-text-text">{{ block.settings.text }}</span>
                   </div>
                 </div>
+                {% when 'inspired_by' %}
+                  {% if product.metafields.custom.inspiration != blank %}
+                    <div class="flex items-center gap-2 mb-3">
+                      <img
+                        style="filter: blur(2px);"
+                        class="object-contain object-center bg-white"
+                        src="{{ product.metafields.custom.inspiration.value.image |  image_url }}"
+                        alt="{{ product.metafields.custom.inspiration.value.image.alt | escape }}"
+                        width="45"
+                        height="45">
+                      <div>
+                        <p class="text-sm my-0">Inspiriert von:</p>
+                        <h4 class="font-semibold my-0 line-clamp-1 inspiration_heading">{{ product.metafields.custom.inspiration.value.name }}</h4>
+                      </div>
+                    </div>
+                  {% endif %}
                 {%- when 'selling_fast' -%}
                   {% render 'selling-fast', block: block %}
                 {% when 'reactive_atc' %}
@@ -1063,6 +1079,11 @@
     {
       "type": "similar_scents",
       "name": "Similar Scents"
+    },
+    {
+      "type": "inspired_by",
+      "name": "Inspired By",
+      "limit": 1
     },
     {
       "type": "selling_fast",
