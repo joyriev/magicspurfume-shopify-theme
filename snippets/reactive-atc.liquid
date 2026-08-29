@@ -30,6 +30,20 @@
 
   <div class="flex gap-3" id="variant-selector">
     {% for variant in product.variants %}
+      {% liquid
+        assign variant_ml = 0
+        if variant.title contains '100'
+          assign variant_ml = 100
+        elsif variant.title contains '50'
+          assign variant_ml = 50
+        elsif variant.title contains '30'
+          assign variant_ml = 30
+        endif
+
+        if variant_ml > 0
+          assign price_per_ml = variant.price | times: 1.0 | divided_by: variant_ml
+        endif
+      %}
       <button
         type="button"
         class="variant-button flex-grow flex justify-center gap-2 rounded-lg px-2 pt-4 pb-3 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative {% if variant.id == selected_variant.id %}border-black{% else %}border-gray-200{% endif %}"
@@ -45,6 +59,9 @@
         {% endif %}
         {% if variant.title contains '100' %}
           <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#17803d] px-2 py-0.5">Bestseller</span>
+        {% endif %}
+        {% if variant_ml > 0 %}
+          <div class="text-xs text-gray-500">{{ price_per_ml | money }} / ml</div>
         {% endif %}
       </button>
     {% endfor %}

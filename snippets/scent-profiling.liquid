@@ -9,6 +9,12 @@
   </div>
 </div>
 
+{% if product.metafields.custom.scent_description != blank %}
+  <p class="tracking-normal">
+    {{ product.metafields.custom.scent_description }}
+  </p>
+{% endif %}
+
 <div class="product-quick-nav flex flex-wrap items-center gap-6 mt-6 mb-6">
   <a
     href="#expanded-notes"
