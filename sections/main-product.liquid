@@ -908,33 +908,33 @@
                   {% endif %}
                 {% when 'tsr_block' %}
                   {% if block.settings.product != blank %}
-                    <a href="{{ block.settings.product.url }}" class="mt-8 [display:grid] grid-cols-3 overflow-hidden rounded-lg border-2 border-[#cc303d] border-solid bg-white text-inherit no-underline shadow-[0_1px_0_rgba(17,24,39,0.03)] md:flex-row">
-                      <div class="relative w-full overflow-hidden bg-[#f2ede7] md:max-w-[280px]">
+                    <a href="{{ block.settings.product.url }}" class="!mb-6 flex items-stretch overflow-hidden rounded-xl border border-[#cc303d] border-solid bg-white text-inherit no-underline shadow-[0_1px_2px_rgba(17,24,39,0.06)] transition-shadow hover:shadow-[0_2px_10px_rgba(17,24,39,0.08)]">
+                      <div class="flex w-[46%] max-w-[260px] shrink-0 items-center bg-[#f2ede7]">
                         <img
-                          src="{{ block.settings.product.featured_image | image_url: width: 560 }}"
+                          src="{{ block.settings.product.featured_image | image_url: width: 720 }}"
                           alt="{{ block.settings.product.title | escape }}"
-                          class="h-full w-full object-cover"
+                          class="block h-auto w-full object-contain"
                           loading="lazy"
-                          width="280"
-                          height="280">
+                          width="720"
+                          height="720">
                       </div>
 
-                      <div class="col-span-2 p-4 md:p-[18px]">
+                      <div class="flex min-w-0 flex-1 flex-col justify-center p-4 md:p-5">
                         {% if block.settings.product.compare_at_price > block.settings.product.price %}
                           {% assign discount = block.settings.product.compare_at_price | minus: block.settings.product.price %}
                           {% assign discount_percent = discount | times: 100 | divided_by: block.settings.product.compare_at_price | round %}
-                          <div class="inline-block rounded-xl bg-green-100 text-green-600 px-2 py-1 text-xs font-semibold uppercase">
+                          <span class="inline-block self-start rounded-full bg-green-100 text-green-700 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide">
                             Spare {{ discount_percent }}%
-                          </div>
+                          </span>
                         {% endif %}
-                        <h3 class="my-2 tracking-normal font-semibold text-base md:text-lg">
+                        <h3 class="mt-2 mb-1 tracking-normal font-semibold leading-snug text-slate-900 text-sm sm:text-base md:text-lg">
                           Unser bestes Angebot: Stell dein Paket zusammen!
                         </h3>
-                        <div class="m-0 tracking-normal text-black text-sm md:text-base">
+                        <p class="m-0 tracking-normal text-slate-600 text-sm md:text-base">
                           Nur
-                          <strong>{{ block.settings.product.price | divided_by: block.settings.product.metafields.custom.choose_your_fragrances_options | money }}</strong>
+                          <strong class="text-slate-900">{{ block.settings.product.price | divided_by: block.settings.product.metafields.custom.choose_your_fragrances_options | money }}</strong>
                           pro Flasche
-                        </div>
+                        </p>
                       </div>
                     </a>
                   {% endif %}
