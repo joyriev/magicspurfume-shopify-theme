@@ -26,6 +26,10 @@
           "type": "inspired_by",
           "settings": {}
         },
+        "designer_price_VYNtA7": {
+          "type": "designer_price",
+          "settings": {}
+        },
         "custom_liquid_wVgaRG": {
           "type": "custom_liquid",
           "disabled": true,
@@ -222,6 +226,7 @@
         "title_DkyBTh",
         "custom_rating_text_ehyqmQ",
         "inspired_by_ykNwGy",
+        "designer_price_VYNtA7",
         "custom_liquid_wVgaRG",
         "text_T466xD",
         "custom_liquid_Wb3gBi",
