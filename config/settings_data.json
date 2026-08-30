@@ -13,7 +13,7 @@
     "logo_width": 150,
     "favicon": "shopify://shop_images/favicon-magic-perfume.svg",
     "type_header_font": "plus_jakarta_sans_n7",
-    "heading_scale": 110,
+    "heading_scale": 100,
     "type_body_font": "plus_jakarta_sans_n4",
     "body_scale": 105,
     "page_width": 1200,
@@ -236,13 +236,6 @@
         "type": "shopify://apps/kite-discount-free-gift/blocks/app-embed/2c7302c4-455d-4078-a829-48563ba26089",
         "disabled": false,
         "settings": {}
-      },
-      "1273113416114949626": {
-        "type": "shopify://apps/wati-whatsapp-chat/blocks/widget/019a33d5-6693-76b8-aede-2d1cd0923b25",
-        "disabled": false,
-        "settings": {
-          "atc_app_proxy_prefix": "wati"
-        }
       },
       "11349500561483629931": {
         "type": "shopify://apps/notify-back-in-stock-preorder/blocks/app-embed/b399b727-6c85-44fc-9e21-63114bd72054",
