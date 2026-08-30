@@ -405,7 +405,7 @@
         "title": "Wie MagicPerfume im Vergleich zur Konkurrenz abschneidet",
         "btn_text": "Alle anzeigen",
         "btn_url": "shopify://collections/all",
-        "padding_top": 8,
+        "padding_top": 60,
         "padding_bottom": 60
       }
     },
