@@ -161,14 +161,14 @@
       <div class="container mx-auto px-4">
         <div class="flex flex-wrap items-center gap-x-6 gap-y-1 justify-center">
           <div class="flex flex-wrap gap-x-4 gap-y-1 items-center justify-center">
-            <div style="color: {{ section.settings.primary_color }};" class="font-bold text-xl">
+            <div style="color: {{ section.settings.primary_color }};" class="font-bold text-base md:text-xl">
               {{ section.settings.prepend_text }}
             </div>
-            <div style="color: {{ section.settings.primary_color }};" class="font-semibold text-lg tracking-wider md:order-1 underline">
+            <div style="color: {{ section.settings.primary_color }};" class="font-semibold text-base md:text-lg tracking-wider md:order-1 underline">
               {{ section.settings.append_text }}
             </div>
             <div class="flex items-center gap-2">
-              <div style="color: {{ section.settings.primary_color }};" class="text-base font-bold leading-none md:hidden">
+              <div style="color: {{ section.settings.primary_color }};" class="text-sm md:text-base font-bold leading-none md:hidden">
                 Endet in
               </div>
               <div id="flipdown" class="flipdown"></div>
