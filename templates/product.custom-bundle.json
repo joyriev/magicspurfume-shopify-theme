@@ -274,6 +274,78 @@
         "padding_bottom": 72
       }
     },
+    "stacks_up_DMztUX": {
+      "type": "stacks-up",
+      "blocks": {
+        "stack_K4HbVR": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Parfümkonzentration",
+            "stack_subheading": "Mehr Öl = längere Haltbarkeit"
+          }
+        },
+        "stack_UYkDjW": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Hält 8–12 Stunden auf der Haut",
+            "stack_subheading": "Hält länger als die meisten Designer-EDTs"
+          }
+        },
+        "stack_KbW9qT": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "90 % günstiger als der Designerpreis",
+            "stack_subheading": "Ohne Kompromisse bei der Qualität"
+          }
+        },
+        "stack_NAbfwQ": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Exakt derselbe Duft wie das Original",
+            "stack_subheading": "Kreiert mit denselben Duftakkorden"
+          }
+        },
+        "stack_Vi6pdM": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Versand innerhalb von 24 Stunden",
+            "stack_subheading": "Kein Warten im Geschäft"
+          }
+        },
+        "stack_JEBkre": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Tierversuchsfreie Formel",
+            "stack_subheading": "Reine Inhaltsstoffe, hautverträglich"
+          }
+        },
+        "stack_cFFaVF": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "60 Tage Geld-zurück-Garantie",
+            "stack_subheading": "Liebe ihn oder erhalte den vollen Kaufpreis zurück – ohne Wenn und Aber"
+          }
+        }
+      },
+      "block_order": [
+        "stack_K4HbVR",
+        "stack_UYkDjW",
+        "stack_KbW9qT",
+        "stack_NAbfwQ",
+        "stack_Vi6pdM",
+        "stack_JEBkre",
+        "stack_cFFaVF"
+      ],
+      "name": "Stacks Up",
+      "settings": {
+        "background_color": "#F7F7F7",
+        "title": "Wie MagicPerfume im Vergleich zur Konkurrenz abschneidet",
+        "btn_text": "Alle anzeigen",
+        "btn_url": "shopify://collections/all",
+        "padding_top": 8,
+        "padding_bottom": 60
+      }
+    },
     "manus_smell_journey_Bg46P3": {
       "type": "manus-smell-journey",
       "disabled": true,
@@ -818,6 +890,7 @@
     "main",
     "feature_heighlights_fCUG3E",
     "scent_breakdown_pqKDL9",
+    "stacks_up_DMztUX",
     "manus_smell_journey_Bg46P3",
     "manus_why_it_last_jW8Eag",
     "manus_comparison_Vdxngc",
