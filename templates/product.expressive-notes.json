@@ -131,6 +131,14 @@
             "product": "6-x-50ml-parfumflaschen"
           }
         },
+        "money_back_8ApRWt": {
+          "type": "money_back",
+          "settings": {
+            "image": "shopify://shop_images/thimbs_up.png",
+            "title": "Teste es 60 Tage lang – völlig risikofrei.",
+            "text": "Sollten Sie nicht absolut begeistert sein, erstatten wir Ihnen den vollen Betrag zurück!"
+          }
+        },
         "expanded_notes_iVdnJA": {
           "type": "expanded_notes",
           "settings": {}
@@ -245,6 +253,7 @@
         "custom_liquid_3PYMcC",
         "custom_liquid_aeXkRF",
         "tsr_block_mwaVHz",
+        "money_back_8ApRWt",
         "expanded_notes_iVdnJA",
         "collapsible_tab_FAAFhb",
         "collapsible_tab_bKn87j",
