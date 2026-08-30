@@ -908,7 +908,7 @@
                   {% endif %}
                 {% when 'tsr_block' %}
                   {% if block.settings.product != blank %}
-                    <a href="{{ block.settings.product.url }}" class="!mb-6 flex items-stretch overflow-hidden rounded-xl border border-[#cc303d] border-solid bg-white text-inherit no-underline shadow-[0_1px_2px_rgba(17,24,39,0.06)] transition-shadow hover:shadow-[0_2px_10px_rgba(17,24,39,0.08)]">
+                    <a href="{{ block.settings.product.url }}" class="!mb-6 flex items-stretch overflow-hidden rounded-xl border-2 border-[#cc303d] border-solid bg-white text-inherit no-underline shadow-[0_1px_2px_rgba(17,24,39,0.06)] transition-shadow hover:shadow-[0_2px_10px_rgba(17,24,39,0.08)]">
                       <div class="flex w-[46%] max-w-[260px] shrink-0 items-center bg-[#f2ede7]">
                         <img
                           src="{{ block.settings.product.featured_image | image_url: width: 720 }}"
