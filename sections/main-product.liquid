@@ -133,7 +133,7 @@
               {%- when 'title' -%}
                 <div class="product__title relative" {{ block.shopify_attributes }}>
                   {%- if product.tags contains 'bestseller' or product.tags contains 'onsale' or product.metafields.custom.custom_label != blank -%}
-                    <div class="absolute top-1 left-0">
+                    <div class="absolute top-0 left-0 flex">
                       {% if product.tags contains 'onsale' and product.compare_at_price != blank and product.compare_at_price > product.price %}
                         {%- assign discount_percent = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
                         <span class="inline-block bg-red-600 text-white text-sm font-bold px-3 py-1 mr-1">
@@ -938,6 +938,19 @@
                       </div>
                     </a>
                   {% endif %}
+                {% when 'money_back' %}
+                  <div class="flex items-center gap-3 text-base">
+                    <img
+                      src="{{ block.settings.image | image_url }}"
+                      alt="Thumbs up badge"
+                      class="w-10 h-10 flex-shrink-0"
+                      width="40"
+                      height="40" />
+                    <div class="text-slate-900">
+                      <h3 class="font-semibold font-base my-0">{{ block.settings.title }}</h3>
+                      <p class="block my-0">{{ block.settings.text }}</p>
+                    </div>
+                  </div>
                 {%- when 'selling_fast' -%}
                   {% render 'selling-fast', block: block %}
                 {% when 'reactive_atc' %}
@@ -1134,6 +1147,30 @@
           "type": "product",
           "id": "product",
           "label": "Select Product"
+        }
+      ]
+    },
+    {
+      "type": "money_back",
+      "name": "Money Back Guarantee",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Money Back Guarantee Badge"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Money Back Guarantee Title",
+          "default": "Teste es 60 Tage lang – völlig risikofrei."
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Money Back Guarantee Text",
+          "default": "Sollten Sie nicht absolut begeistert sein, erstatten wir Ihnen den vollen Betrag zurück!"
         }
       ]
     },
