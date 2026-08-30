@@ -886,12 +886,6 @@
                     <span class="alert-text-text">{{ block.settings.text }}</span>
                   </div>
                 </div>
-                {% when 'designer_price' %}
-                  {% if product.compare_at_price > product.price %}
-                    <span class="text-gray-500 font-semibold line-through compare-price">
-                      (Designerpreis: {{ product.compare_at_price | money }})
-                    </span>
-                  {% endif %}
                 {% when 'inspired_by' %}
                   {% if product.metafields.custom.inspiration != blank %}
                     <div class="flex items-center gap-2 mb-3">
@@ -907,6 +901,10 @@
                         <h4 class="font-semibold my-0 line-clamp-1 inspiration_heading">{{ product.metafields.custom.inspiration.value.name }}</h4>
                       </div>
                     </div>
+                  {% endif %}
+                {% when 'designer_price' %}
+                  {% if product.metafields.custom.original_retail_price != blank %}
+                    <div>(Designerpris: {{ product.metafields.custom.original_retail_price.value | money }})</div>
                   {% endif %}
                 {%- when 'selling_fast' -%}
                   {% render 'selling-fast', block: block %}
