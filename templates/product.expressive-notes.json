@@ -355,6 +355,66 @@
     "stacks_up_E9PEVz": {
       "type": "stacks-up",
       "disabled": true,
+      "blocks": {
+        "stack_bYEPRF": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Parfümkonzentration",
+            "stack_subheading": "Mehr Öl = längere Haltbarkeit"
+          }
+        },
+        "stack_6Lb6R6": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Hält 8–12 Stunden auf der Haut",
+            "stack_subheading": "Hält länger als die meisten Designer-EDTs"
+          }
+        },
+        "stack_CD4imb": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "90 % günstiger als der Designerpreis",
+            "stack_subheading": "Ohne Kompromisse bei der Qualität"
+          }
+        },
+        "stack_ERHc6h": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Exakt derselbe Duft wie das Original",
+            "stack_subheading": "Kreiert mit denselben Duftakkorden"
+          }
+        },
+        "stack_RUmWyb": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Versand innerhalb von 24 Stunden",
+            "stack_subheading": "Kein Warten im Geschäft"
+          }
+        },
+        "stack_MD4Nma": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "Tierversuchsfreie Formel",
+            "stack_subheading": "Reine Inhaltsstoffe, hautverträglich"
+          }
+        },
+        "stack_P8fdyi": {
+          "type": "stack",
+          "settings": {
+            "stack_heading": "60 Tage Geld-zurück-Garantie",
+            "stack_subheading": "Liebe ihn oder erhalte den vollen Kaufpreis zurück – ohne Wenn und Aber"
+          }
+        }
+      },
+      "block_order": [
+        "stack_bYEPRF",
+        "stack_6Lb6R6",
+        "stack_CD4imb",
+        "stack_ERHc6h",
+        "stack_RUmWyb",
+        "stack_MD4Nma",
+        "stack_P8fdyi"
+      ],
       "name": "Stacks Up",
       "settings": {
         "background_color": "#fcfbf9",
