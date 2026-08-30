@@ -17,51 +17,85 @@
   class="section-{{ section.id }}-padding"
   style="background-color: {{ section.settings.background_color }}">
   <div class="page-width">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
-          {{ section.settings.title }}
-        </h2>
-        <p class="mt-4 text-gray-600 text-lg">
-          {{ section.settings.subtitle }}
-        </p>
+    <p class="text-center text-[#137c44] font-bold tracking-wider">Wir vs. Original</p>
+    <h2 class="text-center text-2xl md:text-4xl font-bold max-w-2xl mx-auto mt-0">{{ section.settings.title }}</h2>
+    <div class="grid gap-0 w-full max-w-3xl grid-cols-4 mx-auto">
+      <div class="col-span-2 !flex items-end border-0 border-b border-[#12121233] border-solid px-4 py-4 text-sm font-black md:text-base"></div>
+      <div class="text-center rounded-t-xl border-0 border-solid border-b border-[#12121233] bg-[#137c44] px-2 md:px-4 py-4">
+        <div class="text-sm font-black text-white md:text-base">
+          Unsere Düfte
+        </div>
+        <span class="[display:none] md:inline-block text-xs font-bold text-[#8dffcf] py-1 px-2 rounded-full bg-[#ffffff1a]">19–21 % Konzentration</span>
       </div>
-      <div class="grid md:grid-cols-2 gap-8 items-stretch">
-        <div class="relative bg-white rounded-2xl shadow-xl border border-gray-200 p-8 scale-100 md:scale-105">
-          <span class="absolute -top-4 left-1/2 [transform:translateX(-50%)] bg-black text-white text-sm px-4 py-1 rounded-full">
-            ⭐ Empfohlen
-          </span>
-          <h3 class="text-2xl font-semibold text-center mb-8 mt-4">
-            Magic Perfume
-          </h3>
-          <ul class="space-y-5 text-gray-700 p-0 m-0">
-            {% for block in section.blocks %}
-              <li class="flex items-start gap-3">
-                <span class="text-green-500 text-xl">✔</span>
-                {{ block.settings.our_stack }}
-              </li>
-            {% endfor %}
-          </ul>
-          <div class="mt-10 text-center">
-            <a href="#atc_scroll_target" class="inline-block hover:bg-[#17803d] bg-[#146b32] text-white px-6 py-3 rounded-xl font-medium transition no-underline scroll-smooth">
-              Jetzt shoppen
-            </a>
+      <div class="flex items-center justify-center rounded-t-xl border-0 border-solid border-b border-[#12121233] px-2 md:px-4 py-4 text-center text-sm font-black md:text-base [overflow-wrap:anywhere]">
+        Designermarken
+      </div>
+      {% for block in section.blocks %}
+        {% if block.type == "stack" %}
+          <div class="col-span-2 border-0 border-solid border-b border-[#12121233] pr-4 py-4">
+            <div class="text-sm font-semibold text-black md:text-base">
+              {{ block.settings.stack_heading }}
+            </div>
+            <div class="text-xs">
+              {{ block.settings.stack_subheading }}
+            </div>
           </div>
-        </div>
-        <div class="bg-gray-100 rounded-2xl p-8 border border-gray-200">
-          <h3 class="text-2xl font-semibold text-center mb-8">
-            Teure Luxusmarken
-          </h3>
-          <ul class="space-y-5 text-gray-600 p-0 m-0">
-            {% for block in section.blocks %}
-              <li class="flex items-start gap-3">
-                <span class="text-gray-400 text-xl">✖</span>
-                {{ block.settings.other_brands }}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
+          <div class="flex items-center justify-center [word-break:break-word] border-0 border-solid border-b border-[#12121233] bg-[#137c44] text-white px-4 py-4 text-sm tracking-normal md:text-base ">
+            <img
+              src="{{ 'check-circle-svgrepo-com.svg' | asset_url }}"
+              alt="Check"
+              height="40"
+              width="40">
+          </div>
+          <div class="flex items-center justify-center [word-break:break-word] border-0 border-solid border-b border-[#12121233] p-4 py-4 text-sm tracking-normal md:text-base">
+            <img
+              src="{{ 'times-circle-svgrepo-com.svg' | asset_url }}"
+              alt="Check"
+              height="40"
+              width="40">
+          </div>
+        {% endif %}
+      {% endfor %}
+      <div class="col-span-2 !block"></div>
+      <div class="rounded-b-xl bg-[#137c44] px-4 py-4 !block"></div>
+      <div class="!block"></div>
+    </div>
+    <div class="max-w-[400px] mx-auto mt-8 flex flex-col gap-6 items-center">
+      <a
+        href="{{ section.settings.btn_url }}"
+        class="no-underline text-white tracking-normal font-medium px-8 py-3 bg-[#137c44] hover:bg-[#02491c] rounded-full text-lg text-center transition-colors w-full block tabs-cta-ripple-animation"
+        aria-label="Alle anzeigen">
+        {{ section.settings.btn_text }}
+      </a>
+      <ul class="flex justify-center flex-wrap gap-x-6 gap-y-3 list-unstyled">
+        <li class="flex items-center gap-1.5">
+          <img
+            src="{{ 'sandwatch.svg' | asset_url }}"
+            height="16"
+            width="auto"
+            alt="Icon">
+          <span class="leading-none">Hält 12+ Stunden</span>
+        </li>
+
+        <li class="flex items-center gap-1.5">
+          <img
+            src="{{ 'icon-heart.svg' | asset_url }}"
+            height="16"
+            width="auto"
+            alt="Icon">
+          <span class="leading-none">Geliebt von 10.000+</span>
+        </li>
+
+        <li class="flex items-center gap-1.5">
+          <img
+            src="{{ 'sheild-star.svg' | asset_url }}"
+            height="16"
+            width="auto"
+            alt="Icon">
+          <span class="leading-none">60 Tage Zufriedenheitsgarantie</span>
+        </li>
+
+      </ul>
     </div>
   </div>
 </div>
@@ -81,15 +115,20 @@
         "type": "text",
         "id": "title",
         "label": "Title",
-        "default": "Warum Magic Perfume?"
+        "default": "Wie MagicPerfume im Vergleich zur Konkurrenz abschneidet"
       },
       {
         "type": "text",
-        "id": "subtitle",
-        "label": "Subtitle",
-        "default": "Die clevere Alternative zu überteuerten Luxusmarken."
+        "id": "btn_text",
+        "label": "Button Text",
+        "default": "Alle anzeigen"
       },
       {
+        "type": "url",
+        "id": "btn_url",
+        "label": "Button URL",
+        "default": "/collections/all"
+      }, {
         "type": "header",
         "content": "t:sections.all.padding.section_padding_heading"
       }, {
@@ -119,55 +158,21 @@
         "settings": [
           {
             "type": "text",
-            "id": "our_stack",
-            "label": "Our Stack"
+            "id": "stack_heading",
+            "label": "Stack Heading",
+            "default": "Haltbarkeit"
           }, {
             "type": "text",
-            "id": "other_brands",
-            "label": "Other Brands"
+            "id": "stack_subheading",
+            "label": "Stack Subheading",
+            "default": "12+ Stunden"
           }
         ]
       }
     ],
     "presets": [
       {
-        "name": "Stacks Up",
-        "blocks": [
-          {
-            "type": "stack",
-            "settings": {
-              "our_stack": "Ewige Haltbarkeit",
-              "other_brands": "Hoher Preis durch Branding"
-            }
-          },
-          {
-            "type": "stack",
-            "settings": {
-              "our_stack": "Tägliche Komplimente ab 10€",
-              "other_brands": "Oft Massenproduktion"
-            }
-          },
-          {
-            "type": "stack",
-            "settings": {
-              "our_stack": "Keine Tierversuche",
-              "other_brands": "Teilweise Tierversuche"
-            }
-          },
-          {
-            "type": "stack",
-            "settings": {
-              "our_stack": "Du zahlst für Qualität – nicht für Marketing",
-              "other_brands": "Du zahlst für den Namen"
-            }
-          }, {
-            "type": "stack",
-            "settings": {
-              "our_stack": "Handgemacht in kleiner Manufaktur",
-              "other_brands": "Hohe Marketingkosten im Preis inbegriffen"
-            }
-          }
-        ]
+        "name": "Stacks Up"
       }
     ]
   }
