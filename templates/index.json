@@ -401,7 +401,7 @@
       ],
       "name": "Stacks Up",
       "settings": {
-        "background_color": "#FFFFFF",
+        "background_color": "#ffffff",
         "title": "Wie MagicPerfume im Vergleich zur Konkurrenz abschneidet",
         "btn_text": "Alle anzeigen",
         "btn_url": "shopify://collections/all",
@@ -415,6 +415,7 @@
         "review_8jw9Px": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/Camila_Sena_Oliveira_1.webp",
             "content": "<p>„Das war meine erste Bestellung hier und ich bin echt begeistert. Ich kauf mein Parfüm ab jetzt nirgendwo anders mehr. Ich hab vorher nie einen Duft-Dupe gefunden, der wirklich authentisch riecht und dabei auch konstant gleich gut bleibt.“</p>",
             "author": "Sebastian Müller",
             "date": "vor 1 Tag",
@@ -426,7 +427,7 @@
         "review_UPwGBF": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/magic_ugc_female_01.webp",
+            "review_image": "shopify://shop_images/2026-07-02_16h41_42.webp",
             "content": "<p>„Ehrlich, einer der besten Düfte, die ich seit Jahren gerochen habe. Die Noten sind einfach brutal gut. Der bleibt definitiv dauerhaft in meiner Sammlung.“</p>",
             "author": "Emilia Wagner",
             "author_image": "shopify://shop_images/magic_ugc_female_01.webp",
@@ -439,7 +440,7 @@
         "review_XfwcAY": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/image_1.jpg",
+            "review_image": "shopify://shop_images/2026-07-02_16h55_49.webp",
             "content": "<p>„Alle drei Düfte, die ich bestellt habe, riechen echt richtig gut und halten auch lange. Die Düfte sind wirklich nah an den Originalen. Das Einzige war die Lieferzeit, die etwas länger gedauert hat. Aber ganz ehrlich – ich hab trotzdem direkt nochmal bestellt 😄 Man muss nur ein bisschen Geduld haben.“</p>",
             "author": "Clara P.",
             "date": "vor 2 Tagen",
@@ -462,10 +463,9 @@
         "review_RnXXg9": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/magic_ugc_male_02.webp",
+            "review_image": "shopify://shop_images/2026-07-02_16h58_13.webp",
             "content": "<p>„Wusste erst nicht genau, was mich erwartet, aber der Duft hat mich echt positiv überrascht. Riecht super frisch und kommt Aventus ziemlich nah. Hält ordentlich und der Preis ist einfach deutlich besser.“</p>",
             "author": "Michael T.",
-            "author_image": "shopify://shop_images/magic_ugc_male_02.webp",
             "date": "vor 2 Tagen",
             "rating": 4,
             "show_verified_badge": true,
@@ -509,7 +509,7 @@
         "review_wbXdLy": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/magic_ugc_male_01.webp",
+            "review_image": "shopify://shop_images/261_revie.webp",
             "content": "<p>„War erst unsicher wegen dem Preis, aber die Qualität hat mich echt überzeugt. Würde ich sofort wieder kaufen.“</p>",
             "author": "Matthias Krüger",
             "author_image": "shopify://shop_images/magic_ugc_male_01.webp",
@@ -522,7 +522,7 @@
         "review_y8tq9b": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/image.jpg",
+            "review_image": "shopify://shop_images/2026-07-02_16h41_42.webp",
             "content": "<p>\"Ist perfekt und wunderschön 🥰🥰🥰\"</p>",
             "author": "Lidis A.",
             "date": "vor 2 Monaten",
@@ -557,6 +557,7 @@
         "review_G3HzBj": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/Mounissa_Soilihi.webp",
             "content": "<p>\"Riecht genau wie Luna Rossa Carbon, aber viel günstiger. Kann nicht glauben, wie nah es dran ist.\"</p>",
             "author": "Robinson D.",
             "date": "vor 4 Monaten",
@@ -580,6 +581,7 @@
         "review_HjyT3p": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/Daria_Kononenko_2.webp",
             "content": "<p>„Ich kenne Creed Aventus schon seit Jahren und muss ehrlich sagen: Das ist bisher einer der besten Dupes, die ich gefunden habe. Die Ananas- und Vanillenoten kommen richtig gut rüber und für den Preis kann man echt nichts sagen.“</p>",
             "author": "Alvarez P.",
             "date": "vor 4 Monaten",
@@ -591,10 +593,9 @@
         "review_6Bhttk": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/magic_ugc_female_02.webp",
+            "review_image": "shopify://shop_images/Carolina_Maresca_2.webp",
             "content": "<p>\"Das Produkt kam schön verpackt an. Das Parfüm war nicht kaputt, ist nicht ausgelaufen und war in gutem Zustand. Der Duft ist perfekt und roch nicht schlecht. Ich liebe es, hohe Qualität\"</p>",
             "author": "Anne E.",
-            "author_image": "shopify://shop_images/magic_ugc_female_02.webp",
             "date": "vor 4 Monaten",
             "rating": 4,
             "show_verified_badge": true,
@@ -615,10 +616,9 @@
         "review_JRzxRP": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/avatar.png",
+            "review_image": "shopify://shop_images/2026-07-02_16h57_29.webp",
             "content": "<p>„Bin echt zufrieden mit Magic Perfume. Der Duft kommt dem Original ziemlich nah und hält bei mir auch echt gut. Verpackung war ordentlich und die Flasche macht ebenfalls einen hochwertigen Eindruck. Für den Preis auf jeden Fall eine richtig gute Alternative.“</p>",
             "author": "Alina M",
-            "author_image": "shopify://shop_images/avatar.png",
             "date": "vor 5 Monaten",
             "rating": 5,
             "show_verified_badge": false,
@@ -639,6 +639,7 @@
         "review_aietxq": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/Anastasiia_Komisarova.webp",
             "content": "<p>\"Tolle Düfte, tolle Produkte, keine Probleme.\"</p>",
             "author": "Alex S.",
             "date": "vor 6 Monaten",
