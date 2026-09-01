@@ -910,6 +910,24 @@
                   {% if block.settings.product != blank %}
                     <a href="{{ block.settings.product.url }}" class="!mb-6 flex items-stretch overflow-hidden rounded-xl border-2 border-[#cc303d] border-solid bg-white text-inherit no-underline shadow-[0_1px_2px_rgba(17,24,39,0.06)] transition-shadow hover:shadow-[0_2px_10px_rgba(17,24,39,0.08)]">
                       <div class="flex w-[46%] max-w-[260px] shrink-0 items-center bg-[#f2ede7]">
+                      {%- liquid
+                        assign tsr_localized_image_found = false
+                        assign tsr_currency_alt = localization.country.iso_code | prepend: 'bundle_' | downcase
+                      -%}
+                      {%- for tsr_image in block.settings.product.images -%}
+                        {%- assign tsr_img_alt = tsr_image.alt | downcase -%}
+                        {%- if tsr_img_alt contains 'bundle_' and tsr_img_alt == tsr_currency_alt -%}
+                          {%- assign tsr_localized_image_found = true -%}
+                          <img
+                            src="{{ tsr_image.src | image_url: width: 720 }}"
+                            alt="{{ tsr_image.alt }}"
+                            class="block h-auto w-full object-contain"
+                            loading="lazy"
+                            width="{{ tsr_image.width }}"
+                            height="{{ tsr_image.height }}">
+                        {%- endif -%}
+                      {%- endfor -%}
+                      {%- if tsr_localized_image_found == false -%}
                         <img
                           src="{{ block.settings.product.featured_image | image_url: width: 720 }}"
                           alt="{{ block.settings.product.title | escape }}"
@@ -917,7 +935,8 @@
                           loading="lazy"
                           width="720"
                           height="720">
-                      </div>
+                      {%- endif -%}
+                    </div>
 
                       <div class="flex min-w-0 flex-1 flex-col justify-center p-4 md:p-5">
                         {% if block.settings.product.compare_at_price > block.settings.product.price %}
