@@ -95,17 +95,23 @@
                   width="56"
                   height="56">
                 <div class="text-left flex flex-col gap-1 mr-auto">
-                  <h3 class="my-0 font-bold text-base leading-tight text-black line-clamp-1" x-text="product.name"></h3>
-                  <div x-show="product.inspiration_name != ''" class="flex items-center gap-2">
-                    <img
-                      style="filter: blur(2px);"
-                      class="object-contain object-center size-6"
-                      :src="product.inspiration_image"
-                      :alt="product.inspiration_name"
-                      width="35"
-                      height="35">
-                      <p class="text-xs my-0 shrink-0 text-[#6b7280]">Inspiriert von:</p>
-                      <h4 x-text="product.inspiration_name" class="text-xs font-semibold my-0 line-clamp-1 inspiration_heading"></h4>
+                  <div class="flex items-center gap-1.5">
+                    <h3 class="my-0 font-bold text-base leading-tight text-black line-clamp-1" x-text="product.name"></h3>
+                    <span
+                      x-show="product.tags.some(tag => tag.toLowerCase() === 'bestseller')"
+                      class="shrink-0 px-2 py-0.5 rounded-full bg-[#22613A] text-white text-[10px] font-semibold leading-tight">Bestseller</span>
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <span
+                      x-show="product.tags.some(tag => tag === 'fuer-maenner')"
+                      class="shrink-0 px-2 py-0.5 rounded-full bg-[#f1f4f2] text-[#6b7280] text-[10px] font-semibold leading-tight">Herren</span>
+                    <span
+                      x-show="product.tags.some(tag => tag === 'fuer-frauen')"
+                      class="shrink-0 px-2 py-0.5 rounded-full bg-[#f1f4f2] text-[#6b7280] text-[10px] font-semibold leading-tight">Damen</span>
+                    <span
+                      x-show="product.occasion"
+                      x-text="product.occasion"
+                      class="shrink-0 px-2 py-0.5 rounded-full bg-[#f1f4f2] text-[#6b7280] text-[10px] font-semibold leading-tight line-clamp-1"></span>
                   </div>
                 </div>
                 <div class="shrink-0 ml-auto text-center">

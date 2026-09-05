@@ -198,6 +198,7 @@
             nuta: "{% if bundle_product.metafields.custom.inspiration.value %}{{ bundle_product.metafields.custom.inspiration.value.name }}{% endif %}",
             inspiration_image: "{% if bundle_product.metafields.custom.inspiration.value %}{{ bundle_product.metafields.custom.inspiration.value.image | image_url: width: 90, height: 90 }}{% endif %}",
             inspiration_name: "{% if bundle_product.metafields.custom.inspiration.value %}{{ bundle_product.metafields.custom.inspiration.value.name }}{% endif %}",
+            occasion: "{{ bundle_product.metafields.custom.occasion | escape }}",
             tags: {{ bundle_product.tags | json }},
             collections: "{{ collection_handles }}",
             variants: {
