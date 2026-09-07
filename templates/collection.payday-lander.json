@@ -82,6 +82,7 @@
     },
     "blocky_lys_image_embed_gEUmLb": {
       "type": "blocky-lys-image-embed",
+      "disabled": true,
       "name": "Blocky Image Embed",
       "settings": {
         "image": "shopify://shop_images/PaydayDeal_Header_-_Magic_Perfume_-_DE.webp",
