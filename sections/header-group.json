@@ -127,9 +127,9 @@
         "primary_color": "#000000",
         "secondary_color": "#f2f2f2",
         "top_banner_text": "NUR FÜR KURZE ZEIT",
-        "prepend_text": "ZAHLTAG-AKTION",
-        "countdown_date": "2026/09/13",
-        "append_text": "30 % RABATT AUF ALLES.",
+        "prepend_text": "Zurück im Büro",
+        "countdown_date": "",
+        "append_text": "3 kaufen, das 4. gratis erhalten",
         "link": "shopify://collections/payday-4-2"
       }
     },
