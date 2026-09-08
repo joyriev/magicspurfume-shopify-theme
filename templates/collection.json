@@ -9,6 +9,15 @@
  */
 {
   "sections": {
+    "collection_hero_a48jJB": {
+      "type": "collection-hero",
+      "disabled": true,
+      "name": "Collection Hero",
+      "settings": {
+        "show_rating_badge": true,
+        "rating_text": "Verifierat av över 10 000 doftälskare"
+      }
+    },
     "popular_products_qtxDBm": {
       "type": "popular-products",
       "name": "Popular Products",
@@ -52,6 +61,7 @@
     }
   },
   "order": [
+    "collection_hero_a48jJB",
     "popular_products_qtxDBm",
     "banner",
     "product-grid"
