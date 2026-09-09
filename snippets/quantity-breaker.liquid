@@ -114,7 +114,7 @@
                 x-text="'−' + $store.qb.savingsPercent(tier) + '%'"></span>
             </span>
             <span
-              class="block text-[11px] text-gray-500 mt-0.5 font-semibold"
+              class="block text-[11px] text-gray-500 mt-0.5 font-bold"
               x-show="tier.total > 1 || tier.note"
               x-text="tier.total > 1 ? $store.qb.money($store.qb.perBottle(tier)) + ' / Flasche' : tier.note"></span>
           </span>
