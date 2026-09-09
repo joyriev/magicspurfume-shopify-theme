@@ -415,7 +415,7 @@
         "review_8jw9Px": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/Camila_Sena_Oliveira_1.webp",
+            "review_image": "shopify://shop_images/WhatsApp_Image_2026-09-09_at_8.35.55_AM.jpg",
             "content": "<p>„Das war meine erste Bestellung hier und ich bin echt begeistert. Ich kauf mein Parfüm ab jetzt nirgendwo anders mehr. Ich hab vorher nie einen Duft-Dupe gefunden, der wirklich authentisch riecht und dabei auch konstant gleich gut bleibt.“</p>",
             "author": "Sebastian Müller",
             "date": "vor 1 Tag",
@@ -427,7 +427,7 @@
         "review_UPwGBF": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/2026-07-02_16h41_42.webp",
+            "review_image": "shopify://shop_images/WhatsApp_Image_2026-09-09_at_8.35.36_AM_1.jpg",
             "content": "<p>„Ehrlich, einer der besten Düfte, die ich seit Jahren gerochen habe. Die Noten sind einfach brutal gut. Der bleibt definitiv dauerhaft in meiner Sammlung.“</p>",
             "author": "Emilia Wagner",
             "author_image": "shopify://shop_images/magic_ugc_female_01.webp",
@@ -440,7 +440,7 @@
         "review_XfwcAY": {
           "type": "review",
           "settings": {
-            "review_image": "shopify://shop_images/2026-07-02_16h55_49.webp",
+            "review_image": "shopify://shop_images/WhatsApp_Image_2026-09-09_at_8.35.37_AM.jpg",
             "content": "<p>„Alle drei Düfte, die ich bestellt habe, riechen echt richtig gut und halten auch lange. Die Düfte sind wirklich nah an den Originalen. Das Einzige war die Lieferzeit, die etwas länger gedauert hat. Aber ganz ehrlich – ich hab trotzdem direkt nochmal bestellt 😄 Man muss nur ein bisschen Geduld haben.“</p>",
             "author": "Clara P.",
             "date": "vor 2 Tagen",
@@ -452,6 +452,7 @@
         "review_icFmQQ": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/WhatsApp_Image_2026-09-09_at_8.33.40_AM.jpg",
             "content": "<p>„Ich hab ewig nach Düften gesucht, die hochwertig riechen und auch lange halten. Genau so einen Duft hab ich gesucht.“</p>",
             "author": "Daniel Roth",
             "date": "vor 2 Tagen",
@@ -487,8 +488,9 @@
         "review_YXwWcc": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/2026-07-02_16h55_49.webp",
             "content": "<p>„Meine Freundin meinte direkt, dass ich gut rieche 😄 Seitdem benutze ich ihn fast jeden Tag.“</p>",
-            "author": "Lukas Schneider",
+            "author": "Clara M.",
             "date": "vor 5 Tagen",
             "rating": 4,
             "show_verified_badge": false,
@@ -498,6 +500,7 @@
         "review_nQ6MLV": {
           "type": "review",
           "settings": {
+            "review_image": "shopify://shop_images/WhatsApp_Image_2026-09-09_at_8.35.50_AM.jpg",
             "content": "<p>„Am Anfang war ich etwas besorgt, weil sich die Lieferung verzögert hat. Aber als das Parfüm angekommen ist und sich der Duft erst mal gesetzt hat – wow, einfach unglaublich gut.“</p>",
             "author": "Lionel M.",
             "date": "vor 7 Tag",
