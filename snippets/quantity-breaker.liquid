@@ -225,12 +225,12 @@
         class="atc-button shimmer-btn cta_product_from_submit_btn flex gap-x-2 flex-wrap items-center justify-center !mb-0 text-2xl !p-3 rounded-lg button hover:bg-[#17803d] bg-[#146b32] transition-colors shadow-xl tracking-normal button--full-width button--primary"
         aria-label="Add to cart">
         <span
-          x-show="!$store.qb.isComplete"
+          x-show="!$store.qb.isComplete && !$store.qb.addingToCart"
           x-cloak
           x-text="'Wähle noch ' + $store.qb.remaining + ($store.qb.remaining === 1 ? ' Duft' : ' Düfte')"></span>
 
-        <span x-show="$store.qb.isComplete">{{ 'products.product.add_to_cart' | t }}</span>
-        <div class="flex items-center" x-show="$store.qb.isComplete">
+        <span x-show="$store.qb.isComplete && !$store.qb.addingToCart">{{ 'products.product.add_to_cart' | t }}</span>
+        <div class="flex items-center" x-show="$store.qb.isComplete && !$store.qb.addingToCart">
           <div
             class="inline-block text-lg bg-[#0c5224] px-3 rounded"
             id="product-price"
@@ -243,7 +243,14 @@
             <span class="current-price" x-text="$store.qb.money($store.qb.currentPrice)"></span>
           </div>
         </div>
-        {%- render 'loading-spinner' -%}
+
+        <span
+          x-show="$store.qb.addingToCart"
+          x-cloak
+          class="inline-flex items-center gap-x-2 [&_.path]:stroke-white">
+          {%- render 'loading-spinner', class: 'w-7 inline-block' -%}
+          <span>Wird hinzugefügt …</span>
+        </span>
       </button>
     {%- endform -%}
   </product-form>
@@ -407,6 +414,7 @@
       activeCategory: 'All',
       searchText: '',
       addingToCart: false,
+      _atcTimer: null,
       selectedProducts: [],
 
       mainProduct: {
@@ -528,6 +536,12 @@
         if (this.addingToCart || !this.isComplete) return;
         this.addingToCart = true;
 
+        {% comment %} Safety net: re-enable the button if the checkout redirect is
+           blocked or the customer comes back from checkout via the back button {% endcomment %}
+        var self = this;
+        clearTimeout(this._atcTimer);
+        this._atcTimer = setTimeout(function () { self.addingToCart = false; }, 12000);
+
         {% comment %} 1 line for the pre-selected current product + 1 line per chosen bottle {% endcomment %}
         var items = [{ id: this.selectedVariantId, quantity: 1 }];
         this.selectedProducts.slice(0, this.bundleLength).forEach(function (p) {
@@ -550,9 +564,16 @@
           .then(function () { window.location.href = '/checkout'; })
           .catch(function (err) {
             console.error(err);
-            this.addingToCart = false;
-          }.bind(this));
+            clearTimeout(self._atcTimer);
+            self.addingToCart = false;
+          });
       }
+    });
+
+    {% comment %} Reset the loading state when the page is restored from the
+       back/forward cache (e.g. customer returns from the checkout page) {% endcomment %}
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted && Alpine.store('qb')) Alpine.store('qb').addingToCart = false;
     });
   });
 </script>
