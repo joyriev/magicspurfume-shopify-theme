@@ -114,7 +114,7 @@
                 x-text="'−' + $store.qb.savingsPercent(tier) + '%'"></span>
             </span>
             <span
-              class="block text-[11px] text-gray-500 mt-0.5"
+              class="block text-[11px] text-gray-500 mt-0.5 font-semibold"
               x-show="tier.total > 1 || tier.note"
               x-text="tier.total > 1 ? $store.qb.money($store.qb.perBottle(tier)) + ' / Flasche' : tier.note"></span>
           </span>
@@ -410,7 +410,7 @@
       tiers: [
         { key: 't1', label: '1 Flasche', pay: 1, total: 1, badge: '', badgeColor: '', note: 'Einzelflasche zum Kennenlernen' },
         { key: 't2', label: '3 + 1 GRATIS', pay: 3, total: 4, badge: 'Beliebt', badgeColor: '#c8202f' },
-        { key: 't3', label: '4 + 2 GRATIS', pay: 4, total: 6, badge: 'Bester Preis', badgeColor: '#17803d' }
+        { key: 't3', label: '4 + 2 GRATIS', pay: 4, total: 6, badge: 'Bester Preis 🔥', badgeColor: '#17803d' }
       ],
       selectedTierKey: 't1',
 
