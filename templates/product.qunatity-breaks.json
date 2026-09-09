@@ -48,11 +48,12 @@
         "custom_liquid_Wb3gBi": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% render 'scent-profiling' %}"
+            "custom_liquid": "{% render 'scent-profiling' %}\n{% render 'quantity-breaker' %}"
           }
         },
         "reactive_atc_LBDQE9": {
           "type": "reactive_atc",
+          "disabled": true,
           "settings": {}
         },
         "custom_liquid_QcxgR4": {
