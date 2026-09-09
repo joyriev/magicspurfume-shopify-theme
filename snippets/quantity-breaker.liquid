@@ -34,30 +34,31 @@
   x-data
   x-effect="$store.qb.currentPrice; $store.qb.currentCompare; $store.qb.syncGlobalPrices()">
   {% if product.variants.size > 1 %}
-    {% comment %} Variant Selector — 30 ml removed, 50 / 100 ml only {% endcomment %}
+    {% comment %} Variant Selector — 30 / 50 / 100 ml {% endcomment %}
     <div class="flex justify-between items-center mb-3 !mt-6">
       <h2 class="m-0 text-sm md:text-base font-semibold">Größe auswählen:</h2>
       <div class="text-xs md:text-sm italic text-gray-500">80 % unserer Kunden kaufen 50 ml oder mehr</div>
     </div>
 
-    <div class="grid grid-cols-2 gap-3" id="variant-selector">
+    <div class="grid grid-cols-3 gap-3" id="variant-selector">
       {% for variant in product.variants %}
-        {% unless variant.title contains '30' %}
-          {% liquid
-            assign variant_ml = 0
-            if variant.title contains '100'
-              assign variant_ml = 100
-            elsif variant.title contains '50'
-              assign variant_ml = 50
-            endif
+        {% liquid
+          assign variant_ml = 0
+          if variant.title contains '100'
+            assign variant_ml = 100
+          elsif variant.title contains '50'
+            assign variant_ml = 50
+          elsif variant.title contains '30'
+            assign variant_ml = 30
+          endif
 
-            if variant_ml > 0
-              assign price_per_ml = variant.price | times: 1.0 | divided_by: variant_ml
-            endif
+          if variant_ml > 0
+            assign price_per_ml = variant.price | times: 1.0 | divided_by: variant_ml
+          endif
 
-            assign size_key = variant.title | downcase | remove: ' '
-          %}
-          <button
+          assign size_key = variant.title | downcase | remove: ' '
+        %}
+        <button
             type="button"
             @click="$store.qb.selectSize('{{ size_key }}')"
             class="variant-button rounded-lg px-3 py-2.5 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative"
@@ -79,7 +80,6 @@
               <span class="text-[10px] italic text-white rounded absolute -top-[10px] left-1/2 [transform:translateX(-50%)] bg-[#17803d] px-2 py-0.5 leading-normal">Bestseller</span>
             {% endif %}
           </button>
-        {% endunless %}
       {% endfor %}
     </div>
   {% endif %}
@@ -393,14 +393,12 @@
     Alpine.store('qb', {
       variants: {
         {% for variant in product.variants %}
-          {%- unless variant.title contains '30' -%}
-            "{{ variant.title | downcase | remove: ' ' }}": {
-              id: {{ variant.id }},
-              label: "{{ variant.title }}",
-              price: {{ variant.price }},
-              compare: {{ variant.compare_at_price | default: 0 }}
-            },
-          {%- endunless -%}
+          "{{ variant.title | downcase | remove: ' ' }}": {
+            id: {{ variant.id }},
+            label: "{{ variant.title }}",
+            price: {{ variant.price }},
+            compare: {{ variant.compare_at_price | default: 0 }}
+          },
         {% endfor %}
       },
       selectedSize: "{{ selected_size_key }}",
