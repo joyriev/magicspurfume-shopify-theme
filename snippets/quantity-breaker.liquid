@@ -60,23 +60,23 @@
           <button
             type="button"
             @click="$store.qb.selectSize('{{ size_key }}')"
-            class="variant-button rounded-lg px-2 pt-4 pb-3 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative"
+            class="variant-button rounded-lg px-3 py-2.5 bg-white border-2 border-solid cursor-pointer font-['Plus_Jakarta_Sans'] relative"
             :class="$store.qb.selectedSize === '{{ size_key }}' ? 'border-black' : 'border-gray-200'"
             data-variant-id="{{ variant.id }}"
             data-variant-title="{{ variant.title }}"
             data-original-price="{{ variant.price | money }}"
             data-compare-price="{{ variant.compare_at_price | money }}">
-            <div class="text-center">
-              <div class="text-base font-semibold">{{ variant.title }}</div>
+            <div class="text-center leading-tight">
+              <div class="text-sm font-semibold">{{ variant.title }}</div>
+              {% if variant_ml > 0 %}
+                <div class="text-[11px] text-gray-500 mt-0.5">{{ price_per_ml | money }} / ml</div>
+              {% endif %}
             </div>
             {% if variant.title contains '50' %}
-              <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#c8202f] px-2 py-0.5">Beliebt</span>
+              <span class="text-[10px] italic text-white rounded absolute -top-2 left-1/2 [transform:translateX(-50%)] bg-[#c8202f] px-2 py-0.5 leading-normal">Beliebt</span>
             {% endif %}
             {% if variant.title contains '100' %}
-              <span class="text-xs italic text-white rounded absolute -top-2.5 left-1/2 [transform:translateX(-50%)] bg-[#17803d] px-2 py-0.5">Bestseller</span>
-            {% endif %}
-            {% if variant_ml > 0 %}
-              <div class="text-xs text-gray-500">{{ price_per_ml | money }} / ml</div>
+              <span class="text-[10px] italic text-white rounded absolute -top-2 left-1/2 [transform:translateX(-50%)] bg-[#17803d] px-2 py-0.5 leading-normal">Bestseller</span>
             {% endif %}
           </button>
         {% endunless %}
