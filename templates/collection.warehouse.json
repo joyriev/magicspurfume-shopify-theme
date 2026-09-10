@@ -18,6 +18,76 @@
         "rating_text": "Verifierat av över 10 000 doftälskare"
       }
     },
+    "collection_header_VLCMGF": {
+      "type": "collection-header",
+      "blocks": {
+        "guarantee_p8Fdjr": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "shopify://shop_images/sandwatch_1.svg",
+            "text": "Gaat 12+ uur mee"
+          }
+        },
+        "guarantee_dj8L3P": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "shopify://shop_images/icons_quality_3.webp",
+            "text": "19–21 %:n hajusteöljypitoisuus"
+          }
+        },
+        "guarantee_bTLyzF": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "shopify://shop_images/sheild-star_1.svg",
+            "text": "60 dagen geld-terug-garantie"
+          }
+        },
+        "step_LtcMtm": {
+          "type": "step",
+          "settings": {
+            "step_title": "Erhalten Sie 30 % Rabatt auf Ihren gesamten Warenkorb",
+            "step_description": "Välj dina favoritdofter och lägg dem i varukorgen"
+          }
+        },
+        "step_TE39pF": {
+          "type": "step",
+          "settings": {
+            "step_title": "Mit den Paketen sparst du noch mehr!",
+            "step_description": "Kaufen Sie 3 – sparen Sie 40%. Kaufen Sie 6 – sparen Sie 48%."
+          }
+        },
+        "step_gdQU8e": {
+          "type": "step",
+          "settings": {
+            "step_title": "Bestellwert von mindestens 65 Euros",
+            "step_description": "Erhalten Sie KOSTENLOSEN Versand und KOSTENLOSE Geschenke!"
+          }
+        }
+      },
+      "block_order": [
+        "guarantee_p8Fdjr",
+        "guarantee_dj8L3P",
+        "guarantee_bTLyzF",
+        "step_LtcMtm",
+        "step_TE39pF",
+        "step_gdQU8e"
+      ],
+      "name": "Collection Header",
+      "settings": {
+        "background_color": "#242833",
+        "bg_image": "shopify://shop_images/payday_banner_magic_no_bottles.jpg",
+        "bg_mobile_image": "shopify://shop_images/payday_mobile_Nobottles.jpg",
+        "social_proof_text": "Von über 10.000 zufriedenen Duftliebhabern empfohlen",
+        "collection_title": "Sonderangebot zum Zahltag!",
+        "collection_description": "Kaufen Sie Ihre Lieblingsdüfte zu noch günstigeren Preisen! Und sparen Sie mit Paketangeboten noch mehr!",
+        "btn_link": "",
+        "btn_text": "",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
     "popular_products_qtxDBm": {
       "type": "popular-products",
       "name": "Popular Products",
@@ -62,6 +132,7 @@
   },
   "order": [
     "collection_hero_a48jJB",
+    "collection_header_VLCMGF",
     "popular_products_qtxDBm",
     "banner",
     "product-grid"
