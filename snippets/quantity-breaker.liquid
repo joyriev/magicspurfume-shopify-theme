@@ -234,7 +234,16 @@
           x-text="'Wähle noch ' + $store.qb.remaining + ($store.qb.remaining === 1 ? ' Duft' : ' Düfte')"></span>
 
         <span x-show="$store.qb.isComplete && !$store.qb.addingToCart">{{ 'products.product.add_to_cart' | t }}</span>
-        
+        <div class="flex items-center" x-show="$store.qb.isComplete && !$store.qb.addingToCart">
+          <div
+            class="inline-block text-lg bg-[#0c5224] px-3 rounded"
+            id="product-price"
+            role="status"
+            {{ block.shopify_attributes }}>
+            <span class="compare-price line-through text-white/50 text-base" style="display: none">{{ selected_variant.compare_at_price | money }}</span>
+            <span class="current-price">{{ selected_variant.price | money }}</span>
+          </div>
+        </div>
 
         <span
           x-show="$store.qb.addingToCart"
