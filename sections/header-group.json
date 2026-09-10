@@ -126,10 +126,10 @@
       "settings": {
         "primary_color": "#000000",
         "secondary_color": "#f2f2f2",
-        "top_banner_text": "NUR FÜR KURZE ZEIT",
-        "prepend_text": "ZURÜCK INS BÜRO",
-        "countdown_date": "",
-        "append_text": "3 KAUFEN, 1 GRATIS",
+        "top_banner_text": "BEGRENZTE STÜCKZAHL",
+        "prepend_text": "LAGERVERKAUF",
+        "countdown_date": "2026/09/13 23:59:59",
+        "append_text": "KAUF 3 ZUM PREIS VON 2",
         "link": "shopify://collections/best-sellers"
       }
     },
