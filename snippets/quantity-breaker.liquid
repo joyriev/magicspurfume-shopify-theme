@@ -240,11 +240,8 @@
             id="product-price"
             role="status"
             {{ block.shopify_attributes }}>
-            <span
-              class="compare-price line-through text-white/50 text-base"
-              x-show="$store.qb.currentCompare > $store.qb.currentPrice"
-              x-text="$store.qb.money($store.qb.currentCompare)"></span>
-            <span class="current-price" x-text="$store.qb.money($store.qb.currentPrice)"></span>
+            <span class="compare-price line-through text-white/50 text-base" style="display: none">{{ selected_variant.compare_at_price | money }}</span>
+            <span class="current-price">{{ selected_variant.price | money }}</span>
           </div>
         </div>
 
@@ -524,11 +521,9 @@
         var hasCompare = this.currentCompare > this.currentPrice;
 
         document.querySelectorAll('.current-price').forEach(function (el) {
-          if (el.closest('#product-price')) return;
           el.textContent = priceText;
         });
         document.querySelectorAll('.compare-price').forEach(function (el) {
-          if (el.closest('#product-price')) return;
           el.textContent = compareText;
           el.style.display = hasCompare ? '' : 'none';
         });
