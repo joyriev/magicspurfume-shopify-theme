@@ -11,6 +11,7 @@
   "sections": {
     "collection_hero_a48jJB": {
       "type": "collection-hero",
+      "disabled": true,
       "name": "Collection Hero",
       "settings": {
         "show_rating_badge": true,
