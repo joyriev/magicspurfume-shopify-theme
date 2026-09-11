@@ -1,0 +1,123 @@
+{%- comment -%} MP LP · Hero. Rotator blocks feed the JSON list the JS reads; data-image-map/data-family-map/data-product-map/data-brand-map stay owned by the core section. {%- endcomment -%}
+{%- liquid
+  assign our_price = section.settings.our_price | default: 10
+  assign rotator_blocks = section.blocks | where: 'type', 'rotator'
+  assign check_blocks = section.blocks | where: 'type', 'item'
+  assign first_rotator = rotator_blocks.first
+  assign first_name = ''
+  assign first_amount = 0
+  if first_rotator
+    assign first_name = first_rotator.settings.name
+    assign first_amount = first_rotator.settings.price | default: 0 | minus: our_price | floor
+  endif
+  assign hero_src = section.settings.image_url
+  assign hero_desktop_src = hero_src
+  if section.settings.image != blank
+    assign hero_src = section.settings.image | image_url: width: 1200
+    assign hero_desktop_src = section.settings.image | image_url: width: 1600
+  elsif hero_src != blank and hero_src contains 'cdn/shop/'
+    assign sep = '?'
+    if hero_src contains '?'
+      assign sep = '&'
+    endif
+    assign hero_desktop_src = hero_src | append: sep | append: 'width=1600'
+    assign hero_src = hero_src | append: sep | append: 'width=1200'
+  endif
+-%}
+<div class="mp-lp">
+<section class="mp-hero" id="mp-hero">
+  <div class="mp-container mp-hero__grid">
+    <div class="mp-hero__copy">
+      <div class="mp-hero__rating"><span class="mp-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> {{ section.settings.rating_text | escape }}</div>
+      <h1 class="mp-rot" data-rotator>
+        <span class="mp-rot__line">{{ section.settings.prefix | escape }} <span class="mp-rot__v" data-rot-save>&euro;{{ first_amount }}</span></span>
+        <span class="mp-rot__line">{{ section.settings.middle | escape }}</span>
+        <span class="mp-rot__line" data-rot-fit>{{ section.settings.suffix | escape }} <span class="mp-rot__v" data-rot-name>{{ first_name }}</span></span>
+      </h1>
+      <script type="application/json" data-rotator-list>[{%- for block in rotator_blocks -%}{"name":{{ block.settings.name | default: '' | json }},"price":{{ block.settings.price | default: 0 }},"size":{{ block.settings.size | default: '' | json }},"no":{{ block.settings.no | default: '' | json }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]</script>
+      <ul class="mp-checks">
+        {%- for block in check_blocks -%}
+        <li {{ block.shopify_attributes }}><span class="mp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.5L10 3.5"/></svg></span>{{ block.settings.text | escape }}</li>
+        {%- endfor -%}
+      </ul>
+      <div class="mp-hero__cta">
+        <span class="mp-pill"><svg class="mp-pill__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2M3 12h18"/></svg><span class="mp-pill__txt">{% render 'mp-lp-tokens', text: section.settings.pill, plain: true %}</span></span>
+        <a class="mp-btn" href="{{ section.settings.button_url }}">{{ section.settings.button_label | escape }} <span class="mp-btn__arrow mp-hide-m">&rarr;</span></a>
+        <!-- quiz embed lands here later; the link is the placeholder trigger -->
+        <a class="mp-hero__alt" href="{{ section.settings.alt_url }}" data-quiz-link>{{ section.settings.alt_text | escape }} <span class="mp-hero__alt-u">{{ section.settings.alt_link_text | escape }}</span></a>
+        <span class="mp-micro">{{ section.settings.micro | escape }}</span>
+      </div>
+    </div>
+    <div class="mp-hero__media">
+      <picture>
+        <source media="(min-width: 900px)" srcset="{{ hero_desktop_src }}">
+        <img class="mp-hero__img" src="{{ hero_src }}" width="1200" height="1200" alt="{{ section.settings.image_alt | escape }}">
+      </picture>
+    </div>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Hero",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 50,
+  "settings": [
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "rating_text", "label": "Rating line (text after the stars)", "default": "Recommended by over 10,000 scent lovers with a 4.7/5 rating" },
+    { "type": "text", "id": "prefix", "label": "Rotator prefix", "default": "Save" },
+    { "type": "text", "id": "middle", "label": "Rotator middle line", "default": "with Magic Perfume" },
+    { "type": "text", "id": "suffix", "label": "Rotator suffix", "default": "instead of" },
+    { "type": "number", "id": "our_price", "label": "Our price (subtracted from each rotator price for the save amount)", "default": 10 },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "pill", "label": "Pill text", "default": "Choose from {count} designer inspired scents", "info": "Tokens: {count}" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Save 50% with Scent Wardrobe bundle" },
+    { "type": "text", "id": "button_url", "label": "Button link", "default": "#mp-picker" },
+    { "type": "text", "id": "alt_text", "label": "Alt link text", "default": "Having trouble buying fragrance online?" },
+    { "type": "text", "id": "alt_link_text", "label": "Alt link underline text", "default": "Click here" },
+    { "type": "text", "id": "alt_url", "label": "Alt link URL", "default": "#mp-collections" },
+    { "type": "text", "id": "micro", "label": "Micro line", "default": "60 day money back guarantee." },
+    { "type": "header", "content": "Images" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "text", "id": "image_url", "label": "Hero image URL (fallback when no image is picked)", "default": "https://magicperfume.co/cdn/shop/files/magic_header_mobile_1.jpg?v=1772469543" },
+    { "type": "text", "id": "image_alt", "label": "Hero image alt text", "default": "Six 50 ml Magic Perfume bottles standing in a row" }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Check item", "settings": [
+      { "type": "text", "id": "text", "label": "Text", "default": "Resemblance backed by over 10,000 verified reviews" }
+    ] },
+    { "type": "rotator", "name": "Rotator entry", "settings": [
+      { "type": "text", "id": "name", "label": "Designer perfume name (censored)", "default": "Sau*age Elixir" },
+      { "type": "number", "id": "price", "label": "Designer price (EUR)", "default": 225 },
+      { "type": "text", "id": "size", "label": "Size label", "default": "designer bottle" },
+      { "type": "text", "id": "no", "label": "Magic Perfume number", "default": "No. 366" }
+    ] }
+  ],
+  "presets": [{
+    "name": "MP LP · Hero",
+    "blocks": [
+      { "type": "item", "settings": { "text": "Resemblance backed by over 10,000 verified reviews" } },
+      { "type": "item", "settings": { "text": "Made with Clean Label Strategy, without harsh and harmful chemicals" } },
+      { "type": "item", "settings": { "text": "21% fragrance oil, 8 to 12 hours on skin" } },
+      { "type": "item", "settings": { "text": "Vegan, cruelty free, made in Europe" } },
+      { "type": "rotator", "settings": { "name": "Sau*age Elixir", "price": 225, "size": "designer bottle", "no": "No. 366" } },
+      { "type": "rotator", "settings": { "name": "Inv**tus", "price": 325, "size": "designer bottle", "no": "No. 228" } },
+      { "type": "rotator", "settings": { "name": "Black Op*um", "price": 345, "size": "designer bottle", "no": "No. 132" } },
+      { "type": "rotator", "settings": { "name": "One Mil*ion", "price": 430, "size": "designer bottle", "no": "No. 275" } },
+      { "type": "rotator", "settings": { "name": "Li*re", "price": 285, "size": "designer bottle", "no": "No. 034" } },
+      { "type": "rotator", "settings": { "name": "Fucking Fab**ous", "price": 345, "size": "designer bottle", "no": "No. 232" } },
+      { "type": "rotator", "settings": { "name": "La Vie Est Be*le", "price": 345, "size": "designer bottle", "no": "No. 101" } },
+      { "type": "rotator", "settings": { "name": "Al*en", "price": 245, "size": "designer bottle", "no": "No. 004" } },
+      { "type": "rotator", "settings": { "name": "Le M*le", "price": 355, "size": "designer bottle", "no": "No. 247" } },
+      { "type": "rotator", "settings": { "name": "Sca*dal", "price": 345, "size": "designer bottle", "no": "No. 192" } },
+      { "type": "rotator", "settings": { "name": "J'a*ore", "price": 235, "size": "designer bottle", "no": "No. 159" } },
+      { "type": "rotator", "settings": { "name": "Ar*ani Code", "price": 260, "size": "designer bottle", "no": "No. 260" } },
+      { "type": "rotator", "settings": { "name": "Hyp**tic Poison", "price": 345, "size": "designer bottle", "no": "No. 145" } },
+      { "type": "rotator", "settings": { "name": "Good Girl Ve*vet", "price": 225, "size": "designer bottle", "no": "No. 461" } },
+      { "type": "rotator", "settings": { "name": "Ac*ua Di Gio", "price": 285, "size": "designer bottle", "no": "No. 221" } }
+    ]
+  }]
+}
+{% endschema %}

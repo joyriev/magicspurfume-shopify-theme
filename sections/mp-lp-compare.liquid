@@ -1,0 +1,101 @@
+{%- comment -%} MP LP · Compare table (rows are blocks with yes/no/neutral marks; the flacons strip below is a separate section). {%- endcomment -%}
+{%- liquid
+  assign bg_class = ''
+  if section.settings.background == 'cream'
+    assign bg_class = ' mp-section--cream'
+  elsif section.settings.background == 'cream2'
+    assign bg_class = ' mp-section--cream2'
+  endif
+
+  assign ours_src = section.settings.ours_image_url
+  if ours_src != blank and ours_src contains 'cdn/shop/'
+    assign sep = '?'
+    if ours_src contains '?'
+      assign sep = '&'
+    endif
+    assign ours_src = ours_src | append: sep | append: 'width=600'
+  endif
+  if section.settings.ours_image != blank
+    assign ours_src = section.settings.ours_image | image_url: width: 600
+  endif
+-%}
+{%- capture mark_yes -%}<span class="mp-mark mp-mark--y"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.5L10 3.5"/></svg></span>{%- endcapture -%}
+{%- capture mark_no -%}<span class="mp-mark mp-mark--n"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 3l6 6M9 3l-6 6"/></svg></span>{%- endcapture -%}
+{%- capture mark_neutral -%}<span class="mp-mark mp-mark--m"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h6"/></svg></span>{%- endcapture -%}
+<div class="mp-lp">
+<section class="mp-section{{ bg_class }}" id="mp-compare">
+  <div class="mp-container mp-center">
+    <h2>{{ section.settings.heading | escape }}</h2>
+    <p class="mp-sub">{{ section.settings.sub | escape }}</p>
+    <div style="overflow-x:auto">
+    <table class="mp-table">
+      <thead><tr>
+        <th></th>
+        <th class="mp-table__ours"><img class="mp-table__img" src="{{ ours_src }}" width="600" height="255" alt="" loading="lazy" style="object-position:84% 50%"><span class="mp-table__brand">{{ section.settings.ours_brand | escape }}</span></th>
+        <th><svg class="mp-table__ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v3l1.5 1.5V21a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V6.5L10 5z"/><path d="M9 11h6"/></svg><span class="mp-table__brand" style="color:#6B7280">{{ section.settings.col2_label | escape }}</span></th>
+        <th><svg class="mp-table__ghost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2h5v3l-1 1v2.2c2.4.9 4 3.1 4 5.8V21a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-7c0-2.7 1.6-4.9 4-5.8V6l-1-1z"/><path d="M8 15h8"/></svg><span class="mp-table__brand" style="color:#6B7280">{{ section.settings.col3_label | escape }}</span></th>
+      </tr></thead>
+      <tbody>
+        {%- for block in section.blocks -%}
+        {%- if block.type == 'row' -%}
+        {%- case block.settings.ours_mark -%}{%- when 'yes' -%}{%- assign ours_mark_html = mark_yes -%}{%- when 'no' -%}{%- assign ours_mark_html = mark_no -%}{%- else -%}{%- assign ours_mark_html = mark_neutral -%}{%- endcase -%}
+        {%- case block.settings.theirs_mark -%}{%- when 'yes' -%}{%- assign theirs_mark_html = mark_yes -%}{%- when 'no' -%}{%- assign theirs_mark_html = mark_no -%}{%- else -%}{%- assign theirs_mark_html = mark_neutral -%}{%- endcase -%}
+        {%- case block.settings.dupes_mark -%}{%- when 'yes' -%}{%- assign dupes_mark_html = mark_yes -%}{%- when 'no' -%}{%- assign dupes_mark_html = mark_no -%}{%- else -%}{%- assign dupes_mark_html = mark_neutral -%}{%- endcase -%}
+        <tr {{ block.shopify_attributes }}><td>{{ block.settings.label | escape }}</td><td class="mp-table__ours">{{ ours_mark_html }}<span>{% render 'mp-lp-tokens', text: block.settings.ours, plain: true %}</span></td><td>{{ theirs_mark_html }}<span>{% render 'mp-lp-tokens', text: block.settings.theirs, plain: true %}</span></td><td>{{ dupes_mark_html }}<span>{% render 'mp-lp-tokens', text: block.settings.dupes, plain: true %}</span></td></tr>
+        {%- endif -%}
+        {%- endfor -%}
+      </tbody>
+    </table>
+    </div>
+    {% render 'mp-lp-cta', pill: section.settings.cta_pill, button: section.settings.cta_button, url: section.settings.cta_url, micro: section.settings.cta_micro %}
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Compare",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "cream2", "label": "Cream 2" } ], "default": "white" },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "One designer bottle, or six of ours" },
+    { "type": "text", "id": "sub", "label": "Subheading", "default": "One of very few who remained honest and transparent." },
+    { "type": "header", "content": "Header images" },
+    { "type": "image_picker", "id": "ours_image", "label": "Ours image" },
+    { "type": "text", "id": "ours_image_url", "label": "Ours image URL (fallback when no image is picked)", "default": "https://magicperfume.co/cdn/shop/files/magic_header_1.png?v=1772469544" },
+    { "type": "text", "id": "ours_brand", "label": "Ours brand label", "default": "Magic Perfume" },
+    { "type": "text", "id": "col2_label", "label": "Column 2 label", "default": "Designer perfume" },
+    { "type": "text", "id": "col3_label", "label": "Column 3 label", "default": "Dupe brands" },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_pill", "label": "CTA pill", "default": "Quality without compromises" },
+    { "type": "text", "id": "cta_button", "label": "CTA button", "default": "Save up to 95% on your designer scent" },
+    { "type": "text", "id": "cta_url", "label": "CTA link", "default": "#mp-picker" },
+    { "type": "text", "id": "cta_micro", "label": "CTA micro line", "default": "60 day money back guarantee." }
+  ],
+  "blocks": [
+    { "type": "row", "name": "Row", "settings": [
+      { "type": "text", "id": "label", "label": "Row label", "default": "What you pay" },
+      { "type": "text", "id": "ours", "label": "Ours", "default": "{per} a bottle, in the box", "info": "Tokens: {per}" },
+      { "type": "select", "id": "ours_mark", "label": "Ours mark", "options": [ { "value": "yes", "label": "Yes" }, { "value": "no", "label": "No" }, { "value": "neutral", "label": "Neutral" } ], "default": "yes" },
+      { "type": "text", "id": "theirs", "label": "Designer perfume", "default": "€100 and up a bottle" },
+      { "type": "select", "id": "theirs_mark", "label": "Designer mark", "options": [ { "value": "yes", "label": "Yes" }, { "value": "no", "label": "No" }, { "value": "neutral", "label": "Neutral" } ], "default": "no" },
+      { "type": "text", "id": "dupes", "label": "Dupe brands", "default": "€18 to €50 a bottle" },
+      { "type": "select", "id": "dupes_mark", "label": "Dupe mark", "options": [ { "value": "yes", "label": "Yes" }, { "value": "no", "label": "No" }, { "value": "neutral", "label": "Neutral" } ], "default": "neutral" }
+    ] }
+  ],
+  "presets": [{
+    "name": "MP LP · Compare",
+    "blocks": [
+      { "type": "row", "settings": { "label": "What you pay", "ours": "{per} a bottle, in the box", "ours_mark": "yes", "theirs": "€100 and up a bottle", "theirs_mark": "no", "dupes": "€18 to €50 a bottle", "dupes_mark": "neutral" } },
+      { "type": "row", "settings": { "label": "Fragrance oil", "ours": "21% fragrance oil, Eau de Parfum", "ours_mark": "yes", "theirs": "5 to 15%", "theirs_mark": "no", "dupes": "Anything up to 40%, often not stated", "dupes_mark": "neutral" } },
+      { "type": "row", "settings": { "label": "How long it holds", "ours": "8 to 12 hours", "ours_mark": "yes", "theirs": "3 to 5 hours", "theirs_mark": "no", "dupes": "2 to 12 hours", "dupes_mark": "neutral" } },
+      { "type": "row", "settings": { "label": "Clean label", "ours": "Vegan, cruelty free, phthalate and paraben free", "ours_mark": "yes", "theirs": "Varies, read the box", "theirs_mark": "neutral", "dupes": "Rarely stated", "dupes_mark": "neutral" } },
+      { "type": "row", "settings": { "label": "What are you paying for", "ours": "21% perfume oil, actual fragrance without harmful chemicals", "ours_mark": "yes", "theirs": "Boutique, celebrity endorsement, fancy flacon, box, 5 to 15% perfume oil", "theirs_mark": "no", "dupes": "Bottle, Instagram celebrity, sometimes shipping from China", "dupes_mark": "neutral" } },
+      { "type": "row", "settings": { "label": "Money back guarantee", "ours": "60 days", "ours_mark": "yes", "theirs": "14 days by law, unopened", "theirs_mark": "no", "dupes": "14 to 30 days, unopened", "dupes_mark": "no" } }
+    ]
+  }]
+}
+{% endschema %}

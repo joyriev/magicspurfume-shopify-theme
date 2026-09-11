@@ -1,0 +1,33 @@
+{%- comment -%} MP LP · Header (logo + order button). The theme's own header UI is hidden by the core section when "Hide theme header/footer" is on. {%- endcomment -%}
+{%- liquid
+  assign logo = section.settings.logo_url
+  if section.settings.logo != blank
+    assign logo = section.settings.logo | image_url: width: 600
+  endif
+-%}
+<div class="mp-lp">
+<header class="mp-header" id="mp-header">
+  <div class="mp-container mp-header__in">
+    <a class="mp-header__logo" href="{{ section.settings.logo_link }}" aria-label="{{ section.settings.logo_alt | escape }}"><img src="{{ logo }}" width="150" height="36" alt="{{ section.settings.logo_alt | escape }}"></a>
+    <a class="mp-btn mp-btn--sm" href="{{ section.settings.button_url }}"><span class="mp-hide-m">{{ section.settings.button_desktop | escape }}</span><span class="mp-hide-d">{{ section.settings.button_mobile | escape }}</span></a>
+  </div>
+</header>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Header",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "text", "id": "logo_url", "label": "Logo URL (fallback when no image is picked)", "default": "https://magicperfume.co/cdn/shop/files/magic-perfume-logo.png?v=1770090849&width=600" },
+    { "type": "text", "id": "logo_alt", "label": "Logo alt text", "default": "Magic Perfume" },
+    { "type": "text", "id": "logo_link", "label": "Logo link", "default": "/" },
+    { "type": "text", "id": "button_desktop", "label": "Button (desktop)", "default": "Order now" },
+    { "type": "text", "id": "button_mobile", "label": "Button (mobile)", "default": "Order" },
+    { "type": "text", "id": "button_url", "label": "Button link", "default": "#mp-picker" }
+  ],
+  "presets": [{ "name": "MP LP · Header" }]
+}
+{% endschema %}

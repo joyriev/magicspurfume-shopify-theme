@@ -1,0 +1,19 @@
+{%- comment -%}
+  mp-lp-hide-chrome: hides the theme's own header group (header, announcement/utility bars, any custom bar such as a
+  countdown) and footer group on this template only, so the landing page shows its own header/footer sections.
+  The header group stays in the DOM: Dawn's cart drawer re-render targets #cart-icon-bubble inside it, and some themes
+  render <cart-drawer> inside the header section, so the group is collapsed with visibility/height (not display:none)
+  and an OPEN drawer (.active) is made visible again; a closed one keeps the theme's own hidden state. Selectors are Dawn's (magicperfume.co theme t/55 verified 06.09.2026:
+  <cart-drawer> is rendered in theme.liquid before the header group). Other themes: add selectors in the core section's
+  "Custom CSS" box instead of editing this file.
+{%- endcomment -%}
+<style>
+  .shopify-section-group-header-group { visibility: hidden; height: 0; min-height: 0; overflow: hidden; margin: 0; padding: 0; border: 0; }
+  .shopify-section-group-header-group cart-drawer.active,
+  .shopify-section-group-header-group cart-notification.active { visibility: visible; }
+  .announcement-bar-section,
+  .shopify-section-group-footer-group,
+  .footer-group { display: none; }
+  #MainContent { padding: 0; margin: 0; }
+  #MainContent > .shopify-section { padding: 0; }
+</style>

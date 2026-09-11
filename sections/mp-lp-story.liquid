@@ -1,0 +1,100 @@
+{%- comment -%} MP LP · Story + pillars. Body copy and pillars are blocks; icons render via a case, same pattern as mp-lp-band. {%- endcomment -%}
+{%- liquid
+  assign bg_class = ''
+  if section.settings.background == 'cream'
+    assign bg_class = ' mp-section--cream'
+  elsif section.settings.background == 'cream2'
+    assign bg_class = ' mp-section--cream2'
+  endif
+  assign paragraph_blocks = section.blocks | where: 'type', 'paragraph'
+  assign pillar_blocks = section.blocks | where: 'type', 'pillar'
+  assign photo1_src = section.settings.photo1_url
+  if section.settings.photo1_image != blank
+    assign photo1_src = section.settings.photo1_image | image_url: width: 900
+  endif
+  assign photo2_src = section.settings.photo2_url
+  if section.settings.photo2_image != blank
+    assign photo2_src = section.settings.photo2_image | image_url: width: 360
+  endif
+-%}
+<div class="mp-lp">
+<section class="mp-section{{ bg_class }}" id="mp-story">
+  <div class="mp-container mp-center">
+    <h2>{{ section.settings.heading | escape }}</h2>
+    <p class="mp-sub">{{ section.settings.sub | escape }}</p>
+    <div class="mp-story__body">
+      {%- for block in paragraph_blocks -%}
+      <div class="mp-story__p" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+      {%- endfor -%}
+    </div>
+    <div class="mp-story__grid">
+      <div class="mp-story__visual">
+        <img src="{{ photo1_src }}" width="900" height="604" alt="{{ section.settings.photo1_alt | escape }}" loading="lazy" style="object-position:50% 45%">
+        <img src="{{ photo2_src }}" width="360" height="640" alt="{{ section.settings.photo2_alt | escape }}" loading="lazy" style="object-position:50% 62%">
+        <div class="mp-story__tag">{{ section.settings.tag_big | escape }}<small>{{ section.settings.tag_small | escape }}</small></div>
+      </div>
+      <ul class="mp-pillars" style="text-align:left">
+        {%- for block in pillar_blocks -%}
+        <li {{ block.shopify_attributes }}><span class="mp-pillars__ico">{%- case block.settings.icon -%}{%- when 'drop' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>{%- when 'globe' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg>{%- when 'leaf' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-8.5 0-14 4.5-14 12 0 1.6.3 3 .9 4.2C9.4 14.3 13.6 9.8 20 4z"/><path d="M6.9 20.2c2.8-4.9 6.4-8.6 11.1-11.4"/></svg>{%- endcase -%}</span><div class="mp-pillars__txt"><h3>{{ block.settings.title | escape }}</h3><p>{{ block.settings.text | escape }}</p></div></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <blockquote class="mp-quote">&ldquo;{{ section.settings.quote_text | escape }}&rdquo;<span class="mp-quote__name">{{ section.settings.quote_name | escape }}</span></blockquote>
+    {% render 'mp-lp-cta', button: section.settings.cta_button, url: section.settings.cta_url, micro: section.settings.cta_micro %}
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Story",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "cream2", "label": "Cream 2" } ], "default": "cream" },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why most perfume gives up before lunch" },
+    { "type": "text", "id": "sub", "label": "Sub heading", "default": "The most common misconception is that a perfume’s longevity depends on skin pH." },
+    { "type": "text", "id": "tag_big", "label": "Photo tag: big number", "default": "21%" },
+    { "type": "text", "id": "tag_small", "label": "Photo tag: small label", "default": "fragrance oil" },
+    { "type": "text", "id": "quote_text", "label": "Quote (without quote marks)", "default": "Very good scent with a strong and pleasant projection. I was positively surprised by how long it lasts" },
+    { "type": "text", "id": "quote_name", "label": "Quote name", "default": "Sezgin C." },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_button", "label": "Button label", "default": "I want to get designer inspired fragrances for 95% off" },
+    { "type": "text", "id": "cta_url", "label": "Button link", "default": "#mp-picker" },
+    { "type": "text", "id": "cta_micro", "label": "Micro line", "default": "60 day money back guarantee." },
+    { "type": "header", "content": "Images" },
+    { "type": "image_picker", "id": "photo1_image", "label": "Photo 1" },
+    { "type": "text", "id": "photo1_url", "label": "Photo 1 URL (fallback when no image is picked)", "default": "https://magicperfume.co/cdn/shop/files/WhatsApp_Image_2026-01-17_at_10.59.01.jpg?width=900" },
+    { "type": "text", "id": "photo1_alt", "label": "Photo 1 alt text", "default": "Magic Perfume bottles on the filling line, gloved hands placing a bottle" },
+    { "type": "image_picker", "id": "photo2_image", "label": "Photo 2" },
+    { "type": "text", "id": "photo2_url", "label": "Photo 2 URL (fallback when no image is picked)", "default": "https://magicperfume.co/cdn/shop/files/Camila_Sena_Oliveira_1.webp" },
+    { "type": "text", "id": "photo2_alt", "label": "Photo 2 alt text", "default": "Two 30 ml Magic Perfume bottles on a dressing table" }
+  ],
+  "blocks": [
+    { "type": "paragraph", "name": "Paragraph", "settings": [
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>It doesn’t. Longevity comes from the concentration of perfume oil.<br>That does not mean more is always better, though.</p>" }
+    ] },
+    { "type": "pillar", "name": "Pillar", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "options": [ { "value": "drop", "label": "Drop" }, { "value": "globe", "label": "Globe" }, { "value": "leaf", "label": "Leaf" } ], "default": "drop" },
+      { "type": "text", "id": "title", "label": "Title", "default": "21% fragrance oil" },
+      { "type": "text", "id": "text", "label": "Text", "default": "Eau de Parfum strength and up to 12 hours of longevity in every single bottle." }
+    ] }
+  ],
+  "presets": [{
+    "name": "MP LP · Story",
+    "blocks": [
+      { "type": "paragraph", "settings": { "text": "<p>It doesn’t. Longevity comes from the concentration of perfume oil.<br>That does not mean more is always better, though.</p>" } },
+      { "type": "paragraph", "settings": { "text": "<p><strong>Most of what designer brands and other inspired-by brands sell is Eau de Toilette.</strong> That means 5 to 15% fragrance oil and a lot of alcohol. It smells great for an hour, then it quietly leaves.</p>" } },
+      { "type": "paragraph", "settings": { "text": "<p><strong>Every Magic Perfume bottle is Eau de Parfum with 21% fragrance oil.</strong> At that level the scent settles on your skin instead of flying off it.</p>" } },
+      { "type": "paragraph", "settings": { "text": "<p><strong>Anything between 21 and 30% is the sweet spot: enough to last the day, not so much that it turns heavy or greasy.</strong></p>" } },
+      { "type": "paragraph", "settings": { "text": "<p>That is where the 8 to 12 hours come from, and why it holds even longer on your shirt.</p>" } },
+      { "type": "paragraph", "settings": { "text": "<p>Spray it in the morning and people will still notice it in the evening.</p>" } },
+      { "type": "pillar", "settings": { "icon": "drop", "title": "21% fragrance oil", "text": "Eau de Parfum strength and up to 12 hours of longevity in every single bottle." } },
+      { "type": "pillar", "settings": { "icon": "globe", "title": "Made in an EU fragrance house", "text": "For unmatched resemblance. Don’t believe it? Our 60 day money back guarantee has you covered." } },
+      { "type": "pillar", "settings": { "icon": "leaf", "title": "Clean Label", "text": "Produced to EU standards. Vegan and cruelty free. Phthalate and paraben free." } }
+    ]
+  }]
+}
+{% endschema %}

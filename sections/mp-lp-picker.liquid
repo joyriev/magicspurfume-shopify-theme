@@ -1,0 +1,121 @@
+{%- comment -%} MP LP · Picker (bundle builder). All data-* hooks stay: JS drives tray, filters, search, cards from the core section's catalog data. {%- endcomment -%}
+{%- liquid
+  assign bg_class = ''
+  if section.settings.background == 'cream'
+    assign bg_class = ' mp-section--cream'
+  elsif section.settings.background == 'cream2'
+    assign bg_class = ' mp-section--cream2'
+  endif
+  assign preview_src = section.settings.preview_image_url
+  if preview_src != blank and preview_src contains 'cdn/shop/'
+    assign sep = '?'
+    if preview_src contains '?'
+      assign sep = '&'
+    endif
+    assign preview_src = preview_src | append: sep | append: 'width=1200'
+  endif
+  if section.settings.preview_image != blank
+    assign preview_src = section.settings.preview_image | image_url: width: 1200
+  endif
+-%}
+<div class="mp-lp">
+<section class="mp-section mp-picker{{ bg_class }}" id="mp-picker">
+  <div class="mp-container">
+    <div class="mp-center"><h2>{{ section.settings.heading | escape }}</h2><p class="mp-sub">{{ section.settings.sub | escape }}</p></div>
+    <div class="mp-picker__grid">
+      <div class="mp-picker__preview"><img src="{{ preview_src }}" width="1200" height="509" alt="{{ section.settings.preview_alt | escape }}" loading="lazy" style="object-position:74% 50%"></div>
+      <div>
+        <div class="mp-tray" data-tray>
+          <h3>{{ section.settings.tray_heading | escape }}</h3>
+          <div class="mp-tray__slots" data-slots></div>
+          <div class="mp-tray__counter" data-counter>Choose 6 more</div>
+          <div class="mp-tray__empty" data-tray-empty>{{ section.settings.tray_empty | escape }}</div>
+          <div class="mp-progress" data-progress>
+            <div class="mp-progress__track"><div class="mp-progress__fill" data-progress-fill></div><span class="mp-progress__mark" style="left:100%" data-mark="6"></span></div>
+            <div class="mp-progress__txt"><span data-progress-label>0 of 6 picked</span><span data-progress-next>Both unlock with the full box</span></div>
+          </div>
+          <ul class="mp-bonus">
+            <li class="mp-bonus__tile" data-bonus="ship" data-unlock="6"><span class="mp-bonus__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></span><span class="mp-bonus__txt"><b>{{ section.settings.bonus_ship_title | escape }}</b><span class="mp-bonus__state" data-bonus-state>Unlocks with the full box</span></span><span class="mp-bonus__badge" aria-hidden="true"><svg class="mp-bonus__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><svg class="mp-bonus__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></li>
+            <li class="mp-bonus__tile" data-bonus="mystery" data-unlock="6"><span class="mp-bonus__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16v11H4zM2 6h20v4H2zM12 6v15M12 6c-2-4-7-3-6 0M12 6c2-4 7-3 6 0"/></svg></span><span class="mp-bonus__txt"><b>{{ section.settings.bonus_mystery_title | escape }}</b><span class="mp-bonus__state" data-bonus-state>Unlocks with the full box</span></span><span class="mp-bonus__badge" aria-hidden="true"><svg class="mp-bonus__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><svg class="mp-bonus__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></li>
+          </ul>
+          <div class="mp-price">
+            <div class="mp-price__line">{{ section.settings.price_line | escape }}</div>
+            <div class="mp-price__row"><span class="mp-price__now" data-price-now>€59,99</span><span class="mp-price__was" data-price-was>€119,99</span><span class="mp-price__off">-<span data-price-off>50</span>%</span></div>
+            <div class="mp-price__per">{% render 'mp-lp-tokens', text: section.settings.price_per, plain: true %}</div>
+          </div>
+          <button class="mp-btn mp-btn--block" type="button" data-submit disabled>Pick 6 bottles to continue</button>
+          <div class="mp-tray__err" data-err role="alert">{{ section.settings.error_text | escape }}</div>
+          <div class="mp-micro">{{ section.settings.micro | escape }}</div>
+        </div>
+        <div class="mp-picker__filters">
+        <div class="mp-seg-row"><div class="mp-seg" role="group" aria-label="{{ section.settings.gender_group_label | escape }}"><button class="mp-seg__btn" type="button" data-gender="all" aria-pressed="true">{{ section.settings.gender_all | escape }}</button><button class="mp-seg__btn" type="button" data-gender="F" aria-pressed="false">{{ section.settings.gender_women | escape }}</button><button class="mp-seg__btn" type="button" data-gender="M" aria-pressed="false">{{ section.settings.gender_men | escape }}</button><button class="mp-seg__btn" type="button" data-gender="U" aria-pressed="false">{{ section.settings.gender_unisex | escape }}</button></div></div>
+        <div class="mp-tabs" role="tablist" data-tabs>
+          <button class="mp-tab" type="button" role="tab" aria-selected="true" data-tab="all">{{ section.settings.tab_all | escape }}</button>
+          <button class="mp-tab" type="button" role="tab" aria-selected="false" data-tab="gourmand"><svg class="mp-tab__ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#mp-ico-gourmand"/></svg>{{ section.settings.tab_gourmand | escape }}</button>
+          <button class="mp-tab" type="button" role="tab" aria-selected="false" data-tab="floral"><svg class="mp-tab__ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#mp-ico-floral"/></svg>{{ section.settings.tab_floral | escape }}</button>
+          <button class="mp-tab" type="button" role="tab" aria-selected="false" data-tab="fresh"><svg class="mp-tab__ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#mp-ico-fresh"/></svg>{{ section.settings.tab_fresh | escape }}</button>
+          <button class="mp-tab" type="button" role="tab" aria-selected="false" data-tab="woody"><svg class="mp-tab__ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#mp-ico-woody"/></svg>{{ section.settings.tab_woody | escape }}</button>
+          <button class="mp-tab" type="button" role="tab" aria-selected="false" data-tab="amber"><svg class="mp-tab__ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#mp-ico-amber"/></svg>{{ section.settings.tab_amber | escape }}</button>
+          <button class="mp-tab" type="button" role="tab" aria-selected="false" data-tab="fruity"><svg class="mp-tab__ico" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#mp-ico-fruity"/></svg>{{ section.settings.tab_fruity | escape }}</button>
+        </div>
+        <div class="mp-search" role="search">
+          <div class="mp-search__field">
+            <svg class="mp-search__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+            <input class="mp-search__input" type="search" data-search placeholder="{{ section.settings.search_placeholder | escape }}" aria-label="{{ section.settings.search_aria | escape }}" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="search">
+            <button class="mp-search__clear" type="button" data-search-clear aria-label="{{ section.settings.search_clear_aria | escape }}" hidden>&times;</button>
+          </div>
+        </div>
+        <div class="mp-picker__count" data-grid-count aria-live="polite">Showing 0 scents</div>
+        <div class="mp-cards" data-cards></div>
+        <div class="mp-more" data-more-wrap hidden><button class="mp-tab" type="button" data-more>Show more scents</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Picker",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "settings": [
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "cream2", "label": "Cream 2" } ], "default": "white" },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Build your six" },
+    { "type": "text", "id": "sub", "label": "Subheading", "default": "Tap a bottle to drop it in the box. Six slots, any mix of women’s and men’s." },
+    { "type": "header", "content": "Preview image" },
+    { "type": "image_picker", "id": "preview_image", "label": "Preview image" },
+    { "type": "text", "id": "preview_image_url", "label": "Preview image URL (fallback when no image is picked)", "default": "https://magicperfume.co/cdn/shop/files/magic_header_1.png?v=1772469544" },
+    { "type": "text", "id": "preview_alt", "label": "Preview image alt text", "default": "Magic Perfume bottles lined up on a table" },
+    { "type": "header", "content": "Tray" },
+    { "type": "text", "id": "tray_heading", "label": "Tray heading", "default": "Your box" },
+    { "type": "text", "id": "tray_empty", "label": "Tray empty message", "default": "Six empty slots. Pick your first bottle below." },
+    { "type": "text", "id": "bonus_ship_title", "label": "Bonus tile: shipping title", "default": "Free shipping" },
+    { "type": "text", "id": "bonus_mystery_title", "label": "Bonus tile: mystery scent title", "default": "Mystery 50 ml scent" },
+    { "type": "text", "id": "price_line", "label": "Price line", "default": "6 x 50 ml Eau de Parfum" },
+    { "type": "text", "id": "price_per", "label": "Price per bottle line", "default": "{per} per bottle", "info": "Tokens: {per}" },
+    { "type": "text", "id": "error_text", "label": "Error message", "default": "That did not go through. Check your connection and tap again, or write to hello@magicperfume.co." },
+    { "type": "text", "id": "micro", "label": "Micro line", "default": "60 day money back guarantee." },
+    { "type": "header", "content": "Filters" },
+    { "type": "text", "id": "gender_group_label", "label": "Gender group aria-label", "default": "Show scents for" },
+    { "type": "text", "id": "gender_all", "label": "Gender: All", "default": "All" },
+    { "type": "text", "id": "gender_women", "label": "Gender: Women", "default": "Women" },
+    { "type": "text", "id": "gender_men", "label": "Gender: Men", "default": "Men" },
+    { "type": "text", "id": "gender_unisex", "label": "Gender: Unisex", "default": "Unisex" },
+    { "type": "text", "id": "tab_all", "label": "Tab: All scents", "default": "All scents" },
+    { "type": "text", "id": "tab_gourmand", "label": "Tab: Gourmand", "default": "Gourmand" },
+    { "type": "text", "id": "tab_floral", "label": "Tab: Floral", "default": "Floral" },
+    { "type": "text", "id": "tab_fresh", "label": "Tab: Fresh", "default": "Fresh" },
+    { "type": "text", "id": "tab_woody", "label": "Tab: Woody", "default": "Woody" },
+    { "type": "text", "id": "tab_amber", "label": "Tab: Warm & spicy", "default": "Warm & spicy" },
+    { "type": "text", "id": "tab_fruity", "label": "Tab: Fruity", "default": "Fruity" },
+    { "type": "header", "content": "Search" },
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Search brand or scent, e.g. Dior" },
+    { "type": "text", "id": "search_aria", "label": "Search aria-label", "default": "Search scents by brand, name or note" },
+    { "type": "text", "id": "search_clear_aria", "label": "Search clear aria-label", "default": "Clear search" }
+  ],
+  "presets": [{ "name": "MP LP · Picker" }]
+}
+{% endschema %}

@@ -1,0 +1,22 @@
+{%- comment -%}
+  mp-lp-tokens: renders a copy string with live-number tokens turned into the hydration spans mp-lp.js updates.
+  Params: text (string), plain (boolean, escape HTML first: use for `text` settings, not for inline_richtext).
+  Tokens: {price} {was} {per} {per_eur} {single} {ship} {value} {off} {save} {count}. Fallback text = today's values.
+{%- endcomment -%}
+{%- liquid
+  assign t = text | default: ''
+  if plain
+    assign t = t | escape
+  endif
+  assign t = t | replace: '{price}', '<span data-price-now>€59,99</span>'
+  assign t = t | replace: '{was}', '<span data-price-was>€119,99</span>'
+  assign t = t | replace: '{per_eur}', '<span data-price-per-eur>10</span>'
+  assign t = t | replace: '{per}', '<span data-price-per>€9,99</span>'
+  assign t = t | replace: '{single}', '<span data-price-single>€19,99</span>'
+  assign t = t | replace: '{ship}', '<span data-price-ship>€5,49</span>'
+  assign t = t | replace: '{value}', '<span data-price-value>€145,47</span>'
+  assign t = t | replace: '{off}', '<span data-price-off>50</span>%'
+  assign t = t | replace: '{save}', '<span data-price-save>€60,00</span>'
+  assign t = t | replace: '{count}', '<span data-catalog-count>173</span>'
+  echo t
+-%}

@@ -1,0 +1,60 @@
+{%- comment -%} MP LP · Limited offer (countdown + gallery hooks stay; the JS hydrates prices and fills the gallery track). {%- endcomment -%}
+{%- liquid
+  assign bg_class = ''
+  if section.settings.background == 'cream'
+    assign bg_class = ' mp-section--cream'
+  elsif section.settings.background == 'cream2'
+    assign bg_class = ' mp-section--cream2'
+  endif
+-%}
+<div class="mp-lp">
+<section class="mp-section{{ bg_class }}" id="mp-offer">
+  <div class="mp-container mp-center">
+    <span class="mp-eyebrow">{{ section.settings.eyebrow | escape }}</span>
+    <h2>{% render 'mp-lp-tokens', text: section.settings.heading, plain: true %}</h2>
+    <p class="mp-sub">{% render 'mp-lp-tokens', text: section.settings.sub, plain: true %}</p>
+    <div class="mp-offer__label">{{ section.settings.timer_label | escape }}</div>
+    <div class="mp-offer__timer"><span class="mp-countdown" data-countdown>
+      <span class="mp-countdown__u"><span class="mp-countdown__n" data-h>00</span><span class="mp-countdown__l">{{ section.settings.label_hours | escape }}</span></span><span class="mp-countdown__sep">:</span>
+      <span class="mp-countdown__u"><span class="mp-countdown__n" data-m>00</span><span class="mp-countdown__l">{{ section.settings.label_minutes | escape }}</span></span><span class="mp-countdown__sep">:</span>
+      <span class="mp-countdown__u"><span class="mp-countdown__n" data-s>00</span><span class="mp-countdown__l">{{ section.settings.label_seconds | escape }}</span></span>
+    </span></div>
+    <div class="mp-offer__label">{% render 'mp-lp-tokens', text: section.settings.gallery_label, plain: true %}</div>
+    <div class="mp-gallery">
+      <button class="mp-gallery__btn mp-gallery__btn--prev" type="button" aria-label="{{ section.settings.prev_label | escape }}" data-gal-prev>&lsaquo;</button>
+      <div class="mp-gallery__track" data-gallery></div>
+      <button class="mp-gallery__btn mp-gallery__btn--next" type="button" aria-label="{{ section.settings.next_label | escape }}" data-gal-next>&rsaquo;</button>
+    </div>
+    {% render 'mp-lp-cta', button: section.settings.cta_button, url: section.settings.cta_url, micro: section.settings.cta_micro %}
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Limited offer",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "settings": [
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "cream2", "label": "Cream 2" } ], "default": "cream2" },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "One time new customer offer" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Six bottles for {was} {price}, while this runs", "info": "Tokens: {was} {price}" },
+    { "type": "text", "id": "sub", "label": "Subheading", "default": "{was} if you buy them one at a time. {price} as a box. That is {per} a bottle, and you pick all six. And as a bonus, 1 Mystery 50 ml scent and free shipping.", "info": "Tokens: {was} {price} {per}" },
+    { "type": "header", "content": "Countdown" },
+    { "type": "text", "id": "timer_label", "label": "Timer label", "default": "Offer ends in" },
+    { "type": "text", "id": "label_hours", "label": "Unit: hours", "default": "Hrs" },
+    { "type": "text", "id": "label_minutes", "label": "Unit: minutes", "default": "Min" },
+    { "type": "text", "id": "label_seconds", "label": "Unit: seconds", "default": "Sec" },
+    { "type": "header", "content": "Gallery" },
+    { "type": "text", "id": "gallery_label", "label": "Gallery label", "default": "A few of the {count} scents you can choose from", "info": "Tokens: {count}" },
+    { "type": "text", "id": "prev_label", "label": "Previous button aria-label", "default": "Previous scent" },
+    { "type": "text", "id": "next_label", "label": "Next button aria-label", "default": "Next scent" },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_button", "label": "CTA button", "default": "Build your bundle and save up to 95%" },
+    { "type": "text", "id": "cta_url", "label": "CTA link", "default": "#mp-picker" },
+    { "type": "text", "id": "cta_micro", "label": "CTA micro line", "default": "60 day money back guarantee." }
+  ],
+  "presets": [{ "name": "MP LP · Limited offer" }]
+}
+{% endschema %}

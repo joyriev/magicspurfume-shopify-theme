@@ -1,0 +1,61 @@
+{%- comment -%} MP LP · UGC video row. Tiles render a real video, a JS-hydrated placeholder (data-ugc-src), or the static placeholder, depending on which settings are filled. {%- endcomment -%}
+{%- liquid
+  assign bg_class = ''
+  if section.settings.background == 'cream'
+    assign bg_class = ' mp-section--cream'
+  elsif section.settings.background == 'cream2'
+    assign bg_class = ' mp-section--cream2'
+  endif
+-%}
+<div class="mp-lp">
+<section class="mp-section{{ bg_class }}" id="mp-ugc">
+  <div class="mp-container">
+    <div class="mp-center"><h2>{{ section.settings.heading | escape }}</h2><p class="mp-sub">{{ section.settings.sub | escape }}</p></div>
+    <div class="mp-ugc__row" data-ugc>
+      {%- for block in section.blocks -%}
+        {%- if block.settings.video != blank -%}
+      <div class="mp-ugc__tile" {{ block.shopify_attributes }}><span class="mp-ugc__soon">{{ block.settings.soon_label | escape }}</span>{{ block.settings.video | video_tag: autoplay: false, muted: true, loop: true, controls: false, playsinline: true, preload: 'none' }}<button class="mp-ugc__play" type="button" aria-label="{{ block.settings.play_label | escape }}"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></button><span class="mp-ugc__cap">{{ block.settings.caption | escape }}</span></div>
+        {%- elsif block.settings.video_url != blank -%}
+      <div class="mp-ugc__tile" data-ugc-src="{{ block.settings.video_url }}" {{ block.shopify_attributes }}><span class="mp-ugc__soon">{{ block.settings.soon_label | escape }}</span><video playsinline muted loop preload="none"></video><button class="mp-ugc__play" type="button" aria-label="{{ block.settings.play_label | escape }}"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></button><span class="mp-ugc__cap">{{ block.settings.caption | escape }}</span></div>
+        {%- else -%}
+      <div class="mp-ugc__tile" {{ block.shopify_attributes }}><span class="mp-ugc__soon">{{ block.settings.soon_label | escape }}</span><video playsinline muted loop preload="none"></video><button class="mp-ugc__play" type="button" aria-label="{{ block.settings.play_label | escape }}"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg></button><span class="mp-ugc__cap">{{ block.settings.caption | escape }}</span></div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · UGC",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "cream2", "label": "Cream 2" } ], "default": "cream" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "See what people say before you smell it" },
+    { "type": "text", "id": "sub", "label": "Sub heading", "default": "Our customers re-order 2.8 times on average within the first 90 days!" }
+  ],
+  "blocks": [
+    { "type": "tile", "name": "Video tile", "settings": [
+      { "type": "video", "id": "video", "label": "Video" },
+      { "type": "text", "id": "video_url", "label": "Video URL (used when no video file is picked)" },
+      { "type": "text", "id": "caption", "label": "Caption", "default": "Customer clip" },
+      { "type": "text", "id": "soon_label", "label": "Placeholder label (shown until a video is set)", "default": "Video coming soon" },
+      { "type": "text", "id": "play_label", "label": "Play button aria-label", "default": "Play video" }
+    ] }
+  ],
+  "presets": [{
+    "name": "MP LP · UGC",
+    "blocks": [
+      { "type": "tile", "settings": { "caption": "Customer clip", "soon_label": "Video coming soon", "play_label": "Play video" } },
+      { "type": "tile", "settings": { "caption": "Customer clip", "soon_label": "Video coming soon", "play_label": "Play video" } },
+      { "type": "tile", "settings": { "caption": "Customer clip", "soon_label": "Video coming soon", "play_label": "Play video" } },
+      { "type": "tile", "settings": { "caption": "Customer clip", "soon_label": "Video coming soon", "play_label": "Play video" } },
+      { "type": "tile", "settings": { "caption": "Customer clip", "soon_label": "Video coming soon", "play_label": "Play video" } },
+      { "type": "tile", "settings": { "caption": "Customer clip", "soon_label": "Video coming soon", "play_label": "Play video" } }
+    ]
+  }]
+}
+{% endschema %}

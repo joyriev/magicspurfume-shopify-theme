@@ -1,0 +1,33 @@
+{%- comment -%} MP LP · Trust marquee. The JS doubles the track (data-marquee) for a seamless loop. {%- endcomment -%}
+<div class="mp-lp">
+<div class="mp-marquee" id="mp-marquee" aria-hidden="true">
+  <div class="mp-marquee__track" data-marquee>
+    {%- for block in section.blocks -%}
+    <span class="mp-marquee__item" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+    {%- endfor -%}
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Trust marquee",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 12,
+  "settings": [],
+  "blocks": [
+    { "type": "chip", "name": "Chip", "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "21% fragrance oil" } ] }
+  ],
+  "presets": [{
+    "name": "MP LP · Trust marquee",
+    "blocks": [
+      { "type": "chip", "settings": { "text": "21% fragrance oil" } },
+      { "type": "chip", "settings": { "text": "Lasts up to 12 hours" } },
+      { "type": "chip", "settings": { "text": "60 day money back guarantee" } },
+      { "type": "chip", "settings": { "text": "Made in Europe" } },
+      { "type": "chip", "settings": { "text": "Vegan and cruelty free" } }
+    ]
+  }]
+}
+{% endschema %}

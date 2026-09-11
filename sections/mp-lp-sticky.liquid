@@ -1,0 +1,22 @@
+{%- comment -%} MP LP · Sticky CTA bar (mobile). Visibility is driven by the JS (data-sticky / data-show). {%- endcomment -%}
+<div class="mp-lp">
+<div class="mp-sticky" id="mp-sticky" data-sticky data-show="false">
+  <div class="mp-sticky__txt"><span class="mp-sticky__main">{% render 'mp-lp-tokens', text: section.settings.main, plain: true %}</span><span class="mp-sticky__sub">{% render 'mp-lp-tokens', text: section.settings.sub, plain: true %}</span></div>
+  <a class="mp-btn" href="{{ section.settings.button_url }}">{{ section.settings.button | escape }} <span class="mp-btn__arrow">&rarr;</span></a>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Sticky bar",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "settings": [
+    { "type": "text", "id": "main", "label": "Main line", "default": "6 x 50 ml, {price}", "info": "Tokens: {price} {was} {per}" },
+    { "type": "text", "id": "sub", "label": "Sub line", "default": "{per} a bottle", "info": "Tokens: {per}" },
+    { "type": "text", "id": "button", "label": "Button", "default": "Build your 6" },
+    { "type": "text", "id": "button_url", "label": "Button link", "default": "#mp-picker" }
+  ],
+  "presets": [{ "name": "MP LP · Sticky bar" }]
+}
+{% endschema %}

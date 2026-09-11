@@ -1,0 +1,62 @@
+{%- comment -%} MP LP · Footer. Not a .mp-section: keeps its own <footer> wrapper, no background setting. {%- endcomment -%}
+{%- liquid
+  assign logo = section.settings.logo_url
+  if logo != blank and logo contains 'cdn/shop/'
+    assign sep = '?'
+    if logo contains '?'
+      assign sep = '&'
+    endif
+    assign logo = logo | append: sep | append: 'width=600'
+  endif
+  if section.settings.logo != blank
+    assign logo = section.settings.logo | image_url: width: 600
+  endif
+-%}
+<div class="mp-lp">
+<footer class="mp-footer" id="mp-footer">
+  <div class="mp-container">
+    <img class="mp-footer__logo" src="{{ logo }}" width="150" height="36" alt="{{ section.settings.logo_alt | escape }}" loading="lazy">
+    <p class="mp-footer__tag">{{ section.settings.tagline | escape }}</p>
+    <div class="mp-footer__links">
+      {%- for block in section.blocks -%}
+      {%- if block.type == 'link' -%}
+      <a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+      {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <p class="mp-footer__contact">{{ section.settings.contact_line1 | escape }}<br>{{ section.settings.contact_line2 | escape }}</p>
+  </div>
+</footer>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Footer",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "text", "id": "logo_url", "label": "Logo URL (fallback when no image is picked)", "default": "https://magicperfume.co/cdn/shop/files/magic-perfume-logo.png?v=1770090849" },
+    { "type": "text", "id": "logo_alt", "label": "Logo alt text", "default": "Magic Perfume" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Eau de Parfum with 21% fragrance oil. Made in Europe." },
+    { "type": "text", "id": "contact_line1", "label": "Contact line 1", "default": "hello@magicperfume.co, 8:00 to 20:00, 7 days a week" },
+    { "type": "text", "id": "contact_line2", "label": "Contact line 2", "default": "© 2026 Magic Perfume" }
+  ],
+  "blocks": [
+    { "type": "link", "name": "Link", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Link" },
+      { "type": "text", "id": "url", "label": "URL", "default": "#" }
+    ] }
+  ],
+  "presets": [{
+    "name": "MP LP · Footer",
+    "blocks": [
+      { "type": "link", "settings": { "label": "Legal notice", "url": "https://magicperfume.co/policies/legal-notice" } },
+      { "type": "link", "settings": { "label": "Privacy policy", "url": "https://magicperfume.co/policies/privacy-policy" } },
+      { "type": "link", "settings": { "label": "Terms", "url": "https://magicperfume.co/policies/terms-of-service" } },
+      { "type": "link", "settings": { "label": "Right of withdrawal", "url": "https://magicperfume.co/policies/refund-policy" } }
+    ]
+  }]
+}
+{% endschema %}

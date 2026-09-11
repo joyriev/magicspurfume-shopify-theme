@@ -1,0 +1,31 @@
+{%- comment -%} MP LP · Announcement bar (countdown to local midnight, hooks: [data-countdown] data-h/-m/-s) {%- endcomment -%}
+<div class="mp-lp">
+<div class="mp-announce" id="mp-announce">
+  <span class="mp-hide-m">{% render 'mp-lp-tokens', text: section.settings.text_desktop, plain: true %}</span>
+  <span class="mp-hide-d">{% render 'mp-lp-tokens', text: section.settings.text_mobile, plain: true %}</span>
+  <span class="mp-announce__timer"><span>{{ section.settings.timer_label | escape }}</span>
+    <span class="mp-countdown" data-countdown>
+      <span class="mp-countdown__u"><span class="mp-countdown__n" data-h>00</span><span class="mp-countdown__l">{{ section.settings.label_hours | escape }}</span></span><span class="mp-countdown__sep">:</span>
+      <span class="mp-countdown__u"><span class="mp-countdown__n" data-m>00</span><span class="mp-countdown__l">{{ section.settings.label_minutes | escape }}</span></span><span class="mp-countdown__sep">:</span>
+      <span class="mp-countdown__u"><span class="mp-countdown__n" data-s>00</span><span class="mp-countdown__l">{{ section.settings.label_seconds | escape }}</span></span>
+    </span>
+  </span>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Announcement bar",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "settings": [
+    { "type": "text", "id": "text_desktop", "label": "Text (desktop)", "default": "Limited time: 6 perfumes for {price}", "info": "Tokens: {price}" },
+    { "type": "text", "id": "text_mobile", "label": "Text (mobile)", "default": "6 perfumes for {price}", "info": "Tokens: {price}" },
+    { "type": "text", "id": "timer_label", "label": "Timer label", "default": "Offer ends in" },
+    { "type": "text", "id": "label_hours", "label": "Unit: hours", "default": "Hrs" },
+    { "type": "text", "id": "label_minutes", "label": "Unit: minutes", "default": "Min" },
+    { "type": "text", "id": "label_seconds", "label": "Unit: seconds", "default": "Sec" }
+  ],
+  "presets": [{ "name": "MP LP · Announcement bar" }]
+}
+{% endschema %}

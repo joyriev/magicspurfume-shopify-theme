@@ -1,0 +1,38 @@
+{%- comment -%} MP LP · Guarantee. CTA here is a plain .mp-btn (no label/wrap span), rendered inline, not via the mp-lp-cta snippet. {%- endcomment -%}
+{%- liquid
+  assign bg_class = ''
+  if section.settings.background == 'cream'
+    assign bg_class = ' mp-section--cream'
+  elsif section.settings.background == 'cream2'
+    assign bg_class = ' mp-section--cream2'
+  endif
+-%}
+<div class="mp-lp">
+<section class="mp-section{{ bg_class }}" id="mp-guarantee">
+  <div class="mp-container">
+    <div class="mp-guar">
+      <div class="mp-guar__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>{{ section.settings.badge | escape }}</div>
+      <div><h2>{{ section.settings.heading | escape }}</h2><p>{{ section.settings.text | escape }}</p>
+        <div class="mp-cta" style="align-items:flex-start;margin-top:22px"><a class="mp-btn" href="{{ section.settings.cta_url }}">{{ section.settings.cta_button | escape }} <span class="mp-btn__arrow">&rarr;</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Guarantee",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "settings": [
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "cream2", "label": "Cream 2" } ], "default": "cream" },
+    { "type": "text", "id": "badge", "label": "Badge text", "default": "60 day money back guarantee" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Take 60 days to be sure" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Order the box, wear the scents, live with them for a while. If it is not for you, one email to hello@magicperfume.co starts the refund." },
+    { "type": "text", "id": "cta_button", "label": "CTA button", "default": "Build your 6 bottles" },
+    { "type": "text", "id": "cta_url", "label": "CTA link", "default": "#mp-picker" }
+  ],
+  "presets": [{ "name": "MP LP · Guarantee" }]
+}
+{% endschema %}

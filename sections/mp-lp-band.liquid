@@ -1,0 +1,41 @@
+{%- comment -%} MP LP · Benefits band (dark scrolling strip). The source repeats the items three times; the JS doubles the track (data-marquee). {%- endcomment -%}
+<div class="mp-lp">
+<div class="mp-band" id="mp-band" aria-hidden="true">
+  <div class="mp-band__track" data-marquee>
+    {%- for rep in (1..3) -%}
+    {%- for block in section.blocks -%}
+    <span class="mp-band__item">
+      {%- case block.settings.icon -%}
+      {%- when 'clock' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      {%- when 'shield' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      {%- else -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg>
+      {%- endcase -%}<span>{% render 'mp-lp-tokens', text: block.settings.text, plain: true %}</span></span>
+    {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Benefits band",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 8,
+  "settings": [],
+  "blocks": [
+    { "type": "item", "name": "Item", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "options": [ { "value": "tag", "label": "Price tag" }, { "value": "clock", "label": "Clock" }, { "value": "shield", "label": "Shield" } ], "default": "tag" },
+      { "type": "text", "id": "text", "label": "Text", "default": "Only {per_eur} euro per bottle", "info": "Tokens: {per_eur} {price} {per}" }
+    ] }
+  ],
+  "presets": [{
+    "name": "MP LP · Benefits band",
+    "blocks": [
+      { "type": "item", "settings": { "icon": "tag", "text": "Only {per_eur} euro per bottle" } },
+      { "type": "item", "settings": { "icon": "clock", "text": "Up to 12 hours" } },
+      { "type": "item", "settings": { "icon": "shield", "text": "60 day money back guarantee" } }
+    ]
+  }]
+}
+{% endschema %}

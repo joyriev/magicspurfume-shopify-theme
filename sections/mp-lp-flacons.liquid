@@ -1,0 +1,19 @@
+{%- comment -%} MP LP · Flacons strip (JS-filled scrolling row of catalog thumbnails; caption is the only editable text). {%- endcomment -%}
+<div class="mp-lp">
+<div class="mp-flacons" id="mp-flacons">
+  <div class="mp-flacons__cap">{% render 'mp-lp-tokens', text: section.settings.caption, plain: true %}</div>
+  <div class="mp-flacons__track" data-flacons aria-hidden="true"></div>
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Flacons",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "settings": [
+    { "type": "text", "id": "caption", "label": "Caption", "default": "A few of the {count} you can pick from", "info": "Tokens: {count}" }
+  ],
+  "presets": [{ "name": "MP LP · Flacons" }]
+}
+{% endschema %}

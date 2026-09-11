@@ -1,0 +1,75 @@
+{%- comment -%} MP LP · Problem (three reasons + boutique photo). {%- endcomment -%}
+{%- liquid
+  assign bg_class = ''
+  if section.settings.background == 'cream'
+    assign bg_class = ' mp-section--cream'
+  elsif section.settings.background == 'cream2'
+    assign bg_class = ' mp-section--cream2'
+  endif
+  assign src = section.settings.image_url
+  if section.settings.image != blank
+    assign src = section.settings.image | image_url: width: 861
+  elsif src == blank and section.settings.image_asset != blank
+    assign src = section.settings.image_asset | asset_url
+  endif
+-%}
+<div class="mp-lp">
+<section class="mp-section{{ bg_class }}" id="mp-problem">
+  <div class="mp-container mp-center">
+    <h2>{{ section.settings.heading | escape }}</h2>
+    <p class="mp-sub">{{ section.settings.sub | escape }}</p>
+    <div class="mp-problem__grid">
+      <div class="mp-problem__visual mp-problem__visual--photo"><img src="{{ src }}" width="861" height="861" alt="{{ section.settings.image_alt | escape }}" loading="lazy"></div>
+      <ul class="mp-xcard" style="text-align:left">
+        {%- for block in section.blocks -%}
+        <li {{ block.shopify_attributes }}><span class="mp-xicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="butt" aria-hidden="true"><path d="M4.5 4.5l15 15M19.5 4.5l-15 15"/></svg></span><div><h3>{{ block.settings.title | escape }}</h3><p>{{ block.settings.text | escape }}</p></div></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <p class="mp-problem__diff">{{ section.settings.diff | escape }}</p>
+    <div class="mp-cta">
+      <a class="mp-btn" href="{{ section.settings.cta_url }}">{{ section.settings.cta_button | escape }} <span class="mp-btn__arrow">&rarr;</span></a>
+      <span class="mp-micro">{{ section.settings.cta_micro | escape }}</span>
+    </div>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Problem",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "cream2", "label": "Cream 2" } ], "default": "white" },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What you are really paying for in a designer bottle" },
+    { "type": "text", "id": "sub", "label": "Sub heading", "default": "The perfume itself is the cheapest part of it." },
+    { "type": "text", "id": "diff", "label": "Closing line", "default": "Take those three things off the price tag. What’s left is the fragrance. That’s the only thing we charge you for." },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_button", "label": "Button label", "default": "Skip the markup. Keep the scent." },
+    { "type": "text", "id": "cta_url", "label": "Button link", "default": "#mp-picker" },
+    { "type": "text", "id": "cta_micro", "label": "Micro line", "default": "60 day money back guarantee." },
+    { "type": "header", "content": "Images" },
+    { "type": "image_picker", "id": "image", "label": "Boutique image" },
+    { "type": "text", "id": "image_url", "label": "Boutique image URL (fallback when no image is picked)" },
+    { "type": "text", "id": "image_asset", "label": "Boutique image theme asset filename (used when no image or URL is set)", "default": "mp-lp-boutique.webp" },
+    { "type": "text", "id": "image_alt", "label": "Boutique image alt text", "default": "A designer perfume boutique: gold shelving, chandelier and marble floor" }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Reason", "settings": [
+      { "type": "text", "id": "title", "label": "Title", "default": "Fancy flacon and pretty box" },
+      { "type": "text", "id": "text", "label": "Text", "default": "Coloured glass, a weighted cap, foil printing on the lid. None of which you actually smell." }
+    ] }
+  ],
+  "presets": [{
+    "name": "MP LP · Problem",
+    "blocks": [
+      { "type": "item", "settings": { "title": "Fancy flacon and pretty box", "text": "Coloured glass, a weighted cap, foil printing on the lid. None of which you actually smell." } },
+      { "type": "item", "settings": { "title": "The shop on the expensive street", "text": "Rent on the best corner in town, plus the face from a campaign you have already seen a hundred times." } },
+      { "type": "item", "settings": { "title": "The ads you already watched", "text": "Cinema spots, billboards, influencer deals. You paid for those before you ever sprayed anything." } }
+    ]
+  }]
+}
+{% endschema %}

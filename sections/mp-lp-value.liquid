@@ -1,0 +1,138 @@
+{%- comment -%} MP LP · Value receipt (receipt rows + stack rows, two block types). {%- endcomment -%}
+{%- liquid
+  assign bg_class = ''
+  if section.settings.background == 'cream'
+    assign bg_class = ' mp-section--cream'
+  elsif section.settings.background == 'cream2'
+    assign bg_class = ' mp-section--cream2'
+  endif
+-%}
+<div class="mp-lp">
+<section class="mp-section{{ bg_class }}" id="mp-value">
+  <div class="mp-container mp-center">
+    <h2>{{ section.settings.heading | escape }}</h2>
+    <p class="mp-sub">{{ section.settings.sub | escape }}</p>
+    <div class="mp-value">
+      <div class="mp-receipt">
+        {%- for block in section.blocks -%}
+        {%- if block.type == 'receipt_row' -%}
+        {%- liquid
+          assign row_class = ''
+          if block.settings.highlight
+            assign row_class = ' mp-rc__row--hi'
+          endif
+          assign fig_class = ''
+          if block.settings.muted
+            assign fig_class = fig_class | append: ' mp-rc__fig--muted'
+          endif
+          if block.settings.strike
+            assign fig_class = fig_class | append: ' mp-rc__fig--strike'
+          endif
+        -%}
+        <div class="mp-rc__row{{ row_class }}" {{ block.shopify_attributes }}>
+          <div class="mp-rc__txt"><div class="mp-rc__label">{{ block.settings.label | escape }}</div><div class="mp-rc__note">{% render 'mp-lp-tokens', text: block.settings.note, plain: true %}</div></div>
+          {%- case block.settings.figure -%}
+          {%- when 'designer_total' -%}
+          <div class="mp-rc__fig{{ fig_class }}" data-designer-six-total>{{ section.settings.designer_total | escape }}</div>
+          {%- when 'was' -%}
+          <div class="mp-rc__fig{{ fig_class }}" data-price-was>€119,99</div>
+          {%- when 'now' -%}
+          <div class="mp-rc__fig{{ fig_class }}" data-price-now>€59,99</div>
+          {%- else -%}
+          <div class="mp-rc__fig{{ fig_class }}">{{ block.settings.custom_figure | escape }}</div>
+          {%- endcase -%}
+          {%- if block.settings.show_chips -%}
+          <div class="mp-rc__chips"><span class="mp-rc__chip">{% render 'mp-lp-tokens', text: section.settings.chip_per, plain: true %}</span><span class="mp-rc__chip mp-rc__chip--gold">-<span data-price-off>50</span>%</span><span class="mp-rc__chip">{% render 'mp-lp-tokens', text: section.settings.chip_save, plain: true %}</span></div>
+          {%- endif -%}
+        </div>
+        {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="mp-stack">
+        <div class="mp-stack__head">{{ section.settings.stack_heading | escape }}</div>
+        <ul class="mp-stack__list">
+          {%- for block in section.blocks -%}
+          {%- if block.type == 'stack_row' -%}
+          <li {{ block.shopify_attributes }}><span class="mp-stack__item">{{ block.settings.text }}</span>{%- case block.settings.value -%}{%- when 'was' -%}<span class="mp-stack__val" data-price-was>€119,99</span>{%- when 'single_free' -%}<span class="mp-stack__val"><s data-price-single>€19,99</s> <em>{{ section.settings.free_label | escape }}</em></span>{%- when 'ship_free' -%}<span class="mp-stack__val"><s data-price-ship>€5,49</s> <em>{{ section.settings.free_label | escape }}</em></span>{%- else -%}<span class="mp-stack__val">{{ block.settings.custom_value | escape }}</span>{%- endcase -%}</li>
+          {%- endif -%}
+          {%- endfor -%}
+        </ul>
+        <div class="mp-stack__pay">
+          <div class="mp-stack__head">{{ section.settings.pay_heading | escape }}</div>
+          <p class="mp-stack__not">{{ section.settings.not1 | escape }} <s data-designer-six-total>{{ section.settings.designer_total | escape }}</s></p>
+          <p class="mp-stack__not">{{ section.settings.not2 | escape }} <s data-price-value>€145,47</s></p>
+          <p class="mp-stack__only">{{ section.settings.only | escape }} <b data-price-now>€59,99</b></p>
+          <p class="mp-stack__once">{{ section.settings.once | escape }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="mp-cta">
+      <span class="mp-pill"><span class="mp-pill__txt">{% render 'mp-lp-tokens', text: section.settings.cta_pill, plain: true %}</span></span>
+      <a class="mp-btn mp-btn--wrap" href="{{ section.settings.cta_url }}"><span class="mp-btn__label">{% render 'mp-lp-tokens', text: section.settings.cta_button, plain: true %}</span> <span class="mp-btn__arrow">&rarr;</span></a>
+      <span class="mp-micro">{%- if section.settings.cta_micro_lead != blank -%}<strong>{{ section.settings.cta_micro_lead | escape }}</strong><br>{%- endif -%}{{ section.settings.cta_micro | escape }}</span>
+    </div>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Value receipt",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "cream2", "label": "Cream 2" } ], "default": "cream" },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The math, on one receipt" },
+    { "type": "text", "id": "sub", "label": "Subheading", "default": "Six designers, six of ours one at a time, or the box." },
+    { "type": "header", "content": "Receipt" },
+    { "type": "text", "id": "designer_total", "label": "Designer total figure", "default": "€1 955", "info": "Non-breaking space between 1 and 955" },
+    { "type": "header", "content": "Chips (shown on the row with \"Show chips\" on)" },
+    { "type": "text", "id": "chip_per", "label": "Chip: per bottle", "default": "{per} a bottle", "info": "Tokens: {per}" },
+    { "type": "text", "id": "chip_save", "label": "Chip: you save", "default": "You save {save}", "info": "Tokens: {save}" },
+    { "type": "header", "content": "Stack" },
+    { "type": "text", "id": "free_label", "label": "\"Free\" label", "default": "Free" },
+    { "type": "text", "id": "stack_heading", "label": "Stack heading", "default": "What lands in the box" },
+    { "type": "text", "id": "pay_heading", "label": "Pay heading", "default": "You pay" },
+    { "type": "text", "id": "not1", "label": "Line 1 prefix", "default": "Not the" },
+    { "type": "text", "id": "not2", "label": "Line 2 prefix", "default": "Not even the" },
+    { "type": "text", "id": "only", "label": "Line 3 prefix", "default": "Only" },
+    { "type": "text", "id": "once", "label": "Line 4", "default": "Only now, one time, new customer offer." },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_pill", "label": "CTA pill", "default": "Without quality compromise" },
+    { "type": "text", "id": "cta_button", "label": "CTA button", "default": "Save up to 95% on your favourite designer scent" },
+    { "type": "text", "id": "cta_url", "label": "CTA link", "default": "#mp-picker" },
+    { "type": "text", "id": "cta_micro_lead", "label": "CTA micro lead (bold line)", "default": "Don’t wait, bestselling scents like to sell out fast." },
+    { "type": "text", "id": "cta_micro", "label": "CTA micro line", "default": "60 day money back guarantee." }
+  ],
+  "blocks": [
+    { "type": "receipt_row", "name": "Receipt row", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Row label" },
+      { "type": "text", "id": "note", "label": "Note", "info": "Tokens: {single}" },
+      { "type": "select", "id": "figure", "label": "Figure", "options": [ { "value": "designer_total", "label": "Designer total" }, { "value": "was", "label": "Was price" }, { "value": "now", "label": "Now price" }, { "value": "custom", "label": "Custom" } ], "default": "now" },
+      { "type": "text", "id": "custom_figure", "label": "Custom figure (when Figure = Custom)" },
+      { "type": "checkbox", "id": "highlight", "label": "Highlight row", "default": false },
+      { "type": "checkbox", "id": "muted", "label": "Muted figure", "default": false },
+      { "type": "checkbox", "id": "strike", "label": "Strike figure", "default": false },
+      { "type": "checkbox", "id": "show_chips", "label": "Show chips under this row", "default": false }
+    ] },
+    { "type": "stack_row", "name": "Stack row", "settings": [
+      { "type": "inline_richtext", "id": "text", "label": "Text", "default": "Item description" },
+      { "type": "select", "id": "value", "label": "Value", "options": [ { "value": "was", "label": "Was price" }, { "value": "single_free", "label": "Single price, struck, Free" }, { "value": "ship_free", "label": "Shipping price, struck, Free" }, { "value": "custom", "label": "Custom" } ], "default": "was" },
+      { "type": "text", "id": "custom_value", "label": "Custom value (when Value = Custom)" }
+    ] }
+  ],
+  "presets": [{
+    "name": "MP LP · Value receipt",
+    "blocks": [
+      { "type": "receipt_row", "settings": { "label": "Six designers", "note": "The designers behind our 6 bestsellers", "figure": "designer_total", "muted": true } },
+      { "type": "receipt_row", "settings": { "label": "Six Magic Perfume bottles, one at a time", "note": "6 x {single}, the regular 50 ml price", "figure": "was", "strike": true } },
+      { "type": "receipt_row", "settings": { "label": "The Scent Wardrobe box", "note": "The same six 50 ml bottles, you pick every one", "figure": "now", "highlight": true, "show_chips": true } },
+      { "type": "stack_row", "settings": { "text": "<strong>6 x 50 ml Eau de Parfum</strong>, your pick from the bestsellers", "value": "was" } },
+      { "type": "stack_row", "settings": { "text": "<strong>1 Mystery 50 ml scent</strong>, a surprise from our collection or one of the Legacy Scents you can no longer buy", "value": "single_free" } },
+      { "type": "stack_row", "settings": { "text": "<strong>Shipping</strong>, straight to your door", "value": "ship_free" } }
+    ]
+  }]
+}
+{% endschema %}

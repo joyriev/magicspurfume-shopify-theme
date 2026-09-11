@@ -1,0 +1,10 @@
+{%- comment -%}
+  mp-lp-cta: the CTA block used under most sections. Params: pill, button, url, micro (strings), align ('start' for the left-aligned variant).
+{%- endcomment -%}
+{%- if button != blank -%}
+<div class="mp-cta"{% if align == 'start' %} style="align-items:flex-start;margin-top:22px"{% endif %}>
+  {%- if pill != blank -%}<span class="mp-pill"><span class="mp-pill__txt">{% render 'mp-lp-tokens', text: pill, plain: true %}</span></span>{%- endif -%}
+  <a class="mp-btn mp-btn--wrap" href="{{ url | default: '#mp-picker' }}"><span class="mp-btn__label">{% render 'mp-lp-tokens', text: button, plain: true %}</span> <span class="mp-btn__arrow">&rarr;</span></a>
+  {%- if micro != blank -%}<span class="mp-micro">{% render 'mp-lp-tokens', text: micro, plain: true %}</span>{%- endif -%}
+</div>
+{%- endif -%}

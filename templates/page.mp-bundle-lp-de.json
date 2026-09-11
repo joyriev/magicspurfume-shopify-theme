@@ -1,0 +1,1442 @@
+{
+  "sections": {
+    "core": {
+      "type": "mp-lp-core",
+      "settings": {
+        "bundle_handle": "6-x-50ml-parfumflaschen-5999",
+        "order_collection": "best-sellers",
+        "fill_collection": "all",
+        "bundle_size": 6,
+        "bestseller_count": 20,
+        "ship_cents": 549,
+        "variant_title": "50ml",
+        "bundle_variant_fallback": 48445769122050,
+        "title_prefix_regex": "^\\s*(duftet|riecht|smells)\\s+(wie|like)\\s*(\\.\\.\\.|…)?\\s*",
+        "exclude_handles_regex": "mystik|gift-card|versand|garantie|geschenk|versicherung|parfumfuhrer|schatz",
+        "exclude_tags": "bundle",
+        "tag_women": "fuer-frauen",
+        "tag_men": "fuer-maenner",
+        "tag_unisex": "unisex",
+        "tag_new": "new",
+        "family_prefix": "family:",
+        "brand_prefix": "marke:",
+        "after_add": "drawer",
+        "gift_wait_ms": 2500,
+        "item_label": "Flasche",
+        "item_text": "{name} Inspiriert von {inspiration} - 50ml",
+        "data_source": "store",
+        "preview_asset": "mp-lp-preview-catalog.json",
+        "use_bundled_maps": true,
+        "use_fallback_maps": false,
+        "rotator_interval": 3000,
+        "cards_per_page": 12,
+        "hide_theme_chrome": true,
+        "load_google_fonts": true,
+        "skip_label": "Direkt zur Duftauswahl",
+        "t_showing_all": "{total} Düfte",
+        "t_showing_part": "{n} von {total} Düften",
+        "t_more_one": "1 Duft mehr zeigen",
+        "t_more_many": "{n} Düfte mehr zeigen",
+        "t_add": "Hinzufügen",
+        "t_added": "Hinzugefügt",
+        "t_sold_out": "Ausverkauft",
+        "t_card_meta": "50 ml Eau de Parfum",
+        "t_card_alt": "Magic Perfume {number}, 50 ml",
+        "t_flacon_alt": "Magic Perfume Flasche {number}",
+        "t_smells_like": "Duftet wie {name}",
+        "t_badge_new": "Neu",
+        "t_badge_best": "Bestseller",
+        "t_choose_one": "Noch 1 wählen",
+        "t_choose_many": "Noch {n} wählen",
+        "t_full": "Deine Box ist voll",
+        "t_picked": "{n} von {max} gewählt",
+        "t_unlock_pending": "Beide gibt es zur vollen Box",
+        "t_unlock_done": "Beide Boni freigeschaltet",
+        "t_bonus_locked": "Gibt es zur vollen Box",
+        "t_bonus_unlocked": "Freigeschaltet, in deiner Box",
+        "t_empty_slot": "Freier Platz",
+        "t_remove_chip": "{name} aus deiner Box entfernen",
+        "t_cta_disabled": "Wähle erst {max} Flaschen",
+        "t_cta_active": "In den Warenkorb, {price} →",
+        "t_cta_loading": "Einen Moment...",
+        "t_search_part": "{n} von {total} Treffern für „{q}“",
+        "t_search_one": "{total} Treffer für „{q}“",
+        "t_search_many": "{total} Treffer für „{q}“",
+        "t_search_none": "Kein Treffer zu „{q}“. Probier die Marke oder den Namen des Originals.",
+        "t_search_none_here": "Kein Treffer {where} zu „{q}“.",
+        "t_search_in": "in {family}",
+        "t_search_for_women": "für Damen",
+        "t_search_for_men": "für Herren",
+        "t_search_for_unisex": "für Unisex",
+        "t_show_all_one": "{n} Treffer zeigen",
+        "t_show_all_many": "Alle {n} Treffer zeigen",
+        "t_clear_search": "Suche löschen",
+        "t_fam_gourmand": "Gourmand",
+        "t_fam_floral": "Blumig",
+        "t_fam_fresh": "Frisch",
+        "t_fam_woody": "Holzig",
+        "t_fam_amber": "Warm & würzig",
+        "t_fam_fruity": "Fruchtig",
+        "t_gender_women": "Damen",
+        "t_gender_men": "Herren",
+        "t_gender_unisex": "Unisex",
+        "t_split": "{f} für Damen · {m} für Herren",
+        "t_split_unisex": " · {u} Unisex",
+        "t_n_women": "{n} für Damen",
+        "t_n_men": "{n} für Herren",
+        "t_n_unisex": "{n} Unisex",
+        "t_none_tile_women": "Noch keine für Damen",
+        "t_none_tile_men": "Noch keine für Herren",
+        "t_none_tile_unisex": "Hier noch keine Unisex-Düfte",
+        "t_none_grid": "Noch keine {gender} in {family}. Wähle Alle oder eine andere Familie.",
+        "t_adj_women": "Damendüfte",
+        "t_adj_men": "Herrendüfte",
+        "t_adj_unisex": "Unisex-Düfte",
+        "t_this_family": "dieser Familie",
+        "t_reviews_dot": "Bewertungen {n}",
+        "t_load_error": "Die Duftliste konnte nicht geladen werden. Lade die Seite bitte neu.",
+        "t_unavailable": "Dieses Angebot ist gerade nicht verfügbar. Versuch es später noch einmal oder schreib an hello@magicperfume.co.",
+        "money_format": "€{amount_comma}"
+      }
+    },
+    "announcement": {
+      "type": "mp-lp-announcement",
+      "settings": {
+        "text_desktop": "Nur kurz: 6 Parfüms für {price}",
+        "text_mobile": "6 Parfüms für {price}",
+        "timer_label": "Angebot endet in",
+        "label_hours": "Std",
+        "label_minutes": "Min",
+        "label_seconds": "Sek"
+      }
+    },
+    "header": {
+      "type": "mp-lp-header",
+      "settings": {
+        "logo_url": "https://magicperfume.co/cdn/shop/files/magic-perfume-logo.png?v=1770090849&width=600",
+        "logo_alt": "Magic Perfume",
+        "logo_link": "/",
+        "button_desktop": "Jetzt kaufen",
+        "button_mobile": "Kaufen",
+        "button_url": "#mp-picker"
+      }
+    },
+    "marquee": {
+      "type": "mp-lp-marquee",
+      "settings": {},
+      "blocks": {
+        "chip-1": {
+          "type": "chip",
+          "settings": {
+            "text": "21% Parfümöl"
+          }
+        },
+        "chip-2": {
+          "type": "chip",
+          "settings": {
+            "text": "Hält bis zu 12 Stunden"
+          }
+        },
+        "chip-3": {
+          "type": "chip",
+          "settings": {
+            "text": "60 Tage Geld-zurück-Garantie"
+          }
+        },
+        "chip-4": {
+          "type": "chip",
+          "settings": {
+            "text": "Hergestellt in Europa"
+          }
+        },
+        "chip-5": {
+          "type": "chip",
+          "settings": {
+            "text": "Vegan und tierversuchsfrei"
+          }
+        }
+      },
+      "block_order": [
+        "chip-1",
+        "chip-2",
+        "chip-3",
+        "chip-4",
+        "chip-5"
+      ]
+    },
+    "hero": {
+      "type": "mp-lp-hero",
+      "settings": {
+        "rating_text": "Von über 10.000 Duftliebhabern empfohlen, Bewertung 4,7/5",
+        "prefix": "Spare",
+        "middle": "mit Magic Perfume",
+        "suffix": "statt",
+        "our_price": 10,
+        "pill": "Wähle aus {count} Düften nach Designer-Vorbild",
+        "button_label": "Spare 50% mit der Duft-Garderobe",
+        "button_url": "#mp-picker",
+        "alt_text": "Unsicher beim Online-Kauf von Parfüm?",
+        "alt_link_text": "Hier klicken",
+        "alt_url": "#mp-collections",
+        "micro": "60 Tage Geld-zurück-Garantie.",
+        "image_url": "https://magicperfume.co/cdn/shop/files/magic_header_mobile_1.jpg?v=1772469543",
+        "image_alt": "Sechs 50-ml-Flaschen von Magic Perfume in einer Reihe"
+      },
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "text": "Ähnlichkeit, bestätigt durch über 10.000 verifizierte Bewertungen"
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "text": "Hergestellt nach Clean-Label-Strategie, ohne aggressive und schädliche Chemikalien"
+          }
+        },
+        "item-3": {
+          "type": "item",
+          "settings": {
+            "text": "21% Parfümöl, 8 bis 12 Stunden auf der Haut"
+          }
+        },
+        "item-4": {
+          "type": "item",
+          "settings": {
+            "text": "Vegan, tierversuchsfrei, hergestellt in Europa"
+          }
+        },
+        "rotator-5": {
+          "type": "rotator",
+          "settings": {
+            "name": "Sau*age Elixir",
+            "price": 225,
+            "size": "designer bottle",
+            "no": "No. 366"
+          }
+        },
+        "rotator-6": {
+          "type": "rotator",
+          "settings": {
+            "name": "Inv**tus",
+            "price": 325,
+            "size": "designer bottle",
+            "no": "No. 228"
+          }
+        },
+        "rotator-7": {
+          "type": "rotator",
+          "settings": {
+            "name": "Black Op*um",
+            "price": 345,
+            "size": "designer bottle",
+            "no": "No. 132"
+          }
+        },
+        "rotator-8": {
+          "type": "rotator",
+          "settings": {
+            "name": "One Mil*ion",
+            "price": 430,
+            "size": "designer bottle",
+            "no": "No. 275"
+          }
+        },
+        "rotator-9": {
+          "type": "rotator",
+          "settings": {
+            "name": "Li*re",
+            "price": 285,
+            "size": "designer bottle",
+            "no": "No. 034"
+          }
+        },
+        "rotator-10": {
+          "type": "rotator",
+          "settings": {
+            "name": "Fucking Fab**ous",
+            "price": 345,
+            "size": "designer bottle",
+            "no": "No. 232"
+          }
+        },
+        "rotator-11": {
+          "type": "rotator",
+          "settings": {
+            "name": "La Vie Est Be*le",
+            "price": 345,
+            "size": "designer bottle",
+            "no": "No. 101"
+          }
+        },
+        "rotator-12": {
+          "type": "rotator",
+          "settings": {
+            "name": "Al*en",
+            "price": 245,
+            "size": "designer bottle",
+            "no": "No. 004"
+          }
+        },
+        "rotator-13": {
+          "type": "rotator",
+          "settings": {
+            "name": "Le M*le",
+            "price": 355,
+            "size": "designer bottle",
+            "no": "No. 247"
+          }
+        },
+        "rotator-14": {
+          "type": "rotator",
+          "settings": {
+            "name": "Sca*dal",
+            "price": 345,
+            "size": "designer bottle",
+            "no": "No. 192"
+          }
+        },
+        "rotator-15": {
+          "type": "rotator",
+          "settings": {
+            "name": "J'a*ore",
+            "price": 235,
+            "size": "designer bottle",
+            "no": "No. 159"
+          }
+        },
+        "rotator-16": {
+          "type": "rotator",
+          "settings": {
+            "name": "Ar*ani Code",
+            "price": 260,
+            "size": "designer bottle",
+            "no": "No. 260"
+          }
+        },
+        "rotator-17": {
+          "type": "rotator",
+          "settings": {
+            "name": "Hyp**tic Poison",
+            "price": 345,
+            "size": "designer bottle",
+            "no": "No. 145"
+          }
+        },
+        "rotator-18": {
+          "type": "rotator",
+          "settings": {
+            "name": "Good Girl Ve*vet",
+            "price": 225,
+            "size": "designer bottle",
+            "no": "No. 461"
+          }
+        },
+        "rotator-19": {
+          "type": "rotator",
+          "settings": {
+            "name": "Ac*ua Di Gio",
+            "price": 285,
+            "size": "designer bottle",
+            "no": "No. 221"
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-3",
+        "item-4",
+        "rotator-5",
+        "rotator-6",
+        "rotator-7",
+        "rotator-8",
+        "rotator-9",
+        "rotator-10",
+        "rotator-11",
+        "rotator-12",
+        "rotator-13",
+        "rotator-14",
+        "rotator-15",
+        "rotator-16",
+        "rotator-17",
+        "rotator-18",
+        "rotator-19"
+      ]
+    },
+    "band": {
+      "type": "mp-lp-band",
+      "settings": {},
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "icon": "tag",
+            "text": "Nur {per_eur} Euro pro Flasche"
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "icon": "clock",
+            "text": "Bis zu 12 Stunden"
+          }
+        },
+        "item-3": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "text": "60 Tage Geld-zurück-Garantie"
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-3"
+      ]
+    },
+    "ugc": {
+      "type": "mp-lp-ugc",
+      "settings": {
+        "background": "cream",
+        "heading": "Sieh, was andere sagen, bevor du es selbst riechst",
+        "sub": "Unsere Kunden bestellen in den ersten 90 Tagen im Schnitt 2,8-mal nach!"
+      },
+      "blocks": {
+        "tile-1": {
+          "type": "tile",
+          "settings": {
+            "caption": "Kundenvideo",
+            "soon_label": "Video folgt in Kürze",
+            "play_label": "Video abspielen"
+          }
+        },
+        "tile-2": {
+          "type": "tile",
+          "settings": {
+            "caption": "Kundenvideo",
+            "soon_label": "Video folgt in Kürze",
+            "play_label": "Video abspielen"
+          }
+        },
+        "tile-3": {
+          "type": "tile",
+          "settings": {
+            "caption": "Kundenvideo",
+            "soon_label": "Video folgt in Kürze",
+            "play_label": "Video abspielen"
+          }
+        },
+        "tile-4": {
+          "type": "tile",
+          "settings": {
+            "caption": "Kundenvideo",
+            "soon_label": "Video folgt in Kürze",
+            "play_label": "Video abspielen"
+          }
+        },
+        "tile-5": {
+          "type": "tile",
+          "settings": {
+            "caption": "Kundenvideo",
+            "soon_label": "Video folgt in Kürze",
+            "play_label": "Video abspielen"
+          }
+        },
+        "tile-6": {
+          "type": "tile",
+          "settings": {
+            "caption": "Kundenvideo",
+            "soon_label": "Video folgt in Kürze",
+            "play_label": "Video abspielen"
+          }
+        }
+      },
+      "block_order": [
+        "tile-1",
+        "tile-2",
+        "tile-3",
+        "tile-4",
+        "tile-5",
+        "tile-6"
+      ]
+    },
+    "problem": {
+      "type": "mp-lp-problem",
+      "settings": {
+        "background": "white",
+        "heading": "Wofür du bei einem Designerparfüm wirklich bezahlst",
+        "sub": "Das Parfüm selbst ist der günstigste Teil davon.",
+        "diff": "Nimm diese drei Dinge vom Preisschild. Übrig bleibt der Duft. Und nur den berechnen wir dir.",
+        "cta_button": "Spar den Aufschlag. Behalt den Duft.",
+        "cta_url": "#mp-picker",
+        "cta_micro": "60 Tage Geld-zurück-Garantie.",
+        "image_asset": "mp-lp-boutique.webp",
+        "image_alt": "Eine Designer-Parfümerie: goldene Regale, Kronleuchter und Marmorboden"
+      },
+      "blocks": {
+        "item-1": {
+          "type": "item",
+          "settings": {
+            "title": "Schicker Flakon und hübsche Verpackung",
+            "text": "Farbiges Glas, ein schwerer Verschluss, Folienprägung auf dem Deckel. Nichts davon riechst du."
+          }
+        },
+        "item-2": {
+          "type": "item",
+          "settings": {
+            "title": "Der Laden in der teuren Einkaufsstraße",
+            "text": "Miete an der besten Ecke der Stadt, dazu das Gesicht aus einer Kampagne, das du schon hundertmal gesehen hast."
+          }
+        },
+        "item-3": {
+          "type": "item",
+          "settings": {
+            "title": "Die Werbung, die du längst gesehen hast",
+            "text": "Kinospots, Plakatwände, Influencer-Deals. Die hast du bezahlt, bevor du überhaupt gesprüht hast."
+          }
+        }
+      },
+      "block_order": [
+        "item-1",
+        "item-2",
+        "item-3"
+      ]
+    },
+    "testimonials": {
+      "type": "mp-lp-testimonials",
+      "settings": {
+        "background": "cream2",
+        "heading": "Riecht das wirklich wie das Original?",
+        "sub": "In ihren eigenen Worten, von der Bewertungsseite.",
+        "stars_label": "{rating} von 5 Sternen",
+        "prev_label": "Vorherige Bewertungen",
+        "next_label": "Nächste Bewertungen"
+      },
+      "blocks": {
+        "card-1": {
+          "type": "card",
+          "settings": {
+            "label": "Kundenbewertung",
+            "quote": "Es sind auch Super Düfte was 1 zu 1 wie die echten Marken Parfüms riecht",
+            "name": "Herbert S.",
+            "verified": "Verifizierter Käufer",
+            "rating": 5
+          }
+        },
+        "card-2": {
+          "type": "card",
+          "settings": {
+            "label": "Kundenbewertung",
+            "quote": "Ich bin absolut begeistert! Diese Parfüms riechen wirklich wie das Original.",
+            "name": "Son Ja",
+            "verified": "Verifizierter Käufer",
+            "rating": 5
+          }
+        },
+        "card-3": {
+          "type": "card",
+          "settings": {
+            "label": "Kundenbewertung",
+            "quote": "Es riecht zu 100% wie das Original.",
+            "name": "Stephanie L.",
+            "verified": "Verifizierter Käufer",
+            "rating": 5
+          }
+        },
+        "card-4": {
+          "type": "card",
+          "settings": {
+            "label": "Kundenbewertung",
+            "quote": "Tolle Düfte für angenhmen Preis, kann man wirklich weiter empfehlen :) Wie die originalen Parfüms",
+            "name": "Michael Hanning",
+            "verified": "Verifizierter Käufer",
+            "rating": 5
+          }
+        },
+        "card-5": {
+          "type": "card",
+          "settings": {
+            "label": "Kundenbewertung",
+            "quote": "Sehr gute Qualität, ähnelt dem originalen",
+            "name": "RAMAZAN A.",
+            "verified": "Verifizierter Käufer",
+            "rating": 5
+          }
+        },
+        "card-6": {
+          "type": "card",
+          "settings": {
+            "label": "Kundenbewertung",
+            "quote": "Tolle Duftzwillinge die lange halten",
+            "name": "Mario Jung",
+            "verified": "Verifizierter Käufer",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "card-1",
+        "card-2",
+        "card-3",
+        "card-4",
+        "card-5",
+        "card-6"
+      ]
+    },
+    "story": {
+      "type": "mp-lp-story",
+      "settings": {
+        "background": "cream",
+        "heading": "Warum das meiste Parfüm schon vormittags aufgibt",
+        "sub": "Der häufigste Irrtum ist, dass die Haltbarkeit eines Parfüms vom pH-Wert der Haut abhängt.",
+        "tag_big": "21%",
+        "tag_small": "Parfümöl",
+        "quote_text": "Sehr guter Duft mit einer starken und angenehmen Ausstrahlung. Ich war positiv überrascht von der Haltbarkeit",
+        "quote_name": "Sezgin C.",
+        "cta_button": "Ich will Düfte nach Designer-Vorbild mit 95% Rabatt",
+        "cta_url": "#mp-picker",
+        "cta_micro": "60 Tage Geld-zurück-Garantie.",
+        "photo1_url": "https://magicperfume.co/cdn/shop/files/WhatsApp_Image_2026-01-17_at_10.59.01.jpg?width=900",
+        "photo1_alt": "Magic Perfume Flaschen an der Abfüllanlage, behandschuhte Hände stellen eine Flasche ab",
+        "photo2_url": "https://magicperfume.co/cdn/shop/files/Camila_Sena_Oliveira_1.webp",
+        "photo2_alt": "Zwei 30-ml-Flaschen von Magic Perfume auf einem Schminktisch"
+      },
+      "blocks": {
+        "paragraph-1": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Tut sie nicht. Die Haltbarkeit kommt von der Konzentration des Parfümöls.<br>Mehr ist aber nicht automatisch besser.</p>"
+          }
+        },
+        "paragraph-2": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p><strong>Was Designermarken und andere Duftzwilling-Marken verkaufen, ist meistens Eau de Toilette.</strong> Das heißt 5 bis 15% Parfümöl und jede Menge Alkohol. Eine Stunde riecht es großartig, dann verabschiedet es sich leise.</p>"
+          }
+        },
+        "paragraph-3": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p><strong>Jede Flasche von Magic Perfume ist ein Eau de Parfum mit 21% Parfümöl.</strong> Auf diesem Niveau setzt sich der Duft auf deiner Haut fest, statt von ihr wegzufliegen.</p>"
+          }
+        },
+        "paragraph-4": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p><strong>Zwischen 21 und 30% liegt genau der richtige Bereich: genug für den ganzen Tag, aber nicht so viel, dass es schwer oder ölig wird.</strong></p>"
+          }
+        },
+        "paragraph-5": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Daher kommen die 8 bis 12 Stunden, und auf dem Hemd hält es sogar noch länger.</p>"
+          }
+        },
+        "paragraph-6": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Morgens aufgesprüht, riechen die Leute ihn abends immer noch.</p>"
+          }
+        },
+        "pillar-7": {
+          "type": "pillar",
+          "settings": {
+            "icon": "drop",
+            "title": "21% Parfümöl",
+            "text": "Eau-de-Parfum-Stärke und bis zu 12 Stunden Haltbarkeit in jeder einzelnen Flasche."
+          }
+        },
+        "pillar-8": {
+          "type": "pillar",
+          "settings": {
+            "icon": "globe",
+            "title": "Hergestellt in einem EU-Dufthaus",
+            "text": "Für unerreichte Ähnlichkeit. Du glaubst es nicht? Dafür gibt es unsere 60 Tage Geld-zurück-Garantie."
+          }
+        },
+        "pillar-9": {
+          "type": "pillar",
+          "settings": {
+            "icon": "leaf",
+            "title": "Clean Label",
+            "text": "Produziert nach EU-Standards. Vegan und tierversuchsfrei. Frei von Phthalaten und Parabenen."
+          }
+        }
+      },
+      "block_order": [
+        "paragraph-1",
+        "paragraph-2",
+        "paragraph-3",
+        "paragraph-4",
+        "paragraph-5",
+        "paragraph-6",
+        "pillar-7",
+        "pillar-8",
+        "pillar-9"
+      ]
+    },
+    "compare": {
+      "type": "mp-lp-compare",
+      "settings": {
+        "background": "white",
+        "heading": "Eine Designerflasche oder sechs von uns",
+        "sub": "Einer der wenigen, die ehrlich und transparent geblieben sind.",
+        "ours_image_url": "https://magicperfume.co/cdn/shop/files/magic_header_1.png?v=1772469544",
+        "ours_brand": "Magic Perfume",
+        "col2_label": "Designer-Parfüm",
+        "col3_label": "Duftzwilling-Marken",
+        "cta_pill": "Qualität ohne Kompromisse",
+        "cta_button": "Spare bis zu 95% bei deinem Designerduft",
+        "cta_url": "#mp-picker",
+        "cta_micro": "60 Tage Geld-zurück-Garantie."
+      },
+      "blocks": {
+        "row-1": {
+          "type": "row",
+          "settings": {
+            "label": "Was du zahlst",
+            "ours": "{per} pro Flasche, in der Box",
+            "ours_mark": "yes",
+            "theirs": "Ab €100 pro Flasche",
+            "theirs_mark": "no",
+            "dupes": "€18 bis €50 pro Flasche",
+            "dupes_mark": "neutral"
+          }
+        },
+        "row-2": {
+          "type": "row",
+          "settings": {
+            "label": "Parfümöl",
+            "ours": "21% Parfümöl, Eau de Parfum",
+            "ours_mark": "yes",
+            "theirs": "5 bis 15%",
+            "theirs_mark": "no",
+            "dupes": "Alles bis 40%, oft nicht angegeben",
+            "dupes_mark": "neutral"
+          }
+        },
+        "row-3": {
+          "type": "row",
+          "settings": {
+            "label": "Wie lange es hält",
+            "ours": "8 bis 12 Stunden",
+            "ours_mark": "yes",
+            "theirs": "3 bis 5 Stunden",
+            "theirs_mark": "no",
+            "dupes": "2 bis 12 Stunden",
+            "dupes_mark": "neutral"
+          }
+        },
+        "row-4": {
+          "type": "row",
+          "settings": {
+            "label": "Clean Label",
+            "ours": "Vegan, ohne Tierversuche, Phthalate oder Parabene",
+            "ours_mark": "yes",
+            "theirs": "Je nach Marke, lies die Packung",
+            "theirs_mark": "neutral",
+            "dupes": "Selten angegeben",
+            "dupes_mark": "neutral"
+          }
+        },
+        "row-5": {
+          "type": "row",
+          "settings": {
+            "label": "Wofür du bezahlst",
+            "ours": "21% Parfümöl, echten Duft ohne schädliche Chemikalien",
+            "ours_mark": "yes",
+            "theirs": "Boutique, Promi-Werbung, schicker Flakon, Verpackung, 5 bis 15% Parfümöl",
+            "theirs_mark": "no",
+            "dupes": "Flasche, Instagram-Promi, manchmal Versand aus China",
+            "dupes_mark": "neutral"
+          }
+        },
+        "row-6": {
+          "type": "row",
+          "settings": {
+            "label": "Geld-zurück-Garantie",
+            "ours": "60 Tage",
+            "ours_mark": "yes",
+            "theirs": "14 Tage laut Gesetz, ungeöffnet",
+            "theirs_mark": "no",
+            "dupes": "14 bis 30 Tage, ungeöffnet",
+            "dupes_mark": "no"
+          }
+        }
+      },
+      "block_order": [
+        "row-1",
+        "row-2",
+        "row-3",
+        "row-4",
+        "row-5",
+        "row-6"
+      ]
+    },
+    "flacons": {
+      "type": "mp-lp-flacons",
+      "settings": {
+        "caption": "Ein paar der {count}, aus denen du wählen kannst"
+      }
+    },
+    "benefits": {
+      "type": "mp-lp-benefits",
+      "settings": {
+        "background": "cream2",
+        "heading": "Was dir eine Flasche Magic Perfume wirklich bringt",
+        "sub": "Sechs Dinge, die gleich bleiben, egal welche Düfte du wählst.",
+        "center_alt": "Eine einzelne 50-ml-Flasche von Magic Perfume",
+        "trust_heading": "Drei Dinge, die wir dir schriftlich geben",
+        "trust_sub": "Bei keinem davon Spielchen im Kleingedruckten.",
+        "cta_pill": "Spare bis zu €2.000 mit Magic Perfume",
+        "cta_button": "Duft-Garderobe mit 50% Rabatt sichern",
+        "cta_url": "#mp-picker",
+        "cta_micro": "60 Tage Geld-zurück-Garantie."
+      },
+      "blocks": {
+        "tile-1": {
+          "type": "tile",
+          "settings": {
+            "title": "Unerreichte Ähnlichkeit",
+            "text": "Bestätigt von über 10.000 zufriedenen Duftliebhabern."
+          }
+        },
+        "tile-2": {
+          "type": "tile",
+          "settings": {
+            "title": "Bis zu 12 Stunden Tragezeit",
+            "text": "Dank 21% Parfümöl in jeder Flasche."
+          }
+        },
+        "tile-3": {
+          "type": "tile",
+          "settings": {
+            "title": "{count} Düfte verfügbar",
+            "text": "Bestseller, Klassiker und eingestellte Kollektionen, die du geliebt hast, alles da!"
+          }
+        },
+        "tile-4": {
+          "type": "tile",
+          "settings": {
+            "title": "Vegan und tierversuchsfrei",
+            "text": "Keine tierischen Inhaltsstoffe, keine Tierversuche."
+          }
+        },
+        "tile-5": {
+          "type": "tile",
+          "settings": {
+            "title": "Hergestellt in Europa",
+            "text": "Nach EU-Standards produziert. Keine Phthalate, Parabene oder andere schädliche Chemikalien."
+          }
+        },
+        "tile-6": {
+          "type": "tile",
+          "settings": {
+            "title": "60 Tage Geld-zurück-Garantie",
+            "text": "Bestell es, riech es, leb damit, dann entscheide."
+          }
+        },
+        "card-7": {
+          "type": "card",
+          "settings": {
+            "icon": "drop",
+            "title": "Unerreichte Ähnlichkeit und bis zu 12 Stunden Haltbarkeit",
+            "text": "21% Parfümölkonzentration in jeder Flasche, die hält, was sie verspricht."
+          }
+        },
+        "card-8": {
+          "type": "card",
+          "settings": {
+            "icon": "star",
+            "title": "Hergestellt in Europa",
+            "text": "Produziert nach Clean-Label-Strategie, in der EU nach EU-Kosmetikrecht."
+          }
+        },
+        "card-9": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "60 Tage Geld-zurück-Garantie",
+            "text": "Du hast 60 Tage, um deine Bestellung zurückzuschicken. Gefällt sie dir nicht? Du bekommst dein Geld zurück. Ohne Nachfragen."
+          }
+        }
+      },
+      "block_order": [
+        "tile-1",
+        "tile-2",
+        "tile-3",
+        "tile-4",
+        "tile-5",
+        "tile-6",
+        "card-7",
+        "card-8",
+        "card-9"
+      ]
+    },
+    "families": {
+      "type": "mp-lp-families",
+      "settings": {
+        "background": "white",
+        "heading": "Finde zuerst deine Duftfamilie",
+        "sub": "Du weißt nicht genau, was du magst? Fang damit an, wie ein Duft riecht. Tipp auf eine Familie und die Auswahl unten zeigt nur diese Flaschen.",
+        "gender_group_label": "Düfte zeigen für",
+        "gender_all": "Alle",
+        "gender_women": "Damen",
+        "gender_men": "Herren",
+        "gender_unisex": "Unisex",
+        "note": "Die meisten Düfte liegen in zwei Familien, ein paar Flaschen triffst du also zweimal. Jede Flasche ist 50 ml Eau de Parfum. Sechs für Damen, sechs für Herren oder gemischt, der Preis bleibt {price}.",
+        "cta_pill": "97% unserer Kunden sagen, Magic Perfume ist identisch.",
+        "cta_button": "Bestes Angebot deines Lebens sichern",
+        "cta_url": "#mp-picker",
+        "cta_micro": "60 Tage Geld-zurück-Garantie."
+      },
+      "blocks": {
+        "family-1": {
+          "type": "family",
+          "settings": {
+            "key": "gourmand",
+            "label": "Gourmand",
+            "how": "Riecht nach Dessert. Vanille, Karamell, Kakao und Kaffee, warm und süß. <strong>Am besten abends und in den kalten Monaten.</strong>",
+            "image_asset": "mp-lp-family-gourmand.jpg",
+            "alt": "Zimtschnecken auf einem Holzbrett",
+            "bg": "#F6E7D8",
+            "ink": "#8B5A2B",
+            "button": "Aus diesen wählen",
+            "image_url": ""
+          }
+        },
+        "family-2": {
+          "type": "family",
+          "settings": {
+            "key": "floral",
+            "label": "Blumig",
+            "how": "Gebaut auf Blüten. Rose, Jasmin und Iris, von leicht und klar bis satt und betörend. <strong>Der klassische feminine Duft.</strong>",
+            "image_asset": "mp-lp-family-floral.jpg",
+            "alt": "Weiße Jasminblüten",
+            "bg": "#F9E4EC",
+            "ink": "#B4436C",
+            "button": "Aus diesen wählen",
+            "image_url": ""
+          }
+        },
+        "family-3": {
+          "type": "family",
+          "settings": {
+            "key": "fresh",
+            "label": "Frisch",
+            "how": "Zitrus, Meeresluft und grüne Blätter. Klar, leicht und einfach zu tragen. <strong>Gemacht für den Tag, den Sommer und das Büro.</strong>",
+            "image_asset": "mp-lp-family-fresh.jpg",
+            "alt": "Limettenscheiben, die ins Wasser fallen",
+            "bg": "#E1F2E9",
+            "ink": "#1F7A5C",
+            "button": "Aus diesen wählen",
+            "image_url": ""
+          }
+        },
+        "family-4": {
+          "type": "family",
+          "settings": {
+            "key": "woody",
+            "label": "Holzig",
+            "how": "Sandelholz, Zeder und Vetiver. Trocken, ruhig und erwachsen, liegt nah an der Haut. <strong>Passt Damen und Herren gleichermaßen.</strong>",
+            "image_asset": "mp-lp-family-woody.jpg",
+            "alt": "Warme Holzmaserung",
+            "bg": "#EDE6DA",
+            "ink": "#6A4B2F",
+            "button": "Aus diesen wählen",
+            "image_url": ""
+          }
+        },
+        "family-5": {
+          "type": "family",
+          "settings": {
+            "key": "amber",
+            "label": "Warm & würzig",
+            "how": "Amber, Harze, Zimt und Pfeffer. Tief, warm und langanhaltend, füllt einen ganzen Raum. <strong>Fürs Ausgehen und den Winter.</strong>",
+            "image_asset": "mp-lp-family-amber.jpg",
+            "alt": "Zimtstangen und Sternanis",
+            "bg": "#FBE6D3",
+            "ink": "#C0561E",
+            "button": "Aus diesen wählen",
+            "image_url": ""
+          }
+        },
+        "family-6": {
+          "type": "family",
+          "settings": {
+            "key": "fruity",
+            "label": "Fruchtig",
+            "how": "Startet mit Frucht: Pfirsich, Kirsche, Beeren oder Birne auf süßer oder blumiger Basis. <strong>Saftig und verspielt, geliebt ab dem ersten Sprühstoß.</strong>",
+            "image_asset": "mp-lp-family-fruity.jpg",
+            "alt": "Reife Pfirsiche",
+            "bg": "#FCE4E1",
+            "ink": "#C43D3D",
+            "button": "Aus diesen wählen",
+            "image_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "family-1",
+        "family-2",
+        "family-3",
+        "family-4",
+        "family-5",
+        "family-6"
+      ]
+    },
+    "offer": {
+      "type": "mp-lp-offer",
+      "settings": {
+        "background": "cream2",
+        "eyebrow": "Einmaliges Neukundenangebot",
+        "heading": "Sechs Flaschen für {was} {price}, solange das läuft",
+        "sub": "{was}, wenn du sie einzeln kaufst. {price} als Box. Das sind {per} pro Flasche, und du wählst alle sechs selbst. Dazu als Bonus 1 Mystik Parfum 50 ml und Gratisversand.",
+        "timer_label": "Angebot endet in",
+        "label_hours": "Std",
+        "label_minutes": "Min",
+        "label_seconds": "Sek",
+        "gallery_label": "Ein paar der {count} Düfte, aus denen du wählen kannst",
+        "prev_label": "Vorheriger Duft",
+        "next_label": "Nächster Duft",
+        "cta_button": "Box zusammenstellen und bis zu 95% sparen",
+        "cta_url": "#mp-picker",
+        "cta_micro": "60 Tage Geld-zurück-Garantie."
+      }
+    },
+    "value": {
+      "type": "mp-lp-value",
+      "settings": {
+        "background": "cream",
+        "heading": "Die Rechnung auf dem Bon",
+        "sub": "Sechs Designer, sechs von uns einzeln, oder die Box.",
+        "designer_total": "€1.955",
+        "chip_per": "{per} pro Flasche",
+        "chip_save": "Du sparst {save}",
+        "free_label": "Gratis",
+        "stack_heading": "Was in der Box landet",
+        "pay_heading": "Du zahlst",
+        "not1": "Nicht die",
+        "not2": "Nicht mal die",
+        "only": "Nur",
+        "once": "Nur jetzt, einmalig, Neukundenangebot.",
+        "cta_pill": "Keine Qualitätskompromisse",
+        "cta_button": "Spare bis zu 95% bei deinem liebsten Designerduft",
+        "cta_url": "#mp-picker",
+        "cta_micro_lead": "Warte nicht, die beliebtesten Düfte sind schnell weg.",
+        "cta_micro": "60 Tage Geld-zurück-Garantie."
+      },
+      "blocks": {
+        "receipt_row-1": {
+          "type": "receipt_row",
+          "settings": {
+            "label": "Sechs Designer",
+            "figure": "designer_total",
+            "highlight": false,
+            "muted": true,
+            "strike": false,
+            "show_chips": false,
+            "note": "Die Designer hinter unseren 6 Bestsellern"
+          }
+        },
+        "receipt_row-2": {
+          "type": "receipt_row",
+          "settings": {
+            "label": "Sechs Flaschen Magic Perfume, einzeln gekauft",
+            "figure": "was",
+            "highlight": false,
+            "muted": false,
+            "strike": true,
+            "show_chips": false,
+            "note": "6 x {single}, der normale 50-ml-Preis"
+          }
+        },
+        "receipt_row-3": {
+          "type": "receipt_row",
+          "settings": {
+            "label": "Die Duft-Garderobe-Box",
+            "figure": "now",
+            "highlight": true,
+            "muted": false,
+            "strike": false,
+            "show_chips": true,
+            "note": "Die gleichen sechs 50-ml-Flaschen, du wählst jede selbst"
+          }
+        },
+        "stack_row-4": {
+          "type": "stack_row",
+          "settings": {
+            "text": "<strong>6 x 50 ml Eau de Parfum</strong>, deine Wahl aus den Bestsellern",
+            "value": "was"
+          }
+        },
+        "stack_row-5": {
+          "type": "stack_row",
+          "settings": {
+            "text": "<strong>1 Mystik Parfum 50 ml</strong>, eine Überraschung aus unserer Kollektion oder einer der Düfte, die es nicht mehr zu kaufen gibt",
+            "value": "single_free"
+          }
+        },
+        "stack_row-6": {
+          "type": "stack_row",
+          "settings": {
+            "text": "<strong>Versand</strong>, direkt zu dir nach Hause",
+            "value": "ship_free"
+          }
+        }
+      },
+      "block_order": [
+        "receipt_row-1",
+        "receipt_row-2",
+        "receipt_row-3",
+        "stack_row-4",
+        "stack_row-5",
+        "stack_row-6"
+      ]
+    },
+    "reviews": {
+      "type": "mp-lp-reviews",
+      "settings": {
+        "background": "white",
+        "heading": "Über 10.000 Duftliebhaber vertrauen uns",
+        "sub": "1 von 6 Kunden bestellt, um einen Duft nachzukaufen, den er schon trägt.",
+        "stars_label": "{rating} von 5 Sternen",
+        "link_label": "Trustpilot →",
+        "cta_pill": "Sichere dir 50% Rabatt",
+        "cta_button": "6 Düfte wählen, nur {per} pro Flasche",
+        "cta_url": "#mp-picker",
+        "cta_micro": "60 Tage Geld-zurück-Garantie."
+      },
+      "blocks": {
+        "review-1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "18.08.2026",
+            "name": "Kunde",
+            "title": "Vergleich 287M Tom Ford Oud Wood Dupe vs Original",
+            "text": "Ich hatte das Glück, zum Geburtstag mal eine 30ml Flasche Original bekommen zu haben (120€ LOL) und dachte ok, bestellste mal den Dupe. Klar, das Zeugs ist absolut in der Edelklasse, ABER (!) was die hier zaubern ist schon extrem hart am Original. 2-3 Spritzer und der ganze Raum riecht danach, locker auch für 8-10h. Also das ist nicht untertrieben. Das Original geht schneller im Duft auf, der Dupe braucht paar Minuten, bis das Aroma läuft. Wer aber 1:1 probieren kann, der wird quasi mit untrainierter Nase nach paar Minuten keinen Unterschied mehr riechen. […]",
+            "url": "https://www.trustpilot.com/reviews/6a84aa9cea1a4f01ae1dc964"
+          }
+        },
+        "review-2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "20.08.2026",
+            "name": "Rozhin",
+            "text": "My friend that has been using one of the Lancôme perfumes for years, couldn’t tell the difference of my dupe and her own expensive bottle!😂 she thought I also paid over 100 euros. The delivery was fast and I’m very satisfied with the scent and its durability. It stays on for over 12 hours! Will buy again",
+            "url": "https://www.trustpilot.com/reviews/6a86d6a0b3aa4a7a1ba16900"
+          }
+        },
+        "review-3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "16.07.2026",
+            "name": "Stephanie Lippolt",
+            "text": "Ich bin absolut begeistert 🥰 habe heute nach 4 Werktagen meinen Duftzwilling von Gucci rush 2 erhalten und es riecht zu 100% wie das Original. Auch der Versand über GLS lief termingenau und reibungslos.",
+            "url": "https://www.trustpilot.com/reviews/6a58d0708aa178f2cadd9d71"
+          }
+        },
+        "review-4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "11.08.2026",
+            "name": "Silvana",
+            "title": "Hochwertige Düfte zu fairen Preisen",
+            "text": "Ich habe mir den Duft mit der Nummer 145 inspiriert von Dior Hypnotic Poison bestellt in der 30ml Version, beraten wurde ich übrigens vorher von Abi und habe so auch alle Infos direkt zu den Düften bekommen, eine rundum Beratung also und das finde ich richtig gut. Der Versand war tatsächlich auch richtig schnell obwohl der Duft aus dem Ausland kommt, es hat ca. 5 Werktage gedauert was ich echt in Ordnung finde. […]",
+            "url": "https://www.trustpilot.com/reviews/6a7b664ae02952425059159c"
+          }
+        },
+        "review-5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "21.08.2026",
+            "name": "Taniusha Niculita",
+            "text": "Magicperfume hat mich ehrlich gesagt überrascht 👀✨ Es duftet wie ein Luxusparfum, hält wirklich gut und ist vor allem super erschwinglich. Perfekt, wenn du gerne mehrere Düfte hast und je nach Anlass einen anderen tragen möchtest, ohne ein Vermögen auszugeben. 💕✨",
+            "url": "https://www.trustpilot.com/reviews/6a87e0090d3a665294348bb2"
+          }
+        },
+        "review-6": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "30.05.2026",
+            "name": "Karl-Heinz Schulz",
+            "text": "Erneut bestellt! Die Düfte riechen wie das Original. Und halten sehr lange an! Prima.",
+            "url": "https://www.trustpilot.com/reviews/6a1acf7c216e8171ed92b964"
+          }
+        },
+        "review-7": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "14.08.2026",
+            "name": "Chrissy",
+            "title": "Top Qualität zu Top Preisen!",
+            "text": "War am Anfang skeptisch bis ich von meiner Mutti das erste Parfüm geschenkt bekommen habe. Der Duft hält so unfassbar lange, hätte ich nicht gedacht. Es braucht keinen teuren Flakon oder eine teure Verpackung, solange der Duft das tut, was er soll. Das ist hier absolut der Fall! - Absolute Empfehlung! […]",
+            "url": "https://www.trustpilot.com/reviews/6a7f53a13d8226c10527102e"
+          }
+        },
+        "review-8": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "17.06.2026",
+            "name": "Charly Meyer",
+            "title": "TOP Produkte",
+            "text": "Ich muss gestehen, ich bin immer etwas skeptisch, doch in diesem Fall bin ich wirklich positiv überrascht. Nach langem überlegen, habe ich mir ein Parfüm gekauft, dass nach Fahrenheit riechen soll und was soll ich sagen, das ist wirklich so. Ich habe dieses Parfüm aufgesprüht und wahrhaftig hat eine unbekannte Person den Duft gerochen und mich gefragt wo ich das gekauft habe. Natürlich habe ich diesen Shop empfohlen. Ich kann sagen, dass ich sehr zufrieden bin, und kaufe mittlerweile nur noch hier.",
+            "url": "https://www.trustpilot.com/reviews/6a324d021bd2c38b4dcede46"
+          }
+        },
+        "review-9": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "05.07.2026",
+            "name": "Damjan Ristic",
+            "title": "Günstige Preise Schnelle Lieferung Gute Angebote",
+            "text": "Günstige Preise Schnelle Lieferung Gute Angebote einfach alles ist toll An Magic Parfüm",
+            "url": "https://www.trustpilot.com/reviews/6a4a522ebd6cd76ba9b27015"
+          }
+        }
+      },
+      "block_order": [
+        "review-1",
+        "review-2",
+        "review-3",
+        "review-4",
+        "review-5",
+        "review-6",
+        "review-7",
+        "review-8",
+        "review-9"
+      ]
+    },
+    "faq": {
+      "type": "mp-lp-faq",
+      "settings": {
+        "background": "cream",
+        "heading": "Alles andere, was du dich fragst",
+        "sub": "Klare Antworten, kein Kleingedrucktes.",
+        "cta_button": "Mit Magic Perfume bis zu €2.000 sparen",
+        "cta_url": "#mp-picker",
+        "cta_micro": "60 Tage Geld-zurück-Garantie."
+      },
+      "blocks": {
+        "faq-1": {
+          "type": "faq",
+          "settings": {
+            "question": "Warum sind eure Parfüms so günstig?",
+            "answer": "Wir stecken das Geld in das, was in der Flasche ist. Kein Luxusflakon, keine besondere Verpackung, keine teuren Läden und keine teuren Influencer-Deals. So riechst du luxuriös, ohne dein Budget zu sprengen.",
+            "open": true
+          }
+        },
+        "faq-2": {
+          "type": "faq",
+          "settings": {
+            "question": "Ist das ein Eau de Toilette?",
+            "answer": "Nein, es ist ein Eau de Parfum. Es enthält 21% Parfümöl. Ein Eau de Toilette enthält zum Beispiel zwischen 5 und 15%.",
+            "open": false
+          }
+        },
+        "faq-3": {
+          "type": "faq",
+          "settings": {
+            "question": "Wie lange hält das Parfüm?",
+            "answer": "Auf die Haut gesprüht hält es 8 bis 12 Stunden und länger, dank unserer Formel und der Konzentration von 21% Parfümöl.",
+            "open": false
+          }
+        },
+        "faq-4": {
+          "type": "faq",
+          "settings": {
+            "question": "Riecht der inspirierte Duft anders?",
+            "answer": "Dieser Duft ist von ähnlichen Duftnoten inspiriert und gehört zur selben Duftfamilie.",
+            "open": false
+          }
+        },
+        "faq-5": {
+          "type": "faq",
+          "settings": {
+            "question": "Was bedeutet 21% Parfüm?",
+            "answer": "Das heißt, der Inhalt der Flasche enthält 21% Parfümöl.",
+            "open": false
+          }
+        },
+        "faq-6": {
+          "type": "faq",
+          "settings": {
+            "question": "Wie kann das legal sein?",
+            "answer": "Duftkompositionen sind für sich genommen nicht durch geistige Eigentumsrechte geschützt, sie dürfen also legal nachgebaut werden.",
+            "open": false
+          }
+        },
+        "faq-7": {
+          "type": "faq",
+          "settings": {
+            "question": "Wie stelle ich meine Box zusammen?",
+            "answer": "Wähle sechs beliebige Flaschen aus den {count} Düften oben, für Damen, für Herren oder gemischt. Jede Flasche ist 50 ml. Sind alle sechs Plätze voll, tippst du auf den Button und gehst direkt zur Kasse.",
+            "open": false
+          }
+        },
+        "faq-8": {
+          "type": "faq",
+          "settings": {
+            "question": "Wann verschickt ihr?",
+            "answer": "In der Regel verschicken wir am zweiten Werktag.",
+            "open": false
+          }
+        },
+        "faq-9": {
+          "type": "faq",
+          "settings": {
+            "question": "Und wenn ich es zurückschicken will?",
+            "answer": "Ungeöffnete Flaschen gehen innerhalb von 60 Tagen nach Lieferung zurück. Die Rückerstattung bearbeiten wir innerhalb von 14 Werktagen, nachdem das Paket bei uns angekommen ist. Schreib an hello@magicperfume.co.",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "faq-1",
+        "faq-2",
+        "faq-3",
+        "faq-4",
+        "faq-5",
+        "faq-6",
+        "faq-7",
+        "faq-8",
+        "faq-9"
+      ]
+    },
+    "picker": {
+      "type": "mp-lp-picker",
+      "settings": {
+        "background": "white",
+        "heading": "Bau deine sechs",
+        "sub": "Tipp auf eine Flasche, dann landet sie in der Box. Sechs Plätze, beliebig gemischt aus Damen- und Herrendüften.",
+        "preview_image_url": "https://magicperfume.co/cdn/shop/files/magic_header_1.png?v=1772469544",
+        "preview_alt": "Magic Perfume Flaschen aufgereiht auf einem Tisch",
+        "tray_heading": "Deine Box",
+        "tray_empty": "Sechs freie Plätze. Wähl unten deine erste Flasche.",
+        "bonus_ship_title": "Gratisversand",
+        "bonus_mystery_title": "Mystik Parfum 50 ml",
+        "price_line": "6 x 50 ml Eau de Parfum",
+        "price_per": "{per} pro Flasche",
+        "error_text": "Das hat nicht geklappt. Prüf deine Verbindung und tipp noch mal, oder schreib an hello@magicperfume.co.",
+        "micro": "60 Tage Geld-zurück-Garantie.",
+        "gender_group_label": "Düfte zeigen für",
+        "gender_all": "Alle",
+        "gender_women": "Damen",
+        "gender_men": "Herren",
+        "gender_unisex": "Unisex",
+        "tab_all": "Alle Düfte",
+        "tab_gourmand": "Gourmand",
+        "tab_floral": "Blumig",
+        "tab_fresh": "Frisch",
+        "tab_woody": "Holzig",
+        "tab_amber": "Warm & würzig",
+        "tab_fruity": "Fruchtig",
+        "search_placeholder": "Marke oder Duft suchen, z. B. Dior",
+        "search_aria": "Düfte nach Marke, Name oder Note suchen",
+        "search_clear_aria": "Suche löschen"
+      }
+    },
+    "guarantee": {
+      "type": "mp-lp-guarantee",
+      "settings": {
+        "background": "cream",
+        "badge": "60 Tage Geld-zurück-Garantie",
+        "heading": "Lass dir 60 Tage Zeit",
+        "text": "Bestell die Box, trag die Düfte, leb eine Weile damit. Ist es nichts für dich, löst eine E-Mail an hello@magicperfume.co die Rückerstattung aus.",
+        "cta_button": "Deine 6 Flaschen wählen",
+        "cta_url": "#mp-picker"
+      }
+    },
+    "footer": {
+      "type": "mp-lp-footer",
+      "settings": {
+        "logo_url": "https://magicperfume.co/cdn/shop/files/magic-perfume-logo.png?v=1770090849",
+        "logo_alt": "Magic Perfume",
+        "tagline": "Eau de Parfum mit 21% Parfümöl. Hergestellt in Europa.",
+        "contact_line1": "hello@magicperfume.co, 8:00 bis 20:00 Uhr, 7 Tage die Woche",
+        "contact_line2": "© 2026 Magic Perfume"
+      },
+      "blocks": {
+        "link-1": {
+          "type": "link",
+          "settings": {
+            "label": "Impressum",
+            "url": "https://magicperfume.co/policies/legal-notice"
+          }
+        },
+        "link-2": {
+          "type": "link",
+          "settings": {
+            "label": "Datenschutz",
+            "url": "https://magicperfume.co/policies/privacy-policy"
+          }
+        },
+        "link-3": {
+          "type": "link",
+          "settings": {
+            "label": "AGB",
+            "url": "https://magicperfume.co/policies/terms-of-service"
+          }
+        },
+        "link-4": {
+          "type": "link",
+          "settings": {
+            "label": "Widerrufsrecht",
+            "url": "https://magicperfume.co/policies/refund-policy"
+          }
+        }
+      },
+      "block_order": [
+        "link-1",
+        "link-2",
+        "link-3",
+        "link-4"
+      ]
+    },
+    "sticky": {
+      "type": "mp-lp-sticky",
+      "settings": {
+        "main": "6 x 50 ml, {price}",
+        "sub": "{per} pro Flasche",
+        "button": "6 Düfte wählen",
+        "button_url": "#mp-picker"
+      }
+    }
+  },
+  "order": [
+    "core",
+    "announcement",
+    "header",
+    "marquee",
+    "hero",
+    "band",
+    "ugc",
+    "problem",
+    "testimonials",
+    "story",
+    "compare",
+    "flacons",
+    "benefits",
+    "families",
+    "offer",
+    "value",
+    "reviews",
+    "faq",
+    "picker",
+    "guarantee",
+    "footer",
+    "sticky"
+  ]
+}

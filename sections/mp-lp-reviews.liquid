@@ -1,0 +1,130 @@
+{%- comment -%} MP LP · Reviews (Trustpilot cards, blocks). {%- endcomment -%}
+{%- liquid
+  assign bg_class = ''
+  if section.settings.background == 'cream'
+    assign bg_class = ' mp-section--cream'
+  elsif section.settings.background == 'cream2'
+    assign bg_class = ' mp-section--cream2'
+  endif
+  assign rating_token = '{rating}'
+  assign stars_head = section.settings.stars_label | replace: rating_token, '5'
+-%}
+<div class="mp-lp">
+<section class="mp-section{{ bg_class }}" id="mp-reviews">
+  <div class="mp-container">
+    <div class="mp-center"><span class="mp-tp__stars mp-tp__stars--head" role="img" aria-label="{{ stars_head | escape }}"><i></i><i></i><i></i><i></i><i></i></span><h2>{{ section.settings.heading | escape }}</h2><p class="mp-sub">{{ section.settings.sub | escape }}</p></div>
+    <div class="mp-tp">
+      {%- for block in section.blocks -%}
+      {%- assign stars_lbl = section.settings.stars_label | replace: rating_token, block.settings.rating -%}
+      {%- if block.type == 'review' -%}
+      <article class="mp-tp__card" {{ block.shopify_attributes }}>
+        <div class="mp-tp__top"><span class="mp-tp__stars" role="img" aria-label="{{ stars_lbl | escape }}">{%- for i in (1..block.settings.rating) -%}<i></i>{%- endfor -%}</span><span class="mp-tp__date">{{ block.settings.date | escape }}</span></div>
+        {%- if block.settings.title != blank -%}<h3 class="mp-tp__title">{{ block.settings.title | escape }}</h3>{%- endif -%}
+        <p class="mp-tp__text">{{ block.settings.text | escape }}</p>
+        <div class="mp-tp__foot"><span class="mp-tp__who"><b>{{ block.settings.name | escape }}</b></span>{%- if block.settings.url != blank -%}<a class="mp-tp__link" href="{{ block.settings.url }}" target="_blank" rel="noopener nofollow">{{ section.settings.link_label | escape }}</a>{%- endif -%}</div>
+      </article>
+      {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <div class="mp-cta">
+      {% render 'mp-lp-cta', pill: section.settings.cta_pill, button: section.settings.cta_button, url: section.settings.cta_url, micro: section.settings.cta_micro %}
+    </div>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Reviews",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 50,
+  "settings": [
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "cream2", "label": "Cream 2" } ], "default": "white" },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Trusted by over 10,000 scent lovers" },
+    { "type": "text", "id": "sub", "label": "Subheading", "default": "1 in 6 customers orders to rebuy a scent they already wear." },
+    { "type": "text", "id": "stars_label", "label": "Stars label (screen readers)", "default": "{rating} out of 5 stars", "info": "Tokens: {rating}" },
+    { "type": "text", "id": "link_label", "label": "Review link label", "default": "Trustpilot →" },
+    { "type": "header", "content": "CTA" },
+    { "type": "text", "id": "cta_pill", "label": "CTA pill", "default": "Claim your 50% off deal" },
+    { "type": "text", "id": "cta_button", "label": "CTA button", "default": "Pick 6 scents with only {per} per bottle", "info": "Tokens: {per}" },
+    { "type": "text", "id": "cta_url", "label": "CTA link", "default": "#mp-picker" },
+    { "type": "text", "id": "cta_micro", "label": "CTA micro line", "default": "60 day money back guarantee." }
+  ],
+  "blocks": [
+    { "type": "review", "name": "Review", "settings": [
+      { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
+      { "type": "text", "id": "date", "label": "Date", "default": "1 Jan 2026" },
+      { "type": "text", "id": "title", "label": "Title (optional)" },
+      { "type": "text", "id": "text", "label": "Review text" },
+      { "type": "text", "id": "name", "label": "Name", "default": "Customer" },
+      { "type": "text", "id": "url", "label": "Trustpilot link (optional)" }
+    ] }
+  ],
+  "presets": [{
+    "name": "MP LP · Reviews",
+    "blocks": [
+      { "type": "review", "settings": {
+        "date": "18 Aug 2026",
+        "title": "Comparison: 287M Tom Ford Oud Wood dupe vs the original",
+        "text": "I was lucky enough to get a 30 ml bottle of the original for my birthday (€120, lol) and thought, fine, let's order the dupe. What they conjure up here is extremely close to the original. Two or three sprays and the whole room smells of it, easily for 8 to 10 hours. The original opens up faster, the dupe needs a few minutes. But anyone who can compare side by side will, with an untrained nose, smell no difference after a few minutes. For the price it is simply unbeatably good. […]",
+        "name": "Customer",
+        "url": "https://www.trustpilot.com/reviews/6a84aa9cea1a4f01ae1dc964"
+      } },
+      { "type": "review", "settings": {
+        "date": "20 Aug 2026",
+        "text": "My friend that has been using one of the Lancôme perfumes for years, couldn't tell the difference of my dupe and her own expensive bottle!😂 she thought I also paid over 100 euros. The delivery was fast and I'm very satisfied with the scent and its durability. It stays on for over 12 hours! Will buy again",
+        "name": "Rozhin",
+        "url": "https://www.trustpilot.com/reviews/6a86d6a0b3aa4a7a1ba16900"
+      } },
+      { "type": "review", "settings": {
+        "date": "16 Jul 2026",
+        "text": "I am absolutely thrilled 🥰 Today, after 4 working days, I received my scent twin of Gucci Rush 2 and it smells 100% like the original. Shipping with GLS was on time and hassle-free too.",
+        "name": "Stephanie Lippolt",
+        "url": "https://www.trustpilot.com/reviews/6a58d0708aa178f2cadd9d71"
+      } },
+      { "type": "review", "settings": {
+        "date": "11 Aug 2026",
+        "title": "High-quality scents at fair prices",
+        "text": "I ordered No. 145, inspired by Dior Hypnotic Poison, in the 30 ml version. Abi advised me beforehand, so I had all the info on the scents up front. Shipping was really fast even though it comes from abroad, about 5 working days. The scent itself really is like the original, it opens up beautifully on the skin and lasts a really long time: sprayed in the morning, I can still clearly smell it in the evening. […]",
+        "name": "Silvana",
+        "url": "https://www.trustpilot.com/reviews/6a7b664ae02952425059159c"
+      } },
+      { "type": "review", "settings": {
+        "date": "21 Aug 2026",
+        "text": "Magic Perfume honestly surprised me 👀✨ It smells like a luxury perfume, really lasts and above all is super affordable. Perfect if you like having several scents and want to wear a different one depending on the occasion, without spending a fortune. 💕✨",
+        "name": "Taniusha Niculita",
+        "url": "https://www.trustpilot.com/reviews/6a87e0090d3a665294348bb2"
+      } },
+      { "type": "review", "settings": {
+        "date": "1 Sep 2026",
+        "text": "I am super happy 😍😍😍 ordered 6 and got one free 😍 Smells amazing. Will order again and again. Highly recommend!!!!",
+        "name": "Remy Remy",
+        "url": "https://www.trustpilot.com/reviews/6a96f718d7a05984930c74d9"
+      } },
+      { "type": "review", "settings": {
+        "date": "14 Aug 2026",
+        "title": "Top quality at top prices!",
+        "text": "I was sceptical at first, until my mum gave me my first perfume as a present. The scent lasts unbelievably long, I would not have thought so. It does not need an expensive flacon or expensive packaging as long as the scent does what it should. And here that is absolutely the case! Absolute recommendation! […]",
+        "name": "Chrissy",
+        "url": "https://www.trustpilot.com/reviews/6a7f53a13d8226c10527102e"
+      } },
+      { "type": "review", "settings": {
+        "date": "17 Jun 2026",
+        "title": "Top products",
+        "text": "I have to admit I am always a bit sceptical, but in this case I was genuinely, positively surprised. After a lot of deliberation I bought a perfume that is supposed to smell like Fahrenheit, and what can I say, it really does. I sprayed it on and a complete stranger actually smelled it and asked me where I had bought it. Of course I recommended this shop. I can say I am very happy, and by now I only buy here.",
+        "name": "Charly Meyer",
+        "url": "https://www.trustpilot.com/reviews/6a324d021bd2c38b4dcede46"
+      } },
+      { "type": "review", "settings": {
+        "date": "3 Sep 2026",
+        "title": "Fast delivery 🚚",
+        "text": "Fast delivery 🚚. And the EDT is like the original and sometimes better version than the original. Everyone gives me high ranking. This time an order 3 new bottles, can't wait for it. […]",
+        "name": "Johan Andersson",
+        "url": "https://www.trustpilot.com/reviews/6a990a723744f14a0e415689"
+      } }
+    ]
+  }]
+}
+{% endschema %}

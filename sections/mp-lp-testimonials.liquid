@@ -1,0 +1,65 @@
+{%- comment -%} MP LP · Testimonials carousel. Track/dots/prev/next are wired by the JS (data-testi*). {%- endcomment -%}
+{%- liquid
+  assign bg_class = ''
+  if section.settings.background == 'cream'
+    assign bg_class = ' mp-section--cream'
+  elsif section.settings.background == 'cream2'
+    assign bg_class = ' mp-section--cream2'
+  endif
+  assign rating_token = '{rating}'
+-%}
+<div class="mp-lp">
+<section class="mp-section{{ bg_class }}" id="mp-testimonials">
+  <div class="mp-container">
+    <div class="mp-center"><h2>{{ section.settings.heading | escape }}</h2><p class="mp-sub">{{ section.settings.sub | escape }}</p></div>
+    <div class="mp-testi">
+      <button class="mp-gallery__btn mp-gallery__btn--prev" type="button" aria-label="{{ section.settings.prev_label | escape }}" data-testi-prev>&lsaquo;</button>
+      <div class="mp-testi__track" data-testi>
+        {%- for block in section.blocks -%}
+        {%- assign stars_lbl = section.settings.stars_label | replace: rating_token, block.settings.rating -%}
+        <div class="mp-review mp-testi__card" {{ block.shopify_attributes }}><span class="mp-review__label">{{ block.settings.label | escape }}</span><div class="mp-stars mp-stars--green" role="img" aria-label="{{ stars_lbl | escape }}">{%- for i in (1..block.settings.rating) -%}&#9733;{%- endfor -%}</div><p>&ldquo;{{ block.settings.quote | escape }}&rdquo;</p><div class="mp-review__who"><div><div class="mp-review__name">{{ block.settings.name | escape }}</div><div class="mp-review__ver">{{ block.settings.verified | escape }}</div></div></div></div>
+        {%- endfor -%}
+      </div>
+      <button class="mp-gallery__btn mp-gallery__btn--next" type="button" aria-label="{{ section.settings.next_label | escape }}" data-testi-next>&rsaquo;</button>
+    </div>
+    <div class="mp-testi__dots" data-testi-dots></div>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "MP LP · Testimonials",
+  "tag": "div",
+  "class": "mp-lp-wrap",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "select", "id": "background", "label": "Background", "options": [ { "value": "white", "label": "White" }, { "value": "cream", "label": "Cream" }, { "value": "cream2", "label": "Cream 2" } ], "default": "cream2" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Does it really smell like the original?" },
+    { "type": "text", "id": "sub", "label": "Sub heading", "default": "In their own words, from the review page." },
+    { "type": "text", "id": "stars_label", "label": "Stars label (screen readers)", "default": "{rating} out of 5 stars", "info": "Tokens: {rating}" },
+    { "type": "text", "id": "prev_label", "label": "Previous button aria-label", "default": "Previous reviews" },
+    { "type": "text", "id": "next_label", "label": "Next button aria-label", "default": "Next reviews" }
+  ],
+  "blocks": [
+    { "type": "card", "name": "Review", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Customer review" },
+      { "type": "text", "id": "quote", "label": "Quote (without quote marks)", "default": "Great scents too, they smell 1 to 1 like the real brand perfumes" },
+      { "type": "text", "id": "name", "label": "Name", "default": "Herbert S." },
+      { "type": "text", "id": "verified", "label": "Verified badge text", "default": "Verified buyer" },
+      { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 }
+    ] }
+  ],
+  "presets": [{
+    "name": "MP LP · Testimonials",
+    "blocks": [
+      { "type": "card", "settings": { "label": "Customer review", "quote": "Great scents too, they smell 1 to 1 like the real brand perfumes", "name": "Herbert S.", "verified": "Verified buyer", "rating": 5 } },
+      { "type": "card", "settings": { "label": "Customer review", "quote": "I am absolutely thrilled! These perfumes really smell like the original.", "name": "Son Ja", "verified": "Verified buyer", "rating": 5 } },
+      { "type": "card", "settings": { "label": "Customer review", "quote": "It smells 100% like the original.", "name": "Stephanie L.", "verified": "Verified buyer", "rating": 5 } },
+      { "type": "card", "settings": { "label": "Customer review", "quote": "Great scents for a pleasant price, I can really recommend them :) Like the original perfumes", "name": "Michael Hanning", "verified": "Verified buyer", "rating": 5 } },
+      { "type": "card", "settings": { "label": "Customer review", "quote": "Very good quality, resembles the original", "name": "RAMAZAN A.", "verified": "Verified buyer", "rating": 5 } },
+      { "type": "card", "settings": { "label": "Customer review", "quote": "Great scent twins that last a long time", "name": "Mario Jung", "verified": "Verified buyer", "rating": 5 } }
+    ]
+  }]
+}
+{% endschema %}
